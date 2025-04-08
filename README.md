@@ -162,3 +162,21 @@ Para implementar el sharding de registros en los enrutadores de películas y de 
 ### Diagrama de estados
 
 ## Tareas a realizar
+
+A continuación se detallan las tareas a realizar para la implementación del sistema:
+
+1. Definir e implementar el protocolo de comunicación. 
+2. Implementar el cliente (serialización, envío de archivos, recepción de respuestas).
+3. Implementar el gateway.
+4. Implementar cada uno de los siguientes componentes:
+    1. Parser
+    2. Router
+    3. Filter
+    4. Calculator
+    5. Joiner
+    6. Sensor
+    7. Averager
+    8. Aggregator 
+5. Implementar el middleware para la comunicación de grupos utilizando RabbitMQ.
+6. Dockerizar cada uno de los componentes del sistema.
+7. Implementar Docker compose con los componentes del sistema. 
