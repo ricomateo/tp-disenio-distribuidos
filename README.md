@@ -91,6 +91,38 @@ En este diagrama indicamos que hay más de una instancia de una entidad utilizan
 
 ### Diagrama de paquetes
 
+### Diagrama de Paquetes
+
+#### Estructura General
+
+- Existe una clase base abstracta llamada `Packet`, de la cual heredan todas las clases que representan diferentes tipos de información que circulan por el middleware (Nodo broker).
+- La clase `PacketFactory` se encarga de **decodificar** la información recibida y transformarla en una instancia específica de una subclase de `Packet`, dependiendo del tipo de contenido.
+- Los unicos paquetes que recibe el gateway son `CsvPacket` por parte de la conexión con el cliente y `QueryPacket` como resultado de las querys por parte de alguna cola del middleware.
+
+![image paquetes](img/vista_desarollo/diagrama_paquetes.png)
+
+#### Tipos de Packet
+
+- **`CsvPacket`**: Representa los paquetes que se envían a través del **socket** entre el cliente y el `Gateway`. Contienen datos en formato CSV que serán procesados por el sistema. No hereda de `Packet`.
+- **`FinalPacket`**: Indica el **fin de flujo de información** dentro de una cola del sistema. Es especialmente útil en sistemas que utilizan colas y procesamiento asincrónico para saber cuándo detener el consumo.
+- **`DataPacket`**: Clase intermedia que agrupa múltiples tipos de datos, funcionando como contenedor lógico de información que ya fue interpretada.
+- **`MoviePacket` / `RatingPacket` / `ActorsPacket` / `CsvParserPacket` / `QueryPacket`**: Son especializaciones de `DataPacket`, que representan distintas partes del procesamiento y contenido de los datos. Cada uno cumple una función específica, como enviar películas, ratings, actores, resultados, etc.
+- **`QueryPacket`**: Se utiliza para enviar la **respuesta final** hacia el cliente, conteniendo los resultados solicitados.
+
+#### Flujo de datos
+
+1. El cliente envía un `CsvPacket` mediante un socket hacia el `Gateway`.
+2. El `Gateway`, que contiene al `Middleware`, recibe este paquete y lo pasa al `PacketFactory`.
+3. El `PacketFactory` decodifica el contenido, generando una instancia específica de una subclase de `Packet`.
+4. Esa instancia se procesa internamente dentro del sistema, generando múltiples transformaciones, que a su vez van generando nuevos paquetes.
+5. Cada nodo al recibir `FinalPacket` sabe que ya no tiene mas trabajo por hacer y termina.
+
+#### Ventajas del diseño
+
+- **Desacoplamiento**: La lógica de decodificación está separada del resto del sistema gracias al uso del `PacketFactory`.
+- **Extensibilidad**: Es sencillo agregar nuevos tipos de `Packet` sin modificar la lógica existente, respetando el principio de abierto/cerrado.
+- **Claridad semántica**: Cada clase `Packet` tiene un propósito específico, lo que facilita el mantenimiento y la comprensión del sistema.
+
 ## Vista de procesos
 
 ### Diagrama de secuencia
