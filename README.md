@@ -133,6 +133,12 @@ En todos los casos la data se va transformando hasta llegar al resultado de la q
 
 ### Diagrama de secuencia
 
+![image secuencia consulta 3](img/vista_procesos/diagrama_secuencia.png)
+
+Se eligió mostrar el diagrama de secuencia de la consulta 3, porque en dicha consulta se usan dos tablas, y se terminan uniendo los valores de las mismas.
+
+Se puede ver que el archivo de películas pasa por los filtros correspondientes, y que se calcula el rating promedio para todas las películas, no solo para las que corresponden a los filtros aplicados en la tabla de películas. Esto es así porque consideramos mejor calcular promedios de películas que no vamos a usar que mandar todos los ratings en comunicación, priorizando la reducción de este último.
+
 ### Diagramas de actividades
 
 #### Consulta 1
