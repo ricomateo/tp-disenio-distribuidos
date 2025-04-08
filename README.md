@@ -87,11 +87,17 @@ En este diagrama indicamos que hay más de una instancia de una entidad utilizan
 
 ## Vista de desarrollo
 
-### Diagrama de componentes
+### DAG
 
-### Diagrama de paquetes
+![image dag](img/vista_desarollo/dag-diagrama.png)
 
-### Diagrama de Paquetes
+El diagrama muestra como se modifican los datos a lo largo de las consultas, y se puede ver con las columnas de las tablas con las que se van quedando los nodos a la hora de hacer las consultas.
+
+Podemos ver que el filtro de películas posteriores se reutiliza para 3 consultas, en vez de repetirse su cálculo, y a medida que las consultas se van haciendo más específicas, se van requiriendo menos consultas para responderlas.
+
+También podemos ver que para algunas consultas se usan más de una tabla, por lo que se tiene que hacer un join entre dichas tablas, que se ve representado por la operación Juntar, que en ambos casos se hace por el ID de la película.
+
+En todos los casos la data se va transformando hasta llegar al resultado de la query, y todas se envían al data output, que termina de nuevo en el Gateway, que va a ser quien va a enviar las respuestas a las consultas.
 
 #### Estructura General
 
