@@ -59,3 +59,7 @@ Para implementar el sharding de registros en los enrutadores de películas y de 
 ### Diagrama de despliegue
 
 ### Diagrama de robustez
+
+En este diagrama indicamos que hay más de una entidad utilizando un asterisco (*).
+
+![image robustez](img/vista_fisica/diagrama_robustez.png)
