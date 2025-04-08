@@ -6,6 +6,7 @@
 2. [Vista de desarrollo](#vista-de-desarrollo)
 3. [Vista de procesos](#vista-de-procesos)
 4. [Vista física](#vista-física)
+5. [Tareas a realizar](#tareas-a-realizar)
 
 ## Vista lógica
 
@@ -60,6 +61,8 @@ Para implementar el sharding de registros en los enrutadores de películas y de 
 
 ### Diagrama de robustez
 
-En este diagrama indicamos que hay más de una entidad utilizando un asterisco (*).
+En este diagrama indicamos que hay más de una instancia de una entidad utilizando un asterisco (*).
 
 ![image robustez](img/vista_fisica/diagrama_robustez.png)
+
+## Tareas a realizar
