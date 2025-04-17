@@ -81,9 +81,9 @@ class Middleware:
             if not self.check_no_consumers():
                 print(" [x] Sending FINAL PACKET...")
                 
-                final_packet = FinalPacket(timestamp=datetime.utcnow().isoformat(),)
-                self.publish(final_packet.to_json())
-                self.send_ack_and_close(method)
+                self.channel.stop_consuming()
+                self.channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+                self.close()
                 return False
             return True
     
