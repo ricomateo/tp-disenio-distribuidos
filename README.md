@@ -87,11 +87,17 @@ En este diagrama indicamos que hay más de una instancia de una entidad utilizan
 
 ## Vista de desarrollo
 
-### Diagrama de componentes
+### DAG
 
-### Diagrama de paquetes
+![image dag](img/vista_desarollo/dag-diagrama.png)
 
-### Diagrama de Paquetes
+El diagrama muestra como se modifican los datos a lo largo de las consultas, y se puede ver con las columnas de las tablas con las que se van quedando los nodos a la hora de hacer las consultas.
+
+Podemos ver que el filtro de películas posteriores se reutiliza para 3 consultas, en vez de repetirse su cálculo, y a medida que las consultas se van haciendo más específicas, se van requiriendo menos consultas para responderlas.
+
+También podemos ver que para algunas consultas se usan más de una tabla, por lo que se tiene que hacer un join entre dichas tablas, que se ve representado por la operación Juntar, que en ambos casos se hace por el ID de la película.
+
+En todos los casos la data se va transformando hasta llegar al resultado de la query, y todas se envían al data output, que termina de nuevo en el Gateway, que va a ser quien va a enviar las respuestas a las consultas.
 
 #### Estructura General
 
@@ -126,6 +132,12 @@ En este diagrama indicamos que hay más de una instancia de una entidad utilizan
 ## Vista de procesos
 
 ### Diagrama de secuencia
+
+![image secuencia consulta 3](img/vista_procesos/diagrama_secuencia.png)
+
+Se eligió mostrar el diagrama de secuencia de la consulta 3, porque en dicha consulta se usan dos tablas, y se terminan uniendo los valores de las mismas.
+
+Se puede ver que el archivo de películas pasa por los filtros correspondientes, y que se calcula el rating promedio para todas las películas, no solo para las que corresponden a los filtros aplicados en la tabla de películas. Esto es así porque consideramos mejor calcular promedios de películas que no vamos a usar que mandar todos los ratings en comunicación, priorizando la reducción de este último.
 
 ### Diagramas de actividades
 
@@ -162,3 +174,21 @@ Para implementar el sharding de registros en los enrutadores de películas y de 
 ### Diagrama de estados
 
 ## Tareas a realizar
+
+A continuación se detallan las tareas a realizar para la implementación del sistema:
+
+1. Definir e implementar el protocolo de comunicación. 
+2. Implementar el cliente (serialización, envío de archivos, recepción de respuestas).
+3. Implementar el gateway.
+4. Implementar cada uno de los siguientes componentes:
+    1. Parser
+    2. Router
+    3. Filter
+    4. Calculator
+    5. Joiner
+    6. Sensor
+    7. Averager
+    8. Aggregator 
+5. Implementar el middleware para la comunicación de grupos utilizando RabbitMQ.
+6. Dockerizar cada uno de los componentes del sistema.
+7. Implementar Docker compose con los componentes del sistema. 
