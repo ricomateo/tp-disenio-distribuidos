@@ -114,6 +114,22 @@ services:
     deploy:
       restart_policy:
         condition: none
+  
+  sentiment:
+    build:
+      context: .
+      dockerfile: sentiment/Dockerfile
+    container_name: sentiment
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - app-network
+    environment:
+      - PYTHONUNBUFFERED=1
+      - RABBITMQ_QUEUE=movie1_queue
+      - RABBITMQ_OUTPUT_QUEUE_POSITIVE=sentiment_positive_queue
+      - RABBITMQ_OUTPUT_QUEUE_NEGATIVE=sentiment_negative_queue
 
 networks:
   app-network:
