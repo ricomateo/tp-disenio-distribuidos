@@ -9,7 +9,7 @@ class Client:
         # Extract the filename from the path
         filename = filepath.split('/')[-1]
         with open(filepath, 'rb') as file:
-            header = file.readline()
+            header = file.readline().decode('utf-8')
             self.protocol.send_file_header(filename, header)
             batch = self.read_batch(file)
             while len(batch) > 0:

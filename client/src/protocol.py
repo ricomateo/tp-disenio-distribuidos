@@ -13,9 +13,9 @@ class Protocol:
     def send_file_header(self, filename: str, header: str):
         message_type = HEADER_MSG_TYPE
         filename_len = len(filename).to_bytes(1, "big")
-        filename = str(filename).encode('utf-8')
+        filename = filename.encode('utf-8')
         header_len = len(header).to_bytes(4, "big")
-        header = str(header).encode('utf-8')
+        header = header.encode('utf-8')
 
         self.server_socket.sendall(message_type.to_bytes(1, "big"))
         self.server_socket.sendall(filename_len)
