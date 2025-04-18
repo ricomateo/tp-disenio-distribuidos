@@ -11,13 +11,14 @@ RABBITMQ_PORT = int(os.getenv('RABBITMQ_PORT', '5672'))
 RABBITMQ_HEARTBEAT = int(os.getenv('RABBITMQ_HEARTBEAT', '1200'))
 
 class Middleware:
-    def __init__(self, queue, consumer_tag = None, exchange=None, exchange_type='fanout', publish_to_exchange=True):
+    def __init__(self, queue, consumer_tag = None, exchange=None, exchange_type='fanout', publish_to_exchange=True, routing_key=''):
         self.host = RABBITMQ_HOST
         self.consumer_tag = consumer_tag
         self.queue = queue
         self.exchange = exchange
         self.exchange_type = exchange_type
         self.publish_to_exchange = publish_to_exchange 
+        self.routing_key = routing_key
         self.connection = None
         self.channel = None
 
@@ -35,7 +36,7 @@ class Middleware:
                 self.channel.queue_declare(queue=self.queue, durable=False)
                 
                 print(f"[Middleware] Enlazando cola '{self.queue}' al exchange '{self.exchange}'...")
-                self.channel.queue_bind(queue=self.queue, exchange=self.exchange)
+                self.channel.queue_bind(queue=self.queue, exchange=self.exchange, routing_key=self.routing_key)
         else:
             self.channel.queue_declare(queue=self.queue, durable=False)
 
