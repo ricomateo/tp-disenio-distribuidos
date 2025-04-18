@@ -42,7 +42,7 @@ class RouterNode:
             
             # Routeo el mensaje segun el routing key
             self.output_rabbitmq.publish(packet_json, routing_key=routing_key)
-            print(f" [✓] Sent movie with id: {movie_id} through the exchange: {routing_key}")
+            print(f" [✓] Sent movie with id: {movie_id} through the exchange using routing key: {routing_key}")
             
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")
