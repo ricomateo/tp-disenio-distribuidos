@@ -10,12 +10,14 @@ from transformers import pipeline
 
 class SentimentNode:
     def __init__(self):
-        self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
+        self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_queue")
         self.output_positive_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_POSITIVE", "default_output")
         self.output_negative_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_NEGATIVE", "default_output")
 
-        self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
-        self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
+        self.exchange = os.getenv("RABBITMQ_EXCHANGE", "movie_exchange")
+        self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "sentiment_consumer")
+        self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag, exchange=self.exchange, 
+                                         exchange_type='fanout', publish_to_exchange=False)
         self.output_positive_rabbitmq = Middleware(queue=self.output_positive_queue)
         self.output_negative_rabbitmq = Middleware(queue=self.output_negative_queue)
 
@@ -36,9 +38,10 @@ class SentimentNode:
 
             # Procesar paquete (comunicarse con la lib de sentimientos)
 
-            sentiment_analyzer = pipeline('sentiment-analysis', model='distilbert-base-uncased-finetuned-sst-2-english')
-
             overview = movie.get('overview', '')
+            if not isinstance(overview, str):
+                overview = str(overview)
+            sentiment_analyzer = pipeline('sentiment-analysis', model='distilbert-base-uncased-finetuned-sst-2-english')
             sentiment = sentiment_analyzer(overview)[0]['label']
             movie['sentiment'] = sentiment
 

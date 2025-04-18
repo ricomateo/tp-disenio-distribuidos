@@ -127,7 +127,9 @@ services:
       - app-network
     environment:
       - PYTHONUNBUFFERED=1
-      - RABBITMQ_QUEUE=movie1_queue
+      - RABBITMQ_QUEUE=sentiment_queue
+      - RABBITMQ_CONSUMER_TAG=sentiment_consumer
+      - RABBITMQ_EXCHANGE=movie_exchange
       - RABBITMQ_OUTPUT_QUEUE_POSITIVE=sentiment_positive_queue
       - RABBITMQ_OUTPUT_QUEUE_NEGATIVE=sentiment_negative_queue
 
