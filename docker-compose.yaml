@@ -102,7 +102,6 @@ services:
     build:
       context: .
       dockerfile: router/Dockerfile
-    container_name: router
     depends_on:
       rabbitmq:
         condition: service_healthy
