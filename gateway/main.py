@@ -1,5 +1,8 @@
-# main.py
-from src.gateway import start_gateway
+import os
+from src.server import Gateway
 
 if __name__ == "__main__":
-    start_gateway()
+    host = os.getenv("GATEWAY_HOST", '0.0.0.0')
+    port = int(os.getenv("GATEWAY_PORT", '9999'))
+    gateway = Gateway("0.0.0.0", 9999)
+    gateway.start()
