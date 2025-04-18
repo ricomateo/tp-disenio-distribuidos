@@ -1,6 +1,7 @@
 import socket
 
 HEADER_MSG_TYPE = 0
+BATCH_MSG_TYPE = 1
 
 class Protocol:
     def __init__(self, host, port):
@@ -22,6 +23,18 @@ class Protocol:
         self.server_socket.sendall(header_len)
         self.server_socket.sendall(header)
 
-
     def send_file_batch(self, filename: str, batch: list[bytes]):
-        self.server_socket.sendall()
+        message_type = BATCH_MSG_TYPE
+        filename_len = len(filename).to_bytes(1, "big")
+        filename = str(filename).encode('utf-8')
+        batch_size = len(batch).to_bytes(4, "big")
+
+        self.server_socket.sendall(message_type.to_bytes(1, "big"))
+        self.server_socket.sendall(filename_len)
+        self.server_socket.sendall(filename)
+        self.server_socket.sendall(batch_size)
+        
+        for row in batch:
+            row_len = len(row).to_bytes(4, "big")
+            self.server_socket.sendall(row_len)
+            self.server_socket.sendall(row)

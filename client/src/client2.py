@@ -1,4 +1,3 @@
-from batcher import Batcher
 from protocol import Protocol
 
 class Client:
@@ -7,24 +6,32 @@ class Client:
         self.batch_size = batch_size
     
     def send_file(self, filepath: str):
-        batcher = Batcher(filepath, self.batch_size)
         # Extract the filename from the path
         filename = filepath.split('/')[-1]
-        # Read the first line
-        header = batcher.get_line()
+        with open(filepath, 'rb') as file:
+            header = file.readline()
+            self.protocol.send_file_header(filename, header)
+            batch = self.read_batch(file)
+            while len(batch) > 0:
+                self.protocol.send_file_batch(filename, batch)
+                batch = self.read_batch(file)
 
-        self.protocol.send_file_header(filename, header)
-        # TODO: send the file
-
-        # Close the file
-        batcher.stop()
+    def read_batch(self, file):
+        batch = []
+        for _ in range(self.batch_size):
+            line = file.readline()
+            print(f"line = {line}")
+            if line == b'':
+                break
+            batch.append(line)
+        return batch
 
 def main():
     host = "0.0.0.0"
     port = 9999
     batch_size = 100
     client = Client(host, port, batch_size)
-    client.send_file("../movies_metadata_reduced.csv")
+    client.send_file("../movies.csv")
 
 
 main()

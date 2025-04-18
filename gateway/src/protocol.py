@@ -1,6 +1,7 @@
 import socket
 
 HEADER_MSG_TYPE = 0
+BATCH_MSG_TYPE = 1
 
 class Protocol:
     def __init__(self, host: str, port: int):
@@ -13,15 +14,27 @@ class Protocol:
         if self.client_socket is None:
             client_socket, addr = self.socket.accept()
             self.client_socket = client_socket
+        
         msg_type = int.from_bytes(self._recv_exact(1), "big")
+        print(f"RECEIVED MSG_TYPE = {msg_type}")
         if msg_type == HEADER_MSG_TYPE:
             filename_len = int.from_bytes(self._recv_exact(1), "big")
             filename = self._recv_exact(filename_len).decode('utf-8')
             header_len = int.from_bytes(self._recv_exact(4), "big")
             header = self._recv_exact(header_len).decode('utf-8')
             return {"msg_type": HEADER_MSG_TYPE, "filename": filename, "header": header}
-        else:
-            print(f"Unknown message type: {msg_type}")
+        
+        elif msg_type == BATCH_MSG_TYPE:
+            filename_len = int.from_bytes(self._recv_exact(1), "big")
+            filename = self._recv_exact(filename_len).decode('utf-8')
+            batch_size = int.from_bytes(self._recv_exact(4), "big")
+            rows = []
+            for _ in range(batch_size):
+                row_len = int.from_bytes(self._recv_exact(4), "big")
+                row = self._recv_exact(row_len).decode('utf-8')
+                # TODO: check if it is required to split the row
+                rows.append(row)
+            return {"msg_type": BATCH_MSG_TYPE, "filename": filename, "rows": rows}
 
     def _recv_exact(self, n: int):
         """

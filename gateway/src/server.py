@@ -1,8 +1,6 @@
-# gateway.py
-import socket
-# import json
 import os
-from protocol import Protocol, HEADER_MSG_TYPE
+import socket
+from protocol import Protocol, HEADER_MSG_TYPE, BATCH_MSG_TYPE
 
 
 class Gateway:
@@ -18,6 +16,8 @@ class Gateway:
                 header = msg["header"]
                 self.header_by_file[filename] = header
                 print(f"self.header_by_file = {self.header_by_file}")
+            elif msg["msg_type"] == BATCH_MSG_TYPE:
+              print(f"batch message = {msg}")
 
 
 def start_gateway(host = None, port = None):
