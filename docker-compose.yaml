@@ -119,7 +119,6 @@ services:
     build:
       context: .
       dockerfile: sentiment/Dockerfile
-    container_name: sentiment
     depends_on:
       rabbitmq:
         condition: service_healthy
