@@ -38,3 +38,10 @@ class Protocol:
             row_len = len(row).to_bytes(4, "big")
             self.server_socket.sendall(row_len)
             self.server_socket.sendall(row)
+
+    def recv_result(self):
+        # TODO: agregar protocolo de recepcion de respuestas
+        self.server_socket.recv(1024)
+
+    def close(self):
+        self.server_socket.close()

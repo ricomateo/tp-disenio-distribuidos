@@ -25,6 +25,14 @@ class Client:
                 break
             batch.append(line)
         return batch
+    
+    def print_results(self):
+        for _ in range(5):
+            result = self.protocol.recv_result()
+            print(f"result = {result}")
+
+    def close(self):
+        self.protocol.close()
 
 def main():
     host = "0.0.0.0"
@@ -32,6 +40,7 @@ def main():
     batch_size = 100
     client = Client(host, port, batch_size)
     client.send_file("../movies.csv")
-
+    client.print_results()
+    client.close()
 
 main()
