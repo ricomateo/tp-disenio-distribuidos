@@ -1,10 +1,9 @@
 # filter.py
 import json
-import math
 from common.middleware import Middleware
 from common.packet import MoviePacket, handle_final_packet, is_final_packet
-from datetime import datetime
 import os
+
 class RouterNode:
     def __init__(self):
         self.input_queue = os.getenv("RABBITMQ_QUEUE")
