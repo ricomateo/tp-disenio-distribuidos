@@ -14,6 +14,7 @@ class RouterNode:
     """
     def __init__(self):
         self.input_queue = os.getenv("RABBITMQ_QUEUE")
+        self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.number_of_nodes = int(os.getenv("NUMBER_OF_NODES"))
@@ -21,7 +22,7 @@ class RouterNode:
             raise Exception("Missing RABBITMQ_QUEUE env var")
         if self.output_exchange is None:
             raise Exception("Missing RABBITMQ_OUTPUT_EXCHANGE env var")
-        self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag, publish_to_exchange=False)
+        self.input_rabbitmq = Middleware(queue=self.input_queue, exchange=self.exchange, consumer_tag=self.consumer_tag, publish_to_exchange=False)
         self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange, exchange_type='direct')
 
 
@@ -35,7 +36,8 @@ class RouterNode:
             
             if is_final_packet(json.loads(packet_json).get("header")):
                 if handle_final_packet(method, self.input_rabbitmq):
-                    self.output_rabbitmq.send_final()
+                    for i in range(self.number_of_nodes):
+                        self.output_rabbitmq.send_final(routing_key=str(i))
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             

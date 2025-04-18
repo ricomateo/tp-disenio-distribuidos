@@ -69,12 +69,12 @@ class Middleware:
         print(f" [*] Waiting for messages in {self.queue}")
         self.channel.start_consuming()
         
-    def send_final(self):
+    def send_final(self, routing_key=''):
         """Publica un paquete FINAL a través de este middleware."""
         if not self.channel:
             self.connect()
         final_packet = FinalPacket(timestamp=datetime.utcnow().isoformat())
-        self.publish(final_packet.to_json())
+        self.publish(final_packet.to_json(), routing_key)
         print(f"[Middleware] FinalPacket enviado directamente.")
     
     def send_final_until_no_consumers(self, method):

@@ -3,6 +3,8 @@
 REPLICAS ?= 3
 COMPOSE_NORMAL = -f docker-compose.yaml
 COMPOSE_TEST = -f docker-compose-test.yaml
+PYTHON = python3
+GENERATOR_SCRIPT = generador-compose.py
 
 all: build up
 
@@ -12,11 +14,19 @@ validate-replicas:
 		exit 1; \
 	fi
 
+ensure-line-endings:
+	@which dos2unix > /dev/null && dos2unix $(GENERATOR_SCRIPT) || true
+	@sed -i 's/\r$$//' $(GENERATOR_SCRIPT) || true
+
+generate-compose: ensure-line-endings
+	@echo "Generating docker-compose.yaml with $(REPLICAS) join nodes..."
+	$(PYTHON) ./$(GENERATOR_SCRIPT) docker-compose.yaml docker-compose.yaml $(REPLICAS)
+
 build:
 	@echo "Building Docker images..."
 	docker-compose $(COMPOSE_NORMAL) build
 
-up: validate-replicas
+up: validate-replicas generate-compose
 	docker-compose $(COMPOSE_NORMAL) up -d --build \
 		--scale parser=$(REPLICAS) \
         --scale filter_argentina_2000=$(REPLICAS) \
