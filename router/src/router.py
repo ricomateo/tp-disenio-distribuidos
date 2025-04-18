@@ -5,23 +5,31 @@ from common.packet import MoviePacket, handle_final_packet, is_final_packet
 import os
 
 class RouterNode:
+    """
+    El RouterNode se suscribe a una 'input_queue', y envia los mensajes
+    a un 'output_exchange', routeandolos segun un 'routing_key' que
+    se determina segun: id % number_of_nodes, siendo:
+     - id: el id de los mensajes,
+     - number_of_nodes: la cantidad de nodos suscriptos al exchange 'output_exchange'.
+    """
     def __init__(self):
         self.input_queue = os.getenv("RABBITMQ_QUEUE")
-        self.exchange = os.getenv("RABBITMQ_EXCHANGE")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.number_of_nodes = int(os.getenv("NUMBER_OF_NODES"))
         if self.input_queue is None:
             raise Exception("Missing RABBITMQ_QUEUE env var")
-        if self.exchange is None:
-            raise Exception("Missing RABBITMQ_EXCHANGE env var")
         if self.output_exchange is None:
             raise Exception("Missing RABBITMQ_OUTPUT_EXCHANGE env var")
-        self.input_rabbitmq = Middleware(queue=self.input_queue, exchange=self.exchange, consumer_tag=self.consumer_tag, publish_to_exchange=False)
+        self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag, publish_to_exchange=False)
         self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange, exchange_type='direct')
 
 
     def callback(self, ch, method, properties, body):
+        """
+        Recibe un mensaje y lo envia al output_exchange, routeandolo
+        segun routing_key = msg.id % number_of_nodes.
+        """
         try:
             packet_json = body.decode()
             
