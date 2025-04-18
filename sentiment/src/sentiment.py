@@ -82,5 +82,7 @@ class SentimentNode:
         finally:
             if self.input_rabbitmq:
                 self.input_rabbitmq.close()
-            if self.output_rabbitmq:
-                self.output_rabbitmq.close()
+            if self.output_positive_rabbitmq:
+                self.output_positive_rabbitmq.close()
+            if self.output_negative_rabbitmq:
+                self.output_negative_rabbitmq.close()
