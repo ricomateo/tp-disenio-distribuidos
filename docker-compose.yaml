@@ -98,6 +98,24 @@ services:
       - RABBITMQ_OUTPUT_QUEUE=query_queue
       - KEEP_COLUMNS=genres,title
 
+  router:
+    build:
+      context: .
+      dockerfile: router/Dockerfile
+    container_name: router
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - app-network
+    environment: # TODO: Definir mejores nombres
+      - PYTHONUNBUFFERED=1
+      - RABBITMQ_QUEUE=movie_argentina_queue
+      - RABBITMQ_EXCHANGE=argentina_exchange
+      - RABBITMQ_CONSUMER_TAG=router
+      - RABBITMQ_OUTPUT_EXCHANGE=movies_router_exchange
+      - NUMBER_OF_NODES=3
+
   client:
     build:
       context: .

@@ -31,7 +31,7 @@ class Middleware:
             self.channel.exchange_declare(exchange=self.exchange, exchange_type=self.exchange_type)
             
             if self.queue:
-                print(f"[Middleware] Declarando cola '{self.queue}' (durable=True)...")
+                print(f"[Middleware] Declarando cola '{self.queue}' (durable=False)...")
                 self.channel.queue_declare(queue=self.queue, durable=False)
                 
                 print(f"[Middleware] Enlazando cola '{self.queue}' al exchange '{self.exchange}'...")
@@ -39,14 +39,14 @@ class Middleware:
         else:
             self.channel.queue_declare(queue=self.queue, durable=False)
 
-    def publish(self, message):
+    def publish(self, message, routing_key=''):
         if not self.channel:
             self.connect()
         body = message if isinstance(message, str) else json.dumps(message)
         if self.exchange and self.publish_to_exchange:
             self.channel.basic_publish(
                 exchange=self.exchange,
-                routing_key='',  # Fanout ignores routing_key
+                routing_key=routing_key,
                 body=body,
                 properties=pika.BasicProperties(delivery_mode=2)
             )
@@ -77,15 +77,15 @@ class Middleware:
         print(f"[Middleware] FinalPacket enviado directamente.")
     
     def send_final_until_no_consumers(self, method):
-            """Envía FINAL PACKET hasta que no haya consumidores y purga la cola al final."""
-            if not self.check_no_consumers():
-                print(" [x] Sending FINAL PACKET...")
-                
-                self.channel.stop_consuming()
-                self.channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-                self.close()
-                return False
-            return True
+        """Envía FINAL PACKET hasta que no haya consumidores y purga la cola al final."""
+        if not self.check_no_consumers():
+            print(" [x] Sending FINAL PACKET...")
+            
+            self.channel.stop_consuming()
+            self.channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+            self.close()
+            return False
+        return True
     
     def send_ack_and_close(self, method):
         self.channel.basic_ack(delivery_tag=method.delivery_tag)
