@@ -115,6 +115,25 @@ services:
       - RABBITMQ_OUTPUT_EXCHANGE=movies_router_exchange
       - NUMBER_OF_NODES=3
 
+  # TODO: borrar, esto es solo a modo de ejemplo
+  router_consumer:
+     build:
+        context: .
+        dockerfile: filter/Dockerfile 
+     depends_on:
+        rabbitmq:
+          condition: service_healthy
+     networks:
+        - app-network
+     environment:
+        - PYTHONUNBUFFERED=1
+        - RABBITMQ_QUEUE=router_consumer_1 # Queue "local" del nodo
+        - RABBITMQ_EXCHANGE=movies_router_exchange # Este es output_exchange del router
+        - RABBITMQ_EXCHANGE_TYPE=direct # Required
+        - RABBITMQ_OUTPUT_QUEUE=router_consumer_1_output
+        - MOVIE_FILTERS=production_countries:in(Argentina)
+        - ROUTING_KEY=0 # Esto deberia ser el id del nodo (entre 0 y NUMBER_OF_NODES - 1) 
+
   client:
     build:
       context: .
