@@ -6,6 +6,8 @@ from common.packet import MoviePacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
 
+from transformers import pipeline
+
 class SentimentNode:
     def __init__(self):
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
@@ -31,11 +33,19 @@ class SentimentNode:
 
             # Procesar paquete (comunicarse con la lib de sentimientos)
 
-            result = []
+            sentiment_analyzer = pipeline('sentiment-analysis', model='distilbert-base-uncased-finetuned-sst-2-english')
+            packet['sentiment'] = packet['overview'].fillna('').apply(lambda x: sentiment_analyzer(x)[0]['label'])
+
+            filtered_packet = MoviePacket(
+                #packet_id=packet.packet_id,
+                timestamp=datetime.utcnow().isoformat(),
+                data={"source": "sentiment_node"},
+                movie=movie
+            )
 
             # Publicar el paquete filtrado a la cola del gateway
            
-            self.output_rabbitmq.publish(result.to_json())
+            self.output_rabbitmq.publish(filtered_packet.to_json())
             
             print(f" [✓] Filtered and Published to {self.output_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
