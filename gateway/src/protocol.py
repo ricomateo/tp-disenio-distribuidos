@@ -1,0 +1,37 @@
+import socket
+
+HEADER_MSG_TYPE = 0
+
+class Protocol:
+    def __init__(self, host: str, port: int):
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.bind((host, port))
+        self.socket.listen(5)
+        self.client_socket = None
+
+    def recv_message(self):
+        if self.client_socket is None:
+            client_socket, addr = self.socket.accept()
+            self.client_socket = client_socket
+        msg_type = int.from_bytes(self._recv_exact(1), "big")
+        if msg_type == HEADER_MSG_TYPE:
+            filename_len = int.from_bytes(self._recv_exact(1), "big")
+            filename = self._recv_exact(filename_len).decode('utf-8')
+            header_len = int.from_bytes(self._recv_exact(4), "big")
+            header = self._recv_exact(header_len).decode('utf-8')
+            return {"msg_type": HEADER_MSG_TYPE, "filename": filename, "header": header}
+        else:
+            print(f"Unknown message type: {msg_type}")
+
+    def _recv_exact(self, n: int):
+        """
+        Reads exactly n bytes from the socket, and returns the data.
+        If the connection is closed, raises an exception.
+        """
+        data = bytes()
+        while len(data) < n:
+            received_bytes = self.client_socket.recv(n - len(data))
+            if not received_bytes:
+                raise ConnectionError("Connection closed")
+            data += received_bytes
+        return data

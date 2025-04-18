@@ -12,6 +12,7 @@ def send_csv(file_path, host = None, port = None):
     # Leer archivo CSV
     with open(file_path, 'rb') as f:
         csv_data = f.read()
+        f.read
     
     # Enviar tamaño del archivo primero
     file_size = len(csv_data)

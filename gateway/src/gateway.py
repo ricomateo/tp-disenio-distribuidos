@@ -7,15 +7,14 @@ from common.packet import FinalPacket, handle_final_packet, is_final_packet
 from datetime import datetime
 
 def start_gateway(host = None, port = None):
-    
     # Configurar middleware de RabbitMQ
     output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "csv_queue")
     input_queue = os.getenv("RABBITMQ_INPUT_QUEUE", "query_queue") 
     rabbitmq = Middleware(queue=output_queue)
     rabbitmq_receiver = Middleware(queue=input_queue)
-    host = host or os.getenv('GATEWAY_HOST', '0.0.0.0')  # Escucha en todas las interfaces
+    host = host or os.getenv('GATEWAY_HOST', '0.0.0.0') # Escucha en todas las interfaces
     port = port or int(os.getenv('GATEWAY_PORT', '9999'))
-    batch_size = int(os.getenv('BATCH_SIZE', '100'))    
+    batch_size = int(os.getenv('BATCH_SIZE', '100'))
     
     # Configurar socket TCP
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -110,7 +109,7 @@ def start_gateway(host = None, port = None):
                     ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
 
             rabbitmq_receiver.consume(callback_reader)
-        
+
     finally:
         rabbitmq.close()
         rabbitmq_receiver.close()
