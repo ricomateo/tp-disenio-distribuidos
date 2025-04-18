@@ -11,11 +11,13 @@ from transformers import pipeline
 class SentimentNode:
     def __init__(self):
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
-        self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
+        self.output_positive_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_POSITIVE", "default_output")
+        self.output_negative_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_NEGATIVE", "default_output")
 
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
-        self.output_rabbitmq = Middleware(queue=self.output_queue)
+        self.output_positive_rabbitmq = Middleware(queue=self.output_positive_queue)
+        self.output_negative_rabbitmq = Middleware(queue=self.output_negative_queue)
 
     def callback(self, ch, method, properties, body):
         try:
@@ -24,7 +26,8 @@ class SentimentNode:
             
             if is_final_packet(json.loads(packet_json).get("header")):
                 if handle_final_packet(method, self.input_rabbitmq):
-                    self.output_rabbitmq.send_final()
+                    self.output_positive_rabbitmq.send_final()
+                    self.output_negative_rabbitmq.send_final()
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
@@ -34,7 +37,12 @@ class SentimentNode:
             # Procesar paquete (comunicarse con la lib de sentimientos)
 
             sentiment_analyzer = pipeline('sentiment-analysis', model='distilbert-base-uncased-finetuned-sst-2-english')
-            packet['sentiment'] = packet['overview'].fillna('').apply(lambda x: sentiment_analyzer(x)[0]['label'])
+
+            overview = movie.get('overview', '')
+            sentiment = sentiment_analyzer(overview)[0]['label']
+            movie['sentiment'] = sentiment
+
+            # print(f"overview is {overview} and sentiment is {sentiment}")
 
             filtered_packet = MoviePacket(
                 #packet_id=packet.packet_id,
@@ -45,9 +53,15 @@ class SentimentNode:
 
             # Publicar el paquete filtrado a la cola del gateway
            
-            self.output_rabbitmq.publish(filtered_packet.to_json())
+            if sentiment == "POSITIVE":
+                self.output_positive_rabbitmq.publish(filtered_packet.to_json())
+                print(f" [✓] Filtered and Published to {self.output_positive_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
+            elif sentiment == "NEGATIVE":
+                self.output_negative_rabbitmq.publish(filtered_packet.to_json())
+                print(f" [✓] Filtered and Published to {self.output_negative_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
+            else:
+                print("[--------------] No es positivo ni negativo")
             
-            print(f" [✓] Filtered and Published to {self.output_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")
 
@@ -58,9 +72,8 @@ class SentimentNode:
             print(f" [!] Error processing message: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
 
-    def start_node(self, filters):
-        self.filters = filters
-        print(f" [~] Applying filters: {self.filters}")
+    def start_node(self):
+        print(f" [~] Starting sentiment analyzer")
 
         try:
             self.input_rabbitmq.consume(self.callback)
