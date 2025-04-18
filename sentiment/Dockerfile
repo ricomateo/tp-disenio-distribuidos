@@ -4,3 +4,4 @@ COPY /sentiment /src
 COPY /common /src/common
 WORKDIR /src
 ENTRYPOINT ["python3", "main.py"]
+RUN pip install transformers torch
