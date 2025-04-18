@@ -11,9 +11,11 @@ class FilterNode:
         self.filters = {}
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
+        self.exchange_type = os.getenv("RABBITMQ_EXCHANGE_TYPE", "fanout")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "") 
+        self.routing_key = os.getenv("ROUTING_KEY") 
         
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
@@ -25,7 +27,9 @@ class FilterNode:
                 queue=self.input_queue,
                 consumer_tag=self.consumer_tag,
                 exchange=self.exchange,
-                publish_to_exchange=False
+                publish_to_exchange=False,
+                exchange_type=self.exchange_type,
+                routing_key=self.routing_key
             )
         else:  # <- si no, conectamos directo a la cola
             self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
@@ -86,7 +90,6 @@ class FilterNode:
     def callback(self, ch, method, properties, body):
         try:
             packet_json = body.decode()
-            
             if is_final_packet(json.loads(packet_json).get("header")):
                 if handle_final_packet(method, self.input_rabbitmq):
                     self.output_rabbitmq.send_final()
@@ -117,7 +120,7 @@ class FilterNode:
            
             self.output_rabbitmq.publish(filtered_packet.to_json())
             
-            print(f" [✓] Filtered and Published to {self.output_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
+            print(f" [✓] Filtered and Published to {self.output_queue}: ID: {movie.get('id')}, Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")
 
