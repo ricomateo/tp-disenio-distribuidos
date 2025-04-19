@@ -1,8 +1,5 @@
 import socket
-
-HEADER_MSG_TYPE = 0
-BATCH_MSG_TYPE = 1
-EOF_MSG_TYPE = 2
+from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE
 
 class Protocol:
     def __init__(self, host, port):
