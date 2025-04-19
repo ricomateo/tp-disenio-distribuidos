@@ -1,5 +1,5 @@
 import os
-from src.server import Gateway
+from src.gateway import Gateway
 
 if __name__ == "__main__":
     host = os.getenv("GATEWAY_HOST", '0.0.0.0')
