@@ -2,6 +2,7 @@ import socket
 
 HEADER_MSG_TYPE = 0
 BATCH_MSG_TYPE = 1
+EOF_MSG_TYPE = 2
 
 class Protocol:
     def __init__(self, host, port):
@@ -38,6 +39,10 @@ class Protocol:
             row_len = len(row).to_bytes(4, "big")
             self.server_socket.sendall(row_len)
             self.server_socket.sendall(row)
+    
+    def send_end_of_file(self):
+        message_type = EOF_MSG_TYPE
+        self.server_socket.sendall(message_type.to_bytes(1, "big"))
 
     def recv_result(self):
         # TODO: agregar protocolo de recepcion de respuestas

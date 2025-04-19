@@ -16,6 +16,7 @@ class Client:
             while len(batch) > 0:
                 self.protocol.send_file_batch(filename, batch)
                 batch = self.read_batch(file)
+        self.protocol.send_end_of_file()
 
     def read_batch(self, file):
         batch = []

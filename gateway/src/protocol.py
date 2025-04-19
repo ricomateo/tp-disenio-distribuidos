@@ -2,6 +2,7 @@ import socket
 
 HEADER_MSG_TYPE = 0
 BATCH_MSG_TYPE = 1
+EOF_MSG_TYPE = 2
 
 class Protocol:
     def __init__(self, host: str, port: int):
@@ -35,6 +36,10 @@ class Protocol:
                 # TODO: check if it is required to split the row
                 rows.append(row)
             return {"msg_type": BATCH_MSG_TYPE, "filename": filename, "rows": rows}
+        
+        elif msg_type == EOF_MSG_TYPE:
+            return {"msg_type": EOF_MSG_TYPE}
+
 
     def _recv_exact(self, n: int):
         """
