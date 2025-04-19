@@ -1,5 +1,6 @@
 import os
 import json
+import signal
 from src.protocol import Protocol
 from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE
 from common.middleware import Middleware
@@ -8,6 +9,8 @@ from common.packet import handle_final_packet, is_final_packet
 
 class Gateway:
     def __init__(self, host: str, port: int):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
+        self.running = True
         output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "csv_queue")
         input_queue = os.getenv("RABBITMQ_INPUT_QUEUE", "query_queue")
 
@@ -20,7 +23,7 @@ class Gateway:
     def start(self):
         count_batches = 0
         try:
-            while True:
+            while self.running:
                 msg = self.protocol.recv_message()
                 if msg["msg_type"] == HEADER_MSG_TYPE:
                     filename = msg["filename"]
@@ -42,7 +45,10 @@ class Gateway:
 
         except ConnectionError:
             print(f"Client disconnected")
+        except Exception as e:
+            print(f"Error: {e}")
         finally:
+            print(f"Closing RabbitMQ channels")
             self.rabbitmq.close()
             self.rabbitmq_receiver.close()
             
@@ -80,3 +86,8 @@ class Gateway:
         
         print(" [GATEWAY] Now listening for filtered movies in query_queue...")
         self.rabbitmq_receiver.consume(callback_reader)
+
+    def _sigterm_handler(self, signum, _):
+        self.running = False
+        print(f"SIGTERM handler, closing sockets")
+        self.protocol.close()

@@ -53,3 +53,10 @@ class Protocol:
                 raise ConnectionError("Connection closed")
             data += received_bytes
         return data
+
+    def close(self):
+        self.socket.shutdown(socket.SHUT_RDWR)
+        self.socket.close()
+        if self.client_socket is not None:
+            self.client_socket.shutdown(socket.SHUT_RDWR)
+            self.client_socket.close()
