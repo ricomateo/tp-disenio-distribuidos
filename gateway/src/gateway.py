@@ -21,7 +21,6 @@ class Gateway:
         self.rabbitmq_receiver = Middleware(queue=input_queue)
     
     def start(self):
-        count_batches = 0
         try:
             while self.running:
                 msg = self.protocol.recv_message()
@@ -31,7 +30,6 @@ class Gateway:
                     self.header_by_file[filename] = header
 
                 elif msg["msg_type"] == BATCH_MSG_TYPE:
-                    count_batches += 1
                     msg_filename = msg["filename"]
                     msg_header = self.header_by_file[msg_filename]
                     msg["header"] = msg_header
