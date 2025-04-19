@@ -37,7 +37,6 @@ class DeliverNode:
                     response_str = "\n".join(lines) if lines else "No se encontraron películas."
 
                     query_packet = QueryPacket(
-                        timestamp=datetime.utcnow().isoformat(),
                         data={"source": self.input_queue},
                         response=response_str
                     )

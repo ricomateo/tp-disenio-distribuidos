@@ -11,7 +11,7 @@ RABBITMQ_PORT = int(os.getenv('RABBITMQ_PORT', '5672'))
 RABBITMQ_HEARTBEAT = int(os.getenv('RABBITMQ_HEARTBEAT', '1200'))
 
 class Middleware:
-    def __init__(self, queue, consumer_tag = None, exchange=None, exchange_type='fanout', publish_to_exchange=True):
+    def __init__(self, queue, consumer_tag = None, exchange=None, exchange_type='direct', publish_to_exchange=True, routing_key=''):
         self.host = RABBITMQ_HOST
         self.consumer_tag = consumer_tag
         self.queue = queue
@@ -20,6 +20,7 @@ class Middleware:
         self.publish_to_exchange = publish_to_exchange 
         self.connection = None
         self.channel = None
+        self.routing_key = routing_key
 
     def connect(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host=self.host,
@@ -35,18 +36,18 @@ class Middleware:
                 self.channel.queue_declare(queue=self.queue, durable=False)
                 
                 print(f"[Middleware] Enlazando cola '{self.queue}' al exchange '{self.exchange}'...")
-                self.channel.queue_bind(queue=self.queue, exchange=self.exchange)
+                self.channel.queue_bind(queue=self.queue, exchange=self.exchange, routing_key=self.routing_key)
         else:
             self.channel.queue_declare(queue=self.queue, durable=False)
 
-    def publish(self, message):
+    def publish(self, message, routing_key=''):
         if not self.channel:
             self.connect()
         body = message if isinstance(message, str) else json.dumps(message)
         if self.exchange and self.publish_to_exchange:
             self.channel.basic_publish(
                 exchange=self.exchange,
-                routing_key='',  # Fanout ignores routing_key
+                routing_key=routing_key,
                 body=body,
                 properties=pika.BasicProperties(delivery_mode=2)
             )
@@ -72,7 +73,7 @@ class Middleware:
         """Publica un paquete FINAL a través de este middleware."""
         if not self.channel:
             self.connect()
-        final_packet = FinalPacket(timestamp=datetime.utcnow().isoformat())
+        final_packet = FinalPacket()
         self.publish(final_packet.to_json())
         print(f"[Middleware] FinalPacket enviado directamente.")
     

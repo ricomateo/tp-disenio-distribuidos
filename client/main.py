@@ -9,6 +9,7 @@ if __name__ == "__main__":
     client = Client(host, port, batch_size)
     try:
         client.send_file("movies_metadata.csv")
+        client.send_file("ratings.csv")
         client.print_results()
     except Exception as e:
         print(f"Failed to send file movies_metadata.csv. Error: {e}")

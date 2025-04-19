@@ -43,8 +43,9 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - RABBITMQ_QUEUE=csv_queue
-      - RABBITMQ_OUTPUT_EXCHANGE=movie_exchange
-      - KEEP_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
+      - RABBITMQ_OUTPUT_EXCHANGE=files
+      - KEEP_MOVIES_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
+      - KEEP_RATINGS_COLUMNS=userId,movieId,rating
 
   filter_argentina_2000:
     build:
@@ -60,7 +61,8 @@ services:
       - RABBITMQ_QUEUE=movie1_queue
       - RABBITMQ_CONSUMER_TAG=argentina_2000
       - RABBITMQ_OUTPUT_QUEUE=movie_argentina_queue
-      - RABBITMQ_EXCHANGE=movie_exchange
+      - RABBITMQ_EXCHANGE=files
+      - RABBITMQ_ROUTING_KEY=movies_metadata.csv
       - RABBITMQ_OUTPUT_EXCHANGE=argentina_exchange
       - MOVIE_FILTERS=production_countries:in(Argentina);release_date:more(1999)
 
