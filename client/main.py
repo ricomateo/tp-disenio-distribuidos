@@ -6,6 +6,6 @@ if __name__ == "__main__":
     port = int(os.getenv("GATEWAY_PORT"))
     batch_size = os.getenv("BATCH_SIZE", 100)
     client = Client(host, port, batch_size)
-    client.send_file("movies_metadata_reduced.csv")
+    client.send_file("movies_metadata.csv")
     client.print_results()
     client.close()
