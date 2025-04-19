@@ -11,7 +11,7 @@ RABBITMQ_PORT = int(os.getenv('RABBITMQ_PORT', '5672'))
 RABBITMQ_HEARTBEAT = int(os.getenv('RABBITMQ_HEARTBEAT', '1200'))
 
 class Middleware:
-    def __init__(self, queue, consumer_tag = None, exchange=None, exchange_type='fanout', publish_to_exchange=True, routing_key=''):
+    def __init__(self, queue, consumer_tag = None, exchange=None, exchange_type='direct', publish_to_exchange=True, routing_key=''):
         self.host = RABBITMQ_HOST
         self.consumer_tag = consumer_tag
         self.queue = queue
@@ -21,6 +21,7 @@ class Middleware:
         self.routing_key = routing_key
         self.connection = None
         self.channel = None
+        self.routing_key = routing_key
 
     def connect(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host=self.host,

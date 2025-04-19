@@ -130,7 +130,6 @@ class DeliverNode:
                 if handle_final_packet(method, self.input_rabbitmq):
                     response_str = self._generate_response()
                     query_packet = QueryPacket(
-                        timestamp=datetime.utcnow().isoformat(),
                         data={"source": self.input_queue},
                         response=response_str
                     )
@@ -173,4 +172,4 @@ class DeliverNode:
             if self.input_rabbitmq:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
-                self.output_rabbitmq.close()
+                self.output_rabbitmq.close()    
