@@ -46,10 +46,8 @@ class Gateway:
         except Exception as e:
             print(f"Error: {e}")
         finally:
-            print(f"Closing RabbitMQ channels")
-            self.rabbitmq.close()
-            self.rabbitmq_receiver.close()
-            
+            if self.running:
+                self.close()
 
     def publish_file_batch(self, batch: dict):
         self.rabbitmq.publish(batch)
@@ -86,6 +84,12 @@ class Gateway:
         self.rabbitmq_receiver.consume(callback_reader)
 
     def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        self.close()
+    
+    def close(self):
+        print(f"Closing sockets")
         self.running = False
-        print(f"SIGTERM handler, closing sockets")
         self.protocol.close()
+        self.rabbitmq.close()
+        self.rabbitmq_receiver.close()
