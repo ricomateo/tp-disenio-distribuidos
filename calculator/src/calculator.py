@@ -30,7 +30,13 @@ class CalculatorNode:
                 if handle_final_packet(method, self.input_rabbitmq):
                     averages = []
 
-                    line = " | ".join([str(self.average[0]), str(self.average[1])])
+                    feeling_str = ""
+                    if self.input_queue == "sentiment_positive_queue":
+                        feeling_str = "POS"
+                    else:
+                        feeling_str = "NEG"
+
+                    line = " | ".join([feeling_str, str(self.average[0]), str(self.average[1])])
 
                     averages.append(line)
 
