@@ -132,6 +132,40 @@ services:
       - RABBITMQ_OUTPUT_QUEUE_POSITIVE=sentiment_positive_queue
       - RABBITMQ_OUTPUT_QUEUE_NEGATIVE=sentiment_negative_queue
 
+  average_positive:
+    build:
+      context: .
+      dockerfile: calculator/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - app-network
+    environment:
+      - PYTHONUNBUFFERED=1
+      - RABBITMQ_QUEUE=sentiment_positive_queue
+#      - RABBITMQ_CONSUMER_TAG=sentiment_consumer
+#      - RABBITMQ_EXCHANGE=movie_exchange
+      - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+#      - OPERATION=average
+
+  average_negative:
+    build:
+      context: .
+      dockerfile: calculator/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - app-network
+    environment:
+      - PYTHONUNBUFFERED=1
+      - RABBITMQ_QUEUE=sentiment_negative_queue
+#      - RABBITMQ_CONSUMER_TAG=sentiment_consumer
+#      - RABBITMQ_EXCHANGE=movie_exchange
+      - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+#      - OPERATION=average
+
 networks:
   app-network:
     driver: bridge
