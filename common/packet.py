@@ -65,18 +65,6 @@ class QueryPacket(DataPacket):
     @classmethod
     def from_json(cls, data):
         return cls(**json.loads(data))
-    
-@dataclass
-class CalculatorPacket(DataPacket):
-    data: dict
-
-    def to_json(self):
-        return json.dumps(self.__dict__)
-
-    @classmethod
-    def from_json(cls, data):
-        return cls(**json.loads(data))
-    
 def is_final_packet(header):
     if header == "FINAL":
         return True

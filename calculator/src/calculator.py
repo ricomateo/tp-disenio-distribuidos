@@ -1,7 +1,7 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import CalculatorPacket, MoviePacket, handle_final_packet, is_final_packet
+from common.packet import MoviePacket, QueryPacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
 
@@ -36,7 +36,7 @@ class CalculatorNode:
 
                     response_str = "\n".join(averages) if averages else "No se encontraron promedios."
 
-                    query_packet = CalculatorPacket(
+                    query_packet = QueryPacket(
                         timestamp=datetime.utcnow().isoformat(),
                         data={"source": "calculator"},
                         response=response_str
