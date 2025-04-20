@@ -26,12 +26,6 @@ services:
     networks:
     - app-network
     environment:
-    - PYTHONUNBUFFERED=1
-    - GATEWAY_HOST=0.0.0.0
-    - GATEWAY_PORT=9999
-    - BATCH_SIZE=100
-    - RABBITMQ_OUTPUT_QUEUE=csv_queue
-    - RABBITMQ_INPUT_QUEUE=query_queue
   parser:
     build:
       context: .
@@ -105,9 +99,6 @@ services:
     networks:
     - app-network
     environment:
-    - PYTHONUNBUFFERED=1
-    - GATEWAY_HOST=gateway
-    - GATEWAY_PORT=9999
     deploy:
       restart_policy:
         condition: none
