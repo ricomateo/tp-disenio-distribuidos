@@ -113,7 +113,7 @@ services:
     entrypoint:
     - sh
     - -c
-    - sleep 60 && python3 main.py
+    - sleep 80 && python3 main.py
     deploy:
       restart_policy:
         condition: none
