@@ -1,36 +1,31 @@
-# docker-compose.yml
 services:
   rabbitmq:
     image: rabbitmq:3.13-management
     container_name: rabbitmq
     ports:
-      - "5672:5672"
-      - "15672:15672"
+    - 5672:5672
+    - 15672:15672
     healthcheck:
-      test: ["CMD", "rabbitmqctl", "status"]
+      test:
+      - CMD
+      - rabbitmqctl
+      - status
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
-      - app-network
-
+    - app-network
   gateway:
     build:
       context: .
-      dockerfile: gateway/Dockerfile  
+      dockerfile: gateway/Dockerfile
     container_name: gateway
     depends_on:
       rabbitmq:
         condition: service_healthy
     networks:
-      - app-network
+    - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - GATEWAY_HOST=0.0.0.0
-      - GATEWAY_PORT=9999
-      - RABBITMQ_OUTPUT_QUEUE=csv_queue
-      - RABBITMQ_INPUT_QUEUE=query_queue
-
   parser:
     build:
       context: .
@@ -39,48 +34,45 @@ services:
       rabbitmq:
         condition: service_healthy
     networks:
-      - app-network
+    - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - RABBITMQ_QUEUE=csv_queue
-      - RABBITMQ_OUTPUT_EXCHANGE=movie_exchange
-      - KEEP_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
-
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=csv_queue
+    - RABBITMQ_OUTPUT_EXCHANGE=movie_exchange
+    - KEEP_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
   filter_argentina_2000:
     build:
       context: .
-      dockerfile: filter/Dockerfile 
+      dockerfile: filter/Dockerfile
     depends_on:
       rabbitmq:
         condition: service_healthy
     networks:
-      - app-network
+    - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - RABBITMQ_QUEUE=movie1_queue
-      - RABBITMQ_CONSUMER_TAG=argentina_2000
-      - RABBITMQ_OUTPUT_QUEUE=movie_argentina_queue
-      - RABBITMQ_EXCHANGE=movie_exchange
-      - RABBITMQ_OUTPUT_EXCHANGE=argentina_exchange
-      - MOVIE_FILTERS=production_countries:in(Argentina);release_date:more(1999)
-
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=movie1_queue
+    - RABBITMQ_CONSUMER_TAG=argentina_2000
+    - RABBITMQ_OUTPUT_QUEUE=movie_argentina_queue
+    - RABBITMQ_EXCHANGE=movie_exchange
+    - RABBITMQ_OUTPUT_EXCHANGE=argentina_exchange
+    - MOVIE_FILTERS=production_countries:in(Argentina);release_date:more(1999)
   filter_spain_2000s:
-     build:
-        context: .
-        dockerfile: filter/Dockerfile 
-     depends_on:
-        rabbitmq:
-          condition: service_healthy
-     networks:
-        - app-network
-     environment:
-        - PYTHONUNBUFFERED=1
-        - RABBITMQ_QUEUE=movie_argentina_queue
-        - RABBITMQ_CONSUMER_TAG=spain_2000s
-        - RABBITMQ_OUTPUT_QUEUE=deliver_queue
-        - RABBITMQ_EXCHANGE=argentina_exchange
-        - MOVIE_FILTERS=production_countries:in(Spain);release_date:less(2010)  
-
+    build:
+      context: .
+      dockerfile: filter/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=movie_argentina_queue
+    - RABBITMQ_CONSUMER_TAG=spain_2000s
+    - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - RABBITMQ_EXCHANGE=argentina_exchange
+    - MOVIE_FILTERS=production_countries:in(Spain);release_date:less(2010)
   deliver:
     build:
       context: .
@@ -90,31 +82,153 @@ services:
       rabbitmq:
         condition: service_healthy
     networks:
-      - app-network
+    - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - RABBITMQ_QUEUE=deliver_queue
-      - RABBITMQ_OUTPUT_QUEUE=query_queue
-      - KEEP_COLUMNS=genres,title
-
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=deliver_queue
+    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - KEEP_COLUMNS=genres,title
+    - SORT=revenue:5,title:-5
   client:
     build:
       context: .
-      dockerfile: client/Dockerfile  # Apunta al Dockerfile en client/
+      dockerfile: client/Dockerfile
     container_name: client
     depends_on:
-      - gateway
+    - gateway
     networks:
-      - app-network
+    - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - GATEWAY_HOST=gateway
-      - GATEWAY_PORT=9999
-      - BATCH_SIZE=100
     deploy:
       restart_policy:
         condition: none
-
+  join_0:
+    build:
+      context: .
+      dockerfile: join/Dockerfile
+    container_name: join_0
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - NODE_ID=0
+    - RABBITMQ_QUEUE_1=movie_queue
+    - RABBITMQ_QUEUE_2=secondary_queue
+    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - RABBITMQ_FINAL_QUEUE=final_queue
+    - RABBITMQ_EXCHANGE_1=movies_router_exchange
+    - RABBITMQ_EXCHANGE_2=movies_router_exchange
+    - RABBITMQ_EXCHANGE_TYPE=direct
+    - RABBITMQ_CONSUMER_TAG=join
+  join_1:
+    build:
+      context: .
+      dockerfile: join/Dockerfile
+    container_name: join_1
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - NODE_ID=1
+    - RABBITMQ_QUEUE_1=movie_queue
+    - RABBITMQ_QUEUE_2=secondary_queue
+    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - RABBITMQ_FINAL_QUEUE=final_queue
+    - RABBITMQ_EXCHANGE_1=movies_router_exchange
+    - RABBITMQ_EXCHANGE_2=movies_router_exchange
+    - RABBITMQ_EXCHANGE_TYPE=direct
+    - RABBITMQ_CONSUMER_TAG=join
+  join_2:
+    build:
+      context: .
+      dockerfile: join/Dockerfile
+    container_name: join_2
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - NODE_ID=2
+    - RABBITMQ_QUEUE_1=movie_queue
+    - RABBITMQ_QUEUE_2=secondary_queue
+    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - RABBITMQ_FINAL_QUEUE=final_queue
+    - RABBITMQ_EXCHANGE_1=movies_router_exchange
+    - RABBITMQ_EXCHANGE_2=movies_router_exchange
+    - RABBITMQ_EXCHANGE_TYPE=direct
+    - RABBITMQ_CONSUMER_TAG=join
+  router:
+    build:
+      context: .
+      dockerfile: router/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=router_queue
+    - RABBITMQ_EXCHANGE=argentina_exchange
+    - RABBITMQ_CONSUMER_TAG=router
+    - RABBITMQ_OUTPUT_EXCHANGE=movies_router_exchange
+    - NUMBER_OF_NODES=3
+  router_0:
+    build:
+      context: .
+      dockerfile: router/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=router_queue
+    - RABBITMQ_EXCHANGE=argentina_exchange
+    - RABBITMQ_CONSUMER_TAG=router
+    - RABBITMQ_OUTPUT_EXCHANGE=movies_router_exchange
+    - NUMBER_OF_NODES=3
+  router_1:
+    build:
+      context: .
+      dockerfile: router/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=router_queue
+    - RABBITMQ_EXCHANGE=argentina_exchange
+    - RABBITMQ_CONSUMER_TAG=router
+    - RABBITMQ_OUTPUT_EXCHANGE=movies_router_exchange
+    - NUMBER_OF_NODES=3
+  router_2:
+    build:
+      context: .
+      dockerfile: router/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=router_queue
+    - RABBITMQ_EXCHANGE=argentina_exchange
+    - RABBITMQ_CONSUMER_TAG=router
+    - RABBITMQ_OUTPUT_EXCHANGE=movies_router_exchange
+    - NUMBER_OF_NODES=3
 networks:
   app-network:
     driver: bridge

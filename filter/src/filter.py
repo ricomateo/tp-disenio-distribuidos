@@ -1,19 +1,22 @@
 # filter.py
 import json
-import math
 from common.middleware import Middleware
 from common.packet import MoviePacket, handle_final_packet, is_final_packet
+from src.check_condition import check_condition
 from datetime import datetime
 import os
+
 
 class FilterNode:
     def __init__(self):
         self.filters = {}
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
+        self.exchange_type = os.getenv("RABBITMQ_EXCHANGE_TYPE", "fanout")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "") 
+        self.routing_key = os.getenv("ROUTING_KEY") 
         
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
@@ -25,68 +28,18 @@ class FilterNode:
                 queue=self.input_queue,
                 consumer_tag=self.consumer_tag,
                 exchange=self.exchange,
-                publish_to_exchange=False
+                publish_to_exchange=False,
+                exchange_type=self.exchange_type,
+                routing_key=self.routing_key
             )
         else:  # <- si no, conectamos directo a la cola
             self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
        
 
-    def check_condition(self, value, condition):
-        #print(f" [DEBUG] Checking condition: value={value}, condition={condition}")
-        if value is None:
-            return False
-        if isinstance(value, float) and math.isnan(value):
-            return False
-        if condition is None:
-            #print(f" [DEBUG] Condition is None, returning True")
-            return True
-        op, target, _ = condition
-        #print(f" [DEBUG] Operation: {op}, Target: {target}")
-        if op == 'equal':
-            result = str(value).lower() == str(target).lower()
-            #print(f" [DEBUG] Equal comparison: '{str(value).lower()}' == '{str(target).lower()}' -> {result}")
-            return result
-        elif op == 'less':
-            try:
-                if value:
-                    year_str = value.split('-')[0]
-                    year = datetime.strptime(year_str, '%Y').year
-                    result = year < float(target)
-                    #print(f" [DEBUG] Less comparison: year={year}, target={float(target)} -> {result}")
-                    return result
-                #print(f" [DEBUG] Value is None for 'less', returning False")
-                return False
-            except (ValueError, TypeError) as e:
-                #print(f" [DEBUG] Error in 'less' comparison: {e}")
-                return False
-        elif op == 'more':
-            try:
-                if value:
-                    year_str = value.split('-')[0]
-                    year = datetime.strptime(year_str, '%Y').year
-                    result = year > float(target)
-                    #print(f" [DEBUG] More comparison: year={year}, target={float(target)} -> {result}")
-                    return result
-                #print(f" [DEBUG] Value is None for 'more', returning False")
-                return False
-            except (ValueError, TypeError) as e:
-                #print(f" [DEBUG] Error in 'more' comparison: {e}")
-                return False
-        elif op == 'in':
-            target_lower = [str(t).lower() for t in target]
-            match_found = False
-            if isinstance(value, str):
-                if any(t_lower in str(value).lower() for t_lower in target_lower):
-                    match_found = True
-            #print(f" [DEBUG] In comparison (flexible): value={value}, target={target}, result={match_found}")
-            return match_found
-        #print(f" [DEBUG] Unknown operation: {op}, returning False")
-        return False
 
     def callback(self, ch, method, properties, body):
         try:
             packet_json = body.decode()
-            
             if is_final_packet(json.loads(packet_json).get("header")):
                 if handle_final_packet(method, self.input_rabbitmq):
                     self.output_rabbitmq.send_final()
@@ -101,7 +54,7 @@ class FilterNode:
             for _, condition in self.filters.items():
                 _, _, key = condition
                 value = movie.get(key)
-                if not self.check_condition(value, condition):
+                if not check_condition(value, condition):
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
 
@@ -117,7 +70,7 @@ class FilterNode:
            
             self.output_rabbitmq.publish(filtered_packet.to_json())
             
-            print(f" [✓] Filtered and Published to {self.output_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
+            print(f" [✓] Filtered and Published to {self.output_queue}: ID: {movie.get('id')}, Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")
 
