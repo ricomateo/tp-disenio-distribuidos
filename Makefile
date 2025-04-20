@@ -1,6 +1,6 @@
 .PHONY: all build up down logs clean client test
 
-REPLICAS ?= 3
+REPLICAS ?= 2
 COMPOSE_NORMAL = -f docker-compose.yaml
 COMPOSE_TEST = -f docker-compose-test.yaml
 PYTHON = python3

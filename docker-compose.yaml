@@ -39,6 +39,8 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
+      sentiment:
+        condition: service_started
     networks:
     - app-network
     environment:
@@ -105,9 +107,10 @@ services:
     networks:
     - app-network
     environment:
-    - PYTHONUNBUFFERED=1
-    - GATEWAY_HOST=gateway
-    - GATEWAY_PORT=9999
+      - PYTHONUNBUFFERED=1
+      - GATEWAY_HOST=gateway
+      - GATEWAY_PORT=9999
+    entrypoint: ["sh", "-c", "sleep 60 && python3 main.py"]
     deploy:
       restart_policy:
         condition: none
