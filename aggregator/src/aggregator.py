@@ -49,7 +49,7 @@ class AggregatorNode:
                 return
             
             packet = QueryPacket.from_json(packet_json)
-            packet_data = packet.response.split(",")
+            packet_data = [x.strip() for x in packet.response.split("|")]
 
             # Procesar paquete (calcular promedio y ponerlo en un diccionario con los campos id, promedio y cantidad)
 
