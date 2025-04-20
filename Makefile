@@ -35,8 +35,7 @@ up: validate-replicas generate-compose
 test: validate-replicas
 	docker-compose $(COMPOSE_TEST) up -d --build \
 		--scale parser=$(REPLICAS) \
-        --scale test_filter_argentina=$(REPLICAS) \
-        --scale test_filter_argentina_2=$(REPLICAS)
+        --scale test_unique_country=$(REPLICAS) 
 
 down:
 	@echo "Stopping services..."

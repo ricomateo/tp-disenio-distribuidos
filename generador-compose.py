@@ -30,31 +30,38 @@ def agregar_join_nodes(compose, num_nodes):
             ]
         }
 
-def agregar_router(compose, num_nodes):
-    compose['services']['router'] = {
-        'build': {
-            'context': '.',
-            'dockerfile': 'router/Dockerfile'
-        },
-        'depends_on': {
-            'rabbitmq': {'condition': 'service_healthy'}
-        },
-        'networks': ['app-network'],
-        'environment': [
-            'PYTHONUNBUFFERED=1',
-            'RABBITMQ_QUEUE=router_queue',
-            'RABBITMQ_EXCHANGE=argentina_exchange',
-            'RABBITMQ_CONSUMER_TAG=router',
-            'RABBITMQ_OUTPUT_EXCHANGE=movies_router_exchange',
-            f'NUMBER_OF_NODES={num_nodes}'
-        ]
-    }
+def agregar_routers(compose, num_routers, num_nodes):
+    for i in range(num_routers):
+        router_name = f"router_{i}"
+        compose['services'][router_name] = {
+            'build': {
+                'context': '.',
+                'dockerfile': 'router/Dockerfile'
+            },
+            'depends_on': {
+                'rabbitmq': {'condition': 'service_healthy'}
+            },
+            'networks': ['app-network'],
+            'environment': [
+                'PYTHONUNBUFFERED=1',
+                'RABBITMQ_QUEUE=router_queue',
+                'RABBITMQ_EXCHANGE=argentina_exchange',
+                'RABBITMQ_CONSUMER_TAG=router',
+                'RABBITMQ_OUTPUT_EXCHANGE=movies_router_exchange',
+                f'NUMBER_OF_NODES={num_nodes}'
+            ]
+        }
 
-def main(input_file, output_file, num_nodes_str):
+def main(input_file, output_file, num_nodes_str, num_routers_str):
     try:
         num_nodes = int(num_nodes_str)
+        num_routers = int(num_routers_str)
+        
         if num_nodes < 1:
             raise ValueError("Debe haber al menos 1 nodo join.")
+        if num_routers < 1:
+            raise ValueError("Debe haber al menos 1 router.")
+            
     except ValueError as e:
         print(f"Error: {e}")
         sys.exit(1)
@@ -74,12 +81,12 @@ def main(input_file, output_file, num_nodes_str):
     compose.setdefault('networks', {'app-network': {'driver': 'bridge'}})
 
     agregar_join_nodes(compose, num_nodes)
-    agregar_router(compose, num_nodes)
+    agregar_routers(compose, num_routers, num_nodes)
 
     try:
         with open(output_file, 'w') as f:
             yaml.dump(compose, f, default_flow_style=False, sort_keys=False)
-        print(f"Archivo Docker Compose actualizado con {num_nodes} nodos join y el router en {output_file}")
+        print(f"Archivo Docker Compose actualizado con {num_nodes} nodos join y {num_routers} routers en {output_file}")
     except Exception as e:
         print(f"Error al escribir el archivo '{output_file}': {e}")
         sys.exit(1)
@@ -89,4 +96,4 @@ if __name__ == "__main__":
         print(f"Uso: {sys.argv[0]} <archivo-entrada> <archivo-salida> <num-nodos-join>")
         sys.exit(1)
 
-    main(sys.argv[1], sys.argv[2], sys.argv[3])
+    main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[3])

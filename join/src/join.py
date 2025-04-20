@@ -75,7 +75,6 @@ class JoinNode:
                 router = int(movie.get("id"))
 
                 if not router:
-                    print(f" [!] o.")
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
 

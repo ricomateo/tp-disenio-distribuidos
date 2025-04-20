@@ -32,6 +32,9 @@ def parse_filter_argument(filter_str):
                     targets_str = value_part[len('in('):-1].strip()
                     targets = [t.strip() for t in targets_str.split(',')]
                     filters[count] = ('in', targets, key)
+                elif value_part.startswith('count(') and value_part.endswith(')'):
+                    target = float(value_part[len('count('):-1].strip())
+                    filters[count] = ('count', target, key)
                 else:
                     filters[count] = ('equal', value_part, key) # Default to equal if no function
             else:
