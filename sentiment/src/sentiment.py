@@ -21,6 +21,8 @@ class SentimentNode:
         self.output_positive_rabbitmq = Middleware(queue=self.output_positive_queue)
         self.output_negative_rabbitmq = Middleware(queue=self.output_negative_queue)
 
+        self.sentiment_analyzer = pipeline('sentiment-analysis', model='distilbert-base-uncased-finetuned-sst-2-english')
+
     def callback(self, ch, method, properties, body):
         try:
             # Recibir paquete
@@ -41,8 +43,7 @@ class SentimentNode:
             overview = movie.get('overview', '')
             if not isinstance(overview, str):
                 overview = str(overview)
-            sentiment_analyzer = pipeline('sentiment-analysis', model='distilbert-base-uncased-finetuned-sst-2-english')
-            sentiment = sentiment_analyzer(overview)[0]['label']
+            sentiment = self.sentiment_analyzer(overview, truncation=True)[0]['label']
             movie['sentiment'] = sentiment
 
             # print(f"overview is {overview} and sentiment is {sentiment}")

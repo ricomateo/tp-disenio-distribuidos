@@ -39,6 +39,8 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
+      sentiment:
+        condition: service_started
     networks:
       - app-network
     environment:
@@ -101,7 +103,7 @@ services:
   client:
     build:
       context: .
-      dockerfile: client/Dockerfile  # Apunta al Dockerfile en client/
+      dockerfile: client/Dockerfile
     container_name: client
     depends_on:
       - gateway
@@ -111,6 +113,7 @@ services:
       - PYTHONUNBUFFERED=1
       - GATEWAY_HOST=gateway
       - GATEWAY_PORT=9999
+    entrypoint: ["sh", "-c", "sleep 60 && python3 main.py"]
     deploy:
       restart_policy:
         condition: none

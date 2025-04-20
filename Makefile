@@ -1,6 +1,6 @@
 .PHONY: all build up down logs clean client test
 
-REPLICAS ?= 3
+REPLICAS ?= 2
 COMPOSE_NORMAL = -f docker-compose.yaml
 COMPOSE_TEST = -f docker-compose-test.yaml
 
@@ -21,7 +21,7 @@ up: validate-replicas
 		--scale parser=$(REPLICAS) \
         --scale filter_argentina_2000=$(REPLICAS) \
         --scale filter_spain_2000s=$(REPLICAS) \
-		--scale sentiment=2
+		--scale sentiment=3
 
 test: validate-replicas
 	docker-compose $(COMPOSE_TEST) up -d --build \
