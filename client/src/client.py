@@ -1,37 +1,41 @@
-# client.py
-import socket
-import os
+from src.protocol import Protocol
 
-def send_csv(file_path, host = None, port = None):
-    # Crear socket TCP
-    host = host or os.getenv('GATEWAY_HOST', 'gateway')  # Nombre del servicio en Docker
-    port = port or int(os.getenv('GATEWAY_PORT', '9999'))
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((host, port))
+class Client:
+    def __init__(self, host: str, port: int, batch_size: int):
+        self.protocol = Protocol(host, port)
+        self.batch_size = batch_size
     
-    # Leer archivo CSV
-    with open(file_path, 'rb') as f:
-        csv_data = f.read()
-    
-    # Enviar tamaño del archivo primero
-    file_size = len(csv_data)
-    client_socket.send(str(file_size).encode().ljust(16))  # Asegura un tamaño fijo para el encabezado
-    # Enviar datos
-    short_write(client_socket, csv_data)
-    
-    print(f" [x] Sent CSV: {file_path}")
-    client_socket.close()
-    
-def short_write(conn, data: bytes, chunk_size: int = 1024):
-    total_sent = 0
-    data_length = len(data)
-    while total_sent < data_length:
-        chunk_end = min(total_sent + chunk_size, data_length)
-        chunk = data[total_sent:chunk_end]
-        try:
-            sent = conn.send(chunk)
-            total_sent += sent
-            # print(f" [x] Total Sent CSV: {total_sent}")
-        except Exception as e:
-            raise RuntimeError(f"Error al escribir en el socket: {e}")
+    def send_file(self, filepath: str):
+        # Extraigo el filename del path
+        filename = filepath.split('/')[-1]
+        with open(filepath, 'rb') as file:
+            # Leo el header del archivo
+            header = file.readline().decode('utf-8')
+            
+            # Envio el header
+            self.protocol.send_file_header(filename, header)
+            
+            # Envio el archivo en batches
+            batch = self.read_batch(file)
+            while len(batch) > 0:
+                self.protocol.send_file_batch(filename, batch)
+                batch = self.read_batch(file)
+        # Envio EOF
+        self.protocol.send_end_of_file()
 
+    def read_batch(self, file):
+        batch = []
+        for _ in range(self.batch_size):
+            line = file.readline()
+            if line == b'':
+                break
+            batch.append(line)
+        return batch
+    
+    def print_results(self):
+        for _ in range(5):
+            result = self.protocol.recv_result()
+            print(f"result = {result}")
+
+    def close(self):
+        self.protocol.close()
