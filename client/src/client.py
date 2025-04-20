@@ -20,7 +20,9 @@ class Client:
             while len(batch) > 0:
                 self.protocol.send_file_batch(filename, batch)
                 batch = self.read_batch(file)
+
         # Envio EOF
+        # TODO: indicar el nombre del archivo en el EOF
         self.protocol.send_end_of_file()
 
     def read_batch(self, file):
@@ -31,6 +33,9 @@ class Client:
                 break
             batch.append(line)
         return batch
+    
+    def send_finalization(self):
+        self.protocol.send_finalization()
     
     def print_results(self):
         for _ in range(5):

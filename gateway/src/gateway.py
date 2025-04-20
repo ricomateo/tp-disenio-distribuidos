@@ -2,7 +2,7 @@ import os
 import json
 import signal
 from src.protocol import Protocol
-from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE
+from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE, FIN_MSG_TYPE
 from common.middleware import Middleware
 from common.packet import handle_final_packet, is_final_packet
 
@@ -37,8 +37,12 @@ class Gateway:
 
                 elif msg["msg_type"] == EOF_MSG_TYPE:
                     print("[✓] Archivo CSV recibido correctamente.")
+                    self.rabbitmq.publish(msg)
+
+                elif msg["msg_type"] == FIN_MSG_TYPE:
                     self.rabbitmq_receiver.purge()
                     self.rabbitmq.send_final()
+                    # TODO: agregar envio de resultados al cliente
                     self._recv_results()
 
         except ConnectionError:

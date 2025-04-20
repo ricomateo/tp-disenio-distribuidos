@@ -4,7 +4,7 @@ from io import StringIO
 import uuid
 from datetime import datetime
 from common.middleware import Middleware
-from common.packet import MoviePacket, DataPacket, handle_final_packet, is_final_packet
+from common.packet import MoviePacket, DataPacket, handle_final_packet, is_final_packet, is_eof_packet
 import os
 
 MOVIES_FILE = "movies_metadata.csv"
@@ -20,7 +20,8 @@ class ParserNode:
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "")
-        
+        self.latest_file_received = ''
+
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange, exchange_type=self.exchange_type)
         else:
@@ -50,6 +51,10 @@ class ParserNode:
             message = json.loads(body)
             header = message['header']
             
+            if is_eof_packet(header):
+                self.output_rabbitmq.send_final(routing_key=self.latest_file_received)
+                return
+
             if is_final_packet(header):
                 if handle_final_packet(method, self.input_rabbitmq):
                     self.output_rabbitmq.send_final()
@@ -58,6 +63,7 @@ class ParserNode:
             
             rows = message['rows']
             filename = message['filename']
+            self.latest_file_received = filename
 
             # Create CSV string
             csv_text = header + "\n" + "\n".join(rows)

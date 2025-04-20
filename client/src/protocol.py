@@ -1,5 +1,5 @@
 import socket
-from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE
+from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE, FIN_MSG_TYPE
 
 class Protocol:
     def __init__(self, host, port):
@@ -39,6 +39,10 @@ class Protocol:
     
     def send_end_of_file(self):
         message_type = EOF_MSG_TYPE
+        self.server_socket.sendall(message_type.to_bytes(1, "big"))
+
+    def send_finalization(self):
+        message_type = FIN_MSG_TYPE
         self.server_socket.sendall(message_type.to_bytes(1, "big"))
 
     def recv_result(self):

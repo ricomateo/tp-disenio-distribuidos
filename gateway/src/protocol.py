@@ -1,5 +1,5 @@
 import socket
-from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE
+from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE, FIN_MSG_TYPE
 
 
 class Protocol:
@@ -36,7 +36,10 @@ class Protocol:
             return {"msg_type": BATCH_MSG_TYPE, "filename": filename, "rows": rows}
         
         elif msg_type == EOF_MSG_TYPE:
-            return {"msg_type": EOF_MSG_TYPE}
+            return {"msg_type": EOF_MSG_TYPE, "header": "EOF"}
+        
+        elif msg_type == FIN_MSG_TYPE:
+            return {"msg_type": FIN_MSG_TYPE}
 
 
     def _recv_exact(self, n: int):
