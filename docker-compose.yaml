@@ -254,13 +254,12 @@ services:
     networks:
     - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - RABBITMQ_QUEUE=sentiment_queue
-      - RABBITMQ_CONSUMER_TAG=sentiment_consumer
-      - RABBITMQ_EXCHANGE=movie_exchange
-      - RABBITMQ_OUTPUT_QUEUE_POSITIVE=sentiment_positive_queue
-      - RABBITMQ_OUTPUT_QUEUE_NEGATIVE=sentiment_negative_queue
-
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_queue
+    - RABBITMQ_CONSUMER_TAG=sentiment_consumer
+    - RABBITMQ_EXCHANGE=movie_exchange
+    - RABBITMQ_OUTPUT_QUEUE_POSITIVE=sentiment_positive_queue
+    - RABBITMQ_OUTPUT_QUEUE_NEGATIVE=sentiment_negative_queue
   average_positive:
     build:
       context: .
@@ -269,15 +268,11 @@ services:
       rabbitmq:
         condition: service_healthy
     networks:
-      - app-network
+    - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - RABBITMQ_QUEUE=sentiment_positive_queue
-#      - RABBITMQ_CONSUMER_TAG=sentiment_consumer
-#      - RABBITMQ_EXCHANGE=movie_exchange
-      - RABBITMQ_OUTPUT_QUEUE=sentiment_averages_queue
-#      - OPERATION=average
-
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_positive_queue
+    - RABBITMQ_OUTPUT_QUEUE=sentiment_averages_queue
   average_negative:
     build:
       context: .
@@ -286,15 +281,11 @@ services:
       rabbitmq:
         condition: service_healthy
     networks:
-      - app-network
+    - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - RABBITMQ_QUEUE=sentiment_negative_queue
-#      - RABBITMQ_CONSUMER_TAG=sentiment_consumer
-#      - RABBITMQ_EXCHANGE=movie_exchange
-      - RABBITMQ_OUTPUT_QUEUE=sentiment_averages_queue
-#      - OPERATION=average
-
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_negative_queue
+    - RABBITMQ_OUTPUT_QUEUE=sentiment_averages_queue
   aggregator_sentiment:
     build:
       context: .
@@ -303,15 +294,11 @@ services:
       rabbitmq:
         condition: service_healthy
     networks:
-      - app-network
+    - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - RABBITMQ_QUEUE=sentiment_averages_queue
-#      - RABBITMQ_CONSUMER_TAG=sentiment_consumer
-#      - RABBITMQ_EXCHANGE=movie_exchange
-      - RABBITMQ_OUTPUT_QUEUE=deliver_queue
-#      - OPERATION=average
-
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_averages_queue
+    - RABBITMQ_OUTPUT_QUEUE=deliver_queue
 networks:
   app-network:
     driver: bridge
