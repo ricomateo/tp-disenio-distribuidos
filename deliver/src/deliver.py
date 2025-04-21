@@ -1,7 +1,7 @@
 import json
 import os
 from datetime import datetime
-from common.packet import MoviePacket, QueryPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, QueryPacket, handle_final_packet, is_final_packet
 from common.middleware import Middleware
 
 
@@ -80,8 +80,6 @@ class DeliverNode:
         
         if not self.filters:
             self.collected_movies["default"].append(movie)
-            if self.top_n is not None and len(self.collected_movies["default"]) > self.top_n:
-                self.collected_movies["default"] = self.collected_movies["default"][-self.top_n:]
         else:
             for filter_spec in self.filters:
                 self._insert_sorted_movie(
@@ -141,7 +139,7 @@ class DeliverNode:
                 return
 
             packet = MoviePacket.from_json(body_decoded)
-            filtered_movie = self._process_movie(packet.movie)
+            filtered_movie = self._process_movie(packet.data)
             print(f" [DeliverNode] Movie added: {filtered_movie}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
@@ -163,10 +161,7 @@ class DeliverNode:
                 print(f" [~] Sorting by {column} ({sort_dir}, {top_n_str})")
         else:
             print(f" [~] No sorting, storing movies as they arrive")
-            if self.top_n is not None:
-                print(f" [~] Maintaining top {self.top_n} movies")
-            else:
-                print(f" [~] Maintaining all movies")
+            
 
     def start_node(self):
         self._log_startup()

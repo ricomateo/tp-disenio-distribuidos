@@ -7,7 +7,7 @@ def parse_string(value):
     try:
         # Parse the JSON string into a Python object
         parsed = ast.literal_eval(value)
-        print(f"Parsed result: {parsed!r}")
+        #print(f"Parsed result: {parsed!r}")
         return parsed
     except (ValueError, SyntaxError) as e:
         print(f"Error parsing string: {e}")

@@ -1,11 +1,21 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 import threading
 from datetime import datetime
 import os
 import time
+
+def create_joined_packet(movie1, movie2, router):
+    # Combinar los diccionarios movie1 y movie2
+    combined_movie = {**movie1, **movie2}
+    
+    joined_packet = DataPacket(
+        timestamp=datetime.utcnow().isoformat(),
+        data=combined_movie
+    )
+    return joined_packet
 
 class JoinNode:
     def __init__(self):
@@ -91,11 +101,7 @@ class JoinNode:
                         movie1 = self.router_buffer[router][self.input_queue_1]
                         movie2 = self.router_buffer[router][self.input_queue_2]
 
-                        joined_packet = MoviePacket(
-                            timestamp=datetime.utcnow().isoformat(),
-                            data={"source": "join_node", "router": router},
-                            movie={"from_1": movie1, "from_2": movie2}
-                        )
+                        joined_packet = create_joined_packet(movie1, movie2, router)
 
                         self.output_rabbitmq.publish(joined_packet.to_json())
                         print(f" [✓] Joined and published router '{router}'")

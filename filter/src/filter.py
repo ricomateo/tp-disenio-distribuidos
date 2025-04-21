@@ -62,7 +62,7 @@ class FilterNode:
             filtered_packet = MoviePacket(
                 #packet_id=packet.packet_id,
                 timestamp=datetime.utcnow().isoformat(),
-                data={"source": "filter_node"},
+                data=movie,
                 movie=movie
             )
 

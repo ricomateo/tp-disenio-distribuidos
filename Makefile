@@ -2,6 +2,9 @@
 
 REPLICAS ?= 2
 COMPOSE_NORMAL = -f docker-compose.yaml
+COMPOSE_2 = -f docker-compose-2.yaml
+COMPOSE_134 = -f docker-compose-134.yaml
+COMPOSE_5 = -f docker-compose-5.yaml
 COMPOSE_TEST = -f docker-compose-test.yaml
 PYTHON = python3
 GENERATOR_SCRIPT = generador-compose.py
@@ -32,6 +35,24 @@ up: validate-replicas generate-compose
         --scale filter_argentina_2000=$(REPLICAS) \
         --scale filter_spain_2000s=$(REPLICAS) \
 		--scale sentiment=$(REPLICAS)
+
+134: validate-replicas
+	docker-compose $(COMPOSE_134) up -d --build \
+		--scale parser=$(REPLICAS) \
+        --scale filter_argentina_2000=$(REPLICAS) \
+        --scale filter_spain_2000s=$(REPLICAS) \
+        --scale router=$(REPLICAS) 
+
+5: validate-replicas
+	docker-compose $(COMPOSE_5) up -d --build \
+		--scale parser=$(REPLICAS) \
+		--scale sentiment=$(REPLICAS)
+
+2: validate-replicas
+	docker-compose $(COMPOSE_2) up -d --build \
+		--scale parser=$(REPLICAS) \
+        --scale unique_country=$(REPLICAS) \
+        --scale router=$(REPLICAS) 
 
 test: validate-replicas
 	docker-compose $(COMPOSE_TEST) up -d --build \
