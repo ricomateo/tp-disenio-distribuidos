@@ -13,6 +13,7 @@ class DeliverNode:
         self.input_rabbitmq = Middleware(queue=self.input_queue)
         self.output_rabbitmq = Middleware(queue=self.output_queue)
         self.collected_movies = {"default": []} if not self.filters else {f["column"]: [] for f in self.filters}
+        self.query_id = os.getenv("QUERY_ID", "1")
 
     def _parse_environment(self):
         """Parse environment variables for KEEP_COLUMNS and SORT."""
@@ -128,22 +129,39 @@ class DeliverNode:
         try:
             body_decoded = body.decode()
             
-            if is_final_packet(json.loads(body_decoded).get("header")):
-                if handle_final_packet(method, self.input_rabbitmq):
-                    response_str = self._generate_response()
-                    query_packet = QueryPacket(
-                        timestamp=datetime.utcnow().isoformat(),
-                        data={"source": self.input_queue},
-                        response=response_str
-                    )
-                    self.output_rabbitmq.publish(query_packet.to_json())
-                    self.input_rabbitmq.send_ack_and_close(method)
-                return
+            if self.query_id == "1":
+                if is_final_packet(json.loads(body_decoded).get("header")):
+                    if handle_final_packet(method, self.input_rabbitmq):
+                        response_str = self._generate_response()
+                        query_packet = QueryPacket(
+                            timestamp=datetime.utcnow().isoformat(),
+                            data={"source": self.input_queue},
+                            response=response_str
+                        )
+                        self.output_rabbitmq.publish(query_packet.to_json())
+                        self.input_rabbitmq.send_ack_and_close(method)
+                    return
 
-            packet = MoviePacket.from_json(body_decoded)
-            filtered_movie = self._process_movie(packet.movie)
-            print(f" [DeliverNode] Movie added: {filtered_movie}")
-            ch.basic_ack(delivery_tag=method.delivery_tag)
+                packet = MoviePacket.from_json(body_decoded)
+                filtered_movie = self._process_movie(packet.movie)
+                print(f" [DeliverNode] Movie added: {filtered_movie}")
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+            elif self.query_id == "5":
+                if is_final_packet(json.loads(body_decoded).get("header")):
+                    if handle_final_packet(method, self.input_rabbitmq):
+                        #response_str = self._generate_response()
+                        query_packet = QueryPacket(
+                            timestamp=datetime.utcnow().isoformat(),
+                            data={"source": self.input_queue},
+                            response="response_str"
+                        )
+                        self.output_rabbitmq.publish(query_packet.to_json())
+                        self.input_rabbitmq.send_ack_and_close(method)
+                    return
+
+                packet = QueryPacket.from_json(body_decoded)
+                print(f" [DeliverNode] Response received: {packet.response}")
+                ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
             print(f" [DeliverNode] Error: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
