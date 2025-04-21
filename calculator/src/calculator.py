@@ -1,22 +1,36 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import MoviePacket, QueryPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, QueryPacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
+from src.calculation import Calculation
 
 class CalculatorNode:
     def __init__(self):
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_positive_queue")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
-
-        #self.exchange = os.getenv("RABBITMQ_EXCHANGE", "movie_exchange")
-        #self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "sentiment_consumer")
-
-        self.input_rabbitmq = Middleware(queue=self.input_queue)
+        self.node_id = os.getenv("NODE_ID")
+        self.exchange = os.getenv("RABBITMQ_EXCHANGE")
+        self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "sentiment_consumer")
+        self.operation = os.getenv("OPERATION", "")
         self.output_rabbitmq = Middleware(queue=self.output_queue)
+        self.exchange_type = os.getenv("RABBITMQ_EXCHANGE_TYPE", "fanout")
+        self.routing_key = os.getenv("ROUTING_KEY") or self.node_id
+        self.calculator = Calculation(self.operation, self.input_queue)
+        
+        if self.exchange:  # <- si hay exchange, lo usamos
+            self.input_rabbitmq = Middleware(
+                queue=self.input_queue,
+                consumer_tag=self.consumer_tag,
+                exchange=self.exchange,
+                publish_to_exchange=False,
+                exchange_type=self.exchange_type,
+                routing_key=self.routing_key
+            )
+        else:  # <- si no, conectamos directo a la cola
+            self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
 
-        self.average: tuple[float, int] = (0, 0)
 
     def callback(self, ch, method, properties, body):
         try:
@@ -26,58 +40,36 @@ class CalculatorNode:
             # print(f"[DEBUG] Raw packet received: {packet_json}")
 
             header = json.loads(packet_json).get("header")
-            if header and is_final_packet(header):                
-                if handle_final_packet(method, self.input_rabbitmq):
-                    averages = []
-
-                    line = " | ".join([str(self.average[0]), str(self.average[1])])
-
-                    averages.append(line)
-
-                    response_str = "\n".join(averages) if averages else "No se encontraron promedios."
-
-                    query_packet = QueryPacket(
+            if header and is_final_packet(header):    
+                results = self.calculator.get_result()
+                
+                for result in results:
+                    print("Resultados del cálculo:", result)
+                    data_packet = DataPacket(
                         timestamp=datetime.utcnow().isoformat(),
-                        data={"source": "calculator"},
-                        response=response_str
+                        data={
+                            "source": f"calculator_{self.operation}",
+                            **result
+                        }
                     )
-                    self.output_rabbitmq.publish(query_packet.to_json())
-
+                    self.output_rabbitmq.publish(data_packet.to_json())            
+                if handle_final_packet(method, self.input_rabbitmq):
                     self.output_rabbitmq.send_final()
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
             packet = MoviePacket.from_json(packet_json)
             movie = packet.movie
-
-            # Procesar paquete (calcular promedio y ponerlo en un diccionario con los campos id, promedio y cantidad)
-
-            titulo = movie["title"]
-
-            try:
-                budget = int(movie["budget"])
-                revenue = float(movie["revenue"])
-            except (ValueError, TypeError):
-                print(f" [!] Invalid budget or revenue in movie '{titulo}', skipping...")
-                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
-                return
-
-            if budget == 0:
-                print(f"Skipped movie {titulo} because budget was zero")
-                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
-                return
-
-            ratio = revenue / budget
-
-            new_count = self.average[1] + 1
-            new_average = (self.average[0] * self.average[1] + ratio) / new_count
-
-            self.average = (new_average, new_count)
-
-            print(f"[input - {self.input_queue}] current average: {self.average}")
+            # Process movie using calculator
+            success = self.calculator.process_movie(movie)
             
-            ch.basic_ack(delivery_tag=method.delivery_tag)
-            print(f" [x] Message {method.delivery_tag} acknowledged")
+            if success:
+                print(f"[input - {self.input_queue}] Processed movie: {movie.get('title', 'Unknown')}")
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                print(f" [x] Message {method.delivery_tag} acknowledged")
+            else:
+                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
+
 
         except json.JSONDecodeError as e:
             print(f" [!] Error decoding JSON: {e}")
