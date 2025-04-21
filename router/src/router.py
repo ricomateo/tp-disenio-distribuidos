@@ -1,7 +1,7 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 import os
 
 class RouterNode:
@@ -42,8 +42,8 @@ class RouterNode:
                 return
             
             # Deserializo la peli para obtener el id
-            packet = MoviePacket.from_json(packet_json)
-            movie = packet.movie
+            packet = DataPacket.from_json(packet_json)
+            movie = packet.data
             movie_id = int(movie.get("id"))
 
             # Calculo la routing key como el modulo entre el id y la cantidad de nodos

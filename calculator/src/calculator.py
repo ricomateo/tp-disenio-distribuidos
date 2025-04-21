@@ -1,5 +1,6 @@
 # filter.py
 import json
+import threading
 from common.middleware import Middleware
 from common.packet import DataPacket, MoviePacket, QueryPacket, handle_final_packet, is_final_packet
 from datetime import datetime
@@ -8,16 +9,28 @@ from src.calculation import Calculation
 
 class CalculatorNode:
     def __init__(self):
-        self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_positive_queue")
-        self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.node_id = os.getenv("NODE_ID")
+        self.finished_event = threading.Event()
+        base_queue = os.getenv('RABBITMQ_QUEUE', 'movie_queue_1')
+        
+        self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.consumer_tag = f"{os.getenv('RABBITMQ_CONSUMER_TAG', 'default_consumer')}_{self.node_id}"
         self.exchange = os.getenv("RABBITMQ_EXCHANGE")
         self.operation = os.getenv("OPERATION", "")
         self.output_rabbitmq = Middleware(queue=self.output_queue)
         self.exchange_type = os.getenv("RABBITMQ_EXCHANGE_TYPE", "fanout")
+        self.input_queue = f"{base_queue}_{self.node_id}" if self.exchange else base_queue
         self.routing_key = os.getenv("ROUTING_KEY") or self.node_id
+        self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE")
         self.calculator = Calculation(self.operation, self.input_queue)
+        self.final_rabbitmq = None
+        
+        if self.final_queue:
+            self.final_rabbitmq = Middleware(
+            queue=self.final_queue,
+            consumer_tag=self.consumer_tag,
+            publish_to_exchange=False
+        )
         
         if self.exchange:  # <- si hay exchange, lo usamos
             self.input_rabbitmq = Middleware(
@@ -55,13 +68,13 @@ class CalculatorNode:
                     self.output_rabbitmq.publish(data_packet.to_json())  
                          
                 if handle_final_packet(method, self.input_rabbitmq):
-               
-                    self.output_rabbitmq.send_final()
+                    if self.final_rabbitmq == None:
+                     self.output_rabbitmq.send_final()
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
-            packet = MoviePacket.from_json(packet_json)
-            movie = packet.movie
+            packet = DataPacket.from_json(packet_json)
+            movie = packet.data
             # Process movie using calculator
             success = self.calculator.process_movie(movie)
             
@@ -82,13 +95,39 @@ class CalculatorNode:
 
     def start_node(self):
         print(f" [~] Starting sentiment analyzer")
+        if self.final_rabbitmq:
+            t3 = threading.Thread(target=self.final_rabbitmq.consume, args=(self.noop_callback,))
+            if int(self.node_id) == 0:
+                self.final_rabbitmq.send_final()  
+            t3.start()
 
+            
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
             print(f" [!] Error in filter node: {e}")
         finally:
+            if self.final_rabbitmq:
+                self.finished_event.set()
+                t3.join()
             if self.input_rabbitmq:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
                 self.output_rabbitmq.close()
+   
+    def noop_callback(self, ch, method, properties, body):
+        # Si ambas terminaron, ahora sí mando el final al siguiente nodo
+        packet_json = body.decode()
+        header = json.loads(packet_json).get("header")
+     
+        self.finished_event.wait()
+        
+        if is_final_packet(header):
+            print(f" [!] Final rabbitmq stop consuming.")
+            if handle_final_packet(method, self.final_rabbitmq):
+                self.output_rabbitmq.send_final()
+                self.final_rabbitmq.send_ack_and_close(method)
+                print(f" [!] Final rabbitmq send final.")
+            return
+        ch.basic_ack(delivery_tag=method.delivery_tag)
+                

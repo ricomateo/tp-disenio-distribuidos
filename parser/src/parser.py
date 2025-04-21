@@ -4,7 +4,7 @@ from io import StringIO
 import uuid
 from datetime import datetime
 from common.middleware import Middleware
-from common.packet import MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 import os
 
 
@@ -67,11 +67,10 @@ class ParserNode:
             # Create a MoviePacket for each movie
             for _, row in df.iterrows():
                 movie = row.to_dict()
-                packet = MoviePacket(
+                packet = DataPacket(
                     #packet_id=str(uuid.uuid4()),
                     timestamp=datetime.utcnow().isoformat(),
-                    data={"source": self.input_queue},
-                    movie=movie
+                    data=movie
                 )
                 self.output_rabbitmq.publish(packet.to_json())
                 #print(f" [x] Published MoviePacket: {packet.packet_id} for movie: {movie.get('title', 'Unknown')}")

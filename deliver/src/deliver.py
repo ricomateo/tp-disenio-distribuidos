@@ -138,7 +138,7 @@ class DeliverNode:
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
 
-            packet = MoviePacket.from_json(body_decoded)
+            packet = DataPacket.from_json(body_decoded)
             filtered_movie = self._process_movie(packet.data)
             print(f" [DeliverNode] Movie added: {filtered_movie}")
             ch.basic_ack(delivery_tag=method.delivery_tag)

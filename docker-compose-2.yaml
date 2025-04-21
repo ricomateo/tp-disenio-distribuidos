@@ -90,13 +90,14 @@ services:
     - app-network
     environment:
     - PYTHONUNBUFFERED=1
-    - RABBITMQ_QUEUE=queue
+    - RABBITMQ_QUEUE=queue1
     - NODE_ID=0
     - RABBITMQ_EXCHANGE=country_calculator
     - RABBITMQ_CONSUMER_TAG=consumer
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
     - OPERATION=sum_by:production_countries,budget
     - RABBITMQ_EXCHANGE_TYPE=direct
+    - RABBITMQ_FINAL_QUEUE=final_queue_country
 
   calculator_2:
     build:
@@ -116,6 +117,7 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
     - OPERATION=sum_by:production_countries,budget
     - RABBITMQ_EXCHANGE_TYPE=direct
+    - RABBITMQ_FINAL_QUEUE=final_queue_country
     
   deliver:
     build:

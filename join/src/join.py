@@ -2,7 +2,7 @@
 import json
 from common.middleware import Middleware
 from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
-import threading
+import threading 
 from datetime import datetime
 import os
 import time
@@ -21,7 +21,7 @@ class JoinNode:
     def __init__(self):
         self.router_buffer = {}  # <-- Buffer temporal para emparejar por router
         self.lock = threading.Lock()
-        self.finished = False
+        self.finished_event = threading.Event()
         self.node_id = os.getenv("NODE_ID", "")
         self.input_queue_1 = f"{os.getenv('RABBITMQ_QUEUE_1', 'movie_queue_1')}_{self.node_id}"
         self.input_queue_2 = f"{os.getenv('RABBITMQ_QUEUE_2', 'movie_queue_2')}_{self.node_id}"
@@ -80,8 +80,8 @@ class JoinNode:
                         rabbitmq_instance.send_ack_and_close(method)
                     return
 
-                packet = MoviePacket.from_json(packet_json)
-                movie = packet.movie
+                packet = DataPacket.from_json(packet_json)
+                movie = packet.data
                 router = int(movie.get("id"))
 
                 if not router:
@@ -92,7 +92,7 @@ class JoinNode:
                     if router not in self.router_buffer:
                         self.router_buffer[router] = {}
 
-                    self.router_buffer[router][source_name] = packet.movie
+                    self.router_buffer[router][source_name] = movie
 
                     if (
                         self.input_queue_1 in self.router_buffer[router] and 
@@ -122,23 +122,15 @@ class JoinNode:
         # Si ambas terminaron, ahora sí mando el final al siguiente nodo
         packet_json = body.decode()
         header = json.loads(packet_json).get("header")
-        should_requeue = False
-        
-        with self.lock:
-            if not self.finished:
-                should_requeue = True
-
-        if should_requeue:
-            self.final_rabbitmq.channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-            time.sleep(10)
-            return
+     
+        self.finished_event.wait()
         
         if is_final_packet(header):
             print(f" [!] Final rabbitmq stop consuming.")
-            if self.final_rabbitmq.check_no_consumers():
+            if handle_final_packet(method, self.final_rabbitmq):
                 self.output_rabbitmq.send_final()
+                self.final_rabbitmq.send_ack_and_close(method)
                 print(f" [!] Final rabbitmq send final.")
-            self.final_rabbitmq.send_ack_and_close(method)
             return
         ch.basic_ack(delivery_tag=method.delivery_tag)
                 
@@ -146,7 +138,8 @@ class JoinNode:
         try:
             t1 = threading.Thread(target=self.input_rabbitmq_1.consume, args=(self.make_callback(self.input_queue_1),))
             t2 = threading.Thread(target=self.input_rabbitmq_2.consume, args=(self.make_callback(self.input_queue_2),))
-            self.final_rabbitmq.send_final()
+            if int(self.node_id) == 0:
+             self.final_rabbitmq.send_final()
             t3 = threading.Thread(target=self.final_rabbitmq.consume, args=(self.noop_callback,))
             
             t1.start()
@@ -155,8 +148,7 @@ class JoinNode:
 
             t1.join()
             t2.join()
-            with self.lock:
-                self.finished = True
+            self.finished_event.set()
             t3.join()
                     
         except Exception as e:
