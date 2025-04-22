@@ -13,8 +13,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    networks:
-    - app-network
+    
+    
   gateway:
     build:
       context: .
@@ -23,8 +23,8 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
+    
+    
     environment:
     - PYTHONUNBUFFERED=1
     - GATEWAY_HOST=0.0.0.0
@@ -39,13 +39,15 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
+    
+    
     environment:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=csv_queue
-    - RABBITMQ_OUTPUT_EXCHANGE=movie_exchange
-    - KEEP_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
+    - RABBITMQ_OUTPUT_EXCHANGE=files
+    - KEEP_MOVIES_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
+    - KEEP_RATINGS_COLUMNS=userId,movieId,rating
+  
   unique_country:
     build:
       context: .
@@ -53,14 +55,13 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-      - app-network
     environment:
       - PYTHONUNBUFFERED=1
       - RABBITMQ_QUEUE=movie2_queue
       - RABBITMQ_CONSUMER_TAG=argentina_2
       - RABBITMQ_OUTPUT_QUEUE=country_router
-      - RABBITMQ_EXCHANGE=movie_exchange
+      - RABBITMQ_EXCHANGE=files
+      - RABBITMQ_ROUTING_KEY=movies_metadata.csv
       - MOVIE_FILTERS=production_countries:count(1)
  
   router:
@@ -70,8 +71,8 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
+    
+    
     environment:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=country_router
@@ -86,8 +87,7 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
+
     environment:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=queue
@@ -105,8 +105,6 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
     environment:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=queue
@@ -116,7 +114,7 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
     - OPERATION=sum_by:production_countries,budget
     - RABBITMQ_EXCHANGE_TYPE=direct
-    
+
   deliver:
     build:
       context: .
@@ -125,8 +123,6 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
     environment:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=deliver_queue
@@ -140,8 +136,8 @@ services:
     container_name: client
     depends_on:
     - gateway
-    networks:
-    - app-network
+    
+    
     environment:
     - PYTHONUNBUFFERED=1
     - GATEWAY_HOST=gateway
@@ -149,7 +145,3 @@ services:
     deploy:
       restart_policy:
         condition: none
-  
-networks:
-  app-network:
-    driver: bridge
