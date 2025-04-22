@@ -2,7 +2,7 @@
 import json
 import math
 from common.middleware import Middleware
-from common.packet import MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
 
@@ -14,10 +14,11 @@ class SentimentNode:
         self.output_positive_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_POSITIVE", "default_output")
         self.output_negative_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_NEGATIVE", "default_output")
 
-        self.exchange = os.getenv("RABBITMQ_EXCHANGE", "movie_exchange")
+        self.exchange = os.getenv("RABBITMQ_EXCHANGE", "files")
+        self.routing_key = os.getenv("RABBITMQ_ROUTING_KEY", "")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "sentiment_consumer")
         self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag, exchange=self.exchange, 
-                                         exchange_type='fanout', publish_to_exchange=False)
+                                         routing_key=self.routing_key, publish_to_exchange=False)
         self.output_positive_rabbitmq = Middleware(queue=self.output_positive_queue)
         self.output_negative_rabbitmq = Middleware(queue=self.output_negative_queue)
 
@@ -35,8 +36,8 @@ class SentimentNode:
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
-            packet = MoviePacket.from_json(packet_json)
-            movie = packet.movie
+            packet = DataPacket.from_json(packet_json)
+            movie = packet.data
 
             # Procesar paquete (comunicarse con la lib de sentimientos)
 
@@ -48,11 +49,10 @@ class SentimentNode:
 
             # print(f"overview is {overview} and sentiment is {sentiment}")
 
-            filtered_packet = MoviePacket(
+            filtered_packet = DataPacket(
                 #packet_id=packet.packet_id,
                 timestamp=datetime.utcnow().isoformat(),
-                data={"source": "sentiment_node"},
-                movie=movie
+                data=movie
             )
 
             # Publicar el paquete filtrado a la cola del gateway

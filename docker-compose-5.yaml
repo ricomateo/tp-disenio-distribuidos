@@ -1,0 +1,131 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    ports:
+    - 5672:5672
+    - 15672:15672
+    healthcheck:
+      test:
+      - CMD
+      - rabbitmqctl
+      - status
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    container_name: gateway
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+    environment:
+    - PYTHONUNBUFFERED=1
+    - GATEWAY_HOST=0.0.0.0
+    - GATEWAY_PORT=9999
+    - BATCH_SIZE=100
+    - RABBITMQ_OUTPUT_QUEUE=csv_queue
+    - RABBITMQ_INPUT_QUEUE=query_queue
+  parser:
+    build:
+      context: .
+      dockerfile: parser/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=csv_queue
+    - RABBITMQ_OUTPUT_EXCHANGE=files
+    - KEEP_MOVIES_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
+    - KEEP_RATINGS_COLUMNS=userId,movieId,rating
+    - KEEP_CREDITS_COLUMNS=cast,crew,id
+  
+  deliver:
+    build:
+      context: .
+      dockerfile: deliver/Dockerfile
+    container_name: deliver
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=deliver_queue
+    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - KEEP_COLUMNS=feeling,ratio,count
+    - SORT=ratio:5
+  
+  client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: client
+    depends_on:
+    - gateway
+
+    environment:
+    - PYTHONUNBUFFERED=1
+    - GATEWAY_HOST=gateway
+    - GATEWAY_PORT=9999
+    entrypoint:
+    - sh
+    - -c
+    - sleep 80 && python3 main.py
+    deploy:
+      restart_policy:
+        condition: none
+  
+  sentiment:
+    build:
+      context: .
+      dockerfile: sentiment/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_queue
+    - RABBITMQ_CONSUMER_TAG=sentiment_consumer
+    - RABBITMQ_EXCHANGE=files
+    - RABBITMQ_ROUTING_KEY=movies_metadata.csv
+    - RABBITMQ_OUTPUT_QUEUE_POSITIVE=sentiment_positive_queue
+    - RABBITMQ_OUTPUT_QUEUE_NEGATIVE=sentiment_negative_queue
+
+  calculator_positive:
+    build:
+      context: .
+      dockerfile: calculator/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+    - NODE_ID=0
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_positive_queue
+    - RABBITMQ_CONSUMER_TAG=sentiment_consumer
+    - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - RABBITMQ_FINAL_QUEUE=final_queue_sen
+    - OPERATION=ratio_by:revenue,budget
+  
+  calculator_negative:
+    build:
+      context: .
+      dockerfile: calculator/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+    - NODE_ID=1
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_negative_queue
+    - RABBITMQ_CONSUMER_TAG=sentiment_consumer
+    - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - RABBITMQ_FINAL_QUEUE=final_queue_sen
+    - OPERATION=ratio_by:revenue,budget
+

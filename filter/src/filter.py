@@ -1,7 +1,7 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 from src.check_condition import check_condition
 from datetime import datetime
 import os
@@ -12,12 +12,11 @@ class FilterNode:
         self.filters = {}
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
-        self.exchange_type = os.getenv("RABBITMQ_EXCHANGE_TYPE", "fanout")
+        self.routing_key = os.getenv("RABBITMQ_ROUTING_KEY", "")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "") 
-        self.routing_key = os.getenv("ROUTING_KEY") 
-        
+
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
@@ -29,7 +28,6 @@ class FilterNode:
                 consumer_tag=self.consumer_tag,
                 exchange=self.exchange,
                 publish_to_exchange=False,
-                exchange_type=self.exchange_type,
                 routing_key=self.routing_key
             )
         else:  # <- si no, conectamos directo a la cola
@@ -46,8 +44,8 @@ class FilterNode:
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
-            packet = MoviePacket.from_json(packet_json)
-            movie = packet.movie
+            packet = DataPacket.from_json(packet_json)
+            movie = packet.data
             
             # Aplicar los filtros de la instancia
 
@@ -59,11 +57,10 @@ class FilterNode:
                     return
 
             
-            filtered_packet = MoviePacket(
+            filtered_packet = DataPacket(
                 #packet_id=packet.packet_id,
                 timestamp=datetime.utcnow().isoformat(),
-                data={"source": "filter_node"},
-                movie=movie
+                data=movie,
             )
 
             # Publicar el paquete filtrado a la cola del gateway
