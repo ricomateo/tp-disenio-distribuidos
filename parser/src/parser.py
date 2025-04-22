@@ -20,7 +20,6 @@ class ParserNode:
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "")
-        self.latest_file_received = ''
 
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange, exchange_type=self.exchange_type)
@@ -52,7 +51,10 @@ class ParserNode:
             header = message['header']
             
             if is_eof_packet(header):
-                self.output_rabbitmq.send_final(routing_key=self.latest_file_received)
+                file = message['filename']
+                # TODO: borrar esto
+                print(f"FALOPA - Received EOF of file: {file}")
+                self.output_rabbitmq.send_final(routing_key=file)
                 return
 
             if is_final_packet(header):
@@ -63,7 +65,6 @@ class ParserNode:
             
             rows = message['rows']
             filename = message['filename']
-            self.latest_file_received = filename
 
             # Create CSV string
             csv_text = header + "\n" + "\n".join(rows)

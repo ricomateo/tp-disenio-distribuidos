@@ -36,7 +36,9 @@ class Protocol:
             return {"msg_type": BATCH_MSG_TYPE, "filename": filename, "rows": rows}
         
         elif msg_type == EOF_MSG_TYPE:
-            return {"msg_type": EOF_MSG_TYPE, "header": "EOF"}
+            filename_len = int.from_bytes(self._recv_exact(1), "big")
+            filename = self._recv_exact(filename_len).decode('utf-8')
+            return {"msg_type": EOF_MSG_TYPE, "header": "EOF", "filename": filename}
         
         elif msg_type == FIN_MSG_TYPE:
             return {"msg_type": FIN_MSG_TYPE}

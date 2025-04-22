@@ -37,9 +37,14 @@ class Protocol:
             self.server_socket.sendall(row_len)
             self.server_socket.sendall(row)
     
-    def send_end_of_file(self):
+    def send_end_of_file(self, filename: str):
         message_type = EOF_MSG_TYPE
+        filename_len = len(filename).to_bytes(1, "big")
+        filename = str(filename).encode('utf-8')
+        
         self.server_socket.sendall(message_type.to_bytes(1, "big"))
+        self.server_socket.sendall(filename_len)
+        self.server_socket.sendall(filename)
 
     def send_finalization(self):
         message_type = FIN_MSG_TYPE
