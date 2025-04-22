@@ -88,8 +88,10 @@ class ParserNode:
             df = df[[col for col in keep_columns if col in df.columns]]
 
             print(" [x] Received and processed CSV:")
-            print(df)
             
+            if 'movieId' in df.columns:
+                    print(" [~] Renaming 'movieId' to 'id'")
+                    df = df.rename(columns={'movieId': 'id'})
             # Create a MoviePacket for each movie
             for _, row in df.iterrows():
 
