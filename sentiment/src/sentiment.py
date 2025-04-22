@@ -14,10 +14,11 @@ class SentimentNode:
         self.output_positive_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_POSITIVE", "default_output")
         self.output_negative_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_NEGATIVE", "default_output")
 
-        self.exchange = os.getenv("RABBITMQ_EXCHANGE", "movie_exchange")
+        self.exchange = os.getenv("RABBITMQ_EXCHANGE", "files")
+        self.routing_key = os.getenv("RABBITMQ_ROUTING_KEY", "")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "sentiment_consumer")
         self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag, exchange=self.exchange, 
-                                         exchange_type='fanout', publish_to_exchange=False)
+                                         routing_key=self.routing_key, publish_to_exchange=False)
         self.output_positive_rabbitmq = Middleware(queue=self.output_positive_queue)
         self.output_negative_rabbitmq = Middleware(queue=self.output_negative_queue)
 
