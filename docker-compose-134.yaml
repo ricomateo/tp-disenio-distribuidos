@@ -79,7 +79,7 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
     - RABBITMQ_EXCHANGE=argentina_exchange
     - MOVIE_FILTERS=production_countries:in(Spain);release_date:less(2010)
-  deliver:
+  deliver_1:
     build:
       context: .
       dockerfile: deliver/Dockerfile
@@ -94,6 +94,23 @@ services:
     - RABBITMQ_QUEUE=deliver_queue
     - RABBITMQ_OUTPUT_QUEUE=query_queue
     - KEEP_COLUMNS=genres,title
+
+  deliver_4:
+    build:
+      context: .
+      dockerfile: deliver/Dockerfile
+    container_name: deliver4
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=deliver_queue_4
+    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - KEEP_COLUMNS=genres,title
+
   client:
     build:
       context: .
@@ -125,7 +142,7 @@ services:
     - NODE_ID=0
     - RABBITMQ_QUEUE_1=movie_queue
     - RABBITMQ_QUEUE_2=secondary_queue
-    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - RABBITMQ_OUTPUT_QUEUE=deliver_queue_4
     - RABBITMQ_FINAL_QUEUE=final_queue
     - RABBITMQ_EXCHANGE_1=movies_router_exchange
     - RABBITMQ_EXCHANGE_2=movies_router_exchange
@@ -146,7 +163,7 @@ services:
     - NODE_ID=1
     - RABBITMQ_QUEUE_1=movie_queue
     - RABBITMQ_QUEUE_2=secondary_queue
-    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - RABBITMQ_OUTPUT_QUEUE=deliver_queue_4
     - RABBITMQ_FINAL_QUEUE=final_queue
     - RABBITMQ_EXCHANGE_1=movies_router_exchange
     - RABBITMQ_EXCHANGE_2=movies_router_exchange
@@ -167,7 +184,7 @@ services:
     - NODE_ID=2
     - RABBITMQ_QUEUE_1=movie_queue
     - RABBITMQ_QUEUE_2=secondary_queue
-    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - RABBITMQ_OUTPUT_QUEUE=deliver_queue_4
     - RABBITMQ_FINAL_QUEUE=final_queue
     - RABBITMQ_EXCHANGE_1=movies_router_exchange
     - RABBITMQ_EXCHANGE_2=movies_router_exchange

@@ -21,7 +21,6 @@ class Middleware:
         self.routing_key = routing_key
         self.connection = None
         self.channel = None
-        self.routing_key = routing_key
 
     def connect(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host=self.host,

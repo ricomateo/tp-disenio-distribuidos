@@ -60,7 +60,7 @@ class Calculation:
         """Process a movie based on the operation, return True if processed successfully."""
         try:
             title = movie.get("title", "Unknown")
-
+           
             if self.op_type == COUNT:
                 keys = movie.get(self.key, [])
                 # Handle keys as a list (e.g., production_countries) or single value
@@ -88,6 +88,7 @@ class Calculation:
             elif self.op_type == AVERAGE:
                 keys = movie.get(self.key, [])
                 value = movie.get(self.value_field)
+                
                 # Handle keys as a list (e.g., production_countries) or single value
                 parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
                 if not isinstance(parsed_keys, list):
@@ -105,14 +106,20 @@ class Calculation:
                                     current_total, current_count = self.averages.get(combined_key, (0.0, 0))
                                     self.averages[combined_key] = (current_total + value, current_count + 1)
                                     processed = True
-                            elif isinstance(key_item, str):
+                            elif isinstance(key_item, str) and key_item:
                                 if key_item:  # Skip empty strings
                                     current_total, current_count = self.averages.get(key_item, (0.0, 0))
                                     self.averages[key_item] = (current_total + value, current_count + 1)
                                     processed = True
+                            elif isinstance(key_item, (int, float)):
+                                # Handle numeric keys by converting to string
+                                key_str = str(key_item)
+                                current_total, current_count = self.averages.get(key_str, (0.0, 0))
+                                self.averages[key_str] = (current_total + value, current_count + 1)
+                                processed = True
                         if processed:
                             return True
-                        #print(f"Skipped movie '{title}' with invalid {self.key}")
+                        print(f"Skipped movie '{title}' with invalid {self.key}")
                         return False
                     except (ValueError, TypeError):
                         print(f"Skipped movie '{title}' with invalid {self.value_field}")
@@ -192,7 +199,7 @@ class Calculation:
                 {
                     "operation": "average",
                     "key": self.key,
-                    "value": key,
+                    "id": int(float(key)),
                     "value_field": self.value_field,
                     "average": round(total / count, 2),
                     "count": count

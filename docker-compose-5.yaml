@@ -105,10 +105,12 @@ services:
       rabbitmq:
         condition: service_healthy
     environment:
+    - NODE_ID=0
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=sentiment_positive_queue
     - RABBITMQ_CONSUMER_TAG=sentiment_consumer
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - RABBITMQ_FINAL_QUEUE=final_queue_sen
     - OPERATION=ratio_by:revenue,budget
   
   calculator_negative:
@@ -119,9 +121,11 @@ services:
       rabbitmq:
         condition: service_healthy
     environment:
+    - NODE_ID=1
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=sentiment_negative_queue
     - RABBITMQ_CONSUMER_TAG=sentiment_consumer
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - RABBITMQ_FINAL_QUEUE=final_queue_sen
     - OPERATION=ratio_by:revenue,budget
 

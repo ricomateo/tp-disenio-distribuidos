@@ -2,7 +2,7 @@
 import json
 import math
 from common.middleware import Middleware
-from common.packet import MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
 
@@ -36,8 +36,8 @@ class SentimentNode:
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
-            packet = MoviePacket.from_json(packet_json)
-            movie = packet.movie
+            packet = DataPacket.from_json(packet_json)
+            movie = packet.data
 
             # Procesar paquete (comunicarse con la lib de sentimientos)
 
@@ -49,11 +49,10 @@ class SentimentNode:
 
             # print(f"overview is {overview} and sentiment is {sentiment}")
 
-            filtered_packet = MoviePacket(
+            filtered_packet = DataPacket(
                 #packet_id=packet.packet_id,
                 timestamp=datetime.utcnow().isoformat(),
-                data={"source": "sentiment_node"},
-                movie=movie
+                data=movie
             )
 
             # Publicar el paquete filtrado a la cola del gateway

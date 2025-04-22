@@ -6,8 +6,9 @@ COMPOSE_2 = -f docker-compose-2.yaml
 COMPOSE_134 = -f docker-compose-134.yaml
 COMPOSE_5 = -f docker-compose-5.yaml
 COMPOSE_TEST = -f docker-compose-test.yaml
+COMPOSE_GENERATED = -f docker-compose-gen.yaml
 PYTHON = python3
-GENERATOR_SCRIPT = generador-compose.py
+GENERATOR_SCRIPT = generador_compose.py
 
 all: build up
 
@@ -22,12 +23,15 @@ ensure-line-endings:
 	@sed -i 's/\r$$//' $(GENERATOR_SCRIPT) || true
 
 generate-compose: ensure-line-endings
-	@echo "Generating docker-compose.yaml with $(REPLICAS) join nodes..."
-	$(PYTHON) ./$(GENERATOR_SCRIPT) docker-compose.yaml docker-compose.yaml $(REPLICAS)
+	@echo "Generating docker-compose.yaml with the config.ini as configuration."
+	$(PYTHON) ./$(GENERATOR_SCRIPT)
 
 build:
 	@echo "Building Docker images..."
 	docker-compose $(COMPOSE_NORMAL) build
+
+total: generate-compose
+	docker-compose $(COMPOSE_GENERATED) up -d --build 
 
 up: validate-replicas generate-compose
 	docker-compose $(COMPOSE_NORMAL) up -d --build \

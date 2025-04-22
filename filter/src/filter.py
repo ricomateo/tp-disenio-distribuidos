@@ -1,7 +1,7 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 from src.check_condition import check_condition
 from datetime import datetime
 import os
@@ -46,8 +46,8 @@ class FilterNode:
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
-            packet = MoviePacket.from_json(packet_json)
-            movie = packet.movie
+            packet = DataPacket.from_json(packet_json)
+            movie = packet.data
             
             # Aplicar los filtros de la instancia
 
@@ -59,11 +59,10 @@ class FilterNode:
                     return
 
             
-            filtered_packet = MoviePacket(
+            filtered_packet = DataPacket(
                 #packet_id=packet.packet_id,
                 timestamp=datetime.utcnow().isoformat(),
                 data=movie,
-                movie=movie
             )
 
             # Publicar el paquete filtrado a la cola del gateway

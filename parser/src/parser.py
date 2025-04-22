@@ -4,6 +4,7 @@ from io import StringIO
 import uuid
 from datetime import datetime
 from common.middleware import Middleware
+
 from common.packet import MoviePacket, DataPacket, handle_final_packet, is_final_packet, is_eof_packet
 import os
 
@@ -87,16 +88,18 @@ class ParserNode:
             df = df[[col for col in keep_columns if col in df.columns]]
 
             print(" [x] Received and processed CSV:")
-            print(df)
             
+            if 'movieId' in df.columns:
+                    print(" [~] Renaming 'movieId' to 'id'")
+                    df = df.rename(columns={'movieId': 'id'})
             # Create a MoviePacket for each movie
             for _, row in df.iterrows():
+
                 if filename == MOVIES_FILE:
                     movie = row.to_dict()
-                    packet = MoviePacket(
+                    packet = DataPacket(
                         timestamp=datetime.utcnow().isoformat(),
-                        data={"source": self.input_queue},
-                        movie=movie
+                        data=movie
                     )
                 elif filename == RATINGS_FILE:
                     rating = row.to_dict()
@@ -111,6 +114,7 @@ class ParserNode:
                     )
                 routing_key = filename
                 self.output_rabbitmq.publish(packet.to_json(), routing_key)
+
                 
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")

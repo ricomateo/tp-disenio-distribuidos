@@ -1,7 +1,7 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 import os
 
 class RouterNode:
@@ -18,11 +18,25 @@ class RouterNode:
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.number_of_nodes = int(os.getenv("NUMBER_OF_NODES"))
+        self.routing_key = os.getenv("RABBITMQ_ROUTING_KEY", "")
         if self.input_queue is None:
             raise Exception("Missing RABBITMQ_QUEUE env var")
         if self.output_exchange is None:
             raise Exception("Missing RABBITMQ_OUTPUT_EXCHANGE env var")
-        self.input_rabbitmq = Middleware(queue=self.input_queue, exchange=self.exchange, consumer_tag=self.consumer_tag, publish_to_exchange=False)
+        
+        if self.exchange:  # <- si hay exchange, lo usamos
+            self.input_rabbitmq = Middleware(
+                queue=self.input_queue,
+                consumer_tag=self.consumer_tag,
+                exchange=self.exchange,
+                publish_to_exchange=False,
+                routing_key=self.routing_key
+            )
+        else:  # <- si no, conectamos directo a la cola
+            self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
+       
+
+    
         self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange, exchange_type='direct')
 
 
@@ -42,8 +56,8 @@ class RouterNode:
                 return
             
             # Deserializo la peli para obtener el id
-            packet = MoviePacket.from_json(packet_json)
-            movie = packet.movie
+            packet = DataPacket.from_json(packet_json)
+            movie = packet.data
             movie_id = int(movie.get("id"))
 
             # Calculo la routing key como el modulo entre el id y la cantidad de nodos
