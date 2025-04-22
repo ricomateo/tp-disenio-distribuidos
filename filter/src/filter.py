@@ -17,8 +17,7 @@ class FilterNode:
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "") 
-        self.routing_key = os.getenv("ROUTING_KEY") 
-        
+
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange, exchange_type=self.exchange_type)
         else:

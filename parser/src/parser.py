@@ -9,6 +9,7 @@ import os
 
 MOVIES_FILE = "movies_metadata.csv"
 RATINGS_FILE = "ratings.csv"
+CREDITS_FILE = "credits.csv"
 
 class ParserNode:
     def __init__(self):
@@ -52,14 +53,11 @@ class ParserNode:
             
             if is_eof_packet(header):
                 file = message['filename']
-                # TODO: borrar esto
-                print(f"FALOPA - Received EOF of file: {file}")
                 self.output_rabbitmq.send_final(routing_key=file)
                 return
 
             if is_final_packet(header):
                 if handle_final_packet(method, self.input_rabbitmq):
-                    self.output_rabbitmq.send_final()
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
@@ -90,12 +88,16 @@ class ParserNode:
                 if filename == MOVIES_FILE:
                     movie = row.to_dict()
                     packet = MoviePacket(
+                        timestamp=datetime.utcnow().isoformat(),
                         data={"source": self.input_queue},
                         movie=movie
                     )
                 elif filename == RATINGS_FILE:
                     rating = row.to_dict()
-                    packet = DataPacket(data=rating)
+                    packet = DataPacket(
+                        timestamp=datetime.utcnow().isoformat(),
+                        data=rating
+                    )
                 routing_key = filename
                 self.output_rabbitmq.publish(packet.to_json(), routing_key)
                 

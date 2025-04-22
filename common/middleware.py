@@ -74,7 +74,7 @@ class Middleware:
         """Publica un paquete FINAL a través de este middleware."""
         if not self.channel:
             self.connect()
-        final_packet = FinalPacket()
+        final_packet = FinalPacket(timestamp=datetime.utcnow().isoformat())
         self.publish(final_packet.to_json(), routing_key)
         print(f"[Middleware] FinalPacket enviado directamente.")
     

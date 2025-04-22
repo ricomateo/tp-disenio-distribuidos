@@ -4,6 +4,7 @@ import time
 
 @dataclass
 class Packet:
+    timestamp: str
     def to_json(self):
         return json.dumps(self.__dict__)
 
