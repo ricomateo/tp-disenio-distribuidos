@@ -71,9 +71,9 @@ class Calculation:
                 for key_item in parsed_keys:
                     if isinstance(key_item, dict):
                         # Combine all non-empty values into a single key
-                        key_values = [str(val) for val in key_item.values() if val]
-                        if key_values:
-                            combined_key = ",".join(key_values)
+                        key_value = key_item.get('name', '')
+                        if key_value:
+                            combined_key = key_value
                             self.counts[combined_key] = self.counts.get(combined_key, 0) + 1
                             processed = True
                     elif isinstance(key_item, str):
@@ -100,9 +100,9 @@ class Calculation:
                         for key_item in parsed_keys:
                             if isinstance(key_item, dict):
                                 # Combine all non-empty values into a single key
-                                key_values = [str(val) for val in key_item.values() if val]
-                                if key_values:
-                                    combined_key = ",".join(key_values)
+                                key_value = key_item.get('name', '')
+                                if key_value:
+                                    combined_key = key_value
                                     current_total, current_count = self.averages.get(combined_key, (0.0, 0))
                                     self.averages[combined_key] = (current_total + value, current_count + 1)
                                     processed = True
@@ -159,9 +159,9 @@ class Calculation:
                     for key_item in parsed_keys:
                         if isinstance(key_item, dict):
                             # Combine all non-empty values into a single key
-                            key_values = [str(val) for val in key_item.values() if val]
-                            if key_values:
-                                combined_key = ",".join(key_values)
+                            key_value = key_item.get('name', '')
+                            if key_value:
+                                combined_key = key_value
                                 self.sums[combined_key] = self.sums.get(combined_key, 0) + value
                         elif isinstance(key_item, str):
                             if key_item:  # Skip empty strings

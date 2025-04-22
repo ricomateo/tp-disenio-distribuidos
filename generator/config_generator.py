@@ -48,12 +48,13 @@ class ConfigGenerator:
         self._generate_filters()
         self._generate_routers()
         self._generate_calculators()
-        #self._generate_sentiment()
+        self._generate_sentiment()
         self._generate_joiners()
         self._generate_deliver_1()
         self._generate_deliver_2()
         self._generate_deliver_3()
-        #self._generate_deliver_5()
+        self._generate_deliver_4()
+        self._generate_deliver_5()
         return self.compose
     
     def _generate_rabbitmq(self):
@@ -99,7 +100,7 @@ class ConfigGenerator:
             environment=[
                 'GATEWAY_HOST=0.0.0.0',
                 'GATEWAY_PORT=9999',
-                'BATCH_SIZE=100',
+                'BATCH_SIZE=1000',
                 f'RABBITMQ_OUTPUT_QUEUE={GATEWAY}',
                 f'RABBITMQ_INPUT_QUEUE={DELIVER}'
             ],
@@ -120,7 +121,8 @@ class ConfigGenerator:
             f'RABBITMQ_OUTPUT_EXCHANGE={PARSER}',
             'KEEP_MOVIES_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title',
             'KEEP_RATINGS_COLUMNS=userId,movieId,rating',
-            'KEEP_CREDITS_COLUMNS=cast,id'
+            'KEEP_CREDITS_COLUMNS=cast,id',
+            'REPLACE=movieId:id'
             ],
             networks=['app-network'],
             depends_on={
@@ -342,7 +344,7 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_RATINGS}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={RATINGS_FILE}',
-                f'NUMBER_OF_NODES={self.config_params[JOIN_MOVIES]}'
+                f'NUMBER_OF_NODES={self.config_params[CALCULATOR_AVERAGE_RATINGS]}'
             ],
             instances=instances
             )
@@ -359,6 +361,18 @@ class ConfigGenerator:
             instances=instances
             )
         
+        instances = self.config_params[ROUTER_ACTORS_2000_ARGENTINA]
+        self._generate_router(
+            service_name=ROUTER_ACTORS_2000_ARGENTINA,
+            environment=[
+                f'RABBITMQ_QUEUE={JOIN_ACTORS}',
+                f'RABBITMQ_CONSUMER_TAG={ROUTER_ACTORS_2000_ARGENTINA}',
+                f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_ACTORS_2000_ARGENTINA}',
+                f'NUMBER_OF_NODES={self.config_params[CALCULATOR_COUNT_ACTORS]}'
+            ],
+            instances=instances
+            )
+        
        
         
     def _generate_calculators(self):
@@ -370,7 +384,6 @@ class ConfigGenerator:
                 f'RABBITMQ_CONSUMER_TAG={CALCULATOR_BUDGET_COUNTRY}',
                 f'RABBITMQ_EXCHANGE={ROUTER_COUNTRY}',
                 f'RABBITMQ_OUTPUT_QUEUE={CALCULATOR_BUDGET_COUNTRY}',
-                f'RABBITMQ_EXCHANGE_TYPE=direct',
                 f'RABBITMQ_FINAL_QUEUE={CALCULATOR_BUDGET_COUNTRY}{FINAL}',
                 f'OPERATION=sum_by:production_countries,budget'
             ],
@@ -385,9 +398,22 @@ class ConfigGenerator:
                 f'RABBITMQ_CONSUMER_TAG={CALCULATOR_AVERAGE_RATINGS}',
                 f'RABBITMQ_EXCHANGE={ROUTER_RATINGS}',
                 f'RABBITMQ_OUTPUT_QUEUE={CALCULATOR_AVERAGE_RATINGS}',
-                f'RABBITMQ_EXCHANGE_TYPE=direct',
                 f'RABBITMQ_FINAL_QUEUE={CALCULATOR_AVERAGE_RATINGS}{FINAL}',
                 f'OPERATION=average_by:id,rating'
+            ],
+            instances=instances
+            )
+        
+        instances = self.config_params[CALCULATOR_COUNT_ACTORS]
+        self._generate_calculator(
+            service_name=CALCULATOR_COUNT_ACTORS,
+            environment=[
+                F'RABBITMQ_QUEUE={ROUTER_ACTORS_2000_ARGENTINA}{CALCULATOR_COUNT_ACTORS}',
+                f'RABBITMQ_CONSUMER_TAG={CALCULATOR_COUNT_ACTORS}',
+                f'RABBITMQ_EXCHANGE={ROUTER_ACTORS_2000_ARGENTINA}',
+                f'RABBITMQ_OUTPUT_QUEUE={CALCULATOR_COUNT_ACTORS}',
+                f'RABBITMQ_FINAL_QUEUE={CALCULATOR_COUNT_ACTORS}{FINAL}',
+                f'OPERATION=count_by:cast'
             ],
             instances=instances
             )
@@ -429,7 +455,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE_2={ROUTER_ACTORS}',
                 f'RABBITMQ_CONSUMER_TAG={JOIN_ACTORS}',
                 f'RABBITMQ_OUTPUT_QUEUE={JOIN_ACTORS}',
-                f'RABBITMQ_EXCHANGE_TYPE=direct',
+                f'JOIN_BY=id',
                 f'RABBITMQ_FINAL_QUEUE={JOIN_ACTORS}{FINAL}'
             ],
             instances=instances
@@ -444,7 +470,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE_2={ROUTER_RATINGS_CALCULATED}',
                 f'RABBITMQ_CONSUMER_TAG={JOIN_RATINGS}',
                 f'RABBITMQ_OUTPUT_QUEUE={JOIN_RATINGS}',
-                f'RABBITMQ_EXCHANGE_TYPE=direct',
+                f'JOIN_BY=id',
                 f'RABBITMQ_FINAL_QUEUE={JOIN_RATINGS}{FINAL}'
             ],
             instances=instances
@@ -453,7 +479,7 @@ class ConfigGenerator:
         
         
             
-        #faltan 4
+        
     def _generate_deliver_1(self):
         self.generate_service(
             service_name=QUERY_1,
@@ -499,6 +525,24 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
                 f'SORT=average:1,average:-1',
                 f'KEEP_COLUMNS=id,title,average'
+            ],
+            networks=['app-network'],
+            depends_on={
+                'rabbitmq': {'condition': 'service_healthy'}
+            },
+            instances=1
+        )
+        
+    def _generate_deliver_4(self):
+        self.generate_service(
+            service_name=QUERY_4,
+            dockerfile='deliver/Dockerfile',
+            environment=[
+                F'RABBITMQ_QUEUE={CALCULATOR_COUNT_ACTORS}',
+                f'RABBITMQ_CONSUMER_TAG={QUERY_4}',
+                f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'SORT=count:10',
+                f'KEEP_COLUMNS=value,count'
             ],
             networks=['app-network'],
             depends_on={

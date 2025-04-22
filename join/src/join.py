@@ -30,8 +30,8 @@ class JoinNode:
         self.consumer_tag = f"{os.getenv('RABBITMQ_CONSUMER_TAG', 'default_consumer')}_{self.node_id}"
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE", "default_final")
-        self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "") 
-        self.exchange_type = os.getenv("RABBITMQ_EXCHANGE_TYPE", "fanout")
+        self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "")
+        self.join_by = os.getenv("JOIN_BY", "id")
        
         
         if self.output_exchange: 
@@ -43,7 +43,6 @@ class JoinNode:
             queue=self.input_queue_1,
             consumer_tag=self.consumer_tag,
             exchange=self.exchange_1,
-            exchange_type=self.exchange_type,
             publish_to_exchange=False,
             routing_key=self.node_id
         )
@@ -51,7 +50,6 @@ class JoinNode:
             queue=self.input_queue_2,
             consumer_tag=self.consumer_tag,
             exchange=self.exchange_2,
-            exchange_type=self.exchange_type,
             publish_to_exchange=False,
             routing_key=self.node_id
         )
@@ -82,7 +80,7 @@ class JoinNode:
 
                 packet = DataPacket.from_json(packet_json)
                 movie = packet.data
-                router = int(movie.get("id"))
+                router = int(movie.get(self.join_by))
 
                 if not router:
                     ch.basic_ack(delivery_tag=method.delivery_tag)

@@ -37,7 +37,7 @@ class RouterNode:
        
 
     
-        self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange, exchange_type='direct')
+        self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
 
 
     def callback(self, ch, method, properties, body):

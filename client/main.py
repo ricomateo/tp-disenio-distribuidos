@@ -8,10 +8,9 @@ if __name__ == "__main__":
 
     client = Client(host, port, batch_size)
     try:
-
         client.send_movies_file("movies_metadata.csv")
+        client.send_credits_file("credits.csv")
         client.send_ratings_file("ratings_reduced.csv")
-        client.send_credits_file("credits_reduced.csv")
         client.send_finalization()
 
         client.print_results()

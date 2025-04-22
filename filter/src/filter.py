@@ -12,14 +12,13 @@ class FilterNode:
         self.filters = {}
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
-        self.exchange_type = os.getenv("RABBITMQ_EXCHANGE_TYPE", "direct")
         self.routing_key = os.getenv("RABBITMQ_ROUTING_KEY", "")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "") 
 
         if self.output_exchange: 
-            self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange, exchange_type=self.exchange_type)
+            self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
             self.output_rabbitmq = Middleware(queue=self.output_queue)
 
@@ -29,7 +28,6 @@ class FilterNode:
                 consumer_tag=self.consumer_tag,
                 exchange=self.exchange,
                 publish_to_exchange=False,
-                exchange_type=self.exchange_type,
                 routing_key=self.routing_key
             )
         else:  # <- si no, conectamos directo a la cola

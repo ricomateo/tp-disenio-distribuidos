@@ -18,13 +18,12 @@ class ParserNode:
         self.keep_ratings_columns = []
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
-        self.exchange_type = "direct"
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "")
 
         if self.output_exchange: 
-            self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange, exchange_type=self.exchange_type)
+            self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
             self.output_rabbitmq = Middleware(queue=self.output_queue)
 
@@ -49,6 +48,17 @@ class ParserNode:
         # Load KEEP_CREDITS_COLUMNS
         keep_credits_columns_str = os.getenv("KEEP_CREDITS_COLUMNS", "")
         self.keep_credits_columns = [col.strip() for col in keep_credits_columns_str.split(",") if col.strip()]
+
+        # Load REPLACE
+        replace_str = os.getenv("REPLACE", "")
+        self.rename_columns = []
+        if replace_str:
+            try:
+                for pair in replace_str.split(","):
+                    old_name, new_name = pair.split(":")
+                    self.rename_columns.append((old_name.strip(), new_name.strip()))
+            except ValueError as e:
+                print(f" [~] Invalid REPLACE format: {replace_str}, error: {e}. No columns will be renamed.")
 
     def callback(self, ch, method, properties, body):
         try:
@@ -89,12 +99,14 @@ class ParserNode:
 
             print(" [x] Received and processed CSV:")
             
-            if 'movieId' in df.columns:
-                    print(" [~] Renaming 'movieId' to 'id'")
-                    df = df.rename(columns={'movieId': 'id'})
+            # Apply column renaming for each pair if the old column exists
+            for old_name, new_name in self.rename_columns:
+                if old_name in df.columns:
+                    print(f" [~] Renaming '{old_name}' to '{new_name}'")
+                    df = df.rename(columns={old_name: new_name})
+
             # Create a MoviePacket for each movie
             for _, row in df.iterrows():
-
                 if filename == MOVIES_FILE:
                     movie = row.to_dict()
                     packet = DataPacket(
@@ -131,6 +143,8 @@ class ParserNode:
             print(f" [~] Keeping movies columns: {self.keep_movies_columns}")
         if self.keep_ratings_columns:
             print(f" [~] Keeping ratings columns: {self.keep_ratings_columns}")
+        if self.rename_columns:
+            print(f" [~] Renaming columns: {self.rename_columns}")
       
         try:
             self.input_rabbitmq.consume(self.callback)
@@ -141,5 +155,3 @@ class ParserNode:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
                 self.output_rabbitmq.close()
-
-

@@ -18,7 +18,6 @@ class CalculatorNode:
         self.exchange = os.getenv("RABBITMQ_EXCHANGE")
         self.operation = os.getenv("OPERATION", "")
         self.output_rabbitmq = Middleware(queue=self.output_queue)
-        self.exchange_type = os.getenv("RABBITMQ_EXCHANGE_TYPE", "fanout")
         self.input_queue = f"{base_queue}_{self.node_id}" if self.exchange else base_queue
         self.routing_key = os.getenv("ROUTING_KEY") or self.node_id
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE")
@@ -38,7 +37,6 @@ class CalculatorNode:
                 consumer_tag=self.consumer_tag,
                 exchange=self.exchange,
                 publish_to_exchange=False,
-                exchange_type=self.exchange_type,
                 routing_key=self.routing_key
             )
         else:  # <- si no, conectamos directo a la cola

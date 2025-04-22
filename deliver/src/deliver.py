@@ -10,9 +10,12 @@ class DeliverNode:
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "deliver_queue")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "query_queue")
         self.keep_columns, self.filters = self._parse_environment()
+        # Use unique keys for each filter based on column and sort direction
+        self.collected_movies = {"default": []} if not self.filters else {
+            f"{f['column']}_{'desc' if f['inverse_sort'] else 'asc'}": [] for f in self.filters
+        }
         self.input_rabbitmq = Middleware(queue=self.input_queue)
         self.output_rabbitmq = Middleware(queue=self.output_queue)
-        self.collected_movies = {"default": []} if not self.filters else {f["column"]: [] for f in self.filters}
 
     def _parse_environment(self):
         """Parse environment variables for KEEP_COLUMNS and SORT."""
@@ -56,10 +59,12 @@ class DeliverNode:
 
     def _insert_sorted_movie(self, movie, column, top_n, inverse_sort):
         """Insert a movie into the sorted list for a column and trim if needed."""
+        # Use unique key based on column and sort direction
+        list_key = f"{column}_{'desc' if inverse_sort else 'asc'}"
         new_key = self._get_sort_key(movie, column)
         insert_pos = 0
         is_numeric = column != "title"
-        for i, existing_movie in enumerate(self.collected_movies[column]):
+        for i, existing_movie in enumerate(self.collected_movies[list_key]):
             existing_key = self._get_sort_key(existing_movie, column)
             if is_numeric:
                 if (inverse_sort and new_key < existing_key) or \
@@ -71,13 +76,12 @@ class DeliverNode:
                     break
             insert_pos = i + 1
         
-        self.collected_movies[column].insert(insert_pos, movie)
-        if top_n is not None and len(self.collected_movies[column]) > top_n:
-            self.collected_movies[column] = self.collected_movies[column][:top_n]
+        self.collected_movies[list_key].insert(insert_pos, movie)
+        if top_n is not None and len(self.collected_movies[list_key]) > top_n:
+            self.collected_movies[list_key] = self.collected_movies[list_key][:top_n]
 
     def _process_movie(self, movie):
         """Process a movie by applying filters or appending to default list."""
-        
         if not self.filters:
             self.collected_movies["default"].append(movie)
         else:
@@ -104,21 +108,29 @@ class DeliverNode:
     def _generate_response(self):
         """Generate the response string for the final packet."""
         lines = []
-        for filter_spec in self.filters if self.filters else [{"column": "default", "top_n": None}]:
-            column = filter_spec["column"]
-            top_n = filter_spec.get("top_n")
-            movies = self.collected_movies[column][:top_n] if top_n is not None else self.collected_movies[column]
-            
-            if self.filters:
-                sort_dir = "ascending" if (filter_spec.get("inverse_sort") != (column == "title")) else "descending"
+        if self.filters:
+            for filter_spec in self.filters:
+                column = filter_spec["column"]
+                top_n = filter_spec.get("top_n")
+                inverse_sort = filter_spec.get("inverse_sort")
+                # Use unique key for the list
+                list_key = f"{column}_{'desc' if inverse_sort else 'asc'}"
+                movies = self.collected_movies[list_key][:top_n] if top_n is not None else self.collected_movies[list_key]
+                
+                sort_dir = "ascending" if (inverse_sort != (column == "title")) else "descending"
                 header = f"Top {top_n or 'all'} by {column} ({sort_dir}):"
                 lines.append(header)
-            
+                
+                for movie in movies:
+                    lines.append(self._format_movie(movie))
+                
+                if movies:
+                    lines.append("")
+        else:
+            # Handle the default case (no filters)
+            movies = self.collected_movies["default"]
             for movie in movies:
                 lines.append(self._format_movie(movie))
-            
-            if self.filters and movies:
-                lines.append("")
         
         return "\n".join(lines).rstrip() if lines else "No se encontraron películas."
 
@@ -173,4 +185,4 @@ class DeliverNode:
             if self.input_rabbitmq:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
-                self.output_rabbitmq.close()    
+                self.output_rabbitmq.close()
