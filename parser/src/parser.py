@@ -45,6 +45,10 @@ class ParserNode:
         keep_ratings_columns_str = os.getenv("KEEP_RATINGS_COLUMNS", "")
         self.keep_ratings_columns = [col.strip() for col in keep_ratings_columns_str.split(",") if col.strip()]
 
+        # Load KEEP_CREDITS_COLUMNS
+        keep_credits_columns_str = os.getenv("KEEP_CREDITS_COLUMNS", "")
+        self.keep_credits_columns = [col.strip() for col in keep_credits_columns_str.split(",") if col.strip()]
+
     def callback(self, ch, method, properties, body):
         try:
             # Parse message
@@ -72,6 +76,8 @@ class ParserNode:
                 keep_columns = self.keep_movies_columns
             elif filename == RATINGS_FILE:
                 keep_columns = self.keep_ratings_columns
+            elif filename == CREDITS_FILE:
+                keep_columns = self.keep_credits_columns
             else:
                 print(f"[x] Unknown filename: {filename}. Dropping the message...")
                 ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
@@ -97,6 +103,11 @@ class ParserNode:
                     packet = DataPacket(
                         timestamp=datetime.utcnow().isoformat(),
                         data=rating
+                    )
+                elif filename == CREDITS_FILE:
+                    packet = DataPacket(
+                        timestamp=datetime.utcnow().isoformat(),
+                        data=row.to_dict()
                     )
                 routing_key = filename
                 self.output_rabbitmq.publish(packet.to_json(), routing_key)

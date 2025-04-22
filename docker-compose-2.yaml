@@ -39,14 +39,13 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    
-    
     environment:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=csv_queue
     - RABBITMQ_OUTPUT_EXCHANGE=files
     - KEEP_MOVIES_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
     - KEEP_RATINGS_COLUMNS=userId,movieId,rating
+    - KEEP_CREDITS_COLUMNS=cast,crew,id
   
   unique_country:
     build:
