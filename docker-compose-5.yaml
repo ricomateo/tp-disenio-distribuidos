@@ -13,8 +13,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    networks:
-    - app-network
+
   gateway:
     build:
       context: .
@@ -23,8 +22,7 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
+
     environment:
     - PYTHONUNBUFFERED=1
     - GATEWAY_HOST=0.0.0.0
@@ -39,15 +37,13 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-      sentiment:
-        condition: service_started
-    networks:
-    - app-network
     environment:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=csv_queue
-    - RABBITMQ_OUTPUT_EXCHANGE=movie_exchange
-    - KEEP_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
+    - RABBITMQ_OUTPUT_EXCHANGE=files
+    - KEEP_MOVIES_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title
+    - KEEP_RATINGS_COLUMNS=userId,movieId,rating
+    - KEEP_CREDITS_COLUMNS=cast,crew,id
   
   deliver:
     build:
@@ -57,14 +53,14 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
+
     environment:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=deliver_queue
     - RABBITMQ_OUTPUT_QUEUE=query_queue
     - KEEP_COLUMNS=feeling,ratio,count
     - SORT=ratio:5
+  
   client:
     build:
       context: .
@@ -72,8 +68,7 @@ services:
     container_name: client
     depends_on:
     - gateway
-    networks:
-    - app-network
+
     environment:
     - PYTHONUNBUFFERED=1
     - GATEWAY_HOST=gateway
@@ -93,15 +88,15 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
     environment:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=sentiment_queue
     - RABBITMQ_CONSUMER_TAG=sentiment_consumer
-    - RABBITMQ_EXCHANGE=movie_exchange
+    - RABBITMQ_EXCHANGE=files
+    - RABBITMQ_ROUTING_KEY=movies_metadata.csv
     - RABBITMQ_OUTPUT_QUEUE_POSITIVE=sentiment_positive_queue
     - RABBITMQ_OUTPUT_QUEUE_NEGATIVE=sentiment_negative_queue
+
   calculator_positive:
     build:
       context: .
@@ -109,8 +104,6 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
     environment:
     - NODE_ID=0
     - PYTHONUNBUFFERED=1
@@ -119,6 +112,7 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
     - RABBITMQ_FINAL_QUEUE=final_queue_sen
     - OPERATION=ratio_by:revenue,budget
+  
   calculator_negative:
     build:
       context: .
@@ -126,8 +120,6 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-    networks:
-    - app-network
     environment:
     - NODE_ID=1
     - PYTHONUNBUFFERED=1
@@ -136,6 +128,4 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
     - RABBITMQ_FINAL_QUEUE=final_queue_sen
     - OPERATION=ratio_by:revenue,budget
-networks:
-  app-network:
-    driver: bridge
+

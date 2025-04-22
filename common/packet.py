@@ -4,9 +4,7 @@ import time
 
 @dataclass
 class Packet:
-    #packet_id: str
     timestamp: str
-
     def to_json(self):
         return json.dumps(self.__dict__)
 
@@ -42,8 +40,6 @@ class FinalPacket(Packet):
     type: str = "FINAL"
 
     def to_json(self):
-        # Agregar `type` al diccionario antes de convertir a JSON
-        #print(f"[to_json] timestamp: {self.timestamp}")
         data = self.__dict__.copy()
         data["header"] = "FINAL"
         return json.dumps(data)
@@ -70,6 +66,9 @@ def is_final_packet(header):
     if header == "FINAL":
         return True
     return False
+
+def is_eof_packet(header):
+    return header == "EOF"
 
 def handle_final_packet(method, rabbitmq_instance):
         print(" [!] Final packet received. Stopping consumption and sending FINAL PACKET until no consumers...")

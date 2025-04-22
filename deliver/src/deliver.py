@@ -173,4 +173,4 @@ class DeliverNode:
             if self.input_rabbitmq:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
-                self.output_rabbitmq.close()
+                self.output_rabbitmq.close()    
