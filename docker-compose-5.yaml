@@ -65,16 +65,15 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=query_queue
     - KEEP_COLUMNS=feeling,ratio,count
     - SORT=ratio:5
-  
   client:
+    networks:
+    - app-network
     build:
       context: .
       dockerfile: client/Dockerfile
     container_name: client
     depends_on:
     - gateway
-    networks:
-    - app-network
     environment:
     - PYTHONUNBUFFERED=1
     - GATEWAY_HOST=gateway
@@ -82,7 +81,7 @@ services:
     entrypoint:
     - sh
     - -c
-    - sleep 80 && python3 main.py
+    - sleep 20 && python3 main.py
     deploy:
       restart_policy:
         condition: none
@@ -91,6 +90,8 @@ services:
     build:
       context: .
       dockerfile: sentiment/Dockerfile
+    volumes:
+      - huggingface_cache:/root/.cache/huggingface
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -156,6 +157,8 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
     - operation=average
 
+volumes:
+  huggingface_cache:
 networks:
   app-network:
     driver: bridge
