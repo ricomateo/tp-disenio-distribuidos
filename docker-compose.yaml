@@ -89,7 +89,6 @@ services:
     build:
       context: .
       dockerfile: deliver/Dockerfile
-    container_name: deliver_1
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -101,7 +100,6 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=query_queue
     - KEEP_COLUMNS=genres,title
     - SORT=revenue:5,title:-5
-    - QUERY_ID=1
   client:
     build:
       context: .

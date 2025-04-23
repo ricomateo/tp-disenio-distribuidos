@@ -48,7 +48,7 @@ up: validate-replicas generate-compose
 		--scale parser=$(REPLICAS) \
         --scale filter_argentina_2000=$(REPLICAS) \
         --scale filter_spain_2000s=$(REPLICAS) \
-		--scale sentiment=3
+		--scale sentiment=$(REPLICAS)
 
 134: validate-replicas
 	docker-compose $(COMPOSE_134) up -d --build \

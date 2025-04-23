@@ -10,9 +10,6 @@ class AggregatorNode:
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_averages_queue")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "deliver_queue")
 
-        #self.exchange = os.getenv("RABBITMQ_EXCHANGE", "movie_exchange")
-        #self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "sentiment_consumer")
-
         self.input_rabbitmq = Middleware(queue=self.input_queue)
         self.output_rabbitmq = Middleware(queue=self.output_queue)
 
