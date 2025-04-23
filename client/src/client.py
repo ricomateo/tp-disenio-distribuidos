@@ -1,5 +1,7 @@
+import time
 from src.protocol import Protocol
 from common.protocol_constants import QUERY_RESULT_MSG_TYPE, FIN_MSG_TYPE
+
 
 MOVIES_FILENAME = "movies_metadata.csv"
 RATINGS_FILENAME = "ratings.csv"
@@ -9,6 +11,7 @@ class Client:
     def __init__(self, host: str, port: int, batch_size: int):
         self.protocol = Protocol(host, port)
         self.batch_size = batch_size
+        self.start_time = time.time()
 
     def send_movies_file(self, filepath: str):
         filename = MOVIES_FILENAME
@@ -66,4 +69,7 @@ class Client:
                 break
 
     def close(self):
+        end_time = time.time()  
+        elapsed_time = end_time - self.start_time  
+        print(f"Total time from connection to disconnection: {elapsed_time:.2f} seconds")
         self.protocol.close()

@@ -4,7 +4,7 @@ from io import StringIO
 import uuid
 from datetime import datetime
 from common.middleware import Middleware
-
+import time
 from common.packet import MoviePacket, DataPacket, handle_final_packet, is_final_packet, is_eof_packet
 import os
 
@@ -68,6 +68,7 @@ class ParserNode:
             
             if is_eof_packet(header):
                 file = message['filename']
+                time.sleep(5)
                 self.output_rabbitmq.send_final(routing_key=file)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return

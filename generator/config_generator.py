@@ -51,14 +51,14 @@ class ConfigGenerator:
         self._generate_filters()
         self._generate_routers()
         self._generate_calculators()
-        self._generate_sentiment()
+        #self._generate_sentiment()
         self._generate_joiners()
         self._generate_aggregators()
         self._generate_deliver_1()
         self._generate_deliver_2()
         self._generate_deliver_3()
         self._generate_deliver_4()
-        self._generate_deliver_5()
+        #self._generate_deliver_5()
         return self.compose
     
     def _generate_rabbitmq(self):
@@ -279,6 +279,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={FILTER_2000_ARGENTINA}',
+                f'KEEP_COLUMNS=production_countries,release_date,title,genres,id',
                 'FILTERS=production_countries:in(Argentina);release_date:more_date(1999)'
             ],
             instances=instances
@@ -292,6 +293,7 @@ class ConfigGenerator:
                 f'RABBITMQ_CONSUMER_TAG={FILTER_2000S_SPAIN}',
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_2000S_SPAIN}',
                 f'RABBITMQ_EXCHANGE={FILTER_2000_ARGENTINA}',
+                f'KEEP_COLUMNS=title,genres,id',
                 'FILTERS=production_countries:in(Spain);release_date:less_date(2010)'
             ],
             instances=instances
@@ -306,6 +308,7 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_UNIQUE_COUNTRY}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
+                f'KEEP_COLUMNS=production_countries,budget,id',
                 'FILTERS=production_countries:count(1)'
             ],
             instances=instances
@@ -320,6 +323,7 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_BUDGET_REVENUE}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
+                f'KEEP_COLUMNS=overview,budget,revenue',
                 'FILTERS=budget:more(0);revenue:more(0)'
             ],
             instances=instances

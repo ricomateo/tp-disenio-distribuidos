@@ -16,7 +16,11 @@ class FilterNode:
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "") 
-
+        self.keep_columns = None
+        keep_columns = os.getenv("KEEP_COLUMNS", "")
+        if keep_columns:
+         self.keep_columns = [col.strip() for col in keep_columns.split(",") if col.strip()]
+         
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
@@ -61,10 +65,11 @@ class FilterNode:
                 #packet_id=packet.packet_id,
                 timestamp=datetime.utcnow().isoformat(),
                 data=movie,
+                keep_columns=self.keep_columns
             )
 
             # Publicar el paquete filtrado a la cola del gateway
-           
+            
             self.output_rabbitmq.publish(filtered_packet.to_json())
             
             print(f" [✓] Filtered and Published to {self.output_queue}: ID: {movie.get('id')}, Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
