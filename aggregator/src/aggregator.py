@@ -45,22 +45,27 @@ class AggregatorNode:
                         self.output_rabbitmq.send_final()
                         self.input_rabbitmq.send_ack_and_close(method)
                     else:
-                        averages = []
+                        if self.average_positive[1] > 0:
+                            packet_pos = DataPacket(
+                                timestamp=datetime.utcnow().isoformat(),
+                                data={
+                                    "feeling": "POS",
+                                    "ratio": round(self.average_positive[0], 4),
+                                    "count": self.average_positive[1]
+                                }
+                            )
+                            self.output_rabbitmq.publish(packet_pos.to_json())
 
-                        line_positive = " | ".join(["Positive average", str(self.average_positive[0]), str(self.average_positive[1])])
-                        line_negative = " | ".join(["Negative average", str(self.average_negative[0]), str(self.average_negative[1])])
-
-                        averages.append(line_positive)
-                        averages.append(line_negative)
-
-                        response_str = "\n".join(averages) if averages else "No se encontraron promedios."
-
-                        query_packet = QueryPacket(
-                            timestamp=datetime.utcnow().isoformat(),
-                            data={"source": "aggregator"},
-                            response=response_str
-                        )
-                        self.output_rabbitmq.publish(query_packet.to_json())
+                        if self.average_negative[1] > 0:
+                            packet_neg = DataPacket(
+                                timestamp=datetime.utcnow().isoformat(),
+                                data={
+                                    "feeling": "NEG",
+                                    "ratio": round(self.average_negative[0], 4),
+                                    "count": self.average_negative[1]
+                                }
+                            )
+                            self.output_rabbitmq.publish(packet_neg.to_json())
 
                         self.output_rabbitmq.send_final()
                         self.input_rabbitmq.send_ack_and_close(method)
@@ -79,12 +84,11 @@ class AggregatorNode:
                 current_invested = self.invested_per_country.get(country, 0)
                 self.invested_per_country[country] = current_invested + invested
             else:
-                packet_data = [x for x in packet.data]
-                sentiment = packet_data[0]
-                average = float(packet_data[1])
-                count = int(packet_data[2])
+                sentiment = packet.data["feeling"]
+                average = float(packet.data["ratio"])
+                count = int(packet.data["count"])
 
-                if sentiment == "POS":                
+                if sentiment == "POS":
                     new_count = self.average_positive[1] + count
                     new_average = (self.average_positive[0] * self.average_positive[1] + average) / new_count
                     self.average_positive = (new_average, new_count)
