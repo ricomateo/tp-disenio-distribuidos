@@ -61,7 +61,6 @@ class QueryPacket(DataPacket):
     @classmethod
     def from_json(cls, data):
         return cls(**json.loads(data))
-    
 def is_final_packet(header):
     if header == "FINAL":
         return True

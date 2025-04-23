@@ -85,11 +85,10 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=deliver_queue
     - RABBITMQ_EXCHANGE=argentina_exchange
     - MOVIE_FILTERS=production_countries:in(Spain);release_date:less(2010)
-  deliver:
+  deliver_1:
     build:
       context: .
       dockerfile: deliver/Dockerfile
-    container_name: deliver
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -264,6 +263,61 @@ services:
     - RABBITMQ_EXCHANGE=movie_exchange
     - RABBITMQ_OUTPUT_QUEUE_POSITIVE=sentiment_positive_queue
     - RABBITMQ_OUTPUT_QUEUE_NEGATIVE=sentiment_negative_queue
+  average_positive:
+    build:
+      context: .
+      dockerfile: calculator/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_positive_queue
+    - RABBITMQ_OUTPUT_QUEUE=sentiment_averages_queue
+  average_negative:
+    build:
+      context: .
+      dockerfile: calculator/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_negative_queue
+    - RABBITMQ_OUTPUT_QUEUE=sentiment_averages_queue
+  aggregator_sentiment:
+    build:
+      context: .
+      dockerfile: aggregator/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_averages_queue
+    - RABBITMQ_OUTPUT_QUEUE=deliver_5_queue
+  deliver_5:
+    build:
+      context: .
+      dockerfile: deliver/Dockerfile
+    container_name: deliver_5
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=deliver_5_queue
+    - RABBITMQ_OUTPUT_QUEUE=query_queue
+    - KEEP_COLUMNS=genres,title
+    - SORT=revenue:5,title:-5
 networks:
   app-network:
     driver: bridge

@@ -93,7 +93,7 @@ services:
     - NODE_ID=0
     - RABBITMQ_EXCHANGE=country_calculator
     - RABBITMQ_CONSUMER_TAG=consumer
-    - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - RABBITMQ_OUTPUT_QUEUE=aggregator_queue
     - OPERATION=sum_by:production_countries,budget
     - RABBITMQ_EXCHANGE_TYPE=direct
     - RABBITMQ_FINAL_QUEUE=final_queue_country
@@ -111,11 +111,23 @@ services:
     - NODE_ID=1
     - RABBITMQ_EXCHANGE=country_calculator
     - RABBITMQ_CONSUMER_TAG=consumer2
-    - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - RABBITMQ_OUTPUT_QUEUE=aggregator_queue
     - OPERATION=sum_by:production_countries,budget
     - RABBITMQ_EXCHANGE_TYPE=direct
     - RABBITMQ_FINAL_QUEUE=final_queue_country
     
+  aggregator:
+    build:
+      context: .
+      dockerfile: aggregator/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=aggregator_queue
+    - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - operation=total_invested
 
   deliver:
     build:
