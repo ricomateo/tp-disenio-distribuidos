@@ -14,6 +14,7 @@ GATEWAY = 'gateway'
 FILTER_2000_ARGENTINA = 'filter_2000_argentina'
 FILTER_2000S_SPAIN = 'filter_2000s_spain'
 FILTER_UNIQUE_COUNTRY = 'filter_unique_country'
+FILTER_BUDGET_REVENUE = 'filter_budget_revenue'
 ROUTER_RATINGS = 'router_ratings'
 ROUTER_2000_ARGENTINA = "router_2000_argentina"
 ROUTER_ACTORS = "router_actors"
@@ -30,6 +31,8 @@ JOIN_ACTORS = "join_actors"
 SENTIMENT = 'sentiment'
 SENTIMENT_POSITIVE = 'sentiment_positive_queue'
 SENTIMENT_NEGATIVE = 'sentiment_negative_queue'
+AGGREGATOR_CALCULATOR_RATIO_FEELINGS = 'aggregator_calculator_ratio_feelings'
+AGGREGATOR_CALCULATOR_BUDGET_COUNTRY = 'aggregator_calculator_budget_country' 
 
 class ConfigGenerator:
     def __init__(self, config_params):
@@ -50,6 +53,7 @@ class ConfigGenerator:
         self._generate_calculators()
         self._generate_sentiment()
         self._generate_joiners()
+        self._generate_aggregators()
         self._generate_deliver_1()
         self._generate_deliver_2()
         self._generate_deliver_3()
@@ -95,12 +99,12 @@ class ConfigGenerator:
         """Generate gateway service."""
         instances = self.config_params.get('gateway', 1)
         self.generate_service(
-            service_name='gateway',
+            service_name=GATEWAY,
             dockerfile='gateway/Dockerfile',
             environment=[
                 'GATEWAY_HOST=0.0.0.0',
                 'GATEWAY_PORT=9999',
-                'BATCH_SIZE=1000',
+                'BATCH_SIZE=100',
                 f'RABBITMQ_OUTPUT_QUEUE={GATEWAY}',
                 f'RABBITMQ_INPUT_QUEUE={DELIVER}'
             ],
@@ -251,6 +255,19 @@ class ConfigGenerator:
             start_node_id=start_node_id
         )
         
+    def _generate_aggregator(self, service_name, environment, instances):
+        
+        self.generate_service(
+            service_name=service_name,
+            dockerfile='aggregator/Dockerfile',
+            environment=environment,
+            networks=['app-network'],
+            depends_on={
+                'rabbitmq': {'condition': 'service_healthy'}
+            },
+            instances=instances,
+        )
+        
     def _generate_filters(self):
         instances = self.config_params[FILTER_2000_ARGENTINA]
         self._generate_filter(
@@ -262,7 +279,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={FILTER_2000_ARGENTINA}',
-                'MOVIE_FILTERS=production_countries:in(Argentina);release_date:more(1999)'
+                'FILTERS=production_countries:in(Argentina);release_date:more_date(1999)'
             ],
             instances=instances
             )
@@ -275,7 +292,7 @@ class ConfigGenerator:
                 f'RABBITMQ_CONSUMER_TAG={FILTER_2000S_SPAIN}',
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_2000S_SPAIN}',
                 f'RABBITMQ_EXCHANGE={FILTER_2000_ARGENTINA}',
-                'MOVIE_FILTERS=production_countries:in(Spain);release_date:less(2010)'
+                'FILTERS=production_countries:in(Spain);release_date:less_date(2010)'
             ],
             instances=instances
             )
@@ -289,7 +306,21 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_UNIQUE_COUNTRY}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
-                'MOVIE_FILTERS=production_countries:count(1)'
+                'FILTERS=production_countries:count(1)'
+            ],
+            instances=instances
+            )
+        
+        instances = self.config_params[FILTER_BUDGET_REVENUE]
+        self._generate_filter(
+            service_name=FILTER_BUDGET_REVENUE,
+            environment=[
+                f'RABBITMQ_QUEUE={PARSER}{FILTER_BUDGET_REVENUE}',
+                f'RABBITMQ_CONSUMER_TAG={FILTER_BUDGET_REVENUE}',
+                f'RABBITMQ_OUTPUT_QUEUE={FILTER_BUDGET_REVENUE}',
+                f'RABBITMQ_EXCHANGE={PARSER}',
+                f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
+                'FILTERS=budget:more(0);revenue:more(0)'
             ],
             instances=instances
             )
@@ -475,6 +506,29 @@ class ConfigGenerator:
             ],
             instances=instances
             )
+        
+    def _generate_aggregators(self):
+        self._generate_aggregator(
+            service_name=AGGREGATOR_CALCULATOR_BUDGET_COUNTRY,
+            environment=[
+                F'RABBITMQ_QUEUE={CALCULATOR_BUDGET_COUNTRY}',
+                f'RABBITMQ_CONSUMER_TAG={AGGREGATOR_CALCULATOR_BUDGET_COUNTRY}',
+                f'RABBITMQ_OUTPUT_QUEUE={AGGREGATOR_CALCULATOR_BUDGET_COUNTRY}',
+                'operation=total_invested'
+            ],
+            instances=1
+            )
+        
+        self._generate_aggregator(
+            service_name=AGGREGATOR_CALCULATOR_RATIO_FEELINGS,
+            environment=[
+                F'RABBITMQ_QUEUE={CALCULATOR_RATIO_FEELINGS}',
+                f'RABBITMQ_CONSUMER_TAG={AGGREGATOR_CALCULATOR_RATIO_FEELINGS}',
+                f'RABBITMQ_OUTPUT_QUEUE={AGGREGATOR_CALCULATOR_RATIO_FEELINGS}',
+                'operation=average'
+            ],
+            instances=1
+            )
     
         
         
@@ -488,6 +542,8 @@ class ConfigGenerator:
                 F'RABBITMQ_QUEUE={FILTER_2000S_SPAIN}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_1}',
                 f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
+                f'QUERY_NUMBER=1',
                 f'KEEP_COLUMNS=title,genres'
             ],
             networks=['app-network'],
@@ -502,9 +558,11 @@ class ConfigGenerator:
             service_name=QUERY_2,
             dockerfile='deliver/Dockerfile',
             environment=[
-                F'RABBITMQ_QUEUE={CALCULATOR_BUDGET_COUNTRY}',
+                F'RABBITMQ_QUEUE={AGGREGATOR_CALCULATOR_BUDGET_COUNTRY}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_2}',
                 f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
+                f'QUERY_NUMBER=2',
                 f'SORT=total:5',
                 f'KEEP_COLUMNS=value,total'
             ],
@@ -523,6 +581,8 @@ class ConfigGenerator:
                 F'RABBITMQ_QUEUE={JOIN_RATINGS}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_3}',
                 f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
+                f'QUERY_NUMBER=3',
                 f'SORT=average:1,average:-1',
                 f'KEEP_COLUMNS=id,title,average'
             ],
@@ -541,6 +601,8 @@ class ConfigGenerator:
                 F'RABBITMQ_QUEUE={CALCULATOR_COUNT_ACTORS}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_4}',
                 f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
+                f'QUERY_NUMBER=4',
                 f'SORT=count:10',
                 f'KEEP_COLUMNS=value,count'
             ],
@@ -556,9 +618,11 @@ class ConfigGenerator:
             service_name=QUERY_5,
             dockerfile='deliver/Dockerfile',
             environment=[
-                F'RABBITMQ_QUEUE={CALCULATOR_RATIO_FEELINGS}',
+                F'RABBITMQ_QUEUE={AGGREGATOR_CALCULATOR_RATIO_FEELINGS}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_5}',
                 f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
+                f'QUERY_NUMBER=5',
                 f'SORT=ratio:2',
                 f'KEEP_COLUMNS=feeling,ratio,count'
             ],
@@ -575,9 +639,7 @@ class ConfigGenerator:
             service_name=SENTIMENT,
             dockerfile='sentiment/Dockerfile',
             environment=[
-                f'RABBITMQ_QUEUE={PARSER}{SENTIMENT}',
-                f'RABBITMQ_EXCHANGE={PARSER}',
-                f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
+                f'RABBITMQ_QUEUE={FILTER_BUDGET_REVENUE}',
                 f'RABBITMQ_CONSUMER_TAG={SENTIMENT}',
                 f'RABBITMQ_OUTPUT_QUEUE_POSITIVE={SENTIMENT_POSITIVE}',
                 f'RABBITMQ_OUTPUT_QUEUE_NEGATIVE={SENTIMENT_NEGATIVE}'

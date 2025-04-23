@@ -28,6 +28,18 @@ def parse_filter_argument(filter_str):
                         filters[count] = ('more', target, key)
                     except ValueError:
                         print(f" [!] Invalid 'more' value: {value_part}")
+                elif value_part.startswith('less_date(') and value_part.endswith(')'):
+                    try:
+                        target = float(value_part[len('less_date('):-1].strip())
+                        filters[count] = ('less_date', target, key)
+                    except ValueError:
+                        print(f" [!] Invalid 'less_date' value: {value_part}")
+                elif value_part.startswith('more_date(') and value_part.endswith(')'):
+                    try:
+                        target = float(value_part[len('more_date('):-1].strip())
+                        filters[count] = ('more_date', target, key)
+                    except ValueError:
+                        print(f" [!] Invalid 'more_date' value: {value_part}")
                 elif value_part.startswith('in(') and value_part.endswith(')'):
                     targets_str = value_part[len('in('):-1].strip()
                     targets = [t.strip() for t in targets_str.split(',')]
@@ -43,7 +55,7 @@ def parse_filter_argument(filter_str):
 
 if __name__ == '__main__':
     node = FilterNode()
-    filter_string = os.getenv("MOVIE_FILTERS")
+    filter_string = os.getenv("FILTERS")
     parsed_filters = parse_filter_argument(filter_string)
     print(f" [~] Applying filters: {parsed_filters}")
     node.start_node(parsed_filters)

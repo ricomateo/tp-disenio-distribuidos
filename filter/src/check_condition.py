@@ -23,38 +23,48 @@ def check_condition(value, condition):
             #print(f" [DEBUG] Condition is None, returning True")
             return True
         op, target, _ = condition
-        #print(f" [DEBUG] Operation: {op}, Target: {target}")
-        if op == 'equal':
-            result = str(value).lower() == str(target).lower()
-            #print(f" [DEBUG] Equal comparison: '{str(value).lower()}' == '{str(target).lower()}' -> {result}")
-            return result
-        elif op == 'less':
-            try:
-                if value:
-                    year_str = value.split('-')[0]
-                    year = datetime.strptime(year_str, '%Y').year
-                    result = year < float(target)
-                    #print(f" [DEBUG] Less comparison: year={year}, target={float(target)} -> {result}")
-                    return result
-                #print(f" [DEBUG] Value is None for 'less', returning False")
-                return False
-            except (ValueError, TypeError) as e:
-                #print(f" [DEBUG] Error in 'less' comparison: {e}")
-                return False
-        elif op == 'more':
-            
+        #print(f" [DEBUG] Operation: {op}, Target: {target}"
+        if op == 'more_date':
             try:
                 if value:
                     year_str = value.split('-')[0]
                     year = datetime.strptime(year_str, '%Y').year
                     result = year > float(target)
-                    #print(f" [DEBUG] More comparison: year={year}, target={float(target)} -> {result}")
                     return result
-                #print(f" [DEBUG] Value is None for 'more', returning False")
                 return False
             except (ValueError, TypeError) as e:
-                #print(f" [DEBUG] Error in 'more' comparison: {e}")
                 return False
+        elif op == 'less_date':
+            try:
+                if value:
+                    year_str = value.split('-')[0]
+                    year = datetime.strptime(year_str, '%Y').year
+                    result = year < float(target)
+                    return result
+                return False
+            except (ValueError, TypeError) as e:
+                return False
+        elif op == 'more':
+            try:
+                if value:
+                    num = int(value)  
+                    result = num > float(target)
+                    return result
+                return False
+            except (ValueError, TypeError) as e:
+                return False
+        elif op == 'less':
+            try:
+                if value:
+                    num = int(value)  
+                    result = num < float(target)
+                    return result
+                return False
+            except (ValueError, TypeError) as e:
+                return False
+        elif op == 'equal':
+            result = str(value).lower() == str(target).lower()
+            return result
         elif op == 'in':
             parsed = parse_string(value) if isinstance(value, str) else value
             target_lower = [str(t).lower() for t in target]

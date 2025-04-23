@@ -1,6 +1,7 @@
 import json
 import os
 from datetime import datetime
+import threading
 from common.packet import DataPacket, MoviePacket, QueryPacket, handle_final_packet, is_final_packet
 from common.middleware import Middleware
 
@@ -14,8 +15,14 @@ class DeliverNode:
         self.collected_movies = {"default": []} if not self.filters else {
             f"{f['column']}_{'desc' if f['inverse_sort'] else 'asc'}": [] for f in self.filters
         }
+        self.finished_event = threading.Event()
         self.input_rabbitmq = Middleware(queue=self.input_queue)
         self.output_rabbitmq = Middleware(queue=self.output_queue)
+        
+        self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE", "final_deliver")
+        self.query_number = os.getenv("QUERY_NUMBER", "1")
+        self.final_rabbitmq = Middleware(queue=self.final_queue)
+
 
     def _parse_environment(self):
         """Parse environment variables for KEEP_COLUMNS and SORT."""
@@ -177,12 +184,33 @@ class DeliverNode:
 
     def start_node(self):
         self._log_startup()
+        t3 = threading.Thread(target=self.final_rabbitmq.consume, args=(self.noop_callback,))
+        if int(self.query_number) == 1:
+            self.final_rabbitmq.send_final()  
+        t3.start()
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
             print(f" [!] Error in deliver node: {e}")
         finally:
+            self.finished_event.set()
+            t3.join()
             if self.input_rabbitmq:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
                 self.output_rabbitmq.close()
+
+    def noop_callback(self, ch, method, properties, body):
+        packet_json = body.decode()
+        header = json.loads(packet_json).get("header")
+     
+        self.finished_event.wait()
+        
+        if is_final_packet(header):
+            print(f" [!] Final rabbitmq stop consuming.")
+            if handle_final_packet(method, self.final_rabbitmq):
+                self.output_rabbitmq.send_final()
+                self.final_rabbitmq.send_ack_and_close(method)
+                print(f" [!] Final rabbitmq send final.")
+            return
+        ch.basic_ack(delivery_tag=method.delivery_tag)

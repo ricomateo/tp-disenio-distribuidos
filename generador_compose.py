@@ -22,6 +22,7 @@ def initialize_config(config_file="config.ini"):
         "FILTER_2000_ARGENTINA",
         "FILTER_2000s_SPAIN",
         "FILTER_UNIQUE_COUNTRY",
+        "FILTER_BUDGET_REVENUE",
         "ROUTER_RATINGS",
         "ROUTER_2000_ARGENTINA",
         "ROUTER_ACTORS",

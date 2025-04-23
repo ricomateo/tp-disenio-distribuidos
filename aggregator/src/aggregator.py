@@ -87,12 +87,12 @@ class AggregatorNode:
 
                 if sentiment == "POS":
                     new_count = self.average_positive[1] + count
-                    new_average = (self.average_positive[0] * self.average_positive[1] + average) / new_count
+                    new_average = (self.average_positive[0] * self.average_positive[1] + average * count) / new_count
                     self.average_positive = (new_average, new_count)
                     print(f"[updated positive number - current positive average: {self.average_positive}")
                 else:
                     new_count = self.average_negative[1] + count
-                    new_average = (self.average_negative[0] * self.average_negative[1] + average) / new_count
+                    new_average = (self.average_negative[0] * self.average_negative[1] + average * count) / new_count
                     self.average_negative = (new_average, new_count)
                     print(f"[updated negative number - current negative average: {self.average_negative}")
 
