@@ -320,7 +320,6 @@ services:
     - RABBITMQ_OUTPUT_QUEUE=query_queue
     - KEEP_COLUMNS=genres,title
     - SORT=revenue:5,title:-5
-    - QUERY_ID=5
 networks:
   app-network:
     driver: bridge

@@ -109,7 +109,7 @@ services:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=sentiment_positive_queue
     - RABBITMQ_CONSUMER_TAG=sentiment_consumer
-    - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - RABBITMQ_OUTPUT_QUEUE=sentiment_averages_queue
     - RABBITMQ_FINAL_QUEUE=final_queue_sen
     - OPERATION=ratio_by:revenue,budget
   
@@ -125,7 +125,24 @@ services:
     - PYTHONUNBUFFERED=1
     - RABBITMQ_QUEUE=sentiment_negative_queue
     - RABBITMQ_CONSUMER_TAG=sentiment_consumer
-    - RABBITMQ_OUTPUT_QUEUE=deliver_queue
+    - RABBITMQ_OUTPUT_QUEUE=sentiment_averages_queue
     - RABBITMQ_FINAL_QUEUE=final_queue_sen
     - OPERATION=ratio_by:revenue,budget
 
+  aggregator:
+    build:
+      context: .
+      dockerfile: aggregator/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+    - app-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RABBITMQ_QUEUE=sentiment_averages_queue
+    - RABBITMQ_OUTPUT_QUEUE=deliver_5_queue
+
+networks:
+  app-network:
+    driver: bridge
