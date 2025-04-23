@@ -11,11 +11,19 @@ if __name__ == "__main__":
         client.send_movies_file("movies_metadata.csv")
         client.send_credits_file("credits.csv")
         client.send_ratings_file("ratings_reduced.csv")
-        client.send_finalization()
+    except Exception as e:
+        print(e)
 
+    try:
+        client.send_finalization()
+    except Exception as e:
+        print(f"Failed to send finalization message. Error: {e}")
+
+    try:
         client.print_results()
     except Exception as e:
-        print(f"Failed to send file. Error: {e}")
+        print(f"Failed to receive results. Error: {e}")
+
     finally:
         client.close()
         

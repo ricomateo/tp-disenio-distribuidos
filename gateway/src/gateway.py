@@ -67,12 +67,14 @@ class Gateway:
                     if handle_final_packet(method, self.rabbitmq_receiver):
                         self.rabbitmq.send_final()
                         self.rabbitmq_receiver.send_ack_and_close(method)
+                        self.send_finalization()
                     return
                 
                 response_str = json.loads(packet_json).get("response")
                 if response_str:
                     print(" [GATEWAY - RESULT] Resultado final recibido:\n")
                     print(response_str)
+                    self.send_result(response_str)
                 else:
                     print(" [GATEWAY - RESULT] Packet recibido sin campo 'response'. Ignorado.")
 
@@ -86,6 +88,12 @@ class Gateway:
         
         print(" [GATEWAY] Now listening for filtered movies in query_queue...")
         self.rabbitmq_receiver.consume(callback_reader)
+
+    def send_result(self, result: str):
+        self.protocol.send_result(result)
+
+    def send_finalization(self):
+        self.protocol.send_finalization()
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")

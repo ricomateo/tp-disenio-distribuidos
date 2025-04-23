@@ -1,5 +1,5 @@
 import socket
-from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE, FIN_MSG_TYPE
+from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE, FIN_MSG_TYPE, QUERY_RESULT_MSG_TYPE
 
 class Protocol:
     def __init__(self, host, port):
@@ -50,9 +50,30 @@ class Protocol:
         message_type = FIN_MSG_TYPE
         self.server_socket.sendall(message_type.to_bytes(1, "big"))
 
-    def recv_result(self):
-        # TODO: agregar protocolo de recepcion de respuestas
-        self.server_socket.recv(1024)
-
     def close(self):
         self.server_socket.close()
+
+    def recv_message(self):
+        msg_type = int.from_bytes(self._recv_exact(1), "big")
+        if msg_type == QUERY_RESULT_MSG_TYPE:
+            result_len = int.from_bytes(self._recv_exact(4), "big")
+            result = self._recv_exact(result_len).decode('utf-8')
+            return {"msg_type": msg_type, "result": result}
+        elif msg_type == FIN_MSG_TYPE:
+            return {"msg_type": msg_type}
+        else:
+            print(f"Received unexpected message type: {msg_type}")
+            return {"msg_type": msg_type}
+
+    def _recv_exact(self, n: int):
+        """
+        Reads exactly n bytes from the socket, and returns the data.
+        If the connection is closed, raises an exception.
+        """
+        data = bytes()
+        while len(data) < n:
+            received_bytes = self.server_socket.recv(n - len(data))
+            if not received_bytes:
+                raise ConnectionError("Connection closed")
+            data += received_bytes
+        return data
