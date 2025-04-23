@@ -69,13 +69,13 @@ class ParserNode:
             if is_eof_packet(header):
                 file = message['filename']
                 self.output_rabbitmq.send_final(routing_key=file)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             if is_final_packet(header):
                 if handle_final_packet(method, self.input_rabbitmq):
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
-            
             rows = message['rows']
             filename = message['filename']
 
