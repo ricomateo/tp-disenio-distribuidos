@@ -1,7 +1,7 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import MoviePacket, QueryPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, MoviePacket, QueryPacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
 
@@ -19,54 +19,81 @@ class AggregatorNode:
         self.average_positive: tuple[float, int] = (0, 0)
         self.average_negative: tuple[float, int] = (0, 0)
 
+        self.operation = os.getenv("operation", "total_invested")
+
+        self.invested_per_country: dict[str, int] = {}
+
     def callback(self, ch, method, properties, body):
         try:
             # Recibir paquete
             packet_json = body.decode()
             
             header = json.loads(packet_json).get("header")
-            if header and is_final_packet(header):                
+            if header and is_final_packet(header):
                 if handle_final_packet(method, self.input_rabbitmq):
-                    averages = []
+                    if self.operation == "total_invested":
+                        for country, value in self.invested_per_country.items():
+                            packet = DataPacket(
+                                timestamp=datetime.utcnow().isoformat(),
+                                data={
+                                    "value": country,
+                                    "total": value
+                                }
+                            )
 
-                    line_positive = " | ".join(["Positive average", str(self.average_positive[0]), str(self.average_positive[1])])
-                    line_negative = " | ".join(["Negative average", str(self.average_negative[0]), str(self.average_negative[1])])
+                            self.output_rabbitmq.publish(packet.to_json())
+                        self.output_rabbitmq.send_final()
+                        self.input_rabbitmq.send_ack_and_close(method)
+                    else:
+                        averages = []
 
-                    averages.append(line_positive)
-                    averages.append(line_negative)
+                        line_positive = " | ".join(["Positive average", str(self.average_positive[0]), str(self.average_positive[1])])
+                        line_negative = " | ".join(["Negative average", str(self.average_negative[0]), str(self.average_negative[1])])
 
-                    response_str = "\n".join(averages) if averages else "No se encontraron promedios."
+                        averages.append(line_positive)
+                        averages.append(line_negative)
 
-                    query_packet = QueryPacket(
-                        timestamp=datetime.utcnow().isoformat(),
-                        data={"source": "aggregator"},
-                        response=response_str
-                    )
-                    self.output_rabbitmq.publish(query_packet.to_json())
+                        response_str = "\n".join(averages) if averages else "No se encontraron promedios."
 
-                    self.output_rabbitmq.send_final()
-                    self.input_rabbitmq.send_ack_and_close(method)
+                        query_packet = QueryPacket(
+                            timestamp=datetime.utcnow().isoformat(),
+                            data={"source": "aggregator"},
+                            response=response_str
+                        )
+                        self.output_rabbitmq.publish(query_packet.to_json())
+
+                        self.output_rabbitmq.send_final()
+                        self.input_rabbitmq.send_ack_and_close(method)
                 return
             
-            packet = QueryPacket.from_json(packet_json)
-            packet_data = [x.strip() for x in packet.response.split("|")]
+            packet = DataPacket.from_json(packet_json)
 
             # Procesar paquete (calcular promedio y ponerlo en un diccionario con los campos id, promedio y cantidad)
 
-            sentiment = packet_data[0]
-            average = float(packet_data[1])
-            count = int(packet_data[2])
+            if self.operation == "total_invested":
+                print(f"packet.data es {packet.data}")
 
-            if sentiment == "POS":                
-                new_count = self.average_positive[1] + count
-                new_average = (self.average_positive[0] * self.average_positive[1] + average) / new_count
-                self.average_positive = (new_average, new_count)
-                print(f"[updated positive number - current positive average: {self.average_positive}")
+                country = packet.data["value"]
+                invested = packet.data["total"]
+
+                current_invested = self.invested_per_country.get(country, 0)
+                self.invested_per_country[country] = current_invested + invested
             else:
-                new_count = self.average_negative[1] + count
-                new_average = (self.average_negative[0] * self.average_negative[1] + average) / new_count
-                self.average_negative = (new_average, new_count)
-                print(f"[updated negative number - current negative average: {self.average_negative}")
+                packet_data = [x for x in packet.data]
+                sentiment = packet_data[0]
+                average = float(packet_data[1])
+                count = int(packet_data[2])
+
+                if sentiment == "POS":                
+                    new_count = self.average_positive[1] + count
+                    new_average = (self.average_positive[0] * self.average_positive[1] + average) / new_count
+                    self.average_positive = (new_average, new_count)
+                    print(f"[updated positive number - current positive average: {self.average_positive}")
+                else:
+                    new_count = self.average_negative[1] + count
+                    new_average = (self.average_negative[0] * self.average_negative[1] + average) / new_count
+                    self.average_negative = (new_average, new_count)
+                    print(f"[updated negative number - current negative average: {self.average_negative}")
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")
@@ -75,7 +102,7 @@ class AggregatorNode:
             print(f" [!] Error decoding JSON: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
-            print(f" [!] Error processing message: {e}, raw packet is {packet_json}")
+            print(f" [!] operation is {self.operation}    Error processing message: {e}, raw packet is {packet_json}")
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
 
     def start_node(self):

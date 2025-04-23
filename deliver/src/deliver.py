@@ -138,18 +138,17 @@ class DeliverNode:
         try:
             body_decoded = body.decode()
             
-            if self.query_id == "1":
-                if is_final_packet(json.loads(body_decoded).get("header")):
-                    if handle_final_packet(method, self.input_rabbitmq):
-                        response_str = self._generate_response()
-                        query_packet = QueryPacket(
-                            timestamp=datetime.utcnow().isoformat(),
-                            data={"source": self.input_queue},
-                            response=response_str
-                        )
-                        self.output_rabbitmq.publish(query_packet.to_json())
-                        self.input_rabbitmq.send_ack_and_close(method)
-                    return
+            if is_final_packet(json.loads(body_decoded).get("header")):
+                if handle_final_packet(method, self.input_rabbitmq):
+                    response_str = self._generate_response()
+                    query_packet = QueryPacket(
+                        timestamp=datetime.utcnow().isoformat(),
+                        data={"source": self.input_queue},
+                        response=response_str
+                    )
+                    self.output_rabbitmq.publish(query_packet.to_json())
+                    self.input_rabbitmq.send_ack_and_close(method)
+                return
 
             packet = DataPacket.from_json(body_decoded)
             filtered_movie = self._process_movie(packet.data)
