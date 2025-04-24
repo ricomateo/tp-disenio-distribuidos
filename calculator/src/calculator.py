@@ -45,11 +45,9 @@ class CalculatorNode:
 
     def callback(self, ch, method, properties, body):
         try:
-            # Recibir paquete
+            # Recibo el paquete y en caso de ser el ultimo, mando los datos y el final packet
             packet_json = body.decode()
             
-            # print(f"[DEBUG] Raw packet received: {packet_json}")
-
             header = json.loads(packet_json).get("header")
             if header and is_final_packet(header):    
                 results = self.calculator.get_result()
@@ -98,7 +96,6 @@ class CalculatorNode:
             if int(self.node_id) == 0:
                 self.final_rabbitmq.send_final()  
             t3.start()
-
             
         try:
             self.input_rabbitmq.consume(self.callback)

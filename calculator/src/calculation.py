@@ -55,122 +55,148 @@ class Calculation:
         except json.JSONDecodeError as e:
             print(f"Error parsing JSON string '{value}': {e}")
         return None
+    
+    def process_count_operation(self, movie: Dict) -> bool:
+        title = movie.get("title", "Unknown")
 
+        keys = movie.get(self.key, [])
+
+        # Manejar las keys como una lista o un solo valor
+        parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
+        if not isinstance(parsed_keys, list):
+            parsed_keys = [parsed_keys] if parsed_keys is not None else []
+
+        processed = False
+        for key_item in parsed_keys:
+            if isinstance(key_item, dict):
+                # Si es un conjunto, combino todos los valores en una sola key
+                key_value = key_item.get('name', '')
+                if key_value:
+                    combined_key = key_value
+                    self.counts[combined_key] = self.counts.get(combined_key, 0) + 1
+                    processed = True
+            elif isinstance(key_item, str):
+                # Si es un solo valor, lo sumo a la cuenta
+                if key_item:
+                    self.counts[key_item] = self.counts.get(key_item, 0) + 1
+                    processed = True
+
+        if not processed:
+            print(f"Skipped movie '{title}' with missing or invalid {self.key}")
+
+        return processed
+
+    def process_average_operation(self, movie: Dict) -> bool:
+        title = movie.get("title", "Unknown")
+
+        keys = movie.get(self.key, [])
+        value = movie.get(self.value_field)
+        
+        # Manejar las keys como una lista o un solo valor
+        parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
+        if not isinstance(parsed_keys, list):
+            parsed_keys = [parsed_keys] if parsed_keys is not None else []
+        if value is not None:
+            try:
+                value = float(value)
+                processed = False
+
+                for key_item in parsed_keys:
+                    if isinstance(key_item, dict):
+                        # Si es un diccionario junto los valores no nulos en una key
+                        key_value = key_item.get('name', '')
+                        if key_value:
+                            combined_key = key_value
+                            current_total, current_count = self.averages.get(combined_key, (0.0, 0))
+                            self.averages[combined_key] = (current_total + value, current_count + 1)
+                            processed = True
+
+                    elif isinstance(key_item, str) and key_item:
+                        # Si es una key agrego el valor al promedio
+                        if key_item:
+                            current_total, current_count = self.averages.get(key_item, (0.0, 0))
+                            self.averages[key_item] = (current_total + value, current_count + 1)
+                            processed = True
+
+                    elif isinstance(key_item, (int, float)):
+                        # Si la key no es un str, la convierto y después promedio el valor
+                        key_str = str(key_item)
+                        current_total, current_count = self.averages.get(key_str, (0.0, 0))
+                        self.averages[key_str] = (current_total + value, current_count + 1)
+                        processed = True
+
+                if not processed:
+                    print(f"Skipped movie '{title}' with invalid {self.key}")
+                return processed
+            except (ValueError, TypeError):
+                print(f"Skipped movie '{title}' with invalid {self.value_field}")
+                return False
+        return False
+    
+    def process_ratio_operation(self, movie: Dict) -> bool:
+        title = movie.get("title", "Unknown")
+    
+        numerator = movie.get(self.numerator, 0)
+        denominator = movie.get(self.denominator, 0)
+        try:
+            # Convierto los numeros a float y calculo los nuevos ratios
+            numerator = float(numerator)
+            denominator = float(denominator)
+            if denominator == 0:
+                return False
+
+            total_numerator, total_denominator, count = self.totals
+            self.totals = (total_numerator + numerator, total_denominator + denominator, count + 1)
+
+            return True
+        except (ValueError, TypeError):
+            print(f"Skipped movie '{title}' with invalid {self.numerator} or {self.denominator}")
+            return False
+
+    def process_sum_operation(self, movie: Dict) -> bool:
+        title = movie.get("title", "Unknown")
+
+        value = movie.get(self.value_field, 0)
+        keys = movie.get(self.key, [])
+
+        try:
+            value = int(value)
+            if value == 0:
+                return False
+
+            parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
+            if not isinstance(parsed_keys, list):
+                print(f"Skipped movie '{title}' with invalid {self.key}")
+                return False
+
+            for key_item in parsed_keys:
+                if isinstance(key_item, dict):
+                    key_value = key_item.get('name', '')
+
+                    if key_value:
+                        combined_key = key_value
+                        self.sums[combined_key] = self.sums.get(combined_key, 0) + value
+                elif isinstance(key_item, str):
+                    if key_item:
+                        self.sums[key_item] = self.sums.get(key_item, 0) + value
+            return True
+        except (ValueError, TypeError):
+            print(f"Skipped movie '{title}' with invalid {self.value_field}")
+            return False
+        
     def process_movie(self, movie: Dict) -> bool:
         """Process a movie based on the operation, return True if processed successfully."""
         try:
             title = movie.get("title", "Unknown")
            
             if self.op_type == COUNT:
-                keys = movie.get(self.key, [])
-                # Handle keys as a list (e.g., production_countries) or single value
-                parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
-                if not isinstance(parsed_keys, list):
-                    parsed_keys = [parsed_keys] if parsed_keys is not None else []
-                processed = False
-                for key_item in parsed_keys:
-                    if isinstance(key_item, dict):
-                        # Combine all non-empty values into a single key
-                        key_value = key_item.get('name', '')
-                        if key_value:
-                            combined_key = key_value
-                            self.counts[combined_key] = self.counts.get(combined_key, 0) + 1
-                            processed = True
-                    elif isinstance(key_item, str):
-                        if key_item:  # Skip empty strings
-                            self.counts[key_item] = self.counts.get(key_item, 0) + 1
-                            processed = True
-                if processed:
-                    return True
-                print(f"Skipped movie '{title}' with missing or invalid {self.key}")
-                return False
-
+                return self.process_count_operation(movie)
             elif self.op_type == AVERAGE:
-                keys = movie.get(self.key, [])
-                value = movie.get(self.value_field)
-                
-                # Handle keys as a list (e.g., production_countries) or single value
-                parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
-                if not isinstance(parsed_keys, list):
-                    parsed_keys = [parsed_keys] if parsed_keys is not None else []
-                if value is not None:
-                    try:
-                        value = float(value)
-                        processed = False
-                        for key_item in parsed_keys:
-                            if isinstance(key_item, dict):
-                                # Combine all non-empty values into a single key
-                                key_value = key_item.get('name', '')
-                                if key_value:
-                                    combined_key = key_value
-                                    current_total, current_count = self.averages.get(combined_key, (0.0, 0))
-                                    self.averages[combined_key] = (current_total + value, current_count + 1)
-                                    processed = True
-                            elif isinstance(key_item, str) and key_item:
-                                if key_item:  # Skip empty strings
-                                    current_total, current_count = self.averages.get(key_item, (0.0, 0))
-                                    self.averages[key_item] = (current_total + value, current_count + 1)
-                                    processed = True
-                            elif isinstance(key_item, (int, float)):
-                                # Handle numeric keys by converting to string
-                                key_str = str(key_item)
-                                current_total, current_count = self.averages.get(key_str, (0.0, 0))
-                                self.averages[key_str] = (current_total + value, current_count + 1)
-                                processed = True
-                        if processed:
-                            return True
-                        print(f"Skipped movie '{title}' with invalid {self.key}")
-                        return False
-                    except (ValueError, TypeError):
-                        print(f"Skipped movie '{title}' with invalid {self.value_field}")
-                        return False
-                #print(f"Skipped movie '{title}' with missing {self.key} or {self.value_field}")
-                return False
-
+                return self.process_average_operation(movie)
             elif self.op_type == RATIO:
-                numerator = movie.get(self.numerator, 0)
-                denominator = movie.get(self.denominator, 0)
-                try:
-                    numerator = float(numerator)
-                    denominator = float(denominator)  # Changed to float for consistency
-                    if denominator == 0:
-                        #print(f"Skipped movie '{title}' because {self.denominator} was zero")
-                        return False
-                    total_numerator, total_denominator, count = self.totals
-                    self.totals = (total_numerator + numerator, total_denominator + denominator, count + 1)
-                    return True
-                except (ValueError, TypeError):
-                    print(f"Skipped movie '{title}' with invalid {self.numerator} or {self.denominator}")
-                    return False
-
+                return self.process_ratio_operation(movie)
             elif self.op_type == SUM:
-                value = movie.get(self.value_field, 0)
-                keys = movie.get(self.key, [])
-                try:
-                    value = int(value)
-                    if value == 0:
-                        #print(f"Skipped movie '{title}' because {self.value_field} was zero")
-                        return False
-                    # Parse keys if it's a string (e.g., production_countries)
-                    parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
-                    if not isinstance(parsed_keys, list):
-                        print(f"Skipped movie '{title}' with invalid {self.key}")
-                        return False
-                    for key_item in parsed_keys:
-                        if isinstance(key_item, dict):
-                            # Combine all non-empty values into a single key
-                            key_value = key_item.get('name', '')
-                            if key_value:
-                                combined_key = key_value
-                                self.sums[combined_key] = self.sums.get(combined_key, 0) + value
-                        elif isinstance(key_item, str):
-                            if key_item:  # Skip empty strings
-                                self.sums[key_item] = self.sums.get(key_item, 0) + value
-                    return True
-                except (ValueError, TypeError):
-                    print(f"Skipped movie '{title}' with invalid {self.value_field}")
-                    return False
-
+                return self.process_sum_operation(movie)
             return False
 
         except Exception as e:
