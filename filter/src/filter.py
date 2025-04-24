@@ -1,14 +1,14 @@
-# filter.py
 import json
 from common.middleware import Middleware
 from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 from src.check_condition import check_condition
 from datetime import datetime
 import os
-
+import signal
 
 class FilterNode:
     def __init__(self):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
         self.filters = {}
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
@@ -87,3 +87,12 @@ class FilterNode:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
                 self.output_rabbitmq.close()
+
+    def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        self.close()
+    
+    def close(self):
+        print(f"Closing queues")
+        self.input_rabbitmq.close()
+        self.output_rabbitmq.close()

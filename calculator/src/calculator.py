@@ -1,14 +1,16 @@
-# filter.py
 import json
 import threading
 from common.middleware import Middleware
 from common.packet import DataPacket, MoviePacket, QueryPacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
+import signal
 from src.calculation import Calculation
 
 class CalculatorNode:
     def __init__(self):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
+
         self.node_id = os.getenv("NODE_ID")
         self.finished_event = threading.Event()
         base_queue = os.getenv('RABBITMQ_QUEUE', 'movie_queue_1')
@@ -23,6 +25,7 @@ class CalculatorNode:
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE")
         self.calculator = Calculation(self.operation, self.input_queue)
         self.final_rabbitmq = None
+        self.threads = []
         
         if self.final_queue:
             self.final_rabbitmq = Middleware(
@@ -96,6 +99,7 @@ class CalculatorNode:
             if int(self.node_id) == 0:
                 self.final_rabbitmq.send_final()  
             t3.start()
+            self.threads.append(t3)
             
         try:
             self.input_rabbitmq.consume(self.callback)
@@ -104,7 +108,8 @@ class CalculatorNode:
         finally:
             if self.final_rabbitmq:
                 self.finished_event.set()
-                t3.join()
+                for thread in self.threads:
+                    thread.join()
             if self.input_rabbitmq:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
@@ -114,7 +119,6 @@ class CalculatorNode:
         # Si ambas terminaron, ahora sí mando el final al siguiente nodo
         packet_json = body.decode()
         header = json.loads(packet_json).get("header")
-     
         self.finished_event.wait()
         
         if is_final_packet(header):
@@ -126,3 +130,17 @@ class CalculatorNode:
             return
         ch.basic_ack(delivery_tag=method.delivery_tag)
                 
+
+    def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        self.close()
+
+    def close(self):
+        print(f"Closing queues")
+        self.finished_event.set()
+        self.input_rabbitmq.close()
+        self.output_rabbitmq.close()
+        for thread in self.threads:
+            thread.join()
+        if self.final_rabbitmq is not None:
+            self.final_rabbitmq.close()

@@ -1,11 +1,10 @@
-# filter.py
 import json
 from common.middleware import Middleware
 from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 import threading 
 from datetime import datetime
 import os
-import time
+import signal
 
 def create_joined_packet(movie1, movie2, router):
     # Combinar los diccionarios movie1 y movie2
@@ -19,6 +18,7 @@ def create_joined_packet(movie1, movie2, router):
 
 class JoinNode:
     def __init__(self):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
         # Buffer temporal para emparejar por router
         self.router_buffer = {}  
 
@@ -34,6 +34,7 @@ class JoinNode:
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE", "default_final")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "")
         self.join_by = os.getenv("JOIN_BY", "id")
+        self.threads = []
         
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
@@ -145,6 +146,10 @@ class JoinNode:
             t2.start()
             t3.start()
 
+            self.threads.append(t1)
+            self.threads.append(t2)
+            self.threads.append(t3)
+
             t1.join()
             t2.join()
             self.finished_event.set()
@@ -161,3 +166,23 @@ class JoinNode:
                 self.output_rabbitmq.close()
             if self.final_rabbitmq:
                 self.final_rabbitmq.close()
+
+    def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        self.close()
+    
+    def close(self):
+        print(f"Closing queues")
+        self.finished_event.set() # Para cerrar el thread t3
+        self.input_rabbitmq_1.send_final() # Para cerrar el thread t1
+        self.input_rabbitmq_2.send_final() # Para cerrar el thread t2
+        self.final_rabbitmq.send_final() 
+        # Joineo los threads
+        for thread in self.threads:
+            thread.join()
+
+        # Cierro las queues
+        self.input_rabbitmq_1.close()
+        self.input_rabbitmq_2.close()
+        self.output_rabbitmq.close()
+        self.final_rabbitmq.close()

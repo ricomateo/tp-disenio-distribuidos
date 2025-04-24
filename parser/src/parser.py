@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 from io import StringIO
-import uuid
+import signal
 from datetime import datetime
 from common.middleware import Middleware
 
@@ -14,6 +14,7 @@ CREDITS_FILE = "credits.csv"
 
 class ParserNode:
     def __init__(self):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
         self.keep_movies_columns = []
         self.keep_ratings_columns = []
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "")
@@ -157,3 +158,12 @@ class ParserNode:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
                 self.output_rabbitmq.close()
+    
+    def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        self.close()
+    
+    def close(self):
+        print(f"Closing queues")
+        self.input_rabbitmq.close()
+        self.output_rabbitmq.close()
