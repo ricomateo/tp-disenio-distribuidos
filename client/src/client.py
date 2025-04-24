@@ -1,4 +1,6 @@
+
 import time
+import signal
 from src.protocol import Protocol
 from common.protocol_constants import QUERY_RESULT_MSG_TYPE, FIN_MSG_TYPE
 
@@ -9,6 +11,7 @@ CREDITS_FILENAME = "credits.csv"
 
 class Client:
     def __init__(self, host: str, port: int, batch_size: int):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
         self.protocol = Protocol(host, port)
         self.batch_size = batch_size
         self.start_time = time.time()
@@ -73,3 +76,9 @@ class Client:
         elapsed_time = end_time - self.start_time  
         print(f"Total time from connection to disconnection: {elapsed_time:.2f} seconds")
         self.protocol.close()
+
+    def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        print(f"Sending finalization message...")
+        self.protocol.send_finalization()
+        self.close()

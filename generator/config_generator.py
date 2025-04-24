@@ -51,14 +51,14 @@ class ConfigGenerator:
         self._generate_filters()
         self._generate_routers()
         self._generate_calculators()
-        #self._generate_sentiment()
+        self._generate_sentiment()
         self._generate_joiners()
         self._generate_aggregators()
         self._generate_deliver_1()
         self._generate_deliver_2()
         self._generate_deliver_3()
         self._generate_deliver_4()
-        #self._generate_deliver_5()
+        self._generate_deliver_5()
         return self.compose
     
     def _generate_rabbitmq(self):

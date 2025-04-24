@@ -1,8 +1,8 @@
-# filter.py
 import json
 from common.middleware import Middleware
 from common.packet import DataPacket, handle_final_packet, is_final_packet
 import os
+import signal
 
 class RouterNode:
     """
@@ -13,6 +13,8 @@ class RouterNode:
      - number_of_nodes: la cantidad de nodos suscriptos al exchange 'output_exchange'.
     """
     def __init__(self):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
+
         self.input_queue = os.getenv("RABBITMQ_QUEUE")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
@@ -24,7 +26,8 @@ class RouterNode:
         if self.output_exchange is None:
             raise Exception("Missing RABBITMQ_OUTPUT_EXCHANGE env var")
         
-        if self.exchange:  # <- si hay exchange, lo usamos
+        if self.exchange:
+            # Si hay exchange lo usamos
             self.input_rabbitmq = Middleware(
                 queue=self.input_queue,
                 consumer_tag=self.consumer_tag,
@@ -32,11 +35,10 @@ class RouterNode:
                 publish_to_exchange=False,
                 routing_key=self.routing_key
             )
-        else:  # <- si no, conectamos directo a la cola
+        else:
+            # Sino conectamos directo a la cola
             self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
-       
 
-    
         self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
 
 
@@ -88,3 +90,12 @@ class RouterNode:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
                 self.output_rabbitmq.close()
+
+    def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        self.close()
+    
+    def close(self):
+        print(f"Closing queues")
+        self.input_rabbitmq.close()
+        self.output_rabbitmq.close()

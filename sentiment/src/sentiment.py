@@ -1,14 +1,14 @@
-# filter.py
 import json
 from common.middleware import Middleware
 from common.packet import DataPacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
-
+import signal
 from transformers import pipeline
 
 class SentimentNode:
     def __init__(self):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_queue")
         self.output_positive_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_POSITIVE", "default_output")
         self.output_negative_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_NEGATIVE", "default_output")
@@ -37,7 +37,7 @@ class SentimentNode:
 
     def callback(self, ch, method, properties, body):
         try:
-            # Recibir paquete
+            # Recibir paquete y mandar final packet si se recibe uno
             packet_json = body.decode()
             
             if is_final_packet(json.loads(packet_json).get("header")):
@@ -51,29 +51,22 @@ class SentimentNode:
             movie = packet.data
 
             # Procesar paquete (comunicarse con la lib de sentimientos)
-      
             overview = movie.get('overview', '')
             if not isinstance(overview, str):
                 overview = str(overview)
             sentiment = self.sentiment_analyzer(overview, truncation=True)[0]['label']
             movie['sentiment'] = sentiment
 
-            # print(f"overview is {overview} and sentiment is {sentiment}")
-
             filtered_packet = DataPacket(
-                #packet_id=packet.packet_id,
                 timestamp=datetime.utcnow().isoformat(),
                 data=movie
             )
 
-            # Publicar el paquete filtrado a la cola del gateway
-           
+            # Publicar el paquete filtrado a la cola del gateway que corresponda
             if sentiment == "POSITIVE":
                 self.output_positive_rabbitmq.publish(filtered_packet.to_json())
-                print(f" [✓] Filtered and Published to {self.output_positive_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
             elif sentiment == "NEGATIVE":
                 self.output_negative_rabbitmq.publish(filtered_packet.to_json())
-                print(f" [✓] Filtered and Published to {self.output_negative_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
             else:
                 print("[--------------] No es positivo ni negativo")
             
@@ -101,3 +94,13 @@ class SentimentNode:
                 self.output_positive_rabbitmq.close()
             if self.output_negative_rabbitmq:
                 self.output_negative_rabbitmq.close()
+    
+    def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        self.close()
+
+    def close(self):
+        print(f"Closing queues")
+        self.input_rabbitmq.close()
+        self.output_positive_rabbitmq.close()
+        self.output_negative_rabbitmq.close()
