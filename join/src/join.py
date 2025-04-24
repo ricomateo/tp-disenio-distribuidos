@@ -19,7 +19,9 @@ def create_joined_packet(movie1, movie2, router):
 
 class JoinNode:
     def __init__(self):
-        self.router_buffer = {}  # <-- Buffer temporal para emparejar por router
+        # Buffer temporal para emparejar por router
+        self.router_buffer = {}  
+
         self.lock = threading.Lock()
         self.finished_event = threading.Event()
         self.node_id = os.getenv("NODE_ID", "")
@@ -32,7 +34,6 @@ class JoinNode:
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE", "default_final")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "")
         self.join_by = os.getenv("JOIN_BY", "id")
-       
         
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)

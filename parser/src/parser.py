@@ -27,29 +27,31 @@ class ParserNode:
         else:
             self.output_rabbitmq = Middleware(queue=self.output_queue)
 
-        if self.exchange:  # <- si hay exchange, lo usamos
+        if self.exchange:
+            # Si hay exchange lo usamos
             self.input_rabbitmq = Middleware(
                 queue=self.input_queue,
                 consumer_tag=self.consumer_tag,
                 exchange=self.exchange,
                 publish_to_exchange=False
             )
-        else:  # <- si no, conectamos directo a la cola
+        else:
+            # Sino conectamos directo a la cola
             self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
         
-        # Load KEEP_MOVIES_COLUMNS
+        # Cargo KEEP_MOVIES_COLUMNS
         keep_movies_columns_str = os.getenv("KEEP_MOVIES_COLUMNS", "")
         self.keep_movies_columns = [col.strip() for col in keep_movies_columns_str.split(",") if col.strip()]
 
-        # Load KEEP_RATINGS_COLUMNS
+        # Cargo KEEP_RATINGS_COLUMNS
         keep_ratings_columns_str = os.getenv("KEEP_RATINGS_COLUMNS", "")
         self.keep_ratings_columns = [col.strip() for col in keep_ratings_columns_str.split(",") if col.strip()]
 
-        # Load KEEP_CREDITS_COLUMNS
+        # Cargo KEEP_CREDITS_COLUMNS
         keep_credits_columns_str = os.getenv("KEEP_CREDITS_COLUMNS", "")
         self.keep_credits_columns = [col.strip() for col in keep_credits_columns_str.split(",") if col.strip()]
 
-        # Load REPLACE
+        # Cargo REPLACE
         replace_str = os.getenv("REPLACE", "")
         self.rename_columns = []
         if replace_str:
@@ -62,7 +64,7 @@ class ParserNode:
 
     def callback(self, ch, method, properties, body):
         try:
-            # Parse message
+            # Parseo el mensaje
             message = json.loads(body)
             header = message['header']
             
@@ -79,7 +81,7 @@ class ParserNode:
             rows = message['rows']
             filename = message['filename']
 
-            # Create CSV string
+            # Creo el string CSV
             csv_text = header + "\n" + "\n".join(rows)
             df = pd.read_csv(StringIO(csv_text))
 
@@ -99,13 +101,13 @@ class ParserNode:
 
             print(" [x] Received and processed CSV:")
             
-            # Apply column renaming for each pair if the old column exists
+            # Renombro las columnas para cada par si la columna vieja existe
             for old_name, new_name in self.rename_columns:
                 if old_name in df.columns:
                     print(f" [~] Renaming '{old_name}' to '{new_name}'")
                     df = df.rename(columns={old_name: new_name})
 
-            # Create a MoviePacket for each movie
+            # Creo un MoviePacket para cada película
             for _, row in df.iterrows():
                 if filename == MOVIES_FILE:
                     movie = row.to_dict()

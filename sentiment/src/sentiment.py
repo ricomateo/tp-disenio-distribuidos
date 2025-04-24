@@ -37,7 +37,7 @@ class SentimentNode:
 
     def callback(self, ch, method, properties, body):
         try:
-            # Recibir paquete
+            # Recibir paquete y mandar final packet si se recibe uno
             packet_json = body.decode()
             
             if is_final_packet(json.loads(packet_json).get("header")):
@@ -51,23 +51,18 @@ class SentimentNode:
             movie = packet.data
 
             # Procesar paquete (comunicarse con la lib de sentimientos)
-      
             overview = movie.get('overview', '')
             if not isinstance(overview, str):
                 overview = str(overview)
             sentiment = self.sentiment_analyzer(overview, truncation=True)[0]['label']
             movie['sentiment'] = sentiment
 
-            # print(f"overview is {overview} and sentiment is {sentiment}")
-
             filtered_packet = DataPacket(
-                #packet_id=packet.packet_id,
                 timestamp=datetime.utcnow().isoformat(),
                 data=movie
             )
 
-            # Publicar el paquete filtrado a la cola del gateway
-           
+            # Publicar el paquete filtrado a la cola del gateway que corresponda
             if sentiment == "POSITIVE":
                 self.output_positive_rabbitmq.publish(filtered_packet.to_json())
                 print(f" [✓] Filtered and Published to {self.output_positive_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
