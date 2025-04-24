@@ -2,6 +2,8 @@ import orjson
 from dataclasses import dataclass, field
 import time
 
+FINAL = "FINAL"
+
 @dataclass
 class Packet:
     timestamp: str
@@ -35,36 +37,25 @@ class DataPacket(Packet):
     def from_json(cls, data):
         return cls(**orjson.loads(data))
 
-@dataclass
-class MoviePacket(DataPacket):
-    movie: dict
-
-    def to_json(self):
-        return orjson.dumps(self.__dict__)
-
-    @classmethod
-    def from_json(cls, data):
-        return cls(**orjson.loads(data))
-
 # Definiendo FinalPacket
 @dataclass  
 class FinalPacket(Packet):  
-    type: str = "FINAL"
+    type: str = FINAL
 
     def to_json(self):
         data = self.__dict__.copy()
-        data["header"] = "FINAL"
+        data["header"] = FINAL
         return orjson.dumps(data)
 
     @classmethod
     def from_json(cls, data):
         # Parsear el JSON y añadir el valor "FINAL" al campo type
         data_dict = orjson.loads(data)
-        data_dict["header"] = "FINAL"
+        data_dict["header"] = FINAL
         return cls(**data_dict)
     
 @dataclass
-class QueryPacket(DataPacket):
+class QueryPacket(Packet):
     response: str
 
     def to_json(self):
@@ -73,8 +64,9 @@ class QueryPacket(DataPacket):
     @classmethod
     def from_json(cls, data):
         return cls(**orjson.loads(data))
+    
 def is_final_packet(header):
-    if header == "FINAL":
+    if header == FINAL:
         return True
     return False
 

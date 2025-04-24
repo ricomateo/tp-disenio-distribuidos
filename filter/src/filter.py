@@ -1,7 +1,7 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, handle_final_packet, is_final_packet
 from src.check_condition import check_condition
 from datetime import datetime
 import os
