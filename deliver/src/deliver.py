@@ -1,3 +1,4 @@
+import ast
 import json
 import os
 from datetime import datetime
@@ -109,16 +110,34 @@ class DeliverNode:
         
         return movie
 
+    
+
     def _format_movie(self, movie):
         """Format a movie into a string based on KEEP_COLUMNS."""
         campos = []
         for key in self.keep_columns:
             value = movie.get(key, "")
-            if isinstance(value, list):
-                value = ", ".join(map(str, value))
-            campos.append(f"{key}: {value}")
-        return " | ".join(campos)
 
+            # Intentamos parsear strings que parezcan listas/dicts
+            if isinstance(value, str):
+                try:
+                    parsed = ast.literal_eval(value)
+                    value = parsed
+                except (ValueError, SyntaxError):
+                    pass
+
+            # Ahora evaluamos el tipo
+            if isinstance(value, dict):
+                value = value.get("name", "")
+            elif isinstance(value, list):
+                value = ", ".join(
+                    v.get("name", "") if isinstance(v, dict) else str(v)
+                    for v in value
+                )
+
+            campos.append(f"{key}: {value}")
+        return " | ".join(campos) 
+        
     def _generate_response(self):
         """Generate the response string for the final packet."""
         lines = []
@@ -146,8 +165,8 @@ class DeliverNode:
             for movie in movies:
                 lines.append(self._format_movie(movie))
         
-        return "\n".join(lines).rstrip() if lines else "No se encontraron películas."
-
+        return "\n".join(lines).rstrip() if lines else "No se encontraron resultados."
+    
     def callback(self, ch, method, properties, body):
         try:
             if self.running == False:

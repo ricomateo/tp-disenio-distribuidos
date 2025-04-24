@@ -40,15 +40,8 @@ build:
 	@echo "Building Docker images..."
 	docker-compose $(COMPOSE_NORMAL) build
 
-total: generate-compose client/credits.csv
+up: generate-compose client/credits.csv
 	docker-compose $(COMPOSE_GENERATED) up -d --build 
-
-up: validate-replicas generate-compose
-	docker-compose $(COMPOSE_NORMAL) up -d --build \
-		--scale parser=$(REPLICAS) \
-        --scale filter_argentina_2000=$(REPLICAS) \
-        --scale filter_spain_2000s=$(REPLICAS) \
-		--scale sentiment=$(REPLICAS)
 
 134: validate-replicas
 	docker-compose $(COMPOSE_134) up -d --build \
