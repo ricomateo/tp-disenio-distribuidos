@@ -119,7 +119,6 @@ class CalculatorNode:
         # Si ambas terminaron, ahora sí mando el final al siguiente nodo
         packet_json = body.decode()
         header = json.loads(packet_json).get("header")
-     
         self.finished_event.wait()
         
         if is_final_packet(header):
@@ -138,6 +137,7 @@ class CalculatorNode:
 
     def close(self):
         print(f"Closing queues")
+        self.finished_event.set()
         self.input_rabbitmq.close()
         self.output_rabbitmq.close()
         for thread in self.threads:
