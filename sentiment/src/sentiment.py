@@ -1,14 +1,14 @@
-# filter.py
 import json
 from common.middleware import Middleware
 from common.packet import DataPacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
-
+import signal
 from transformers import pipeline
 
 class SentimentNode:
     def __init__(self):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_queue")
         self.output_positive_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_POSITIVE", "default_output")
         self.output_negative_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_NEGATIVE", "default_output")
@@ -96,3 +96,13 @@ class SentimentNode:
                 self.output_positive_rabbitmq.close()
             if self.output_negative_rabbitmq:
                 self.output_negative_rabbitmq.close()
+    
+    def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        self.close()
+
+    def close(self):
+        print(f"Closing queues")
+        self.input_rabbitmq.close()
+        self.output_positive_rabbitmq.close()
+        self.output_negative_rabbitmq.close()
