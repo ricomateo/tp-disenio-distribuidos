@@ -21,8 +21,9 @@ class FilterNode:
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
             self.output_rabbitmq = Middleware(queue=self.output_queue)
-
-        if self.exchange:  # <- si hay exchange, lo usamos
+        
+        if self.exchange:
+            # Si hay exchange lo usamos
             self.input_rabbitmq = Middleware(
                 queue=self.input_queue,
                 consumer_tag=self.consumer_tag,
@@ -30,10 +31,9 @@ class FilterNode:
                 publish_to_exchange=False,
                 routing_key=self.routing_key
             )
-        else:  # <- si no, conectamos directo a la cola
+        else: 
+            # Sino conectamos directo a la cola
             self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
-       
-
 
     def callback(self, ch, method, properties, body):
         try:
@@ -43,12 +43,11 @@ class FilterNode:
                     self.output_rabbitmq.send_final()
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
-            
+
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
-            
-            # Aplicar los filtros de la instancia
 
+            # Aplicar los filtros de la instancia
             for _, condition in self.filters.items():
                 _, _, key = condition
                 value = movie.get(key)
@@ -56,15 +55,12 @@ class FilterNode:
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
 
-            
             filtered_packet = DataPacket(
-                #packet_id=packet.packet_id,
                 timestamp=datetime.utcnow().isoformat(),
                 data=movie,
             )
 
             # Publicar el paquete filtrado a la cola del gateway
-           
             self.output_rabbitmq.publish(filtered_packet.to_json())
             
             print(f" [✓] Filtered and Published to {self.output_queue}: ID: {movie.get('id')}, Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
