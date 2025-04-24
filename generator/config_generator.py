@@ -318,6 +318,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={FILTER_2000_ARGENTINA}',
+                f'KEEP_COLUMNS=production_countries,release_date,title,genres,id',
                 'FILTERS=production_countries:in(Argentina);release_date:more_date(1999)'
             ],
             instances=instances
@@ -331,6 +332,7 @@ class ConfigGenerator:
                 f'RABBITMQ_CONSUMER_TAG={FILTER_2000S_SPAIN}',
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_2000S_SPAIN}',
                 f'RABBITMQ_EXCHANGE={FILTER_2000_ARGENTINA}',
+                f'KEEP_COLUMNS=title,genres,id',
                 'FILTERS=production_countries:in(Spain);release_date:less_date(2010)'
             ],
             instances=instances
@@ -345,6 +347,7 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_UNIQUE_COUNTRY}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
+                f'KEEP_COLUMNS=production_countries,budget,id',
                 'FILTERS=production_countries:count(1)'
             ],
             instances=instances
@@ -359,6 +362,7 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_BUDGET_REVENUE}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
+                f'KEEP_COLUMNS=overview,budget,revenue',
                 'FILTERS=budget:more(0);revenue:more(0)'
             ],
             instances=instances
@@ -525,6 +529,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE_2={ROUTER_ACTORS}',
                 f'RABBITMQ_CONSUMER_TAG={JOIN_ACTORS}',
                 f'RABBITMQ_OUTPUT_QUEUE={JOIN_ACTORS}',
+                f'KEEP_COLUMNS=title,id,cast',
                 f'JOIN_BY=id',
                 f'RABBITMQ_FINAL_QUEUE={JOIN_ACTORS}{FINAL}'
             ],
@@ -540,6 +545,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE_2={ROUTER_RATINGS_CALCULATED}',
                 f'RABBITMQ_CONSUMER_TAG={JOIN_RATINGS}',
                 f'RABBITMQ_OUTPUT_QUEUE={JOIN_RATINGS}',
+                f'KEEP_COLUMNS=title,id,average',
                 f'JOIN_BY=id',
                 f'RABBITMQ_FINAL_QUEUE={JOIN_RATINGS}{FINAL}'
             ],

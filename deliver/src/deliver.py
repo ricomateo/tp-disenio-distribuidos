@@ -161,7 +161,6 @@ class DeliverNode:
                     response_str = self._generate_response()
                     query_packet = QueryPacket(
                         timestamp=datetime.utcnow().isoformat(),
-                        data={"source": self.input_queue},
                         response=response_str
                     )
                     self.output_rabbitmq.publish(query_packet.to_json())
@@ -217,12 +216,6 @@ class DeliverNode:
      
         self.finished_event.wait()
         
-        if self.running == False:
-            
-                if self.final_rabbitmq.check_no_consumers():
-                    self.output_rabbitmq.send_final()
-                self.final_rabbitmq.close_graceful(method)
-                return
         
         if is_final_packet(header):
             print(f" [!] Final rabbitmq stop consuming.")

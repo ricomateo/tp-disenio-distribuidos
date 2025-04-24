@@ -72,10 +72,8 @@ class SentimentNode:
             # Publicar el paquete filtrado a la cola del gateway que corresponda
             if sentiment == "POSITIVE":
                 self.output_positive_rabbitmq.publish(filtered_packet.to_json())
-                print(f" [✓] Filtered and Published to {self.output_positive_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
             elif sentiment == "NEGATIVE":
                 self.output_negative_rabbitmq.publish(filtered_packet.to_json())
-                print(f" [✓] Filtered and Published to {self.output_negative_queue}: Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
             else:
                 print("[--------------] No es positivo ni negativo")
             

@@ -1,7 +1,10 @@
+
+import time
 import signal
 import time
 from src.protocol import Protocol
 from common.protocol_constants import QUERY_RESULT_MSG_TYPE, FIN_MSG_TYPE
+
 
 MOVIES_FILENAME = "movies_metadata.csv"
 RATINGS_FILENAME = "ratings.csv"

@@ -1,6 +1,6 @@
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, MoviePacket, QueryPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
 import signal

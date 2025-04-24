@@ -6,6 +6,7 @@ from datetime import datetime
 from common.middleware import Middleware
 
 from common.packet import DataPacket, handle_final_packet, is_final_packet
+
 import os
 
 class ParserNode:
@@ -58,6 +59,7 @@ class ParserNode:
    
     def callback(self, ch, method, properties, body):
 
+
             try:
                 if self.running == False:
                     if self.input_rabbitmq.check_no_consumers():
@@ -75,6 +77,7 @@ class ParserNode:
                     return
                 
                 rows = message['rows']
+
 
                 # Creo el string CSV
                 csv_text = header + "\n" + "\n".join(rows)
@@ -96,7 +99,6 @@ class ParserNode:
                             timestamp=datetime.utcnow().isoformat(),
                             data=row.to_dict()
                     )
-
                     self.output_rabbitmq.publish(packet.to_json(), self.filename)
 
 

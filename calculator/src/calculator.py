@@ -1,7 +1,7 @@
 import json
 import threading
 from common.middleware import Middleware
-from common.packet import DataPacket, MoviePacket, QueryPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, handle_final_packet, is_final_packet
 from datetime import datetime
 import os
 import signal
@@ -122,12 +122,6 @@ class CalculatorNode:
         header = json.loads(packet_json).get("header")
         self.finished_event.wait()
         
-        if self.running == False:
-                if self.final_rabbitmq.check_no_consumers():
-                    self.output_rabbitmq.send_final()
-                self.final_rabbitmq.close_graceful(method)
-                return
-        
         if is_final_packet(header):
             print(f" [!] Final rabbitmq stop consuming.")
             if handle_final_packet(method, self.final_rabbitmq):
@@ -146,5 +140,6 @@ class CalculatorNode:
         print(f"Closing queues")
         self.running = False
         self.finished_event.set()
-        self.input_rabbitmq.cancel_consumer()
         self.final_rabbitmq.cancel_consumer()
+        self.input_rabbitmq.cancel_consumer()
+       

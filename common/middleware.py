@@ -1,6 +1,6 @@
 # rabbitmq_middleware.py
 import pika
-import json
+import orjson
 import os
 import time
 from datetime import datetime
@@ -44,7 +44,12 @@ class Middleware:
     def publish(self, message, routing_key=''):
         if not self.channel:
             self.connect()
-        body = message if isinstance(message, str) else json.dumps(message)
+        if isinstance(message, bytes):  # Handle bytes from to_json()
+            body = message
+        elif isinstance(message, str):  # Handle str directly
+            body = message.encode('utf-8')  # Convert to bytes for RabbitMQ
+        else:  # Handle dict or other JSON-serializable objects
+            body = orjson.dumps(message)  # Returns bytes
         if self.exchange and self.publish_to_exchange:
             self.channel.basic_publish(
                 exchange=self.exchange,
