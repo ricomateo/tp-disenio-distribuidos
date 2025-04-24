@@ -173,10 +173,16 @@ class JoinNode:
     
     def close(self):
         print(f"Closing queues")
+        self.finished_event.set() # Para cerrar el thread t3
+        self.input_rabbitmq_1.send_final() # Para cerrar el thread t1
+        self.input_rabbitmq_2.send_final() # Para cerrar el thread t2
+        self.final_rabbitmq.send_final() 
+        # Joineo los threads
+        for thread in self.threads:
+            thread.join()
+
+        # Cierro las queues
         self.input_rabbitmq_1.close()
         self.input_rabbitmq_2.close()
         self.output_rabbitmq.close()
         self.final_rabbitmq.close()
-        for thread in self.threads:
-            print(f"Joinin thread...")
-            thread.join()
