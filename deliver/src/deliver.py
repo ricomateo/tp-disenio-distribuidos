@@ -228,6 +228,7 @@ class DeliverNode:
     
     def close(self):
         print(f"Closing queues")
+        self.finished_event.set()
         self.input_rabbitmq.close()
         self.output_rabbitmq.close()
         self.final_rabbitmq.close()
