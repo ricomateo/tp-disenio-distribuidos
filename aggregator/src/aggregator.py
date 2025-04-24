@@ -20,6 +20,7 @@ class AggregatorNode:
         self.average_positive: tuple[float, int] = (0, 0)
         self.average_negative: tuple[float, int] = (0, 0)
         self.invested_per_country: dict[str, int] = {}
+        self.count_by_actors: dict[str, int] = {}
 
     def callback(self, ch, method, properties, body):
         try:
@@ -47,7 +48,7 @@ class AggregatorNode:
                             self.output_rabbitmq.publish(packet.to_json())
                         self.output_rabbitmq.send_final()
                         self.input_rabbitmq.send_ack_and_close(method)
-                    else:
+                    elif self.operation == "average":
                         # En caso de tener al menos una película para ese sentimiento, publico
                         # ese paquete en la queue y después mando el final packet
                         if self.average_positive[1] > 0:
@@ -74,6 +75,18 @@ class AggregatorNode:
 
                         self.output_rabbitmq.send_final()
                         self.input_rabbitmq.send_ack_and_close(method)
+                    elif self.operation == "count":
+                        for actor, count in self.count_by_actors.items():
+                            packet = DataPacket(
+                                timestamp=datetime.utcnow().isoformat(),
+                                data={
+                                    "value": actor,
+                                    "count": count
+                                }
+                            )
+                            self.output_rabbitmq.publish(packet.to_json())
+                        self.output_rabbitmq.send_final()
+                        self.input_rabbitmq.send_ack_and_close(method)
                 return
             
             packet = DataPacket.from_json(packet_json)
@@ -86,7 +99,7 @@ class AggregatorNode:
 
                 current_invested = self.invested_per_country.get(country, 0)
                 self.invested_per_country[country] = current_invested + invested
-            else:
+            elif self.operation == "average":
                 # Calculo el promedio y actualizo el promedio para el sentimiento del que sea la película
                 sentiment = packet.data["feeling"]
                 average = float(packet.data["ratio"])
@@ -102,6 +115,12 @@ class AggregatorNode:
                     new_average = (self.average_negative[0] * self.average_negative[1] + average * count) / new_count
                     self.average_negative = (new_average, new_count)
                     print(f"[updated negative number - current negative average: {self.average_negative}")
+            elif self.operation == "count":
+                actor = packet.data["value"]
+                new_count_movies = packet.data["count"]
+                count_movies = self.count_by_actors.get(actor, 0)
+                self.count_by_actors[actor] = count_movies + new_count_movies
+              
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")

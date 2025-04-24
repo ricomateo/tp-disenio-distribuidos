@@ -36,6 +36,7 @@ SENTIMENT_POSITIVE = 'sentiment_positive_queue'
 SENTIMENT_NEGATIVE = 'sentiment_negative_queue'
 AGGREGATOR_CALCULATOR_RATIO_FEELINGS = 'aggregator_calculator_ratio_feelings'
 AGGREGATOR_CALCULATOR_BUDGET_COUNTRY = 'aggregator_calculator_budget_country' 
+AGGREGATOR_CALCULATOR_COUNT_ACTORS = 'aggregator_calculator_count_actors' 
 
 class ConfigGenerator:
     def __init__(self, config_params):
@@ -574,6 +575,17 @@ class ConfigGenerator:
             ],
             instances=1
             )
+        
+        self._generate_aggregator(
+            service_name=AGGREGATOR_CALCULATOR_COUNT_ACTORS,
+            environment=[
+                F'RABBITMQ_QUEUE={CALCULATOR_COUNT_ACTORS}',
+                f'RABBITMQ_CONSUMER_TAG={AGGREGATOR_CALCULATOR_COUNT_ACTORS}',
+                f'RABBITMQ_OUTPUT_QUEUE={AGGREGATOR_CALCULATOR_COUNT_ACTORS}',
+                'operation=count'
+            ],
+            instances=1
+            )
     
         
         
@@ -643,7 +655,7 @@ class ConfigGenerator:
             service_name=QUERY_4,
             dockerfile='deliver/Dockerfile',
             environment=[
-                F'RABBITMQ_QUEUE={CALCULATOR_COUNT_ACTORS}',
+                F'RABBITMQ_QUEUE={AGGREGATOR_CALCULATOR_COUNT_ACTORS}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_4}',
                 f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
                 f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
