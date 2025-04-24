@@ -2,7 +2,7 @@ import json
 import os
 from datetime import datetime
 import threading
-from common.packet import DataPacket, MoviePacket, QueryPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, QueryPacket, handle_final_packet, is_final_packet
 from common.middleware import Middleware
 
 
@@ -150,7 +150,6 @@ class DeliverNode:
                     response_str = self._generate_response()
                     query_packet = QueryPacket(
                         timestamp=datetime.utcnow().isoformat(),
-                        data={"source": self.input_queue},
                         response=response_str
                     )
                     self.output_rabbitmq.publish(query_packet.to_json())

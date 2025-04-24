@@ -490,6 +490,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE_2={ROUTER_ACTORS}',
                 f'RABBITMQ_CONSUMER_TAG={JOIN_ACTORS}',
                 f'RABBITMQ_OUTPUT_QUEUE={JOIN_ACTORS}',
+                f'KEEP_COLUMNS=title,id,cast',
                 f'JOIN_BY=id',
                 f'RABBITMQ_FINAL_QUEUE={JOIN_ACTORS}{FINAL}'
             ],
@@ -505,6 +506,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE_2={ROUTER_RATINGS_CALCULATED}',
                 f'RABBITMQ_CONSUMER_TAG={JOIN_RATINGS}',
                 f'RABBITMQ_OUTPUT_QUEUE={JOIN_RATINGS}',
+                f'KEEP_COLUMNS=title,id,average',
                 f'JOIN_BY=id',
                 f'RABBITMQ_FINAL_QUEUE={JOIN_RATINGS}{FINAL}'
             ],

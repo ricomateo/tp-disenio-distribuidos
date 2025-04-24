@@ -5,7 +5,7 @@ import uuid
 from datetime import datetime
 from common.middleware import Middleware
 import time
-from common.packet import MoviePacket, DataPacket, handle_final_packet, is_final_packet, is_eof_packet
+from common.packet import DataPacket, handle_final_packet, is_final_packet, is_eof_packet
 import os
 
 MOVIES_FILE = "movies_metadata.csv"
@@ -96,35 +96,22 @@ class ParserNode:
                 return
             
             print(f" [~] Conservando solo columnas: {keep_columns}")
-            df = df[[col for col in keep_columns if col in df.columns]]
+            columns_to_keep = list(set(df.columns).intersection(keep_columns))
+            df = df[columns_to_keep]
 
             print(" [x] Received and processed CSV:")
             
             # Apply column renaming for each pair if the old column exists
-            for old_name, new_name in self.rename_columns:
-                if old_name in df.columns:
-                    print(f" [~] Renaming '{old_name}' to '{new_name}'")
-                    df = df.rename(columns={old_name: new_name})
+            rename_dict = {old: new for old, new in self.rename_columns if old in df.columns}
+            if rename_dict:
+                df.rename(columns=rename_dict, inplace=True)
 
             # Create a MoviePacket for each movie
             for _, row in df.iterrows():
-                if filename == MOVIES_FILE:
-                    movie = row.to_dict()
-                    packet = DataPacket(
-                        timestamp=datetime.utcnow().isoformat(),
-                        data=movie
-                    )
-                elif filename == RATINGS_FILE:
-                    rating = row.to_dict()
-                    packet = DataPacket(
-                        timestamp=datetime.utcnow().isoformat(),
-                        data=rating
-                    )
-                elif filename == CREDITS_FILE:
-                    packet = DataPacket(
+                packet = DataPacket(
                         timestamp=datetime.utcnow().isoformat(),
                         data=row.to_dict()
-                    )
+                )
                 routing_key = filename
                 self.output_rabbitmq.publish(packet.to_json(), routing_key)
 

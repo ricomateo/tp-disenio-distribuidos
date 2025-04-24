@@ -1,25 +1,17 @@
 # filter.py
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, handle_final_packet, is_final_packet
 import threading 
 from datetime import datetime
 import os
 import time
 
-def create_joined_packet(movie1, movie2, router):
-    # Combinar los diccionarios movie1 y movie2
-    combined_movie = {**movie1, **movie2}
-    
-    joined_packet = DataPacket(
-        timestamp=datetime.utcnow().isoformat(),
-        data=combined_movie
-    )
-    return joined_packet
+
 
 class JoinNode:
     def __init__(self):
-        self.router_buffer = {}  # <-- Buffer temporal para emparejar por router
+        self.router_buffer = {}  
         self.lock = threading.Lock()
         self.finished_event = threading.Event()
         self.node_id = os.getenv("NODE_ID", "")
@@ -32,7 +24,12 @@ class JoinNode:
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE", "default_final")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "")
         self.join_by = os.getenv("JOIN_BY", "id")
-       
+        
+        self.keep_columns = None
+        keep_columns = os.getenv("KEEP_COLUMNS", "")
+        if keep_columns:
+         self.keep_columns = [col.strip() for col in keep_columns.split(",") if col.strip()]
+         
         
         if self.output_exchange: 
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
@@ -99,7 +96,7 @@ class JoinNode:
                         movie1 = self.router_buffer[router][self.input_queue_1]
                         movie2 = self.router_buffer[router][self.input_queue_2]
 
-                        joined_packet = create_joined_packet(movie1, movie2, router)
+                        joined_packet = self.create_joined_packet(movie1, movie2)
 
                         self.output_rabbitmq.publish(joined_packet.to_json())
                         print(f" [✓] Joined and published router '{router}'")
@@ -115,6 +112,17 @@ class JoinNode:
                 ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
 
         return callback
+    
+    def create_joined_packet(self, movie1, movie2):
+        # Combinar los diccionarios movie1 y movie2
+        combined_movie = {**movie1, **movie2}
+        
+        joined_packet = DataPacket(
+            timestamp=datetime.utcnow().isoformat(),
+            data=combined_movie,
+            keep_columns=self.keep_columns,
+        )
+        return joined_packet
 
     def noop_callback(self, ch, method, properties, body):
         # Si ambas terminaron, ahora sí mando el final al siguiente nodo
