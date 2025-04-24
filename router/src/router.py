@@ -1,8 +1,8 @@
-# filter.py
 import json
 from common.middleware import Middleware
 from common.packet import DataPacket, MoviePacket, handle_final_packet, is_final_packet
 import os
+import signal
 
 class RouterNode:
     """
@@ -13,6 +13,8 @@ class RouterNode:
      - number_of_nodes: la cantidad de nodos suscriptos al exchange 'output_exchange'.
     """
     def __init__(self):
+        signal.signal(signal.SIGTERM, self._sigterm_handler)
+
         self.input_queue = os.getenv("RABBITMQ_QUEUE")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
@@ -88,3 +90,12 @@ class RouterNode:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
                 self.output_rabbitmq.close()
+
+    def _sigterm_handler(self, signum, _):
+        print(f"Received SIGTERM signal")
+        self.close()
+    
+    def close(self):
+        print(f"Closing queues")
+        self.input_rabbitmq.close()
+        self.output_rabbitmq.close()
