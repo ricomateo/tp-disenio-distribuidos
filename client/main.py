@@ -9,8 +9,8 @@ if __name__ == "__main__":
     client = Client(host, port, batch_size)
     try:
         client.send_movies_file("movies_metadata.csv")
+        client.send_ratings_file("ratings_small.csv")
         client.send_credits_file("credits.csv")
-        client.send_ratings_file("ratings_reduced.csv")
     except Exception as e:
         print(e)
 

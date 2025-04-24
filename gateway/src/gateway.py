@@ -16,8 +16,13 @@ class Gateway:
 
         self.protocol = Protocol(host, port)
         self.header_by_file = dict()
+        self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
         
-        self.rabbitmq = Middleware(queue=output_queue)
+        if self.output_exchange: 
+            self.rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
+        else:
+            self.rabbitmq = Middleware(queue=output_queue)
+            
         self.rabbitmq_receiver = Middleware(queue=input_queue)
     
     def start(self):
@@ -33,16 +38,14 @@ class Gateway:
                     msg_filename = msg["filename"]
                     msg_header = self.header_by_file[msg_filename]
                     msg["header"] = msg_header
-                    self.publish_file_batch(msg)
+                    self.publish_file_batch(msg, msg_filename)
 
                 elif msg["msg_type"] == EOF_MSG_TYPE:
                     print("[✓] Archivo CSV recibido correctamente.")
-                    self.rabbitmq.publish(msg)
+                    self.rabbitmq.send_final(msg_filename)
+                    #self.rabbitmq.publish(msg)
 
                 elif msg["msg_type"] == FIN_MSG_TYPE:
-                    self.rabbitmq_receiver.purge()
-                    self.rabbitmq.send_final()
-                    # TODO: agregar envio de resultados al cliente
                     self._recv_results()
 
         except ConnectionError:
@@ -53,14 +56,18 @@ class Gateway:
             if self.running:
                 self.close()
 
-    def publish_file_batch(self, batch: dict):
-        self.rabbitmq.publish(batch)
+    def publish_file_batch(self, batch: dict, msg_filename):
+        self.rabbitmq.publish(batch, msg_filename)
         number_of_lines = len(batch.get("rows"))
         print(f"[✓] Publicadas {number_of_lines} líneas.")
 
     def _recv_results(self):
         def callback_reader(ch, method, properties, body):
             try:
+                if self.running == False:
+                    self.input_rabbitmq.close_graceful(method)
+                    return
+            
                 packet_json = body.decode()
         
                 if is_final_packet(json.loads(packet_json).get("header")):
@@ -102,6 +109,7 @@ class Gateway:
     def close(self):
         print(f"Closing sockets")
         self.running = False
+        self.rabbitmq.cancel_consumer()
         self.protocol.close()
         self.rabbitmq.close()
         self.rabbitmq_receiver.close()

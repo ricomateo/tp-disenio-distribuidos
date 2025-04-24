@@ -10,10 +10,11 @@ from common.middleware import Middleware
 class DeliverNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
-
+        self.running = True
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "deliver_queue")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "query_queue")
         self.keep_columns, self.filters = self._parse_environment()
+        self.consumer_tag = os.getenv('RABBITMQ_CONSUMER_TAG', 'default_consumer')
 
         # Uso keys unicas para cada filtro basadas en la columna a sortear y la direccion del ordenamiento
         self.collected_movies = {"default": []} if not self.filters else {
@@ -21,12 +22,12 @@ class DeliverNode:
         }
 
         self.finished_event = threading.Event()
-        self.input_rabbitmq = Middleware(queue=self.input_queue)
+        self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
         self.output_rabbitmq = Middleware(queue=self.output_queue)
         
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE", "final_deliver")
         self.query_number = os.getenv("QUERY_NUMBER", "1")
-        self.final_rabbitmq = Middleware(queue=self.final_queue)
+        self.final_rabbitmq = Middleware(queue=self.final_queue, consumer_tag=self.consumer_tag)
 
 
     def _parse_environment(self):
@@ -149,6 +150,9 @@ class DeliverNode:
 
     def callback(self, ch, method, properties, body):
         try:
+            if self.running == False:
+                self.input_rabbitmq.close_graceful(method)
+                return
             # Recibo el paquete, si es el último mando los resultados
             body_decoded = body.decode()
             
@@ -213,6 +217,13 @@ class DeliverNode:
      
         self.finished_event.wait()
         
+        if self.running == False:
+            
+                if self.final_rabbitmq.check_no_consumers():
+                    self.output_rabbitmq.send_final()
+                self.final_rabbitmq.close_graceful(method)
+                return
+        
         if is_final_packet(header):
             print(f" [!] Final rabbitmq stop consuming.")
             if handle_final_packet(method, self.final_rabbitmq):
@@ -228,7 +239,7 @@ class DeliverNode:
     
     def close(self):
         print(f"Closing queues")
+        self.running = False
         self.finished_event.set()
-        self.input_rabbitmq.close()
-        self.output_rabbitmq.close()
-        self.final_rabbitmq.close()
+        self.final_rabbitmq.cancel_consumer()
+        self.input_rabbitmq.cancel_consumer()

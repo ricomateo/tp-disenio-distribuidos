@@ -1,4 +1,5 @@
 import signal
+import time
 from src.protocol import Protocol
 from common.protocol_constants import QUERY_RESULT_MSG_TYPE, FIN_MSG_TYPE
 
@@ -11,6 +12,7 @@ class Client:
         signal.signal(signal.SIGTERM, self._sigterm_handler)
         self.protocol = Protocol(host, port)
         self.batch_size = batch_size
+        self.start_time = time.time()
 
     def send_movies_file(self, filepath: str):
         filename = MOVIES_FILENAME
@@ -68,6 +70,9 @@ class Client:
                 break
 
     def close(self):
+        end_time = time.time()  
+        elapsed_time = end_time - self.start_time  
+        print(f"Total time from connection to disconnection: {elapsed_time:.2f} seconds")
         self.protocol.close()
 
     def _sigterm_handler(self, signum, _):

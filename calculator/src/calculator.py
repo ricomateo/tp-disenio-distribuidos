@@ -10,7 +10,7 @@ from src.calculation import Calculation
 class CalculatorNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
-
+        self.running = True
         self.node_id = os.getenv("NODE_ID")
         self.finished_event = threading.Event()
         base_queue = os.getenv('RABBITMQ_QUEUE', 'movie_queue_1')
@@ -48,6 +48,9 @@ class CalculatorNode:
 
     def callback(self, ch, method, properties, body):
         try:
+            if self.running == False:
+                self.input_rabbitmq.close_graceful(method)
+                return
             # Recibo el paquete y en caso de ser el ultimo, mando los datos y el final packet
             packet_json = body.decode()
             
@@ -67,8 +70,6 @@ class CalculatorNode:
                     self.output_rabbitmq.publish(data_packet.to_json())  
                          
                 if handle_final_packet(method, self.input_rabbitmq):
-                    if self.final_rabbitmq == None:
-                     self.output_rabbitmq.send_final()
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
@@ -121,6 +122,12 @@ class CalculatorNode:
         header = json.loads(packet_json).get("header")
         self.finished_event.wait()
         
+        if self.running == False:
+                if self.final_rabbitmq.check_no_consumers():
+                    self.output_rabbitmq.send_final()
+                self.final_rabbitmq.close_graceful(method)
+                return
+        
         if is_final_packet(header):
             print(f" [!] Final rabbitmq stop consuming.")
             if handle_final_packet(method, self.final_rabbitmq):
@@ -137,10 +144,7 @@ class CalculatorNode:
 
     def close(self):
         print(f"Closing queues")
+        self.running = False
         self.finished_event.set()
-        self.input_rabbitmq.close()
-        self.output_rabbitmq.close()
-        for thread in self.threads:
-            thread.join()
-        if self.final_rabbitmq is not None:
-            self.final_rabbitmq.close()
+        self.input_rabbitmq.cancel_consumer()
+        self.final_rabbitmq.cancel_consumer()

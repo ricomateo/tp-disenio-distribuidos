@@ -14,7 +14,7 @@ class RouterNode:
     """
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
-
+        self.running = True
         self.input_queue = os.getenv("RABBITMQ_QUEUE")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
@@ -48,6 +48,13 @@ class RouterNode:
         segun routing_key = msg.id % number_of_nodes.
         """
         try:
+            if self.running == False:
+                if self.input_rabbitmq.check_no_consumers():
+                    for i in range(self.number_of_nodes):
+                        self.output_rabbitmq.send_final(routing_key=str(i))
+                self.input_rabbitmq.close_graceful(method)
+                return
+            
             packet_json = body.decode()
             
             if is_final_packet(json.loads(packet_json).get("header")):
@@ -97,5 +104,5 @@ class RouterNode:
     
     def close(self):
         print(f"Closing queues")
-        self.input_rabbitmq.close()
-        self.output_rabbitmq.close()
+        self.running = False
+        self.input_rabbitmq.cancel_consumer()

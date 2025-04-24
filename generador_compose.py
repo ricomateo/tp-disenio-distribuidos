@@ -18,7 +18,9 @@ def initialize_config(config_file="config.ini"):
     config_params = {}
     
     container_keys = [
-        "PARSER",
+        "PARSER_MOVIES",
+        "PARSER_CREDITS",
+        "PARSER_RATINGS",
         "FILTER_2000_ARGENTINA",
         "FILTER_2000s_SPAIN",
         "FILTER_UNIQUE_COUNTRY",

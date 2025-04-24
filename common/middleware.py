@@ -21,6 +21,7 @@ class Middleware:
         self.routing_key = routing_key
         self.connection = None
         self.channel = None
+        self.is_consumed = False
 
     def connect(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host=self.host,
@@ -33,12 +34,12 @@ class Middleware:
             
             if self.queue:
                 print(f"[Middleware] Declarando cola '{self.queue}' (durable=False)...")
-                self.channel.queue_declare(queue=self.queue, durable=False)
+                self.channel.queue_declare(queue=self.queue, durable=True)
                 
                 print(f"[Middleware] Enlazando cola '{self.queue}' al exchange '{self.exchange}'...")
                 self.channel.queue_bind(queue=self.queue, exchange=self.exchange, routing_key=self.routing_key)
         else:
-            self.channel.queue_declare(queue=self.queue, durable=False)
+            self.channel.queue_declare(queue=self.queue, durable=True)
 
     def publish(self, message, routing_key=''):
         if not self.channel:
@@ -51,6 +52,7 @@ class Middleware:
                 body=body,
                 properties=pika.BasicProperties(delivery_mode=2)
             )
+            print(f" [x] Sent message to exchange {self.exchange} with routing key {routing_key}")
             #print(f" [x] Sent message to exchange {self.exchange}")
         else:
             self.channel.basic_publish(
@@ -61,11 +63,25 @@ class Middleware:
             )
             print(f" [x] Sent message to queue {self.queue}")
 
+    
     def consume(self, callback):
         if not self.channel:
             self.connect()
+        
         self.channel.basic_qos(prefetch_count=1)
-        self.channel.basic_consume(queue=self.queue, on_message_callback=callback, auto_ack=False, consumer_tag=self.consumer_tag)
+        
+        # Envolver el callback para actualizar is_consumed
+        def wrapped_callback(ch, method, properties, body):
+            self.is_consumed = True  # Activar is_consumed al recibir el primer mensaje
+            callback(ch, method, properties, body)  # Llamar al callback original
+
+        # Iniciar el consumo
+        self.channel.basic_consume(
+            queue=self.queue,
+            on_message_callback=wrapped_callback,
+            auto_ack=False,
+            consumer_tag=self.consumer_tag
+        )
         print(f" [*] Waiting for messages in {self.queue}")
         self.channel.start_consuming()
         
@@ -107,7 +123,19 @@ class Middleware:
             self.connect()
         self.channel.queue_purge(queue=self.queue)
         print(f"[Middleware] Cola '{self.queue}' purgada.")
+        
+    def close_graceful(self, method):
+        if self.channel:
+            self.channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+        if self.connection and not self.connection.is_closed:
+            self.connection.add_callback_threadsafe(self.channel.stop_consuming)
 
     def close(self):
         if self.connection and not self.connection.is_closed:
             self.connection.close()
+            
+    def cancel_consumer(self):
+        if not self.is_consumed and self.channel and self.channel.is_open:
+            self.connection.add_callback_threadsafe(lambda: self.channel.basic_cancel(self.consumer_tag))
+            print("Consumidor cancelado exitosamente")
+        

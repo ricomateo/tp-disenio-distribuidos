@@ -9,6 +9,7 @@ import signal
 class FilterNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
+        self.running = True
         self.filters = {}
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
@@ -37,6 +38,12 @@ class FilterNode:
 
     def callback(self, ch, method, properties, body):
         try:
+            if self.running == False:
+                if self.input_rabbitmq.check_no_consumers():
+                    self.output_rabbitmq.send_final()
+                self.input_rabbitmq.close_graceful(method)
+                return
+
             packet_json = body.decode()
             if is_final_packet(json.loads(packet_json).get("header")):
                 if handle_final_packet(method, self.input_rabbitmq):
@@ -90,9 +97,12 @@ class FilterNode:
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
+        
         self.close()
     
     def close(self):
         print(f"Closing queues")
-        self.input_rabbitmq.close()
-        self.output_rabbitmq.close()
+        self.running = False
+        self.input_rabbitmq.cancel_consumer()
+        #self.input_rabbitmq.close()
+        #self.output_rabbitmq.close()

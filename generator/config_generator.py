@@ -10,6 +10,9 @@ RATINGS_FILE = "ratings.csv"
 CREDITS_FILE = "credits.csv"
 DELIVER = 'deliver'
 PARSER = 'parser'
+PARSER_MOVIES = 'parser_movies'
+PARSER_RATINGS = 'parser_ratings'
+PARSER_CREDITS = 'parser_credits'
 GATEWAY = 'gateway'
 FILTER_2000_ARGENTINA = 'filter_2000_argentina'
 FILTER_2000S_SPAIN = 'filter_2000s_spain'
@@ -105,8 +108,8 @@ class ConfigGenerator:
                 'GATEWAY_HOST=0.0.0.0',
                 'GATEWAY_PORT=9999',
                 'BATCH_SIZE=100',
-                f'RABBITMQ_OUTPUT_QUEUE={GATEWAY}',
-                f'RABBITMQ_INPUT_QUEUE={DELIVER}'
+                f'RABBITMQ_INPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_OUTPUT_EXCHANGE={GATEWAY}'
             ],
             networks=['app-network'],
             depends_on={
@@ -116,17 +119,53 @@ class ConfigGenerator:
         )
         
     def _generate_parser(self):
-        instances = self.config_params.get(PARSER, 1)
+        instances = self.config_params.get(PARSER_MOVIES)
         self.generate_service(
-            service_name=PARSER,
+            service_name=f"{PARSER_MOVIES}",
             dockerfile='parser/Dockerfile',
             environment=[
-            f'RABBITMQ_QUEUE={GATEWAY}', 
+            f'RABBITMQ_QUEUE={GATEWAY}',
+            f'RABBITMQ_EXCHANGE={GATEWAY}', 
             f'RABBITMQ_OUTPUT_EXCHANGE={PARSER}',
-            'KEEP_MOVIES_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title',
-            'KEEP_RATINGS_COLUMNS=userId,movieId,rating',
-            'KEEP_CREDITS_COLUMNS=cast,id',
+            'KEEP_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title',
+            f'FILENAME={MOVIES_FILE}'
+            ],
+            networks=['app-network'],
+            depends_on={
+                'rabbitmq': {'condition': 'service_healthy'}
+            },
+            instances=instances
+        )
+        
+        instances = self.config_params.get(PARSER_RATINGS)
+        self.generate_service(
+            service_name=f"{PARSER_RATINGS}",
+            dockerfile='parser/Dockerfile',
+            environment=[
+            f'RABBITMQ_QUEUE={GATEWAY}',
+            f'RABBITMQ_EXCHANGE={GATEWAY}', 
+            f'RABBITMQ_OUTPUT_EXCHANGE={PARSER}',
+            'KEEP_COLUMNS=userId,movieId,rating',    
+            f'FILENAME={RATINGS_FILE}',
             'REPLACE=movieId:id'
+            ],
+            networks=['app-network'],
+            depends_on={
+                'rabbitmq': {'condition': 'service_healthy'}
+            },
+            instances=instances
+        )
+        
+        instances = self.config_params.get(PARSER_CREDITS)
+        self.generate_service(
+            service_name=f"{PARSER_CREDITS}",
+            dockerfile='parser/Dockerfile',
+            environment=[
+            f'RABBITMQ_QUEUE={GATEWAY}',
+            f'RABBITMQ_EXCHANGE={GATEWAY}', 
+            f'RABBITMQ_OUTPUT_EXCHANGE={PARSER}',
+            'KEEP_COLUMNS=cast,id',
+            f'FILENAME={CREDITS_FILE}'
             ],
             networks=['app-network'],
             depends_on={

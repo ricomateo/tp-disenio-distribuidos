@@ -8,11 +8,11 @@ import signal
 class AggregatorNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
-
+        self.running = True
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_averages_queue")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "deliver_queue")
-
-        self.input_rabbitmq = Middleware(queue=self.input_queue)
+        self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
+        self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
         self.output_rabbitmq = Middleware(queue=self.output_queue)
 
         self.operation = os.getenv("operation", "total_invested")
@@ -23,6 +23,11 @@ class AggregatorNode:
 
     def callback(self, ch, method, properties, body):
         try:
+            if self.running == False:
+                if self.input_rabbitmq.check_no_consumers():
+                    self.output_rabbitmq.send_final()
+                self.input_rabbitmq.close_graceful(method)
+                return
             # Recibir paquete y manejar el cierre en caso de ser un final packet
             packet_json = body.decode()
             
@@ -127,5 +132,6 @@ class AggregatorNode:
 
     def close(self):
         print(f"Closing queues")
-        self.input_rabbitmq.close()
-        self.output_rabbitmq.close()
+        self.running = False
+        self.input_rabbitmq.cancel_consumer()
+    

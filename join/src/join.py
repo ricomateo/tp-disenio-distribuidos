@@ -21,7 +21,7 @@ class JoinNode:
         signal.signal(signal.SIGTERM, self._sigterm_handler)
         # Buffer temporal para emparejar por router
         self.router_buffer = {}  
-
+        self.running = True
         self.lock = threading.Lock()
         self.finished_event = threading.Event()
         self.node_id = os.getenv("NODE_ID", "")
@@ -70,6 +70,11 @@ class JoinNode:
     def make_callback(self, source_name):
         def callback(ch, method, properties, body):
             try:
+                if self.running == False:
+                    rabbitmq_instance = self.input_rabbitmq_map[source_name]
+                    rabbitmq_instance.close_graceful(method)
+                    return
+            
                 packet_json = body.decode()
                 header = json.loads(packet_json).get("header")
 
@@ -125,6 +130,12 @@ class JoinNode:
      
         self.finished_event.wait()
         
+        if self.running == False:
+                if self.final_rabbitmq.check_no_consumers():
+                    self.output_rabbitmq.send_final()
+                self.final_rabbitmq.close_graceful(method)
+                return
+        
         if is_final_packet(header):
             print(f" [!] Final rabbitmq stop consuming.")
             if handle_final_packet(method, self.final_rabbitmq):
@@ -173,16 +184,9 @@ class JoinNode:
     
     def close(self):
         print(f"Closing queues")
-        self.finished_event.set() # Para cerrar el thread t3
-        self.input_rabbitmq_1.send_final() # Para cerrar el thread t1
-        self.input_rabbitmq_2.send_final() # Para cerrar el thread t2
-        self.final_rabbitmq.send_final() 
-        # Joineo los threads
-        for thread in self.threads:
-            thread.join()
-
-        # Cierro las queues
-        self.input_rabbitmq_1.close()
-        self.input_rabbitmq_2.close()
-        self.output_rabbitmq.close()
-        self.final_rabbitmq.close()
+        self.running = False
+        self.finished_event.set()
+        self.input_rabbitmq_1.cancel_consumer()
+        self.input_rabbitmq_2.cancel_consumer()
+        self.final_rabbitmq.cancel_consumer()
+        #self.final_rabbitmq.close()

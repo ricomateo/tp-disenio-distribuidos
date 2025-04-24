@@ -9,6 +9,7 @@ from transformers import pipeline
 class SentimentNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
+        self.running = True
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_queue")
         self.output_positive_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_POSITIVE", "default_output")
         self.output_negative_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_NEGATIVE", "default_output")
@@ -37,6 +38,12 @@ class SentimentNode:
 
     def callback(self, ch, method, properties, body):
         try:
+            if self.running == False:
+                if self.input_rabbitmq.check_no_consumers():
+                    self.output_positive_rabbitmq.send_final()
+                    self.output_negative_rabbitmq.send_final()
+                self.input_rabbitmq.close_graceful(method)
+                return
             # Recibir paquete y mandar final packet si se recibe uno
             packet_json = body.decode()
             
@@ -103,6 +110,5 @@ class SentimentNode:
 
     def close(self):
         print(f"Closing queues")
-        self.input_rabbitmq.close()
-        self.output_positive_rabbitmq.close()
-        self.output_negative_rabbitmq.close()
+        self.running = False
+        self.input_rabbitmq.cancel_consumer()
