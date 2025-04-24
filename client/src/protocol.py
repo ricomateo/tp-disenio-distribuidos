@@ -51,8 +51,11 @@ class Protocol:
         self.server_socket.sendall(message_type.to_bytes(1, "big"))
 
     def close(self):
-        self.server_socket.shutdown(socket.SHUT_RDWR)
-        self.server_socket.close()
+        try:
+            self.server_socket.shutdown(socket.SHUT_RDWR)
+            self.server_socket.close()
+        except OSError:
+            print(f"Socket already closed")
 
     def recv_message(self):
         msg_type = int.from_bytes(self._recv_exact(1), "big")
