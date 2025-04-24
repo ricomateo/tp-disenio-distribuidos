@@ -157,7 +157,6 @@ class DeliverNode:
                     response_str = self._generate_response()
                     query_packet = QueryPacket(
                         timestamp=datetime.utcnow().isoformat(),
-                        data={"source": self.input_queue},
                         response=response_str
                     )
                     self.output_rabbitmq.publish(query_packet.to_json())
