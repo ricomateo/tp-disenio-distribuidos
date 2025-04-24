@@ -25,6 +25,7 @@ class CalculatorNode:
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE")
         self.calculator = Calculation(self.operation, self.input_queue)
         self.final_rabbitmq = None
+        self.threads = []
         
         if self.final_queue:
             self.final_rabbitmq = Middleware(
@@ -98,6 +99,7 @@ class CalculatorNode:
             if int(self.node_id) == 0:
                 self.final_rabbitmq.send_final()  
             t3.start()
+            self.threads.append(t3)
             
         try:
             self.input_rabbitmq.consume(self.callback)
@@ -106,7 +108,8 @@ class CalculatorNode:
         finally:
             if self.final_rabbitmq:
                 self.finished_event.set()
-                t3.join()
+                for thread in self.threads:
+                    thread.join()
             if self.input_rabbitmq:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
@@ -137,5 +140,7 @@ class CalculatorNode:
         print(f"Closing queues")
         self.input_rabbitmq.close()
         self.output_rabbitmq.close()
+        for thread in self.threads:
+            thread.join()
         if self.final_rabbitmq is not None:
             self.final_rabbitmq.close()
