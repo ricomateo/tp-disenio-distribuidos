@@ -21,7 +21,7 @@ data/credits.csv:
 		echo "Error: data/credits.rar not found"; \
 		exit 1; \
 	fi
-	@unrar x -y data/credits.rar client/ || (echo "Error: Failed to unrar data/credits.rar."; exit 1)
+	@unrar x -y data/credits.rar data/ || (echo "Error: Failed to unrar data/credits.rar."; exit 1)
 
 validate-replicas:
 	@if [ $(REPLICAS) -lt 1 ]; then \
