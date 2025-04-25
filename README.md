@@ -5,8 +5,7 @@
 1. [Vista física](#vista-física)
 2. [Vista de desarrollo](#vista-de-desarrollo)
 3. [Vista de procesos](#vista-de-procesos)
-4. [Vista lógica](#vista-lógica)
-5. [Tareas a realizar](#tareas-a-realizar)
+4. [Tareas a realizar](#tareas-a-realizar)
 
 ## Vista física
 
@@ -22,39 +21,12 @@ El **diagrama de despliegue** muestra cómo están distribuidos los diferentes c
 
 ![image despliegue](img/vista_fisica/diagrama_despliegue.png)
 
-#### Flujo General
+### Flujo General
 
-1. **Cliente**:
-
-   - Se conecta mediante un **socket TCP** al sistema.
-   - Envía archivos `.csv` con información de **libros**, **ratings** y **actores**.
-
-2. **Gateway**:
-
-   - Es el punto de entrada al sistema.
-   - **Un gateway por cada cliente** en un escenario **multicliente**.
-   - Recibe los archivos, los interpreta y los envía al Middleware.
-
-3. **Middleware (RabbitMQ)**:
-
-   - Funciona como **broker de mensajes**.
-   - Encargado de distribuir los datos a los distintos componentes del sistema de forma asincrónica.
-
-4. **Componentes del Sistema** (todos son **servicios desacoplados**):
-   - **Parser (1 × N nodos)**: Procesa y transforma los datos de los `.csv`.
-   - **Router (6 × N nodos)**: Enruta datos según claves específicas.
-   - **Filter (5 × N nodos)**: Aplica filtros para mantener solo los paquetes que nos interesan.
-   - **Calculator (3 × N nodos)**: Realiza cálculos como sumatorias o conteos.
-   - **Joiner (2 × N nodos)**: Une datasets por claves compartidas (ej. ID película).
-   - **Sensor (1 × N nodos)**: Analiza sentimientos u otras características del texto utilizando herramientas de procesamiento de lenguaje natural.
-   - **Averager (2 nodos)**: Calcula promedios de los sentimientos.
-   - **Aggregator / Deliver (5 nodos)**: Junta los resultados finales para entregárselos al cliente.
-
-#### Escalabilidad
-
-- Los componentes con multiplicadores de **N** son **escalables horizontalmente**.
-- **`N` representa la cantidad máxima de instancias que el sistema puede levantar** para cada tipo de servicio, según la carga o necesidad.
-- Permite paralelizar el procesamiento y mejorar el rendimiento en contextos de alta concurrencia.
+1. El cliente se conecta al gateway mediante un socket TCP, le envía los archivos y espera por las respuestas.
+2. El gateway recibe los archivos del cliente, los envía a una queue y espera por las respuestas para luego enviárselas al cliente.
+3. Los parsers leen de la queue del gateway, parsean y distribuyen los registros de los archivos, disparando el pipeline de procesamiento.
+4. Una vez procesadas las consultas, los nodos deliver envian los resultados al gateway, quien luego se los envia al cliente.
 
 ### Diagrama de robustez
 
@@ -64,21 +36,83 @@ En este diagrama indicamos que hay más de una instancia de una entidad utilizan
 
 ![image robustez](img/vista_fisica/diagrama_robustez.png)
 
-#### Componentes Funcionales
+### Componentes Funcionales
 
-**Escalables (\*)**:
+#### Gateway
 
-- **Parser**: Parsea los CSV en datos procesables para los otros nodos.
-- **Filter**: Filtra datos por condiciones descartando las que no cumplen.
-- **Router**: Direcciona el flujo de datos según distintas claves.
-- **Calculator**: Realiza sumatorias de valores, conteos de elementos entre otras cosas.
-- **Joiner**: Relaciona diferentes fuentes de datos con una clave común (ID película, etc.).
-- **Sensor**: Aplica análisis de sentimientos sobre texto.
+El gateway es el nodo encargado de:
+1. Aceptar conexiones entrantes (TCP) de clientes.
+2. Recibir los archivos que envía el cliente.
+3. Enviar batches de los archivos a  a partir de la cual luego se distribuyen entre los distintos nodos.
+4. Consumir las respuestas de las consultas a partir de una queue y enviárselas al cliente mediante la conexión TCP.
 
-**No-Escalables**:
+**Nota:** Los archivos son enviados a colas distintas (una cola por archivo).
 
-- **Averager**: Aplica promedios a todo un flujo de información. No escala ya que para hacer un promedio tenes que crear una columna de conteo para despues juntar todos los promedios parciales, entonces preferimos que se haga el promedio total directo separando el promedio positivo del negativo en 2 nodos.
-- **Aggregator**: Selecciona y ordena los datos finales ademas de agrupar resultados parciales y componer una respuesta completa si es necesario.
+#### Parser (escalable - 3 x N nodos)
+
+El parser es el nodo encargado de:
+1. Leer los batches de registros que envía el cliente.
+2. Transformar/parsear dichos batches a un formato más sencillo de procesar.
+3. Disponibilizar estos datos parseados para que los nodos puedan consumirlos.
+
+El parser es agnóstico de cuáles y cuántos nodos consumen sus mensajes, simplemente los envía a un exchange de RabbitMQ con un `routing_key` que determina a qué archivo pertenece el batch.
+
+Además de enviar los datos parseados, también envía mensajes para comunicar que no hay mas batches de un archivo en particular, y para comunicar que el cliente terminó de enviar todos los archivos.
+
+#### Filter (escalable - 5 x N nodos)
+
+El filter es el nodo encargado de filtrar aquellos registros que no forman parte de la respuesta a la query.
+Puede leer registros de a uno a la vez como también de a batches, los cuales filtra según una condición que se puede definir mediante la configuración.
+
+#### Router (escalable - 6 x N nodos)
+
+El router se encarga de redireccionar registros de forma tal que los mismos puedan ser procesados de forma más eficiente.
+Básicamente:
+1. Consume registros de una queue.
+2. Redirecciona cada registro a una queue específica según algun valor (en general un ID). Para determinar a qué queue corresponde el registro, se implementa una especie de sharding: el ID de la queue se determina realizando la cuenta `id_registro % cantidad_queues`. Esto nos garantiza que los registros con el mismo ID siempre van a la misma queue.
+
+Esto nos permite realizar operaciones como el join distribuido entre dos tablas (lo cual no sería posible sin el router), o paralelizar cálculos como sumatorias o promedios de una columna dada, para un grupo de registros en particular (por lo general agrupado por ID).
+
+Es importante destacar que el router debe conocer de antemano la cantidad de nodos que van a consumir sus mensajes (el cual es igual a la cantidad de queues).
+
+#### Calculator (escalable - 3 x N nodos)
+
+El calculator lee registros de una input queue, realiza una operacion sobre los registros (como sumatorias, promedios, etc), y envía el resultado a una output queue. Durante el procesamiento, el calculator va acumulando los resultados parciales del cálculo, y los entrega una vez que recibe el mensaje de finalización de archivo.
+
+Para comunicar la finalización del cálculo distribuido a los siguientes nodos, se utiliza el mecanismo detallado en [Mecanismo de finalización](#mecanismo-de-finalización)
+
+#### Joiner (escalable - 2 x N nodos)
+
+El joiner se encarga de recibir registros de dos queues distintas, y juntar aquellos pares de registros que coincidan en alguna columna determinada.
+
+En general los joiners trabajan con datos shardeados y consumen registros de dos queues (por ejemplo, una queue de películas y otra de actores).
+Los joiners van consumiendo los registros de cada queue, y una vez que se terminan los registros (lo cual se comunica mediante un mensaje en cada queue), procede a juntarlos. Luego, los resultados finales de distintos joiners van a una misma queue.
+
+Para comunicar la finalización del join distribuido a los siguientes nodos, se utiliza el mecanismo detallado en [Mecanismo de finalización](#mecanismo-de-finalización)
+
+#### Sentiment Analyzer (escalable)
+
+Este es el nodo encargado de leer películas de una input queue, analizar el sentimiento del `overview`, y redireccionar el resultado a una queue según el sentimiento de la película. Internamente utiliza los transformers de Hugging Face.
+
+Al haber múltiples instancias de este nodo, todos consumen de la misma input queue, lo cual nos ahorra tener que sincronizar la finalización.
+
+#### Aggregator (3 nodos)
+
+El aggregator se encarga de consumir los resultados parciales de una consulta y agregarlos para obtener el resultado final.
+Hay una única instancia de aggregator por cada consulta. Cada instancia va consumiendo los resultados parciales y los agrega (y envía el resultado final a la siguiente queue) una vez que recibe el mensaje de finalización.
+
+#### Deliver (5 nodos)
+
+El nodo deliver se encarga de leer los resultados del pipeline de procesamiento de cada consulta, ordenarlos, y obtener la respuesta final de la consulta, por ejemplo filtrando algunos registros o eliminando columnas que no forman parte de la respuesta.
+
+Hay una instancia por cada consulta, las cuales deben sincronizarse entre sí para enviar el mensaje de finalización a la queue de respuestas, para que luego el gateway le comunique al cliente el fin de la consulta, según se indica en [Mecanismo de finalización](#mecanismo-de-finalización).
+
+##### Mecanismo de finalización
+
+Varios de los nodos (joiner, calculator) realizan un procesamiento distribuido y envían los resultados parciales a una queue.
+Esto requiere cierta sincronización, para que el mensaje de finalización se envíe únicamente cuando todos los nodos entregaron su resultado (y no antes, ya que en ese caso se perdería parte del resultado). Para esto, los nodos comparten una queue de "finalización", de la cual se van desuscribiendo a medida que entregan los resultados parciales. Antes de desuscribirse, cada nodo se fija si es el último nodo suscrito a la queue, y en ese caso envía el mensaje de finalización. Para implementar este mecanismo, cada nodo levanta un thread exclusivo para esto.
+
+**Nota:** en este caso la queue de finalización se usa como un contador de consumidores restantes (más que como queue).
 
 ### Conclusiones
 
@@ -167,12 +201,6 @@ Para implementar el sharding de registros en los enrutadores de películas y de 
 
 ![image actividades consulta 5](img/vista_procesos/actividad_5.png)
 
-## Vista lógica
-
-### Diagrama de clases
-
-### Diagrama de estados
-
 ## Tareas a realizar
 
 A continuación se detallan las tareas a realizar para la implementación del sistema:
@@ -186,9 +214,10 @@ A continuación se detallan las tareas a realizar para la implementación del si
     3. Filter
     4. Calculator
     5. Joiner
-    6. Sensor
-    7. Averager
-    8. Aggregator 
+    6. Sentiment analyzer
+    7. Aggregator 
+    8. Deliver
 5. Implementar el middleware para la comunicación de grupos utilizando RabbitMQ.
 6. Dockerizar cada uno de los componentes del sistema.
-7. Implementar Docker compose con los componentes del sistema. 
+7. Implementar Docker compose con los componentes del sistema.
+8. Implementar generador de Docker compose parametrizable. 
