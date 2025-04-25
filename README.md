@@ -251,7 +251,7 @@ En la sección `[FILES]` del archivo `config.ini` se puede especificar el path a
 [FILES]
 MOVIES_FILE = data/movies_metadata.csv
 RATINGS_FILE = data/ratings_reduced.csv
-CREDITS_FILE = data/credits.csv
+CREDITS_FILE = data/credits.csv # Se genera al descomprimir data/credits.rar
 ```
 
 ### Detener el sistema
