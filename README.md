@@ -18,7 +18,7 @@ A partir de un análisis conjunto de todas las consultas (queries) que debíamos
 
 ### Diagrama de despliegue
 
-El **diagrama de despliegue** muestra cómo están distribuidos los diferentes componentes del sistema sobre nodos físicos o virtuales. El sistema está diseñado con una arquitectura **modular, distribuida y escalable**, basada en **microservicios**.
+El **diagrama de despliegue** muestra cómo están distribuidos los diferentes componentes del sistema sobre nodos físicos o virtuales. El sistema está diseñado con una arquitectura modular, distribuida y escalable, basada en microservicios.
 
 ![image despliegue](img/vista_fisica/diagrama_despliegue.png)
 
@@ -31,7 +31,7 @@ El **diagrama de despliegue** muestra cómo están distribuidos los diferentes c
 
 ### Diagrama de robustez
 
-Este diagrama muestra el **comportamiento interno del sistema**, dividido por responsabilidades y relaciones entre componentes.
+Este diagrama muestra el comportamiento interno del sistema, dividido por responsabilidades y relaciones entre componentes.
 
 En este diagrama indicamos que hay más de una instancia de una entidad utilizando un asterisco (\*).
 
@@ -115,10 +115,15 @@ Esto requiere cierta sincronización, para que el mensaje de finalización se en
 
 **Nota:** en este caso la queue de finalización se usa como un contador de consumidores restantes (más que como queue).
 
-### Conclusiones
+En cuanto a la escalabilidad del ordenamiento de datos, en la primera query no se realiza ningún tipo de ordenamiento, ya que simplemente devolvemos todo lo que se filtra, lo cual no representa un desafío computacional. En la segunda query, el ordenamiento se realiza por país, pero dado que el número de países en el mundo es acotado (alrededor de 195) y no se espera un crecimiento exponencial, tampoco presenta un problema de escalabilidad.
 
-- La arquitectura está pensada para ser **altamente escalable y distribuida**.
-- Se pueden levantar múltiples instancias de cada componente según la necesidad (**N escalable**).
+En la tercera query, el nodo join va emitiendo los datos agrupados a medida que los empareja, por lo que el nodo deliver no recibe todos los datos de una sola vez. Solo necesita mantener el valor más alto y el más bajo, lo cual implica una complejidad baja.
+
+Para la quinta query, el nodo aggregator devuelve únicamente dos valores: el promedio de sentimientos positivos y el promedio de negativos. A menos que la cantidad de tipos de sentimientos creciera de manera desproporcionada —lo cual es improbable—, este proceso no representa un cuello de botella en términos de ordenamiento ni de procesamiento.
+
+El único caso que sí podría presentar problemas de escalabilidad es la cuarta query, donde se calcula un top 10 de actores. Si bien con los datasets actuales esto no genera inconvenientes, en un escenario con una gran cantidad de actores el proceso de ordenamiento podría transformarse en un cuello de botella, ya que actualmente no contamos con un nodo dedicado al ordenamiento.
+
+Por razones de tiempo y contexto, decidimos no implementar un nodo específico de ordenamiento. Sin embargo, su desarrollo podría considerarse a futuro para mejorar la escalabilidad del sistema frente a datasets de mayor tamaño.
 
 ## Vista de desarrollo
 
@@ -143,9 +148,9 @@ En todos los casos la data se va transformando hasta llegar al resultado de la q
 
 #### Tipos de Packet
 
-- **`FinalPacket`**: Indica el **fin de flujo de información** dentro de una cola del sistema. Es especialmente útil en sistemas que utilizan colas y procesamiento asincrónico para saber cuándo detener el consumo.
+- **`FinalPacket`**: Indica el fin de flujo de información dentro de una cola del sistema. Es especialmente útil en sistemas que utilizan colas y procesamiento asincrónico para saber cuándo detener el consumo.
 - **`DataPacket`**: Clase intermedia que agrupa múltiples tipos de datos, funcionando como contenedor lógico de información que ya fue interpretada.
-- **`QueryPacket`**: Se utiliza para enviar la **respuesta final** hacia el cliente, conteniendo los resultados solicitados.
+- **`QueryPacket`**: Se utiliza para enviar la respuesta final hacia el cliente, conteniendo los resultados solicitados.
 
 #### Flujo de datos
 
