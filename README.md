@@ -234,6 +234,8 @@ A continuación se indican los diferentes comandos para ejecutar el sistema
 
 ### Levantar el sistema
 
+Este comando genera el archivo `docker-compose-gen.yaml` leyendo el archivo de configuración `config.ini` y levanta el sistema con dichos parámetros.
+
 ```bash
 make up
 ```
