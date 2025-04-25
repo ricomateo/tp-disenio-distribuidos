@@ -21,6 +21,7 @@ class RouterNode:
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.number_of_nodes = int(os.getenv("NUMBER_OF_NODES"))
         self.routing_key = os.getenv("RABBITMQ_ROUTING_KEY", "")
+        self.router_by = os.getenv("ROUTER_BY", "id")
         if self.input_queue is None:
             raise Exception("Missing RABBITMQ_QUEUE env var")
         if self.output_exchange is None:
@@ -67,7 +68,7 @@ class RouterNode:
             # Deserializo la peli para obtener el id
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
-            movie_id = int(movie.get("id"))
+            movie_id = int(movie.get(self.router_by))
 
             # Calculo la routing key como el modulo entre el id y la cantidad de nodos
             routing_key = str(movie_id % self.number_of_nodes)

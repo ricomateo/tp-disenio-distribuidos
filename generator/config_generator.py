@@ -378,6 +378,7 @@ class ConfigGenerator:
                 F'RABBITMQ_QUEUE={FILTER_UNIQUE_COUNTRY}',
                 f'RABBITMQ_CONSUMER_TAG={ROUTER_COUNTRY}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_COUNTRY}',
+                f'ROUTER_BY=id',
                 f'NUMBER_OF_NODES={self.config_params[CALCULATOR_BUDGET_COUNTRY]}'
             ],
             instances=instances
@@ -391,6 +392,7 @@ class ConfigGenerator:
                 f'RABBITMQ_CONSUMER_TAG={ROUTER_2000_ARGENTINA}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_2000_ARGENTINA}',
                 f'RABBITMQ_EXCHANGE={FILTER_2000_ARGENTINA}',
+                f'ROUTER_BY=id',
                 f'NUMBER_OF_NODES={self.config_params[JOIN_MOVIES]}'
             ],
             instances=instances
@@ -405,6 +407,7 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_ACTORS}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={CREDITS_FILE}',
+                f'ROUTER_BY=id',
                 f'NUMBER_OF_NODES={self.config_params[JOIN_MOVIES]}'
             ],
             instances=instances
@@ -419,6 +422,7 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_RATINGS}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={RATINGS_FILE}',
+                f'ROUTER_BY=id',
                 f'NUMBER_OF_NODES={self.config_params[CALCULATOR_AVERAGE_RATINGS]}'
             ],
             instances=instances
@@ -431,6 +435,7 @@ class ConfigGenerator:
                 f'RABBITMQ_QUEUE={CALCULATOR_AVERAGE_RATINGS}',
                 f'RABBITMQ_CONSUMER_TAG={ROUTER_RATINGS_CALCULATED}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_RATINGS_CALCULATED}',
+                f'ROUTER_BY=id',
                 f'NUMBER_OF_NODES={self.config_params[JOIN_MOVIES]}'
             ],
             instances=instances
@@ -443,6 +448,7 @@ class ConfigGenerator:
                 f'RABBITMQ_QUEUE={JOIN_ACTORS}',
                 f'RABBITMQ_CONSUMER_TAG={ROUTER_ACTORS_2000_ARGENTINA}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_ACTORS_2000_ARGENTINA}',
+                f'ROUTER_BY=id',
                 f'NUMBER_OF_NODES={self.config_params[CALCULATOR_COUNT_ACTORS]}'
             ],
             instances=instances

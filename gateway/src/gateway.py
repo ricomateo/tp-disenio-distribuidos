@@ -43,6 +43,8 @@ class Gateway:
                 elif msg["msg_type"] == EOF_MSG_TYPE:
                     print("[✓] Archivo CSV recibido correctamente.")
                     self.rabbitmq.send_final(msg_filename)
+                    if msg_filename in self.header_by_file:
+                        del self.header_by_file[msg_filename]
                     #self.rabbitmq.publish(msg)
 
                 elif msg["msg_type"] == FIN_MSG_TYPE:
@@ -58,8 +60,8 @@ class Gateway:
 
     def publish_file_batch(self, batch: dict, msg_filename):
         self.rabbitmq.publish(batch, msg_filename)
-        number_of_lines = len(batch.get("rows"))
-        print(f"[✓] Publicadas {number_of_lines} líneas.")
+        #number_of_lines = len(batch.get("rows"))
+        #print(f"[✓] Publicadas {number_of_lines} líneas.")
 
     def _recv_results(self):
         def callback_reader(ch, method, properties, body):
