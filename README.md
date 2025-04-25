@@ -6,6 +6,7 @@
 2. [Vista de desarrollo](#vista-de-desarrollo)
 3. [Vista de procesos](#vista-de-procesos)
 4. [Tareas a realizar](#tareas-a-realizar)
+5. [Instrucciones de ejecución](#instrucciones-de-ejecución)
 
 ## Vista física
 
@@ -216,3 +217,30 @@ A continuación se detallan las tareas a realizar para la implementación del si
 6. Dockerizar cada uno de los componentes del sistema.
 7. Implementar Docker compose con los componentes del sistema.
 8. Implementar generador de Docker compose parametrizable. 
+
+## Instrucciones de ejecución
+
+A continuación se indican los diferentes comandos para ejecutar el sistema
+
+> [!NOTE]
+> 
+> Los siguientes comandos utilizan internamente `docker-compose` (no `docker compose`).
+> En caso de que alguno de los comandos no funcione, reemplazar en el Makefile cada ocurrencia de `docker-compose` por `docker compose` con el siguiente comando:
+>
+> ```bash
+> sed -i 's/docker-compose /docker compose /g' Makefile
+> ```
+
+
+### Levantar el sistema
+
+```bash
+make up
+```
+
+### Detener el sistema
+
+```bash
+make down
+```
+
