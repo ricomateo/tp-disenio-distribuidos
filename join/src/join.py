@@ -19,7 +19,6 @@ class JoinNode:
 
         self.lock = threading.Lock()
         self.finished_event = threading.Event()
-        self.finished_queue = threading.Event()
         self.node_id = os.getenv("NODE_ID", "")
         self.input_queue_1 = f"{os.getenv('RABBITMQ_QUEUE_1', 'movie_queue_1')}_{self.node_id}"
         self.input_queue_2 = f"{os.getenv('RABBITMQ_QUEUE_2', 'movie_queue_2')}_{self.node_id}"
@@ -60,6 +59,8 @@ class JoinNode:
             publish_to_exchange=False,
             routing_key=self.node_id
         )
+        
+        self.input_rabbitmq_2.connect()
         
         self.final_rabbitmq = Middleware(
             queue=self.final_queue,
@@ -112,7 +113,7 @@ class JoinNode:
                    
                     
                 elif source_name == self.input_queue_2:
-                   self.finished_queue.wait()
+       
                    with self.lock:     
                         #print(f" [📥] Processing message from queue_2 (source: {source_name})")
                          # For queue_2, check for match without storing
@@ -129,12 +130,8 @@ class JoinNode:
                                 
                                 # Remove matched queue_1 entry
                                 #print(f" [🗑️] Removing router_buffer entry for router '{router}'")
-                                #del self.router_buffer[router]
                                 #print(f" [✅] Router '{router}' entry removed. Current buffer size: {len(self.router_buffer)}")
                            
-                        else:
-                            #self.router_buffer_2[router] = movie
-                            print(f" [❌] Router '{router}' not found in router_buffer. Current buffer size: {len(self.router_buffer)}")
 
                 ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -177,21 +174,20 @@ class JoinNode:
     def start_node(self):
         try:
             t1 = threading.Thread(target=self.input_rabbitmq_1.consume, args=(self.make_callback(self.input_queue_1),))
-            t2 = threading.Thread(target=self.input_rabbitmq_2.consume, args=(self.make_callback(self.input_queue_2),))
             if int(self.node_id) == 0:
              self.final_rabbitmq.send_final()
             t3 = threading.Thread(target=self.final_rabbitmq.consume, args=(self.noop_callback,))
             
             t1.start()
-            t2.start()
             t3.start()
 
             self.threads.append(t1)
-            self.threads.append(t2)
             self.threads.append(t3)
 
             t1.join()
-            self.finished_queue.set()
+            t2 = threading.Thread(target=self.input_rabbitmq_2.consume, args=(self.make_callback(self.input_queue_2),))
+            self.threads.append(t2)
+            t2.start()
             t2.join()
             self.finished_event.set()
             t3.join()
