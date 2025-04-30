@@ -19,6 +19,7 @@ class JoinNode:
 
         self.lock = threading.Lock()
         self.finished_event = threading.Event()
+        self.finished_queue = threading.Event()
         self.node_id = os.getenv("NODE_ID", "")
         self.input_queue_1 = f"{os.getenv('RABBITMQ_QUEUE_1', 'movie_queue_1')}_{self.node_id}"
         self.input_queue_2 = f"{os.getenv('RABBITMQ_QUEUE_2', 'movie_queue_2')}_{self.node_id}"
@@ -97,24 +98,43 @@ class JoinNode:
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
 
-                with self.lock:
-                    if router not in self.router_buffer:
-                        self.router_buffer[router] = {}
-
-                    self.router_buffer[router][source_name] = movie
-
-                    if (
-                        self.input_queue_1 in self.router_buffer[router] and 
-                        self.input_queue_2 in self.router_buffer[router]
-                    ):
-                        movie1 = self.router_buffer[router][self.input_queue_1]
-                        movie2 = self.router_buffer[router][self.input_queue_2]
-
-                        joined_packet = self.create_joined_packet(movie1, movie2)
-
-                        self.output_rabbitmq.publish(joined_packet.to_json())
-                        print(f" [✓] Joined and published router '{router}'")
-                        del self.router_buffer[router]
+                
+                    #print(f" [🔒] Acquired lock for processing message from '{source_name}' with router '{router}'")
+                    
+                if source_name == self.input_queue_1:
+                  with self.lock:
+                        #print(f" [📥] Processing message from queue_1 (source: {source_name})")
+                        # Store queue_1 messages in router_buffer
+                        if router not in self.router_buffer:
+                            print(f" [🆕] Creating new router_buffer entry for router '{router}'")
+                            self.router_buffer[router] = movie
+                            print(f" [✅] Router '{router}' entry saved. Current buffer size: {len(self.router_buffer)}")
+                   
+                    
+                elif source_name == self.input_queue_2:
+                   self.finished_queue.wait()
+                   with self.lock:     
+                        #print(f" [📥] Processing message from queue_2 (source: {source_name})")
+                         # For queue_2, check for match without storing
+                        if router in self.router_buffer:
+                                print(f" [🔍] Router '{router}' found in router_buffer")
+                                movie1 = self.router_buffer[router]
+                                #print(f" [🔗] Preparing to join movie1 (from queue_1) and movie2 (from queue_2) for router '{router}'")
+                                
+                                joined_packet = self.create_joined_packet(movie1, movie)
+                                #print(f" [📦] Created joined packet for router '{router}'")
+                                
+                                self.output_rabbitmq.publish(joined_packet.to_json())
+                                print(f" [✓] Joined and published router '{router}' to output_rabbitmq")
+                                
+                                # Remove matched queue_1 entry
+                                #print(f" [🗑️] Removing router_buffer entry for router '{router}'")
+                                #del self.router_buffer[router]
+                                #print(f" [✅] Router '{router}' entry removed. Current buffer size: {len(self.router_buffer)}")
+                           
+                        else:
+                            #self.router_buffer_2[router] = movie
+                            print(f" [❌] Router '{router}' not found in router_buffer. Current buffer size: {len(self.router_buffer)}")
 
                 ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -171,6 +191,7 @@ class JoinNode:
             self.threads.append(t3)
 
             t1.join()
+            self.finished_queue.set()
             t2.join()
             self.finished_event.set()
             t3.join()
