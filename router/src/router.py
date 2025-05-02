@@ -78,10 +78,15 @@ class RouterNode:
                 
                 # Si todos los id estan en la lista de acks, mando final
                 if len(packet["acks"]) == self.cluster_size:
-                    print(f"[Router - FIN] - Lista de acks completa, mando final packet")
-                    for i in range(self.number_of_nodes):
-                        self.output_rabbitmq.send_final(routing_key=str(i))
+                    client_id = packet["client_id"]
+                    acks = packet["acks"]
+                    print(f"[Router - FIN] - Lista de acks completa ({acks}), mando final packet (client_id = {client_id})")
+                    for i in range(self.cluster_size):
+                        self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i))
                 
+                # Si faltan ids en la lista de ids, reencolo el mensaje (despues de haberme agregado)
+                else:
+                    self.input_rabbitmq.publish(packet)
                 # Mando ack del final packet
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
