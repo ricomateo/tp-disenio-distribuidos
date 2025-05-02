@@ -1,0 +1,33 @@
+title: Roma | genres: Drama, Foreign
+title: Conversations with Mother | genres: Comedy, Drama, Foreign
+title: The Education of Fairies | genres: Drama
+title: The Good Life | genres: Drama
+
+Top 5 by total (descending):
+value: United States of America | total: 22155146239
+value: France | total: 991260276
+value: India | total: 926783413
+value: Russia | total: 520314667
+value: United Kingdom | total: 408964433
+
+Top 10 by count (descending):
+value: Ricardo Darín | count: 10
+value: Diego Peretti | count: 6
+value: Alejandro Awada | count: 5
+value: Dolores Fonzi | count: 4
+value: Esteban Bigliardi | count: 4
+value: Federico Luppi | count: 4
+value: Oscar Martínez | count: 4
+value: Rafael Spregelburd | count: 4
+value: Valeria Bertuccelli | count: 4
+value: Adrián Suar | count: 3
+
+Top 1 by average (descending):
+id: 125619 | title: The forbidden education | average: 4.0
+
+Top 1 by average (ascending):
+id: 128598 | title: Left for Dead | average: 1.0
+
+Top 2 by ratio (descending):
+feeling: NEG | ratio: 3.41 | count: 390
+feeling: POS | ratio: 3.17 | count: 683
