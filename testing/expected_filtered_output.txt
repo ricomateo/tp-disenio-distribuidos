@@ -1,0 +1,52 @@
+query 1
+La Cienaga,['Comedy', 'Drama']
+Burnt Money,['Crime']
+The City of No Limits,['Thriller', 'Drama']
+Lost Embrace,['Drama', 'Foreign']
+Nicotina,['Drama', 'Action', 'Comedy', 'Thriller']
+Lugares comunes,['Drama']
+Whisky,['Comedy', 'Drama', 'Foreign']
+The Holy Girl,['Drama', 'Foreign']
+The Aura,['Crime', 'Drama', 'Thriller']
+Bombón: The Dog,['Drama']
+Rolling Family,['Drama', 'Comedy']
+The Method,['Drama', 'Thriller']
+Every Stewardess Goes to Heaven,['Drama', 'Romance', 'Foreign']
+The Secret in Their Eyes,['Crime', 'Drama', 'Mystery', 'Romance']
+Tetro,['Drama', 'Mystery']
+Liverpool,['Drama']
+The Headless Woman,['Drama', 'Mystery', 'Thriller']
+The Last Summer of La Boyita,['Drama']
+The Appeared,['Horror', 'Thriller', 'Mystery']
+The Fish Child,['Drama', 'Thriller', 'Romance', 'Foreign']
+Roma,['Drama', 'Foreign']
+Conversations with Mother,['Comedy', 'Drama', 'Foreign']
+The Education of Fairies,['Drama']
+The Good Life,['Drama']
+
+query 2
+United States of America,120143786644
+France,2301577838
+United Kingdom,1611604610
+India,1184682797
+Japan,832585873
+
+query 3
+max, The forbidden education,4.0
+min, Left for Dead,1.0
+
+query 4
+Ricardo Darín,18
+Alejandro Awada,7
+Diego Peretti,7
+Inés Efron,7
+Valeria Bertuccelli,7
+Arturo Goetz,6
+Leonardo Sbaraglia,6
+Pablo Echarri,6
+Rafael Spregelburd,6
+Rodrigo de la Serna,6
+
+query 5
+POSITIVE	2.93
+NEGATIVE	2.86
