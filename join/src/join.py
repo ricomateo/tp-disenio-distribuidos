@@ -1,5 +1,6 @@
 import json
 from common.middleware import Middleware
+from common.leader_queue import LeaderQueue
 from common.packet import DataPacket, handle_final_packet, is_final_packet
 import threading 
 from datetime import datetime
@@ -18,8 +19,9 @@ class JoinNode:
         self.running = True
 
         self.lock = threading.Lock()
-        self.finished_event = threading.Event()
+     
         self.node_id = os.getenv("NODE_ID", "")
+        self.cluster_size = int(os.getenv("CLUSTER_SIZE", ""))
         self.input_queue_1 = f"{os.getenv('RABBITMQ_QUEUE_1', 'movie_queue_1')}_{self.node_id}"
         self.input_queue_2 = f"{os.getenv('RABBITMQ_QUEUE_2', 'movie_queue_2')}_{self.node_id}"
         self.exchange_1 = os.getenv("RABBITMQ_EXCHANGE_1", "")
@@ -66,6 +68,10 @@ class JoinNode:
             publish_to_exchange=False
         )
         
+        self.leader_queue = None
+        if int(self.node_id) == 0:
+            self.leader_queue = LeaderQueue(self.final_queue, self.output_queue, self.consumer_tag, self.cluster_size)
+        
         self.input_rabbitmq_map = {
             self.input_queue_1: self.input_rabbitmq_1,
             self.input_queue_2: self.input_rabbitmq_2,
@@ -85,6 +91,8 @@ class JoinNode:
                 if is_final_packet(header):
                     print(f" [*] Cola '{source_name}' terminó.")
                     rabbitmq_instance = self.input_rabbitmq_map[source_name]
+                    if source_name == self.input_queue_2:
+                        self.final_rabbitmq.send_final()
                     if handle_final_packet(method, rabbitmq_instance):
                         rabbitmq_instance.send_ack_and_close(method)
                     return
@@ -152,47 +160,25 @@ class JoinNode:
             keep_columns=self.keep_columns,
         )
         return joined_packet
-
-    def noop_callback(self, ch, method, properties, body):
-        # Si ambas terminaron, ahora sí mando el final al siguiente nodo
-        packet_json = body.decode()
-        header = json.loads(packet_json).get("header")
-     
-        self.finished_event.wait()
-        
-        if is_final_packet(header):
-            print(f" [!] Final rabbitmq stop consuming.")
-            if handle_final_packet(method, self.final_rabbitmq):
-                self.output_rabbitmq.send_final()
-                self.final_rabbitmq.send_ack_and_close(method)
-                print(f" [!] Final rabbitmq send final.")
-            return
-        ch.basic_ack(delivery_tag=method.delivery_tag)
                 
     def start_node(self):
         try:
             t1 = threading.Thread(target=self.input_rabbitmq_1.consume, args=(self.make_callback(self.input_queue_1),))
-            if int(self.node_id) == 0:
-             self.final_rabbitmq.send_final()
-            t3 = threading.Thread(target=self.final_rabbitmq.consume, args=(self.noop_callback,))
-            
             t1.start()
-            t3.start()
-
             self.threads.append(t1)
-            self.threads.append(t3)
-
             t1.join()
+            
             t2 = threading.Thread(target=self.input_rabbitmq_2.consume, args=(self.make_callback(self.input_queue_2),))
             self.threads.append(t2)
             t2.start()
             t2.join()
-            self.finished_event.set()
-            t3.join()
                     
         except Exception as e:
             print(f" [!] Error in join node: {e}")
         finally:
+            if self.leader_queue:
+                self.leader_queue.join()
+                self.leader_queue.close()
             if self.input_rabbitmq_1:
                 self.input_rabbitmq_1.close()
             if self.input_rabbitmq_2:
@@ -209,8 +195,8 @@ class JoinNode:
     def close(self):
         print(f"Closing queues")
         self.running = False
-        self.finished_event.set()
+        if self.leader_queue:
+            self.leader_queue.close()
         self.input_rabbitmq_1.cancel_consumer()
         self.input_rabbitmq_2.cancel_consumer()
-        self.final_rabbitmq.cancel_consumer()
-        #self.final_rabbitmq.close()
+        self.final_rabbitmq.close()

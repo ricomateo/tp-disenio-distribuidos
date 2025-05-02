@@ -1,5 +1,6 @@
 import json
 import threading
+from common.leader_queue import LeaderQueue
 from common.middleware import Middleware
 from common.packet import DataPacket, handle_final_packet, is_final_packet
 from datetime import datetime
@@ -12,9 +13,9 @@ class CalculatorNode:
         signal.signal(signal.SIGTERM, self._sigterm_handler)
         self.running = True
         self.node_id = os.getenv("NODE_ID")
+        self.cluster_size = int(os.getenv("CLUSTER_SIZE", ""))
         self.finished_event = threading.Event()
         base_queue = os.getenv('RABBITMQ_QUEUE', 'movie_queue_1')
-        
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.consumer_tag = f"{os.getenv('RABBITMQ_CONSUMER_TAG', 'default_consumer')}_{self.node_id}"
         self.exchange = os.getenv("RABBITMQ_EXCHANGE")
@@ -26,6 +27,10 @@ class CalculatorNode:
         self.calculator = Calculation(self.operation, self.input_queue)
         self.final_rabbitmq = None
         self.threads = []
+        
+        self.leader_queue = None
+        if int(self.node_id) == 0:
+            self.leader_queue = LeaderQueue(self.final_queue, self.output_queue, self.consumer_tag, self.cluster_size)
         
         if self.final_queue:
             self.final_rabbitmq = Middleware(
@@ -68,7 +73,7 @@ class CalculatorNode:
                         }
                     )
                     self.output_rabbitmq.publish(data_packet.to_json())  
-                         
+                self.final_rabbitmq.send_final()    
                 if handle_final_packet(method, self.input_rabbitmq):
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
@@ -94,44 +99,20 @@ class CalculatorNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
 
     def start_node(self):
-        print(f" [~] Starting sentiment analyzer")
-        if self.final_rabbitmq:
-            t3 = threading.Thread(target=self.final_rabbitmq.consume, args=(self.noop_callback,))
-            if int(self.node_id) == 0:
-                self.final_rabbitmq.send_final()  
-            t3.start()
-            self.threads.append(t3)
-            
+        print(f" [~] Starting sentiment analyzer")    
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
             print(f" [!] Error in filter node: {e}")
         finally:
-            if self.final_rabbitmq:
-                self.finished_event.set()
-                for thread in self.threads:
-                    thread.join()
+            if self.leader_queue:
+                self.leader_queue.join()
+                self.leader_queue.close()
             if self.input_rabbitmq:
                 self.input_rabbitmq.close()
             if self.output_rabbitmq:
                 self.output_rabbitmq.close()
    
-    def noop_callback(self, ch, method, properties, body):
-        # Si ambas terminaron, ahora sí mando el final al siguiente nodo
-        packet_json = body.decode()
-        header = json.loads(packet_json).get("header")
-        self.finished_event.wait()
-        
-        if is_final_packet(header):
-            print(f" [!] Final rabbitmq stop consuming.")
-            if handle_final_packet(method, self.final_rabbitmq):
-                self.output_rabbitmq.send_final()
-                self.final_rabbitmq.send_ack_and_close(method)
-                print(f" [!] Final rabbitmq send final.")
-            return
-        ch.basic_ack(delivery_tag=method.delivery_tag)
-                
-
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.close()
@@ -139,7 +120,9 @@ class CalculatorNode:
     def close(self):
         print(f"Closing queues")
         self.running = False
-        self.finished_event.set()
+        if self.leader_queue:
+            self.leader_queue.close()
         self.final_rabbitmq.cancel_consumer()
         self.input_rabbitmq.cancel_consumer()
+        
        
