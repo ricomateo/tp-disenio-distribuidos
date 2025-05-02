@@ -43,6 +43,7 @@ def initialize_config(config_file="config.ini"):
     for key in container_keys:
         config_params[key.lower()] = int(config["NODES"].get(key, 0))
 
+    config_params["clients"] = int(config["CLIENTS"].get("CLIENTS", 1))
     
     return config_params
 

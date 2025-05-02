@@ -49,7 +49,7 @@ class ConfigGenerator:
 
     def generate(self) -> dict:
         self._generate_rabbitmq()
-        self._generate_client()
+        self._generate_clients()
         self._generate_input_gateway()
         self._generate_parser()
         self._generate_filters()
@@ -81,9 +81,9 @@ class ConfigGenerator:
         }
         self.compose.setdefault('services', {})['rabbitmq'] = config
 
-    def _generate_client(self):
+    def _generate_clients(self):
         """Generate client service."""
-        #instances = self.config_params.get('CLIENT', 1)
+        instances = self.config_params.get("clients", 1)
         self.generate_service(
             service_name='client',
             dockerfile='client/Dockerfile',
@@ -95,7 +95,7 @@ class ConfigGenerator:
             depends_on={
                 'gateway': {'condition': 'service_started'}
             },
-            instances=1,
+            instances=instances,
             deploy={'restart_policy': {'condition': 'none'}}
         )
 
