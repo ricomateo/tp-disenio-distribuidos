@@ -39,13 +39,14 @@ class DataPacket(Packet):
 
 # Definiendo FinalPacket
 @dataclass  
-class FinalPacket(Packet):  
+class FinalPacket:  
     type: str = FINAL
+    def __init__(self, client_id: int):
+        self.client_id = client_id
+        self.header = FINAL
 
     def to_json(self):
-        data = self.__dict__.copy()
-        data["header"] = FINAL
-        return orjson.dumps(data)
+        return orjson.dumps(self.__dict__)
 
     @classmethod
     def from_json(cls, data):
