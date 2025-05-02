@@ -11,7 +11,7 @@ from common.packet import DataPacket, handle_final_packet, is_final_packet
 class JoinNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
-        self.router_buffer = {}  # Buffer temporal para emparejar por router
+        self.router_buffer_by_client = {}  # Buffer temporal para emparejar por router
         self.running = True
         self.eof_main_by_client = {}  # EOF main por cliente
         self.storages_by_client = {}  # StorageHandler por cliente
@@ -65,10 +65,6 @@ class JoinNode:
         if int(self.node_id) == 0:
             self.leader_queue = LeaderQueue(self.final_queue, self.output_queue, self.consumer_tag, self.cluster_size)
         
-        self.input_rabbitmq_map = {
-            self.input_queue_1: self.input_rabbitmq_1,
-            self.input_queue_2: self.input_rabbitmq_2,
-        }
         
     def _get_storage_for_client(self, client_id):
         """Obtiene o crea un StorageHandler para un cliente."""
@@ -89,11 +85,12 @@ class JoinNode:
             
             packet_json = body.decode()
             header = json.loads(packet_json).get("header")
-
+            client_id = 1
+            
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_1}' terminó.")
                 with self.lock:
-                    self.eof_main_by_client[1] = True
+                    self.eof_main_by_client[client_id] = True
                 if handle_final_packet(method, self.input_rabbitmq_1):
                     self.input_rabbitmq_1.send_ack_and_close(method)
                 return
@@ -107,10 +104,13 @@ class JoinNode:
                 return
 
             with self.lock:
-                if router not in self.router_buffer:
-                    print(f" [🆕] Creating new router_buffer entry for router '{router}'")
-                    self.router_buffer[router] = movie
-                    print(f" [✅] Router '{router}' entry saved. Current buffer size: {len(self.router_buffer)}")
+                # Inicializar router_buffer para el cliente si no existe
+                if client_id not in self.router_buffer_by_client:
+                    self.router_buffer_by_client[client_id] = {}
+                if router not in self.router_buffer_by_client[client_id]:
+                    print(f" [🆕] Creating new router_buffer entry for router '{router}' para cliente '{client_id}'")
+                    self.router_buffer_by_client[client_id][router] = movie
+                    print(f" [✅] Router '{router}' entry saved para cliente '{client_id}'. Current buffer size: {len(self.router_buffer_by_client[client_id])}")
             
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -129,9 +129,10 @@ class JoinNode:
             
             packet_json = body.decode()
             header = json.loads(packet_json).get("header")
-
+            client_id = 1
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_2}' terminó.")
+                self.clean(client_id)
                 self.final_rabbitmq.send_final()
                 if handle_final_packet(method, self.input_rabbitmq_2):
                     self.input_rabbitmq_2.send_ack_and_close(method)
@@ -146,16 +147,16 @@ class JoinNode:
                 return
 
             # Obtener el StorageHandler para el cliente
-            storage = self._get_storage_for_client(1)
+            storage = self._get_storage_for_client(client_id)
             
-            if router in self.router_buffer:
+            if router in self.router_buffer_by_client.get(client_id, {}):
                 print(f" [🔍] Router '{router}' found in router_buffer")
                 with self.lock:
-                    movie1 = self.router_buffer[router]
-                    joined_packet = self.create_joined_packet(movie1, movie)
-                    self.output_rabbitmq.publish(joined_packet.to_json())
-                    print(f" [✓] Joined and published router '{router}' to output_rabbitmq")
-                    print(f" [✅] Router '{router}' entry remains in buffer. Current buffer size: {len(self.router_buffer)}")
+                    movie1 = self.router_buffer_by_client[client_id][router]
+                joined_packet = self.create_joined_packet(movie1, movie)
+                self.output_rabbitmq.publish(joined_packet.to_json())
+                print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
+                
             else:
                 # Si eof_main es False, guardar en el disco
                 if not self.eof_main_by_client.get(1, False):
@@ -174,21 +175,20 @@ class JoinNode:
                 # Realizar merge completo: combinar router_buffer con todos los datos del disco
                 for key, _ in stored_keys:
                     router_key = int(key)  # Convertir la clave a entero
-                    if router_key in self.router_buffer:
+                    if router_key in self.router_buffer_by_client.get(client_id, {}):
                         stored_movies = storage.retrieve(key, group_key=self.input_queue_2)
                         if stored_movies:
                             # Asegurarse de que stored_movies sea una lista
                             if not isinstance(stored_movies, list):
                                 stored_movies = [stored_movies]
                             print(f" [🔍] Procesando router '{router_key}' con {len(stored_movies)} entradas en disco")
-                            movie1 = self.router_buffer[router_key]
+                            movie1 = self.router_buffer_by_client[client_id][router_key]
                             for movie2 in stored_movies:
                                 joined_packet = self.create_joined_packet(movie1, movie2)
                                 self.output_rabbitmq.publish(joined_packet.to_json())
                                 print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
                     
                 # Limpiar el disco después del merge
-                print(f" [🧹] Limpiando disco para group_key '{self.input_queue_2}'")
                 storage.remove_keys(group_key=self.input_queue_2)
                 print(f" [✅] Disco limpio")
                
@@ -231,6 +231,21 @@ class JoinNode:
         print(f"Received SIGTERM signal")
         self.close()
     
+    def clean(self, client_id):
+        # Limpiar disco del cliente
+        if client_id in self.storages_by_client:
+            self.storages_by_client[client_id].remove_keys(group_key=self.input_queue_2)
+            del self.storages_by_client[client_id]
+            
+        # Limpiar router_buffer del cliente
+        if client_id in self.router_buffer_by_client:
+            del self.router_buffer_by_client[client_id]
+      
+        # Limpiar eof_main del cliente
+        if client_id in self.eof_main_by_client:
+            del self.eof_main_by_client[client_id]
+        print(f" [✅] Disco limpio y memoria limpia para '{client_id}'") 
+    
     def close(self):
         print(f"Closing queues")
         self.running = False
@@ -245,3 +260,4 @@ class JoinNode:
             print(f" [🧹] Limpiando almacenamiento para cliente '{client_id}'")
             storage.remove_keys()
         self.storages_by_client.clear()
+        self.router_buffer_by_client.clear()
