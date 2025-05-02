@@ -65,8 +65,8 @@ class ParserNode:
             try:
                 # TODO: ver si hay que cambiar esto
                 if self.running == False:
-                    if self.input_rabbitmq.check_no_consumers():
-                        self.output_rabbitmq.send_final(routing_key=self.filename)
+                    # if self.input_rabbitmq.check_no_consumers():
+                    #     self.output_rabbitmq.send_final(routing_key=self.filename)
                     self.input_rabbitmq.close_graceful(method)
                     return
                 # Parseo el mensaje
@@ -104,7 +104,7 @@ class ParserNode:
                     return
                 
                 rows = packet['rows']
-
+                client_id = packet['client_id']
 
                 # Creo el string CSV
                 csv_text = header + "\n" + "\n".join(rows)
@@ -123,12 +123,11 @@ class ParserNode:
 
                 for _, row in df.iterrows():
                     packet = DataPacket(
+                            client_id=client_id,
                             timestamp=datetime.utcnow().isoformat(),
                             data=row.to_dict()
                     )
                     self.output_rabbitmq.publish(packet.to_json(), self.filename)
-
-
                     
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 print(f" [x] Message {method.delivery_tag} acknowledged")
