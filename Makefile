@@ -9,6 +9,7 @@ COMPOSE_TEST = -f docker-compose-test.yaml
 COMPOSE_GENERATED = -f docker-compose-gen.yaml
 PYTHON = python3
 GENERATOR_SCRIPT = generador_compose.py
+COMPARE_SCRIPT = testing/compare_results.py
 
 all: build up
 
@@ -85,3 +86,11 @@ clean:
 client:
 	@echo "Running client..."
 	docker-compose $(COMPOSE_NORMAL) run --rm client
+
+compare-original:
+	@echo "Comparing with the output of the kaggle version..."
+	$(PYTHON) ./$(COMPARE_SCRIPT) testing/expected_output.txt
+
+compare-filtered:
+	@echo "Comparing with the output of the filtered version..."
+	$(PYTHON) ./$(COMPARE_SCRIPT) testing/expected_filtered_output.txt
