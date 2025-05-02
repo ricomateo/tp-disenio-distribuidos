@@ -3,17 +3,11 @@ from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_T
 
 
 class Protocol:
-    def __init__(self, host: str, port: int):
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.socket.bind((host, port))
-        self.socket.listen(5)
-        self.client_socket = None
+    def __init__(self, client_socket: socket.socket):
+        """Inicializa el protocolo con un socket de cliente existente."""
+        self.client_socket = client_socket
 
     def recv_message(self):
-        if self.client_socket is None:
-            client_socket, addr = self.socket.accept()
-            self.client_socket = client_socket
-        
         msg_type = int.from_bytes(self._recv_exact(1), "big")
         print(f"RECEIVED MSG_TYPE = {msg_type}")
         if msg_type == HEADER_MSG_TYPE:
@@ -70,8 +64,6 @@ class Protocol:
         return data
 
     def close(self):
-        self.socket.shutdown(socket.SHUT_RDWR)
-        self.socket.close()
         if self.client_socket is not None:
             self.client_socket.shutdown(socket.SHUT_RDWR)
             self.client_socket.close()

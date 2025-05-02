@@ -22,6 +22,8 @@ class Middleware:
         self.connection = None
         self.channel = None
         self.is_consumed = False
+        if not self.channel:
+            self.connect()
 
     def connect(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host=self.host,
@@ -108,6 +110,7 @@ class Middleware:
             self.close()
             return False
         return True
+
     
     def send_ack_and_close(self, method):
         self.channel.basic_ack(delivery_tag=method.delivery_tag)

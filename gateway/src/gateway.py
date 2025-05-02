@@ -1,117 +1,56 @@
-import os
-import json
+
 import signal
-from src.protocol import Protocol
-from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE, FIN_MSG_TYPE
-from common.middleware import Middleware
-from common.packet import handle_final_packet, is_final_packet
+import socket
+from src.client_connection import ClientConnection
 
 
 class Gateway:
     def __init__(self, host: str, port: int):
+        """Inicializa el gateway para escuchar conexiones de clientes."""
         signal.signal(signal.SIGTERM, self._sigterm_handler)
+        self.host = host
+        self.port = port
         self.running = True
-        output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "csv_queue")
-        input_queue = os.getenv("RABBITMQ_INPUT_QUEUE", "query_queue")
+        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.server.bind((self.host, self.port))
+        self.server.listen(5)
+        self.processes = []
+        self.client_counter = 0  # Contador para asignar IDs a los clientes
+      
 
-        self.protocol = Protocol(host, port)
-        self.header_by_file = dict()
-        self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
-        
-        if self.output_exchange: 
-            self.rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
-        else:
-            self.rabbitmq = Middleware(queue=output_queue)
-            
-        self.rabbitmq_receiver = Middleware(queue=input_queue)
-    
     def start(self):
+        """Inicia el servidor y acepta conexiones de clientes."""
+        print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
         try:
             while self.running:
-                msg = self.protocol.recv_message()
-                if msg["msg_type"] == HEADER_MSG_TYPE:
-                    filename = msg["filename"]
-                    header = msg["header"]
-                    self.header_by_file[filename] = header
-
-                elif msg["msg_type"] == BATCH_MSG_TYPE:
-                    msg_filename = msg["filename"]
-                    msg_header = self.header_by_file[msg_filename]
-                    msg["header"] = msg_header
-                    self.publish_file_batch(msg, msg_filename)
-
-                elif msg["msg_type"] == EOF_MSG_TYPE:
-                    print("[✓] Archivo CSV recibido correctamente.")
-                    self.rabbitmq.send_final(msg_filename)
-                    if msg_filename in self.header_by_file:
-                        del self.header_by_file[msg_filename]
-                    #self.rabbitmq.publish(msg)
-
-                elif msg["msg_type"] == FIN_MSG_TYPE:
-                    self._recv_results()
-
-        except ConnectionError:
-            print(f"Client disconnected")
+                client_socket, addr = self.server.accept()
+                print(f"[Gateway] Nueva conexión de {addr}")
+                # Asignar un client_id único
+                client_id = self.client_counter
+                self.client_counter += 1
+                # Crear un proceso para manejar el cliente
+                process = ClientConnection(client_socket, addr, client_id)
+                self.processes.append(process)
+           
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"[Gateway] Error en el servidor: {e}")
         finally:
-            if self.running:
+            if self.running == True:
                 self.close()
 
-    def publish_file_batch(self, batch: dict, msg_filename):
-        self.rabbitmq.publish(batch, msg_filename)
-        #number_of_lines = len(batch.get("rows"))
-        #print(f"[✓] Publicadas {number_of_lines} líneas.")
-
-    def _recv_results(self):
-        def callback_reader(ch, method, properties, body):
-            try:
-                if self.running == False:
-                    self.input_rabbitmq.close_graceful(method)
-                    return
-            
-                packet_json = body.decode()
-        
-                if is_final_packet(json.loads(packet_json).get("header")):
-                    if handle_final_packet(method, self.rabbitmq_receiver):
-                        self.rabbitmq.send_final()
-                        self.rabbitmq_receiver.send_ack_and_close(method)
-                        self.send_finalization()
-                    return
-                
-                response_str = json.loads(packet_json).get("response")
-                if response_str:
-                    print(" [GATEWAY - RESULT] Resultado final recibido:\n")
-                    print(response_str)
-                    self.send_result(response_str)
-                else:
-                    print(" [GATEWAY - RESULT] Packet recibido sin campo 'response'. Ignorado.")
-
-                ch.basic_ack(delivery_tag=method.delivery_tag)
-            except json.JSONDecodeError as e:
-                print(f" [GATEWAY - RESULT] Error decoding JSON: {e}")
-                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
-            except Exception as e:
-                print(f" [GATEWAY - RESULT] Error processing message: {e}")
-                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
-        
-        print(" [GATEWAY] Now listening for filtered movies in query_queue...")
-        self.rabbitmq_receiver.consume(callback_reader)
-
-    def send_result(self, result: str):
-        self.protocol.send_result(result)
-
-    def send_finalization(self):
-        self.protocol.send_finalization()
-
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
+        """Maneja la señal SIGTERM para cerrar el servidor."""
+        print(f"[Gateway ] Recibida señal SIGTERM")
         self.close()
-    
+
     def close(self):
-        print(f"Closing sockets")
+        """Cierra el servidor y todos los procesos."""
         self.running = False
-        self.rabbitmq.cancel_consumer()
-        self.protocol.close()
-        self.rabbitmq.close()
-        self.rabbitmq_receiver.close()
+        if self.server:
+            self.server.close()
+            print(f"[Gateway ] Servidor cerrado")
+        # Terminar todos los procesos
+        for process in self.processes:
+            process.finish()
+        print(f"[Gateway ] Todos los procesos terminados")

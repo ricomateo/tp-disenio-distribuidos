@@ -60,8 +60,6 @@ class JoinNode:
             routing_key=self.node_id
         )
         
-        self.input_rabbitmq_2.connect()
-        
         self.final_rabbitmq = Middleware(
             queue=self.final_queue,
             consumer_tag=self.consumer_tag,
