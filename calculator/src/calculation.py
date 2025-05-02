@@ -145,8 +145,9 @@ class Calculation:
             if denominator == 0:
                 return False
 
-            total_numerator, total_denominator, count = self.totals
-            self.totals = (total_numerator + numerator, total_denominator + denominator, count + 1)
+            ratio = numerator / denominator
+            total_ratio, _, count = self.totals
+            self.totals = (total_ratio + ratio, 0.0, count + 1)
 
             return True
         except (ValueError, TypeError):
@@ -234,16 +235,16 @@ class Calculation:
             ]
 
         elif self.op_type == RATIO:
-            total_numerator, total_denominator, count = self.totals
-            if count == 0 or total_denominator == 0:
+            total_ratio, _, count = self.totals
+            if count == 0:
                 return [{"error": f"No movies processed for {self.numerator}/{self.denominator} totals."}]
-            total = total_numerator / total_denominator
+            average_ratio = total_ratio / count
             feeling_str = "POS" if self.input_queue == "sentiment_positive_queue" else "NEG"
             return [
                 {
                     "operation": "ratio",
                     "feeling": feeling_str,
-                    "ratio": round(total, 2),
+                    "ratio": round(average_ratio, 2),
                     "count": count
                 }
             ]
