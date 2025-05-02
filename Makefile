@@ -42,6 +42,7 @@ build:
 
 up: generate-compose client/credits.csv
 	docker-compose $(COMPOSE_GENERATED) up -d --build 
+	$(PYTHON) ./testing/output_adapter.py
 
 134: validate-replicas
 	docker-compose $(COMPOSE_134) up -d --build \
