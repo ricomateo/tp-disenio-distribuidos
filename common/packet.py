@@ -18,7 +18,7 @@ class Packet:
 class DataPacket(Packet):
     data: dict
     
-    def __init__(self, timestamp: str, data: dict, keep_columns: list = None):
+    def __init__(self, client_id: int, timestamp: str, data: dict, keep_columns: list = None):
         """
         Initialize DataPacket with filtered data based on keep_columns.
         
@@ -29,6 +29,7 @@ class DataPacket(Packet):
         """
         super().__init__(timestamp=timestamp)
         self.data = keep_columns_from(data, keep_columns) if keep_columns else data
+        self.client_id = client_id
 
     def to_json(self):
         return orjson.dumps(self.__dict__)
