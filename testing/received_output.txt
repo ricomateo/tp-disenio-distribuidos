@@ -1,33 +1,48 @@
-title: Roma | genres: Drama, Foreign
-title: Conversations with Mother | genres: Comedy, Drama, Foreign
-title: The Education of Fairies | genres: Drama
-title: The Good Life | genres: Drama
-
-Top 5 by total (descending):
-value: United States of America | total: 22155146239
-value: France | total: 991260276
-value: India | total: 926783413
-value: Russia | total: 520314667
-value: United Kingdom | total: 408964433
-
-Top 10 by count (descending):
-value: Ricardo Darín | count: 10
-value: Diego Peretti | count: 6
-value: Alejandro Awada | count: 5
-value: Dolores Fonzi | count: 4
-value: Esteban Bigliardi | count: 4
-value: Federico Luppi | count: 4
-value: Oscar Martínez | count: 4
-value: Rafael Spregelburd | count: 4
-value: Valeria Bertuccelli | count: 4
-value: Adrián Suar | count: 3
-
-Top 1 by average (descending):
-id: 125619 | title: The forbidden education | average: 4.0
-
-Top 1 by average (ascending):
-id: 128598 | title: Left for Dead | average: 1.0
-
-Top 2 by ratio (descending):
-feeling: NEG | ratio: 3.41 | count: 390
-feeling: POS | ratio: 3.17 | count: 683
+query 1
+La Cienaga,['Comedy', 'Drama']
+Burnt Money,['Crime']
+The City of No Limits,['Thriller', 'Drama']
+Lost Embrace,['Drama', 'Foreign']
+Nicotina,['Drama', 'Action', 'Comedy', 'Thriller']
+Lugares comunes,['Drama']
+Whisky,['Comedy', 'Drama', 'Foreign']
+The Holy Girl,['Drama', 'Foreign']
+The Aura,['Crime', 'Drama', 'Thriller']
+Bombón: The Dog,['Drama']
+Rolling Family,['Drama', 'Comedy']
+The Method,['Drama', 'Thriller']
+Every Stewardess Goes to Heaven,['Drama', 'Romance', 'Foreign']
+The Secret in Their Eyes,['Crime', 'Drama', 'Mystery', 'Romance']
+Tetro,['Drama', 'Mystery']
+Liverpool,['Drama']
+The Headless Woman,['Drama', 'Mystery', 'Thriller']
+The Last Summer of La Boyita,['Drama']
+The Appeared,['Horror', 'Thriller', 'Mystery']
+The Fish Child,['Drama', 'Thriller', 'Romance', 'Foreign']
+Roma,['Drama', 'Foreign']
+Conversations with Mother,['Comedy', 'Drama', 'Foreign']
+The Education of Fairies,['Drama']
+The Good Life,['Drama']
+query 2
+United States of America,120143786644
+France,2301577838
+United Kingdom,1611604610
+India,1184682797
+Japan,832585873
+query 3
+Ricardo Darín,18
+Alejandro Awada,7
+Diego Peretti,7
+Inés Efron,7
+Valeria Bertuccelli,7
+Arturo Goetz,6
+Leonardo Sbaraglia,6
+Pablo Echarri,6
+Rafael Spregelburd,6
+Rodrigo de la Serna,6
+query 4
+max The forbidden education,4.0
+min Left for Dead,1.0
+query 5
+POS	2.93
+NEG	2.86
