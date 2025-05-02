@@ -54,7 +54,7 @@ def adapt_output(text: str) -> str:
                 title, avg = match.groups()
                 prev_line = lines[lines.index(line) - 1]
                 prefix = "max" if "descending" in prev_line else "min"
-                result.append(f"{prefix} {title},{avg}")
+                result.append(f"{prefix}, {title},{avg}")
 
         # Query 4
         elif line.startswith("value:") and "count" in line:
