@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys
 
 # Utilidades de parsing
 
@@ -111,7 +112,7 @@ def pretty_print_diffs(diffs):
             for label, expected_val, received_val in diff:
                 print(f"  - {label}: expected {expected_val}, received {received_val}")
 
-expected_path = "testing/expected_output.txt"
+expected_path = sys.argv[1]
 received_path = "testing/received_output.txt"
 
 expected = parse_queries(expected_path)
