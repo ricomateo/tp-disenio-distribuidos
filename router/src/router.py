@@ -1,6 +1,6 @@
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, handle_final_packet, is_final_packet
+from common.packet import is_final_packet
 import os
 import signal
 
@@ -52,9 +52,9 @@ class RouterNode:
         """
         try:
             if self.running == False:
-                if self.input_rabbitmq.check_no_consumers():
-                    for i in range(self.number_of_nodes):
-                        self.output_rabbitmq.send_final(routing_key=str(i))
+                # if self.input_rabbitmq.check_no_consumers():
+                #     for i in range(self.number_of_nodes):
+                #         self.output_rabbitmq.send_final(routing_key=str(i))
                 self.input_rabbitmq.close_graceful(method)
                 return
             
@@ -92,8 +92,7 @@ class RouterNode:
                 return
             
             # Deserializo la peli para obtener el id
-            packet = DataPacket.from_json(packet_json)
-            movie = packet.data
+            movie = packet.get("data")
             movie_id = int(movie.get(self.router_by))
 
             # Calculo la routing key como el modulo entre el id y la cantidad de nodos
