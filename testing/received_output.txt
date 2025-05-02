@@ -48,5 +48,5 @@ max The forbidden education,4.0
 min Left for Dead,1.0
 
 query 5
-POS	2.93
-NEG	2.86
+POSITIVE	2.93
+NEGATIVE	2.86

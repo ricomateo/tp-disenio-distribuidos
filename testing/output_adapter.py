@@ -80,7 +80,8 @@ def adapt_output(text: str) -> str:
             match = re.match(r"feeling: (\w+) \| ratio: ([\d.]+)", line)
             if match:
                 feeling, ratio = match.groups()
-                result.append(f"{feeling.upper()}\t{ratio}")
+                feeling = "POSITIVE " if (feeling == "POS") else "NEGATIVE"
+                result.append(f"{feeling}\t{ratio}")
 
     result.append("\n")
     return "\n".join(result)
