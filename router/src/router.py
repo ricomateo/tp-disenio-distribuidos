@@ -78,7 +78,7 @@ class RouterNode:
                 
                 # Si todos los id estan en la lista de acks, mando final
                 if len(packet["acks"]) == self.cluster_size:
-                    print(f"[Router - FIN] - Lista de acks completa, mando final packet papus")
+                    print(f"[Router - FIN] - Lista de acks completa, mando final packet")
                     for i in range(self.number_of_nodes):
                         self.output_rabbitmq.send_final(routing_key=str(i))
                 
