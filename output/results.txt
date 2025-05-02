@@ -1,0 +1,49 @@
+title: La Cienaga | genres: Comedy, Drama
+title: Burnt Money | genres: Crime
+title: The City of No Limits | genres: Thriller, Drama
+title: Lost Embrace | genres: Drama, Foreign
+title: Nicotina | genres: Drama, Action, Comedy, Thriller
+title: Lugares comunes | genres: Drama
+title: Whisky | genres: Comedy, Drama, Foreign
+title: The Holy Girl | genres: Drama, Foreign
+title: The Aura | genres: Crime, Drama, Thriller
+title: Bombón: The Dog | genres: Drama
+title: Rolling Family | genres: Drama, Comedy
+title: The Method | genres: Drama, Thriller
+title: Every Stewardess Goes to Heaven | genres: Drama, Romance, Foreign
+title: The Secret in Their Eyes | genres: Crime, Drama, Mystery, Romance
+title: Tetro | genres: Drama, Mystery
+title: Liverpool | genres: Drama
+title: The Headless Woman | genres: Drama, Mystery, Thriller
+title: The Last Summer of La Boyita | genres: Drama
+title: The Appeared | genres: Horror, Thriller, Mystery
+title: The Fish Child | genres: Drama, Thriller, Romance, Foreign
+title: Roma | genres: Drama, Foreign
+title: Conversations with Mother | genres: Comedy, Drama, Foreign
+title: The Education of Fairies | genres: Drama
+title: The Good Life | genres: Drama
+Top 5 by total (descending):
+value: United States of America | total: 120143786644
+value: France | total: 2301577838
+value: United Kingdom | total: 1611604610
+value: India | total: 1184682797
+value: Japan | total: 832585873
+Top 10 by count (descending):
+value: Ricardo Darín | count: 18
+value: Alejandro Awada | count: 7
+value: Diego Peretti | count: 7
+value: Inés Efron | count: 7
+value: Valeria Bertuccelli | count: 7
+value: Arturo Goetz | count: 6
+value: Leonardo Sbaraglia | count: 6
+value: Pablo Echarri | count: 6
+value: Rafael Spregelburd | count: 6
+value: Rodrigo de la Serna | count: 6
+Top 1 by average (descending):
+id: 125619 | title: The forbidden education | average: 4.0
+
+Top 1 by average (ascending):
+id: 128598 | title: Left for Dead | average: 1.0
+Top 2 by ratio (descending):
+feeling: POS | ratio: 2.93 | count: 3088
+feeling: NEG | ratio: 2.86 | count: 2290
