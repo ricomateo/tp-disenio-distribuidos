@@ -85,6 +85,9 @@ def pretty_print_diffs(diffs):
                 print("❌ Unexpected in received:")
                 for line in sorted(received_extra):
                     print(f"  + {line}")
+            if len(expected_extra) == 0 and len(received_extra) == 0:
+                print("✅ No differences found.")
+                continue
 
         elif query == "query 2":
             print("❌ Differences in magnitudes:")
@@ -106,6 +109,9 @@ def pretty_print_diffs(diffs):
                 print("❌ Unexpected actors in received:")
                 for line in sorted(received_extra):
                     print(f"  + {line}")
+            if len(expected_extra) == 0 and len(received_extra) == 0:
+                print("✅ No differences found.")
+                continue
 
         elif query == "query 5":
             print("❌ Float differences in sentiment ratios:")
