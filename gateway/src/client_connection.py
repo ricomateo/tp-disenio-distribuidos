@@ -57,14 +57,11 @@ class ClientConnection:
 
                 elif msg["msg_type"] == EOF_MSG_TYPE:
                     print(f"[Gateway - Client {client_id}] Archivo CSV recibido correctamente.")
-                    self.rabbitmq.send_final(msg_filename)
-                    if msg_filename in self.header_by_file:
-                        del self.header_by_file[msg_filename]
+                    self.rabbitmq.send_final(self.client_id, msg_filename)
 
                 elif msg["msg_type"] == FIN_MSG_TYPE:
                     self._recv_results(addr, client_id)
-                    client_running = False  
-        
+                    client_running = False
 
         except ConnectionError:
             print(f"[Client {client_id}] Cliente desconectado")
