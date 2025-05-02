@@ -48,8 +48,8 @@ class FilterNode:
         try:
             # TODO: ver si hay que cambiar esto
             if self.running == False:
-                if self.input_rabbitmq.check_no_consumers():
-                    self.output_rabbitmq.send_final()
+                # if self.input_rabbitmq.check_no_consumers():
+                #     self.output_rabbitmq.send_final()
                 self.input_rabbitmq.close_graceful(method)
                 return
 
@@ -86,8 +86,8 @@ class FilterNode:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
-            packet = DataPacket.from_json(packet_json)
-            movie = packet.data
+            movie = packet.get("data")
+            client_id = packet.get("client_id")
 
             # Aplicar los filtros de la instancia
             for _, condition in self.filters.items():
@@ -98,6 +98,7 @@ class FilterNode:
                     return
 
             filtered_packet = DataPacket(
+                client_id=client_id,
                 timestamp=datetime.utcnow().isoformat(),
                 data=movie,
                 keep_columns=self.keep_columns
