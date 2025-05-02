@@ -1,28 +1,28 @@
 query 1
-4695,La Cienaga,['Comedy', 'Drama']
-4739,Burnt Money,['Crime']
-7970,The City of No Limits,['Thriller', 'Drama']
-9385,Nicotina,['Drama', 'Action', 'Comedy', 'Thriller']
-9437,Lost Embrace,['Drama', 'Foreign']
-9953,Whisky,['Comedy', 'Drama', 'Foreign']
-10325,The Holy Girl,['Drama', 'Foreign']
-10638,The Aura,['Crime', 'Drama', 'Thriller']
-10739,Bombón: The Dog,['Drama']
-11504,Rolling Family,['Drama', 'Comedy']
-12432,The Method,['Drama', 'Thriller']
-13088,Every Stewardess Goes to Heaven,['Drama', 'Romance', 'Foreign']
-14047,Tetro,['Drama', 'Mystery']
-14115,The Secret in Their Eyes,['Crime', 'Drama', 'Mystery', 'Romance']
-14666,Liverpool,['Drama']
-14828,The Headless Woman,['Drama', 'Mystery', 'Thriller']
-16271,The Last Summer of La Boyita,['Drama']
-17760,The Appeared,['Horror', 'Thriller', 'Mystery']
-18993,The Fish Child,['Drama', 'Thriller', 'Romance', 'Foreign']
-24600,Cleopatra,['Drama', 'Comedy', 'Foreign']
-26739,Roma,['Drama', 'Foreign']
-32396,Conversations with Mother,['Comedy', 'Drama', 'Foreign']
-36026,The Education of Fairies,['Drama']
-39393,The Good Life,['Drama']
+La Cienaga,['Comedy', 'Drama']
+Burnt Money,['Crime']
+The City of No Limits,['Thriller', 'Drama']
+Nicotina,['Drama', 'Action', 'Comedy', 'Thriller']
+Lost Embrace,['Drama', 'Foreign']
+Whisky,['Comedy', 'Drama', 'Foreign']
+The Holy Girl,['Drama', 'Foreign']
+The Aura,['Crime', 'Drama', 'Thriller']
+Bombón: The Dog,['Drama']
+Rolling Family,['Drama', 'Comedy']
+The Method,['Drama', 'Thriller']
+Every Stewardess Goes to Heaven,['Drama', 'Romance', 'Foreign']
+Tetro,['Drama', 'Mystery']
+The Secret in Their Eyes,['Crime', 'Drama', 'Mystery', 'Romance']
+Liverpool,['Drama']
+The Headless Woman,['Drama', 'Mystery', 'Thriller']
+The Last Summer of La Boyita,['Drama']
+The Appeared,['Horror', 'Thriller', 'Mystery']
+The Fish Child,['Drama', 'Thriller', 'Romance', 'Foreign']
+Cleopatra,['Drama', 'Comedy', 'Foreign']
+Roma,['Drama', 'Foreign']
+Conversations with Mother,['Comedy', 'Drama', 'Foreign']
+The Education of Fairies,['Drama']
+The Good Life,['Drama']
 
 query 2
 United States of America,120153886644
@@ -36,16 +36,16 @@ max 125619,The forbidden education,4.0
 min 128598,Left for Dead,1.0
 
 query 4
-1010,Ricardo Darín,17
-47,Alejandro Awada,7
-489,Inés Efron,7
-664,Leonardo Sbaraglia,7
-1125,Valeria Bertuccelli,7
-111,Arturo Goetz,6
-285,Diego Peretti,6
-948,Pablo Echarri,6
-998,Rafael Spregelburd,6
-1033,Rodrigo de la Serna,6
+Ricardo Darín,17
+Alejandro Awada,7
+Inés Efron,7
+Leonardo Sbaraglia,7
+Valeria Bertuccelli,7
+Arturo Goetz,6
+Diego Peretti,6
+Pablo Echarri,6
+Rafael Spregelburd,6
+Rodrigo de la Serna,6
 
 query 5
 NEGATIVE    5453.397595
