@@ -147,8 +147,11 @@ class Middleware:
             self.connection.add_callback_threadsafe(self.channel.stop_consuming)
 
     def close(self):
-        if self.connection and not self.connection.is_closed:
-            self.connection.close()
+        try:
+            if self.connection and not self.connection.is_closed:
+                self.connection.close()
+        except Exception as e:
+            print(f"Failed to close connection. Error: {e}")
             
     def cancel_consumer(self):
         if not self.is_consumed and self.channel and self.channel.is_open:
