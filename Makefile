@@ -43,7 +43,6 @@ build:
 
 up: generate-compose client/credits.csv
 	docker-compose $(COMPOSE_GENERATED) up -d --build 
-	$(PYTHON) ./testing/output_adapter.py
 
 134: validate-replicas
 	docker-compose $(COMPOSE_134) up -d --build \
@@ -89,8 +88,10 @@ client:
 
 compare-original:
 	@echo "Comparing with the output of the kaggle version..."
+	$(PYTHON) testing/output_adapter.py
 	$(PYTHON) ./$(COMPARE_SCRIPT) testing/expected_output.txt
 
 compare-filtered:
 	@echo "Comparing with the output of the filtered version..."
+	$(PYTHON) testing/output_adapter.py
 	$(PYTHON) ./$(COMPARE_SCRIPT) testing/expected_filtered_output.txt
