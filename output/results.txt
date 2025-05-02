@@ -1,8 +1,8 @@
-title: La Cienaga | genres: Comedy, Drama
 title: Burnt Money | genres: Crime
+title: La Cienaga | genres: Comedy, Drama
 title: The City of No Limits | genres: Thriller, Drama
-title: Lost Embrace | genres: Drama, Foreign
 title: Nicotina | genres: Drama, Action, Comedy, Thriller
+title: Lost Embrace | genres: Drama, Foreign
 title: Lugares comunes | genres: Drama
 title: Whisky | genres: Comedy, Drama, Foreign
 title: The Holy Girl | genres: Drama, Foreign
@@ -11,8 +11,8 @@ title: Bombón: The Dog | genres: Drama
 title: Rolling Family | genres: Drama, Comedy
 title: The Method | genres: Drama, Thriller
 title: Every Stewardess Goes to Heaven | genres: Drama, Romance, Foreign
-title: The Secret in Their Eyes | genres: Crime, Drama, Mystery, Romance
 title: Tetro | genres: Drama, Mystery
+title: The Secret in Their Eyes | genres: Crime, Drama, Mystery, Romance
 title: Liverpool | genres: Drama
 title: The Headless Woman | genres: Drama, Mystery, Thriller
 title: The Last Summer of La Boyita | genres: Drama
@@ -45,5 +45,5 @@ id: 125619 | title: The forbidden education | average: 4.0
 Top 1 by average (ascending):
 id: 128598 | title: Left for Dead | average: 1.0
 Top 2 by ratio (descending):
-feeling: POS | ratio: 2.93 | count: 3088
-feeling: NEG | ratio: 2.86 | count: 2290
+feeling: POS | ratio: 5674.16 | count: 3088
+feeling: NEG | ratio: 5427.21 | count: 2290
