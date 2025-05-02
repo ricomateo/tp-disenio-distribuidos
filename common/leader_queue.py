@@ -49,12 +49,10 @@ class LeaderQueue:
             if is_final_packet(header):
                 self.counter += 1
                 if self.counter == self.cluster_size:
-                    print("send")
                     if self.number_of_nodes_to_send:
                         for i in range(self.number_of_nodes_to_send):
                             self.output_rabbitmq.send_final(routing_key=str(i))
                     else:
-                        print("sand")
                         self.output_rabbitmq.send_final()
                     self.final_rabbitmq.send_ack_and_close(method)
                 else:
