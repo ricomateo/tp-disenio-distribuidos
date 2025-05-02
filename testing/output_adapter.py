@@ -14,6 +14,8 @@ def adapt_output(text: str) -> str:
         # Query 1
         if line.startswith("title:"):
             if section != "query1":
+                if section is not None:
+                    result.append("")  # línea extra entre queries
                 result.append(f"query {query_count}")
                 query_count += 1
                 section = "query1"
@@ -26,6 +28,8 @@ def adapt_output(text: str) -> str:
         # Query 2
         elif line.startswith("value:") and "total" in line:
             if section != "query2":
+                if section is not None:
+                    result.append("")
                 result.append(f"query {query_count}")
                 query_count += 1
                 section = "query2"
@@ -37,6 +41,8 @@ def adapt_output(text: str) -> str:
         # Query 3
         elif line.startswith("Top 1 by average (descending):"):
             if section != "query3":
+                if section is not None:
+                    result.append("")
                 result.append(f"query {query_count}")
                 query_count += 1
                 section = "query3"
@@ -53,6 +59,8 @@ def adapt_output(text: str) -> str:
         # Query 4
         elif line.startswith("value:") and "count" in line:
             if section != "query4":
+                if section is not None:
+                    result.append("")
                 result.append(f"query {query_count}")
                 query_count += 1
                 section = "query4"
@@ -64,6 +72,8 @@ def adapt_output(text: str) -> str:
         # Query 5
         elif line.startswith("feeling:"):
             if section != "query5":
+                if section is not None:
+                    result.append("")
                 result.append(f"query {query_count}")
                 query_count += 1
                 section = "query5"
@@ -72,6 +82,7 @@ def adapt_output(text: str) -> str:
                 feeling, ratio = match.groups()
                 result.append(f"{feeling.upper()}\t{ratio}")
 
+    result.append("\n")
     return "\n".join(result)
 
 with open("output/results.txt", "r", encoding="utf-8") as infile:

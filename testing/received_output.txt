@@ -23,12 +23,14 @@ Roma,['Drama', 'Foreign']
 Conversations with Mother,['Comedy', 'Drama', 'Foreign']
 The Education of Fairies,['Drama']
 The Good Life,['Drama']
+
 query 2
 United States of America,120143786644
 France,2301577838
 United Kingdom,1611604610
 India,1184682797
 Japan,832585873
+
 query 3
 Ricardo Darín,18
 Alejandro Awada,7
@@ -40,9 +42,11 @@ Leonardo Sbaraglia,6
 Pablo Echarri,6
 Rafael Spregelburd,6
 Rodrigo de la Serna,6
+
 query 4
 max The forbidden education,4.0
 min Left for Dead,1.0
+
 query 5
 POS	2.93
 NEG	2.86
