@@ -21,6 +21,8 @@ class ParserNode:
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "")
         self.filename = os.getenv("FILENAME", "")
+        self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
+        self.node_id = int(os.getenv("NODE_ID"))
         
         self.keep_columns = None
         keep_columns = os.getenv("KEEP_COLUMNS", "")
@@ -61,22 +63,47 @@ class ParserNode:
 
 
             try:
+                # TODO: ver si hay que cambiar esto
                 if self.running == False:
                     if self.input_rabbitmq.check_no_consumers():
                         self.output_rabbitmq.send_final(routing_key=self.filename)
                     self.input_rabbitmq.close_graceful(method)
                     return
                 # Parseo el mensaje
-                message = json.loads(body)
-                header = message['header']
+                packet = json.loads(body)
+                header = packet['header']
 
                 if is_final_packet(header):
-                    if handle_final_packet(method, self.input_rabbitmq):
-                        self.output_rabbitmq.send_final(routing_key=self.filename)
-                        self.input_rabbitmq.send_ack_and_close(method)
+                        # Si la lista de acks es None, entonces soy el primero en recibir el mensaje FIN
+                    # Agrego la lista con mi id y la reencolo
+                    if packet.get("acks") is None:
+                        print(f"[Parser - FIN] - packet[acks] = None, packet = {packet}")
+                        # Inicializo la lista acks con mi id
+                        packet["acks"] = [self.node_id]
+                        self.input_rabbitmq.publish(packet)
+                        ch.basic_ack(delivery_tag=method.delivery_tag)
+                        return
+                    # Si no estoy en la lista de ids, me agrego
+                    if not self.node_id in packet.get("acks"):
+                        print(f"[Parser - FIN] - No estoy en la lista de acks")
+                        packet["acks"] = packet["acks"] + [self.node_id]
+                    
+                    # Si todos los id estan en la lista de acks, mando final
+                    if len(packet["acks"]) == self.cluster_size:
+                        client_id = packet["client_id"]
+                        acks = packet["acks"]
+                        print(f"[Parser - FIN] - Lista de acks completa ({acks}), mando final packet (client_id = {client_id})")
+                        self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename)
+                    
+                    # Si faltan ids en la lista de ids, reencolo el mensaje (despues de haberme agregado)
+                    else:
+                        print(f"[Parser - FIN] - Ya estoy en la lista pero faltan IDs, reencolo")
+                        self.input_rabbitmq.publish(packet)
+                    # Mando ack del final packet
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
                 
-                rows = message['rows']
+                rows = packet['rows']
 
 
                 # Creo el string CSV
