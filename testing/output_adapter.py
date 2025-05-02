@@ -2,88 +2,89 @@ import re
 
 def adapt_output(text: str) -> str:
     lines = text.strip().splitlines()
-    result = []
-    section = None
-    query_count = 1
+
+    q1, q2, q3, q4, q5 = [], [], [], [], []
+    current_section = None
+    current_avg_direction = None
 
     for line in lines:
         line = line.strip()
         if not line:
             continue
 
-        # Query 1
         if line.startswith("title:"):
-            if section != "query1":
-                if section is not None:
-                    result.append("")  # línea extra entre queries
-                result.append(f"query {query_count}")
-                query_count += 1
-                section = "query1"
+            current_section = "query1"
             match = re.match(r"title: (.+?) \| genres: (.+)", line)
             if match:
                 title, genres = match.groups()
                 genres_list = [g.strip() for g in genres.split(",")]
-                result.append(f"{title},[{', '.join(repr(g) for g in genres_list)}]")
+                q1.append(f"{title},[{', '.join(repr(g) for g in genres_list)}]")
 
-        # Query 2
-        elif line.startswith("value:") and "total" in line:
-            if section != "query2":
-                if section is not None:
-                    result.append("")
-                result.append(f"query {query_count}")
-                query_count += 1
-                section = "query2"
+        elif line.startswith("Top 5 by total"):
+            current_section = "query2"
+
+        elif current_section == "query2" and line.startswith("value:") and "total" in line:
             match = re.match(r"value: (.+?) \| total: (\d+)", line)
             if match:
                 country, total = match.groups()
-                result.append(f"{country},{total}")
+                q2.append(f"{country},{total}")
 
-        # Query 3
-        elif line.startswith("Top 1 by average (descending):"):
-            if section != "query3":
-                if section is not None:
-                    result.append("")
-                result.append(f"query {query_count}")
-                query_count += 1
-                section = "query3"
-        elif line.startswith("Top 1 by average (ascending):"):
-            continue
-        elif line.startswith("id:") and "average:" in line:
-            match = re.match(r"id: \d+ \| title: (.+?) \| average: ([\d.]+)", line)
-            if match:
-                title, avg = match.groups()
-                prev_line = lines[lines.index(line) - 1]
-                prefix = "max" if "descending" in prev_line else "min"
-                result.append(f"{prefix}, {title},{avg}")
+        elif line.startswith("Top 10 by count"):
+            current_section = "query4"
 
-        # Query 4
-        elif line.startswith("value:") and "count" in line:
-            if section != "query4":
-                if section is not None:
-                    result.append("")
-                result.append(f"query {query_count}")
-                query_count += 1
-                section = "query4"
+        elif current_section == "query4" and line.startswith("value:") and "count" in line:
             match = re.match(r"value: (.+?) \| count: (\d+)", line)
             if match:
                 actor, count = match.groups()
-                result.append(f"{actor},{count}")
+                q4.append(f"{actor},{count}")
 
-        # Query 5
-        elif line.startswith("feeling:"):
-            if section != "query5":
-                if section is not None:
-                    result.append("")
-                result.append(f"query {query_count}")
-                query_count += 1
-                section = "query5"
+        elif line.startswith("Top 1 by average (descending):"):
+            current_section = "query3"
+            current_avg_direction = "max"
+
+        elif line.startswith("Top 1 by average (ascending):"):
+            current_section = "query3"
+            current_avg_direction = "min"
+
+        elif current_section == "query3" and line.startswith("id:") and "average:" in line:
+            match = re.match(r"id: \d+ \| title: (.+?) \| average: ([\d.]+)", line)
+            if match:
+                title, avg = match.groups()
+                q3.append(f"{current_avg_direction}, {title},{avg}")
+
+        elif line.startswith("Top 2 by ratio"):
+            current_section = "query5"
+
+        elif current_section == "query5" and line.startswith("feeling:"):
             match = re.match(r"feeling: (\w+) \| ratio: ([\d.]+)", line)
             if match:
                 feeling, ratio = match.groups()
-                feeling = "POSITIVE " if (feeling == "POS") else "NEGATIVE"
-                result.append(f"{feeling}\t{ratio}")
+                feeling = "POSITIVE" if feeling == "POS" else "NEGATIVE"
+                q5.append(f"{feeling}\t{ratio}")
 
-    result.append("\n")
+    # Armar salida final en orden
+    result = []
+    if q1:
+        result.append("query 1")
+        result.extend(q1)
+        result.append("")
+    if q2:
+        result.append("query 2")
+        result.extend(q2)
+        result.append("")
+    if q3:
+        result.append("query 3")
+        result.extend(q3)
+        result.append("")
+    if q4:
+        result.append("query 4")
+        result.extend(q4)
+        result.append("")
+    if q5:
+        result.append("query 5")
+        result.extend(q5)
+        result.append("")
+
     return "\n".join(result)
 
 with open("output/results.txt", "r", encoding="utf-8") as infile:
