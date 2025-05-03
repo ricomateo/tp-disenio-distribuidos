@@ -229,7 +229,9 @@ class ConfigGenerator:
             if current_environment:
                 config['environment'] = current_environment
 
-            
+            # Add volume in case the service is the client
+            if service_name == 'client':
+                config['volumes'] = ['./output:/app/output']
 
             # Add depends_on if non-empty
             if depends_on:

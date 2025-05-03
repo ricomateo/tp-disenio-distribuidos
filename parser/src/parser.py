@@ -86,7 +86,7 @@ class ParserNode:
                 print(f" [~] Conservando solo columnas: {self.keep_columns}")
                 columns_to_keep = list(set(df.columns).intersection(self.keep_columns))
                 df = df[columns_to_keep]
-
+                df = df.dropna().copy()
                 print(" [x] Received and processed CSV:")
                 
                 # Apply column renaming for each pair if the old column exists
