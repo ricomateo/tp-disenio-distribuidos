@@ -79,7 +79,7 @@ class AggregatorNode:
                             )
                             self.output_rabbitmq.publish(packet_neg.to_json())
 
-                        self.output_rabbitmq.send_final()
+                        self.output_rabbitmq.send_final(client_id=client_id)
                         self.input_rabbitmq.send_ack_and_close(method)
                     
                     elif self.operation == "count":
