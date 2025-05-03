@@ -58,14 +58,16 @@ class CalculatorNode:
                 return
             # Recibo el paquete y en caso de ser el ultimo, mando los datos y el final packet
             packet_json = body.decode()
-            
-            header = json.loads(packet_json).get("header")
-            if header and is_final_packet(header):    
-                results = self.calculator.get_result()
+            packet = json.loads(packet_json)
+            header = packet.get("header")
+            if header and is_final_packet(header):
+                client_id = packet.get("client_id") 
+                results = self.calculator.get_result(client_id)
                 
                 for result in results:
                     print("Resultados del cálculo:", result)
                     data_packet = DataPacket(
+                        client_id=client_id,
                         timestamp=datetime.utcnow().isoformat(),
                         data={
                             "source": f"calculator_{self.operation}",
@@ -73,15 +75,16 @@ class CalculatorNode:
                         }
                     )
                     self.output_rabbitmq.publish(data_packet.to_json())  
-                self.final_rabbitmq.send_final()    
+                self.final_rabbitmq.send_final(client_id=client_id)
                 if handle_final_packet(method, self.input_rabbitmq):
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
+            client_id = packet.client_id
             # Process movie using calculator
-            success = self.calculator.process_movie(movie)
+            success = self.calculator.process_movie(client_id, movie)
             
             if success:
                 print(f"[input - {self.input_queue}] Processed movie: {movie.get('title', 'Unknown')}")
