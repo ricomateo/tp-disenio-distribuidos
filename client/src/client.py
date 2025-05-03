@@ -63,14 +63,16 @@ class Client:
         self.protocol.send_finalization()
     
     def print_results(self):
-        while True:
-            message = self.protocol.recv_message()
-            if message["msg_type"] == QUERY_RESULT_MSG_TYPE:
-                result = message["result"]
-                print(f"{result}\n")
-            elif message["msg_type"] == FIN_MSG_TYPE:
-                print(f"received finalization message, closing...")
-                break
+        with open("/app/output/results.txt", "w") as f:
+            while True:
+                message = self.protocol.recv_message()
+                if message["msg_type"] == QUERY_RESULT_MSG_TYPE:
+                    result = message["result"]
+                    print(f"{result}\n")
+                    f.write(f"{result}\n")
+                elif message["msg_type"] == FIN_MSG_TYPE:
+                    print(f"received finalization message, closing...")
+                    break
 
     def close(self):
         end_time = time.time()  
