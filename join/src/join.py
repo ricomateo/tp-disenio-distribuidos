@@ -84,8 +84,9 @@ class JoinNode:
                 return
             
             packet_json = body.decode()
-            header = json.loads(packet_json).get("header")
-            client_id = 1
+            packet = json.loads(packet_json)
+            header = packet.get("header")
+            client_id = packet.get("client_id")
             
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_1}' terminó.")
@@ -128,8 +129,9 @@ class JoinNode:
                 return
             
             packet_json = body.decode()
-            header = json.loads(packet_json).get("header")
-            client_id = 1
+            packet = json.loads(packet_json)
+            header = packet.get("header")
+            client_id = packet.get("client_id")
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_2}' terminó.")
                 self.clean(client_id)
@@ -159,12 +161,12 @@ class JoinNode:
                 
             else:
                 # Si eof_main es False, guardar en el disco
-                if not self.eof_main_by_client.get(1, False):
+                if not self.eof_main_by_client.get(client_id, False):
                     print(f" [💾] Router '{router}' not in buffer, adding to disk")
                     storage.add(str(router), movie, group_key=self.input_queue_2)
                     print(f" [✅] Added router '{router}' to disk")
                     
-            if self.eof_main_by_client.get(1, False):
+            if self.eof_main_by_client.get(client_id, False):
                 
                 # Verificar si el disco está vacío
                 stored_keys = storage.list_keys(group_key=self.input_queue_2)
@@ -205,6 +207,7 @@ class JoinNode:
     def create_joined_packet(self, movie1, movie2):
         combined_movie = {**movie1, **movie2}
         joined_packet = DataPacket(
+            client_id=0, # TODO: setear el client id correcto
             timestamp=datetime.utcnow().isoformat(),
             data=combined_movie,
             keep_columns=self.keep_columns,
