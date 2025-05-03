@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 import threading
 import signal
+from common.leader_queue import LeaderQueue
 from common.packet import DataPacket, QueryPacket, handle_final_packet, is_final_packet
 from common.middleware import Middleware
 
@@ -16,21 +17,31 @@ class DeliverNode:
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "query_queue")
         self.keep_columns, self.filters = self._parse_environment()
         self.consumer_tag = os.getenv('RABBITMQ_CONSUMER_TAG', 'default_consumer')
-
+        self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
         # Uso keys unicas para cada filtro basadas en la columna a sortear y la direccion del ordenamiento
-        self.collected_movies = {"default": []} if not self.filters else {
-            f"{f['column']}_{'desc' if f['inverse_sort'] else 'asc'}": [] for f in self.filters
-        }
+        self.collected_movies = {}
 
-        self.finished_event = threading.Event()
         self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
-        self.output_rabbitmq = Middleware(queue=self.output_queue)
+        self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE", "final_deliver")
         self.query_number = os.getenv("QUERY_NUMBER", "1")
         self.final_rabbitmq = Middleware(queue=self.final_queue, consumer_tag=self.consumer_tag)
+        
+        self.cluster_size = int(os.getenv("CLUSTER_SIZE", ""))
+        self.leader_queue = None
+        if int(self.query_number) == 5:
+            self.leader_queue = LeaderQueue(self.final_queue, "", self.consumer_tag, self.cluster_size, output_exchange=self.output_exchange)
 
-
+    def _initialize_client_movies(self, client_id):
+        """Initialize movie collection for a new client."""
+        if client_id not in self.collected_movies:
+                # Same structure as before, but per client
+                self.collected_movies[client_id] = {"default": []} if not self.filters else {
+                    f"{f['column']}_{'desc' if f['inverse_sort'] else 'asc'}": []
+                    for f in self.filters
+                }
+                
     def _parse_environment(self):
         """Parse environment variables for KEEP_COLUMNS and SORT."""
 
@@ -72,40 +83,45 @@ class DeliverNode:
         except (ValueError, TypeError):
             return str(value).lower() if value else ""
 
-    def _insert_sorted_movie(self, movie, column, top_n, inverse_sort):
+    def _insert_sorted_movie(self, movie, column, top_n, inverse_sort, client_id):
         """Insert a movie into the sorted list for a column and trim if needed."""
         # Aca uso las keys unicas basadas en la columna y la direccion de ordenamiento
         list_key = f"{column}_{'desc' if inverse_sort else 'asc'}"
         new_key = self._get_sort_key(movie, column)
         insert_pos = 0
         is_numeric = column != "title"
-        for i, existing_movie in enumerate(self.collected_movies[list_key]):
-            existing_key = self._get_sort_key(existing_movie, column)
-            if is_numeric:
-                if (inverse_sort and new_key < existing_key) or \
-                   (not inverse_sort and new_key > existing_key):
-                    break
-            else:
-                if (inverse_sort and new_key > existing_key) or \
-                   (not inverse_sort and new_key < existing_key):
-                    break
-            insert_pos = i + 1
-        
-        self.collected_movies[list_key].insert(insert_pos, movie)
-        if top_n is not None and len(self.collected_movies[list_key]) > top_n:
-            self.collected_movies[list_key] = self.collected_movies[list_key][:top_n]
+        movie_list = self.collected_movies[client_id][list_key]
+        for i, existing_movie in enumerate(movie_list):
+                existing_key = self._get_sort_key(existing_movie, column)
+                if is_numeric:
+                    if (inverse_sort and new_key < existing_key) or \
+                       (not inverse_sort and new_key > existing_key):
+                        break
+                else:
+                    if (inverse_sort and new_key > existing_key) or \
+                       (not inverse_sort and new_key < existing_key):
+                        break
+                insert_pos = i + 1
+            
+        movie_list.insert(insert_pos, movie)
+        if top_n is not None and len(movie_list) > top_n:
+                self.collected_movies[client_id][list_key] = movie_list[:top_n]
 
-    def _process_movie(self, movie):
-        """Process a movie by applying filters or appending to default list."""
+    def _process_movie(self, movie, client_id):
+        """Process a movie for a specific client."""
+        self._initialize_client_movies(client_id)
+        
+      
         if not self.filters:
-            self.collected_movies["default"].append(movie)
+            self.collected_movies[client_id]["default"].append(movie)
         else:
             for filter_spec in self.filters:
                 self._insert_sorted_movie(
                     movie,
                     filter_spec["column"],
                     filter_spec["top_n"],
-                    filter_spec["inverse_sort"]
+                    filter_spec["inverse_sort"],
+                    client_id
                 )
         
         return movie
@@ -138,8 +154,10 @@ class DeliverNode:
             campos.append(f"{key}: {value}")
         return " | ".join(campos) 
         
-    def _generate_response(self):
+    def _generate_response(self, client_id):
         """Generate the response string for the final packet."""
+        if client_id not in self.collected_movies:
+            return "No se encontraron resultados."
         lines = []
         if self.filters:
             for filter_spec in self.filters:
@@ -148,7 +166,7 @@ class DeliverNode:
                 inverse_sort = filter_spec.get("inverse_sort")
                 # Uso una key unica para ordenar la lista
                 list_key = f"{column}_{'desc' if inverse_sort else 'asc'}"
-                movies = self.collected_movies[list_key][:top_n] if top_n is not None else self.collected_movies[list_key]
+                movies = self.collected_movies[client_id][list_key][:top_n] if top_n is not None else self.collected_movies[client_id][list_key]
                 
                 sort_dir = "ascending" if (inverse_sort != (column == "title")) else "descending"
                 header = f"Top {top_n or 'all'} by {column} ({sort_dir}):"
@@ -161,7 +179,7 @@ class DeliverNode:
                     lines.append("")
         else:
             # Caso base (sin filtros)
-            movies = self.collected_movies["default"]
+            movies = self.collected_movies[client_id]["default"]
             for movie in movies:
                 lines.append(self._format_movie(movie))
         
@@ -174,26 +192,28 @@ class DeliverNode:
                 return
             # Recibo el paquete, si es el último mando los resultados
             body_decoded = body.decode()
-            
-            if is_final_packet(json.loads(body_decoded).get("header")):
+            packet = json.loads(body_decoded)
+            if is_final_packet(packet.get("header")):
                 if handle_final_packet(method, self.input_rabbitmq):
-                    response_str = self._generate_response()
+                    client_id = packet.get("client_id")
+                    response_str = self._generate_response(client_id)
                     query_packet = QueryPacket(
                         timestamp=datetime.utcnow().isoformat(),
                         response=response_str
                     )
-                    self.output_rabbitmq.publish(query_packet.to_json())
-                    self.input_rabbitmq.send_ack_and_close(method)
+                    self.output_rabbitmq.publish(query_packet.to_json(), str(client_id))
+                    self.final_rabbitmq.send_final(int(client_id))
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             packet = DataPacket.from_json(body_decoded)
-            filtered_movie = self._process_movie(packet.data)
+            filtered_movie = self._process_movie(packet.data, packet.client_id)
 
             print(f" [DeliverNode] Movie added: {filtered_movie}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
             print(f" [DeliverNode] Error: {e}")
-            ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+            ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
 
     def _log_startup(self):
         """Log startup information about queues, filters, and columns."""
@@ -213,37 +233,14 @@ class DeliverNode:
 
     def start_node(self):
         self._log_startup()
-        t3 = threading.Thread(target=self.final_rabbitmq.consume, args=(self.noop_callback,))
-        if int(self.query_number) == 1:
-            self.final_rabbitmq.send_final()  
-        t3.start()
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
             print(f" [!] Error in deliver node: {e}")
         finally:
-            self.finished_event.set()
-            t3.join()
-            if self.input_rabbitmq:
-                self.input_rabbitmq.close()
-            if self.output_rabbitmq:
-                self.output_rabbitmq.close()
-
-    def noop_callback(self, ch, method, properties, body):
-        packet_json = body.decode()
-        header = json.loads(packet_json).get("header")
-     
-        self.finished_event.wait()
-        
-        
-        if is_final_packet(header):
-            print(f" [!] Final rabbitmq stop consuming.")
-            if handle_final_packet(method, self.final_rabbitmq):
-                self.output_rabbitmq.send_final()
-                self.final_rabbitmq.send_ack_and_close(method)
-                print(f" [!] Final rabbitmq send final.")
-            return
-        ch.basic_ack(delivery_tag=method.delivery_tag)
+            if self.leader_queue:
+                self.leader_queue.join()
+            self.close()
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
@@ -252,6 +249,12 @@ class DeliverNode:
     def close(self):
         print(f"Closing queues")
         self.running = False
-        self.finished_event.set()
-        self.final_rabbitmq.cancel_consumer()
-        self.input_rabbitmq.cancel_consumer()
+        if self.leader_queue:
+            self.leader_queue.close()
+        if self.input_rabbitmq:
+            self.input_rabbitmq.cancel_consumer()
+            self.input_rabbitmq.close()
+        if self.output_rabbitmq:
+            self.output_rabbitmq.close()
+        if self.final_rabbitmq:
+            self.final_rabbitmq.close()

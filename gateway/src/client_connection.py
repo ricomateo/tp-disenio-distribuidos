@@ -16,7 +16,9 @@ class ClientConnection:
         self.client_id = client_id
         self.client = Protocol(socket)
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "csv_queue")
+        self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
         self.input_queue = os.getenv("RABBITMQ_INPUT_QUEUE", "query_queue")
+        self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
         
         if self.output_exchange:
@@ -24,7 +26,13 @@ class ClientConnection:
         else:
             self.rabbitmq = Middleware(queue=self.output_queue)
         
-        self.rabbitmq_receiver = Middleware(queue=self.input_queue)
+        self.rabbitmq_receiver = Middleware(
+                queue=self.input_queue,
+                consumer_tag=self.consumer_tag,
+                exchange=self.exchange,
+                publish_to_exchange=False,
+                routing_key=str(self.client_id)
+        )
         
         self.process = multiprocessing.Process(
                     target=self.handle_client,
@@ -92,7 +100,7 @@ class ClientConnection:
 
                 if is_final_packet(packet.get("header")):
                     if handle_final_packet(method, self.rabbitmq_receiver):
-                        self.rabbitmq.send_final()
+                        #self.rabbitmq.send_final()
                         self.rabbitmq_receiver.send_ack_and_close(method)
                         self.client.send_finalization()
                     return
@@ -110,7 +118,7 @@ class ClientConnection:
                 ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
             except Exception as e:
                 print(f"[Client {client_id} - RESULT] Error processing message: {e}")
-                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
+                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
         print(f"[Client {client_id}] Escuchando resultados en {self.input_queue}...")
         self.rabbitmq_receiver.consume(callback_reader)
