@@ -17,10 +17,10 @@ class AggregatorNode:
 
         self.operation = os.getenv("operation", "total_invested")
 
-        self.average_positive: tuple[float, int] = (0, 0)
-        self.average_negative: tuple[float, int] = (0, 0)
-        self.invested_per_country: dict[str, int] = {}
-        self.count_by_actors: dict[str, int] = {}
+        self.average_positive_by_client_id: dict[int, tuple[float, int]] = {} #(0, 0)
+        self.average_negative_by_client_id: dict[int, tuple[float, int]] = {} #(0, 0)
+        self.invested_per_country_by_client_id: dict[int, dict[str, int]] = {}
+        self.count_by_actors_by_client_id: dict[int, dict[str, int]] = {}
 
     def callback(self, ch, method, properties, body):
         try:
@@ -35,10 +35,11 @@ class AggregatorNode:
             header = packet.get("header")
             client_id = packet.get("client_id")
             if header and is_final_packet(header):
+                
                 if handle_final_packet(method, self.input_rabbitmq):
                     if self.operation == "total_invested":
                         # Mando un paquete por país y después el final packet
-                        for country, value in self.invested_per_country.items():
+                        for country, value in self.invested_per_country_by_client_id[client_id].items():
                             packet = DataPacket(
                                 client_id=client_id,
                                 timestamp=datetime.utcnow().isoformat(),
@@ -50,37 +51,39 @@ class AggregatorNode:
                             self.output_rabbitmq.publish(packet.to_json())
                         self.output_rabbitmq.send_final(client_id=client_id)
                         self.input_rabbitmq.send_ack_and_close(method)
+                    
                     elif self.operation == "average":
                         # En caso de tener al menos una película para ese sentimiento, publico
                         # ese paquete en la queue y después mando el final packet
-                        if self.average_positive[1] > 0:
+                        if self.average_positive_by_client_id[client_id][1] > 0:
                             packet_pos = DataPacket(
                                 client_id=client_id,
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "feeling": "POS",
-                                    "ratio": round(self.average_positive[0], 4),
-                                    "count": self.average_positive[1]
+                                    "ratio": round(self.average_positive_by_client_id[client_id][0], 4),
+                                    "count": self.average_positive_by_client_id[client_id][1]
                                 }
                             )
                             self.output_rabbitmq.publish(packet_pos.to_json())
 
-                        if self.average_negative[1] > 0:
+                        if self.average_negative_by_client_id[client_id][1] > 0:
                             packet_neg = DataPacket(
                                 client_id=client_id,
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "feeling": "NEG",
-                                    "ratio": round(self.average_negative[0], 4),
-                                    "count": self.average_negative[1]
+                                    "ratio": round(self.average_negative_by_client_id[client_id][0], 4),
+                                    "count": self.average_negative_by_client_id[client_id][1]
                                 }
                             )
                             self.output_rabbitmq.publish(packet_neg.to_json())
 
                         self.output_rabbitmq.send_final()
                         self.input_rabbitmq.send_ack_and_close(method)
+                    
                     elif self.operation == "count":
-                        for actor, count in self.count_by_actors.items():
+                        for actor, count in self.count_by_actors_by_client_id[client_id].items():
                             packet = DataPacket(
                                 client_id=client_id,
                                 timestamp=datetime.utcnow().isoformat(),
@@ -101,30 +104,42 @@ class AggregatorNode:
                 # Sumo al recuento de lo invertido para ese pais
                 country = packet.data["value"]
                 invested = packet.data["total"]
+                
+                if client_id not in self.invested_per_country_by_client_id:
+                    self.invested_per_country_by_client_id[client_id] = {}
 
-                current_invested = self.invested_per_country.get(country, 0)
-                self.invested_per_country[country] = current_invested + invested
+                current_invested = self.invested_per_country_by_client_id[client_id].get(country, 0)
+                self.invested_per_country_by_client_id[client_id][country] = current_invested + invested
             elif self.operation == "average":
                 # Calculo el promedio y actualizo el promedio para el sentimiento del que sea la película
                 sentiment = packet.data["feeling"]
                 average = float(packet.data["ratio"])
                 count = int(packet.data["count"])
 
+                if client_id not in self.average_positive_by_client_id:
+                    self.average_positive_by_client_id[client_id] = (0, 0)
+
+                if client_id not in self.average_negative_by_client_id:
+                    self.average_negative_by_client_id[client_id] = (0, 0)
+
                 if sentiment == "POS":
-                    new_count = self.average_positive[1] + count
-                    new_average = (self.average_positive[0] * self.average_positive[1] + average * count) / new_count
-                    self.average_positive = (new_average, new_count)
-                    print(f"[updated positive number - current positive average: {self.average_positive}")
+                    new_count = self.average_positive_by_client_id[client_id][1] + count
+                    new_average = (self.average_positive_by_client_id[client_id][0] * self.average_positive_by_client_id[client_id][1] + average * count) / new_count
+                    self.average_positive_by_client_id[client_id] = (new_average, new_count)
+                    print(f"[updated positive number - current positive average: {self.average_positive_by_client_id[client_id]}")
                 else:
-                    new_count = self.average_negative[1] + count
-                    new_average = (self.average_negative[0] * self.average_negative[1] + average * count) / new_count
-                    self.average_negative = (new_average, new_count)
-                    print(f"[updated negative number - current negative average: {self.average_negative}")
+                    new_count = self.average_negative_by_client_id[client_id][1] + count
+                    new_average = (self.average_negative_by_client_id[client_id][0] * self.average_negative_by_client_id[client_id][1] + average * count) / new_count
+                    self.average_negative_by_client_id[client_id] = (new_average, new_count)
+                    print(f"[updated negative number - current negative average: {self.average_negative_by_client_id[client_id]}")
             elif self.operation == "count":
                 actor = packet.data["value"]
                 new_count_movies = packet.data["count"]
-                count_movies = self.count_by_actors.get(actor, 0)
-                self.count_by_actors[actor] = count_movies + new_count_movies
+                if client_id not in self.count_by_actors_by_client_id:
+                    self.count_by_actors_by_client_id[client_id] = {}
+
+                count_movies = self.count_by_actors_by_client_id[client_id].get(actor, 0)
+                self.count_by_actors_by_client_id[client_id][actor] = count_movies + new_count_movies
               
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
