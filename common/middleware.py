@@ -106,17 +106,17 @@ class Middleware:
         if not self.check_no_consumers():
             print(" [x] Sending FINAL PACKET...")
             
-            self.channel.stop_consuming()
+            #self.channel.stop_consuming()
             self.channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-            self.close()
+            #self.close()
             return False
         return True
 
     
     def send_ack_and_close(self, method):
         self.channel.basic_ack(delivery_tag=method.delivery_tag)
-        self.channel.stop_consuming()
-        self.close()
+        #self.channel.stop_consuming()
+        #self.close()
                 
     def check_no_consumers(self):
         """Verifica si hay 0 consumidores en la cola de control."""

@@ -11,6 +11,7 @@ class LeaderQueue:
         self.consumer_tag = consumer_tag
         self.cluster_size = cluster_size
         self.number_of_nodes_to_send = number_of_nodes_to_send
+        self.client_counters = {}
         self.counter = 0
         
         self.final_rabbitmq = Middleware(
@@ -47,10 +48,11 @@ class LeaderQueue:
             header = packet.get("header")
             client_id = packet.get("client_id")
            
+            self.client_counters[client_id] = self.client_counters.get(client_id, 0) + 1
             
             if is_final_packet(header):
                 self.counter += 1
-                if self.counter == self.cluster_size:
+                if self.client_counters[client_id] == self.cluster_size:
                     if self.number_of_nodes_to_send is not None:
                         # Send to range of nodes (1 to number_of_nodes_to_send)
                         for i in range(self.number_of_nodes_to_send):

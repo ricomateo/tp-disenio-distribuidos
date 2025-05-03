@@ -209,7 +209,7 @@ class DeliverNode:
             packet = DataPacket.from_json(body_decoded)
             filtered_movie = self._process_movie(packet.data, packet.client_id)
 
-            print(f" [DeliverNode] Movie added: {filtered_movie}")
+            print(f" [DeliverNode] Movie added: {filtered_movie} with id: {packet.client_id}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
             print(f" [DeliverNode] Error: {e}")

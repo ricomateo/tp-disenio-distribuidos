@@ -135,7 +135,7 @@ class JoinNode:
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_2}' terminó.")
                 self.clean(client_id)
-                self.final_rabbitmq.send_final()
+                self.final_rabbitmq.send_final(client_id=client_id)
                 if handle_final_packet(method, self.input_rabbitmq_2):
                     self.input_rabbitmq_2.send_ack_and_close(method)
                 return
