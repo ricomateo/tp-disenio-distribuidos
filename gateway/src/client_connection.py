@@ -27,7 +27,7 @@ class ClientConnection:
             self.rabbitmq = Middleware(queue=self.output_queue)
         
         self.rabbitmq_receiver = Middleware(
-                queue=self.input_queue,
+                queue=str(self.client_id),
                 consumer_tag=self.consumer_tag,
                 exchange=self.exchange,
                 publish_to_exchange=False,
