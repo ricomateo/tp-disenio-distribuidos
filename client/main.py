@@ -4,7 +4,7 @@ from src.client import Client
 if __name__ == "__main__":
     host = os.getenv("GATEWAY_HOST")
     port = int(os.getenv("GATEWAY_PORT"))
-    batch_size = int(os.getenv("BATCH_SIZE", "100"))
+    batch_size = int(os.getenv("BATCH_SIZE", "1000"))
 
     client = Client(host, port, batch_size)
     try:

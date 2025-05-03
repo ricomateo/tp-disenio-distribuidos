@@ -22,6 +22,8 @@ class Middleware:
         self.connection = None
         self.channel = None
         self.is_consumed = False
+        if not self.channel:
+            self.connect()
 
     def connect(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host=self.host,
@@ -30,7 +32,7 @@ class Middleware:
         self.channel = self.connection.channel()
         if self.exchange:
             print(f"[Middleware] Declarando exchange '{self.exchange}' de tipo '{self.exchange_type}'...")
-            self.channel.exchange_declare(exchange=self.exchange, exchange_type=self.exchange_type)
+            self.channel.exchange_declare(exchange=self.exchange, exchange_type=self.exchange_type, durable=True)
             
             if self.queue:
                 print(f"[Middleware] Declarando cola '{self.queue}' (durable=False)...")
@@ -108,6 +110,7 @@ class Middleware:
             self.close()
             return False
         return True
+
     
     def send_ack_and_close(self, method):
         self.channel.basic_ack(delivery_tag=method.delivery_tag)
@@ -122,6 +125,13 @@ class Middleware:
         consumer_count = result.method.consumer_count
         print(f" [x] Control queue has {consumer_count} active consumers")
         return consumer_count == 1
+    
+    def check_messages(self):
+        if not self.channel:
+            self.connect()
+        result = self.channel.queue_declare(queue=self.queue, passive=True)
+        count = result.method.message_count
+        print(f" [x] Queue has {count} messages")
     
     def purge(self):
         if not self.channel:

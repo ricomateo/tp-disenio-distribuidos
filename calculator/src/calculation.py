@@ -9,6 +9,7 @@ SUM = "SUM_BY"
 
 class Calculation:
     def __init__(self, operation: str, input_queue: str):
+
         self.operation = operation
         self.input_queue = input_queue
         # Parse operation string
@@ -23,7 +24,7 @@ class Calculation:
                 self.counts: Dict[str, int] = {}  # key_value -> count
             elif self.op_type == AVERAGE:
                 self.key, self.value_field = args.split(",", 1)
-                self.averages: Dict[str, Tuple[float, int]] = {}  # key_value -> (total, count)
+                self.averages: Dict[str, Tuple[float, int, str]] = {}  # key_value -> (total, count)
             elif self.op_type == RATIO:
                 self.numerator, self.denominator = args.split(",", 1)
                 self.totals: Tuple[float, int] = (0.0, 0)  # (total_numerator, count)
@@ -92,6 +93,8 @@ class Calculation:
         keys = movie.get(self.key, [])
         value = movie.get(self.value_field)
         
+        
+        
         # Manejar las keys como una lista o un solo valor
         parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
         if not isinstance(parsed_keys, list):
@@ -105,24 +108,25 @@ class Calculation:
                     if isinstance(key_item, dict):
                         # Si es un diccionario junto los valores no nulos en una key
                         key_value = key_item.get('name', '')
+                  
                         if key_value:
                             combined_key = key_value
-                            current_total, current_count = self.averages.get(combined_key, (0.0, 0))
-                            self.averages[combined_key] = (current_total + value, current_count + 1)
+                            current_total, current_count, _ = self.averages.get(combined_key, (0.0, 0, ""))
+                            self.averages[combined_key] = (current_total + value, current_count + 1, title)
                             processed = True
 
                     elif isinstance(key_item, str) and key_item:
                         # Si es una key agrego el valor al promedio
                         if key_item:
-                            current_total, current_count = self.averages.get(key_item, (0.0, 0))
-                            self.averages[key_item] = (current_total + value, current_count + 1)
+                            current_total, current_count, _ = self.averages.get(key_item, (0.0, 0, ""))
+                            self.averages[key_item] = (current_total + value, current_count + 1, title)
                             processed = True
 
                     elif isinstance(key_item, (int, float)):
                         # Si la key no es un str, la convierto y después promedio el valor
                         key_str = str(key_item)
-                        current_total, current_count = self.averages.get(key_str, (0.0, 0))
-                        self.averages[key_str] = (current_total + value, current_count + 1)
+                        current_total, current_count, _ = self.averages.get(key_str, (0.0, 0, ""))
+                        self.averages[key_str] = (current_total + value, current_count + 1, title)
                         processed = True
 
                 if not processed:
@@ -189,7 +193,7 @@ class Calculation:
         """Process a movie based on the operation, return True if processed successfully."""
         try:
             title = movie.get("title", "Unknown")
-           
+            
             if self.op_type == COUNT:
                 return self.process_count_operation(movie)
             elif self.op_type == AVERAGE:
@@ -229,9 +233,10 @@ class Calculation:
                     "id": int(float(key)),
                     "value_field": self.value_field,
                     "average": round(total / count, 2),
-                    "count": count
+                    "count": count,
+                    "title": title
                 }
-                for key, (total, count) in sorted(self.averages.items())
+                for key, (total, count, title) in sorted(self.averages.items())
             ]
 
         elif self.op_type == RATIO:

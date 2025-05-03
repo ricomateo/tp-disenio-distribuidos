@@ -425,7 +425,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={RATINGS_FILE}',
                 f'ROUTER_BY=id',
-                f'NUMBER_OF_NODES={self.config_params[CALCULATOR_AVERAGE_RATINGS]}'
+                f'NUMBER_OF_NODES={self.config_params[JOIN_MOVIES]}'
             ],
             instances=instances
             )
@@ -434,11 +434,11 @@ class ConfigGenerator:
         self._generate_router(
             service_name=ROUTER_RATINGS_CALCULATED,
             environment=[
-                f'RABBITMQ_QUEUE={CALCULATOR_AVERAGE_RATINGS}',
+                f'RABBITMQ_QUEUE={JOIN_RATINGS}',
                 f'RABBITMQ_CONSUMER_TAG={ROUTER_RATINGS_CALCULATED}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_RATINGS_CALCULATED}',
                 f'ROUTER_BY=id',
-                f'NUMBER_OF_NODES={self.config_params[JOIN_MOVIES]}'
+                f'NUMBER_OF_NODES={self.config_params[CALCULATOR_AVERAGE_RATINGS]}'
             ],
             instances=instances
             )
@@ -477,9 +477,9 @@ class ConfigGenerator:
         self._generate_calculator(
             service_name=CALCULATOR_AVERAGE_RATINGS,
             environment=[
-                F'RABBITMQ_QUEUE={ROUTER_RATINGS}{CALCULATOR_AVERAGE_RATINGS}',
+                F'RABBITMQ_QUEUE={ROUTER_RATINGS_CALCULATED}{CALCULATOR_AVERAGE_RATINGS}',
                 f'RABBITMQ_CONSUMER_TAG={CALCULATOR_AVERAGE_RATINGS}',
-                f'RABBITMQ_EXCHANGE={ROUTER_RATINGS}',
+                f'RABBITMQ_EXCHANGE={ROUTER_RATINGS_CALCULATED}',
                 f'RABBITMQ_OUTPUT_QUEUE={CALCULATOR_AVERAGE_RATINGS}',
                 f'RABBITMQ_FINAL_QUEUE={CALCULATOR_AVERAGE_RATINGS}{FINAL}',
                 f'OPERATION=average_by:id,rating'
@@ -550,11 +550,11 @@ class ConfigGenerator:
             environment=[
                 F'RABBITMQ_QUEUE_1={ROUTER_2000_ARGENTINA}{JOIN_RATINGS}',
                 f'RABBITMQ_EXCHANGE_1={ROUTER_2000_ARGENTINA}',
-                F'RABBITMQ_QUEUE_2={ROUTER_RATINGS_CALCULATED}{JOIN_RATINGS}',
-                f'RABBITMQ_EXCHANGE_2={ROUTER_RATINGS_CALCULATED}',
+                F'RABBITMQ_QUEUE_2={ROUTER_RATINGS}{JOIN_RATINGS}',
+                f'RABBITMQ_EXCHANGE_2={ROUTER_RATINGS}',
                 f'RABBITMQ_CONSUMER_TAG={JOIN_RATINGS}',
                 f'RABBITMQ_OUTPUT_QUEUE={JOIN_RATINGS}',
-                f'KEEP_COLUMNS=title,id,average',
+                f'KEEP_COLUMNS=title,id,rating',
                 f'JOIN_BY=id',
                 f'RABBITMQ_FINAL_QUEUE={JOIN_RATINGS}{FINAL}'
             ],
@@ -643,7 +643,7 @@ class ConfigGenerator:
             service_name=QUERY_3,
             dockerfile='deliver/Dockerfile',
             environment=[
-                F'RABBITMQ_QUEUE={JOIN_RATINGS}',
+                F'RABBITMQ_QUEUE={CALCULATOR_AVERAGE_RATINGS}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_3}',
                 f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
                 f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
