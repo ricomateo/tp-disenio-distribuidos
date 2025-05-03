@@ -26,7 +26,7 @@ class Calculation:
                 self.averages: Dict[str, Tuple[float, int]] = {}  # key_value -> (total, count)
             elif self.op_type == RATIO:
                 self.numerator, self.denominator = args.split(",", 1)
-                self.totals: Tuple[float, float, int] = (0.0, 0.0, 0)  # (total_numerator, total_denominator, count)
+                self.totals: Tuple[float, int] = (0.0, 0)  # (total_numerator, count)
             elif self.op_type == SUM:
                 self.key, self.value_field = args.split(",", 1)
                 self.sums: Dict[str, float] = {}  # key_value -> sum
@@ -146,8 +146,8 @@ class Calculation:
                 return False
 
             ratio = numerator / denominator
-            total_ratio, _, count = self.totals
-            self.totals = (total_ratio + ratio, 0.0, count + 1)
+            total_ratio, count = self.totals
+            self.totals = (total_ratio + ratio, count + 1)
 
             return True
         except (ValueError, TypeError):
@@ -235,7 +235,7 @@ class Calculation:
             ]
 
         elif self.op_type == RATIO:
-            total_ratio, _, count = self.totals
+            total_ratio, count = self.totals
             if count == 0:
                 return [{"error": f"No movies processed for {self.numerator}/{self.denominator} totals."}]
             average_ratio = total_ratio / count
