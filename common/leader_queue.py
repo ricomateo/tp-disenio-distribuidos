@@ -4,13 +4,14 @@ from common.middleware import Middleware
 from common.packet import DataPacket, handle_final_packet, is_final_packet
 
 class LeaderQueue:
-    def __init__(self, final_queue, output_queue, consumer_tag, cluster_size, number_of_nodes_to_send = None, output_exchange = None):
+    def __init__(self, final_queue, output_queue, consumer_tag, cluster_size, output_exchange = None, number_of_nodes_to_send = None):
         """Initialize CloseQueue with a RabbitMQ connection and queue name."""
         self.final_queue = final_queue
         self.output_queue = output_queue
         self.consumer_tag = consumer_tag
         self.cluster_size = cluster_size
         self.number_of_nodes_to_send = number_of_nodes_to_send
+        self.client_counters = {}
         self.counter = 0
         
         self.final_rabbitmq = Middleware(
@@ -43,17 +44,22 @@ class LeaderQueue:
         """Callback to process messages; acknowledges non-final packets."""
         try:
             packet_json = body.decode()
-            header = json.loads(packet_json).get("header")
+            packet = json.loads(packet_json)
+            header = packet.get("header")
+            client_id = packet.get("client_id")
            
+            self.client_counters[client_id] = self.client_counters.get(client_id, 0) + 1
             
             if is_final_packet(header):
                 self.counter += 1
-                if self.counter == self.cluster_size:
-                    if self.number_of_nodes_to_send:
+                if self.client_counters[client_id] == self.cluster_size:
+                    if self.number_of_nodes_to_send is not None:
+                        # Send to range of nodes (1 to number_of_nodes_to_send)
                         for i in range(self.number_of_nodes_to_send):
-                            self.output_rabbitmq.send_final(routing_key=str(i))
+                            self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i))
+        
                     else:
-                        self.output_rabbitmq.send_final()
+                        self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(client_id))
                     self.final_rabbitmq.send_ack_and_close(method)
                 else:
                     ch.basic_ack(delivery_tag=method.delivery_tag)

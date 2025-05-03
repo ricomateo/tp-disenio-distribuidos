@@ -46,11 +46,13 @@ class SentimentNode:
                 return
             # Recibir paquete y mandar final packet si se recibe uno
             packet_json = body.decode()
-            
-            if is_final_packet(json.loads(packet_json).get("header")):
+            packet = json.loads(packet_json)
+            header = packet.get("header")
+            client_id = packet.get("client_id")
+            if is_final_packet(header):
                 if handle_final_packet(method, self.input_rabbitmq):
-                    self.output_positive_rabbitmq.send_final()
-                    self.output_negative_rabbitmq.send_final()
+                    self.output_positive_rabbitmq.send_final(client_id=client_id)
+                    self.output_negative_rabbitmq.send_final(client_id=client_id)
                     self.input_rabbitmq.send_ack_and_close(method)
                 return
             
@@ -65,6 +67,7 @@ class SentimentNode:
             movie['sentiment'] = sentiment
 
             filtered_packet = DataPacket(
+                client_id=client_id,
                 timestamp=datetime.utcnow().isoformat(),
                 data=movie
             )

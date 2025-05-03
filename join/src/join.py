@@ -84,8 +84,9 @@ class JoinNode:
                 return
             
             packet_json = body.decode()
-            header = json.loads(packet_json).get("header")
-            client_id = 1
+            packet = json.loads(packet_json)
+            header = packet.get("header")
+            client_id = packet.get("client_id")
             
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_1}' terminó.")
@@ -128,12 +129,13 @@ class JoinNode:
                 return
             
             packet_json = body.decode()
-            header = json.loads(packet_json).get("header")
-            client_id = 1
+            packet = json.loads(packet_json)
+            header = packet.get("header")
+            client_id = packet.get("client_id")
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_2}' terminó.")
                 self.clean(client_id)
-                self.final_rabbitmq.send_final()
+                self.final_rabbitmq.send_final(client_id=client_id)
                 if handle_final_packet(method, self.input_rabbitmq_2):
                     self.input_rabbitmq_2.send_ack_and_close(method)
                 return
@@ -153,18 +155,18 @@ class JoinNode:
                 print(f" [🔍] Router '{router}' found in router_buffer")
                 with self.lock:
                     movie1 = self.router_buffer_by_client[client_id][router]
-                joined_packet = self.create_joined_packet(movie1, movie)
+                joined_packet = self.create_joined_packet(client_id, movie1, movie)
                 self.output_rabbitmq.publish(joined_packet.to_json())
                 print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
                 
             else:
                 # Si eof_main es False, guardar en el disco
-                if not self.eof_main_by_client.get(1, False):
+                if not self.eof_main_by_client.get(client_id, False):
                     print(f" [💾] Router '{router}' not in buffer, adding to disk")
                     storage.add(str(router), movie, group_key=self.input_queue_2)
                     print(f" [✅] Added router '{router}' to disk")
                     
-            if self.eof_main_by_client.get(1, False):
+            if self.eof_main_by_client.get(client_id, False):
                 
                 # Verificar si el disco está vacío
                 stored_keys = storage.list_keys(group_key=self.input_queue_2)
@@ -184,7 +186,7 @@ class JoinNode:
                             print(f" [🔍] Procesando router '{router_key}' con {len(stored_movies)} entradas en disco")
                             movie1 = self.router_buffer_by_client[client_id][router_key]
                             for movie2 in stored_movies:
-                                joined_packet = self.create_joined_packet(movie1, movie2)
+                                joined_packet = self.create_joined_packet(client_id, movie1, movie2)
                                 self.output_rabbitmq.publish(joined_packet.to_json())
                                 print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
                     
@@ -202,9 +204,10 @@ class JoinNode:
             print(f" [!] Error processing message: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
 
-    def create_joined_packet(self, movie1, movie2):
+    def create_joined_packet(self, client_id: int, movie1, movie2):
         combined_movie = {**movie1, **movie2}
         joined_packet = DataPacket(
+            client_id=client_id,
             timestamp=datetime.utcnow().isoformat(),
             data=combined_movie,
             keep_columns=self.keep_columns,

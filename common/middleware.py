@@ -91,31 +91,32 @@ class Middleware:
         )
         print(f" [*] Waiting for messages in {self.queue}")
         self.channel.start_consuming()
-        
-    def send_final(self, routing_key=''):
+    
+    # TODO: sacar client_id=0 como default
+    def send_final(self, client_id=0, routing_key=''):
         """Publica un paquete FINAL a través de este middleware."""
         if not self.channel:
             self.connect()
-        final_packet = FinalPacket(timestamp=datetime.utcnow().isoformat())
+        final_packet = FinalPacket(client_id)
         self.publish(final_packet.to_json(), routing_key)
-        print(f"[Middleware] FinalPacket enviado directamente.")
+        print(f"[Middleware] FinalPacket {final_packet.to_json()} enviado directamente.")
     
     def send_final_until_no_consumers(self, method):
         """Envía FINAL PACKET hasta que no haya consumidores y purga la cola al final."""
         if not self.check_no_consumers():
             print(" [x] Sending FINAL PACKET...")
             
-            self.channel.stop_consuming()
+            #self.channel.stop_consuming()
             self.channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-            self.close()
+            #self.close()
             return False
         return True
 
     
     def send_ack_and_close(self, method):
         self.channel.basic_ack(delivery_tag=method.delivery_tag)
-        self.channel.stop_consuming()
-        self.close()
+        #self.channel.stop_consuming()
+        #self.close()
                 
     def check_no_consumers(self):
         """Verifica si hay 0 consumidores en la cola de control."""
@@ -146,8 +147,11 @@ class Middleware:
             self.connection.add_callback_threadsafe(self.channel.stop_consuming)
 
     def close(self):
-        if self.connection and not self.connection.is_closed:
-            self.connection.close()
+        try:
+            if self.connection and not self.connection.is_closed:
+                self.connection.close()
+        except Exception as e:
+            print(f"Failed to close connection. Error: {e}")
             
     def cancel_consumer(self):
         if not self.is_consumed and self.channel and self.channel.is_open:
