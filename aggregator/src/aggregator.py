@@ -39,6 +39,7 @@ class AggregatorNode:
                         # Mando un paquete por país y después el final packet
                         for country, value in self.invested_per_country.items():
                             packet = DataPacket(
+                                client_id=0, # TODO: setear el client id correcto
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "value": country,
@@ -53,6 +54,7 @@ class AggregatorNode:
                         # ese paquete en la queue y después mando el final packet
                         if self.average_positive[1] > 0:
                             packet_pos = DataPacket(
+                                client_id=0, # TODO: setear el client id correcto
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "feeling": "POS",
@@ -64,6 +66,7 @@ class AggregatorNode:
 
                         if self.average_negative[1] > 0:
                             packet_neg = DataPacket(
+                                client_id=0, # TODO: setear el client id correcto
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "feeling": "NEG",
@@ -78,6 +81,7 @@ class AggregatorNode:
                     elif self.operation == "count":
                         for actor, count in self.count_by_actors.items():
                             packet = DataPacket(
+                                client_id=0, # TODO: setear el client id correcto
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "value": actor,
@@ -133,8 +137,6 @@ class AggregatorNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
 
     def start_node(self):
-        print(f" [~] Starting sentiment analyzer")
-
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
