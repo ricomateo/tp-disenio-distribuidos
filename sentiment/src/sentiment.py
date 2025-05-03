@@ -65,6 +65,7 @@ class SentimentNode:
             movie['sentiment'] = sentiment
 
             filtered_packet = DataPacket(
+                client_id=0, # TODO: setear el client_id correcto
                 timestamp=datetime.utcnow().isoformat(),
                 data=movie
             )
