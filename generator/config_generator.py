@@ -1,4 +1,4 @@
-
+CLIENTS = 'clients'
 FINAL = 'final'
 QUERY_1 = 'query_1'
 QUERY_2 = 'query_2'
@@ -83,13 +83,14 @@ class ConfigGenerator:
 
     def _generate_clients(self):
         """Generate client service."""
-        instances = self.config_params.get("clients", 1)
+        instances = self.config_params.get(CLIENTS)
         self.generate_service(
             service_name='client',
             dockerfile='client/Dockerfile',
             environment=[
                 'GATEWAY_HOST=gateway',
-                'GATEWAY_PORT=9999'
+                'GATEWAY_PORT=9999',
+                'BATCH_SIZE=1000'
             ],
             networks=['app-network'],
             depends_on={
@@ -108,8 +109,8 @@ class ConfigGenerator:
             environment=[
                 'GATEWAY_HOST=0.0.0.0',
                 'GATEWAY_PORT=9999',
-                'BATCH_SIZE=100',
                 f'RABBITMQ_INPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_EXCHANGE={DELIVER}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={GATEWAY}'
             ],
             networks=['app-network'],
@@ -183,7 +184,8 @@ class ConfigGenerator:
                           depends_on: list[str] = [],
                           instances: int = 1,
                           deploy: dict = None,
-                          start_node_id: int = None):
+                          start_node_id: int = None,
+                          cluster_size: int = None):
         
         if environment is None:
             environment = []
@@ -204,7 +206,7 @@ class ConfigGenerator:
             current_environment = ['PYTHONUNBUFFERED=1']
             current_environment.extend(environment)
             current_environment.append(f'NODE_ID={node_id}')
-            current_environment.append(f'CLUSTER_SIZE={instances}')
+            current_environment.append(f'CLUSTER_SIZE={cluster_size if cluster_size is not None else instances}')
 
             
 
@@ -606,7 +608,7 @@ class ConfigGenerator:
             environment=[
                 F'RABBITMQ_QUEUE={FILTER_2000S_SPAIN}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_1}',
-                f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_OUTPUT_EXCHANGE={DELIVER}',
                 f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
                 f'QUERY_NUMBER=1',
                 f'KEEP_COLUMNS=title,genres'
@@ -625,7 +627,7 @@ class ConfigGenerator:
             environment=[
                 F'RABBITMQ_QUEUE={AGGREGATOR_CALCULATOR_BUDGET_COUNTRY}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_2}',
-                f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_OUTPUT_EXCHANGE={DELIVER}',
                 f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
                 f'QUERY_NUMBER=2',
                 f'SORT=total:5',
@@ -635,7 +637,7 @@ class ConfigGenerator:
             depends_on={
                 'rabbitmq': {'condition': 'service_healthy'}
             },
-            instances=1
+            instances=1,
         )
     
     def _generate_deliver_3(self):
@@ -645,7 +647,7 @@ class ConfigGenerator:
             environment=[
                 F'RABBITMQ_QUEUE={CALCULATOR_AVERAGE_RATINGS}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_3}',
-                f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_OUTPUT_EXCHANGE={DELIVER}',
                 f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
                 f'QUERY_NUMBER=3',
                 f'SORT=average:1,average:-1',
@@ -665,7 +667,7 @@ class ConfigGenerator:
             environment=[
                 F'RABBITMQ_QUEUE={AGGREGATOR_CALCULATOR_COUNT_ACTORS}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_4}',
-                f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_OUTPUT_EXCHANGE={DELIVER}',
                 f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
                 f'QUERY_NUMBER=4',
                 f'SORT=count:10',
@@ -685,7 +687,7 @@ class ConfigGenerator:
             environment=[
                 F'RABBITMQ_QUEUE={AGGREGATOR_CALCULATOR_RATIO_FEELINGS}',
                 f'RABBITMQ_CONSUMER_TAG={QUERY_5}',
-                f'RABBITMQ_OUTPUT_QUEUE={DELIVER}',
+                f'RABBITMQ_OUTPUT_EXCHANGE={DELIVER}',
                 f'RABBITMQ_FINAL_QUEUE={DELIVER}{FINAL}',
                 f'QUERY_NUMBER=5',
                 f'SORT=ratio:2',
@@ -695,7 +697,8 @@ class ConfigGenerator:
             depends_on={
                 'rabbitmq': {'condition': 'service_healthy'}
             },
-            instances=1
+            instances=1,
+            cluster_size=4
         )
 
     def _generate_sentiment(self):
