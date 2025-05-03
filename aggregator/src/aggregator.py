@@ -31,15 +31,16 @@ class AggregatorNode:
                 return
             # Recibir paquete y manejar el cierre en caso de ser un final packet
             packet_json = body.decode()
-            
-            header = json.loads(packet_json).get("header")
+            packet = json.loads(packet_json)
+            header = packet.get("header")
+            client_id = packet.get("client_id")
             if header and is_final_packet(header):
                 if handle_final_packet(method, self.input_rabbitmq):
                     if self.operation == "total_invested":
                         # Mando un paquete por país y después el final packet
                         for country, value in self.invested_per_country.items():
                             packet = DataPacket(
-                                client_id=0, # TODO: setear el client id correcto
+                                client_id=client_id,
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "value": country,
@@ -47,14 +48,14 @@ class AggregatorNode:
                                 }
                             )
                             self.output_rabbitmq.publish(packet.to_json())
-                        self.output_rabbitmq.send_final()
+                        self.output_rabbitmq.send_final(client_id=client_id)
                         self.input_rabbitmq.send_ack_and_close(method)
                     elif self.operation == "average":
                         # En caso de tener al menos una película para ese sentimiento, publico
                         # ese paquete en la queue y después mando el final packet
                         if self.average_positive[1] > 0:
                             packet_pos = DataPacket(
-                                client_id=0, # TODO: setear el client id correcto
+                                client_id=client_id,
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "feeling": "POS",
@@ -66,7 +67,7 @@ class AggregatorNode:
 
                         if self.average_negative[1] > 0:
                             packet_neg = DataPacket(
-                                client_id=0, # TODO: setear el client id correcto
+                                client_id=client_id,
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "feeling": "NEG",
@@ -81,7 +82,7 @@ class AggregatorNode:
                     elif self.operation == "count":
                         for actor, count in self.count_by_actors.items():
                             packet = DataPacket(
-                                client_id=0, # TODO: setear el client id correcto
+                                client_id=client_id,
                                 timestamp=datetime.utcnow().isoformat(),
                                 data={
                                     "value": actor,
@@ -89,7 +90,7 @@ class AggregatorNode:
                                 }
                             )
                             self.output_rabbitmq.publish(packet.to_json())
-                        self.output_rabbitmq.send_final()
+                        self.output_rabbitmq.send_final(client_id=client_id)
                         self.input_rabbitmq.send_ack_and_close(method)
                 return
             

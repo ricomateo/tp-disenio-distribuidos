@@ -101,8 +101,7 @@ class CalculatorNode:
             print(f" [!] Error processing message: {e}, raw packet is {packet_json}")
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
 
-    def start_node(self):
-        print(f" [~] Starting sentiment analyzer")    
+    def start_node(self): 
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:

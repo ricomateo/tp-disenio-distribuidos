@@ -155,7 +155,7 @@ class JoinNode:
                 print(f" [🔍] Router '{router}' found in router_buffer")
                 with self.lock:
                     movie1 = self.router_buffer_by_client[client_id][router]
-                joined_packet = self.create_joined_packet(movie1, movie)
+                joined_packet = self.create_joined_packet(client_id, movie1, movie)
                 self.output_rabbitmq.publish(joined_packet.to_json())
                 print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
                 
@@ -186,7 +186,7 @@ class JoinNode:
                             print(f" [🔍] Procesando router '{router_key}' con {len(stored_movies)} entradas en disco")
                             movie1 = self.router_buffer_by_client[client_id][router_key]
                             for movie2 in stored_movies:
-                                joined_packet = self.create_joined_packet(movie1, movie2)
+                                joined_packet = self.create_joined_packet(client_id, movie1, movie2)
                                 self.output_rabbitmq.publish(joined_packet.to_json())
                                 print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
                     
@@ -204,10 +204,10 @@ class JoinNode:
             print(f" [!] Error processing message: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
 
-    def create_joined_packet(self, movie1, movie2):
+    def create_joined_packet(self, client_id: int, movie1, movie2):
         combined_movie = {**movie1, **movie2}
         joined_packet = DataPacket(
-            client_id=0, # TODO: setear el client id correcto
+            client_id=client_id,
             timestamp=datetime.utcnow().isoformat(),
             data=combined_movie,
             keep_columns=self.keep_columns,
