@@ -49,6 +49,10 @@ class AggregatorNode:
                                 }
                             )
                             self.output_rabbitmq.publish(packet.to_json())
+               
+                        if client_id in self.invested_per_country_by_client_id:
+                            del self.invested_per_country_by_client_id[client_id]
+                 
                         self.output_rabbitmq.send_final(client_id=client_id)
                         self.input_rabbitmq.send_ack_and_close(method)
                     
@@ -78,6 +82,13 @@ class AggregatorNode:
                                 }
                             )
                             self.output_rabbitmq.publish(packet_neg.to_json())
+           
+                        if client_id in self.average_positive_by_client_id:
+                                del self.average_positive_by_client_id[client_id]
+                    
+                        if client_id in self.average_negative_by_client_id:
+                                del self.average_negative_by_client_id[client_id]
+            
 
                         self.output_rabbitmq.send_final(client_id=client_id)
                         self.input_rabbitmq.send_ack_and_close(method)
@@ -93,6 +104,10 @@ class AggregatorNode:
                                 }
                             )
                             self.output_rabbitmq.publish(packet.to_json())
+         
+                        if client_id in self.count_by_actors_by_client_id:
+                                del self.count_by_actors_by_client_id[client_id]
+               
                         self.output_rabbitmq.send_final(client_id=client_id)
                         self.input_rabbitmq.send_ack_and_close(method)
                 return
@@ -150,7 +165,7 @@ class AggregatorNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
             print(f" [!] operation is {self.operation}    Error processing message: {e}, raw packet is {packet_json}")
-            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
+            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def start_node(self):
         try:

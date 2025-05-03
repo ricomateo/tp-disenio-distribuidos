@@ -228,9 +228,9 @@ class Calculation:
     def get_result(self, client_id: int) -> List[Dict]:
         """Return the results as a list of dictionaries, one per result item."""
         if self.op_type == COUNT:
-            if not self.counts_by_client[client_id]:
+            if not self.counts_by_client.get(client_id):
                 return [{"error": f"No {self.key} values found."}]
-            return [
+            results = [
                 {
                     "operation": "count",
                     "key": self.key,
@@ -239,11 +239,14 @@ class Calculation:
                 }
                 for key, count in sorted(self.counts_by_client[client_id].items())
             ]
+            if client_id in self.counts_by_client:
+                del self.counts_by_client[client_id]  # Delete client data
+            return results
 
         elif self.op_type == AVERAGE:
-            if not self.averages_by_client[client_id]:
+            if not self.averages_by_client.get(client_id):
                 return [{"error": f"No movies processed for {self.value_field} average by {self.key}."}]
-            return [
+            results = [
                 {
                     "operation": "average",
                     "key": self.key,
@@ -255,14 +258,17 @@ class Calculation:
                 }
                 for key, (total, count, title) in sorted(self.averages_by_client[client_id].items())
             ]
+            if client_id in self.averages_by_client:
+                del self.averages_by_client[client_id]  # Delete client data
+            return results
 
         elif self.op_type == RATIO:
-            total_ratio, count = self.totals_by_client[client_id]
+            total_ratio, count = self.totals_by_client.get(client_id, (0.0, 0))
             if count == 0:
                 return [{"error": f"No movies processed for {self.numerator}/{self.denominator} totals."}]
             average_ratio = total_ratio / count
             feeling_str = "POS" if self.input_queue == "sentiment_positive_queue" else "NEG"
-            return [
+            results = [
                 {
                     "operation": "ratio",
                     "feeling": feeling_str,
@@ -270,11 +276,14 @@ class Calculation:
                     "count": count
                 }
             ]
+            if client_id in self.totals_by_client:
+                del self.totals_by_client[client_id]  # Delete client data
+            return results
 
         elif self.op_type == SUM:
-            if not self.sums_by_client[client_id]:
+            if not self.sums_by_client.get(client_id):
                 return [{"error": f"No sums processed for {self.value_field} by {self.key}."}]
-            return [
+            results = [
                 {
                     "operation": "sum",
                     "key": self.key,
@@ -284,5 +293,8 @@ class Calculation:
                 }
                 for key, value in sorted(self.sums_by_client[client_id].items())
             ]
+            if client_id in self.sums_by_client:
+                del self.sums_by_client[client_id]  # Delete client data
+            return results
 
         return [{"error": "No results available."}]

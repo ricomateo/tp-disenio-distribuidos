@@ -182,7 +182,8 @@ class DeliverNode:
             movies = self.collected_movies[client_id]["default"]
             for movie in movies:
                 lines.append(self._format_movie(movie))
-        
+                
+        del self.collected_movies[client_id]
         return "\n".join(lines).rstrip() if lines else "No se encontraron resultados."
     
     def callback(self, ch, method, properties, body):
