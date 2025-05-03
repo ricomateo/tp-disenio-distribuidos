@@ -698,7 +698,7 @@ class ConfigGenerator:
                 'rabbitmq': {'condition': 'service_healthy'}
             },
             instances=1,
-            cluster_size=4
+            cluster_size=5
         )
 
     def _generate_sentiment(self):
