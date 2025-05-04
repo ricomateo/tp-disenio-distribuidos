@@ -285,7 +285,7 @@ class ConfigGenerator:
             instances=instances
         )
             
-    def _generate_calculator(self, service_name, environment, instances, start_node_id=None):
+    def _generate_calculator(self, service_name, environment, instances, start_node_id=None, cluster_size=None):
         
         self.generate_service(
             service_name=service_name,
@@ -296,7 +296,8 @@ class ConfigGenerator:
                 'rabbitmq': {'condition': 'service_healthy'}
             },
             instances=instances,
-            start_node_id=start_node_id
+            start_node_id=start_node_id,
+            cluster_size=cluster_size
         )
         
     def _generate_aggregator(self, service_name, environment, instances):
@@ -513,7 +514,8 @@ class ConfigGenerator:
                 f'RABBITMQ_FINAL_QUEUE={CALCULATOR_RATIO_FEELINGS}{FINAL}',
                 f'OPERATION=ratio_by:revenue,budget'
             ],
-            instances=instances
+            instances=instances,
+            cluster_size=instances*2
             )
         
         self._generate_calculator(
@@ -526,7 +528,8 @@ class ConfigGenerator:
                 f'OPERATION=ratio_by:revenue,budget'
             ],
             instances=instances,
-            start_node_id=instances
+            start_node_id=instances,
+            cluster_size=instances*2
             )
         
     def _generate_joiners(self):

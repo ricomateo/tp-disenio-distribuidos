@@ -101,8 +101,11 @@ class ClientConnection:
                 if is_final_packet(packet.get("header")):
                     if handle_final_packet(method, self.rabbitmq_receiver):
                         #self.rabbitmq.send_final()
-                        self.rabbitmq_receiver.send_ack_and_close(method)
+                        
                         self.client.send_finalization()
+                        ch.basic_ack(delivery_tag=method.delivery_tag)
+                        ch.stop_consuming()
+                        self.rabbitmq_receiver.close()
                     return
 
                 response_str = packet.get("response")
