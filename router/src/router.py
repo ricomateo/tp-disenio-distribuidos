@@ -67,10 +67,8 @@ class RouterNode:
                 if packet.get("acks") is None:
                     print(f"[Router - FIN] - packet[acks] = None")
                     # Inicializo la lista acks con mi id
-                    packet["acks"] = [self.node_id]
-                    self.input_rabbitmq.publish(packet)
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    return
+                    packet["acks"] = []
+        
                 # Si no estoy en la lista de ids, me agrego
                 if not self.node_id in packet.get("acks"):
                     print(f"[Router - FIN] - No estoy en la lista de acks")
@@ -81,7 +79,7 @@ class RouterNode:
                     client_id = packet["client_id"]
                     acks = packet["acks"]
                     print(f"[Router - FIN] - Lista de acks completa ({acks}), mando final packet (client_id = {client_id})")
-                    for i in range(self.cluster_size):
+                    for i in range(self.number_of_nodes):
                         self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i))
                 
                 # Si faltan ids en la lista de ids, reencolo el mensaje (despues de haberme agregado)

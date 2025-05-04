@@ -62,10 +62,8 @@ class FilterNode:
                 if packet.get("acks") is None:
                     print(f"[Filter - FIN] - packet[acks] = None, packet = {packet}")
                     # Inicializo la lista acks con mi id
-                    packet["acks"] = [self.node_id]
-                    self.input_rabbitmq.publish(packet)
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    return
+                    packet["acks"] = []
+                    
                 # Si no estoy en la lista de ids, me agrego
                 if not self.node_id in packet.get("acks"):
                     print(f"[Filter - FIN] - No estoy en la lista de acks")

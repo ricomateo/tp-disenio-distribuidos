@@ -72,9 +72,6 @@ class CalculatorNode:
                         print(f"[Calculator - FIN] - packet[acks] = None")
                         # Inicializo la lista acks vacia
                         packet["acks"] = []
-                        self.input_rabbitmq.publish(packet)
-                        ch.basic_ack(delivery_tag=method.delivery_tag)
-                        return
 
                     # Si no estoy en la lista de ids, me agrego, mando los resultados y mando el mensaje final
                     if not self.node_id in packet.get("acks"):
@@ -117,8 +114,7 @@ class CalculatorNode:
                         )
                         self.output_rabbitmq.publish(data_packet.to_json())
                     self.final_rabbitmq.send_final(client_id=client_id)
-                    if handle_final_packet(method, self.input_rabbitmq):
-                        self.input_rabbitmq.send_ack_and_close(method)
+                    self.input_rabbitmq.send_ack_and_close(method)
                 return
             
             packet = DataPacket.from_json(packet_json)

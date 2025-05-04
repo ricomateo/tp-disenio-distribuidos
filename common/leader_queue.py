@@ -4,13 +4,12 @@ from common.middleware import Middleware
 from common.packet import DataPacket, handle_final_packet, is_final_packet
 
 class LeaderQueue:
-    def __init__(self, final_queue, output_queue, consumer_tag, cluster_size, output_exchange = None, number_of_nodes_to_send = None):
+    def __init__(self, final_queue, output_queue, consumer_tag, cluster_size, output_exchange = None):
         """Initialize CloseQueue with a RabbitMQ connection and queue name."""
         self.final_queue = final_queue
         self.output_queue = output_queue
         self.consumer_tag = consumer_tag
         self.cluster_size = cluster_size
-        self.number_of_nodes_to_send = number_of_nodes_to_send
         self.client_counters = {}
         self.counter = 0
         
@@ -53,16 +52,9 @@ class LeaderQueue:
             if is_final_packet(header):
                 self.counter += 1
                 if self.client_counters[client_id] == self.cluster_size:
-                    if self.number_of_nodes_to_send is not None:
-                        # Send to range of nodes (1 to number_of_nodes_to_send)
-                        for i in range(self.number_of_nodes_to_send):
-                            self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i))
-        
-                    else:
-                        self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(client_id))
-                    self.final_rabbitmq.send_ack_and_close(method)
-                else:
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(client_id))
+                    del self.client_counters[client_id]
+                ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
