@@ -7,6 +7,7 @@ from datetime import datetime
 import os
 import signal
 from src.calculation import Calculation
+import math
 
 class CalculatorNode:
     def __init__(self):
@@ -64,20 +65,60 @@ class CalculatorNode:
                 client_id = packet.get("client_id") 
                 results = self.calculator.get_result(client_id)
                 
-                for result in results:
-                    print("Resultados del cálculo:", result)
-                    data_packet = DataPacket(
-                        client_id=client_id,
-                        timestamp=datetime.utcnow().isoformat(),
-                        data={
-                            "source": f"calculator_{self.operation}",
-                            **result
-                        }
-                    )
-                    self.output_rabbitmq.publish(data_packet.to_json())  
-                self.final_rabbitmq.send_final(client_id=client_id)
-                if handle_final_packet(method, self.input_rabbitmq):
-                    self.input_rabbitmq.send_ack_and_close(method)
+                if self.operation == "ratio_by:revenue,budget":
+                    # Si la lista de acks es None, entonces soy el primero en recibir el mensaje FIN
+                    # Inicializo una lista vacia y reencolo el mensaje
+                    if packet.get("acks") is None:
+                        print(f"[Calculator - FIN] - packet[acks] = None")
+                        # Inicializo la lista acks vacia
+                        packet["acks"] = []
+                        self.input_rabbitmq.publish(packet)
+                        ch.basic_ack(delivery_tag=method.delivery_tag)
+                        return
+
+                    # Si no estoy en la lista de ids, me agrego, mando los resultados y mando el mensaje final
+                    if not self.node_id in packet.get("acks"):
+                        print(f"[Calculator - FIN] - No estoy en la lista de acks")
+                        packet["acks"] = packet["acks"] + [self.node_id]
+                        for result in results:
+                            print("Resultados del cálculo:", result)
+                            data_packet = DataPacket(
+                                client_id=client_id,
+                                timestamp=datetime.utcnow().isoformat(),
+                                data={
+                                    "source": f"calculator_{self.operation}",
+                                    **result
+                                }
+                            )
+                            self.output_rabbitmq.publish(data_packet.to_json())
+                        self.final_rabbitmq.send_final(client_id=client_id)
+                    
+                    # Si faltan IDs en la lista de acks, reencolo
+                    if len(packet["acks"]) < math.ceil(self.cluster_size / 2):
+                        client_id = packet["client_id"]
+                        acks = packet["acks"]
+                        print(f"[Calculator - FIN] - Faltan IDs ({acks}), reencolo (client_id = {client_id})")
+                        # Reencolo
+                        self.input_rabbitmq.publish(packet)
+                    
+                    # Mando ACK
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+
+                else:
+                    for result in results:
+                        print("Resultados del cálculo:", result)
+                        data_packet = DataPacket(
+                            client_id=client_id,
+                            timestamp=datetime.utcnow().isoformat(),
+                            data={
+                                "source": f"calculator_{self.operation}",
+                                **result
+                            }
+                        )
+                        self.output_rabbitmq.publish(data_packet.to_json())
+                    self.final_rabbitmq.send_final(client_id=client_id)
+                    if handle_final_packet(method, self.input_rabbitmq):
+                        self.input_rabbitmq.send_ack_and_close(method)
                 return
             
             packet = DataPacket.from_json(packet_json)
@@ -99,7 +140,7 @@ class CalculatorNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
             print(f" [!] Error processing message: {e}, raw packet is {packet_json}")
-            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
+            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def start_node(self): 
         try:
