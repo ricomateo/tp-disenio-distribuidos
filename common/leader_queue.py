@@ -1,3 +1,4 @@
+
 import threading
 import json
 from common.middleware import Middleware
@@ -35,13 +36,16 @@ class LeaderQueue:
             
         self.running = True
         self.thread = threading.Thread(target=self.consume)
-        self.thread
         self.thread.daemon = True  
         self.thread.start()
             
     def callback(self, ch, method, properties, body):
         """Callback to process messages; acknowledges non-final packets."""
         try:
+            if self.running == False:
+                self.final_rabbitmq.close_graceful(method)
+                return
+            
             packet_json = body.decode()
             packet = json.loads(packet_json)
             header = packet.get("header")
@@ -63,7 +67,7 @@ class LeaderQueue:
 
     def consume(self):
         """Consume messages from the queue in a loop until stopped."""
-
+ 
         try:
             self.final_rabbitmq.consume(self.callback)
            
@@ -71,17 +75,19 @@ class LeaderQueue:
             print(f" [!] Error consuming queue {self.final_queue}: {e}")
         finally:
             print(f" [!] Stopped consuming queue {self.final_queue}")
-            
+            self.output_rabbitmq.close()
+            self.final_rabbitmq.close()
+        
     def close(self):
-        """Stop consuming and close the queue."""
-        print(f"Closing queue {self.final_queue}")
+        """Signal the thread to stop and wait for it to finish."""
         self.running = False
-        self.final_rabbitmq.cancel_consumer()
+        self.final_rabbitmq.cancel_consumer() 
+        self.join()
         self.output_rabbitmq.close()
         self.final_rabbitmq.close()
-
+        
     def join(self):
         """Wait for the consumer thread to finish."""
         if self.thread.is_alive():
             self.thread.join()
-        print(f" [!] Thread for queue {self.final_queue} joined")
+       

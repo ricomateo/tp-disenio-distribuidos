@@ -245,15 +245,16 @@ class DeliverNode:
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
-        self.close()
+        self.running = False
+        self.input_rabbitmq.cancel_consumer()
+        if self.leader_queue:
+            self.leader_queue.close()
     
     def close(self):
         print(f"Closing queues")
-        self.running = False
         if self.leader_queue:
             self.leader_queue.close()
         if self.input_rabbitmq:
-            self.input_rabbitmq.cancel_consumer()
             self.input_rabbitmq.close()
         if self.output_rabbitmq:
             self.output_rabbitmq.close()

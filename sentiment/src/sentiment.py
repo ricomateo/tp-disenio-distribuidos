@@ -121,18 +121,18 @@ class SentimentNode:
         except Exception as e:
             print(f" [!] Error in filter node: {e}")
         finally:
-            if self.input_rabbitmq:
-                self.input_rabbitmq.close()
-            if self.output_positive_rabbitmq:
-                self.output_positive_rabbitmq.close()
-            if self.output_negative_rabbitmq:
-                self.output_negative_rabbitmq.close()
+            self.close()
     
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
-        self.close()
+        self.running = False
+        self.input_rabbitmq.cancel_consumer()
 
     def close(self):
         print(f"Closing queues")
-        self.running = False
-        self.input_rabbitmq.cancel_consumer()
+        if self.input_rabbitmq:
+            self.input_rabbitmq.close()
+        if self.output_positive_rabbitmq:
+            self.output_positive_rabbitmq.close()
+        if self.output_negative_rabbitmq:
+            self.output_negative_rabbitmq.close()

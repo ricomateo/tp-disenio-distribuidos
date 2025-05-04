@@ -77,10 +77,7 @@ class ClientConnection:
             print(f"[Client {client_id}] Error: {e}")
         finally:
             print(f"[Client {client_id}] Cerrando recursos del cliente")
-            if self.running == True:
-                self.rabbitmq.close()
-                self.rabbitmq_receiver.close()
-                self.client.close()
+            self.close()
 
     def publish_file_batch(self, batch: dict, msg_filename):
         """Publica un batch de datos"""
@@ -129,13 +126,12 @@ class ClientConnection:
     def _sigterm_handler(self, signum, _):
         """Maneja la señal SIGTERM para cerrar el servidor."""
         print(f"[Client {self.client_id}] Recibida señal SIGTERM")
-        self.close()
+        self.running = False
+        self.rabbitmq_receiver.cancel_consumer()
 
     def close(self):
         """Cierra el servidor y todos los procesos."""
-        self.running = False
         try:
-            self.rabbitmq_receiver.cancel_consumer()
             self.rabbitmq.close()
             self.rabbitmq_receiver.close()
             self.client.close()

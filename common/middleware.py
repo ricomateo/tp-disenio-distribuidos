@@ -154,6 +154,8 @@ class Middleware:
             print(f"Failed to close connection. Error: {e}")
             
     def cancel_consumer(self):
+        if self.channel and self.channel.is_open:
+            self.connection.add_callback_threadsafe(self.channel.stop_consuming)
         if not self.is_consumed and self.channel and self.channel.is_open:
             self.connection.add_callback_threadsafe(lambda: self.channel.basic_cancel(self.consumer_tag))
             print("Consumidor cancelado exitosamente")

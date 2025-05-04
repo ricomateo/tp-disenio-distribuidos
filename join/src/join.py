@@ -224,15 +224,21 @@ class JoinNode:
             self.threads.append(t2)
             t1.join()
             t2.join()
-            self.leader_queue.join()        
+                  
         except Exception as e:
             print(f" [!] Error in join node: {e}")
         finally:
+            if self.leader_queue:
+                self.leader_queue.join()
             self.close()
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
-        self.close()
+        self.running = False
+        self.input_rabbitmq_1.cancel_consumer()
+        self.input_rabbitmq_2.cancel_consumer()
+        if self.leader_queue:
+            self.leader_queue.close()
     
     def clean(self, client_id):
         # Limpiar disco del cliente
@@ -251,14 +257,14 @@ class JoinNode:
     
     def close(self):
         print(f"Closing queues")
-        self.running = False
         if self.leader_queue:
             self.leader_queue.close()
-        self.input_rabbitmq_1.cancel_consumer()
-        self.input_rabbitmq_2.cancel_consumer()
-        self.input_rabbitmq_1.close()
-        self.input_rabbitmq_2.close()
-        self.final_rabbitmq.close()
+        if self.input_rabbitmq_1:
+            self.input_rabbitmq_1.close()
+        if self.input_rabbitmq_2:
+            self.input_rabbitmq_2.close()
+        if self.final_rabbitmq:
+            self.final_rabbitmq.close()
         for client_id, storage in self.storages_by_client.items():
             print(f" [🧹] Limpiando almacenamiento para cliente '{client_id}'")
             storage.remove_keys()
