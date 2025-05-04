@@ -6,7 +6,7 @@ from datetime import datetime
 from common.middleware import Middleware
 from common.storage_handler import StorageHandler
 from common.leader_queue import LeaderQueue
-from common.packet import DataPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, is_final_packet
 
 class JoinNode:
     def __init__(self):
@@ -92,8 +92,7 @@ class JoinNode:
                 print(f" [*] Cola '{self.input_queue_1}' terminó.")
                 with self.lock:
                     self.eof_main_by_client[client_id] = True
-                if handle_final_packet(method, self.input_rabbitmq_1):
-                    self.input_rabbitmq_1.send_ack_and_close(method)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             packet = DataPacket.from_json(packet_json)
@@ -136,8 +135,7 @@ class JoinNode:
                 print(f" [*] Cola '{self.input_queue_2}' terminó.")
                 self.clean(client_id)
                 self.final_rabbitmq.send_final(client_id=client_id)
-                if handle_final_packet(method, self.input_rabbitmq_2):
-                    self.input_rabbitmq_2.send_ack_and_close(method)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             packet = DataPacket.from_json(packet_json)

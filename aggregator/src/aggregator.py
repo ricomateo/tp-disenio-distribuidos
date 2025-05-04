@@ -1,6 +1,6 @@
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, is_final_packet
 from datetime import datetime
 import os
 import signal
@@ -25,8 +25,6 @@ class AggregatorNode:
     def callback(self, ch, method, properties, body):
         try:
             if self.running == False:
-                if self.input_rabbitmq.check_no_consumers():
-                    self.output_rabbitmq.send_final()
                 self.input_rabbitmq.close_graceful(method)
                 return
             # Recibir paquete y manejar el cierre en caso de ser un final packet
@@ -35,8 +33,6 @@ class AggregatorNode:
             header = packet.get("header")
             client_id = packet.get("client_id")
             if header and is_final_packet(header):
-                
-                if handle_final_packet(method, self.input_rabbitmq):
                     if self.operation == "total_invested":
                         # Mando un paquete por país y después el final packet
                         for country, value in self.invested_per_country_by_client_id[client_id].items():
@@ -54,7 +50,6 @@ class AggregatorNode:
                             del self.invested_per_country_by_client_id[client_id]
                  
                         self.output_rabbitmq.send_final(client_id=client_id)
-                        self.input_rabbitmq.send_ack_and_close(method)
                     
                     elif self.operation == "average":
                         # En caso de tener al menos una película para ese sentimiento, publico
@@ -91,8 +86,7 @@ class AggregatorNode:
             
 
                         self.output_rabbitmq.send_final(client_id=client_id)
-                        self.input_rabbitmq.send_ack_and_close(method)
-                    
+                       
                     elif self.operation == "count":
                         for actor, count in self.count_by_actors_by_client_id[client_id].items():
                             packet = DataPacket(
@@ -109,8 +103,9 @@ class AggregatorNode:
                                 del self.count_by_actors_by_client_id[client_id]
                
                         self.output_rabbitmq.send_final(client_id=client_id)
-                        self.input_rabbitmq.send_ack_and_close(method)
-                return
+                        
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
             
             packet = DataPacket.from_json(packet_json)
 

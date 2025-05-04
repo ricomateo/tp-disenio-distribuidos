@@ -1,6 +1,6 @@
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, is_final_packet
 from datetime import datetime
 import os
 import signal
@@ -40,9 +40,8 @@ class SentimentNode:
     def callback(self, ch, method, properties, body):
         try:
             if self.running == False:
-                if self.input_rabbitmq.check_no_consumers():
-                    self.output_positive_rabbitmq.send_final()
-                    self.output_negative_rabbitmq.send_final()
+                #self.output_positive_rabbitmq.send_final()
+                #self.output_negative_rabbitmq.send_final()
                 self.input_rabbitmq.close_graceful(method)
                 return
             # Recibir paquete y mandar final packet si se recibe uno

@@ -2,7 +2,7 @@ import json
 import threading
 from common.leader_queue import LeaderQueue
 from common.middleware import Middleware
-from common.packet import DataPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, is_final_packet
 from datetime import datetime
 import os
 import signal
@@ -114,7 +114,7 @@ class CalculatorNode:
                         )
                         self.output_rabbitmq.publish(data_packet.to_json())
                     self.final_rabbitmq.send_final(client_id=client_id)
-                    self.input_rabbitmq.send_ack_and_close(method)
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             
             packet = DataPacket.from_json(packet_json)

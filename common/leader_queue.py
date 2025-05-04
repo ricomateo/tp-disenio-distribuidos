@@ -2,7 +2,7 @@
 import threading
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, is_final_packet
 
 class LeaderQueue:
     def __init__(self, final_queue, output_queue, consumer_tag, cluster_size, output_exchange = None):

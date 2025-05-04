@@ -5,7 +5,7 @@ import signal
 from datetime import datetime
 from common.middleware import Middleware
 
-from common.packet import DataPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, is_final_packet
 
 import os
 
