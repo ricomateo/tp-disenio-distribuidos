@@ -88,10 +88,10 @@ client:
 
 compare-original:
 	@echo "Comparing with the output of the kaggle version..."
-	$(PYTHON) testing/output_adapter.py
-	$(PYTHON) ./$(COMPARE_SCRIPT) testing/expected_output.txt
+	$(PYTHON) testing/output_adapter.py output/results.txt testing/received_output.txt
+	$(PYTHON) ./$(COMPARE_SCRIPT) testing/expected_output.txt testing/received_output.txt
 
 compare-filtered:
 	@echo "Comparing with the output of the filtered version..."
-	$(PYTHON) testing/output_adapter.py
-	$(PYTHON) ./$(COMPARE_SCRIPT) testing/expected_filtered_output.txt
+	$(PYTHON) testing/output_adapter.py output/results.txt testing/received_output.txt
+	$(PYTHON) ./$(COMPARE_SCRIPT) testing/expected_filtered_output.txt testing/received_output.txt
