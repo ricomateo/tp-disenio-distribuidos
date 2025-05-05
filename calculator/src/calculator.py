@@ -65,7 +65,7 @@ class CalculatorNode:
                 client_id = packet.get("client_id") 
                 results = self.calculator.get_result(client_id)
                 
-                if self.operation == "ratio_by:revenue,budget":
+                if not self.exchange:
                     # Si la lista de acks es None, entonces soy el primero en recibir el mensaje FIN
                     # Inicializo una lista vacia y reencolo el mensaje
                     if packet.get("acks") is None:
