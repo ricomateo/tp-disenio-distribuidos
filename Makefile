@@ -95,3 +95,17 @@ compare-filtered:
 	@echo "Comparing with the output of the filtered version..."
 	$(PYTHON) testing/output_adapter.py output/results.txt testing/received_output.txt
 	$(PYTHON) ./$(COMPARE_SCRIPT) testing/expected_filtered_output.txt testing/received_output.txt
+
+ensure-results-consistency-2:
+	@echo "Comparing the results obtained in the different clients for the amount of 2..."
+	$(PYTHON) testing/output_adapter.py output/results.txt testing/received_output.txt
+	$(PYTHON) testing/output_adapter.py output/results_1.txt testing/received_output_1.txt
+	$(PYTHON) ./$(COMPARE_SCRIPT) testing/received_output.txt testing/received_output_1.txt
+
+ensure-results-consistency-3:
+	@echo "Comparing the results obtained in the different clients for the amount of 3..."
+	$(PYTHON) testing/output_adapter.py output/results.txt testing/received_output.txt
+	$(PYTHON) testing/output_adapter.py output/results_1.txt testing/received_output_1.txt
+	$(PYTHON) testing/output_adapter.py output/results_2.txt testing/received_output_2.txt
+	$(PYTHON) ./$(COMPARE_SCRIPT) testing/received_output.txt testing/received_output_1.txt
+	$(PYTHON) ./$(COMPARE_SCRIPT) testing/received_output.txt testing/received_output_2.txt
