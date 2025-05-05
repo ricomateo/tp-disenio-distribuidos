@@ -4,6 +4,7 @@ import signal
 import time
 from src.protocol import Protocol
 from common.protocol_constants import QUERY_RESULT_MSG_TYPE, FIN_MSG_TYPE
+import os
 
 
 MOVIES_FILENAME = "movies_metadata.csv"
@@ -16,6 +17,8 @@ class Client:
         self.protocol = Protocol(host, port)
         self.batch_size = batch_size
         self.start_time = time.time()
+
+        self.node_id = int(os.getenv("NODE_ID"))
 
     def send_movies_file(self, filepath: str):
         filename = MOVIES_FILENAME
@@ -63,7 +66,11 @@ class Client:
         self.protocol.send_finalization()
     
     def print_results(self):
-        with open("/app/output/results.txt", "w") as f:
+        results_file_name = "/app/output/results"
+        if self.node_id > 0:
+            results_file_name += "_" + str(self.node_id)
+        results_file_name += ".txt"
+        with open(results_file_name, "w") as f:
             while True:
                 message = self.protocol.recv_message()
                 if message["msg_type"] == QUERY_RESULT_MSG_TYPE:
