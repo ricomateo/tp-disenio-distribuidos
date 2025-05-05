@@ -318,7 +318,7 @@ class ConfigGenerator:
         self._generate_filter(
             service_name=FILTER_2000_ARGENTINA,
             environment=[
-                F'RABBITMQ_QUEUE={FILTER_2000_ARGENTINA}',
+                F'RABBITMQ_QUEUE={PARSER}{FILTER_2000_ARGENTINA}',
                 f'RABBITMQ_CONSUMER_TAG={FILTER_2000_ARGENTINA}',
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_2000_ARGENTINA}',
                 f'RABBITMQ_EXCHANGE={PARSER}',

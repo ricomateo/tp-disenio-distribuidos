@@ -149,7 +149,11 @@ class JoinNode:
             # Obtener el StorageHandler para el cliente
             storage = self._get_storage_for_client(client_id)
             
-            if router in self.router_buffer_by_client.get(client_id, {}):
+            with self.lock:
+                router_in_buffer = router in self.router_buffer_by_client.get(client_id, {})
+                is_eof_main = self.eof_main_by_client.get(client_id, False)
+                
+            if router_in_buffer:
                 print(f" [🔍] Router '{router}' found in router_buffer")
                 with self.lock:
                     movie1 = self.router_buffer_by_client[client_id][router]
@@ -159,13 +163,12 @@ class JoinNode:
                 
             else:
                 # Si eof_main es False, guardar en el disco
-                if not self.eof_main_by_client.get(client_id, False):
+                if not is_eof_main:
                     print(f" [💾] Router '{router}' not in buffer, adding to disk")
                     storage.add(str(router), movie, group_key=self.input_queue_2)
                     print(f" [✅] Added router '{router}' to disk")
                     
-            if self.eof_main_by_client.get(client_id, False):
-                
+            if is_eof_main:
                 # Verificar si el disco está vacío
                 stored_keys = storage.list_keys(group_key=self.input_queue_2)
                 if not stored_keys:
@@ -175,18 +178,21 @@ class JoinNode:
                 # Realizar merge completo: combinar router_buffer con todos los datos del disco
                 for key, _ in stored_keys:
                     router_key = int(key)  # Convertir la clave a entero
-                    if router_key in self.router_buffer_by_client.get(client_id, {}):
-                        stored_movies = storage.retrieve(key, group_key=self.input_queue_2)
-                        if stored_movies:
-                            # Asegurarse de que stored_movies sea una lista
-                            if not isinstance(stored_movies, list):
-                                stored_movies = [stored_movies]
-                            print(f" [🔍] Procesando router '{router_key}' con {len(stored_movies)} entradas en disco")
+                    with self.lock:  # Proteger acceso a router_buffer_by_client
+                        if router_key in self.router_buffer_by_client.get(client_id, {}):
                             movie1 = self.router_buffer_by_client[client_id][router_key]
-                            for movie2 in stored_movies:
-                                joined_packet = self.create_joined_packet(client_id, movie1, movie2)
-                                self.output_rabbitmq.publish(joined_packet.to_json())
-                                print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
+                        else:
+                            continue
+                    stored_movies = storage.retrieve(key, group_key=self.input_queue_2)
+                    if stored_movies:
+                        # Asegurarse de que stored_movies sea una lista
+                        if not isinstance(stored_movies, list):
+                            stored_movies = [stored_movies]
+                        print(f" [🔍] Procesando router '{router_key}' con {len(stored_movies)} entradas en disco")
+                        for movie2 in stored_movies:
+                            joined_packet = self.create_joined_packet(client_id, movie1, movie2)
+                            self.output_rabbitmq.publish(joined_packet.to_json())
+                            print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
                     
                 # Limpiar el disco después del merge
                 storage.remove_keys(group_key=self.input_queue_2)
@@ -240,17 +246,18 @@ class JoinNode:
     
     def clean(self, client_id):
         # Limpiar disco del cliente
-        if client_id in self.storages_by_client:
-            self.storages_by_client[client_id].remove_keys(group_key=self.input_queue_2)
-            del self.storages_by_client[client_id]
-            
-        # Limpiar router_buffer del cliente
-        if client_id in self.router_buffer_by_client:
-            del self.router_buffer_by_client[client_id]
-      
-        # Limpiar eof_main del cliente
-        if client_id in self.eof_main_by_client:
-            del self.eof_main_by_client[client_id]
+        with self.lock:
+            if client_id in self.storages_by_client:
+                self.storages_by_client[client_id].remove_keys(group_key=self.input_queue_2)
+                del self.storages_by_client[client_id]
+                
+            # Limpiar router_buffer del cliente
+            if client_id in self.router_buffer_by_client:
+                del self.router_buffer_by_client[client_id]
+        
+            # Limpiar eof_main del cliente
+            if client_id in self.eof_main_by_client:
+                del self.eof_main_by_client[client_id]
         print(f" [✅] Disco limpio y memoria limpia para '{client_id}'") 
     
     def close(self):
