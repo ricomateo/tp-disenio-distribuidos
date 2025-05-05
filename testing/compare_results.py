@@ -119,7 +119,9 @@ def pretty_print_diffs(diffs):
                 print(f"  - {label}: expected {expected_val}, received {received_val}")
 
 expected_path = sys.argv[1]
-received_path = "testing/received_output.txt"
+received_path = sys.argv[2]
+
+print("Comparando resultados entre los archivos", expected_path, "y", received_path)
 
 expected = parse_queries(expected_path)
 received = parse_queries(received_path)

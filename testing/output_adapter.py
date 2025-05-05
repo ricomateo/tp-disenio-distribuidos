@@ -1,4 +1,5 @@
 import re
+import sys
 
 def adapt_output(text: str) -> str:
     lines = text.strip().splitlines()
@@ -87,11 +88,15 @@ def adapt_output(text: str) -> str:
 
     return "\n".join(result)
 
-with open("output/results.txt", "r", encoding="utf-8") as infile:
+input_name = sys.argv[1]
+output_name = sys.argv[2]
+
+with open(input_name, "r", encoding="utf-8") as infile:
     input_text = infile.read()
 
 adapted_output = adapt_output(input_text)
-with open("testing/received_output.txt", "w", encoding="utf-8") as outfile:
+with open(output_name, "w", encoding="utf-8") as outfile:
     outfile.write(adapted_output)
 
-print("Terminé de convertir el output. El nuevo archivo se llevó a 'testing/received_output.txt'.")
+print(f"Terminé de convertir el output. El nuevo archivo se llevó a '{output_name}'.")
+print()
