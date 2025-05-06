@@ -250,7 +250,7 @@ class ConfigGenerator:
                 config['deploy'] = deploy.copy()
 
             if volumes:
-                config['volumes'] += config.get('volumes', []) + volumes.copy()
+                config['volumes'] = config.get('volumes', []) + volumes.copy()
 
             # Add service to compose
             self.compose.setdefault('services', {})[service_name_instance] = config
