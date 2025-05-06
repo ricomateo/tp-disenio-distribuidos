@@ -5,7 +5,7 @@ from datetime import datetime
 import threading
 import signal
 from common.leader_queue import LeaderQueue
-from common.packet import DataPacket, QueryPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, QueryPacket, is_final_packet
 from common.middleware import Middleware
 
 
@@ -195,7 +195,6 @@ class DeliverNode:
             body_decoded = body.decode()
             packet = json.loads(body_decoded)
             if is_final_packet(packet.get("header")):
-                if handle_final_packet(method, self.input_rabbitmq):
                     client_id = packet.get("client_id")
                     response_str = self._generate_response(client_id)
                     query_packet = QueryPacket(
@@ -205,7 +204,7 @@ class DeliverNode:
                     self.output_rabbitmq.publish(query_packet.to_json(), str(client_id))
                     self.final_rabbitmq.send_final(int(client_id))
                     ch.basic_ack(delivery_tag=method.delivery_tag)
-                return
+                    return
 
             packet = DataPacket.from_json(body_decoded)
             filtered_movie = self._process_movie(packet.data, packet.client_id)
@@ -245,15 +244,16 @@ class DeliverNode:
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
-        self.close()
+        self.running = False
+        self.input_rabbitmq.cancel_consumer()
+        if self.leader_queue:
+            self.leader_queue.close()
     
     def close(self):
         print(f"Closing queues")
-        self.running = False
         if self.leader_queue:
             self.leader_queue.close()
         if self.input_rabbitmq:
-            self.input_rabbitmq.cancel_consumer()
             self.input_rabbitmq.close()
         if self.output_rabbitmq:
             self.output_rabbitmq.close()

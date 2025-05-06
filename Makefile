@@ -13,15 +13,15 @@ COMPARE_SCRIPT = testing/compare_results.py
 
 all: build up
 
-client/credits.csv:
+data/credits.csv:
 	@echo "Checking for unrar installation..."
 	@which unrar >/dev/null 2>&1 || (echo "Installing unrar..."; sudo apt-get update && sudo apt-get install -y unrar || (echo "Error: Failed to install unrar. Please install it manually with 'sudo apt-get install unrar'."; exit 1))
-	@echo "client/credits.csv does not exist. Unrarring client/credits.rar..."
-	@if [ ! -f client/credits.rar ]; then \
-		echo "Error: client/credits.rar not found"; \
+	@echo "data/credits.csv does not exist. Unrarring data/credits.rar..."
+	@if [ ! -f data/credits.rar ]; then \
+		echo "Error: data/credits.rar not found"; \
 		exit 1; \
 	fi
-	@unrar x -y client/credits.rar client/ || (echo "Error: Failed to unrar client/credits.rar."; exit 1)
+	@unrar x -y data/credits.rar data/ || (echo "Error: Failed to unrar data/credits.rar."; exit 1)
 
 validate-replicas:
 	@if [ $(REPLICAS) -lt 1 ]; then \
@@ -41,7 +41,7 @@ build:
 	@echo "Building Docker images..."
 	docker-compose $(COMPOSE_NORMAL) build
 
-up: generate-compose client/credits.csv
+up: generate-compose data/credits.csv
 	docker-compose $(COMPOSE_GENERATED) up -d --build 
 
 134: validate-replicas

@@ -6,7 +6,7 @@ import multiprocessing
 from src.protocol import Protocol
 from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE, FIN_MSG_TYPE
 from common.middleware import Middleware
-from common.packet import handle_final_packet, is_final_packet
+from common.packet import is_final_packet
 
 class ClientConnection:
     def __init__(self, socket, addr, client_id):
@@ -48,7 +48,7 @@ class ClientConnection:
         try:
             while client_running:
                 if self.running == False:
-                    return
+                    break
                 
                 msg = self.client.recv_message()
                 if msg["msg_type"] == HEADER_MSG_TYPE:
@@ -77,10 +77,7 @@ class ClientConnection:
             print(f"[Client {client_id}] Error: {e}")
         finally:
             print(f"[Client {client_id}] Cerrando recursos del cliente")
-            if self.running == True:
-                self.rabbitmq.close()
-                self.rabbitmq_receiver.close()
-                self.client.close()
+            self.close()
 
     def publish_file_batch(self, batch: dict, msg_filename):
         """Publica un batch de datos"""
@@ -99,14 +96,13 @@ class ClientConnection:
                 packet = json.loads(packet_json)
 
                 if is_final_packet(packet.get("header")):
-                    if handle_final_packet(method, self.rabbitmq_receiver):
                         #self.rabbitmq.send_final()
                         
                         self.client.send_finalization()
                         ch.basic_ack(delivery_tag=method.delivery_tag)
                         ch.stop_consuming()
                         self.rabbitmq_receiver.close()
-                    return
+                        return
 
                 response_str = packet.get("response")
                 if response_str:
@@ -129,13 +125,12 @@ class ClientConnection:
     def _sigterm_handler(self, signum, _):
         """Maneja la señal SIGTERM para cerrar el servidor."""
         print(f"[Client {self.client_id}] Recibida señal SIGTERM")
-        self.close()
+        self.running = False
+        self.rabbitmq_receiver.cancel_consumer()
 
     def close(self):
         """Cierra el servidor y todos los procesos."""
-        self.running = False
         try:
-            self.rabbitmq_receiver.cancel_consumer()
             self.rabbitmq.close()
             self.rabbitmq_receiver.close()
             self.client.close()

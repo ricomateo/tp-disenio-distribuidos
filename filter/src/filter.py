@@ -1,6 +1,6 @@
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, handle_final_packet, is_final_packet
+from common.packet import DataPacket, is_final_packet
 from src.check_condition import check_condition
 from datetime import datetime
 import os
@@ -62,10 +62,8 @@ class FilterNode:
                 if packet.get("acks") is None:
                     print(f"[Filter - FIN] - packet[acks] = None, packet = {packet}")
                     # Inicializo la lista acks con mi id
-                    packet["acks"] = [self.node_id]
-                    self.input_rabbitmq.publish(packet)
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    return
+                    packet["acks"] = []
+                    
                 # Si no estoy en la lista de ids, me agrego
                 if not self.node_id in packet.get("acks"):
                     print(f"[Filter - FIN] - No estoy en la lista de acks")
@@ -128,19 +126,20 @@ class FilterNode:
         except Exception as e:
             print(f" [!] Error in filter node: {e}")
         finally:
-            if self.input_rabbitmq:
-                self.input_rabbitmq.close()
-            if self.output_rabbitmq:
-                self.output_rabbitmq.close()
+            self.close()
+            
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
-        
-        self.close()
+        self.running = False
+        self.input_rabbitmq.cancel_consumer()
     
     def close(self):
         print(f"Closing queues")
-        self.running = False
-        self.input_rabbitmq.cancel_consumer()
-        #self.input_rabbitmq.close()
-        #self.output_rabbitmq.close()
+        if self.input_rabbitmq:
+            self.input_rabbitmq.close()
+        if self.output_rabbitmq:
+            self.output_rabbitmq.close()
+       
+        
+

@@ -100,23 +100,6 @@ class Middleware:
         final_packet = FinalPacket(client_id)
         self.publish(final_packet.to_json(), routing_key)
         print(f"[Middleware] FinalPacket {final_packet.to_json()} enviado directamente.")
-    
-    def send_final_until_no_consumers(self, method):
-        """Envía FINAL PACKET hasta que no haya consumidores y purga la cola al final."""
-        if not self.check_no_consumers():
-            print(" [x] Sending FINAL PACKET...")
-            
-            #self.channel.stop_consuming()
-            self.channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-            #self.close()
-            return False
-        return True
-
-    
-    def send_ack_and_close(self, method):
-        self.channel.basic_ack(delivery_tag=method.delivery_tag)
-        #self.channel.stop_consuming()
-        #self.close()
                 
     def check_no_consumers(self):
         """Verifica si hay 0 consumidores en la cola de control."""
@@ -154,6 +137,8 @@ class Middleware:
             print(f"Failed to close connection. Error: {e}")
             
     def cancel_consumer(self):
+        if self.channel and self.channel.is_open:
+            self.connection.add_callback_threadsafe(self.channel.stop_consuming)
         if not self.is_consumed and self.channel and self.channel.is_open:
             self.connection.add_callback_threadsafe(lambda: self.channel.basic_cancel(self.consumer_tag))
             print("Consumidor cancelado exitosamente")

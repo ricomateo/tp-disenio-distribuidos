@@ -75,11 +75,6 @@ def is_final_packet(header):
 def is_eof_packet(header):
     return header == "EOF"
 
-def handle_final_packet(method, rabbitmq_instance):
-        print(" [!] Final packet received. Stopping consumption and sending FINAL PACKET until no consumers...")
-        return rabbitmq_instance.send_final_until_no_consumers(method)
-
-
 def keep_columns_from(data: dict, columns: list) -> dict:
     """
     Keep only specified keys in a dictionary and return the modified dictionary.

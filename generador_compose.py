@@ -45,6 +45,9 @@ def initialize_config(config_file="config.ini"):
 
     config_params["clients"] = int(config["CLIENTS"].get("CLIENTS", 1))
     
+    for file, path in config["FILES"].items():
+        config_params[file] = path
+
     return config_params
 
 

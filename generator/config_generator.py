@@ -84,6 +84,10 @@ class ConfigGenerator:
     def _generate_clients(self):
         """Generate client service."""
         instances = self.config_params.get(CLIENTS)
+
+        movies_file = self.config_params["movies_file"]
+        ratings_file = self.config_params["ratings_file"]
+        credits_file = self.config_params["credits_file"]
         self.generate_service(
             service_name='client',
             dockerfile='client/Dockerfile',
@@ -97,7 +101,8 @@ class ConfigGenerator:
                 'gateway': {'condition': 'service_started'}
             },
             instances=instances,
-            deploy={'restart_policy': {'condition': 'none'}}
+            deploy={'restart_policy': {'condition': 'none'}},
+            volumes=[f"./{movies_file}:/src/movies_metadata.csv",f"./{ratings_file}:/src/ratings.csv",f"./{credits_file}:/src/credits.csv"]
         )
 
     def _generate_input_gateway(self):
@@ -185,7 +190,8 @@ class ConfigGenerator:
                           instances: int = 1,
                           deploy: dict = None,
                           start_node_id: int = None,
-                          cluster_size: int = None):
+                          cluster_size: int = None,
+                          volumes: list[str] = None):
         
         if environment is None:
             environment = []
@@ -242,6 +248,9 @@ class ConfigGenerator:
             # Add deploy if provided
             if deploy:
                 config['deploy'] = deploy.copy()
+
+            if volumes:
+                config['volumes'] = config.get('volumes', []) + volumes.copy()
 
             # Add service to compose
             self.compose.setdefault('services', {})[service_name_instance] = config
@@ -318,7 +327,7 @@ class ConfigGenerator:
         self._generate_filter(
             service_name=FILTER_2000_ARGENTINA,
             environment=[
-                F'RABBITMQ_QUEUE={FILTER_2000_ARGENTINA}',
+                F'RABBITMQ_QUEUE={PARSER}{FILTER_2000_ARGENTINA}',
                 f'RABBITMQ_CONSUMER_TAG={FILTER_2000_ARGENTINA}',
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_2000_ARGENTINA}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
