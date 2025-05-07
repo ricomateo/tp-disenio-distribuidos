@@ -1,5 +1,8 @@
 from pathlib import Path
 import sys
+import configparser
+from output_adapter import adapt_output
+
 
 # Utilidades de parsing
 
@@ -118,20 +121,54 @@ def pretty_print_diffs(diffs):
             for label, expected_val, received_val in diff:
                 print(f"  - {label}: expected {expected_val}, received {received_val}")
 
-expected_path = sys.argv[1]
-received_path = sys.argv[2]
+# expected_path = sys.argv[1]
+# received_path = sys.argv[2]
 
-print("Comparando resultados entre los archivos", expected_path, "y", received_path)
+# print("Comparando resultados entre los archivos", expected_path, "y", received_path)
 
-expected = parse_queries(expected_path)
-received = parse_queries(received_path)
+# expected = parse_queries(expected_path)
+# received = parse_queries(received_path)
 
-results = {
-    "query 1": compare_query1(expected[1], received[1]),
-    "query 2": compare_query2(expected[2], received[2]),
-    "query 3": compare_query3(expected[3], received[3]),
-    "query 4": compare_query4(expected[4], received[4]),
-    "query 5": compare_query5(expected[5], received[5]),
-}
+# results = {
+#     "query 1": compare_query1(expected[1], received[1]),
+#     "query 2": compare_query2(expected[2], received[2]),
+#     "query 3": compare_query3(expected[3], received[3]),
+#     "query 4": compare_query4(expected[4], received[4]),
+#     "query 5": compare_query5(expected[5], received[5]),
+# }
 
-pretty_print_diffs(results)
+# pretty_print_diffs(results)
+
+
+def main():
+    config = configparser.ConfigParser()
+    config_file = "config.ini"
+    config.read(config_file)
+    clients = int(config["CLIENTS"]["CLIENTS"])
+    expected = parse_queries("testing/expected_output.txt")
+
+    for i in range(clients):
+        input_file = f"output/results_{i}.txt"
+        output_file = f"testing/received_output_{i}.txt"
+
+        with open(input_file, "r", encoding="utf-8") as infile:
+            input_text = infile.read()
+
+        adapted_output = adapt_output(input_text)
+        with open(output_file, "w", encoding="utf-8") as outfile:
+            outfile.write(adapted_output)
+        
+        received = parse_queries(output_file)
+        print(f"\n========================")
+        print(f"Comparing client {i}...")
+        results = {
+            "query 1": compare_query1(expected[1], received[1]),
+            "query 2": compare_query2(expected[2], received[2]),
+            "query 3": compare_query3(expected[3], received[3]),
+            "query 4": compare_query4(expected[4], received[4]),
+            "query 5": compare_query5(expected[5], received[5]),
+        }
+
+        pretty_print_diffs(results)
+
+main()

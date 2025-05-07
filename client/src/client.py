@@ -66,10 +66,7 @@ class Client:
         self.protocol.send_finalization()
     
     def print_results(self):
-        results_file_name = "/app/output/results"
-        if self.node_id > 0:
-            results_file_name += "_" + str(self.node_id)
-        results_file_name += ".txt"
+        results_file_name = f"/app/output/results_{self.node_id}.txt"
         with open(results_file_name, "w") as f:
             while True:
                 message = self.protocol.recv_message()

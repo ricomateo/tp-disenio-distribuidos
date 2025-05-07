@@ -88,15 +88,15 @@ def adapt_output(text: str) -> str:
 
     return "\n".join(result)
 
-input_name = sys.argv[1]
-output_name = sys.argv[2]
+# input_name = sys.argv[1]
+# output_name = sys.argv[2]
 
-with open(input_name, "r", encoding="utf-8") as infile:
-    input_text = infile.read()
+# with open(input_name, "r", encoding="utf-8") as infile:
+#     input_text = infile.read()
 
-adapted_output = adapt_output(input_text)
-with open(output_name, "w", encoding="utf-8") as outfile:
-    outfile.write(adapted_output)
+# adapted_output = adapt_output(input_text)
+# with open(output_name, "w", encoding="utf-8") as outfile:
+#     outfile.write(adapted_output)
 
-print(f"Terminé de convertir el output. El nuevo archivo se llevó a '{output_name}'.")
-print()
+# print(f"Terminé de convertir el output. El nuevo archivo se llevó a '{output_name}'.")
+# print()
