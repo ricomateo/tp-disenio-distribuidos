@@ -272,7 +272,7 @@ class Calculation:
                 {
                     "operation": "ratio",
                     "feeling": feeling_str,
-                    "ratio": round(average_ratio, 2),
+                    "ratio": average_ratio,
                     "count": count
                 }
             ]
