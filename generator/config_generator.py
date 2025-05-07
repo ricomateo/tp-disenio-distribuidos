@@ -40,6 +40,7 @@ AGGREGATOR_CALCULATOR_COUNT_ACTORS = 'aggregator_calculator_count_actors'
 
 class ConfigGenerator:
     def __init__(self, config_params):
+        self.services = {}
         self.config_params = config_params
         self.compose = {
         'networks': {
@@ -49,7 +50,6 @@ class ConfigGenerator:
 
     def generate(self) -> dict:
         self._generate_rabbitmq()
-        self._generate_clients()
         self._generate_input_gateway()
         self._generate_parser()
         self._generate_filters()
@@ -63,6 +63,7 @@ class ConfigGenerator:
         self._generate_deliver_3()
         self._generate_deliver_4()
         self._generate_deliver_5()
+        self._generate_clients()
         return self.compose
     
     def _generate_rabbitmq(self):
@@ -80,29 +81,38 @@ class ConfigGenerator:
             'networks': ['app-network']
         }
         self.compose.setdefault('services', {})['rabbitmq'] = config
+        self.services['rabbitmq'] = {'condition': 'service_healthy'}
 
     def _generate_clients(self):
-        """Generate client service."""
+        """Generate client service with dependencies on all other services."""
         instances = self.config_params.get(CLIENTS)
-
         movies_file = self.config_params["movies_file"]
         ratings_file = self.config_params["ratings_file"]
         credits_file = self.config_params["credits_file"]
+        
+        depends_on = {
+            service_name: condition.copy()
+            for service_name, condition in self.services.items()
+            if not service_name.startswith('client')
+        }
+
         self.generate_service(
             service_name='client',
             dockerfile='client/Dockerfile',
             environment=[
                 'GATEWAY_HOST=gateway',
                 'GATEWAY_PORT=9999',
-                'BATCH_SIZE=1000'
+                'BATCH_SIZE=50'
             ],
             networks=['app-network'],
-            depends_on={
-                'gateway': {'condition': 'service_started'}
-            },
+            depends_on=depends_on,
             instances=instances,
             deploy={'restart_policy': {'condition': 'none'}},
-            volumes=[f"./{movies_file}:/src/movies_metadata.csv",f"./{ratings_file}:/src/ratings.csv",f"./{credits_file}:/src/credits.csv"]
+            volumes=[
+                f"./{movies_file}:/src/movies_metadata.csv",
+                f"./{ratings_file}:/src/ratings.csv",
+                f"./{credits_file}:/src/credits.csv"
+            ]
         )
 
     def _generate_input_gateway(self):
@@ -208,6 +218,9 @@ class ConfigGenerator:
             node_id = start_node_id + instance_id if start_node_id is not None else instance_id
             instance_suffix = '' if instances_new == 1 else f'_{node_id}'
             service_name_instance = f"{service_name}{instance_suffix}"
+            
+            condition = {'condition': 'service_started'}
+            self.services[service_name_instance] = condition
             # Initialize environment with mandatory variables
             current_environment = ['PYTHONUNBUFFERED=1']
             current_environment.extend(environment)
