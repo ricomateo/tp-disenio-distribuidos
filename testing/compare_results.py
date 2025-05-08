@@ -2,6 +2,7 @@ from pathlib import Path
 import subprocess
 import configparser
 from output_adapter import adapt_output
+import sys
 
 
 # Utilidades de parsing
@@ -125,11 +126,15 @@ def pretty_print_diffs(diffs):
                 print(f"  - {label}: expected {expected_val}, received {received_val}")
 
 def main():
+    if len(sys.argv) < 2:
+        print(f"Missing 'expected output' file")
+        return
+    expected_output_file = sys.argv[1]
+    expected = parse_queries("testing/expected_output.txt")
     config = configparser.ConfigParser()
     config_file = "config.ini"
     config.read(config_file)
     clients = int(config["CLIENTS"]["CLIENTS"])
-    expected = parse_queries("testing/expected_output.txt")
 
     for i in range(clients):
         print(f"Esperando finalización del cliente {i}")
@@ -159,4 +164,5 @@ def main():
 
         pretty_print_diffs(results)
 
-main()
+if __name__ == "__main__":
+    main()
