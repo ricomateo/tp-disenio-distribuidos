@@ -1,5 +1,5 @@
 from pathlib import Path
-import sys
+import subprocess
 import configparser
 from output_adapter import adapt_output
 
@@ -36,11 +36,11 @@ def compare_query2(expected, received):
     mismatches = []
     for country in expected_map:
         if country not in received_map:
-            mismatches.append((country, "missing"))
+            mismatches.append((country, "missing", "missing"))
             continue
-        e, r = expected_map[country], received_map[country]
-        if not (0.5 <= r/e <= 2):  # Se pide que tenga el mismo orden de magnitud
-            mismatches.append((country, f"{e} vs {r}"))
+        expected, received = expected_map[country], received_map[country]
+        if expected != received:
+            mismatches.append((country, expected, received))
     return mismatches
 
 def compare_query3(expected, received):
@@ -64,9 +64,9 @@ def compare_query5(expected, received):
     received_map = {line.split()[0].upper(): float(line.split()[1]) for line in received}
     mismatches = []
     for feeling in expected_map:
-        e, r = expected_map[feeling], received_map.get(feeling)
-        if r is None or abs(e - r) > 500:  # tolerancia: diferencia absoluta razonable
-            mismatches.append((feeling, e, r))
+        expected, received = expected_map[feeling], received_map.get(feeling)
+        if expected != received:
+            mismatches.append((feeling, expected, received))
     return mismatches
 
 # Mostrar diferencias
@@ -95,6 +95,9 @@ def pretty_print_diffs(diffs):
         elif query == "query 2":
             print("❌ Differences in magnitudes:")
             for (country, expected_val, received_val) in diff:
+                if expected_val == "missing":
+                    print(f"  - {country}: MISSING")
+                    continue
                 print(f"  - {country}: expected ~{expected_val}, received {received_val}")
 
         elif query == "query 3":
@@ -121,25 +124,6 @@ def pretty_print_diffs(diffs):
             for label, expected_val, received_val in diff:
                 print(f"  - {label}: expected {expected_val}, received {received_val}")
 
-# expected_path = sys.argv[1]
-# received_path = sys.argv[2]
-
-# print("Comparando resultados entre los archivos", expected_path, "y", received_path)
-
-# expected = parse_queries(expected_path)
-# received = parse_queries(received_path)
-
-# results = {
-#     "query 1": compare_query1(expected[1], received[1]),
-#     "query 2": compare_query2(expected[2], received[2]),
-#     "query 3": compare_query3(expected[3], received[3]),
-#     "query 4": compare_query4(expected[4], received[4]),
-#     "query 5": compare_query5(expected[5], received[5]),
-# }
-
-# pretty_print_diffs(results)
-
-
 def main():
     config = configparser.ConfigParser()
     config_file = "config.ini"
@@ -148,6 +132,9 @@ def main():
     expected = parse_queries("testing/expected_output.txt")
 
     for i in range(clients):
+        print(f"Esperando finalización del cliente {i}")
+        subprocess.run(["docker", "wait", f"client_{i}"]) 
+
         input_file = f"output/results_{i}.txt"
         output_file = f"testing/received_output_{i}.txt"
 
@@ -159,6 +146,7 @@ def main():
             outfile.write(adapted_output)
         
         received = parse_queries(output_file)
+
         print(f"\n========================")
         print(f"Comparing client {i}...")
         results = {
