@@ -130,7 +130,7 @@ def main():
         print(f"Missing 'expected output' file")
         return
     expected_output_file = sys.argv[1]
-    expected = parse_queries("testing/expected_output.txt")
+    expected = parse_queries(expected_output_file)
     config = configparser.ConfigParser()
     config_file = "config.ini"
     config.read(config_file)
