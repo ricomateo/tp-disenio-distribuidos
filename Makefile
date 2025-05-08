@@ -65,7 +65,7 @@ up: generate-compose data/credits.csv
         --scale router=$(REPLICAS) 
 
 test: up
-	@$(PYTHON) $(COMPARE_SCRIPT)
+	@$(PYTHON) $(COMPARE_SCRIPT) testing/expected_output.txt
 
 down:
 	@echo "Stopping services..."
@@ -122,3 +122,6 @@ jupyter_results:
 		-v $(PWD)/config.ini:/src/config.ini \
 		-v $(PWD)/data:/src/data -v \
 		$(PWD)/$(JUPYTER_NOTEBOOK):/src/$(JUPYTER_NOTEBOOK) run-notebook
+
+test_against_notebook: up jupyter_results
+	$(PYTHON) $(COMPARE_SCRIPT) output/output.txt
