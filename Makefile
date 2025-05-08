@@ -62,10 +62,8 @@ up: generate-compose data/credits.csv
         --scale unique_country=$(REPLICAS) \
         --scale router=$(REPLICAS) 
 
-test: validate-replicas
-	docker-compose $(COMPOSE_TEST) up -d --build \
-		--scale parser=$(REPLICAS) \
-        --scale test_unique_country=$(REPLICAS) 
+test: up
+	@$(PYTHON) $(COMPARE_SCRIPT)
 
 down:
 	@echo "Stopping services..."
