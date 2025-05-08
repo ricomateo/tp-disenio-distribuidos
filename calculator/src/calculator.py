@@ -64,7 +64,7 @@ class CalculatorNode:
             if header and is_final_packet(header):
                 client_id = packet.get("client_id") 
                 results = self.calculator.get_result(client_id)
-                
+                self.output_rabbitmq.confirm_delivery()
                 if not self.exchange:
                     # Si la lista de acks es None, entonces soy el primero en recibir el mensaje FIN
                     # Inicializo una lista vacia y reencolo el mensaje
@@ -124,7 +124,7 @@ class CalculatorNode:
             success = self.calculator.process_movie(client_id, movie)
             
             if success:
-                print(f"[input - {self.input_queue}] Processed movie: {movie.get('title', 'Unknown')}")
+                print(f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}")
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 print(f" [x] Message {method.delivery_tag} acknowledged")
             else:

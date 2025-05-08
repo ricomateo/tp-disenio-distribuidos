@@ -119,7 +119,7 @@ class JoinNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
             print(f" [!] Error processing message: {e}")
-            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
+            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def join_callback(self, ch, method, properties, body):
         try:
@@ -206,7 +206,7 @@ class JoinNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
             print(f" [!] Error processing message: {e}")
-            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
+            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def create_joined_packet(self, client_id: int, movie1, movie2):
         combined_movie = {**movie1, **movie2}

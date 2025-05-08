@@ -57,7 +57,6 @@ class ConfigGenerator:
         self._generate_calculators()
         self._generate_sentiment()
         self._generate_joiners()
-        self._generate_aggregators()
         self._generate_deliver_1()
         self._generate_deliver_2()
         self._generate_deliver_3()
@@ -102,7 +101,7 @@ class ConfigGenerator:
             environment=[
                 'GATEWAY_HOST=gateway',
                 'GATEWAY_PORT=9999',
-                'BATCH_SIZE=50'
+                'BATCH_SIZE=1000'
             ],
             networks=['app-network'],
             depends_on=depends_on,
@@ -587,43 +586,6 @@ class ConfigGenerator:
             ],
             instances=instances
             )
-        
-    def _generate_aggregators(self):
-        self._generate_aggregator(
-            service_name=AGGREGATOR_CALCULATOR_BUDGET_COUNTRY,
-            environment=[
-                F'RABBITMQ_QUEUE={CALCULATOR_BUDGET_COUNTRY}',
-                f'RABBITMQ_CONSUMER_TAG={AGGREGATOR_CALCULATOR_BUDGET_COUNTRY}',
-                f'RABBITMQ_OUTPUT_QUEUE={AGGREGATOR_CALCULATOR_BUDGET_COUNTRY}',
-                'operation=total_invested'
-            ],
-            instances=1
-            )
-        
-        self._generate_aggregator(
-            service_name=AGGREGATOR_CALCULATOR_RATIO_FEELINGS,
-            environment=[
-                F'RABBITMQ_QUEUE={CALCULATOR_RATIO_FEELINGS}',
-                f'RABBITMQ_CONSUMER_TAG={AGGREGATOR_CALCULATOR_RATIO_FEELINGS}',
-                f'RABBITMQ_OUTPUT_QUEUE={AGGREGATOR_CALCULATOR_RATIO_FEELINGS}',
-                'operation=average'
-            ],
-            instances=1
-            )
-        
-        self._generate_aggregator(
-            service_name=AGGREGATOR_CALCULATOR_COUNT_ACTORS,
-            environment=[
-                F'RABBITMQ_QUEUE={CALCULATOR_COUNT_ACTORS}',
-                f'RABBITMQ_CONSUMER_TAG={AGGREGATOR_CALCULATOR_COUNT_ACTORS}',
-                f'RABBITMQ_OUTPUT_QUEUE={AGGREGATOR_CALCULATOR_COUNT_ACTORS}',
-                'operation=count'
-            ],
-            instances=1
-            )
-    
-        
-        
             
         
     def _generate_deliver_1(self):
@@ -646,6 +608,17 @@ class ConfigGenerator:
         )
         
     def _generate_deliver_2(self):
+        self._generate_aggregator(
+            service_name=AGGREGATOR_CALCULATOR_BUDGET_COUNTRY,
+            environment=[
+                F'RABBITMQ_QUEUE={CALCULATOR_BUDGET_COUNTRY}',
+                f'RABBITMQ_CONSUMER_TAG={AGGREGATOR_CALCULATOR_BUDGET_COUNTRY}',
+                f'RABBITMQ_OUTPUT_QUEUE={AGGREGATOR_CALCULATOR_BUDGET_COUNTRY}',
+                'operation=total_invested'
+            ],
+            instances=1
+            )
+        
         self.generate_service(
             service_name=QUERY_2,
             dockerfile='deliver/Dockerfile',
@@ -686,6 +659,17 @@ class ConfigGenerator:
         )
         
     def _generate_deliver_4(self):
+        self._generate_aggregator(
+            service_name=AGGREGATOR_CALCULATOR_COUNT_ACTORS,
+            environment=[
+                F'RABBITMQ_QUEUE={CALCULATOR_COUNT_ACTORS}',
+                f'RABBITMQ_CONSUMER_TAG={AGGREGATOR_CALCULATOR_COUNT_ACTORS}',
+                f'RABBITMQ_OUTPUT_QUEUE={AGGREGATOR_CALCULATOR_COUNT_ACTORS}',
+                'operation=count'
+            ],
+            instances=1
+            )
+          
         self.generate_service(
             service_name=QUERY_4,
             dockerfile='deliver/Dockerfile',
@@ -706,6 +690,17 @@ class ConfigGenerator:
         )
         
     def _generate_deliver_5(self):
+        self._generate_aggregator(
+            service_name=AGGREGATOR_CALCULATOR_RATIO_FEELINGS,
+            environment=[
+                F'RABBITMQ_QUEUE={CALCULATOR_RATIO_FEELINGS}',
+                f'RABBITMQ_CONSUMER_TAG={AGGREGATOR_CALCULATOR_RATIO_FEELINGS}',
+                f'RABBITMQ_OUTPUT_QUEUE={AGGREGATOR_CALCULATOR_RATIO_FEELINGS}',
+                'operation=average'
+            ],
+            instances=1
+            )
+        
         self.generate_service(
             service_name=QUERY_5,
             dockerfile='deliver/Dockerfile',

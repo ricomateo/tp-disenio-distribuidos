@@ -201,6 +201,7 @@ class DeliverNode:
                         timestamp=datetime.utcnow().isoformat(),
                         response=response_str
                     )
+                    self.output_rabbitmq.confirm_delivery()
                     self.output_rabbitmq.publish(query_packet.to_json(), str(client_id))
                     self.final_rabbitmq.send_final(int(client_id))
                     ch.basic_ack(delivery_tag=method.delivery_tag)

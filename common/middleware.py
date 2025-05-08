@@ -60,7 +60,7 @@ class Middleware:
                 properties=pika.BasicProperties(delivery_mode=2)
             )
             print(f" [x] Sent message to exchange {self.exchange} with routing key {routing_key}")
-            #print(f" [x] Sent message to exchange {self.exchange}")
+
         else:
             self.channel.basic_publish(
                 exchange='',
@@ -142,4 +142,7 @@ class Middleware:
         if not self.is_consumed and self.channel and self.channel.is_open:
             self.connection.add_callback_threadsafe(lambda: self.channel.basic_cancel(self.consumer_tag))
             print("Consumidor cancelado exitosamente")
-        
+
+    def confirm_delivery(self):
+        if self.channel:
+            self.channel.confirm_delivery()     

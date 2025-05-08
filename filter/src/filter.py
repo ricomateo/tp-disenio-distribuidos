@@ -115,7 +115,7 @@ class FilterNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
             print(f" [!] Error processing message: {e}")
-            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=True)
+            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def start_node(self, filters):
         self.filters = filters

@@ -12,7 +12,6 @@ class LeaderQueue:
         self.consumer_tag = consumer_tag
         self.cluster_size = cluster_size
         self.client_counters = {}
-        self.counter = 0
         
         self.final_rabbitmq = Middleware(
             queue=final_queue,
@@ -54,7 +53,6 @@ class LeaderQueue:
             self.client_counters[client_id] = self.client_counters.get(client_id, 0) + 1
             
             if is_final_packet(header):
-                self.counter += 1
                 if self.client_counters[client_id] == self.cluster_size:
                     self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(client_id))
                     del self.client_counters[client_id]
