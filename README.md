@@ -282,6 +282,18 @@ Dado que ahora cada joiner deben procesar los mensajes de múltiples clientes en
 
 El Joiner procesa mensajes de dos colas de RabbitMQ usando dos threads: uno para la cola primaria (movies) y otro para la cola secundaria. Cuando el thread de la cola secundaria recibe un paquete que no puede combinar inmediatamente, lo almacena en disco con StorageHandler. Al recibir un EOF en la cola primaria para un cliente, el thread primario notifica al secundario, que carga todos los datos almacenados en disco para ese cliente, ejecuta el join, y limpia los recursos. Posteriormente, el thread secundario descarta o combina directamente los paquetes de ese cliente sin almacenarlos, hasta que recibe el EOF en la cola secundaria, completando el procesamiento.
 
+### Diagramas de actividades sobre el Joiner
+
+Agregamos diagramas de secuencia que explican el funcionamiento de los dos hilos del joiner que ejecutan la lógica principal.
+
+![joiner: primer thread](img/vista_procesos/joiner_thread_1.png)
+
+En este diagrama podemos ver como el primer thread siempre está procesando mensajes de la queue, en espera de que la flag que indica el cierre del joiner se active. Mientras no se active, va a seguir recibiendo paquetes, y en caso de recibir un final packet setea la flag de EOF en true, que le va a servir al segundo thread para saber que tiene que juntar los valores que tenga guardados con los que se hayan juntado en el buffer en el que escribe el primer hilo.
+
+![joiner: segundo thread](img/vista_procesos/joiner_thread_2.png)
+
+En cuanto al segundo thread, vemos que al igual que el primero, va a leer mensajes de la queue (en este caso la segunda) hasta que le llegue un SIGTERM. Este thread lee registros de queue, en caso de que sea un final packet limpia el storage para ese cliente y manda un final packet a la cola, y si no lo es entonces va a intentar matchear el valor con uno de los que haya recibido el primer thread para el mismo cliente, a través de la routing key. Si no puedo hacerlo y no recibió un EOF entonces lo va a guardar en el storage. Si pudo hacerlo, entonces va a juntar el par y mandar un paquete con dicho par. En caso de encontrarse un EOF entonces va a combinar los valores que tenga en el storage que matcheen con aquellos que están en el buffer del primer thread, y luevo va a limpiar el storage para dicho cliente.
+
 ### Problemas enfrentados
 
 #### EOF Adelantado a los paquetes
