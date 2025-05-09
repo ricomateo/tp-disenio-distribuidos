@@ -48,5 +48,5 @@ Rafael Spregelburd,6
 Rodrigo de la Serna,6
 
 query 5
-NEGATIVE    5453.397595
-POSITIVE    5668.650541
+NEGATIVE    5453.3976
+POSITIVE    5668.6505

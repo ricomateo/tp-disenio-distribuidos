@@ -1,0 +1,10 @@
+FROM jupyter/base-notebook
+
+RUN pip install papermill
+RUN pip install numpy
+RUN pip install pandas
+RUN pip install matplotlib
+
+WORKDIR /src/
+
+CMD ["papermill", "/src/FIUBA_Distribuidos_1_The_Movies.ipynb", "/src/output/output.ipynb"]

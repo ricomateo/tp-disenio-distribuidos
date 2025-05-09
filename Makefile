@@ -10,6 +10,8 @@ COMPOSE_GENERATED = -f docker-compose-gen.yaml
 PYTHON = python3
 GENERATOR_SCRIPT = generador_compose.py
 COMPARE_SCRIPT = testing/compare_results.py
+JUPYTER_NOTEBOOK = FIUBA_Distribuidos_1_The_Movies.ipynb
+
 
 all: build up
 
@@ -62,10 +64,8 @@ up: generate-compose data/credits.csv
         --scale unique_country=$(REPLICAS) \
         --scale router=$(REPLICAS) 
 
-test: validate-replicas
-	docker-compose $(COMPOSE_TEST) up -d --build \
-		--scale parser=$(REPLICAS) \
-        --scale test_unique_country=$(REPLICAS) 
+test: up
+	@$(PYTHON) $(COMPARE_SCRIPT) testing/expected_output.txt
 
 down:
 	@echo "Stopping services..."
@@ -109,3 +109,19 @@ ensure-results-consistency-3:
 	$(PYTHON) testing/output_adapter.py output/results_2.txt testing/received_output_2.txt
 	$(PYTHON) ./$(COMPARE_SCRIPT) testing/received_output.txt testing/received_output_1.txt
 	$(PYTHON) ./$(COMPARE_SCRIPT) testing/received_output.txt testing/received_output_2.txt
+
+clear:
+	docker-compose down
+	docker system prune -f
+	docker network prune -f
+
+jupyter_results: 
+	@docker build -f Dockerfile.test -t run-notebook .
+	@docker run -it --rm \
+		-v $(PWD)/output:/src/output/ \
+		-v $(PWD)/config.ini:/src/config.ini \
+		-v $(PWD)/data:/src/data -v \
+		$(PWD)/$(JUPYTER_NOTEBOOK):/src/$(JUPYTER_NOTEBOOK) run-notebook
+
+test_against_notebook: up jupyter_results
+	$(PYTHON) $(COMPARE_SCRIPT) output/output.txt
