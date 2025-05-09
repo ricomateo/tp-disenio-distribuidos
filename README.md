@@ -234,6 +234,10 @@ Para soportar ejecuciones de múltiples clientes concurrentemente fue necesario 
 
 A continuación se detallan las modificaciones que se aplicaron a todos los nodos.
 
+### Cambios en sistema general
+
+Para optimizar el procesamiento y reducir la carga computacional, se modificó el diagrama de robustez reubicando el cálculo del promedio de ratings después de la operación de join, en lugar de realizarlo previamente. Originalmente, calcular los promedios antes del join generaba resultados intermedios innecesarios, especialmente a medida que crecía el archivo de ratings, lo que incrementaba la complejidad y el uso de recursos. Al adelantar el join para filtrar y combinar los datos relevantes primero, se eliminan registros no necesarios antes del cálculo, simplificando el proceso y mejorando la eficiencia del sistema.
+
 ### Separación de los cálculos operaciones por cliente
 
 Esto implicó asignar un id único e incremental a cada cliente, e incluirlo en cada uno de los mensajes (del lado del servidor) para poder identificar a qué cliente corresponde cada mensaje (campo `client_id`). Esto es crucial para aquellos nodos stateful (aggregator, calculator, joiner) ya que les permite separar los resultados intermedios según el cliente.
@@ -262,10 +266,6 @@ Para este caso extendimos el mensaje de finalización con una lista que contiene
 
 Esto tiene un problema de fairness, ya que el procesamiento de los mensajes de un cliente puede haber terminado, pero el mensaje de finalización tarda en llegar al último nodo. Sin embargo, fuimos por este método porque nos pareció sencillo, y a priori la performance no es una prioridad.
 
-## Modificaciones del funcionamiento general
-
-Para optimizar el procesamiento y reducir la carga computacional, se modificó el diagrama de robustez reubicando el cálculo del promedio de ratings después de la operación de join, en lugar de realizarlo previamente. Originalmente, calcular los promedios antes del join generaba resultados intermedios innecesarios, especialmente a medida que crecía el archivo de ratings, lo que incrementaba la complejidad y el uso de recursos. Al adelantar el join para filtrar y combinar los datos relevantes primero, se eliminan registros no necesarios antes del cálculo, simplificando el proceso y mejorando la eficiencia del sistema.
-
 ## Modificaciones específicas de cada nodo
 
 A continuación se detallan los cambios que fueron realizados para nodos en específico.
@@ -273,6 +273,8 @@ A continuación se detallan los cambios que fueron realizados para nodos en espe
 ### Gateway
 
 En esta entrega el gateway está constantemente esperando por nuevas conexiones, y lanza un proceso para handlear cada conexión. Cada uno de estos procesos atiende al cliente durante toda la conexión, es decir, recibe los archivos, los envía a los nodos para iniciar el procesamiento, y luego le envía los resultados al cliente.
+
+![gateway](img/vista_desarollo/multiclient.png)
 
 ### Joiner
 
