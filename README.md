@@ -42,9 +42,10 @@ En este diagrama indicamos que hay más de una instancia de una entidad utilizan
 #### Gateway
 
 El gateway es el nodo encargado de:
+
 1. Aceptar conexiones entrantes (TCP) de clientes.
 2. Recibir los archivos que envía el cliente.
-3. Enviar batches de los archivos a  a partir de la cual luego se distribuyen entre los distintos nodos.
+3. Enviar batches de los archivos a a partir de la cual luego se distribuyen entre los distintos nodos.
 4. Consumir las respuestas de las consultas a partir de una queue y enviárselas al cliente mediante la conexión TCP.
 
 **Nota:** Los archivos son enviados a colas distintas (una cola por archivo).
@@ -52,6 +53,7 @@ El gateway es el nodo encargado de:
 #### Parser (escalable - 3 x N nodos)
 
 El parser es el nodo encargado de:
+
 1. Leer los batches de registros que envía el cliente.
 2. Transformar/parsear dichos batches a un formato más sencillo de procesar.
 3. Disponibilizar estos datos parseados para que los nodos puedan consumirlos.
@@ -69,6 +71,7 @@ Puede leer registros de a uno a la vez como también de a batches, los cuales fi
 
 El router se encarga de redireccionar registros de forma tal que los mismos puedan ser procesados de forma más eficiente.
 Básicamente:
+
 1. Consume registros de una queue.
 2. Redirecciona cada registro a una queue específica según algun valor (en general un ID). Para determinar a qué queue corresponde el registro, se implementa una especie de sharding: el ID de la queue se determina realizando la cuenta `id_registro % cantidad_queues`. Esto nos garantiza que los registros con el mismo ID siempre van a la misma queue.
 
@@ -206,22 +209,22 @@ Para implementar el sharding de registros en los enrutadores de películas y de 
 
 A continuación se detallan las tareas a realizar para la implementación del sistema:
 
-1. Definir e implementar el protocolo de comunicación. 
+1. Definir e implementar el protocolo de comunicación.
 2. Implementar el cliente (serialización, envío de archivos, recepción de respuestas).
 3. Implementar el gateway.
 4. Implementar cada uno de los siguientes componentes:
-    1. Parser
-    2. Router
-    3. Filter
-    4. Calculator
-    5. Joiner
-    6. Sentiment analyzer
-    7. Aggregator 
-    8. Deliver
+   1. Parser
+   2. Router
+   3. Filter
+   4. Calculator
+   5. Joiner
+   6. Sentiment analyzer
+   7. Aggregator
+   8. Deliver
 5. Implementar el middleware para la comunicación de grupos utilizando RabbitMQ.
 6. Dockerizar cada uno de los componentes del sistema.
 7. Implementar Docker compose con los componentes del sistema.
-8. Implementar generador de Docker compose parametrizable. 
+8. Implementar generador de Docker compose parametrizable.
 
 # Entrega 2 - Multiclient
 
@@ -240,11 +243,13 @@ Esto implicó asignar un id único e incremental a cada cliente, e incluirlo en 
 Previamente este mecanismo estaba implementado utilizando la función `channel.consumers_count()` que ofrece Rabbit, aprovechando que cada nodo se desconectaba al recibir el mensaje de finalización.
 
 Sin embargo este approach no funciona con múltiples clientes, ya que los nodos no se pueden desconectar porque el sistema debe permanecer activo. En este caso se implementaron dos mecanismos, dependiendo de si el nodo consume de su propia queue, o si consume de una working queue:
-* **Nodos con queue propia:** en este caso, para cada cluster de nodos se tiene un nodo líder (el de id 0), encargado de enviar el mensaje de finalización a la siguiente queue. Cuando un nodo recibe el mensaje de finalización, lo envía a un exchange en el cual están escuchando los otros nodos, y luego le envía un mensaje al líder, notificándole que ya ha terminado su procesamiento. Cuando el líder recibe notificaciones de cada uno de los nodos, envía el mensaje de finalización a la siguiente queue.
-* **Nodos con queue compartida:** para este caso extendimos el mensaje de finalización con una lista que contiene los ids de los nodos que terminaron su procesamiento. Cuando un nodo recibe este mensaje, sigue los siguientes pasos:
-    1. Chequea si su id esta en la lista. Si no está, lo agrega a la lista.
-    2. Si la lista está completa, envía el mensaje de finalización a la siguiente cola.
-    3. Si la lista **no** está completa, reencola el mensaje en la cola compartida.
+
+- **Nodos con queue propia:** en este caso, para cada cluster de nodos se tiene un nodo líder (el de id 0), encargado de enviar el mensaje de finalización a la siguiente queue. Cuando un nodo recibe el mensaje de finalización, lo envía a un exchange en el cual están escuchando los otros nodos, y luego le envía un mensaje al líder, notificándole que ya ha terminado su procesamiento. Cuando el líder recibe notificaciones de cada uno de los nodos, envía el mensaje de finalización a la siguiente queue.
+- **Nodos con queue compartida:** para este caso extendimos el mensaje de finalización con una lista que contiene los ids de los nodos que terminaron su procesamiento. Cuando un nodo recibe este mensaje, sigue los siguientes pasos:
+
+  1. Chequea si su id esta en la lista. Si no está, lo agrega a la lista.
+  2. Si la lista está completa, envía el mensaje de finalización a la siguiente cola.
+  3. Si la lista **no** está completa, reencola el mensaje en la cola compartida.
 
   Esto tiene un problema de fairness, ya que el procesamiento de los mensajes de un cliente puede haber terminado, pero el mensaje de finalización tarda en llegar al último nodo. Sin embargo, fuimos por este método porque nos pareció sencillo, y a priori la performance no es una prioridad.
 
@@ -262,20 +267,32 @@ Dado que ahora cada joiner deben procesar los mensajes de múltiples clientes en
 
 Una vez que recibe el mensaje de finalización, carga los registros en memoria, ejecuta el join, envía el resultado y luego libera todos los recursos (elimina los registros tanto del disco como de la memoria).
 
+### Problemas enfrentados
+
+#### EOF Adelantado a los paquetes
+
+Durante ciertas ejecuciones de nuestro sistema distribuido, observamos un comportamiento inesperado: el paquete EOF (fin de flujo) de un cliente, que debería enviarse al final de su secuencia de datos, se adelantaba en la cola de RabbitMQ a los paquetes de datos (data packets) del mismo cliente. Esto provocaba una pérdida de información, ya que el EOF señalaba el fin del flujo, causando que los paquetes de datos posteriores fueran ignorados.
+
+Inicialmente, sospechamos que el problema podía deberse a una falta de sincronización en el código. Sin embargo, tras un exhaustivo proceso de depuración y múltiples revisiones del código, confirmamos que el envío del EOF se realizaba después de los paquetes de datos mediante llamadas secuenciales al método publish del middleware de RabbitMQ. Este hallazgo nos dejó desconcertados, ya que la lógica de nuestro código garantizaba el orden correcto de publicación (data packets primero, EOF después), pero el orden de procesamiento en la cola no respetaba esta secuencia.
+
+Para entender la causa raíz, investigamos más a fondo el comportamiento de RabbitMQ. Descubrimos que, en escenarios con múltiples conexiones a una misma cola, el orden de procesamiento de los mensajes no siempre coincide con el orden cronológico de publicación. Específicamente, si una conexión envía un mensaje pequeño (como el EOF) y otra conexión envía una serie grande de paquetes de datos, el mensaje pequeño puede ser procesado y colocado en la cola antes que los paquetes más grandes, incluso si se publicó después. En nuestro caso, la conexión encargada de enviar el EOF (a menudo desde un proceso líder o coordinador) lograba que este mensaje llegara a la cola antes que los paquetes de datos enviados por otras conexiones, a pesar de publicarse posteriormente.
+
+Esta eventualidad nos llevó a explorar soluciones para garantizar el orden correcto de los mensajes en la cola. Durante nuestra investigación, encontramos en la documentación de la biblioteca Pika un mecanismo clave: las confirmaciones de entrega (delivery confirmations). Este mecanismo, descrito en [Pika Blocking Delivery Confirmations](https://pika.readthedocs.io/en/stable/examples/blocking_delivery_confirmations.html), permite que el método publish espere una confirmación del servidor de RabbitMQ antes de considerar que un mensaje ha sido exitosamente ingresado en la cola.
+
+Por lo tanto, implementamos las confirmaciones de entrega en nuestros nodos con uso de cola lider para sincronizar el EOF. Este cambio garantizó que el EOF solo se publicara una vez que todos los paquetes de datos estuvieran confirmados en la cola, respetando así el orden lógico del flujo de datos. La solución no solo resolvió el problema de adelantamiento, sino que también mejoró la robustez del sistema al añadir una capa de confiabilidad en la entrega de mensajes.
 
 ## Instrucciones de ejecución
 
 A continuación se indican los diferentes comandos para ejecutar el sistema
 
 > [!NOTE]
-> 
+>
 > Los siguientes comandos utilizan internamente `docker-compose` (no `docker compose`).
 > En caso de que alguno de los comandos no funcione, reemplazar en el Makefile cada ocurrencia de `docker-compose` por `docker compose` con el siguiente comando:
 >
 > ```bash
 > sed -i 's/docker-compose /docker compose /g' Makefile
 > ```
-
 
 ### Levantar el sistema
 
@@ -309,6 +326,7 @@ make test_against_notebook
 ```
 
 Ejecuta de los siguientes pasos:
+
 1. Levanta el sistema y lo deja ejecutando en background.
 2. Pone a ejecutar el Jupyter notebook en un container de Docker, utilizando como input los archivos declarados en `config.ini`
 3. Espera a que los clientes terminen, y compara los resultados de cada cliente contra los resultados del notebook.
