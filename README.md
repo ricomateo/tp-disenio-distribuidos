@@ -301,3 +301,15 @@ CREDITS_FILE = data/credits.csv # Se genera al descomprimir data/credits.rar
 make down
 ```
 
+### Ejecutar tests
+
+El siguiente comando testea el funcionamiento del sistema, contrastándolo contra los resultados del Jupyter notebook.
+
+```bash
+make test_against_notebook
+```
+
+Ejecuta de los siguientes pasos:
+1. Levanta el sistema y lo deja ejecutando en background.
+2. Pone a ejecutar el Jupyter notebook en un container de Docker, utilizando como input los archivos declarados en `config.ini`
+3. Espera a que los clientes terminen, y compara los resultados de cada cliente contra los resultados del notebook.
