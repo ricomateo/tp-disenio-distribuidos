@@ -241,13 +241,13 @@ Esto implicó agregar un campo `client_id` a cada uno de los mensajes, lo cual p
 Previamente este mecanismo estaba implementado utilizando la función `channel.consumers_count()` que ofrece Rabbit, aprovechando que cada nodo se desconectaba al recibir el mensaje de finalización.
 
 Sin embargo este approach no funciona con múltiples clientes, ya que los nodos no se pueden desconectar porque el sistema debe permanecer activo. En este caso se implementaron dos mecanismos, dependiendo de si el nodo consume de su propia queue, o si consume de una working queue:
-    * **Nodos con queue propia:** en este caso, para cada cluster de nodos se tiene un nodo líder (el de id 0), encargado de enviar el mensaje de finalización a la siguiente queue. Cuando un nodo recibe el mensaje de finalización, lo envía a un exchange en el cual están escuchando los otros nodos, y luego le envía un mensaje al líder, notificándole que ya ha terminado su procesamiento. Cuando el líder recibe notificaciones de cada uno de los nodos, envía el mensaje de finalización a la siguiente queue.
-    * **Nodos con queue compartida:** para este caso extendimos el mensaje de finalización con una lista que contiene los ids de los nodos que terminaron su procesamiento.
-    Cuando un nodo recibe este mensaje, sigue los siguientes pasos:
-        1. Chequea si su id esta en la lista. Si no está, lo agrega a la lista.
-        2. Si la lista está completa, envía el mensaje de finalización a la siguiente cola.
-        3. Si la lista **no** está completa, reencola el mensaje en la cola compartida.
-    Esto tiene un problema de fairness, ya que el procesamiento de los mensajes de un cliente puede haber terminado, pero el mensaje de finalización tarda en llegar al último nodo. Sin embargo, fuimos por este método porque nos pareció sencillo, y a priori la performance no es una prioridad.
+* **Nodos con queue propia:** en este caso, para cada cluster de nodos se tiene un nodo líder (el de id 0), encargado de enviar el mensaje de finalización a la siguiente queue. Cuando un nodo recibe el mensaje de finalización, lo envía a un exchange en el cual están escuchando los otros nodos, y luego le envía un mensaje al líder, notificándole que ya ha terminado su procesamiento. Cuando el líder recibe notificaciones de cada uno de los nodos, envía el mensaje de finalización a la siguiente queue.
+* **Nodos con queue compartida:** para este caso extendimos el mensaje de finalización con una lista que contiene los ids de los nodos que terminaron su procesamiento. Cuando un nodo recibe este mensaje, sigue los siguientes pasos:
+    1. Chequea si su id esta en la lista. Si no está, lo agrega a la lista.
+    2. Si la lista está completa, envía el mensaje de finalización a la siguiente cola.
+    3. Si la lista **no** está completa, reencola el mensaje en la cola compartida.
+
+  Esto tiene un problema de fairness, ya que el procesamiento de los mensajes de un cliente puede haber terminado, pero el mensaje de finalización tarda en llegar al último nodo. Sin embargo, fuimos por este método porque nos pareció sencillo, y a priori la performance no es una prioridad.
 
 ## Modificaciones específicas de cada nodo
 
