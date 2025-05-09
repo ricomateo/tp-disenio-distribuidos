@@ -229,19 +229,39 @@ Para soportar ejecuciones de múltiples clientes concurrentemente fue necesario 
 
 ## Modificaciones generales
 
-A continuación se detallan los cambios que se aplicaron a todos los nodos:
+A continuación se detallan las modificaciones que se aplicaron a todos los nodos.
 
-* **Separar los cálculos / operaciones por cliente**. Esto implicó agregar un campo `client_id` a cada uno de los mensajes, lo cual permite identificar a qué cliente corresponde cada mensaje. Esto es crucial para aquellos nodos stateful (aggregator, calculator, joiner) ya que les permite separar los resultados intermedios según el cliente.
-* **Modificar los mecanismos para sincronizar el envío del mensaje de finalización**. Previamente este mecanismo estaba implementado utilizando la función `channel.consumers_count()` que ofrece Rabbit, aprovechando que cada nodo se desconectaba al recibir el mensaje de finalización. Sin embargo este approach no funciona con múltiples clientes, ya que los nodos no se pueden desconectar porque el sistema debe permanecer activo. En este caso se implementaron dos mecanismos, dependiendo de si el nodo consume de su propia queue, o si consume de una working queue:
+### Separación de los cálculos operaciones por cliente
+
+Esto implicó agregar un campo `client_id` a cada uno de los mensajes, lo cual permite identificar a qué cliente corresponde cada mensaje. Esto es crucial para aquellos nodos stateful (aggregator, calculator, joiner) ya que les permite separar los resultados intermedios según el cliente.
+
+
+### Mecanismos de sincronización de finalización
+
+Previamente este mecanismo estaba implementado utilizando la función `channel.consumers_count()` que ofrece Rabbit, aprovechando que cada nodo se desconectaba al recibir el mensaje de finalización.
+
+Sin embargo este approach no funciona con múltiples clientes, ya que los nodos no se pueden desconectar porque el sistema debe permanecer activo. En este caso se implementaron dos mecanismos, dependiendo de si el nodo consume de su propia queue, o si consume de una working queue:
     * **Nodos con queue propia:** en este caso, para cada cluster de nodos se tiene un nodo líder (el de id 0), encargado de enviar el mensaje de finalización a la siguiente queue. Cuando un nodo recibe el mensaje de finalización, lo envía a un exchange en el cual están escuchando los otros nodos, y luego le envía un mensaje al líder, notificándole que ya ha terminado su procesamiento. Cuando el líder recibe notificaciones de cada uno de los nodos, envía el mensaje de finalización a la siguiente queue.
-    * **Nodos con queue compartida:** para este caso extendimos el mensaje de finalización con una lista que contiene los ids de los nodos que terminaron su procesamiento. Cuando un nodo recibe este mensaje, chequea si su id esta en la lista. Si no está, se agrega. Si la lista está completa, envía el mensaje de finalización a la siguiente cola. Si la lista no está completa, reencola el mensaje en la cola compartida. Esto tiene un problema de fairness, ya que el procesamiento de los mensajes de un cliente puede haber terminado, pero el mensaje de finalización tarda en llegar al último nodo. Sin embargo, fuimos por este método porque nos pareció sencillo, y a priori la performance no es una prioridad.
+    * **Nodos con queue compartida:** para este caso extendimos el mensaje de finalización con una lista que contiene los ids de los nodos que terminaron su procesamiento.
+    Cuando un nodo recibe este mensaje, sigue los siguientes pasos:
+        1. Chequea si su id esta en la lista. Si no está, lo agrega a la lista.
+        2. Si la lista está completa, envía el mensaje de finalización a la siguiente cola.
+        3. Si la lista **no** está completa, reencola el mensaje en la cola compartida.
+    Esto tiene un problema de fairness, ya que el procesamiento de los mensajes de un cliente puede haber terminado, pero el mensaje de finalización tarda en llegar al último nodo. Sin embargo, fuimos por este método porque nos pareció sencillo, y a priori la performance no es una prioridad.
 
 ## Modificaciones específicas de cada nodo
 
 A continuación se detallan los cambios que fueron realizados para nodos en específico.
 
-* **Gateway**: en esta entrega el gateway está constantemente esperando por nuevas conexiones, y lanza un proceso para handlear cada conexión. Cada uno de estos procesos atiende al cliente durante toda la conexión, es decir, recibe los archivos, los envía a los nodos para iniciar el procesamiento, y luego le envía los resultados al cliente.
-* **Joiner**: dado que ahora cada joiner deben procesar los mensajes de múltiples clientes en simultáneo, es claro que la memoria es un factor limitante. Es por esto que se modificó el joiner para que vaya guardando en disco los registros de los clientes, de forma tal que no se quede sin memoria. Una vez que recibe el mensaje de finalización, carga los registros en memoria, ejecuta el join, envía el resultado y luego libera todos los recursos (elimina los registros tanto del disco como de la memoria).
+### Gateway
+
+En esta entrega el gateway está constantemente esperando por nuevas conexiones, y lanza un proceso para handlear cada conexión. Cada uno de estos procesos atiende al cliente durante toda la conexión, es decir, recibe los archivos, los envía a los nodos para iniciar el procesamiento, y luego le envía los resultados al cliente.
+
+### Joiner
+
+Dado que ahora cada joiner deben procesar los mensajes de múltiples clientes en simultáneo, es claro que la memoria es un factor limitante. Es por esto que se modificó el joiner para que vaya guardando en disco los registros de los clientes, de forma tal que no se quede sin memoria.
+
+Una vez que recibe el mensaje de finalización, carga los registros en memoria, ejecuta el join, envía el resultado y luego libera todos los recursos (elimina los registros tanto del disco como de la memoria).
 
 
 ## Instrucciones de ejecución
