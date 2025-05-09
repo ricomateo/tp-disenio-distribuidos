@@ -233,8 +233,7 @@ A continuación se detallan las modificaciones que se aplicaron a todos los nodo
 
 ### Separación de los cálculos operaciones por cliente
 
-Esto implicó agregar un campo `client_id` a cada uno de los mensajes, lo cual permite identificar a qué cliente corresponde cada mensaje. Esto es crucial para aquellos nodos stateful (aggregator, calculator, joiner) ya que les permite separar los resultados intermedios según el cliente.
-
+Esto implicó asignar un id único e incremental a cada cliente, e incluirlo en cada uno de los mensajes (del lado del servidor) para poder identificar a qué cliente corresponde cada mensaje (campo `client_id`). Esto es crucial para aquellos nodos stateful (aggregator, calculator, joiner) ya que les permite separar los resultados intermedios según el cliente.
 
 ### Mecanismos de sincronización de finalización
 
