@@ -77,6 +77,7 @@ class ClientConnection:
             print(f"[Client {client_id}] Error: {e}")
         finally:
             print(f"[Client {client_id}] Cerrando recursos del cliente")
+            self.rabbitmq_receiver.delete_queue()
             self.close()
 
     def publish_file_batch(self, batch: dict, msg_filename):
@@ -96,12 +97,9 @@ class ClientConnection:
                 packet = json.loads(packet_json)
 
                 if is_final_packet(packet.get("header")):
-                        #self.rabbitmq.send_final()
-                        
                         self.client.send_finalization()
                         ch.basic_ack(delivery_tag=method.delivery_tag)
                         ch.stop_consuming()
-                        self.rabbitmq_receiver.close()
                         return
 
                 response_str = packet.get("response")

@@ -165,25 +165,25 @@ class JoinNode:
                 # Si eof_main es False, guardar en el disco
                 if not is_eof_main:
                     print(f" [💾] Router '{router}' not in buffer, adding to disk")
-                    storage.add(str(router), movie, group_key=self.input_queue_2)
+                    storage.add(str(router), movie)
                     print(f" [✅] Added router '{router}' to disk")
                     
             if is_eof_main:
                 # Verificar si el disco está vacío
-                stored_keys = storage.list_keys(group_key=self.input_queue_2)
+                stored_keys = storage.list_keys()
                 if not stored_keys:
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
                 print(" [🔄] Iniciando merge completo (eof_main=True)")    
                 # Realizar merge completo: combinar router_buffer con todos los datos del disco
-                for key, _ in stored_keys:
+                for key in stored_keys:
                     router_key = int(key)  # Convertir la clave a entero
                     with self.lock:  # Proteger acceso a router_buffer_by_client
                         if router_key in self.router_buffer_by_client.get(client_id, {}):
                             movie1 = self.router_buffer_by_client[client_id][router_key]
                         else:
                             continue
-                    stored_movies = storage.retrieve(key, group_key=self.input_queue_2)
+                    stored_movies = storage.retrieve(key)
                     if stored_movies:
                         # Asegurarse de que stored_movies sea una lista
                         if not isinstance(stored_movies, list):
@@ -195,7 +195,7 @@ class JoinNode:
                             print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
                     
                 # Limpiar el disco después del merge
-                storage.remove_keys(group_key=self.input_queue_2)
+                storage.clean()
                 print(f" [✅] Disco limpio")
                
 
@@ -248,7 +248,7 @@ class JoinNode:
         # Limpiar disco del cliente
         with self.lock:
             if client_id in self.storages_by_client:
-                self.storages_by_client[client_id].remove_keys(group_key=self.input_queue_2)
+                self.storages_by_client[client_id].clean()
                 del self.storages_by_client[client_id]
                 
             # Limpiar router_buffer del cliente
@@ -272,6 +272,6 @@ class JoinNode:
             self.final_rabbitmq.close()
         for client_id, storage in self.storages_by_client.items():
             print(f" [🧹] Limpiando almacenamiento para cliente '{client_id}'")
-            storage.remove_keys()
+            storage.clean_all()
         self.storages_by_client.clear()
         self.router_buffer_by_client.clear()

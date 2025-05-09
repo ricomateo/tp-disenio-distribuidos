@@ -145,4 +145,9 @@ class Middleware:
 
     def confirm_delivery(self):
         if self.channel:
-            self.channel.confirm_delivery()     
+            self.channel.confirm_delivery()    
+
+    def delete_queue(self):
+        if self.channel:
+            self.channel.queue_delete(queue=self.queue)
+            print(f"[Middleware] Cola '{self.queue}' eliminada.") 
