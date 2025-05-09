@@ -255,11 +255,16 @@ Cuando cada nodo recibe el mensaje de finalización, termina su procesamiento (s
 #### Nodos con queue compartida
 
 Para este caso extendimos el mensaje de finalización con una lista que contiene los ids de los nodos que terminaron su procesamiento. Cuando un nodo recibe este mensaje, sigue los siguientes pasos:
+
 1. Chequea si su id esta en la lista. Si no está, lo agrega a la lista.
 2. Si la lista está completa, envía el mensaje de finalización a la siguiente cola.
 3. Si la lista **no** está completa, reencola el mensaje en la cola compartida.
 
 Esto tiene un problema de fairness, ya que el procesamiento de los mensajes de un cliente puede haber terminado, pero el mensaje de finalización tarda en llegar al último nodo. Sin embargo, fuimos por este método porque nos pareció sencillo, y a priori la performance no es una prioridad.
+
+## Modificaciones del funcionamiento general
+
+Para optimizar el procesamiento y reducir la carga computacional, se modificó el diagrama de robustez reubicando el cálculo del promedio de ratings después de la operación de join, en lugar de realizarlo previamente. Originalmente, calcular los promedios antes del join generaba resultados intermedios innecesarios, especialmente a medida que crecía el archivo de ratings, lo que incrementaba la complejidad y el uso de recursos. Al adelantar el join para filtrar y combinar los datos relevantes primero, se eliminan registros no necesarios antes del cálculo, simplificando el proceso y mejorando la eficiencia del sistema.
 
 ## Modificaciones específicas de cada nodo
 
@@ -273,7 +278,7 @@ En esta entrega el gateway está constantemente esperando por nuevas conexiones,
 
 Dado que ahora cada joiner deben procesar los mensajes de múltiples clientes en simultáneo, es claro que la memoria es un factor limitante. Es por esto que se modificó el joiner para que vaya guardando en disco los registros de los clientes, de forma tal que no se quede sin memoria.
 
-Una vez que recibe el mensaje de finalización, carga los registros en memoria, ejecuta el join, envía el resultado y luego libera todos los recursos (elimina los registros tanto del disco como de la memoria).
+El Joiner procesa mensajes de dos colas de RabbitMQ usando dos threads: uno para la cola primaria (movies) y otro para la cola secundaria. Cuando el thread de la cola secundaria recibe un paquete que no puede combinar inmediatamente, lo almacena en disco con StorageHandler. Al recibir un EOF en la cola primaria para un cliente, el thread primario notifica al secundario, que carga todos los datos almacenados en disco para ese cliente, ejecuta el join, y limpia los recursos. Posteriormente, el thread secundario descarta o combina directamente los paquetes de ese cliente sin almacenarlos, hasta que recibe el EOF en la cola secundaria, completando el procesamiento.
 
 ### Problemas enfrentados
 
