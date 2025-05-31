@@ -93,11 +93,11 @@ class Middleware:
         self.channel.start_consuming()
     
     # TODO: sacar client_id=0 como default
-    def send_final(self, client_id=0, routing_key=''):
+    def send_final(self, client_id=0, routing_key='', count=0):
         """Publica un paquete FINAL a través de este middleware."""
         if not self.channel:
             self.connect()
-        final_packet = FinalPacket(client_id)
+        final_packet = FinalPacket(client_id, count)
         self.publish(final_packet.to_json(), routing_key)
         print(f"[Middleware] FinalPacket {final_packet.to_json()} enviado directamente.")
                 

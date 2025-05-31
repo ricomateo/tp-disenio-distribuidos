@@ -31,6 +31,8 @@ def initialize_config(config_file="config.ini"):
         "ROUTER_COUNTRY",
         "ROUTER_RATINGS_CALCULATED",
         "ROUTER_ACTORS_2000_ARGENTINA",
+        "ROUTER_POSITIVE_SENTIMENT",
+        "ROUTER_NEGATIVE_SENTIMENT",
         "CALCULATOR_BUDGET_COUNTRY",
         "CALCULATOR_COUNT_ACTORS",
         "CALCULATOR_AVERAGE_RATINGS",

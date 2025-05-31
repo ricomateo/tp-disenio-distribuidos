@@ -173,7 +173,8 @@ class AggregatorNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
-        self.input_rabbitmq.cancel_consumer()
+        if self.input_rabbitmq:
+            self.input_rabbitmq.cancel_consumer()
 
     def close(self):
         print(f"Closing queues")

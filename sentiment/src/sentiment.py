@@ -4,11 +4,13 @@ from common.packet import DataPacket, is_final_packet
 from datetime import datetime
 import os
 import signal
+from common.worker_protocol import WorkerProtocol
 from transformers import pipeline
 
 class SentimentNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
+
         self.running = True
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_queue")
         self.output_positive_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE_POSITIVE", "default_output")
@@ -19,6 +21,11 @@ class SentimentNode:
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "sentiment_consumer")
         self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
         self.node_id = int(os.getenv("NODE_ID"))
+        
+        self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
+        self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
+        self.worker_port = int(os.getenv("WORKER_PORT", "9000"))
+        self.input_rabbitmq = None
         
         if self.exchange:  
             self.input_rabbitmq = Middleware(
@@ -34,8 +41,15 @@ class SentimentNode:
 
         self.output_positive_rabbitmq = Middleware(queue=self.output_positive_queue)
         self.output_negative_rabbitmq = Middleware(queue=self.output_negative_queue)
-
+        
+        print("listen")
+        self.control = WorkerProtocol(self.health_server_ip, self.worker_port, self.health_server_port)
+        self.control.listen()
+        print("listened")
+        
         self.sentiment_analyzer = pipeline('sentiment-analysis', model='distilbert-base-uncased-finetuned-sst-2-english')
+        
+        
 
     def callback(self, ch, method, properties, body):
         try:
@@ -51,35 +65,27 @@ class SentimentNode:
             client_id = packet.get("client_id")
             
             if is_final_packet(header):
-                # Si la lista de acks es None, entonces soy el primero en recibir el mensaje FIN
-                # Agrego la lista con mi id y la reencolo
-                if packet.get("acks") is None:
-                    print(f"[Sentiment - FIN] - packet[acks] = None")
-                    # Inicializo la lista acks con mi id
-                    packet["acks"] = []
+                
+                count = int(packet['count'])
+                final, frequencies = self.control.send_final_count(client_id, count)
+                
+                if final:
+                    freq_dict = {}
+                    for pair in frequencies.split(","):
+                        node_id, count = pair.split(":")
+                        freq_dict[int(node_id)] = int(count)
+                    self.output_positive_rabbitmq.send_final(client_id=client_id, count=freq_dict.get(0, 0))
+                    self.output_negative_rabbitmq.send_final(client_id=client_id, count=freq_dict.get(1, 0))
+                    self.control.delete_client(client_id)
                     
-                # Si no estoy en la lista de ids, me agrego
-                if not self.node_id in packet.get("acks"):
-                    print(f"[Sentiment - FIN] - No estoy en la lista de acks")
-                    packet["acks"] = packet["acks"] + [self.node_id]
-                
-                # Si todos los id estan en la lista de acks, mando final
-                if len(packet["acks"]) == self.cluster_size:
-                    client_id = packet["client_id"]
-                    acks = packet["acks"]
-                    print(f"[Sentiment - FIN] - Lista de acks completa ({acks}), mando final packet (client_id = {client_id})")
-                    self.output_positive_rabbitmq.send_final(client_id=client_id)
-                    self.output_negative_rabbitmq.send_final(client_id=client_id)
-                
-                # Si faltan ids en la lista de ids, reencolo el mensaje (despues de haberme agregado)
-                else:
-                    self.input_rabbitmq.publish(packet)
                 # Mando ack del final packet
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             
+            
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
+            id = packet.id
 
             # Procesar paquete (comunicarse con la lib de sentimientos)
             overview = movie.get('overview', '')
@@ -91,16 +97,30 @@ class SentimentNode:
             filtered_packet = DataPacket(
                 client_id=client_id,
                 timestamp=datetime.utcnow().isoformat(),
-                data=movie
+                data=movie,
+                id=id
             )
 
             # Publicar el paquete filtrado a la cola del gateway que corresponda
             if sentiment == "POSITIVE":
                 self.output_positive_rabbitmq.publish(filtered_packet.to_json())
+                      
             elif sentiment == "NEGATIVE":
                 self.output_negative_rabbitmq.publish(filtered_packet.to_json())
             else:
                 print("[--------------] No es positivo ni negativo")
+                
+            sentiment_code = "0" if sentiment == "POSITIVE" else "1" 
+               
+            final, frequencies = self.control.insert_id(client_id, id, sentiment_code, self.node_id)
+            if final:
+                freq_dict = {}
+                for pair in frequencies.split(","):
+                    node_id, count = pair.split(":")
+                    freq_dict[int(node_id)] = int(count)
+                self.output_positive_rabbitmq.send_final(client_id=client_id, count=freq_dict.get(0, 0))
+                self.output_negative_rabbitmq.send_final(client_id=client_id, count=freq_dict.get(1, 0))
+                self.control.delete_client(client_id)
             
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")
@@ -125,7 +145,10 @@ class SentimentNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
-        self.input_rabbitmq.cancel_consumer()
+        if self.control:
+            self.control.stop()
+        if self.input_rabbitmq:
+            self.input_rabbitmq.cancel_consumer()
 
     def close(self):
         print(f"Closing queues")

@@ -24,10 +24,14 @@ ROUTER_ACTORS = "router_actors"
 ROUTER_COUNTRY = "router_country"
 ROUTER_RATINGS_CALCULATED = "router_ratings_calculated"
 ROUTER_ACTORS_2000_ARGENTINA = "router_actors_2000_argentina"
+ROUTER_POSITIVE_SENTIMENT = "router_positive_sentiment"
+ROUTER_NEGATIVE_SENTIMENT = "router_negative_sentiment"
 CALCULATOR_BUDGET_COUNTRY = "calculator_budget_country"
 CALCULATOR_COUNT_ACTORS = "calculator_count_actors"
 CALCULATOR_AVERAGE_RATINGS = "calculator_average_ratings"
 CALCULATOR_RATIO_FEELINGS = "calculator_ratio_feelings"
+CALCULATOR_RATIO_FEELINGS_POSITIVE = "calculator_ratio_feelings_positive"
+CALCULATOR_RATIO_FEELINGS_NEGATIVE = "calculator_ratio_feelings_negative"
 JOIN_MOVIES = "join_movies"
 JOIN_RATINGS = "join_ratings"
 JOIN_ACTORS = "join_actors"
@@ -37,6 +41,11 @@ SENTIMENT_NEGATIVE = 'sentiment_negative_queue'
 AGGREGATOR_CALCULATOR_RATIO_FEELINGS = 'aggregator_calculator_ratio_feelings'
 AGGREGATOR_CALCULATOR_BUDGET_COUNTRY = 'aggregator_calculator_budget_country' 
 AGGREGATOR_CALCULATOR_COUNT_ACTORS = 'aggregator_calculator_count_actors' 
+CONTROL = 'control'
+SLEEP_INTERVAL = '2'
+RESTART_INTERVAL = '5'
+WORKER_PORT = '9000'
+HEALTH_PORT = '10000'
 
 class ConfigGenerator:
     def __init__(self, config_params):
@@ -62,6 +71,7 @@ class ConfigGenerator:
         self._generate_deliver_3()
         self._generate_deliver_4()
         self._generate_deliver_5()
+        self._generate_controls()
         self._generate_clients()
         return self.compose
     
@@ -144,6 +154,9 @@ class ConfigGenerator:
             f'RABBITMQ_EXCHANGE={GATEWAY}', 
             f'RABBITMQ_OUTPUT_EXCHANGE={PARSER}',
             'KEEP_COLUMNS=budget,genres,id,original_language,overview,production_countries,release_date,revenue,title',
+            f'HEALTH_SERVER_PORT={HEALTH_PORT}',
+            f'HEALTH_SERVER_IP=0.0.0.0',
+            f'WORKER_PORT={WORKER_PORT}',
             f'FILENAME={MOVIES_FILE}'
             ],
             networks=['app-network'],
@@ -163,6 +176,9 @@ class ConfigGenerator:
             f'RABBITMQ_OUTPUT_EXCHANGE={PARSER}',
             'KEEP_COLUMNS=userId,movieId,rating',    
             f'FILENAME={RATINGS_FILE}',
+            f'HEALTH_SERVER_PORT={HEALTH_PORT}',
+            f'HEALTH_SERVER_IP=0.0.0.0',
+            f'WORKER_PORT={WORKER_PORT}',
             'REPLACE=movieId:id'
             ],
             networks=['app-network'],
@@ -181,6 +197,9 @@ class ConfigGenerator:
             f'RABBITMQ_EXCHANGE={GATEWAY}', 
             f'RABBITMQ_OUTPUT_EXCHANGE={PARSER}',
             'KEEP_COLUMNS=cast,id',
+            f'HEALTH_SERVER_PORT={HEALTH_PORT}',
+            f'HEALTH_SERVER_IP=0.0.0.0',
+            f'WORKER_PORT={WORKER_PORT}',
             f'FILENAME={CREDITS_FILE}'
             ],
             networks=['app-network'],
@@ -215,7 +234,7 @@ class ConfigGenerator:
             # Generate instance-specific service name
             instances_new = start_node_id + instances if start_node_id is not None else instances
             node_id = start_node_id + instance_id if start_node_id is not None else instance_id
-            instance_suffix = '' if instances_new == 1 else f'_{node_id}'
+            instance_suffix = '' if node_id == 0 else f'_{node_id}'
             service_name_instance = f"{service_name}{instance_suffix}"
             
             condition = {'condition': 'service_started'}
@@ -268,11 +287,18 @@ class ConfigGenerator:
             self.compose.setdefault('services', {})[service_name_instance] = config
 
     def _generate_filter(self, service_name, environment, instances):
+        updated_environment = environment.copy() if environment else []
+       
+        updated_environment.extend([
+            f'HEALTH_SERVER_PORT={HEALTH_PORT}',
+            f'HEALTH_SERVER_IP=0.0.0.0',
+            f'WORKER_PORT={WORKER_PORT}'
+        ])
         
         self.generate_service(
             service_name=service_name,
             dockerfile='filter/Dockerfile',
-            environment=environment,
+            environment=updated_environment,
             networks=['app-network'],
             depends_on={
                 'rabbitmq': {'condition': 'service_healthy'}
@@ -281,6 +307,13 @@ class ConfigGenerator:
         )
         
     def _generate_router(self, service_name, environment, instances):
+        updated_environment = environment.copy() if environment else []
+       
+        updated_environment.extend([
+            f'HEALTH_SERVER_PORT={HEALTH_PORT}',
+            f'HEALTH_SERVER_IP=0.0.0.0',
+            f'WORKER_PORT={WORKER_PORT}'
+        ])
         
         self.generate_service(
             service_name=service_name,
@@ -345,6 +378,7 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
                 f'RABBITMQ_OUTPUT_EXCHANGE={FILTER_2000_ARGENTINA}',
+                f'RABBITMQ_FINAL_QUEUE={FILTER_2000_ARGENTINA}{FINAL}',
                 f'KEEP_COLUMNS=production_countries,release_date,title,genres,id',
                 'FILTERS=production_countries:in(Argentina);release_date:more_date(1999)'
             ],
@@ -358,6 +392,7 @@ class ConfigGenerator:
                 f'RABBITMQ_QUEUE={FILTER_2000_ARGENTINA}{FILTER_2000S_SPAIN}',
                 f'RABBITMQ_CONSUMER_TAG={FILTER_2000S_SPAIN}',
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_2000S_SPAIN}',
+                f'RABBITMQ_FINAL_QUEUE={FILTER_2000S_SPAIN}{FINAL}',
                 f'RABBITMQ_EXCHANGE={FILTER_2000_ARGENTINA}',
                 f'KEEP_COLUMNS=title,genres,id',
                 'FILTERS=production_countries:in(Spain);release_date:less_date(2010)'
@@ -374,6 +409,7 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_UNIQUE_COUNTRY}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
+                f'RABBITMQ_FINAL_QUEUE={FILTER_UNIQUE_COUNTRY}{FINAL}',
                 f'KEEP_COLUMNS=production_countries,budget,id',
                 'FILTERS=production_countries:count(1)'
             ],
@@ -389,7 +425,8 @@ class ConfigGenerator:
                 f'RABBITMQ_OUTPUT_QUEUE={FILTER_BUDGET_REVENUE}',
                 f'RABBITMQ_EXCHANGE={PARSER}',
                 f'RABBITMQ_ROUTING_KEY={MOVIES_FILE}',
-                f'KEEP_COLUMNS=overview,budget,revenue',
+                f'RABBITMQ_FINAL_QUEUE={FILTER_BUDGET_REVENUE}{FINAL}',
+                f'KEEP_COLUMNS=overview,budget,revenue,id',
                 'FILTERS=budget:more(0);revenue:more(0)'
             ],
             instances=instances
@@ -480,6 +517,32 @@ class ConfigGenerator:
             instances=instances
             )
         
+        instances = self.config_params[ROUTER_POSITIVE_SENTIMENT]
+        self._generate_router(
+            service_name=ROUTER_POSITIVE_SENTIMENT,
+            environment=[
+                f'RABBITMQ_QUEUE={SENTIMENT_POSITIVE}',
+                f'RABBITMQ_CONSUMER_TAG={ROUTER_POSITIVE_SENTIMENT}',
+                f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_POSITIVE_SENTIMENT}',
+                f'ROUTER_BY=id',
+                f'NUMBER_OF_NODES={self.config_params[CALCULATOR_RATIO_FEELINGS]}'
+            ],
+            instances=instances
+            )
+        
+        instances = self.config_params[ROUTER_NEGATIVE_SENTIMENT]
+        self._generate_router(
+            service_name=ROUTER_NEGATIVE_SENTIMENT,
+            environment=[
+                f'RABBITMQ_QUEUE={SENTIMENT_NEGATIVE}',
+                f'RABBITMQ_CONSUMER_TAG={ROUTER_NEGATIVE_SENTIMENT}',
+                f'RABBITMQ_OUTPUT_EXCHANGE={ROUTER_NEGATIVE_SENTIMENT}',
+                f'ROUTER_BY=id',
+                f'NUMBER_OF_NODES={self.config_params[CALCULATOR_RATIO_FEELINGS]}'
+            ],
+            instances=instances
+            )
+        
        
         
     def _generate_calculators(self):
@@ -527,10 +590,11 @@ class ConfigGenerator:
         
         instances = self.config_params[CALCULATOR_RATIO_FEELINGS]
         self._generate_calculator(
-            service_name=CALCULATOR_RATIO_FEELINGS,
+            service_name=CALCULATOR_RATIO_FEELINGS_POSITIVE,
             environment=[
-                F'RABBITMQ_QUEUE={SENTIMENT_POSITIVE}',
+                F'RABBITMQ_QUEUE={ROUTER_POSITIVE_SENTIMENT}{CALCULATOR_RATIO_FEELINGS}',
                 f'RABBITMQ_CONSUMER_TAG={CALCULATOR_RATIO_FEELINGS}',
+                f'RABBITMQ_EXCHANGE={ROUTER_POSITIVE_SENTIMENT}',
                 f'RABBITMQ_OUTPUT_QUEUE={CALCULATOR_RATIO_FEELINGS}',
                 f'RABBITMQ_FINAL_QUEUE={CALCULATOR_RATIO_FEELINGS}{FINAL}',
                 f'OPERATION=ratio_by:revenue,budget'
@@ -540,16 +604,16 @@ class ConfigGenerator:
             )
         
         self._generate_calculator(
-            service_name=CALCULATOR_RATIO_FEELINGS,
+            service_name=CALCULATOR_RATIO_FEELINGS_NEGATIVE,
             environment=[
-                F'RABBITMQ_QUEUE={SENTIMENT_NEGATIVE}',
+                F'RABBITMQ_QUEUE={ROUTER_NEGATIVE_SENTIMENT}{CALCULATOR_RATIO_FEELINGS}',
                 f'RABBITMQ_CONSUMER_TAG={CALCULATOR_RATIO_FEELINGS}',
+                f'RABBITMQ_EXCHANGE={ROUTER_NEGATIVE_SENTIMENT}',
                 f'RABBITMQ_OUTPUT_QUEUE={CALCULATOR_RATIO_FEELINGS}',
                 f'RABBITMQ_FINAL_QUEUE={CALCULATOR_RATIO_FEELINGS}{FINAL}',
                 f'OPERATION=ratio_by:revenue,budget'
             ],
             instances=instances,
-            start_node_id=instances,
             cluster_size=instances*2
             )
         
@@ -730,7 +794,10 @@ class ConfigGenerator:
                 f'RABBITMQ_QUEUE={FILTER_BUDGET_REVENUE}',
                 f'RABBITMQ_CONSUMER_TAG={SENTIMENT}',
                 f'RABBITMQ_OUTPUT_QUEUE_POSITIVE={SENTIMENT_POSITIVE}',
-                f'RABBITMQ_OUTPUT_QUEUE_NEGATIVE={SENTIMENT_NEGATIVE}'
+                f'RABBITMQ_OUTPUT_QUEUE_NEGATIVE={SENTIMENT_NEGATIVE}',
+                f'HEALTH_SERVER_PORT={HEALTH_PORT}',
+                f'HEALTH_SERVER_IP=0.0.0.0',
+                f'WORKER_PORT={WORKER_PORT}'
             ],
             networks=['app-network'],
             depends_on={
@@ -738,3 +805,90 @@ class ConfigGenerator:
             },
             instances=instances
         )
+        
+    def _generate_control(self, environment, node_worker, start_node_id=None):
+        depends_on = {
+            service_name: condition.copy()
+            for service_name, condition in self.services.items()
+            if not service_name.startswith('control')
+        }
+        
+        if node_worker == JOIN_ACTORS or node_worker == JOIN_RATINGS:
+            instances = self.config_params.get(JOIN_MOVIES, 1)
+        else:    
+            instances = self.config_params.get(node_worker, 1) 
+        
+        if node_worker == DELIVER:
+            included_containers_list = [QUERY_1, QUERY_2, QUERY_3, QUERY_4, QUERY_5]
+        else:
+            included_containers_list = [
+                f'{node_worker}' if i == 0 else f'{node_worker}_{i}'
+                for i in range(instances)
+            ]
+
+        included_containers_str = ','.join(included_containers_list)
+
+        control_environment = environment + [
+            f'INCLUDED_CONTAINERS={included_containers_str}'
+        ]
+
+        self.generate_service(
+            service_name=CONTROL,
+            dockerfile='control/Dockerfile',
+            environment=control_environment,
+            networks=['app-network'],
+            depends_on=depends_on,
+            instances=1,
+            start_node_id=start_node_id,
+            volumes=["/var/run/docker.sock:/var/run/docker.sock"]
+        )
+
+
+    def _generate_controls(self):
+        # querys (1-5) y gateway, JOIN_MOVIES: 1, JOIN_RATINGS: 1, JOIN_ACTORS: 1, AGGREGATOR_CALCULATOR_RATIO_FEELINGS: 1, AGGREGATOR_CALCULATOR_BUDGET_COUNTRY: 1,
+            #AGGREGATOR_CALCULATOR_COUNT_ACTORS: 1
+        
+        
+        worker_config = {
+            PARSER_CREDITS: 0, PARSER_MOVIES: 0, PARSER_RATINGS: 0,
+            FILTER_2000_ARGENTINA: 0, FILTER_2000S_SPAIN: 0, FILTER_UNIQUE_COUNTRY: 0, FILTER_BUDGET_REVENUE: 0,
+            ROUTER_RATINGS: 0, ROUTER_2000_ARGENTINA: 0, ROUTER_ACTORS: 0, ROUTER_COUNTRY: 0,
+            ROUTER_RATINGS_CALCULATED: 0, ROUTER_ACTORS_2000_ARGENTINA: 0, ROUTER_NEGATIVE_SENTIMENT: 0, ROUTER_POSITIVE_SENTIMENT: 0,
+            SENTIMENT: 0
+        }
+        
+        router_types = {
+            ROUTER_RATINGS, ROUTER_2000_ARGENTINA, ROUTER_ACTORS, ROUTER_COUNTRY,
+            ROUTER_RATINGS_CALCULATED, ROUTER_ACTORS_2000_ARGENTINA, ROUTER_NEGATIVE_SENTIMENT, ROUTER_POSITIVE_SENTIMENT, SENTIMENT
+        }
+        
+        all_worker_types_in_order = list(worker_config.keys())
+        total_controls = len(all_worker_types_in_order)
+
+        for i, worker_type in enumerate(all_worker_types_in_order):
+            
+            current_node_id = i
+            
+            next_node_id = (i + 1) % total_controls
+            
+            only_healthcheck_value = worker_config[worker_type]
+            
+            environment = [
+                f'NODE_NAME={current_node_id}',
+                f'NEXT_NODE={next_node_id}', 
+                f'HEALTH_SERVER_PORT={HEALTH_PORT}', 
+                f'HEALTH_SERVER_IP=0.0.0.0',
+                f'WORKER_PORT={WORKER_PORT}', 
+                f'SLEEP_INTERVAL={SLEEP_INTERVAL}',
+                f'RESTART_INTERVAL={RESTART_INTERVAL}',
+                f'ONLY_HEALTHCHECK={only_healthcheck_value}',
+            ]
+            
+            if worker_type in router_types:
+                environment.append('ROUTER=true')
+            
+            self._generate_control(
+                environment=environment,
+                node_worker=worker_type, 
+                start_node_id=current_node_id
+            )

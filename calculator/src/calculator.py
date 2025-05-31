@@ -25,12 +25,12 @@ class CalculatorNode:
         self.input_queue = f"{base_queue}_{self.node_id}" if self.exchange else base_queue
         self.routing_key = os.getenv("ROUTING_KEY") or self.node_id
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE")
-        self.calculator = Calculation(self.operation, self.input_queue)
+        self.calculator = Calculation(self.operation, self.exchange)
         self.final_rabbitmq = None
         self.threads = []
         
         self.leader_queue = None
-        if int(self.node_id) == 0:
+        if int(self.node_id) == 0 and self.exchange != "router_negative_sentiment":
             self.leader_queue = LeaderQueue(self.final_queue, self.output_queue, self.consumer_tag, self.cluster_size)
         
         if self.final_queue:
@@ -152,8 +152,10 @@ class CalculatorNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
-        self.final_rabbitmq.cancel_consumer()
-        self.input_rabbitmq.cancel_consumer()
+        if self.final_rabbitmq:
+            self.final_rabbitmq.cancel_consumer()
+        if self.input_rabbitmq:
+            self.input_rabbitmq.cancel_consumer()
         if self.leader_queue:
             self.leader_queue.close()
 

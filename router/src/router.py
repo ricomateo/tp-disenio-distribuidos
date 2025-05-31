@@ -4,6 +4,8 @@ from common.packet import is_final_packet
 import os
 import signal
 
+from common.worker_protocol import WorkerProtocol
+
 class RouterNode:
     """
     El RouterNode se suscribe a una 'input_queue', y envia los mensajes
@@ -24,7 +26,11 @@ class RouterNode:
         self.router_by = os.getenv("ROUTER_BY", "id")
         self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
         self.node_id = int(os.getenv("NODE_ID"))
-
+        
+        self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
+        self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
+        self.worker_port = int(os.getenv("WORKER_PORT", "9000"))
+        
         if self.input_queue is None:
             raise Exception("Missing RABBITMQ_QUEUE env var")
         if self.output_exchange is None:
@@ -44,6 +50,9 @@ class RouterNode:
             self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
 
         self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
+        
+        self.control = WorkerProtocol(self.health_server_ip, self.worker_port, self.health_server_port)
+        self.control.listen()
     
     def callback(self, ch, method, properties, body):
         """
@@ -57,45 +66,48 @@ class RouterNode:
                 #         self.output_rabbitmq.send_final(routing_key=str(i))
                 self.input_rabbitmq.close_graceful(method)
                 return
-            
+           
             packet_json = body.decode()
             packet = json.loads(packet_json)
             header = packet.get("header")
+            client_id = packet["client_id"]
+            
             if is_final_packet(header):
-                # Si la lista de acks es None, entonces soy el primero en recibir el mensaje FIN
-                # Agrego la lista con mi id y la reencolo
-                if packet.get("acks") is None:
-                    print(f"[Router - FIN] - packet[acks] = None")
-                    # Inicializo la lista acks con mi id
-                    packet["acks"] = []
-        
-                # Si no estoy en la lista de ids, me agrego
-                if not self.node_id in packet.get("acks"):
-                    print(f"[Router - FIN] - No estoy en la lista de acks")
-                    packet["acks"] = packet["acks"] + [self.node_id]
-                
-                # Si todos los id estan en la lista de acks, mando final
-                if len(packet["acks"]) == self.cluster_size:
-                    client_id = packet["client_id"]
-                    acks = packet["acks"]
-                    print(f"[Router - FIN] - Lista de acks completa ({acks}), mando final packet (client_id = {client_id})")
+                count = int(packet['count'])
+                final, frequencies = self.control.send_final_count(client_id, count)
+                if final:
+                    freq_dict = {}
+                    for pair in frequencies.split(","):
+                        node_id, count = pair.split(":")
+                        freq_dict[int(node_id)] = int(count)
                     for i in range(self.number_of_nodes):
-                        self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i))
+                        self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i), count=freq_dict.get(i, 0))
+                    self.control.delete_client(client_id)
                 
-                # Si faltan ids en la lista de ids, reencolo el mensaje (despues de haberme agregado)
-                else:
-                    self.input_rabbitmq.publish(packet)
+                
                 # Mando ack del final packet
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             
             # Deserializo la peli para obtener el id
             movie = packet.get("data")
+            id = packet.get("id")
             movie_id = int(movie.get(self.router_by))
 
             # Calculo la routing key como el modulo entre el id y la cantidad de nodos
+            
             routing_key = str(movie_id % self.number_of_nodes)
             
+            final, frequencies = self.control.insert_id(client_id, id, routing_key, self.node_id)
+            if final:
+                freq_dict = {}
+                for pair in frequencies.split(","):
+                    node_id, count = pair.split(":")
+                    freq_dict[int(node_id)] = int(count)
+                for i in range(self.number_of_nodes):
+                    self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i), count=freq_dict.get(i, 0))
+                self.control.delete_client(client_id)
+                
             # Routeo el mensaje segun el routing key
             self.output_rabbitmq.publish(packet_json, routing_key=routing_key)
             print(f" [✓] Sent movie with id: {movie_id} through the exchange using routing key: {routing_key}")
@@ -122,7 +134,10 @@ class RouterNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
-        self.input_rabbitmq.cancel_consumer()
+        if self.control:
+            self.control.stop()
+        if self.input_rabbitmq:
+            self.input_rabbitmq.cancel_consumer()
     
     def close(self):
         print(f"Closing queues")

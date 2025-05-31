@@ -44,7 +44,7 @@ class ClientConnection:
         """Maneja un cliente en un proceso separado."""
         signal.signal(signal.SIGTERM, self._sigterm_handler)
         client_running = True
-
+        batch_count_by_file = {}
         try:
             while client_running:
                 if self.running == False:
@@ -55,17 +55,20 @@ class ClientConnection:
                     filename = msg["filename"]
                     header = msg["header"]
                     self.header_by_file[filename] = header
+                    batch_count_by_file[filename] = 0
 
                 elif msg["msg_type"] == BATCH_MSG_TYPE:
                     msg_filename = msg["filename"]
                     msg_header = self.header_by_file[msg_filename]
                     msg["header"] = msg_header
-                    msg["client_id"] = client_id 
+                    msg["client_id"] = client_id
+                    msg["id"] = batch_count_by_file[filename]
+                    batch_count_by_file[filename] += 1
                     self.publish_file_batch(msg, msg_filename)
 
                 elif msg["msg_type"] == EOF_MSG_TYPE:
                     print(f"[Gateway - Client {client_id}] Archivo CSV recibido correctamente.")
-                    self.rabbitmq.send_final(self.client_id, msg_filename)
+                    self.rabbitmq.send_final(self.client_id, msg_filename, batch_count_by_file[filename])
 
                 elif msg["msg_type"] == FIN_MSG_TYPE:
                     self._recv_results(addr, client_id)
@@ -124,7 +127,8 @@ class ClientConnection:
         """Maneja la señal SIGTERM para cerrar el servidor."""
         print(f"[Client {self.client_id}] Recibida señal SIGTERM")
         self.running = False
-        self.rabbitmq_receiver.cancel_consumer()
+        if self.rabbitmq_receiver:
+            self.rabbitmq_receiver.cancel_consumer()
 
     def close(self):
         """Cierra el servidor y todos los procesos."""

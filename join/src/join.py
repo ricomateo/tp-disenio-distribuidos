@@ -239,8 +239,10 @@ class JoinNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
-        self.input_rabbitmq_1.cancel_consumer()
-        self.input_rabbitmq_2.cancel_consumer()
+        if self.input_rabbitmq_1:
+            self.input_rabbitmq_1.cancel_consumer()
+        if self.input_rabbitmq_2:
+            self.input_rabbitmq_2.cancel_consumer()
         if self.leader_queue:
             self.leader_queue.close()
     

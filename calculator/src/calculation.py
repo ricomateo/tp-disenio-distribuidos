@@ -8,10 +8,10 @@ RATIO = "RATIO_BY"
 SUM = "SUM_BY"
 
 class Calculation:
-    def __init__(self, operation: str, input_queue: str):
+    def __init__(self, operation: str, exchange: str):
 
         self.operation = operation
-        self.input_queue = input_queue
+        self.exchange = exchange
         # Parse operation string
         try:
             op_parts = operation.split(":", 1)
@@ -267,7 +267,7 @@ class Calculation:
             if count == 0:
                 return [{"error": f"No movies processed for {self.numerator}/{self.denominator} totals."}]
             average_ratio = total_ratio / count
-            feeling_str = "POS" if self.input_queue == "sentiment_positive_queue" else "NEG"
+            feeling_str = "POS" if self.exchange == "router_positive_sentiment" else "NEG"
             results = [
                 {
                     "operation": "ratio",
