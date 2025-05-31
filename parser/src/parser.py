@@ -9,6 +9,8 @@ from common.packet import DataPacket, is_final_packet
 
 import os
 
+from common.worker_protocol import WorkerProtocol
+
 class ParserNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
@@ -23,6 +25,10 @@ class ParserNode:
         self.filename = os.getenv("FILENAME", "")
         self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
         self.node_id = int(os.getenv("NODE_ID"))
+        
+        self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
+        self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
+        self.worker_port = int(os.getenv("WORKER_PORT", "9000"))
         
         self.keep_columns = None
         keep_columns = os.getenv("KEEP_COLUMNS", "")
@@ -58,6 +64,9 @@ class ParserNode:
                     self.rename_columns.append((old_name.strip(), new_name.strip()))
             except ValueError as e:
                 print(f" [~] Invalid REPLACE format: {replace_str}, error: {e}. No columns will be renamed.")
+        
+        self.control = WorkerProtocol(self.health_server_ip, self.worker_port, self.health_server_port)
+        self.control.listen()
    
     def callback(self, ch, method, properties, body):
 
@@ -72,37 +81,21 @@ class ParserNode:
                 # Parseo el mensaje
                 packet = json.loads(body)
                 header = packet['header']
-
-                if is_final_packet(header):
-                        # Si la lista de acks es None, entonces soy el primero en recibir el mensaje FIN
-                    # Agrego la lista con mi id y la reencolo
-                    if packet.get("acks") is None:
-                        print(f"[Parser - FIN] - packet[acks] = None, packet = {packet}")
-                        # Inicializo la lista acks con mi id
-                        packet["acks"] = []
+                client_id = packet['client_id']
                 
-                    # Si no estoy en la lista de ids, me agrego
-                    if not self.node_id in packet.get("acks"):
-                        print(f"[Parser - FIN] - No estoy en la lista de acks")
-                        packet["acks"] = packet["acks"] + [self.node_id]
+                if is_final_packet(header):
+                    count = int(packet['count'])
+                    final, count = self.control.send_final_count(client_id, count)
+                    if final:
+                        self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename, count=count)
+                        self.control.delete_client(client_id)
                     
-                    # Si todos los id estan en la lista de acks, mando final
-                    if len(packet["acks"]) == self.cluster_size:
-                        client_id = packet["client_id"]
-                        acks = packet["acks"]
-                        print(f"[Parser - FIN] - Lista de acks completa ({acks}), mando final packet (client_id = {client_id})")
-                        self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename)
-                    
-                    # Si faltan ids en la lista de ids, reencolo el mensaje (despues de haberme agregado)
-                    else:
-                        print(f"[Parser - FIN] - Ya estoy en la lista pero faltan IDs, reencolo")
-                        self.input_rabbitmq.publish(packet)
                     # Mando ack del final packet
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
                 
                 rows = packet['rows']
-                client_id = packet['client_id']
+                id = packet['id']
 
                 # Creo el string CSV
                 csv_text = header + "\n" + "\n".join(rows)
@@ -119,14 +112,22 @@ class ParserNode:
                 if rename_dict:
                     df.rename(columns=rename_dict, inplace=True)
 
+                row_count = 0
                 for _, row in df.iterrows():
                     packet = DataPacket(
                             client_id=client_id,
                             timestamp=datetime.utcnow().isoformat(),
-                            data=row.to_dict()
+                            data=row.to_dict(),
+                            id=f"{id}-{row_count}"
                     )
                     self.output_rabbitmq.publish(packet.to_json(), self.filename)
+                    row_count += 1
                     
+                final, count = self.control.insert_id(client_id, id, str(row_count), self.node_id)
+                if final:
+                    self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename, count=int(count))
+                    self.control.delete_client(client_id)    
+                
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 print(f" [x] Message {method.delivery_tag} acknowledged")
             except json.JSONDecodeError as e:
@@ -156,7 +157,10 @@ class ParserNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
-        self.input_rabbitmq.cancel_consumer()
+        if self.control:
+            self.control.stop()
+        if self.input_rabbitmq:
+            self.input_rabbitmq.cancel_consumer()
     
     def close(self):
         print(f"Closing queues")
@@ -164,4 +168,5 @@ class ParserNode:
             self.input_rabbitmq.close()
         if self.output_rabbitmq:
             self.output_rabbitmq.close()
+        
     

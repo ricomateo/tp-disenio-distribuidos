@@ -1,5 +1,6 @@
 import json
 from common.middleware import Middleware
+from common.worker_protocol import WorkerProtocol
 from common.packet import DataPacket, is_final_packet
 from src.check_condition import check_condition
 from datetime import datetime
@@ -13,6 +14,9 @@ class FilterNode:
         self.filters = {}
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
+        self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
+        self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
+        self.worker_port = int(os.getenv("WORKER_PORT", "9000"))
         self.routing_key = os.getenv("RABBITMQ_ROUTING_KEY", "")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
@@ -43,7 +47,10 @@ class FilterNode:
         else: 
             # Sino conectamos directo a la cola
             self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
-
+            
+        self.control = WorkerProtocol(self.health_server_ip, self.worker_port, self.health_server_port)
+        self.control.listen()
+        
     def callback(self, ch, method, properties, body):
         try:
             # TODO: ver si hay que cambiar esto
@@ -56,42 +63,30 @@ class FilterNode:
             packet_json = body.decode()
             packet = json.loads(packet_json)
             header = packet.get("header")
+            client_id = packet.get("client_id")
+            
             if is_final_packet(header):
-                # Si la lista de acks es None, entonces soy el primero en recibir el mensaje FIN
-                # Agrego la lista con mi id y la reencolo
-                if packet.get("acks") is None:
-                    print(f"[Filter - FIN] - packet[acks] = None, packet = {packet}")
-                    # Inicializo la lista acks con mi id
-                    packet["acks"] = []
-                    
-                # Si no estoy en la lista de ids, me agrego
-                if not self.node_id in packet.get("acks"):
-                    print(f"[Filter - FIN] - No estoy en la lista de acks")
-                    packet["acks"] = packet["acks"] + [self.node_id]
+                count = int(packet['count'])
+                final, count = self.control.send_final_count(client_id, count)
+                if final:
+                    self.output_rabbitmq.send_final(client_id=client_id, count=count)
+                    self.control.delete_client(client_id)
                 
-                # Si todos los id estan en la lista de acks, mando final
-                if len(packet["acks"]) == self.cluster_size:
-                    client_id = packet["client_id"]
-                    acks = packet["acks"]
-                    print(f"[Filter - FIN] - Lista de acks completa ({acks}), mando final packet (client_id = {client_id})")
-                    self.output_rabbitmq.send_final(client_id=client_id)
-                
-                # Si faltan ids en la lista de ids, reencolo el mensaje (despues de haberme agregado)
-                else:
-                    print(f"[Filter - FIN] - Ya estoy en la lista pero faltan IDs, reencolo")
-                    self.input_rabbitmq.publish(packet)
-                # Mando ack del final packet
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             movie = packet.get("data")
-            client_id = packet.get("client_id")
+            id = packet.get("id")
 
             # Aplicar los filtros de la instancia
             for _, condition in self.filters.items():
                 _, _, key = condition
                 value = movie.get(key)
                 if not check_condition(value, condition):
+                    final, count = self.control.insert_id(client_id, id, "0", self.node_id)
+                    if final:
+                        self.output_rabbitmq.send_final(client_id=client_id, count=count)
+                        self.control.delete_client(client_id)
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
 
@@ -99,9 +94,14 @@ class FilterNode:
                 client_id=client_id,
                 timestamp=datetime.utcnow().isoformat(),
                 data=movie,
+                id=id,
                 keep_columns=self.keep_columns
             )
 
+            final, count = self.control.insert_id(client_id, id, "1", self.node_id)
+            if final:
+                self.output_rabbitmq.send_final(client_id=client_id, count=count)
+                self.control.delete_client(client_id)
             # Publicar el paquete filtrado a la cola del gateway
             
             self.output_rabbitmq.publish(filtered_packet.to_json())
@@ -132,14 +132,16 @@ class FilterNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
-        self.input_rabbitmq.cancel_consumer()
+        if self.control:
+            self.control.stop()
+        if self.input_rabbitmq:
+            self.input_rabbitmq.cancel_consumer()
     
     def close(self):
         print(f"Closing queues")
         if self.input_rabbitmq:
             self.input_rabbitmq.close()
         if self.output_rabbitmq:
-            self.output_rabbitmq.close()
-       
+            self.output_rabbitmq.close()    
         
 
