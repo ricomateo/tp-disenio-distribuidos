@@ -97,14 +97,14 @@ class FilterNode:
                 id=id,
                 keep_columns=self.keep_columns
             )
+            # Publicar el paquete filtrado a la cola del gateway
+            self.output_rabbitmq.publish(filtered_packet.to_json())
 
             final, count = self.control.insert_id(client_id, id, "1", self.node_id)
             if final:
                 self.output_rabbitmq.send_final(client_id=client_id, count=count)
                 self.control.delete_client(client_id)
-            # Publicar el paquete filtrado a la cola del gateway
             
-            self.output_rabbitmq.publish(filtered_packet.to_json())
             
             print(f" [✓] Filtered and Published to {self.output_queue}: ID: {movie.get('id')}, Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
             ch.basic_ack(delivery_tag=method.delivery_tag)

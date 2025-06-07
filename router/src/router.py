@@ -97,6 +97,8 @@ class RouterNode:
             # Calculo la routing key como el modulo entre el id y la cantidad de nodos
             
             routing_key = str(movie_id % self.number_of_nodes)
+            # Routeo el mensaje segun el routing key
+            self.output_rabbitmq.publish(packet_json, routing_key=routing_key)
             
             final, frequencies = self.control.insert_id(client_id, id, routing_key, self.node_id)
             if final:
@@ -108,8 +110,6 @@ class RouterNode:
                     self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i), count=freq_dict.get(i, 0))
                 self.control.delete_client(client_id)
                 
-            # Routeo el mensaje segun el routing key
-            self.output_rabbitmq.publish(packet_json, routing_key=routing_key)
             print(f" [✓] Sent movie with id: {movie_id} through the exchange using routing key: {routing_key}")
             
             ch.basic_ack(delivery_tag=method.delivery_tag)
