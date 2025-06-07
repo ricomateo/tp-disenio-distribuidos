@@ -138,8 +138,11 @@ def main():
 
     for i in range(clients):
         print(f"Esperando finalización del cliente {i}")
-        subprocess.run(["docker", "wait", f"client_{i}"]) 
-
+        if i == 0:
+            client_container = "client"
+        else:
+            client_container = f"client_{i}"
+        subprocess.run(["docker", "wait", client_container]) 
         input_file = f"output/results_{i}.txt"
         output_file = f"testing/received_output_{i}.txt"
 
