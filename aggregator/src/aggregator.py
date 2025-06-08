@@ -5,6 +5,8 @@ from datetime import datetime
 import os
 import signal
 
+from common.worker_protocol import WorkerProtocol
+
 class AggregatorNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
@@ -12,6 +14,8 @@ class AggregatorNode:
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_averages_queue")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "deliver_queue")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
+        self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
+        self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
         self.output_rabbitmq = Middleware(queue=self.output_queue)
 
@@ -21,6 +25,8 @@ class AggregatorNode:
         self.average_negative_by_client_id: dict[int, tuple[float, int]] = {} #(0, 0)
         self.invested_per_country_by_client_id: dict[int, dict[str, int]] = {}
         self.count_by_actors_by_client_id: dict[int, dict[str, int]] = {}
+        
+        self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
 
     def callback(self, ch, method, properties, body):
         try:
@@ -173,6 +179,8 @@ class AggregatorNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
+        if self.control:
+            self.control.stop()
         if self.input_rabbitmq:
             self.input_rabbitmq.cancel_consumer()
 

@@ -222,7 +222,7 @@ class ControlNode:
             client_id, id_recibido, send_value, nodo = parts
 
             if client_id in self.dead_clients:
-                conn.sendall("3\n")
+                conn.sendall(b"3\n")
                 return
 
             client_finished = self.insert_id(client_id, id_recibido, send_value, nodo)
@@ -244,10 +244,10 @@ class ControlNode:
 
         except ValueError as ve:
             logging.error(f"Error parsing message for insert ID: {ve}. Message: '{mensaje}'")
-            conn.sendall(b"ERROR: Invalid format. Expected client_id|id|send_value or client_id|id\n")
+            conn.sendall(b"ERROR| Invalid format. Expected client_id|id|send_value or client_id|id\n")
         except Exception as e:
             logging.error(f"Error processing ID insertion: {e}")
-            conn.sendall(b"ERROR: Internal failure inserting ID\n")
+            conn.sendall(b"ERROR| Internal failure inserting ID\n")
 
     def _handle_op_receive_final_count(self, conn: socket.socket):
         """Handles operation code '4' (Receive Final Count)."""
@@ -260,7 +260,7 @@ class ControlNode:
             count_recibido = int(count_recibido_str)
 
             if client_id in self.dead_clients:
-                conn.sendall("3\n")
+                conn.sendall(b"3\n")
                 return
 
             if client_id not in self.locks_por_cliente:
@@ -275,6 +275,7 @@ class ControlNode:
                     send_counts = self.count_send_values(client_id)
                     frequencies = b",".join(f"{k}:{v}".encode() for k, v in sorted(send_counts.items()))
                     response_message = response_prefix + b"|" + frequencies + b"\n"
+                    
                 elif is_match:
                     total_send = str(self.calculate_total_send(client_id)).encode()
                     response_message = response_prefix + b"|" + total_send + b"\n"
@@ -287,10 +288,10 @@ class ControlNode:
 
         except ValueError as ve:
             logging.error(f"Error parsing message for final count: {ve}. Message: '{mensaje}'")
-            conn.sendall(b"ERROR: Invalid format. Expected client_id|count\n")
+            conn.sendall(b"ERROR| Invalid format. Expected client_id|count\n")
         except Exception as e:
             logging.error(f"Error processing final count: {e}")
-            conn.sendall(b"ERROR: Internal failure processing final count\n")
+            conn.sendall(b"ERROR| Internal failure processing final count\n")
             
     
     def _handle_op_delete_client(self, conn: socket.socket):
@@ -325,7 +326,7 @@ class ControlNode:
                     elif op_code == "3": 
                         self._handle_op_receive_final_count(conn)
                     else:
-                        conn.sendall(b"ERROR: Invalid operation code\n")
+                        conn.sendall(b"ERROR| Invalid operation code\n")
                 except socket.timeout:
                     continue
                 except Exception as e:
@@ -380,11 +381,15 @@ class ControlNode:
     def calculate_total_send(self, client_id: str) -> int:
         """Calculates the total 'send' value for a given client dynamically from disk."""
         id_to_send = self._load_id_to_send(client_id)
+        if not id_to_send:
+            return 0
         return sum(id_to_send.values())
 
     def count_send_values(self, client_id: str) -> dict:
         """Counts the frequency of each send_value for a given client from disk."""
         id_to_send = self._load_id_to_send(client_id)
+        if not id_to_send:  
+            return {0: 0}
         send_counts = {}
         for send_value in id_to_send.values():
             send_counts[send_value] = send_counts.get(send_value, 0) + 1
@@ -494,10 +499,10 @@ class ControlNode:
                 sock.settimeout(self.restart_interval)
                 sock.connect((nodo, self.worker_port)) 
                 self.handle_id_client(sock, sock.getpeername(), nodo)
-                break  
+                time.sleep(self.restart_interval)
             except Exception as e:
                 logging.warning(f"Fallo conexión inicial con {nodo}: {e}")
-                break
+                time.sleep(self.restart_interval)
 
     def run(self):
         # Iniciar threads y almacenarlos

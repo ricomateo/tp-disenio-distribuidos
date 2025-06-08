@@ -7,6 +7,7 @@ from common.middleware import Middleware
 from common.storage_handler import StorageHandler
 from common.leader_queue import LeaderQueue
 from common.packet import DataPacket, is_final_packet
+from common.worker_protocol import WorkerProtocol
 
 class JoinNode:
     def __init__(self):
@@ -26,6 +27,8 @@ class JoinNode:
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE", "default_final")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE", "")
+        self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
+        self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.join_by = os.getenv("JOIN_BY", "id")
         
         self.keep_columns = None
@@ -64,7 +67,8 @@ class JoinNode:
         self.leader_queue = None
         if int(self.node_id) == 0:
             self.leader_queue = LeaderQueue(self.final_queue, self.output_queue, self.consumer_tag, self.cluster_size)
-        
+            
+        self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
         
     def _get_storage_for_client(self, client_id):
         """Obtiene o crea un StorageHandler para un cliente."""
@@ -239,6 +243,8 @@ class JoinNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
+        if self.control:
+            self.control.stop()
         if self.input_rabbitmq_1:
             self.input_rabbitmq_1.cancel_consumer()
         if self.input_rabbitmq_2:

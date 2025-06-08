@@ -806,25 +806,21 @@ class ConfigGenerator:
             instances=instances
         )
         
-    def _generate_control(self, environment, node_worker, start_node_id=None):
+    def _generate_control_stateless(self, environment, node_worker, start_node_id=None):
         depends_on = {
             service_name: condition.copy()
             for service_name, condition in self.services.items()
             if not service_name.startswith('control')
         }
         
-        if node_worker == JOIN_ACTORS or node_worker == JOIN_RATINGS:
-            instances = self.config_params.get(JOIN_MOVIES, 1)
-        else:    
-            instances = self.config_params.get(node_worker, 1) 
+          
+        instances = self.config_params.get(node_worker, 1) 
         
-        if node_worker == DELIVER:
-            included_containers_list = [QUERY_1, QUERY_2, QUERY_3, QUERY_4, QUERY_5]
-        else:
-            included_containers_list = [
+        
+        included_containers_list = [
                 f'{node_worker}' if i == 0 else f'{node_worker}_{i}'
                 for i in range(instances)
-            ]
+        ]
 
         included_containers_str = ','.join(included_containers_list)
 
@@ -844,34 +840,28 @@ class ConfigGenerator:
         )
 
 
-    def _generate_controls(self):
-        # querys (1-5) y gateway, JOIN_MOVIES: 1, JOIN_RATINGS: 1, JOIN_ACTORS: 1, AGGREGATOR_CALCULATOR_RATIO_FEELINGS: 1, AGGREGATOR_CALCULATOR_BUDGET_COUNTRY: 1,
-            #AGGREGATOR_CALCULATOR_COUNT_ACTORS: 1
-        
-        
-        worker_config = {
-            PARSER_CREDITS: 0, PARSER_MOVIES: 0, PARSER_RATINGS: 0,
-            FILTER_2000_ARGENTINA: 0, FILTER_2000S_SPAIN: 0, FILTER_UNIQUE_COUNTRY: 0, FILTER_BUDGET_REVENUE: 0,
-            ROUTER_RATINGS: 0, ROUTER_2000_ARGENTINA: 0, ROUTER_ACTORS: 0, ROUTER_COUNTRY: 0,
-            ROUTER_RATINGS_CALCULATED: 0, ROUTER_ACTORS_2000_ARGENTINA: 0, ROUTER_NEGATIVE_SENTIMENT: 0, ROUTER_POSITIVE_SENTIMENT: 0,
-            SENTIMENT: 0
-        }
+    def _generate_controls_stateless(self):
+        worker_config = [
+            PARSER_CREDITS, PARSER_MOVIES, PARSER_RATINGS,
+            FILTER_2000_ARGENTINA, FILTER_2000S_SPAIN, FILTER_UNIQUE_COUNTRY, FILTER_BUDGET_REVENUE,
+            ROUTER_RATINGS, ROUTER_2000_ARGENTINA, ROUTER_ACTORS, ROUTER_COUNTRY,
+            ROUTER_RATINGS_CALCULATED, ROUTER_ACTORS_2000_ARGENTINA, ROUTER_NEGATIVE_SENTIMENT, ROUTER_POSITIVE_SENTIMENT,
+            SENTIMENT
+        ]
         
         router_types = {
             ROUTER_RATINGS, ROUTER_2000_ARGENTINA, ROUTER_ACTORS, ROUTER_COUNTRY,
             ROUTER_RATINGS_CALCULATED, ROUTER_ACTORS_2000_ARGENTINA, ROUTER_NEGATIVE_SENTIMENT, ROUTER_POSITIVE_SENTIMENT, SENTIMENT
         }
         
-        all_worker_types_in_order = list(worker_config.keys())
-        total_controls = len(all_worker_types_in_order)
+        all_worker_types_in_order = worker_config
+        total_controls = len(all_worker_types_in_order) + 1
 
         for i, worker_type in enumerate(all_worker_types_in_order):
             
             current_node_id = i
             
             next_node_id = (i + 1) % total_controls
-            
-            only_healthcheck_value = worker_config[worker_type]
             
             environment = [
                 f'NODE_NAME={current_node_id}',
@@ -881,14 +871,81 @@ class ConfigGenerator:
                 f'WORKER_PORT={WORKER_PORT}', 
                 f'SLEEP_INTERVAL={SLEEP_INTERVAL}',
                 f'RESTART_INTERVAL={RESTART_INTERVAL}',
-                f'ONLY_HEALTHCHECK={only_healthcheck_value}',
+                f'ONLY_HEALTHCHECK=0',
             ]
             
             if worker_type in router_types:
                 environment.append('ROUTER=true')
             
-            self._generate_control(
+            self._generate_control_stateless(
                 environment=environment,
                 node_worker=worker_type, 
                 start_node_id=current_node_id
             )
+            
+        return len(all_worker_types_in_order)
+            
+
+    def _generate_controls(self):
+        total_stateless_nodes = self._generate_controls_stateless()
+        # Define stateful worker configuration
+        worker_config = [
+            JOIN_ACTORS, JOIN_RATINGS, CALCULATOR_AVERAGE_RATINGS, 
+            CALCULATOR_BUDGET_COUNTRY, CALCULATOR_COUNT_ACTORS, 
+            CALCULATOR_RATIO_FEELINGS_NEGATIVE, CALCULATOR_RATIO_FEELINGS_POSITIVE,
+            AGGREGATOR_CALCULATOR_BUDGET_COUNTRY, AGGREGATOR_CALCULATOR_COUNT_ACTORS, 
+            AGGREGATOR_CALCULATOR_RATIO_FEELINGS, DELIVER
+        ]
+        
+        included_containers_list = []
+        for worker_type in worker_config:
+            if worker_type == DELIVER:
+                included_containers_list.extend([QUERY_1, QUERY_2, QUERY_3, QUERY_4, QUERY_5])
+            else:
+                instances = self.config_params.get(JOIN_MOVIES, 1) if worker_type in [JOIN_ACTORS, JOIN_RATINGS] else self.config_params.get(worker_type, 1)
+                included_containers_list.extend(
+                    [f'{worker_type}' if i == 0 else f'{worker_type}_{i}' for i in range(instances)]
+                )
+
+        included_containers_str = ','.join(included_containers_list)
+
+        current_node_id = total_stateless_nodes  # Stateful node follows stateless nodes
+        next_node_id = 0  # Connects back to the first stateless node
+
+        # Define environment for the single stateful control node
+        environment = [
+            f'NODE_NAME={current_node_id}',
+            f'NEXT_NODE={next_node_id}',
+            f'HEALTH_SERVER_PORT={HEALTH_PORT}',
+            f'HEALTH_SERVER_IP=0.0.0.0',
+            f'SLEEP_INTERVAL={SLEEP_INTERVAL}',
+            f'RESTART_INTERVAL={RESTART_INTERVAL}',
+            f'ONLY_HEALTHCHECK=1',
+            f'INCLUDED_CONTAINERS={included_containers_str}'
+        ]
+
+        # Generate the single stateful control node
+        self._generate_control_stateful(
+            environment=environment,
+            start_node_id=current_node_id
+        )
+        
+    def _generate_control_stateful(self, environment, start_node_id=None):
+        depends_on = {
+            service_name: condition.copy()
+            for service_name, condition in self.services.items()
+            if not service_name.startswith('control')
+        }
+
+        control_environment = environment  
+
+        self.generate_service(
+            service_name=CONTROL,
+            dockerfile='control/Dockerfile',
+            environment=control_environment,
+            networks=['app-network'],
+            depends_on=depends_on,
+            instances=1,
+            start_node_id=start_node_id,
+            volumes=["/var/run/docker.sock:/var/run/docker.sock"]
+        )
