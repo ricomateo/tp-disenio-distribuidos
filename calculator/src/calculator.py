@@ -31,6 +31,7 @@ class CalculatorNode:
         self.calculator = Calculation(self.operation, self.exchange)
         self.final_rabbitmq = None
         self.threads = []
+        self.processed_messages_by_client = {}
         
         self.leader_queue = None
         if int(self.node_id) == 0 and self.exchange != "router_negative_sentiment":
@@ -125,9 +126,27 @@ class CalculatorNode:
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
             client_id = packet.client_id
+            id = packet.id
+
+            # Initialize processed messages set
+            if client_id not in self.processed_messages_by_client:
+                self.processed_messages_by_client[client_id] = set()
+
+            # If the message has been already processed, skip it
+            if id in self.processed_messages_by_client[client_id]:
+                title = movie.get("title")
+                print(f"Duplicate message: id: {id}, title: {title}, client_id: {client_id}")
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+
             # Process movie using calculator
             success = self.calculator.process_movie(client_id, movie)
+            # Add the packet id to the processed messages set
+            self.processed_messages_by_client[client_id].add(id)
             
+            # TODO: delete processed messages when receiving final message
+            # TODO: persistence
+
             if success:
                 print(f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}")
                 ch.basic_ack(delivery_tag=method.delivery_tag)
