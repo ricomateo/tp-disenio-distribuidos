@@ -214,11 +214,13 @@ class JoinNode:
 
     def create_joined_packet(self, client_id: int, movie1, movie2):
         combined_movie = {**movie1, **movie2}
+        id = hash(str(movie1) + str(movie2))
         joined_packet = DataPacket(
             client_id=client_id,
             timestamp=datetime.utcnow().isoformat(),
             data=combined_movie,
             keep_columns=self.keep_columns,
+            id=str(id)
         )
         return joined_packet
                 
