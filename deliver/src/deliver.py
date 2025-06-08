@@ -7,6 +7,7 @@ import signal
 from common.leader_queue import LeaderQueue
 from common.packet import DataPacket, QueryPacket, is_final_packet
 from common.middleware import Middleware
+from common.worker_protocol import WorkerProtocol
 
 
 class DeliverNode:
@@ -18,6 +19,8 @@ class DeliverNode:
         self.keep_columns, self.filters = self._parse_environment()
         self.consumer_tag = os.getenv('RABBITMQ_CONSUMER_TAG', 'default_consumer')
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
+        self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
+        self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         # Uso keys unicas para cada filtro basadas en la columna a sortear y la direccion del ordenamiento
         self.collected_movies = {}
 
@@ -32,6 +35,8 @@ class DeliverNode:
         self.leader_queue = None
         if int(self.query_number) == 5:
             self.leader_queue = LeaderQueue(self.final_queue, "", self.consumer_tag, self.cluster_size, output_exchange=self.output_exchange)
+            
+        self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
 
     def _initialize_client_movies(self, client_id):
         """Initialize movie collection for a new client."""
@@ -246,6 +251,8 @@ class DeliverNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
+        if self.control:
+            self.control.stop()
         if self.input_rabbitmq:
             self.input_rabbitmq.cancel_consumer()
         if self.leader_queue:

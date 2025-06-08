@@ -1,4 +1,5 @@
 import socket
+import sys
 import threading
 import time
 import logging
@@ -68,11 +69,9 @@ class WorkerProtocol:
                     return buffer.decode().strip()
         except socket.timeout:
             logging.warning(f"Timeout al leer desde {self.host}")
-            self.listen()
             return ""
         except socket.error as e:
             logging.error(f"Error al leer desde {self.host}: {e}")
-            self.listen()
             return ""
         return ""
 
@@ -94,7 +93,6 @@ class WorkerProtocol:
         except Exception as e:
             logging.error(f"Error al enviar mensaje a {self.host}: {e}")
             self.conn = None
-            self.listen()
             return False
 
     def insert_id(self, client_id: str, id_recibido: str, send_value: str, node: str) -> tuple[bool, str]:
@@ -110,14 +108,17 @@ class WorkerProtocol:
         """
         message = f"1\n{client_id}|{id_recibido}|{send_value}|{node}"
         if not self.send_message(message):
-            return False, ""
+            self.listen()
+            return self.insert_id(client_id, id_recibido, send_value, node)
         response = self.read_until_newline()
         if not response:
-            return False, ""
+            self.listen()
+            return self.insert_id(client_id, id_recibido, send_value, node)
         parts = response.split("|")
         if parts[0] == "ERROR":
             logging.error(f"Error del controlador: {response}")
             return False, response
+      
         success = parts[0] == "1"
         return success, parts[1] if len(parts) > 1 else ""
 
@@ -132,9 +133,13 @@ class WorkerProtocol:
         """
         message = f"2\n{client_id}"
         if not self.send_message(message):
-            return False
+            self.listen()
+            return self.delete_client()
         response = self.read_until_newline()
-        if response == "OK":
+        if not response:
+            self.listen()
+            return self.delete_client()
+        elif response == "OK":
             return True
         logging.error(f"Error del controlador al eliminar cliente: {response}")
         return False
@@ -151,14 +156,17 @@ class WorkerProtocol:
         """
         message = f"3\n{client_id}|{count}"
         if not self.send_message(message):
-            return False, ""
+            self.listen()
+            return self.send_final_count(client_id, count)
         response = self.read_until_newline()
         if not response:
-            return False, ""
+            self.listen()
+            return self.send_final_count(client_id, count)
         parts = response.split("|")
         if parts[0] == "ERROR":
             logging.error(f"Error del controlador: {response}")
             return False, response
+
         success = parts[0] == "1"
         return success, parts[1] if len(parts) > 1 else ""
 

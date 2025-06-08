@@ -6,6 +6,7 @@ from common.packet import DataPacket, is_final_packet
 from datetime import datetime
 import os
 import signal
+from common.worker_protocol import WorkerProtocol
 from src.calculation import Calculation
 import math
 
@@ -21,6 +22,8 @@ class CalculatorNode:
         self.consumer_tag = f"{os.getenv('RABBITMQ_CONSUMER_TAG', 'default_consumer')}_{self.node_id}"
         self.exchange = os.getenv("RABBITMQ_EXCHANGE")
         self.operation = os.getenv("OPERATION", "")
+        self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
+        self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.output_rabbitmq = Middleware(queue=self.output_queue)
         self.input_queue = f"{base_queue}_{self.node_id}" if self.exchange else base_queue
         self.routing_key = os.getenv("ROUTING_KEY") or self.node_id
@@ -50,6 +53,8 @@ class CalculatorNode:
             )
         else:  # <- si no, conectamos directo a la cola
             self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
+            
+        self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
 
 
     def callback(self, ch, method, properties, body):
@@ -152,6 +157,8 @@ class CalculatorNode:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
+        if self.control:
+            self.control.stop()
         if self.final_rabbitmq:
             self.final_rabbitmq.cancel_consumer()
         if self.input_rabbitmq:
