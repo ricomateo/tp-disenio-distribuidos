@@ -121,8 +121,9 @@ class CalculatorNode:
                         self.output_rabbitmq.publish(data_packet.to_json())
                     self.final_rabbitmq.send_final(client_id=client_id)
                     ch.basic_ack(delivery_tag=method.delivery_tag)
+                    self.delete_client_data(client_id)
                 return
-            
+
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
             client_id = packet.client_id
@@ -143,12 +144,18 @@ class CalculatorNode:
             success = self.calculator.process_movie(client_id, movie)
             # Add the packet id to the processed messages set
             self.processed_messages_by_client[client_id].add(id)
-            
+
             # TODO: delete processed messages when receiving final message
             # TODO: persistence
 
             if success:
                 print(f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}")
+                
+                with open(f"client_{client_id}.json", "w", encoding="utf-8") as f:
+                    data = {"result": self.calculator.get_result(client_id), "processed_messages": list(self.processed_messages_by_client[client_id])}
+                    f.write(json.dumps(data))
+
+
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 print(f" [x] Message {method.delivery_tag} acknowledged")
             else:
@@ -162,7 +169,7 @@ class CalculatorNode:
             print(f" [!] Error processing message: {e}, raw packet is {packet_json}")
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
-    def start_node(self): 
+    def start_node(self):
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
@@ -172,7 +179,11 @@ class CalculatorNode:
                 self.leader_queue.join()
             self.close()
             
-   
+
+    def delete_client_data(self, client_id: int):
+        self.calculator.delete_client_data(client_id)
+        # TODO: delete disk data
+
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         self.running = False
