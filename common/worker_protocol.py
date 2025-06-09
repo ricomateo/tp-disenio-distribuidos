@@ -134,11 +134,11 @@ class WorkerProtocol:
         message = f"2\n{client_id}"
         if not self.send_message(message):
             self.listen()
-            return self.delete_client()
+            return self.delete_client(client_id)
         response = self.read_until_newline()
         if not response:
             self.listen()
-            return self.delete_client()
+            return self.delete_client(client_id)
         elif response == "OK":
             return True
         logging.error(f"Error del controlador al eliminar cliente: {response}")
