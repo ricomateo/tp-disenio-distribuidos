@@ -291,6 +291,32 @@ class Calculation:
 
         return [{"error": "No results available."}]
 
+    def load_result(self, client_id: int, result):
+        """
+        Loads the given result. Used to recover data when the process crashes.
+        """
+        if self.op_type == COUNT:
+            self.counts_by_client[client_id] = result
+        elif self.op_type == AVERAGE:
+            self.averages_by_client[client_id] = result
+        elif self.op_type == RATIO:
+            self.totals_by_client[client_id] = result
+        elif self.op_type == SUM:
+            self.sums_by_client[client_id] = result
+
+    def get_raw_result(self, client_id: int):
+        """
+        Returns the raw result. Used to persist the data.
+        """
+        if self.op_type == COUNT:
+            return self.counts_by_client.get(client_id)
+        elif self.op_type == AVERAGE:
+            return self.averages_by_client.get(client_id)
+        elif self.op_type == RATIO:
+            return self.totals_by_client.get(client_id)
+        elif self.op_type == SUM:
+            return self.sums_by_client.get(client_id)
+
     def delete_client_data(self, client_id: int):
         """
         Deletes client data from memory

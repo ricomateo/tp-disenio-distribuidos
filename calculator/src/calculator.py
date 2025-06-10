@@ -9,6 +9,7 @@ import signal
 from common.worker_protocol import WorkerProtocol
 from src.calculation import Calculation
 import math
+import glob
 
 class CalculatorNode:
     def __init__(self):
@@ -150,12 +151,13 @@ class CalculatorNode:
 
             if success:
                 print(f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}")
-                
-                with open(f"client_{client_id}.json", "w", encoding="utf-8") as f:
-                    data = {"result": self.calculator.get_result(client_id), "processed_messages": list(self.processed_messages_by_client[client_id])}
+                temp_filename = f"client.{client_id}.temp"
+                with open(temp_filename, "w", encoding="utf-8") as f:
+                    data = {"result": self.calculator.get_raw_result(client_id), "processed_messages": list(self.processed_messages_by_client[client_id])}
                     f.write(json.dumps(data))
-
-
+                    f.flush()
+                    os.fsync(f.fileno())
+                os.replace(temp_filename, f"client.{client_id}.json")
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 print(f" [x] Message {method.delivery_tag} acknowledged")
             else:
@@ -170,6 +172,7 @@ class CalculatorNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def start_node(self):
+        self.load_state()
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
@@ -178,11 +181,32 @@ class CalculatorNode:
             if self.leader_queue:
                 self.leader_queue.join()
             self.close()
-            
+
+    def load_state(self):
+        """
+        Loads the state (partial result and processed messages) from disk, if available.
+        """
+        # Get a list of files that match the pattern client.*.json
+        state_files: list[str] = glob.glob("client.*.json")
+        print(f"StateFiles = {state_files}")
+        for file in state_files:
+            client_id = int(file.split(".")[1])
+            with open(file, "r", encoding="utf-8") as f:
+                state = json.loads(f.read())
+                result = state.get("result")
+                self.calculator.load_result(client_id, result)
+                self.processed_messages_by_client[client_id] = set(state.get("processed_messages", []))
+            print(f"Recovered state from client {client_id}, result = {result}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}")
 
     def delete_client_data(self, client_id: int):
+        """
+        Deletes the client data, both from memory and disk.
+        """
         self.calculator.delete_client_data(client_id)
-        # TODO: delete disk data
+        try:
+            os.remove(f"client.{client_id}.json")
+        except Exception as e:
+            print(f"Failed to remove file for client {client_id}. Error: {e}")
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
