@@ -109,6 +109,7 @@ class CalculatorNode:
                     ch.basic_ack(delivery_tag=method.delivery_tag)
 
                 else:
+                    count = 0
                     for result in results:
                         print("Resultados del cálculo:", result)
                         id = str(hash( str(self.node_id) + str(result)))
@@ -122,7 +123,8 @@ class CalculatorNode:
                             id=id
                         )
                         self.output_rabbitmq.publish(data_packet.to_json())
-                    self.final_rabbitmq.send_final(client_id=client_id)
+                        count += 1
+                    self.final_rabbitmq.send_final(client_id=client_id, count=count)
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     self.delete_client_data(client_id)
                 return
