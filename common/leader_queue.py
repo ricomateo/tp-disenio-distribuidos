@@ -19,7 +19,7 @@ class LeaderQueue:
             publish_to_exchange=False
         )
 
-        
+
         if output_exchange:
             self.output_rabbitmq = Middleware(
                 queue=None,
@@ -49,11 +49,23 @@ class LeaderQueue:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
-           
-            self.client_counters[client_id] = self.client_counters.get(client_id, 0) + 1
+            node_id = packet.get("node_id")
+            print(f"node_id = {node_id}")
+            
+            # For each client_id, keep a list that contains the ids of the nodes that sent a FINAL packet
+            if client_id not in self.client_counters:
+                self.client_counters[client_id] = []
+            
+            # Add the node id only if it is not already in the list
+            # This is so that duplicates are supported
+            if node_id not in self.client_counters[client_id]:
+                self.client_counters[client_id].append(node_id)
+            else: # TODO: remove this, only for debugging
+                print(f"Duplicate final from node: {node_id}")
             
             if is_final_packet(header):
-                if self.client_counters[client_id] == self.cluster_size:
+                # If the length of the set is equal to the cluster size, send the final
+                if len(self.client_counters[client_id]) == self.cluster_size:
                     self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(client_id))
                     del self.client_counters[client_id]
                 ch.basic_ack(delivery_tag=method.delivery_tag)
