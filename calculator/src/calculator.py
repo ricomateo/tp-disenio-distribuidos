@@ -111,13 +111,15 @@ class CalculatorNode:
                 else:
                     for result in results:
                         print("Resultados del cálculo:", result)
+                        id = str(hash( str(self.node_id) + str(result)))
                         data_packet = DataPacket(
                             client_id=client_id,
                             timestamp=datetime.utcnow().isoformat(),
                             data={
                                 "source": f"calculator_{self.operation}",
                                 **result
-                            }
+                            },
+                            id=id
                         )
                         self.output_rabbitmq.publish(data_packet.to_json())
                     self.final_rabbitmq.send_final(client_id=client_id)
