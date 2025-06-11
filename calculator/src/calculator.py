@@ -124,7 +124,9 @@ class CalculatorNode:
                         )
                         self.output_rabbitmq.publish(data_packet.to_json())
                         count += 1
-                    self.final_rabbitmq.send_final(client_id=client_id, count=count)
+                    self.final_rabbitmq.send_final_with_node_id(
+                        client_id=client_id, count=count, node_id=self.node_id
+                    )
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     self.delete_client_data(client_id)
                 return
