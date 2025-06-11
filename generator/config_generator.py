@@ -611,7 +611,8 @@ class ConfigGenerator:
                 f'RABBITMQ_EXCHANGE={ROUTER_NEGATIVE_SENTIMENT}',
                 f'RABBITMQ_OUTPUT_QUEUE={CALCULATOR_RATIO_FEELINGS}',
                 f'RABBITMQ_FINAL_QUEUE={CALCULATOR_RATIO_FEELINGS}{FINAL}',
-                f'OPERATION=ratio_by:revenue,budget'
+                f'OPERATION=ratio_by:revenue,budget',
+                f'NODE_ID_DUPLICATE=true'
             ],
             instances=instances,
             cluster_size=instances*2

@@ -69,7 +69,7 @@ class FinalPacketWithNodeId:
     una vez que reciben el final de todos los nodos.
     """
     type: str = FINAL
-    def __init__(self, client_id: int, node_id: int, count: int):
+    def __init__(self, client_id: int, node_id: str, count: int):
         self.client_id = client_id
         self.count = count
         self.header = FINAL

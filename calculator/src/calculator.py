@@ -29,6 +29,7 @@ class CalculatorNode:
         self.input_queue = f"{base_queue}_{self.node_id}" if self.exchange else base_queue
         self.routing_key = os.getenv("ROUTING_KEY") or self.node_id
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE")
+        self.node_id_duplicate: bool = os.getenv("NODE_ID_DUPLICATE", "") == "true"
         self.calculator = Calculation(self.operation, self.exchange)
         self.final_rabbitmq = None
         self.threads = []
@@ -124,8 +125,17 @@ class CalculatorNode:
                         )
                         self.output_rabbitmq.publish(data_packet.to_json())
                         count += 1
+                    
+                    # The node ids are duplicate in the ratio feelings calculators
+                    # (we have calculator_ratio_feelings_negative_0 and calculator_ratio_feelings_positive_0,
+                    # both with node_id = 0) so to distinguish them when sending the final message,
+                    # we set a different node_id for the negative calculators (appending zeroes)
+                    if self.node_id_duplicate is True:
+                        node_id = self.node_id + "0000"
+                    else:
+                        node_id = self.node_id
                     self.final_rabbitmq.send_final_with_node_id(
-                        client_id=client_id, count=count, node_id=self.node_id
+                        client_id=client_id, count=count, node_id=node_id
                     )
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     self.delete_client_data(client_id)
