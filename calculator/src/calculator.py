@@ -3,6 +3,7 @@ import threading
 from common.leader_queue import LeaderQueue
 from common.middleware import Middleware
 from common.packet import DataPacket, is_final_packet
+from common.atomic_write import atomic_write
 from datetime import datetime
 import os
 import signal
@@ -73,72 +74,36 @@ class CalculatorNode:
                 client_id = packet.get("client_id") 
                 results = self.calculator.get_result(client_id)
                 self.output_rabbitmq.confirm_delivery()
-                if not self.exchange:
-                    # Si la lista de acks es None, entonces soy el primero en recibir el mensaje FIN
-                    # Inicializo una lista vacia y reencolo el mensaje
-                    if packet.get("acks") is None:
-                        print(f"[Calculator - FIN] - packet[acks] = None")
-                        # Inicializo la lista acks vacia
-                        packet["acks"] = []
 
-                    # Si no estoy en la lista de ids, me agrego, mando los resultados y mando el mensaje final
-                    if not self.node_id in packet.get("acks"):
-                        print(f"[Calculator - FIN] - No estoy en la lista de acks")
-                        packet["acks"] = packet["acks"] + [self.node_id]
-                        for result in results:
-                            print("Resultados del cálculo:", result)
-                            data_packet = DataPacket(
-                                client_id=client_id,
-                                timestamp=datetime.utcnow().isoformat(),
-                                data={
-                                    "source": f"calculator_{self.operation}",
-                                    **result
-                                }
-                            )
-                            self.output_rabbitmq.publish(data_packet.to_json())
-                        self.final_rabbitmq.send_final(client_id=client_id)
-                    
-                    # Si faltan IDs en la lista de acks, reencolo
-                    if len(packet["acks"]) < math.ceil(self.cluster_size / 2):
-                        client_id = packet["client_id"]
-                        acks = packet["acks"]
-                        print(f"[Calculator - FIN] - Faltan IDs ({acks}), reencolo (client_id = {client_id})")
-                        # Reencolo
-                        self.input_rabbitmq.publish(packet)
-                    
-                    # Mando ACK
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-
-                else:
-                    count = 0
-                    for result in results:
-                        print("Resultados del cálculo:", result)
-                        id = str(hash( str(self.node_id) + str(result)))
-                        data_packet = DataPacket(
-                            client_id=client_id,
-                            timestamp=datetime.utcnow().isoformat(),
-                            data={
-                                "source": f"calculator_{self.operation}",
-                                **result
-                            },
-                            id=id
-                        )
-                        self.output_rabbitmq.publish(data_packet.to_json())
-                        count += 1
-                    
-                    # The node ids are duplicate in the ratio feelings calculators
-                    # (we have calculator_ratio_feelings_negative_0 and calculator_ratio_feelings_positive_0,
-                    # both with node_id = 0) so to distinguish them when sending the final message,
-                    # we set a different node_id for the negative calculators (appending zeroes)
-                    if self.node_id_duplicate is True:
-                        node_id = self.node_id + "0000"
-                    else:
-                        node_id = self.node_id
-                    self.final_rabbitmq.send_final_with_node_id(
-                        client_id=client_id, count=count, node_id=node_id
+                count = 0
+                for result in results:
+                    print("Resultados del cálculo:", result)
+                    id = str(hash( str(self.node_id) + str(result)))
+                    data_packet = DataPacket(
+                        client_id=client_id,
+                        timestamp=datetime.utcnow().isoformat(),
+                        data={
+                            "source": f"calculator_{self.operation}",
+                            **result
+                        },
+                        id=id
                     )
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    self.delete_client_data(client_id)
+                    self.output_rabbitmq.publish(data_packet.to_json())
+                    count += 1
+                
+                # The node ids are duplicate in the ratio feelings calculators
+                # (we have calculator_ratio_feelings_negative_0 and calculator_ratio_feelings_positive_0,
+                # both with node_id = 0) so to distinguish them when sending the final message,
+                # we set a different node_id for the negative calculators (appending zeroes)
+                if self.node_id_duplicate is True:
+                    node_id = self.node_id + "0000"
+                else:
+                    node_id = self.node_id
+                self.final_rabbitmq.send_final_with_node_id(
+                    client_id=client_id, count=count, node_id=node_id
+                )
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                self.delete_client_data(client_id)
                 return
 
             packet = DataPacket.from_json(packet_json)
@@ -167,13 +132,10 @@ class CalculatorNode:
 
             if success:
                 print(f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}")
-                temp_filename = f"client.{client_id}.temp"
-                with open(temp_filename, "w", encoding="utf-8") as f:
-                    data = {"result": self.calculator.get_raw_result(client_id), "processed_messages": list(self.processed_messages_by_client[client_id])}
-                    f.write(json.dumps(data))
-                    f.flush()
-                    os.fsync(f.fileno())
-                os.replace(temp_filename, f"client.{client_id}.json")
+                filename = f"client.{client_id}.json"
+                data = {"result": self.calculator.get_raw_result(client_id), "processed_messages": list(self.processed_messages_by_client[client_id])}
+                # Save the state (atomically) to a file
+                atomic_write(filename, data)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 print(f" [x] Message {method.delivery_tag} acknowledged")
             else:
