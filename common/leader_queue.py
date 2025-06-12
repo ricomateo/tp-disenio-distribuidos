@@ -11,14 +11,13 @@ class LeaderQueue:
         self.output_queue = output_queue
         self.consumer_tag = consumer_tag
         self.cluster_size = cluster_size
-        self.client_counters = {}
+        self.client_counters = {} # dict[client_id, dict[node_id, count]]
         
         self.final_rabbitmq = Middleware(
             queue=final_queue,
             consumer_tag=consumer_tag,
             publish_to_exchange=False
         )
-
 
         if output_exchange:
             self.output_rabbitmq = Middleware(
@@ -32,41 +31,49 @@ class LeaderQueue:
                 consumer_tag=consumer_tag,
                 publish_to_exchange=False
             )
-            
+
         self.running = True
         self.thread = threading.Thread(target=self.consume)
-        self.thread.daemon = True  
+        self.thread.daemon = True
         self.thread.start()
-            
+
     def callback(self, ch, method, properties, body):
         """Callback to process messages; acknowledges non-final packets."""
         try:
             if self.running == False:
                 self.final_rabbitmq.close_graceful(method)
                 return
-            
+
             packet_json = body.decode()
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
             node_id = packet.get("node_id")
+            count: int = packet.get("count", 0)
             print(f"node_id = {node_id}")
-            
-            # For each client_id, keep a list that contains the ids of the nodes that sent a FINAL packet
+
+            # For each client_id, keep a dict that contains the ids of the nodes
+            # that sent a FINAL packet, and the count for each node
             if client_id not in self.client_counters:
-                self.client_counters[client_id] = []
+                self.client_counters[client_id] = {}
             
             # Add the node id only if it is not already in the list
             # This is so that duplicates are supported
             if node_id not in self.client_counters[client_id]:
-                self.client_counters[client_id].append(node_id)
+                self.client_counters[client_id][node_id] = count
             else: # TODO: remove this, only for debugging
                 print(f"Duplicate final from node: {node_id}")
             
             if is_final_packet(header):
-                # If the length of the set is equal to the cluster size, send the final
-                if len(self.client_counters[client_id]) == self.cluster_size:
-                    self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(client_id))
+                # If the length of the dict is equal to the cluster size, send the final
+                if len(self.client_counters[client_id].keys()) == self.cluster_size:
+                    total_count = 0
+                    for count in self.client_counters[client_id].values():
+                        total_count += count
+                    print(f"Sending final with total_count = {total_count}")
+                    self.output_rabbitmq.send_final(
+                        client_id=client_id, routing_key=str(client_id), count=total_count
+                    )
                     del self.client_counters[client_id]
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
