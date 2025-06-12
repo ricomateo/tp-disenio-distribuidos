@@ -133,7 +133,7 @@ class CalculatorNode:
             if success:
                 print(f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}")
                 filename = f"client.{client_id}.json"
-                data = {"result": self.calculator.get_raw_result(client_id), "processed_messages": list(self.processed_messages_by_client[client_id])}
+                data = str({"result": self.calculator.get_raw_result(client_id), "processed_messages": list(self.processed_messages_by_client[client_id])})
                 # Save the state (atomically) to a file
                 atomic_write(filename, data)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
