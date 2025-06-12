@@ -1,8 +1,11 @@
-
 import threading
 import json
+import os
+import glob
+import sys
 from common.middleware import Middleware
-from common.packet import DataPacket, is_final_packet
+from common.packet import is_final_packet
+from common.atomic_write import atomic_write
 
 class LeaderQueue:
     def __init__(self, final_queue, output_queue, consumer_tag, cluster_size, output_exchange = None):
@@ -56,14 +59,16 @@ class LeaderQueue:
             # that sent a FINAL packet, and the count for each node
             if client_id not in self.client_counters:
                 self.client_counters[client_id] = {}
-            
+
             # Add the node id only if it is not already in the list
             # This is so that duplicates are supported
             if node_id not in self.client_counters[client_id]:
                 self.client_counters[client_id][node_id] = count
+                # Save the state
+                self.save_state(client_id)
             else: # TODO: remove this, only for debugging
                 print(f"Duplicate final from node: {node_id}")
-            
+
             if is_final_packet(header):
                 # If the length of the dict is equal to the cluster size, send the final
                 if len(self.client_counters[client_id].keys()) == self.cluster_size:
@@ -74,9 +79,10 @@ class LeaderQueue:
                     self.output_rabbitmq.send_final(
                         client_id=client_id, routing_key=str(client_id), count=total_count
                     )
-                    del self.client_counters[client_id]
-                ch.basic_ack(delivery_tag=method.delivery_tag)
-                return
+                    # Send ACK and only then delete the client data
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    self.delete_client(client_id)
+                    return
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
             print(f" [!] Error in shared callback for {self.final_queue}: {e}")
@@ -84,27 +90,70 @@ class LeaderQueue:
 
     def consume(self):
         """Consume messages from the queue in a loop until stopped."""
- 
+        self.load_state()
         try:
             self.final_rabbitmq.consume(self.callback)
-           
+
         except Exception as e:
             print(f" [!] Error consuming queue {self.final_queue}: {e}")
         finally:
             print(f" [!] Stopped consuming queue {self.final_queue}")
             self.output_rabbitmq.close()
             self.final_rabbitmq.close()
-        
+
+    def save_state(self, client_id):
+        """
+        Saves the state (the dictionary that contains the finals received for each client)
+        to the disk.
+        """
+        file = self.filename_for_client(client_id)
+        content = json.dumps(self.client_counters[client_id])
+        atomic_write(file, content)
+
+    def delete_client(self, client_id):
+        """
+        Deletes the client state both from memory and disk
+        """
+        del self.client_counters[client_id]
+        file = self.filename_for_client(client_id)
+        try:
+            os.remove(file)
+        except Exception as e:
+            print(f"Failed to remove file {file}. Error: {e}")
+
+    def load_state(self):
+        """
+        Loads any previous state from the 'final.client_id.json' files.
+        """
+        # Get a list of files that match the pattern client.*.json
+        state_files: list[str] = glob.glob("final.*.json")
+        print(f"FinalFiles = {state_files}")
+        for file in state_files:
+            client_id = int(file.split(".")[1])
+            try:
+                with open(file, "r", encoding="utf-8") as f:
+                    state = json.loads(f.read())
+                    self.client_counters[client_id] = state
+            except Exception as e:
+                print(f"Failed to read file {file}. Error: {e}")
+            print(f"Recovered state from client {client_id}, state = {state}")
+
+
+    def filename_for_client(self, client_id) -> str:
+        """
+        Returns the name of the file that keeps the state for the given client
+        """
+        return f"final.{client_id}.json"
+
     def close(self):
         """Signal the thread to stop and wait for it to finish."""
         self.running = False
-        self.final_rabbitmq.cancel_consumer() 
+        self.final_rabbitmq.cancel_consumer()
         self.join()
         self.output_rabbitmq.close()
         self.final_rabbitmq.close()
-        
+
     def join(self):
         """Wait for the consumer thread to finish."""
         if self.thread.is_alive():
             self.thread.join()
-       
