@@ -97,16 +97,16 @@ class DeliverNode:
         is_numeric = column != "title"
         movie_list = self.collected_movies[client_id][list_key]
         for i, existing_movie in enumerate(movie_list):
-                existing_key = self._get_sort_key(existing_movie, column)
-                if is_numeric:
-                    if (inverse_sort and new_key < existing_key) or \
-                       (not inverse_sort and new_key > existing_key):
-                        break
-                else:
-                    if (inverse_sort and new_key > existing_key) or \
-                       (not inverse_sort and new_key < existing_key):
-                        break
-                insert_pos = i + 1
+            existing_key = self._get_sort_key(existing_movie, column)
+            if is_numeric:
+                if (inverse_sort and new_key < existing_key) or \
+                    (not inverse_sort and new_key > existing_key):
+                    break
+            else:
+                if (inverse_sort and new_key > existing_key) or \
+                    (not inverse_sort and new_key < existing_key):
+                    break
+            insert_pos = i + 1
             
         movie_list.insert(insert_pos, movie)
         if top_n is not None and len(movie_list) > top_n:
@@ -208,7 +208,8 @@ class DeliverNode:
                     )
                     self.output_rabbitmq.confirm_delivery()
                     self.output_rabbitmq.publish(query_packet.to_json(), str(client_id))
-                    self.final_rabbitmq.send_final(int(client_id))
+                    # TODO: consider setting the right count here
+                    self.final_rabbitmq.send_final_with_node_id(client_id=int(client_id),node_id=self.query_number,count=0)
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
 

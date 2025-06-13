@@ -205,7 +205,7 @@ class Calculation:
         except (ValueError, TypeError):
             print(f"Skipped movie '{title}' with invalid {self.value_field}")
             return False
-        
+
     def process_movie(self, client_id: int, movie: Dict) -> bool:
         """Process a movie based on the operation, return True if processed successfully."""
         try:
@@ -229,7 +229,7 @@ class Calculation:
         """Return the results as a list of dictionaries, one per result item."""
         if self.op_type == COUNT:
             if not self.counts_by_client.get(client_id):
-                return [{"error": f"No {self.key} values found."}]
+                return []
             results = [
                 {
                     "operation": "count",
@@ -239,13 +239,11 @@ class Calculation:
                 }
                 for key, count in sorted(self.counts_by_client[client_id].items())
             ]
-            if client_id in self.counts_by_client:
-                del self.counts_by_client[client_id]  # Delete client data
             return results
 
         elif self.op_type == AVERAGE:
             if not self.averages_by_client.get(client_id):
-                return [{"error": f"No movies processed for {self.value_field} average by {self.key}."}]
+                return []
             results = [
                 {
                     "operation": "average",
@@ -258,14 +256,12 @@ class Calculation:
                 }
                 for key, (total, count, title) in sorted(self.averages_by_client[client_id].items())
             ]
-            if client_id in self.averages_by_client:
-                del self.averages_by_client[client_id]  # Delete client data
             return results
 
         elif self.op_type == RATIO:
             total_ratio, count = self.totals_by_client.get(client_id, (0.0, 0))
             if count == 0:
-                return [{"error": f"No movies processed for {self.numerator}/{self.denominator} totals."}]
+                return []
             average_ratio = total_ratio / count
             feeling_str = "POS" if self.exchange == "router_positive_sentiment" else "NEG"
             results = [
@@ -276,13 +272,11 @@ class Calculation:
                     "count": count
                 }
             ]
-            if client_id in self.totals_by_client:
-                del self.totals_by_client[client_id]  # Delete client data
             return results
 
         elif self.op_type == SUM:
             if not self.sums_by_client.get(client_id):
-                return [{"error": f"No sums processed for {self.value_field} by {self.key}."}]
+                return []
             results = [
                 {
                     "operation": "sum",
@@ -293,8 +287,52 @@ class Calculation:
                 }
                 for key, value in sorted(self.sums_by_client[client_id].items())
             ]
-            if client_id in self.sums_by_client:
-                del self.sums_by_client[client_id]  # Delete client data
             return results
 
-        return [{"error": "No results available."}]
+        return []
+
+    def load_result(self, client_id: int, result):
+        """
+        Loads the given result. Used to recover data when the process crashes.
+        """
+        if self.op_type == COUNT:
+            self.counts_by_client[client_id] = result
+        elif self.op_type == AVERAGE:
+            self.averages_by_client[client_id] = result
+        elif self.op_type == RATIO:
+            self.totals_by_client[client_id] = result
+        elif self.op_type == SUM:
+            self.sums_by_client[client_id] = result
+
+    def get_raw_result(self, client_id: int):
+        """
+        Returns the raw result. Used to persist the data.
+        """
+        if self.op_type == COUNT:
+            return self.counts_by_client.get(client_id)
+        elif self.op_type == AVERAGE:
+            return self.averages_by_client.get(client_id)
+        elif self.op_type == RATIO:
+            return self.totals_by_client.get(client_id)
+        elif self.op_type == SUM:
+            return self.sums_by_client.get(client_id)
+
+    def delete_client_data(self, client_id: int):
+        """
+        Deletes client data from memory
+        """
+        if self.op_type == COUNT:
+            if client_id in self.counts_by_client:
+                del self.counts_by_client[client_id]
+
+        elif self.op_type == AVERAGE:
+            if client_id in self.averages_by_client:
+                del self.averages_by_client[client_id]
+
+        elif self.op_type == RATIO:
+            if client_id in self.totals_by_client:
+                del self.totals_by_client[client_id]
+
+        elif self.op_type == SUM:
+            if client_id in self.sums_by_client:
+                del self.sums_by_client[client_id]

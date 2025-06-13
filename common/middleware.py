@@ -5,7 +5,7 @@ import os
 import time
 from datetime import datetime
 import uuid
-from common.packet import FinalPacket
+from common.packet import FinalPacket, FinalPacketWithNodeId
 RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', 'rabbitmq')
 RABBITMQ_PORT = int(os.getenv('RABBITMQ_PORT', '5672'))
 RABBITMQ_HEARTBEAT = int(os.getenv('RABBITMQ_HEARTBEAT', '1200'))
@@ -91,7 +91,7 @@ class Middleware:
         )
         print(f" [*] Waiting for messages in {self.queue}")
         self.channel.start_consuming()
-    
+
     # TODO: sacar client_id=0 como default
     def send_final(self, client_id=0, routing_key='', count=0):
         """Publica un paquete FINAL a través de este middleware."""
@@ -100,6 +100,14 @@ class Middleware:
         final_packet = FinalPacket(client_id, count)
         self.publish(final_packet.to_json(), routing_key)
         print(f"[Middleware] FinalPacket {final_packet.to_json()} enviado directamente.")
+
+    def send_final_with_node_id(self, client_id, node_id, count, routing_key=''):
+        """Publica un paquete FINAL (con node_id) a través de este middleware."""
+        if not self.channel:
+            self.connect()
+        final_packet = FinalPacketWithNodeId(client_id=client_id, node_id=node_id, count=count)
+        self.publish(final_packet.to_json(), routing_key)
+        print(f"[Middleware] FinalPacketWithNodeId {final_packet.to_json()} enviado directamente.")
                 
     def check_no_consumers(self):
         """Verifica si hay 0 consumidores en la cola de control."""

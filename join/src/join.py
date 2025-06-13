@@ -138,7 +138,10 @@ class JoinNode:
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_2}' terminó.")
                 self.clean(client_id)
-                self.final_rabbitmq.send_final(client_id=client_id)
+                # TODO: consider setting the right count here
+                self.final_rabbitmq.send_final_with_node_id(
+                    client_id=client_id, node_id=self.node_id, count=0
+                )
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
@@ -214,11 +217,13 @@ class JoinNode:
 
     def create_joined_packet(self, client_id: int, movie1, movie2):
         combined_movie = {**movie1, **movie2}
+        id = hash(str(movie1) + str(movie2))
         joined_packet = DataPacket(
             client_id=client_id,
             timestamp=datetime.utcnow().isoformat(),
             data=combined_movie,
             keep_columns=self.keep_columns,
+            id=str(id)
         )
         return joined_packet
                 

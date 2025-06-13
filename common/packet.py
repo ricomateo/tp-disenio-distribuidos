@@ -58,6 +58,33 @@ class FinalPacket:
         data_dict["header"] = FINAL
         return cls(**data_dict)
     
+# Definiendo FinalPacket
+@dataclass
+class FinalPacketWithNodeId:
+    """
+    Final packet que incluye node_id para identificar el sender
+    y soportar final duplicados.
+    Se usa en los nodos stateful lideres, que reciben los final
+    de distintos nodos, y mandan el final a la siguiente queue
+    una vez que reciben el final de todos los nodos.
+    """
+    type: str = FINAL
+    def __init__(self, client_id: int, node_id: str, count: int):
+        self.client_id = client_id
+        self.count = count
+        self.header = FINAL
+        self.node_id = node_id
+
+    def to_json(self):
+        return orjson.dumps(self.__dict__)
+
+    @classmethod
+    def from_json(cls, data):
+        # Parsear el JSON y añadir el valor "FINAL" al campo type
+        data_dict = orjson.loads(data)
+        data_dict["header"] = FINAL
+        return cls(**data_dict)
+    
 @dataclass
 class QueryPacket(Packet):
     response: str
