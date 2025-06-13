@@ -1,0 +1,59 @@
+[Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+ [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
+ [~] Filtering movie fields: ['title', 'genres']
+ [~] No sorting, storing movies as they arrive
+ [*] Waiting for messages in filter_2000s_spain
+ [DeliverNode] Movie added: {'genres': "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]", 'id': 58429, 'title': 'La Cienaga'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 80, 'name': 'Crime'}]", 'id': 27092, 'title': 'Burnt Money'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}]", 'id': 20316, 'title': 'The City of No Limits'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]", 'id': 58429, 'title': 'La Cienaga'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 80, 'name': 'Crime'}]", 'id': 27092, 'title': 'Burnt Money'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 44413, 'title': 'The Holy Girl'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]", 'id': 13653, 'title': 'The Aura'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 29952, 'title': 'Bombón: The Dog'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 53, 'name': 'Thriller'}]", 'id': 11556, 'title': 'Nicotina'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 49681, 'title': 'Lost Embrace'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 36971, 'title': 'Whisky'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]", 'id': 79767, 'title': 'Rolling Family'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]", 'id': 21043, 'title': 'The Method'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}]", 'id': 20316, 'title': 'The City of No Limits'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 127257, 'title': 'Every Stewardess Goes to Heaven'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}]", 'id': 11928, 'title': 'Tetro'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 53, 'name': 'Thriller'}]", 'id': 11556, 'title': 'Nicotina'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 49681, 'title': 'Lost Embrace'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 10749, 'name': 'Romance'}]", 'id': 25376, 'title': 'The Secret in Their Eyes'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 101006, 'title': 'Liverpool'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 53, 'name': 'Thriller'}]", 'id': 8898, 'title': 'The Headless Woman'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 36971, 'title': 'Whisky'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 57489, 'title': 'The Last Summer of La Boyita'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 44413, 'title': 'The Holy Girl'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 9648, 'name': 'Mystery'}]", 'id': 16092, 'title': 'The Appeared'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]", 'id': 13653, 'title': 'The Aura'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 29952, 'title': 'Bombón: The Dog'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]", 'id': 79767, 'title': 'Rolling Family'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]", 'id': 21043, 'title': 'The Method'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]", 'id': '26864', 'title': 'The Fish Child'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 127257, 'title': 'Every Stewardess Goes to Heaven'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}]", 'id': 11928, 'title': 'Tetro'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 10749, 'name': 'Romance'}]", 'id': 25376, 'title': 'The Secret in Their Eyes'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 101006, 'title': 'Liverpool'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 53, 'name': 'Thriller'}]", 'id': 8898, 'title': 'The Headless Woman'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 71114, 'title': 'Cleopatra'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 57489, 'title': 'The Last Summer of La Boyita'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 9648, 'name': 'Mystery'}]", 'id': 16092, 'title': 'The Appeared'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 43432, 'title': 'Roma'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]", 'id': '26864', 'title': 'The Fish Child'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 35005, 'title': 'Conversations with Mother'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 65795, 'title': 'The Education of Fairies'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 71114, 'title': 'Cleopatra'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 196324, 'title': 'The Good Life'} with id: 0
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 43432, 'title': 'Roma'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]", 'id': 35005, 'title': 'Conversations with Mother'} with id: 1
+ [x] Sent message to exchange deliver with routing key 0
+ [x] Sent message to queue deliverfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":0,"header":"FINAL","node_id":"1"}' enviado directamente.
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 65795, 'title': 'The Education of Fairies'} with id: 1
+ [DeliverNode] Movie added: {'genres': "[{'id': 18, 'name': 'Drama'}]", 'id': 196324, 'title': 'The Good Life'} with id: 1
+ [x] Sent message to exchange deliver with routing key 1
+ [x] Sent message to queue deliverfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":0,"header":"FINAL","node_id":"1"}' enviado directamente.

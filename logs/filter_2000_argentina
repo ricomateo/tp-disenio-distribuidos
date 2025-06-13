@@ -1,0 +1,1163 @@
+[Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[Middleware] Declarando exchange 'parser' de tipo 'direct'...
+[Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=False)...
+[Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
+ [~] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
+ [~] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
+ [*] Waiting for messages in parserfilter_2000_argentina
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 58429, Title: La Cienaga, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 4462 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 16, Title: Dancer in the Dark, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}, {'id': 10402, 'name': 'Music'}]
+ [x] Message 4467 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 27092, Title: Burnt Money, Genres: [{'id': 80, 'name': 'Crime'}]
+ [x] Message 4880 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 18079, Title: Nine Queens, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 4958 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 19460, Title: Son of the Bride, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 5763 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 204372, Title: Smokers Only, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 6097 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 1956, Title: Gerry, Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}, {'id': 12, 'name': 'Adventure'}]
+ [x] Message 6485 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 16425, Title: Assassination Tango, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 6698 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 99648, Title: Suddenly, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 7426 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 83505, Title: El Bonaerense, Genres: []
+ [x] Message 8335 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 30125, Title: Valentin, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 8947 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 20316, Title: The City of No Limits, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 11255 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 1653, Title: The Motorcycle Diaries, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 11531 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 16, Title: Dancer in the Dark, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}, {'id': 10402, 'name': 'Music'}]
+ [x] Message 12078 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 58429, Title: La Cienaga, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 13954 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 27092, Title: Burnt Money, Genres: [{'id': 80, 'name': 'Crime'}]
+ [x] Message 13999 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 44413, Title: The Holy Girl, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 14017 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 48121, Title: Mondovino, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 14426 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 13653, Title: The Aura, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 14864 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 78237, Title: On Probation, Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 80, 'name': 'Crime'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 15069 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 29952, Title: Bombón: The Dog, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 15070 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 11556, Title: Nicotina, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 15153 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 50724, Title: My Brother's Wife, Genres: [{'id': 10749, 'name': 'Romance'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 15321 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 49681, Title: Lost Embrace, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 15396 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 36971, Title: Whisky, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 16283 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 79767, Title: Rolling Family, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 16484 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 28710, Title: Kamchatka, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 16605 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 18079, Title: Nine Queens, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 17145 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 19460, Title: Son of the Bride, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 17430 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 204372, Title: Smokers Only, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 17699 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 11148, Title: XXY, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 17983 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 78705, Title: Live-In Maid, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 18104 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 21043, Title: The Method, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 18210 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 13317, Title: The Aerial, Genres: [{'id': 878, 'name': 'Science Fiction'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 18340 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 1956, Title: Gerry, Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}, {'id': 12, 'name': 'Adventure'}]
+ [x] Message 18782 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 16425, Title: Assassination Tango, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 18887 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 99648, Title: Suddenly, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 19302 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 83505, Title: El Bonaerense, Genres: []
+ [x] Message 19971 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 1653, Title: The Motorcycle Diaries, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 20193 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 30125, Title: Valentin, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 20645 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 20316, Title: The City of No Limits, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 22126 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127257, Title: Every Stewardess Goes to Heaven, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 22253 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 8900, Title: Lion's Den, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 23003 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 11928, Title: Tetro, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}]
+ [x] Message 23798 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 11556, Title: Nicotina, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 24341 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 49681, Title: Lost Embrace, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 24392 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 25376, Title: The Secret in Their Eyes, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 24464 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 25532, Title: Chronicle of an Escape, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 10769, 'name': 'Foreign'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 24537 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 101006, Title: Liverpool, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 25025 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 8898, Title: The Headless Woman, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 25183 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 45336, Title: The Employment, Genres: [{'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 25415 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 36971, Title: Whisky, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 25859 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 47065, Title: Tales of an Ancient Empire, Genres: [{'id': 12, 'name': 'Adventure'}, {'id': 14, 'name': 'Fantasy'}, {'id': 27, 'name': 'Horror'}, {'id': 28, 'name': 'Action'}, {'id': 53, 'name': 'Thriller'}, {'id': 878, 'name': 'Science Fiction'}]
+ [x] Message 26036 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 57489, Title: The Last Summer of La Boyita, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 26205 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 10817, Title: Glue, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 26241 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 33107, Title: And Soon the Darkness, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 80, 'name': 'Crime'}, {'id': 9648, 'name': 'Mystery'}]
+ [x] Message 26556 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 36241, Title: The Dead, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 26750 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 57019, Title: No Return, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 28, 'name': 'Action'}, {'id': 53, 'name': 'Thriller'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 26752 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 49073, Title: Just Like Me, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 26775 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 126104, Title: The Magic Gloves, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 26922 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 46558, Title: Sins of My Father, Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 27125 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 62342, Title: La suerte está echada, Genres: []
+ [x] Message 27356 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 48596, Title: Ana and the Others, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 27424 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 47261, Title: Carancho, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 27589 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 49913, Title: Bolivia, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 27606 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 44413, Title: The Holy Girl, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 27888 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 67884, Title: Chinese Take-Out, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 28162 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 48121, Title: Mondovino, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 28169 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 16092, Title: The Appeared, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 9648, 'name': 'Mystery'}]
+ [x] Message 28209 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 13653, Title: The Aura, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 28268 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 78237, Title: On Probation, Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 80, 'name': 'Crime'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 28459 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 29952, Title: Bombón: The Dog, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 28460 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 118204, Title: The Student, Genres: [{'id': 10769, 'name': 'Foreign'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 28884 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 47383, Title: The Man Next Door, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 29023 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 50724, Title: My Brother's Wife, Genres: [{'id': 10749, 'name': 'Romance'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 29214 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 278458, Title: The Artist, Genres: []
+ [x] Message 29700 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 79767, Title: Rolling Family, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 30021 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 28710, Title: Kamchatka, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 30187 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 73889, Title: The Day I Was Not Born, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 30295 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 111188, Title: Extraordinary Stories, Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 30473 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 11148, Title: XXY, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 30917 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 78705, Title: Live-In Maid, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 31038 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 21043, Title: The Method, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 31144 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 13317, Title: The Aerial, Genres: [{'id': 878, 'name': 'Science Fiction'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 31238 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 26864, Title: The Fish Child, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 31512 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 76696, Title: Sidewalls, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 31763 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127257, Title: Every Stewardess Goes to Heaven, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 32399 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 85544, Title: Back to Stay, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 32846 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 80717, Title: Violeta Went to Heaven, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 33093 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 85549, Title: Las Acacias, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 33837 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 79983, Title: Padre nuestro, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 33965 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 85543, Title: Bonsai, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 33989 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 73293, Title: Empty Nest, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 34237 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127880, Title: Clandestine Childhood, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 34316 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 87380, Title: Absent, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 34367 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 39378, Title: The Wind Journeys, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
+ [x] Message 34461 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 69278, Title: Phase 7, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 878, 'name': 'Science Fiction'}]
+ [x] Message 34650 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 80437, Title: The Finger, Genres: []
+ [x] Message 34760 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 68047, Title: Los Marziano, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]
+ [x] Message 34787 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 153158, Title: Underdogs, Genres: [{'id': 16, 'name': 'Animation'}, {'id': 12, 'name': 'Adventure'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 34901 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 134096, Title: Two Plus Two, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 35012 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 87017, Title: Leo's Room, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 35617 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 133082, Title: The Dead Man and Being Happy, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 35829 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 84302, Title: The Last Elvis, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 36094 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 6636, Title: The Mugger, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 36178 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 128237, Title: Viola, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 36236 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 35837, Title: Boogie, Genres: [{'id': 28, 'name': 'Action'}, {'id': 16, 'name': 'Animation'}]
+ [x] Message 37125 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 188761, Title: The German Doctor, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 37319 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 222759, Title: Puerta de Hierro, el exilio de Perón, Genres: []
+ [x] Message 37320 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 115173, Title: Mía, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 37480 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 133786, Title: Where the Trail Ends, Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 12, 'name': 'Adventure'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 37559 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 296778, Title: Death in Buenos Aires, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 10749, 'name': 'Romance'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 37578 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 11928, Title: Tetro, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}]
+ [x] Message 38290 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 25376, Title: The Secret in Their Eyes, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 38356 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 25532, Title: Chronicle of an Escape, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 10769, 'name': 'Foreign'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 38429 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 8900, Title: Lion's Den, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 38889 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 41272, Title: The Puzzle, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 39535 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 101006, Title: Liverpool, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 39702 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 8898, Title: The Headless Woman, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 39924 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 114285, Title: Everybody Has a Plan, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 40289 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 214761, Title: The 7th Floor, Genres: [{'id': 53, 'name': 'Thriller'}]
+ [x] Message 40309 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 297677, Title: The Effect of Love, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 40365 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 266031, Title: Jauja, Genres: [{'id': 37, 'name': 'Western'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 40503 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 71114, Title: Cleopatra, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 41096 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 222772, Title: Lion's Heart, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 41235 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 199851, Title: Hawaii, Genres: [{'id': 10749, 'name': 'Romance'}]
+ [x] Message 41251 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 226227, Title: The Disappeared, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 41287 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 46558, Title: Sins of My Father, Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 41990 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 265195, Title: Wild Tales, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 42133 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 45336, Title: The Employment, Genres: [{'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 42211 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 47065, Title: Tales of an Ancient Empire, Genres: [{'id': 12, 'name': 'Adventure'}, {'id': 14, 'name': 'Fantasy'}, {'id': 27, 'name': 'Horror'}, {'id': 28, 'name': 'Action'}, {'id': 53, 'name': 'Thriller'}, {'id': 878, 'name': 'Science Fiction'}]
+ [x] Message 42300 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 57489, Title: The Last Summer of La Boyita, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 42469 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 10817, Title: Glue, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 42505 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 33107, Title: And Soon the Darkness, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 80, 'name': 'Crime'}, {'id': 9648, 'name': 'Mystery'}]
+ [x] Message 42574 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 47261, Title: Carancho, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 42631 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 49913, Title: Bolivia, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 42648 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 67884, Title: Chinese Take-Out, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 42719 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 16092, Title: The Appeared, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 9648, 'name': 'Mystery'}]
+ [x] Message 42749 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 110393, Title: White Elephant, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 43059 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 36241, Title: The Dead, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 43276 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 57019, Title: No Return, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 28, 'name': 'Action'}, {'id': 53, 'name': 'Thriller'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 43278 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 49073, Title: Just Like Me, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 43292 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 126104, Title: The Magic Gloves, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 43485 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 128598, Title: Left for Dead, Genres: [{'id': 37, 'name': 'Western'}, {'id': 28, 'name': 'Action'}, {'id': 27, 'name': 'Horror'}]
+ [x] Message 44030 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 43432, Title: Roma, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 44162 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 62342, Title: La suerte está echada, Genres: []
+ [x] Message 44246 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 48596, Title: Ana and the Others, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 44314 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127445, Title: Rain, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 44441 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 51548, Title: The Invisible Eye, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 44618 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 21409, Title: The Window, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 44652 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 44989, Title: The Paranoids, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 44863 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 118204, Title: The Student, Genres: [{'id': 10769, 'name': 'Foreign'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 45450 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 47383, Title: The Man Next Door, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 45549 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 285463, Title: Two Shots Fired, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 45723 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 278458, Title: The Artist, Genres: []
+ [x] Message 45952 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 73889, Title: The Day I Was Not Born, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 46311 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 26864, Title: The Fish Child, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 46440 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 111188, Title: Extraordinary Stories, Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 46580 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 29275, Title: Anita, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 46856 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 128062, Title: They All Lie, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 46909 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 76696, Title: Sidewalls, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 47101 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 85544, Title: Back to Stay, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 47675 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 254719, Title: History of Fear, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 47824 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 288312, Title: The Gold Bug, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 47985 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 80717, Title: Violeta Went to Heaven, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 48148 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 85549, Title: Las Acacias, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 48292 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 79983, Title: Padre nuestro, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 48404 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 85543, Title: Bonsai, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 48428 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 81022, Title: Widows, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 48889 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 265563, Title: The Mystery of Happiness, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 48971 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 259843, Title: Natural Sciences, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 49063 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 129115, Title: Lions, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 49064 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 126883, Title: The Wild Ones, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}]
+ [x] Message 49065 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 255979, Title: Balnearios, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 49068 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 73293, Title: Empty Nest, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 49253 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 80437, Title: The Finger, Genres: []
+ [x] Message 49348 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 68047, Title: Los Marziano, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]
+ [x] Message 49374 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 133082, Title: The Dead Man and Being Happy, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 49697 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 84302, Title: The Last Elvis, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 49749 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 6636, Title: The Mugger, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 50091 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 323214, Title: Alexia, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 50675 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 75193, Title: A Buddha, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 50718 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127326, Title: The Hands, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 50891 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 262788, Title: The Games Maker, Genres: [{'id': 12, 'name': 'Adventure'}, {'id': 10751, 'name': 'Family'}]
+ [x] Message 51223 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 188761, Title: The German Doctor, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 51675 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 222759, Title: Puerta de Hierro, el exilio de Perón, Genres: []
+ [x] Message 51676 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 115173, Title: Mía, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 51888 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 35005, Title: Conversations with Mother, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 52932 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 324578, Title: Butterfly, Genres: [{'id': 878, 'name': 'Science Fiction'}, {'id': 18, 'name': 'Drama'}, {'id': 14, 'name': 'Fantasy'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 52974 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 297641, Title: Holiday, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 52985 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 104431, Title: Kept and Dreamless, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 53067 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 30688, Title: Gemini, Genres: []
+ [x] Message 53101 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 138167, Title: One Love, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 53815 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 336664, Title: Paulina, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 53817 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 273261, Title: Red Knot, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 53943 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 71118, Title: Felicidades, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 53973 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 92780, Title: Aballay, the Man without Fear, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 37, 'name': 'Western'}]
+ [x] Message 54030 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127880, Title: Clandestine Childhood, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 54370 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 87380, Title: Absent, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 54421 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 39378, Title: The Wind Journeys, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
+ [x] Message 54515 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 44282, Title: Plan B, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 54947 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 125619, Title: The forbidden education, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 99, 'name': 'Documentary'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 54993 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 69278, Title: Phase 7, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 878, 'name': 'Science Fiction'}]
+ [x] Message 55289 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 341744, Title: Truman, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 55687 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 214758, Title: Easy Sex, Sad Movies, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 55701 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 78570, Title: Top Cat The Movie, Genres: [{'id': 16, 'name': 'Animation'}]
+ [x] Message 55783 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 69985, Title: The Cat Vanishes, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 55978 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 128070, Title: Gone Fishing, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10751, 'name': 'Family'}]
+ [x] Message 56136 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 153158, Title: Underdogs, Genres: [{'id': 16, 'name': 'Animation'}, {'id': 12, 'name': 'Adventure'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 56163 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 134096, Title: Two Plus Two, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 56350 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 64462, Title: Sammy and Me, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 56962 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 65795, Title: The Education of Fairies, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 56963 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 161024, Title: Lovely Loneliness, Genres: []
+ [x] Message 56964 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 109690, Title: En fuera de juego, Genres: []
+ [x] Message 56966 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 87017, Title: Leo's Room, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 57291 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 41924, Title: Night Watch, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 57379 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 336808, Title: Embrace of the Serpent, Genres: [{'id': 12, 'name': 'Adventure'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 57465 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 206292, Title: The Desert, Genres: [{'id': 878, 'name': 'Science Fiction'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 57498 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 129933, Title: Paraguayan Hammock, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 57865 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 7274, Title: La León, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 57945 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 243934, Title: Pin Boy, Genres: []
+ [x] Message 57960 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 284870, Title: The Princess of France, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 58017 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 337115, Title: Alias Maria, Genres: [{'id': 10752, 'name': 'War'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 58241 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 45722, Title: Don't Look Down, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 58273 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 352161, Title: The Clan, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 36, 'name': 'History'}, {'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 58355 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 94649, Title: La libertad, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 58459 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 78115, Title: The Other, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 58566 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127445, Title: Rain, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 58772 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 51548, Title: The Invisible Eye, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 58912 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 21409, Title: The Window, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 58946 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 44989, Title: The Paranoids, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 59071 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 285463, Title: Two Shots Fired, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 60057 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 29275, Title: Anita, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 60405 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 128062, Title: They All Lie, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 60458 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 128237, Title: Viola, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 60681 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 35837, Title: Boogie, Genres: [{'id': 28, 'name': 'Action'}, {'id': 16, 'name': 'Animation'}]
+ [x] Message 61141 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 254719, Title: History of Fear, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 61373 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 288312, Title: The Gold Bug, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 61534 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 133786, Title: Where the Trail Ends, Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 12, 'name': 'Adventure'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 61803 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 296778, Title: Death in Buenos Aires, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 10749, 'name': 'Romance'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 61822 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 297677, Title: The Effect of Love, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 61905 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 81022, Title: Widows, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 62438 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 270909, Title: Refugiado, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 62543 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 16916, Title: A Boyfriend for My Wife, Genres: [{'id': 10749, 'name': 'Romance'}, {'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 62679 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 83266, Title: It's Not You, It's Me, Genres: [{'id': 10749, 'name': 'Romance'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 62684 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 394374, Title: At the End of the Tunnel, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 62789 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 82999, Title: Penumbra, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 62790 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 35026, Title: Lucky Luke, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 37, 'name': 'Western'}, {'id': 12, 'name': 'Adventure'}]
+ [x] Message 62926 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 71114, Title: Cleopatra, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 63112 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 222772, Title: Lion's Heart, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 63251 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 199851, Title: Hawaii, Genres: [{'id': 10749, 'name': 'Romance'}]
+ [x] Message 63267 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 265195, Title: Wild Tales, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 63412 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 389995, Title: Me casé con un boludo, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 63905 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 351454, Title: Neruda, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 63914 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 391617, Title: Kóblic, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 64073 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 353989, Title: Abzurdah, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 64117 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 398830, Title: La muerte de Jaime Roldós, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 64186 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 41272, Title: The Puzzle, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 64407 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 196324, Title: The Good Life, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 64705 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 359641, Title: Argentina, Genres: [{'id': 10402, 'name': 'Music'}, {'id': 99, 'name': 'Documentary'}]
+ [x] Message 64761 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 351809, Title: To Steal from a Thief, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 64867 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 114285, Title: Everybody Has a Plan, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 65295 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 214761, Title: The 7th Floor, Genres: [{'id': 53, 'name': 'Thriller'}]
+ [x] Message 65315 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 266031, Title: Jauja, Genres: [{'id': 37, 'name': 'Western'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 65390 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 226227, Title: The Disappeared, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 65512 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 104431, Title: Kept and Dreamless, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 66036 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 30688, Title: Gemini, Genres: []
+ [x] Message 66070 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 110393, Title: White Elephant, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 66201 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 128598, Title: Left for Dead, Genres: [{'id': 37, 'name': 'Western'}, {'id': 28, 'name': 'Action'}, {'id': 27, 'name': 'Horror'}]
+ [x] Message 67157 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 43432, Title: Roma, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 67520 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 35005, Title: Conversations with Mother, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 68322 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 324578, Title: Butterfly, Genres: [{'id': 878, 'name': 'Science Fiction'}, {'id': 18, 'name': 'Drama'}, {'id': 14, 'name': 'Fantasy'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 68364 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 297641, Title: Holiday, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 68375 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 138167, Title: One Love, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 68700 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 336664, Title: Paulina, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 68705 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 273261, Title: Red Knot, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 68909 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 71118, Title: Felicidades, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 68939 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 92780, Title: Aballay, the Man without Fear, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 37, 'name': 'Western'}]
+ [x] Message 69024 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 102873, Title: ¡Vivan las Antipodas!, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 69162 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 284870, Title: The Princess of France, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 69287 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 337115, Title: Alias Maria, Genres: [{'id': 10752, 'name': 'War'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 69797 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 45722, Title: Don't Look Down, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 69829 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 352161, Title: The Clan, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 36, 'name': 'History'}, {'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 69911 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 365002, Title: Kryptonita, Genres: [{'id': 14, 'name': 'Fantasy'}, {'id': 878, 'name': 'Science Fiction'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 70020 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 94649, Title: La libertad, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 70026 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 267579, Title: The Ardor, Genres: [{'id': 37, 'name': 'Western'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 70145 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 78115, Title: The Other, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 70188 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 265563, Title: The Mystery of Happiness, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 70398 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 259843, Title: Natural Sciences, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 70530 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 129115, Title: Lions, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 70531 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 126883, Title: The Wild Ones, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}]
+ [x] Message 70532 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 255979, Title: Balnearios, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 70536 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 341744, Title: Truman, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 71142 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 214758, Title: Easy Sex, Sad Movies, Genres: [{'id': 35, 'name': 'Comedy'}]
+ [x] Message 71156 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 78570, Title: Top Cat The Movie, Genres: [{'id': 16, 'name': 'Animation'}]
+ [x] Message 71238 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 69985, Title: The Cat Vanishes, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 71420 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 128070, Title: Gone Fishing, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10751, 'name': 'Family'}]
+ [x] Message 71568 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 323214, Title: Alexia, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 72571 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 75193, Title: A Buddha, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 72600 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127326, Title: The Hands, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 72670 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 418718, Title: Esteros, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 72802 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 420648, Title: The Bar, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 72822 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 399615, Title: White Coffin, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 27, 'name': 'Horror'}, {'id': 28, 'name': 'Action'}]
+ [x] Message 72878 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 389578, Title: Daemonium: Soldier of the Underworld, Genres: [{'id': 878, 'name': 'Science Fiction'}, {'id': 28, 'name': 'Action'}]
+ [x] Message 73322 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 262788, Title: The Games Maker, Genres: [{'id': 12, 'name': 'Adventure'}, {'id': 10751, 'name': 'Family'}]
+ [x] Message 73602 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 351067, Title: Bachelor Games, Genres: [{'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 12, 'name': 'Adventure'}, {'id': 53, 'name': 'Thriller'}, {'id': 27, 'name': 'Horror'}]
+ [x] Message 73871 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 413666, Title: Taekwondo, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 74407 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 428863, Title: Snuff 102, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 27, 'name': 'Horror'}]
+ [x] Message 74457 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 358505, Title: Our Last Tango, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 75608 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 444935, Title: Bromance, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 76008 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 405446, Title: The Human Surge, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 76038 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 71576, Title: Buenos Aires 100 KM, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 76108 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 374764, Title: How Most Things Work, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 76343 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 270909, Title: Refugiado, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 76532 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 124198, Title: Monobloc, Genres: []
+ [x] Message 76691 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 311215, Title: Roles in the Wind, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 76772 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 408537, Title: The Distinguished Citizen, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 76791 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 99896, Title: The Custodian, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 77120 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 16916, Title: A Boyfriend for My Wife, Genres: [{'id': 10749, 'name': 'Romance'}, {'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 77268 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 83266, Title: It's Not You, It's Me, Genres: [{'id': 10749, 'name': 'Romance'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 77273 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 394374, Title: At the End of the Tunnel, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 77378 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 82999, Title: Penumbra, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 77379 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 35026, Title: Lucky Luke, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 37, 'name': 'Western'}, {'id': 12, 'name': 'Adventure'}]
+ [x] Message 77515 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 389995, Title: Me casé con un boludo, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 77894 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 351454, Title: Neruda, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 77903 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 289180, Title: H., Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}, {'id': 878, 'name': 'Science Fiction'}]
+ [x] Message 78082 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 361251, Title: Road to La Paz, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 78329 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 257487, Title: Inevitable, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 78520 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 358505, Title: Our Last Tango, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 78760 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 382906, Title: Rara, Genres: [{'id': 10751, 'name': 'Family'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 79326 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 44282, Title: Plan B, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 79886 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 125619, Title: The forbidden education, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 99, 'name': 'Documentary'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 79932 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 124198, Title: Monobloc, Genres: []
+ [x] Message 80043 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 311215, Title: Roles in the Wind, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 80124 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 408537, Title: The Distinguished Citizen, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 80143 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 99896, Title: The Custodian, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 80472 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 360365, Title: Tini: The New Life of Violetta, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
+ [x] Message 81091 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 179302, Title: Ánima Buenos Aires, Genres: [{'id': 16, 'name': 'Animation'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 81192 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 289180, Title: H., Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}, {'id': 878, 'name': 'Science Fiction'}]
+ [x] Message 81234 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 361251, Title: Road to La Paz, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 81481 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 257487, Title: Inevitable, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 81672 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 416680, Title: Gilda, No Me Arrepiento de Este Amor, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
+ [x] Message 81890 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127304, Title: Dibu 3, Genres: []
+ [x] Message 81893 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 268297, Title: The Film Critic, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 81905 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 359736, Title: Human, Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 9648, 'name': 'Mystery'}]
+ [x] Message 81909 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 425942, Title: Black Snow, Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 82010 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 382906, Title: Rara, Genres: [{'id': 10751, 'name': 'Family'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 82478 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 360365, Title: Tini: The New Life of Violetta, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
+ [x] Message 82686 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 179302, Title: Ánima Buenos Aires, Genres: [{'id': 16, 'name': 'Animation'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 82787 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 416680, Title: Gilda, No Me Arrepiento de Este Amor, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
+ [x] Message 82885 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 127304, Title: Dibu 3, Genres: []
+ [x] Message 82888 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 268297, Title: The Film Critic, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 82900 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 359736, Title: Human, Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 9648, 'name': 'Mystery'}]
+ [x] Message 82904 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+[Middleware] FinalPacket b'{"client_id":0,"count":"192","header":"FINAL"}' enviado directamente.
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 425942, Title: Black Snow, Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 83149 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 64462, Title: Sammy and Me, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 83196 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 65795, Title: The Education of Fairies, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 83197 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 161024, Title: Lovely Loneliness, Genres: []
+ [x] Message 83198 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 109690, Title: En fuera de juego, Genres: []
+ [x] Message 83200 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 41924, Title: Night Watch, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 83782 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 444935, Title: Bromance, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 83991 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 405446, Title: The Human Surge, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 84021 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 71576, Title: Buenos Aires 100 KM, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 84091 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 336808, Title: Embrace of the Serpent, Genres: [{'id': 12, 'name': 'Adventure'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 84205 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 206292, Title: The Desert, Genres: [{'id': 878, 'name': 'Science Fiction'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 84238 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 374764, Title: How Most Things Work, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 84535 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 129933, Title: Paraguayan Hammock, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 84831 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 7274, Title: La León, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 84911 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 243934, Title: Pin Boy, Genres: []
+ [x] Message 84926 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 102873, Title: ¡Vivan las Antipodas!, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 85456 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 365002, Title: Kryptonita, Genres: [{'id': 14, 'name': 'Fantasy'}, {'id': 878, 'name': 'Science Fiction'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 85871 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 267579, Title: The Ardor, Genres: [{'id': 37, 'name': 'Western'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 85902 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 391617, Title: Kóblic, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 86048 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 353989, Title: Abzurdah, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 86092 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 398830, Title: La muerte de Jaime Roldós, Genres: [{'id': 99, 'name': 'Documentary'}]
+ [x] Message 86161 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 196324, Title: The Good Life, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 86467 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 359641, Title: Argentina, Genres: [{'id': 10402, 'name': 'Music'}, {'id': 99, 'name': 'Documentary'}]
+ [x] Message 86523 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 351809, Title: To Steal from a Thief, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 86629 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 418718, Title: Esteros, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 87161 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 420648, Title: The Bar, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 87181 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 399615, Title: White Coffin, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 27, 'name': 'Horror'}, {'id': 28, 'name': 'Action'}]
+ [x] Message 87237 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 389578, Title: Daemonium: Soldier of the Underworld, Genres: [{'id': 878, 'name': 'Science Fiction'}, {'id': 28, 'name': 'Action'}]
+ [x] Message 87681 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 351067, Title: Bachelor Games, Genres: [{'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 12, 'name': 'Adventure'}, {'id': 53, 'name': 'Thriller'}, {'id': 27, 'name': 'Horror'}]
+ [x] Message 88023 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 413666, Title: Taekwondo, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 88391 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+ [✓] Filtered and Published to filter_2000_argentina: ID: 428863, Title: Snuff 102, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 27, 'name': 'Horror'}]
+ [x] Message 88441 acknowledged
+ [x] Sent message to exchange filter_2000_argentina with routing key 
+[Middleware] FinalPacket b'{"client_id":1,"count":"192","header":"FINAL"}' enviado directamente.

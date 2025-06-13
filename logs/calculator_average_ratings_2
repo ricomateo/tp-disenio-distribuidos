@@ -1,0 +1,117 @@
+[Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
+[Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_2' (durable=False)...
+[Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_2' al exchange 'router_ratings_calculated'...
+StateFiles = []
+ [*] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_2
+[client - 0] Processed movie: 69278.0
+ [x] Message 1 acknowledged
+[client - 0] Processed movie: 48596.0
+ [x] Message 2 acknowledged
+[client - 1] Processed movie: 48596.0
+ [x] Message 3 acknowledged
+[client - 0] Processed movie: 80717.0
+ [x] Message 4 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 5 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 6 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 7 acknowledged
+[client - 1] Processed movie: 80717.0
+ [x] Message 8 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 9 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 10 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 11 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 12 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 13 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 14 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 15 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 16 acknowledged
+[client - 0] Processed movie: 47261.0
+ [x] Message 17 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 18 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 19 acknowledged
+[client - 1] Processed movie: 47261.0
+ [x] Message 20 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 21 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 22 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 23 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 24 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 25 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 26 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 27 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 28 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 29 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 30 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 31 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 32 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 33 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 34 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 35 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 36 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 37 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 38 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 39 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 40 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 41 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 42 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 43 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 44 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 45 acknowledged
+Resultados del cálculo: {'operation': 'average', 'key': 'id', 'id': 45722, 'value_field': 'rating', 'average': 3.38, 'count': 17, 'title': "Don't Look Down"}
+ [x] Sent message to queue calculator_average_ratings
+Resultados del cálculo: {'operation': 'average', 'key': 'id', 'id': 47261, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Carancho'}
+ [x] Sent message to queue calculator_average_ratings
+Resultados del cálculo: {'operation': 'average', 'key': 'id', 'id': 48596, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Ana and the Others'}
+ [x] Sent message to queue calculator_average_ratings
+Resultados del cálculo: {'operation': 'average', 'key': 'id', 'id': 80717, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Violeta Went to Heaven'}
+ [x] Sent message to queue calculator_average_ratings
+ [x] Sent message to queue calculator_average_ratingsfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":4,"header":"FINAL","node_id":"2"}' enviado directamente.
+Resultados del cálculo: {'operation': 'average', 'key': 'id', 'id': 45722, 'value_field': 'rating', 'average': 3.29, 'count': 21, 'title': "Don't Look Down"}
+ [x] Sent message to queue calculator_average_ratings
+Resultados del cálculo: {'operation': 'average', 'key': 'id', 'id': 47261, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Carancho'}
+ [x] Sent message to queue calculator_average_ratings
+Resultados del cálculo: {'operation': 'average', 'key': 'id', 'id': 48596, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Ana and the Others'}
+ [x] Sent message to queue calculator_average_ratings
+Resultados del cálculo: {'operation': 'average', 'key': 'id', 'id': 69278, 'value_field': 'rating', 'average': 2.0, 'count': 1, 'title': 'Phase 7'}
+ [x] Sent message to queue calculator_average_ratings
+Resultados del cálculo: {'operation': 'average', 'key': 'id', 'id': 80717, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Violeta Went to Heaven'}
+ [x] Sent message to queue calculator_average_ratings
+ [x] Sent message to queue calculator_average_ratingsfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":5,"header":"FINAL","node_id":"2"}' enviado directamente.

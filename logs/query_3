@@ -1,0 +1,32 @@
+[Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+ [~] Filtering movie fields: ['id', 'title', 'average']
+ [~] Sorting by average (descending, top 1)
+ [~] Sorting by average (ascending, top 1)
+ [*] Waiting for messages in calculator_average_ratings
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 16, 'value_field': 'rating', 'average': 3.93, 'count': 82, 'title': 'Dancer in the Dark'} with id: 1
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 45722, 'value_field': 'rating', 'average': 3.38, 'count': 17, 'title': "Don't Look Down"} with id: 1
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 128598, 'value_field': 'rating', 'average': 1.0, 'count': 1, 'title': 'Left for Dead'} with id: 1
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 47261, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Carancho'} with id: 1
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 1653, 'value_field': 'rating', 'average': 3.62, 'count': 75, 'title': 'The Motorcycle Diaries'} with id: 1
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 48596, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Ana and the Others'} with id: 1
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 1956, 'value_field': 'rating', 'average': 4.02, 'count': 25, 'title': 'Gerry'} with id: 1
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 80717, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Violeta Went to Heaven'} with id: 1
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 6636, 'value_field': 'rating', 'average': 3.5, 'count': 1, 'title': 'The Mugger'} with id: 1
+ [x] Sent message to exchange deliver with routing key 1
+ [x] Sent message to queue deliverfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":0,"header":"FINAL","node_id":"3"}' enviado directamente.
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 125619, 'value_field': 'rating', 'average': 4.0, 'count': 1, 'title': 'The forbidden education'} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 16, 'value_field': 'rating', 'average': 3.94, 'count': 83, 'title': 'Dancer in the Dark'} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 45722, 'value_field': 'rating', 'average': 3.29, 'count': 21, 'title': "Don't Look Down"} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 128598, 'value_field': 'rating', 'average': 1.0, 'count': 1, 'title': 'Left for Dead'} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 1653, 'value_field': 'rating', 'average': 3.62, 'count': 73, 'title': 'The Motorcycle Diaries'} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 47261, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Carancho'} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 1956, 'value_field': 'rating', 'average': 4.02, 'count': 25, 'title': 'Gerry'} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 48596, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Ana and the Others'} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 6636, 'value_field': 'rating', 'average': 3.75, 'count': 2, 'title': 'The Mugger'} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 69278, 'value_field': 'rating', 'average': 2.0, 'count': 1, 'title': 'Phase 7'} with id: 0
+ [DeliverNode] Movie added: {'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 80717, 'value_field': 'rating', 'average': 3.0, 'count': 1, 'title': 'Violeta Went to Heaven'} with id: 0
+ [x] Sent message to exchange deliver with routing key 0
+ [x] Sent message to queue deliverfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":0,"header":"FINAL","node_id":"3"}' enviado directamente.

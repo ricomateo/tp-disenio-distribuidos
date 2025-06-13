@@ -1,0 +1,931 @@
+[Gateway] Escuchando en 0.0.0.0:9999...
+[Gateway] Nueva conexión de ('172.18.0.76', 34212)
+[Middleware] Declarando exchange 'gateway' de tipo 'direct'...
+[Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[Middleware] Declarando cola '0' (durable=False)...
+[Middleware] Enlazando cola '0' al exchange 'deliver'...
+[Gateway] Nueva conexión de ('172.18.0.75', 55650)
+RECEIVED MSG_TYPE = 0
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+[Middleware] Declarando exchange 'gateway' de tipo 'direct'...
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+[Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+RECEIVED MSG_TYPE = 1
+[Middleware] Declarando cola '1' (durable=False)...
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+[Middleware] Enlazando cola '1' al exchange 'deliver'...
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 0
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 2
+[Gateway - Client 0] Archivo CSV recibido correctamente.
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+[Middleware] FinalPacket b'{"client_id":0,"count":46,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 0
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 2
+[Gateway - Client 1] Archivo CSV recibido correctamente.
+ [x] Sent message to exchange gateway with routing key movies_metadata.csv
+[Middleware] FinalPacket b'{"client_id":1,"count":46,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 0
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv [x] Sent message to exchange gateway with routing key ratings.csv
+
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 2
+[Gateway - Client 1] Archivo CSV recibido correctamente.
+ [x] Sent message to exchange gateway with routing key ratings.csv
+[Middleware] FinalPacket b'{"client_id":1,"count":101,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 0
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 2
+[Gateway - Client 0] Archivo CSV recibido correctamente.
+ [x] Sent message to exchange gateway with routing key ratings.csv
+[Middleware] FinalPacket b'{"client_id":0,"count":101,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 0
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1 [x] Sent message to exchange gateway with routing key credits.csv
+
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 2
+ [x] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 2
+[Gateway - Client 1] Archivo CSV recibido correctamente.
+[Gateway - Client 0] Archivo CSV recibido correctamente.
+ [x] Sent message to exchange gateway with routing key credits.csv
+[Middleware] FinalPacket b'{"client_id":1,"count":46,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 3
+[Client 1] Escuchando resultados en deliver...
+ [x] Sent message to exchange gateway with routing key credits.csv
+[Middleware] FinalPacket b'{"client_id":0,"count":46,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 3
+[Client 0] Escuchando resultados en deliver...
+ [*] Waiting for messages in 0
+ [*] Waiting for messages in 1
+[Gateway  - Client 0 - RESULT] Resultado final recibido:
+Top 5 by total (descending):
+value: United States of America | total: 120153886644
+value: France | total: 2256831838
+value: United Kingdom | total: 1611604610
+value: India | total: 1169682797
+value: Japan | total: 832585873
+[Gateway  - Client 1 - RESULT] Resultado final recibido:
+Top 1 by average (descending):
+id: 1956 | title: Gerry | average: 4.02
+
+Top 1 by average (ascending):
+id: 128598 | title: Left for Dead | average: 1.0
+[Gateway  - Client 0 - RESULT] Resultado final recibido:
+Top 1 by average (descending):
+id: 1956 | title: Gerry | average: 4.02
+
+Top 1 by average (ascending):
+id: 128598 | title: Left for Dead | average: 1.0
+[Gateway  - Client 1 - RESULT] Resultado final recibido:
+Top 10 by count (descending):
+value: Alejandro Awada | count: 1
+value: Alejandro Javier Bures | count: 1
+value: Anderson Gómez | count: 1
+value: Bárbara Santa-Cruz | count: 1
+value: Alfredo Martín | count: 1
+value: Antonella Costa | count: 1
+value: Carlos Areces | count: 1
+value: Carlos Clavijo Cobos | count: 1
+value: Anahí Martella | count: 1
+value: Eduardo Garza | count: 1
+[Gateway  - Client 0 - RESULT] Resultado final recibido:
+Top 10 by count (descending):
+value: Ricardo Darín | count: 12
+value: Valeria Bertuccelli | count: 6
+value: Alejandro Awada | count: 5
+value: Arturo Goetz | count: 5
+value: Diego Peretti | count: 5
+value: Inés Efron | count: 5
+value: Rafael Ferro | count: 5
+value: Rafael Spregelburd | count: 5
+value: Romina Paula | count: 5
+value: Adrián Suar | count: 4
+[Gateway  - Client 0 - RESULT] Resultado final recibido:
+title: La Cienaga | genres: Comedy, Drama
+title: Burnt Money | genres: Crime
+title: The City of No Limits | genres: Thriller, Drama
+title: The Holy Girl | genres: Drama, Foreign
+title: The Aura | genres: Crime, Drama, Thriller
+title: Bombón: The Dog | genres: Drama
+title: Nicotina | genres: Drama, Action, Comedy, Thriller
+title: Lost Embrace | genres: Drama, Foreign
+title: Whisky | genres: Comedy, Drama, Foreign
+title: Rolling Family | genres: Drama, Comedy
+title: The Method | genres: Drama, Thriller
+title: Every Stewardess Goes to Heaven | genres: Drama, Romance, Foreign
+title: Tetro | genres: Drama, Mystery
+title: The Secret in Their Eyes | genres: Crime, Drama, Mystery, Romance
+title: Liverpool | genres: Drama
+title: The Headless Woman | genres: Drama, Mystery, Thriller
+title: The Last Summer of La Boyita | genres: Drama
+title: The Appeared | genres: Horror, Thriller, Mystery
+title: The Fish Child | genres: Drama, Thriller, Romance, Foreign
+title: Cleopatra | genres: Drama, Comedy, Foreign
+title: Roma | genres: Drama, Foreign
+title: Conversations with Mother | genres: Comedy, Drama, Foreign
+title: The Education of Fairies | genres: Drama
+title: The Good Life | genres: Drama
+[Gateway  - Client 1 - RESULT] Resultado final recibido:
+Top 5 by total (descending):
+value: United States of America | total: 120153886644
+value: France | total: 2256831838
+value: United Kingdom | total: 1611604610
+value: India | total: 1169682797
+value: Japan | total: 832585873
+[Gateway  - Client 1 - RESULT] Resultado final recibido:
+title: La Cienaga | genres: Comedy, Drama
+title: Burnt Money | genres: Crime
+title: The City of No Limits | genres: Thriller, Drama
+title: Nicotina | genres: Drama, Action, Comedy, Thriller
+title: Lost Embrace | genres: Drama, Foreign
+title: Whisky | genres: Comedy, Drama, Foreign
+title: The Holy Girl | genres: Drama, Foreign
+title: The Aura | genres: Crime, Drama, Thriller
+title: Bombón: The Dog | genres: Drama
+title: Rolling Family | genres: Drama, Comedy
+title: The Method | genres: Drama, Thriller
+title: Every Stewardess Goes to Heaven | genres: Drama, Romance, Foreign
+title: Tetro | genres: Drama, Mystery
+title: The Secret in Their Eyes | genres: Crime, Drama, Mystery, Romance
+title: Liverpool | genres: Drama
+title: The Headless Woman | genres: Drama, Mystery, Thriller
+title: The Last Summer of La Boyita | genres: Drama
+title: The Appeared | genres: Horror, Thriller, Mystery
+title: The Fish Child | genres: Drama, Thriller, Romance, Foreign
+title: Cleopatra | genres: Drama, Comedy, Foreign
+title: Roma | genres: Drama, Foreign
+title: Conversations with Mother | genres: Comedy, Drama, Foreign
+title: The Education of Fairies | genres: Drama
+title: The Good Life | genres: Drama
+[Gateway  - Client 0 - RESULT] Resultado final recibido:
+Top 2 by ratio (descending):
+feeling: POS | ratio: 5668.6505 | count: 3091
+feeling: NEG | ratio: 5453.3976 | count: 2279
+[Client 0] Cerrando recursos del cliente
+[Middleware] Cola '0' eliminada.
+[Gateway  - Client 1 - RESULT] Resultado final recibido:
+Top 2 by ratio (descending):
+feeling: POS | ratio: 5668.6505 | count: 3091
+feeling: NEG | ratio: 5453.3976 | count: 2279
+[Client 1] Cerrando recursos del cliente
+[Middleware] Cola '1' eliminada.

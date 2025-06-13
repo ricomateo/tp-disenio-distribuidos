@@ -1,0 +1,532 @@
+2025-06-13 12:57:44.806959+00:00 [notice] <0.44.0> Application syslog exited with reason: stopped
+2025-06-13 12:57:44.811394+00:00 [notice] <0.254.0> Logging: switching to configured handler(s); following messages may not be visible in this log output
+[38;5;87m2025-06-13 12:57:44.811655+00:00 [notice] <0.254.0> Logging: configured log handlers are now ACTIVE[0m
+2025-06-13 12:57:44.817768+00:00 [info] <0.254.0> ra: starting system quorum_queues[0m
+2025-06-13 12:57:44.817790+00:00 [info] <0.254.0> starting Ra system: quorum_queues in directory: /var/lib/rabbitmq/mnesia/rabbit@5f53209f4664/quorum/rabbit@5f53209f4664[0m
+2025-06-13 12:57:44.859230+00:00 [info] <0.268.0> ra system 'quorum_queues' running pre init for 0 registered servers[0m
+2025-06-13 12:57:44.866403+00:00 [info] <0.269.0> ra: meta data store initialised for system quorum_queues. 0 record(s) recovered[0m
+[38;5;87m2025-06-13 12:57:44.875795+00:00 [notice] <0.274.0> WAL: ra_log_wal init, open tbls: ra_log_open_mem_tables, closed tbls: ra_log_closed_mem_tables[0m
+2025-06-13 12:57:44.884766+00:00 [info] <0.254.0> ra: starting system coordination[0m
+2025-06-13 12:57:44.884789+00:00 [info] <0.254.0> starting Ra system: coordination in directory: /var/lib/rabbitmq/mnesia/rabbit@5f53209f4664/coordination/rabbit@5f53209f4664[0m
+2025-06-13 12:57:44.885294+00:00 [info] <0.282.0> ra system 'coordination' running pre init for 0 registered servers[0m
+2025-06-13 12:57:44.885594+00:00 [info] <0.283.0> ra: meta data store initialised for system coordination. 0 record(s) recovered[0m
+[38;5;87m2025-06-13 12:57:44.885649+00:00 [notice] <0.288.0> WAL: ra_coordination_log_wal init, open tbls: ra_coordination_log_open_mem_tables, closed tbls: ra_coordination_log_closed_mem_tables[0m
+2025-06-13 12:57:44.886687+00:00 [info] <0.254.0> ra: starting system coordination[0m
+2025-06-13 12:57:44.886701+00:00 [info] <0.254.0> starting Ra system: coordination in directory: /var/lib/rabbitmq/mnesia/rabbit@5f53209f4664/coordination/rabbit@5f53209f4664[0m
+2025-06-13 12:57:44.942797+00:00 [info] <0.254.0> Waiting for Khepri leader for 30000 ms, 9 retries left[0m
+[38;5;87m2025-06-13 12:57:44.944455+00:00 [notice] <0.292.0> RabbitMQ metadata store: candidate -> leader in term: 1 machine version: 1[0m
+2025-06-13 12:57:44.949939+00:00 [info] <0.254.0> Khepri leader elected[0m
+2025-06-13 12:57:44.950032+00:00 [info] <0.254.0> Waiting for Khepri projections for 30000 ms, 9 retries left[0m
+2025-06-13 12:57:45.105281+00:00 [info] <0.254.0> [0m
+2025-06-13 12:57:45.105281+00:00 [info] <0.254.0>  Starting RabbitMQ 3.13.7 on Erlang 26.2.5.12 [jit][0m
+2025-06-13 12:57:45.105281+00:00 [info] <0.254.0>  Copyright (c) 2007-2024 Broadcom Inc and/or its subsidiaries[0m
+2025-06-13 12:57:45.105281+00:00 [info] <0.254.0>  Licensed under the MPL 2.0. Website: https://rabbitmq.com[0m
+
+  ##  ##      RabbitMQ 3.13.7
+  ##  ##
+  ##########  Copyright (c) 2007-2024 Broadcom Inc and/or its subsidiaries
+  ######  ##
+  ##########  Licensed under the MPL 2.0. Website: https://rabbitmq.com
+
+  Erlang:      26.2.5.12 [jit]
+  TLS Library: OpenSSL - OpenSSL 3.1.8 11 Feb 2025
+  Release series support status: see https://www.rabbitmq.com/release-information
+
+  Doc guides:  https://www.rabbitmq.com/docs
+  Support:     https://www.rabbitmq.com/docs/contact
+  Tutorials:   https://www.rabbitmq.com/tutorials
+  Monitoring:  https://www.rabbitmq.com/docs/monitoring
+  Upgrading:   https://www.rabbitmq.com/docs/upgrade
+
+  Logs: <stdout>
+
+  Config file(s): /etc/rabbitmq/conf.d/10-defaults.conf
+
+  Starting broker...2025-06-13 12:57:45.106085+00:00 [info] <0.254.0> [0m
+2025-06-13 12:57:45.106085+00:00 [info] <0.254.0>  node           : rabbit@5f53209f4664[0m
+2025-06-13 12:57:45.106085+00:00 [info] <0.254.0>  home dir       : /var/lib/rabbitmq[0m
+2025-06-13 12:57:45.106085+00:00 [info] <0.254.0>  config file(s) : /etc/rabbitmq/conf.d/10-defaults.conf[0m
+2025-06-13 12:57:45.106085+00:00 [info] <0.254.0>  cookie hash    : pJgk4FdzJTUvEcZHhQb6PA==[0m
+2025-06-13 12:57:45.106085+00:00 [info] <0.254.0>  log(s)         : <stdout>[0m
+2025-06-13 12:57:45.106085+00:00 [info] <0.254.0>  data dir       : /var/lib/rabbitmq/mnesia/rabbit@5f53209f4664[0m
+2025-06-13 12:57:45.298032+00:00 [info] <0.254.0> Running boot step pre_boot defined by app rabbit[0m
+2025-06-13 12:57:45.298078+00:00 [info] <0.254.0> Running boot step rabbit_global_counters defined by app rabbit[0m
+2025-06-13 12:57:45.298254+00:00 [info] <0.254.0> Running boot step rabbit_osiris_metrics defined by app rabbit[0m
+2025-06-13 12:57:45.298326+00:00 [info] <0.254.0> Running boot step rabbit_core_metrics defined by app rabbit[0m
+2025-06-13 12:57:45.298520+00:00 [info] <0.254.0> Running boot step rabbit_alarm defined by app rabbit[0m
+2025-06-13 12:57:45.305419+00:00 [info] <0.329.0> Memory high watermark set to 3135 MiB (3287300505 bytes) of 7837 MiB (8218251264 bytes) total[0m
+2025-06-13 12:57:45.307016+00:00 [info] <0.331.0> Enabling free disk space monitoring (disk free space: 39744589824, total memory: 8218251264)[0m
+2025-06-13 12:57:45.307042+00:00 [info] <0.331.0> Disk free limit set to 50MB[0m
+2025-06-13 12:57:45.307848+00:00 [info] <0.254.0> Running boot step code_server_cache defined by app rabbit[0m
+2025-06-13 12:57:45.307882+00:00 [info] <0.254.0> Running boot step file_handle_cache defined by app rabbit[0m
+2025-06-13 12:57:45.312490+00:00 [info] <0.334.0> Limiting to approx 1048479 file handles (943629 sockets)[0m
+2025-06-13 12:57:45.312572+00:00 [info] <0.335.0> FHC read buffering: OFF[0m
+2025-06-13 12:57:45.312595+00:00 [info] <0.335.0> FHC write buffering: ON[0m
+2025-06-13 12:57:45.312814+00:00 [info] <0.254.0> Running boot step worker_pool defined by app rabbit[0m
+2025-06-13 12:57:45.312850+00:00 [info] <0.315.0> Will use 8 processes for default worker pool[0m
+2025-06-13 12:57:45.312868+00:00 [info] <0.315.0> Starting worker pool 'worker_pool' with 8 processes in it[0m
+2025-06-13 12:57:45.313079+00:00 [info] <0.254.0> Running boot step database defined by app rabbit[0m
+2025-06-13 12:57:45.313280+00:00 [info] <0.254.0> Peer discovery: configured backend: rabbit_peer_discovery_classic_config[0m
+[38;5;87m2025-06-13 12:57:45.314033+00:00 [notice] <0.316.0> Feature flags: attempt to enable `detailed_queues_endpoint`...[0m
+[38;5;87m2025-06-13 12:57:45.353720+00:00 [notice] <0.316.0> Feature flags: `detailed_queues_endpoint` enabled[0m
+[38;5;87m2025-06-13 12:57:45.353782+00:00 [notice] <0.316.0> Feature flags: attempt to enable `quorum_queue_non_voters`...[0m
+[38;5;87m2025-06-13 12:57:45.393318+00:00 [notice] <0.316.0> Feature flags: `quorum_queue_non_voters` enabled[0m
+[38;5;87m2025-06-13 12:57:45.393435+00:00 [notice] <0.316.0> Feature flags: attempt to enable `stream_update_config_command`...[0m
+[38;5;87m2025-06-13 12:57:45.432365+00:00 [notice] <0.316.0> Feature flags: `stream_update_config_command` enabled[0m
+[38;5;87m2025-06-13 12:57:45.432431+00:00 [notice] <0.316.0> Feature flags: attempt to enable `stream_filtering`...[0m
+[38;5;87m2025-06-13 12:57:45.470351+00:00 [notice] <0.316.0> Feature flags: `stream_filtering` enabled[0m
+[38;5;87m2025-06-13 12:57:45.470405+00:00 [notice] <0.316.0> Feature flags: attempt to enable `stream_sac_coordinator_unblock_group`...[0m
+[38;5;87m2025-06-13 12:57:45.507502+00:00 [notice] <0.316.0> Feature flags: `stream_sac_coordinator_unblock_group` enabled[0m
+[38;5;87m2025-06-13 12:57:45.507572+00:00 [notice] <0.316.0> Feature flags: attempt to enable `restart_streams`...[0m
+[38;5;87m2025-06-13 12:57:45.551668+00:00 [notice] <0.316.0> Feature flags: `restart_streams` enabled[0m
+[38;5;87m2025-06-13 12:57:45.551777+00:00 [notice] <0.316.0> Feature flags: attempt to enable `message_containers`...[0m
+[38;5;87m2025-06-13 12:57:45.600963+00:00 [notice] <0.316.0> Feature flags: `message_containers` enabled[0m
+[38;5;87m2025-06-13 12:57:45.601084+00:00 [notice] <0.316.0> Feature flags: attempt to enable `message_containers_deaths_v2`...[0m
+[38;5;87m2025-06-13 12:57:45.643561+00:00 [notice] <0.316.0> Feature flags: `message_containers_deaths_v2` enabled[0m
+2025-06-13 12:57:45.643812+00:00 [info] <0.254.0> DB: virgin node -> run peer discovery[0m
+[38;5;214m2025-06-13 12:57:45.643832+00:00 [warning] <0.254.0> Classic peer discovery backend: list of nodes does not contain the local node [][0m
+[38;5;87m2025-06-13 12:57:45.651241+00:00 [notice] <0.44.0> Application mnesia exited with reason: stopped[0m
+2025-06-13 12:57:45.717790+00:00 [info] <0.254.0> Waiting for Mnesia tables for 30000 ms, 9 retries left[0m
+2025-06-13 12:57:45.717879+00:00 [info] <0.254.0> Successfully synced tables from a peer[0m
+2025-06-13 12:57:45.717913+00:00 [info] <0.254.0> Waiting for Mnesia tables for 30000 ms, 9 retries left[0m
+2025-06-13 12:57:45.717967+00:00 [info] <0.254.0> Successfully synced tables from a peer[0m
+2025-06-13 12:57:45.721175+00:00 [info] <0.254.0> Waiting for Mnesia tables for 30000 ms, 9 retries left[0m
+2025-06-13 12:57:45.721256+00:00 [info] <0.254.0> Successfully synced tables from a peer[0m
+2025-06-13 12:57:45.721331+00:00 [info] <0.254.0> Running boot step tracking_metadata_store defined by app rabbit[0m
+2025-06-13 12:57:45.721361+00:00 [info] <0.562.0> Setting up a table for connection tracking on this node: tracked_connection[0m
+2025-06-13 12:57:45.721383+00:00 [info] <0.562.0> Setting up a table for per-vhost connection counting on this node: tracked_connection_per_vhost[0m
+2025-06-13 12:57:45.721408+00:00 [info] <0.562.0> Setting up a table for per-user connection counting on this node: tracked_connection_per_user[0m
+2025-06-13 12:57:45.721431+00:00 [info] <0.562.0> Setting up a table for channel tracking on this node: tracked_channel[0m
+2025-06-13 12:57:45.721457+00:00 [info] <0.562.0> Setting up a table for channel tracking on this node: tracked_channel_per_user[0m
+2025-06-13 12:57:45.721487+00:00 [info] <0.254.0> Running boot step networking_metadata_store defined by app rabbit[0m
+2025-06-13 12:57:45.721511+00:00 [info] <0.254.0> Running boot step feature_flags defined by app rabbit[0m
+2025-06-13 12:57:45.721564+00:00 [info] <0.254.0> Running boot step codec_correctness_check defined by app rabbit[0m
+2025-06-13 12:57:45.721574+00:00 [info] <0.254.0> Running boot step external_infrastructure defined by app rabbit[0m
+2025-06-13 12:57:45.721588+00:00 [info] <0.254.0> Running boot step rabbit_event defined by app rabbit[0m
+2025-06-13 12:57:45.721685+00:00 [info] <0.254.0> Running boot step rabbit_registry defined by app rabbit[0m
+2025-06-13 12:57:45.721725+00:00 [info] <0.254.0> Running boot step rabbit_auth_mechanism_amqplain defined by app rabbit[0m
+2025-06-13 12:57:45.721760+00:00 [info] <0.254.0> Running boot step rabbit_auth_mechanism_cr_demo defined by app rabbit[0m
+2025-06-13 12:57:45.721783+00:00 [info] <0.254.0> Running boot step rabbit_auth_mechanism_plain defined by app rabbit[0m
+2025-06-13 12:57:45.721798+00:00 [info] <0.254.0> Running boot step rabbit_exchange_type_direct defined by app rabbit[0m
+2025-06-13 12:57:45.721816+00:00 [info] <0.254.0> Running boot step rabbit_exchange_type_fanout defined by app rabbit[0m
+2025-06-13 12:57:45.721828+00:00 [info] <0.254.0> Running boot step rabbit_exchange_type_headers defined by app rabbit[0m
+2025-06-13 12:57:45.721845+00:00 [info] <0.254.0> Running boot step rabbit_exchange_type_topic defined by app rabbit[0m
+2025-06-13 12:57:45.721867+00:00 [info] <0.254.0> Running boot step rabbit_mirror_queue_mode_all defined by app rabbit[0m
+2025-06-13 12:57:45.721885+00:00 [info] <0.254.0> Running boot step rabbit_mirror_queue_mode_exactly defined by app rabbit[0m
+2025-06-13 12:57:45.721900+00:00 [info] <0.254.0> Running boot step rabbit_mirror_queue_mode_nodes defined by app rabbit[0m
+2025-06-13 12:57:45.721912+00:00 [info] <0.254.0> Running boot step rabbit_priority_queue defined by app rabbit[0m
+2025-06-13 12:57:45.721925+00:00 [info] <0.254.0> Priority queues enabled, real BQ is rabbit_variable_queue[0m
+2025-06-13 12:57:45.721946+00:00 [info] <0.254.0> Running boot step rabbit_queue_location_client_local defined by app rabbit[0m
+2025-06-13 12:57:45.721967+00:00 [info] <0.254.0> Running boot step rabbit_queue_location_min_masters defined by app rabbit[0m
+2025-06-13 12:57:45.722022+00:00 [info] <0.254.0> Running boot step rabbit_queue_location_random defined by app rabbit[0m
+2025-06-13 12:57:45.722044+00:00 [info] <0.254.0> Running boot step kernel_ready defined by app rabbit[0m
+2025-06-13 12:57:45.722053+00:00 [info] <0.254.0> Running boot step rabbit_sysmon_minder defined by app rabbit[0m
+2025-06-13 12:57:45.722110+00:00 [info] <0.254.0> Running boot step rabbit_epmd_monitor defined by app rabbit[0m
+2025-06-13 12:57:45.722787+00:00 [info] <0.570.0> epmd monitor knows us, inter-node communication (distribution) port: 25672[0m
+2025-06-13 12:57:45.722839+00:00 [info] <0.254.0> Running boot step guid_generator defined by app rabbit[0m
+2025-06-13 12:57:45.723614+00:00 [info] <0.254.0> Running boot step rabbit_node_monitor defined by app rabbit[0m
+2025-06-13 12:57:45.723750+00:00 [info] <0.574.0> Starting rabbit_node_monitor (in ignore mode)[0m
+2025-06-13 12:57:45.723797+00:00 [info] <0.254.0> Running boot step delegate_sup defined by app rabbit[0m
+2025-06-13 12:57:45.724059+00:00 [info] <0.254.0> Running boot step rabbit_memory_monitor defined by app rabbit[0m
+2025-06-13 12:57:45.724132+00:00 [info] <0.254.0> Running boot step rabbit_fifo_dlx_sup defined by app rabbit[0m
+2025-06-13 12:57:45.724188+00:00 [info] <0.254.0> Running boot step core_initialized defined by app rabbit[0m
+2025-06-13 12:57:45.724206+00:00 [info] <0.254.0> Running boot step rabbit_channel_tracking_handler defined by app rabbit[0m
+2025-06-13 12:57:45.724243+00:00 [info] <0.254.0> Running boot step rabbit_connection_tracking_handler defined by app rabbit[0m
+2025-06-13 12:57:45.724256+00:00 [info] <0.254.0> Running boot step rabbit_definitions_hashing defined by app rabbit[0m
+2025-06-13 12:57:45.724282+00:00 [info] <0.254.0> Running boot step rabbit_exchange_parameters defined by app rabbit[0m
+2025-06-13 12:57:45.738738+00:00 [info] <0.254.0> Running boot step rabbit_mirror_queue_misc defined by app rabbit[0m
+2025-06-13 12:57:45.739022+00:00 [info] <0.254.0> Running boot step rabbit_policies defined by app rabbit[0m
+2025-06-13 12:57:45.739135+00:00 [info] <0.254.0> Running boot step rabbit_policy defined by app rabbit[0m
+2025-06-13 12:57:45.739159+00:00 [info] <0.254.0> Running boot step rabbit_queue_location_validator defined by app rabbit[0m
+2025-06-13 12:57:45.739174+00:00 [info] <0.254.0> Running boot step rabbit_quorum_memory_manager defined by app rabbit[0m
+2025-06-13 12:57:45.739199+00:00 [info] <0.254.0> Running boot step rabbit_quorum_queue defined by app rabbit[0m
+2025-06-13 12:57:45.739228+00:00 [info] <0.254.0> Running boot step rabbit_stream_coordinator defined by app rabbit[0m
+2025-06-13 12:57:45.739366+00:00 [info] <0.254.0> Running boot step rabbit_vhost_limit defined by app rabbit[0m
+2025-06-13 12:57:45.739438+00:00 [info] <0.254.0> Running boot step rabbit_federation_parameters defined by app rabbitmq_federation[0m
+2025-06-13 12:57:45.739538+00:00 [info] <0.254.0> Running boot step rabbit_federation_supervisor defined by app rabbitmq_federation[0m
+2025-06-13 12:57:45.743181+00:00 [info] <0.254.0> Running boot step rabbit_federation_queue defined by app rabbitmq_federation[0m
+2025-06-13 12:57:45.743245+00:00 [info] <0.254.0> Running boot step rabbit_federation_upstream_exchange defined by app rabbitmq_federation[0m
+2025-06-13 12:57:45.743270+00:00 [info] <0.254.0> Running boot step rabbit_mgmt_reset_handler defined by app rabbitmq_management[0m
+2025-06-13 12:57:45.743298+00:00 [info] <0.254.0> Running boot step rabbit_mgmt_db_handler defined by app rabbitmq_management_agent[0m
+2025-06-13 12:57:45.743312+00:00 [info] <0.254.0> Management plugin: using rates mode 'basic'[0m
+2025-06-13 12:57:45.743389+00:00 [info] <0.254.0> Running boot step recovery defined by app rabbit[0m
+2025-06-13 12:57:45.749934+00:00 [info] <0.254.0> Running boot step empty_db_check defined by app rabbit[0m
+2025-06-13 12:57:45.749981+00:00 [info] <0.254.0> Will seed default virtual host and user...[0m
+2025-06-13 12:57:45.750033+00:00 [info] <0.254.0> Adding vhost '/' (description: 'Default virtual host', tags: [])[0m
+2025-06-13 12:57:45.753502+00:00 [info] <0.634.0> Making sure data directory '/var/lib/rabbitmq/mnesia/rabbit@5f53209f4664/msg_stores/vhosts/628WB79CIFDYO9LJI6DKMI09L' for vhost '/' exists[0m
+2025-06-13 12:57:45.754106+00:00 [info] <0.634.0> Setting segment_entry_count for vhost '/' with 0 queues to '2048'[0m
+2025-06-13 12:57:45.758695+00:00 [info] <0.634.0> Starting message stores for vhost '/'[0m
+2025-06-13 12:57:45.758788+00:00 [info] <0.643.0> Message store "628WB79CIFDYO9LJI6DKMI09L/msg_store_transient": using rabbit_msg_store_ets_index to provide index[0m
+2025-06-13 12:57:45.759346+00:00 [info] <0.634.0> Started message store of type transient for vhost '/'[0m
+2025-06-13 12:57:45.759399+00:00 [info] <0.647.0> Message store "628WB79CIFDYO9LJI6DKMI09L/msg_store_persistent": using rabbit_msg_store_ets_index to provide index[0m
+[38;5;214m2025-06-13 12:57:45.759614+00:00 [warning] <0.647.0> Message store "628WB79CIFDYO9LJI6DKMI09L/msg_store_persistent": rebuilding indices from scratch[0m
+2025-06-13 12:57:45.759919+00:00 [info] <0.634.0> Started message store of type persistent for vhost '/'[0m
+2025-06-13 12:57:45.759970+00:00 [info] <0.634.0> Recovering 0 queues of type rabbit_classic_queue took 5ms[0m
+2025-06-13 12:57:45.759985+00:00 [info] <0.634.0> Recovering 0 queues of type rabbit_quorum_queue took 0ms[0m
+2025-06-13 12:57:45.760030+00:00 [info] <0.634.0> Recovering 0 queues of type rabbit_stream_queue took 0ms[0m
+2025-06-13 12:57:45.761045+00:00 [info] <0.254.0> Created user 'guest'[0m
+2025-06-13 12:57:45.761398+00:00 [info] <0.254.0> Successfully set user tags for user 'guest' to [administrator][0m
+2025-06-13 12:57:45.761783+00:00 [info] <0.254.0> Successfully set permissions for user 'guest' in virtual host '/' to '.*', '.*', '.*'[0m
+2025-06-13 12:57:45.761845+00:00 [info] <0.254.0> Running boot step rabbit_observer_cli defined by app rabbit[0m
+2025-06-13 12:57:45.761925+00:00 [info] <0.254.0> Running boot step rabbit_looking_glass defined by app rabbit[0m
+2025-06-13 12:57:45.761944+00:00 [info] <0.254.0> Running boot step rabbit_core_metrics_gc defined by app rabbit[0m
+2025-06-13 12:57:45.762005+00:00 [info] <0.254.0> Running boot step background_gc defined by app rabbit[0m
+2025-06-13 12:57:45.762038+00:00 [info] <0.254.0> Running boot step routing_ready defined by app rabbit[0m
+2025-06-13 12:57:45.762047+00:00 [info] <0.254.0> Running boot step pre_flight defined by app rabbit[0m
+2025-06-13 12:57:45.762063+00:00 [info] <0.254.0> Running boot step notify_cluster defined by app rabbit[0m
+2025-06-13 12:57:45.762075+00:00 [info] <0.254.0> Running boot step networking defined by app rabbit[0m
+2025-06-13 12:57:45.762085+00:00 [info] <0.254.0> Running boot step rabbit_quorum_queue_periodic_membership_reconciliation defined by app rabbit[0m
+2025-06-13 12:57:45.762149+00:00 [info] <0.254.0> Running boot step definition_import_worker_pool defined by app rabbit[0m
+2025-06-13 12:57:45.762176+00:00 [info] <0.315.0> Starting worker pool 'definition_import_pool' with 8 processes in it[0m
+2025-06-13 12:57:45.762328+00:00 [info] <0.254.0> Running boot step cluster_name defined by app rabbit[0m
+2025-06-13 12:57:45.762371+00:00 [info] <0.254.0> Initialising internal cluster ID to 'rabbitmq-cluster-id--6WjyzJt34VfZT96ac9dPg'[0m
+2025-06-13 12:57:45.762789+00:00 [info] <0.254.0> Running boot step virtual_host_reconciliation defined by app rabbit[0m
+2025-06-13 12:57:45.762842+00:00 [info] <0.254.0> Running boot step direct_client defined by app rabbit[0m
+2025-06-13 12:57:45.762866+00:00 [info] <0.254.0> Running boot step rabbit_federation_exchange defined by app rabbitmq_federation[0m
+2025-06-13 12:57:45.762930+00:00 [info] <0.254.0> Running boot step rabbit_management_load_definitions defined by app rabbitmq_management[0m
+2025-06-13 12:57:45.762971+00:00 [info] <0.688.0> Resetting node maintenance status[0m
+[38;5;214m2025-06-13 12:57:45.883521+00:00 [warning] <0.717.0> Deprecated features: `management_metrics_collection`: Feature `management_metrics_collection` is deprecated.[0m
+[38;5;214m2025-06-13 12:57:45.883521+00:00 [warning] <0.717.0> By default, this feature can still be used for now.[0m
+[38;5;214m2025-06-13 12:57:45.883521+00:00 [warning] <0.717.0> Its use will not be permitted by default in a future minor RabbitMQ version and the feature will be removed from a future major RabbitMQ version; actual versions to be determined.[0m
+[38;5;214m2025-06-13 12:57:45.883521+00:00 [warning] <0.717.0> To continue using this feature when it is not permitted by default, set the following parameter in your configuration:[0m
+[38;5;214m2025-06-13 12:57:45.883521+00:00 [warning] <0.717.0>     "deprecated_features.permit.management_metrics_collection = true"[0m
+[38;5;214m2025-06-13 12:57:45.883521+00:00 [warning] <0.717.0> To test RabbitMQ as if the feature was removed, set this in your configuration:[0m
+[38;5;214m2025-06-13 12:57:45.883521+00:00 [warning] <0.717.0>     "deprecated_features.permit.management_metrics_collection = false"[0m
+2025-06-13 12:57:47.768461+00:00 [info] <0.754.0> Management plugin: HTTP (non-TLS) listener started on port 15672[0m
+2025-06-13 12:57:47.768555+00:00 [info] <0.784.0> Statistics database started.[0m
+2025-06-13 12:57:47.768591+00:00 [info] <0.783.0> Starting worker pool 'management_worker_pool' with 3 processes in it[0m
+2025-06-13 12:57:47.771973+00:00 [info] <0.802.0> Prometheus metrics: HTTP (non-TLS) listener started on port 15692[0m
+2025-06-13 12:57:47.772049+00:00 [info] <0.688.0> Ready to start client connection listeners[0m
+2025-06-13 12:57:47.772881+00:00 [info] <0.846.0> started TCP listener on [::]:5672[0m
+ completed with 5 plugins.
+2025-06-13 12:57:47.852357+00:00 [info] <0.688.0> Server startup complete; 5 plugins started.[0m
+2025-06-13 12:57:47.852357+00:00 [info] <0.688.0>  * rabbitmq_prometheus[0m
+2025-06-13 12:57:47.852357+00:00 [info] <0.688.0>  * rabbitmq_federation[0m
+2025-06-13 12:57:47.852357+00:00 [info] <0.688.0>  * rabbitmq_management[0m
+2025-06-13 12:57:47.852357+00:00 [info] <0.688.0>  * rabbitmq_management_agent[0m
+2025-06-13 12:57:47.852357+00:00 [info] <0.688.0>  * rabbitmq_web_dispatch[0m
+2025-06-13 12:57:47.975210+00:00 [info] <0.9.0> Time to start RabbitMQ: 5538 ms[0m
+2025-06-13 12:57:53.050366+00:00 [info] <0.859.0> accepting AMQP connection <0.859.0> (172.18.0.3:38390 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.055096+00:00 [info] <0.859.0> connection <0.859.0> (172.18.0.3:38390 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.080958+00:00 [info] <0.877.0> accepting AMQP connection <0.877.0> (172.18.0.3:38394 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.087400+00:00 [info] <0.877.0> connection <0.877.0> (172.18.0.3:38394 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.118637+00:00 [info] <0.897.0> accepting AMQP connection <0.897.0> (172.18.0.3:38400 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.120060+00:00 [info] <0.900.0> accepting AMQP connection <0.900.0> (172.18.0.5:46720 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.124395+00:00 [info] <0.903.0> accepting AMQP connection <0.903.0> (172.18.0.6:51940 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.131864+00:00 [info] <0.903.0> connection <0.903.0> (172.18.0.6:51940 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.133295+00:00 [info] <0.897.0> connection <0.897.0> (172.18.0.3:38400 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.138703+00:00 [info] <0.900.0> connection <0.900.0> (172.18.0.5:46720 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.152241+00:00 [info] <0.948.0> accepting AMQP connection <0.948.0> (172.18.0.6:51950 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.157265+00:00 [info] <0.948.0> connection <0.948.0> (172.18.0.6:51950 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.158949+00:00 [info] <0.964.0> accepting AMQP connection <0.964.0> (172.18.0.3:38402 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.165114+00:00 [info] <0.956.0> accepting AMQP connection <0.956.0> (172.18.0.5:46726 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.163361+00:00 [info] <0.964.0> connection <0.964.0> (172.18.0.3:38402 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.171057+00:00 [info] <0.986.0> accepting AMQP connection <0.986.0> (172.18.0.6:51964 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.172818+00:00 [info] <0.986.0> connection <0.986.0> (172.18.0.6:51964 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.173110+00:00 [info] <0.956.0> connection <0.956.0> (172.18.0.5:46726 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.185829+00:00 [info] <0.1016.0> accepting AMQP connection <0.1016.0> (172.18.0.5:46730 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.205580+00:00 [info] <0.1016.0> connection <0.1016.0> (172.18.0.5:46730 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.366310+00:00 [info] <0.1037.0> accepting AMQP connection <0.1037.0> (172.18.0.8:54674 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.368752+00:00 [info] <0.1040.0> accepting AMQP connection <0.1040.0> (172.18.0.7:38308 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.375510+00:00 [info] <0.1040.0> connection <0.1040.0> (172.18.0.7:38308 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.377386+00:00 [info] <0.1037.0> connection <0.1037.0> (172.18.0.8:54674 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.383818+00:00 [info] <0.1068.0> accepting AMQP connection <0.1068.0> (172.18.0.8:54690 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.390047+00:00 [info] <0.1068.0> connection <0.1068.0> (172.18.0.8:54690 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.390523+00:00 [info] <0.1080.0> accepting AMQP connection <0.1080.0> (172.18.0.7:38310 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.405470+00:00 [info] <0.1080.0> connection <0.1080.0> (172.18.0.7:38310 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.412162+00:00 [info] <0.1101.0> accepting AMQP connection <0.1101.0> (172.18.0.4:37550 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.417047+00:00 [info] <0.1104.0> accepting AMQP connection <0.1104.0> (172.18.0.8:54692 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.418508+00:00 [info] <0.1107.0> accepting AMQP connection <0.1107.0> (172.18.0.7:38324 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.423898+00:00 [info] <0.1101.0> connection <0.1101.0> (172.18.0.4:37550 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.429593+00:00 [info] <0.1104.0> connection <0.1104.0> (172.18.0.8:54692 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.433399+00:00 [info] <0.1107.0> connection <0.1107.0> (172.18.0.7:38324 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.450269+00:00 [info] <0.1145.0> accepting AMQP connection <0.1145.0> (172.18.0.4:37564 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.457316+00:00 [info] <0.1145.0> connection <0.1145.0> (172.18.0.4:37564 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.508005+00:00 [info] <0.1175.0> accepting AMQP connection <0.1175.0> (172.18.0.8:54698 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.512112+00:00 [info] <0.1178.0> accepting AMQP connection <0.1178.0> (172.18.0.4:37568 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.524898+00:00 [info] <0.1175.0> connection <0.1175.0> (172.18.0.8:54698 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.525548+00:00 [info] <0.1178.0> connection <0.1178.0> (172.18.0.4:37568 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.539195+00:00 [info] <0.1206.0> accepting AMQP connection <0.1206.0> (172.18.0.8:54704 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.554295+00:00 [info] <0.1206.0> connection <0.1206.0> (172.18.0.8:54704 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.561422+00:00 [info] <0.1224.0> accepting AMQP connection <0.1224.0> (172.18.0.4:37574 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.562344+00:00 [info] <0.1219.0> accepting AMQP connection <0.1219.0> (172.18.0.9:34138 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.566464+00:00 [info] <0.1219.0> connection <0.1219.0> (172.18.0.9:34138 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.571393+00:00 [info] <0.1227.0> accepting AMQP connection <0.1227.0> (172.18.0.17:33376 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.574967+00:00 [info] <0.1240.0> accepting AMQP connection <0.1240.0> (172.18.0.8:54716 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.578623+00:00 [info] <0.1227.0> connection <0.1227.0> (172.18.0.17:33376 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.580299+00:00 [info] <0.1224.0> connection <0.1224.0> (172.18.0.4:37574 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.581107+00:00 [info] <0.1253.0> accepting AMQP connection <0.1253.0> (172.18.0.9:34154 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.588236+00:00 [info] <0.1240.0> connection <0.1240.0> (172.18.0.8:54716 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.595700+00:00 [info] <0.1253.0> connection <0.1253.0> (172.18.0.9:34154 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.601129+00:00 [info] <0.1298.0> accepting AMQP connection <0.1298.0> (172.18.0.12:51318 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.603616+00:00 [info] <0.1295.0> accepting AMQP connection <0.1295.0> (172.18.0.9:34166 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.606322+00:00 [info] <0.1305.0> accepting AMQP connection <0.1305.0> (172.18.0.13:34310 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.607354+00:00 [info] <0.1298.0> connection <0.1298.0> (172.18.0.12:51318 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.608794+00:00 [info] <0.1295.0> connection <0.1295.0> (172.18.0.9:34166 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.612888+00:00 [info] <0.1305.0> connection <0.1305.0> (172.18.0.13:34310 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.613585+00:00 [info] <0.1331.0> accepting AMQP connection <0.1331.0> (172.18.0.12:51334 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.615884+00:00 [info] <0.1347.0> accepting AMQP connection <0.1347.0> (172.18.0.16:46746 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.618696+00:00 [info] <0.1331.0> connection <0.1331.0> (172.18.0.12:51334 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.620472+00:00 [info] <0.1347.0> connection <0.1347.0> (172.18.0.16:46746 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.628425+00:00 [info] <0.1383.0> accepting AMQP connection <0.1383.0> (172.18.0.17:33378 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.632520+00:00 [info] <0.1383.0> connection <0.1383.0> (172.18.0.17:33378 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.639710+00:00 [info] <0.1386.0> accepting AMQP connection <0.1386.0> (172.18.0.13:34318 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.640066+00:00 [info] <0.1400.0> accepting AMQP connection <0.1400.0> (172.18.0.16:46760 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.647128+00:00 [info] <0.1400.0> connection <0.1400.0> (172.18.0.16:46760 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.647938+00:00 [info] <0.1386.0> connection <0.1386.0> (172.18.0.13:34318 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.650329+00:00 [info] <0.1423.0> accepting AMQP connection <0.1423.0> (172.18.0.11:33360 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.654512+00:00 [info] <0.1423.0> connection <0.1423.0> (172.18.0.11:33360 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.661938+00:00 [info] <0.1447.0> accepting AMQP connection <0.1447.0> (172.18.0.11:33370 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.671903+00:00 [info] <0.1447.0> connection <0.1447.0> (172.18.0.11:33370 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.673999+00:00 [info] <0.1459.0> accepting AMQP connection <0.1459.0> (172.18.0.15:59650 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.685302+00:00 [info] <0.1459.0> connection <0.1459.0> (172.18.0.15:59650 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.686536+00:00 [info] <0.1478.0> accepting AMQP connection <0.1478.0> (172.18.0.10:38414 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.688777+00:00 [info] <0.1482.0> accepting AMQP connection <0.1482.0> (172.18.0.15:59666 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.689649+00:00 [info] <0.1478.0> connection <0.1478.0> (172.18.0.10:38414 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.691022+00:00 [info] <0.1482.0> connection <0.1482.0> (172.18.0.15:59666 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.702639+00:00 [info] <0.1515.0> accepting AMQP connection <0.1515.0> (172.18.0.10:38420 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.705627+00:00 [info] <0.1515.0> connection <0.1515.0> (172.18.0.10:38420 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.714888+00:00 [info] <0.1534.0> accepting AMQP connection <0.1534.0> (172.18.0.15:59668 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.719815+00:00 [info] <0.1534.0> connection <0.1534.0> (172.18.0.15:59668 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.722633+00:00 [info] <0.1542.0> accepting AMQP connection <0.1542.0> (172.18.0.10:38428 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.730123+00:00 [info] <0.1542.0> connection <0.1542.0> (172.18.0.10:38428 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.741411+00:00 [info] <0.1566.0> accepting AMQP connection <0.1566.0> (172.18.0.10:38442 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.745872+00:00 [info] <0.1569.0> accepting AMQP connection <0.1569.0> (172.18.0.19:41766 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.748512+00:00 [info] <0.1566.0> connection <0.1566.0> (172.18.0.10:38442 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.752423+00:00 [info] <0.1582.0> accepting AMQP connection <0.1582.0> (172.18.0.15:59684 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.758512+00:00 [info] <0.1585.0> accepting AMQP connection <0.1585.0> (172.18.0.10:38446 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.765769+00:00 [info] <0.1582.0> connection <0.1582.0> (172.18.0.15:59684 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.779862+00:00 [info] <0.1603.0> accepting AMQP connection <0.1603.0> (172.18.0.27:48224 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.782274+00:00 [info] <0.1585.0> connection <0.1585.0> (172.18.0.10:38446 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.783501+00:00 [info] <0.1569.0> connection <0.1569.0> (172.18.0.19:41766 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.798001+00:00 [info] <0.1622.0> accepting AMQP connection <0.1622.0> (172.18.0.19:41768 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.805748+00:00 [info] <0.1603.0> connection <0.1603.0> (172.18.0.27:48224 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.818692+00:00 [info] <0.1622.0> connection <0.1622.0> (172.18.0.19:41768 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.821790+00:00 [info] <0.1655.0> accepting AMQP connection <0.1655.0> (172.18.0.22:45428 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.824895+00:00 [info] <0.1659.0> accepting AMQP connection <0.1659.0> (172.18.0.19:41776 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.830502+00:00 [info] <0.1662.0> accepting AMQP connection <0.1662.0> (172.18.0.27:48232 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.838845+00:00 [info] <0.1655.0> connection <0.1655.0> (172.18.0.22:45428 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.861324+00:00 [info] <0.1678.0> accepting AMQP connection <0.1678.0> (172.18.0.20:48818 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.861936+00:00 [info] <0.1686.0> accepting AMQP connection <0.1686.0> (172.18.0.23:32958 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.862215+00:00 [info] <0.1662.0> connection <0.1662.0> (172.18.0.27:48232 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.862480+00:00 [info] <0.1659.0> connection <0.1659.0> (172.18.0.19:41776 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.870467+00:00 [info] <0.1699.0> accepting AMQP connection <0.1699.0> (172.18.0.22:45442 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.870614+00:00 [info] <0.1702.0> accepting AMQP connection <0.1702.0> (172.18.0.19:41786 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.870735+00:00 [info] <0.1683.0> accepting AMQP connection <0.1683.0> (172.18.0.14:38366 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.870962+00:00 [info] <0.1686.0> connection <0.1686.0> (172.18.0.23:32958 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.873266+00:00 [info] <0.1683.0> connection <0.1683.0> (172.18.0.14:38366 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.873356+00:00 [info] <0.1678.0> connection <0.1678.0> (172.18.0.20:48818 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.880024+00:00 [info] <0.1699.0> connection <0.1699.0> (172.18.0.22:45442 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.880127+00:00 [info] <0.1702.0> connection <0.1702.0> (172.18.0.19:41786 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.883733+00:00 [info] <0.1763.0> accepting AMQP connection <0.1763.0> (172.18.0.23:32972 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.885521+00:00 [info] <0.1771.0> accepting AMQP connection <0.1771.0> (172.18.0.19:41800 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.888536+00:00 [info] <0.1763.0> connection <0.1763.0> (172.18.0.23:32972 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.888620+00:00 [info] <0.1771.0> connection <0.1771.0> (172.18.0.19:41800 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.894798+00:00 [info] <0.1796.0> accepting AMQP connection <0.1796.0> (172.18.0.22:45456 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.895058+00:00 [info] <0.1799.0> accepting AMQP connection <0.1799.0> (172.18.0.23:32976 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.908340+00:00 [info] <0.1807.0> accepting AMQP connection <0.1807.0> (172.18.0.20:48830 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.914953+00:00 [info] <0.1799.0> connection <0.1799.0> (172.18.0.23:32976 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.916841+00:00 [info] <0.1807.0> connection <0.1807.0> (172.18.0.20:48830 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.919809+00:00 [info] <0.1796.0> connection <0.1796.0> (172.18.0.22:45456 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.923373+00:00 [info] <0.1846.0> accepting AMQP connection <0.1846.0> (172.18.0.21:40072 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.929516+00:00 [info] <0.1849.0> accepting AMQP connection <0.1849.0> (172.18.0.20:48844 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.937234+00:00 [info] <0.1846.0> connection <0.1846.0> (172.18.0.21:40072 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.948807+00:00 [info] <0.1849.0> connection <0.1849.0> (172.18.0.20:48844 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.961331+00:00 [info] <0.1882.0> accepting AMQP connection <0.1882.0> (172.18.0.14:38374 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.964767+00:00 [info] <0.1875.0> accepting AMQP connection <0.1875.0> (172.18.0.28:54452 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.967433+00:00 [info] <0.1882.0> connection <0.1882.0> (172.18.0.14:38374 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.967926+00:00 [info] <0.1897.0> accepting AMQP connection <0.1897.0> (172.18.0.21:40074 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:53.977015+00:00 [info] <0.1897.0> connection <0.1897.0> (172.18.0.21:40074 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:53.978486+00:00 [info] <0.1875.0> connection <0.1875.0> (172.18.0.28:54452 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.000390+00:00 [info] <0.1934.0> accepting AMQP connection <0.1934.0> (172.18.0.28:54462 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.000914+00:00 [info] <0.1931.0> accepting AMQP connection <0.1931.0> (172.18.0.21:40088 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.005052+00:00 [info] <0.1934.0> connection <0.1934.0> (172.18.0.28:54462 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.008068+00:00 [info] <0.1931.0> connection <0.1931.0> (172.18.0.21:40088 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.010680+00:00 [info] <0.1961.0> accepting AMQP connection <0.1961.0> (172.18.0.30:51242 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.026849+00:00 [info] <0.1964.0> accepting AMQP connection <0.1964.0> (172.18.0.21:40090 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.031502+00:00 [info] <0.1961.0> connection <0.1961.0> (172.18.0.30:51242 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.033401+00:00 [info] <0.1964.0> connection <0.1964.0> (172.18.0.21:40090 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.043865+00:00 [info] <0.1993.0> accepting AMQP connection <0.1993.0> (172.18.0.21:40102 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.058437+00:00 [info] <0.1997.0> accepting AMQP connection <0.1997.0> (172.18.0.30:51244 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.082932+00:00 [info] <0.1997.0> connection <0.1997.0> (172.18.0.30:51244 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.113110+00:00 [info] <0.1993.0> connection <0.1993.0> (172.18.0.21:40102 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.147337+00:00 [info] <0.2025.0> accepting AMQP connection <0.2025.0> (172.18.0.26:46944 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.154626+00:00 [info] <0.2025.0> connection <0.2025.0> (172.18.0.26:46944 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.160547+00:00 [info] <0.2039.0> accepting AMQP connection <0.2039.0> (172.18.0.26:46960 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.170420+00:00 [info] <0.2039.0> connection <0.2039.0> (172.18.0.26:46960 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.185396+00:00 [info] <0.2052.0> accepting AMQP connection <0.2052.0> (172.18.0.34:36616 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.190407+00:00 [info] <0.2052.0> connection <0.2052.0> (172.18.0.34:36616 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.197300+00:00 [info] <0.2066.0> accepting AMQP connection <0.2066.0> (172.18.0.34:36628 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.201158+00:00 [info] <0.2066.0> connection <0.2066.0> (172.18.0.34:36628 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.225065+00:00 [info] <0.2074.0> accepting AMQP connection <0.2074.0> (172.18.0.32:53714 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.229344+00:00 [info] <0.2082.0> accepting AMQP connection <0.2082.0> (172.18.0.24:49022 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.230248+00:00 [info] <0.2074.0> connection <0.2074.0> (172.18.0.32:53714 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.233917+00:00 [info] <0.2082.0> connection <0.2082.0> (172.18.0.24:49022 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.237513+00:00 [info] <0.2106.0> accepting AMQP connection <0.2106.0> (172.18.0.32:53726 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.237778+00:00 [info] <0.2109.0> accepting AMQP connection <0.2109.0> (172.18.0.24:49036 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.259480+00:00 [info] <0.2106.0> connection <0.2106.0> (172.18.0.32:53726 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.268287+00:00 [info] <0.2109.0> connection <0.2109.0> (172.18.0.24:49036 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.284318+00:00 [info] <0.2132.0> accepting AMQP connection <0.2132.0> (172.18.0.29:47012 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.284502+00:00 [info] <0.2135.0> accepting AMQP connection <0.2135.0> (172.18.0.24:49038 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.289648+00:00 [info] <0.2135.0> connection <0.2135.0> (172.18.0.24:49038 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.290049+00:00 [info] <0.2132.0> connection <0.2132.0> (172.18.0.29:47012 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.299356+00:00 [info] <0.2162.0> accepting AMQP connection <0.2162.0> (172.18.0.24:49052 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.301059+00:00 [info] <0.2162.0> connection <0.2162.0> (172.18.0.24:49052 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.304785+00:00 [info] <0.2176.0> accepting AMQP connection <0.2176.0> (172.18.0.24:49058 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.306364+00:00 [info] <0.2176.0> connection <0.2176.0> (172.18.0.24:49058 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.307461+00:00 [info] <0.2189.0> accepting AMQP connection <0.2189.0> (172.18.0.29:47014 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.308516+00:00 [info] <0.2189.0> connection <0.2189.0> (172.18.0.29:47014 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.338399+00:00 [info] <0.2202.0> accepting AMQP connection <0.2202.0> (172.18.0.35:44470 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.338753+00:00 [info] <0.2205.0> accepting AMQP connection <0.2205.0> (172.18.0.43:39670 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.338802+00:00 [info] <0.2208.0> accepting AMQP connection <0.2208.0> (172.18.0.41:56786 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.341921+00:00 [info] <0.2202.0> connection <0.2202.0> (172.18.0.35:44470 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.341926+00:00 [info] <0.2205.0> connection <0.2205.0> (172.18.0.43:39670 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.342653+00:00 [info] <0.2208.0> connection <0.2208.0> (172.18.0.41:56786 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.346690+00:00 [info] <0.2241.0> accepting AMQP connection <0.2241.0> (172.18.0.35:44478 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.347050+00:00 [info] <0.2244.0> accepting AMQP connection <0.2244.0> (172.18.0.43:39680 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.348344+00:00 [info] <0.2247.0> accepting AMQP connection <0.2247.0> (172.18.0.18:56386 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.348866+00:00 [info] <0.2250.0> accepting AMQP connection <0.2250.0> (172.18.0.41:56798 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.349149+00:00 [info] <0.2241.0> connection <0.2241.0> (172.18.0.35:44478 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.349362+00:00 [info] <0.2244.0> connection <0.2244.0> (172.18.0.43:39680 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.350396+00:00 [info] <0.2250.0> connection <0.2250.0> (172.18.0.41:56798 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.350403+00:00 [info] <0.2247.0> connection <0.2247.0> (172.18.0.18:56386 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.359712+00:00 [info] <0.2313.0> accepting AMQP connection <0.2313.0> (172.18.0.52:34356 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.361342+00:00 [info] <0.2316.0> accepting AMQP connection <0.2316.0> (172.18.0.41:56810 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.364379+00:00 [info] <0.2313.0> connection <0.2313.0> (172.18.0.52:34356 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.365043+00:00 [info] <0.2328.0> accepting AMQP connection <0.2328.0> (172.18.0.18:56390 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.365053+00:00 [info] <0.2316.0> connection <0.2316.0> (172.18.0.41:56810 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.365187+00:00 [info] <0.2336.0> accepting AMQP connection <0.2336.0> (172.18.0.43:39694 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.367394+00:00 [info] <0.2345.0> accepting AMQP connection <0.2345.0> (172.18.0.52:34366 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.367570+00:00 [info] <0.2328.0> connection <0.2328.0> (172.18.0.18:56390 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.369780+00:00 [info] <0.2362.0> accepting AMQP connection <0.2362.0> (172.18.0.25:50782 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.370065+00:00 [info] <0.2345.0> connection <0.2345.0> (172.18.0.52:34366 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.373380+00:00 [info] <0.2362.0> connection <0.2362.0> (172.18.0.25:50782 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.373684+00:00 [info] <0.2392.0> accepting AMQP connection <0.2392.0> (172.18.0.37:38970 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.373690+00:00 [info] <0.2389.0> accepting AMQP connection <0.2389.0> (172.18.0.53:39162 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.373965+00:00 [info] <0.2336.0> connection <0.2336.0> (172.18.0.43:39694 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.377171+00:00 [info] <0.2392.0> connection <0.2392.0> (172.18.0.37:38970 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.377486+00:00 [info] <0.2421.0> accepting AMQP connection <0.2421.0> (172.18.0.52:34380 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.378418+00:00 [info] <0.2389.0> connection <0.2389.0> (172.18.0.53:39162 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.378773+00:00 [info] <0.2434.0> accepting AMQP connection <0.2434.0> (172.18.0.33:45874 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.380031+00:00 [info] <0.2443.0> accepting AMQP connection <0.2443.0> (172.18.0.37:38974 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.380566+00:00 [info] <0.2446.0> accepting AMQP connection <0.2446.0> (172.18.0.41:56812 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.383678+00:00 [info] <0.2443.0> connection <0.2443.0> (172.18.0.37:38974 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.383803+00:00 [info] <0.2446.0> connection <0.2446.0> (172.18.0.41:56812 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.384111+00:00 [info] <0.2434.0> connection <0.2434.0> (172.18.0.33:45874 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.384087+00:00 [info] <0.2421.0> connection <0.2421.0> (172.18.0.52:34380 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.385389+00:00 [info] <0.2492.0> accepting AMQP connection <0.2492.0> (172.18.0.53:39178 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.386244+00:00 [info] <0.2496.0> accepting AMQP connection <0.2496.0> (172.18.0.33:45880 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.388925+00:00 [info] <0.2499.0> accepting AMQP connection <0.2499.0> (172.18.0.52:34392 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.389422+00:00 [info] <0.2506.0> accepting AMQP connection <0.2506.0> (172.18.0.48:43760 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.389466+00:00 [info] <0.2492.0> connection <0.2492.0> (172.18.0.53:39178 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.389466+00:00 [info] <0.2496.0> connection <0.2496.0> (172.18.0.33:45880 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.391281+00:00 [info] <0.2528.0> accepting AMQP connection <0.2528.0> (172.18.0.25:50794 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.391331+00:00 [info] <0.2525.0> accepting AMQP connection <0.2525.0> (172.18.0.43:39702 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.392527+00:00 [info] <0.2537.0> accepting AMQP connection <0.2537.0> (172.18.0.33:45888 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.392602+00:00 [info] <0.2506.0> connection <0.2506.0> (172.18.0.48:43760 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.392623+00:00 [info] <0.2534.0> accepting AMQP connection <0.2534.0> (172.18.0.53:39184 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.393537+00:00 [info] <0.2499.0> connection <0.2499.0> (172.18.0.52:34392 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.393831+00:00 [info] <0.2525.0> connection <0.2525.0> (172.18.0.43:39702 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.394485+00:00 [info] <0.2534.0> connection <0.2534.0> (172.18.0.53:39184 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.394617+00:00 [info] <0.2528.0> connection <0.2528.0> (172.18.0.25:50794 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.394654+00:00 [info] <0.2537.0> connection <0.2537.0> (172.18.0.33:45888 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.395015+00:00 [info] <0.2583.0> accepting AMQP connection <0.2583.0> (172.18.0.48:43766 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.396573+00:00 [info] <0.2598.0> accepting AMQP connection <0.2598.0> (172.18.0.43:39718 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.397342+00:00 [info] <0.2595.0> accepting AMQP connection <0.2595.0> (172.18.0.45:33414 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.398625+00:00 [info] <0.2583.0> connection <0.2583.0> (172.18.0.48:43766 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.398925+00:00 [info] <0.2595.0> connection <0.2595.0> (172.18.0.45:33414 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.401833+00:00 [info] <0.2598.0> connection <0.2598.0> (172.18.0.43:39718 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.403430+00:00 [info] <0.2644.0> accepting AMQP connection <0.2644.0> (172.18.0.48:43780 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.404136+00:00 [info] <0.2647.0> accepting AMQP connection <0.2647.0> (172.18.0.46:46164 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.404198+00:00 [info] <0.2650.0> accepting AMQP connection <0.2650.0> (172.18.0.52:34400 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.404622+00:00 [info] <0.2637.0> accepting AMQP connection <0.2637.0> (172.18.0.45:33418 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.411441+00:00 [info] <0.2656.0> accepting AMQP connection <0.2656.0> (172.18.0.43:39720 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.411624+00:00 [info] <0.2637.0> connection <0.2637.0> (172.18.0.45:33418 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.411759+00:00 [info] <0.2665.0> accepting AMQP connection <0.2665.0> (172.18.0.40:56798 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.412492+00:00 [info] <0.2650.0> connection <0.2650.0> (172.18.0.52:34400 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.412747+00:00 [info] <0.2647.0> connection <0.2647.0> (172.18.0.46:46164 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.412940+00:00 [info] <0.2644.0> connection <0.2644.0> (172.18.0.48:43780 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.417125+00:00 [info] <0.2665.0> connection <0.2665.0> (172.18.0.40:56798 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.419504+00:00 [info] <0.2706.0> accepting AMQP connection <0.2706.0> (172.18.0.46:46174 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.419763+00:00 [info] <0.2656.0> connection <0.2656.0> (172.18.0.43:39720 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.424663+00:00 [info] <0.2735.0> accepting AMQP connection <0.2735.0> (172.18.0.40:56812 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.426628+00:00 [info] <0.2706.0> connection <0.2706.0> (172.18.0.46:46174 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.426757+00:00 [info] <0.2743.0> accepting AMQP connection <0.2743.0> (172.18.0.51:43788 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.427019+00:00 [info] <0.2748.0> accepting AMQP connection <0.2748.0> (172.18.0.42:37044 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.430119+00:00 [info] <0.2743.0> connection <0.2743.0> (172.18.0.51:43788 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.430786+00:00 [info] <0.2735.0> connection <0.2735.0> (172.18.0.40:56812 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.431809+00:00 [info] <0.2748.0> connection <0.2748.0> (172.18.0.42:37044 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.433932+00:00 [info] <0.2785.0> accepting AMQP connection <0.2785.0> (172.18.0.51:43792 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.434834+00:00 [info] <0.2788.0> accepting AMQP connection <0.2788.0> (172.18.0.36:33820 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.436211+00:00 [info] <0.2792.0> accepting AMQP connection <0.2792.0> (172.18.0.40:56822 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.436768+00:00 [info] <0.2795.0> accepting AMQP connection <0.2795.0> (172.18.0.49:50994 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.437816+00:00 [info] <0.2799.0> accepting AMQP connection <0.2799.0> (172.18.0.42:37060 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.438911+00:00 [info] <0.2788.0> connection <0.2788.0> (172.18.0.36:33820 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.439548+00:00 [info] <0.2785.0> connection <0.2785.0> (172.18.0.51:43792 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.439726+00:00 [info] <0.2795.0> connection <0.2795.0> (172.18.0.49:50994 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.439996+00:00 [info] <0.2792.0> connection <0.2792.0> (172.18.0.40:56822 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.442690+00:00 [info] <0.2799.0> connection <0.2799.0> (172.18.0.42:37060 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.444648+00:00 [info] <0.2852.0> accepting AMQP connection <0.2852.0> (172.18.0.49:51006 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.445342+00:00 [info] <0.2858.0> accepting AMQP connection <0.2858.0> (172.18.0.51:43808 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.445646+00:00 [info] <0.2855.0> accepting AMQP connection <0.2855.0> (172.18.0.36:33828 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.447027+00:00 [info] <0.2852.0> connection <0.2852.0> (172.18.0.49:51006 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.448250+00:00 [info] <0.2858.0> connection <0.2858.0> (172.18.0.51:43808 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.448485+00:00 [info] <0.2855.0> connection <0.2855.0> (172.18.0.36:33828 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.450795+00:00 [info] <0.2895.0> accepting AMQP connection <0.2895.0> (172.18.0.49:51014 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.450869+00:00 [info] <0.2898.0> accepting AMQP connection <0.2898.0> (172.18.0.56:40770 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.452673+00:00 [info] <0.2905.0> accepting AMQP connection <0.2905.0> (172.18.0.55:59520 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.453698+00:00 [info] <0.2911.0> accepting AMQP connection <0.2911.0> (172.18.0.57:34082 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.453776+00:00 [info] <0.2895.0> connection <0.2895.0> (172.18.0.49:51014 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.453997+00:00 [info] <0.2898.0> connection <0.2898.0> (172.18.0.56:40770 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.455327+00:00 [info] <0.2905.0> connection <0.2905.0> (172.18.0.55:59520 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.457558+00:00 [info] <0.2911.0> connection <0.2911.0> (172.18.0.57:34082 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.458750+00:00 [info] <0.2960.0> accepting AMQP connection <0.2960.0> (172.18.0.55:59532 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.459830+00:00 [info] <0.2963.0> accepting AMQP connection <0.2963.0> (172.18.0.56:40772 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.461541+00:00 [info] <0.2967.0> accepting AMQP connection <0.2967.0> (172.18.0.47:41152 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.461975+00:00 [info] <0.2970.0> accepting AMQP connection <0.2970.0> (172.18.0.57:34088 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.462951+00:00 [info] <0.2963.0> connection <0.2963.0> (172.18.0.56:40772 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.463506+00:00 [info] <0.2970.0> connection <0.2970.0> (172.18.0.57:34088 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.463638+00:00 [info] <0.2960.0> connection <0.2960.0> (172.18.0.55:59532 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.463815+00:00 [info] <0.2995.0> accepting AMQP connection <0.2995.0> (172.18.0.54:47858 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.464334+00:00 [info] <0.2967.0> connection <0.2967.0> (172.18.0.47:41152 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.467257+00:00 [info] <0.2995.0> connection <0.2995.0> (172.18.0.54:47858 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.467760+00:00 [info] <0.3026.0> accepting AMQP connection <0.3026.0> (172.18.0.55:59548 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.467769+00:00 [info] <0.3029.0> accepting AMQP connection <0.3029.0> (172.18.0.47:41166 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.469064+00:00 [info] <0.3026.0> connection <0.3026.0> (172.18.0.55:59548 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.471584+00:00 [info] <0.3029.0> connection <0.3029.0> (172.18.0.47:41166 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.472427+00:00 [info] <0.3062.0> accepting AMQP connection <0.3062.0> (172.18.0.54:47868 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.475943+00:00 [info] <0.3062.0> connection <0.3062.0> (172.18.0.54:47868 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.477429+00:00 [info] <0.3078.0> accepting AMQP connection <0.3078.0> (172.18.0.54:47876 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.480615+00:00 [info] <0.3078.0> connection <0.3078.0> (172.18.0.54:47876 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.523906+00:00 [info] <0.3097.0> accepting AMQP connection <0.3097.0> (172.18.0.50:35256 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.525879+00:00 [info] <0.3097.0> connection <0.3097.0> (172.18.0.50:35256 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.530014+00:00 [info] <0.3116.0> accepting AMQP connection <0.3116.0> (172.18.0.44:57820 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.530538+00:00 [info] <0.3119.0> accepting AMQP connection <0.3119.0> (172.18.0.50:35260 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.531301+00:00 [info] <0.3116.0> connection <0.3116.0> (172.18.0.44:57820 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.531476+00:00 [info] <0.3119.0> connection <0.3119.0> (172.18.0.50:35260 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.533178+00:00 [info] <0.3143.0> accepting AMQP connection <0.3143.0> (172.18.0.44:57826 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.533913+00:00 [info] <0.3143.0> connection <0.3143.0> (172.18.0.44:57826 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.540740+00:00 [info] <0.3156.0> accepting AMQP connection <0.3156.0> (172.18.0.39:35038 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.541668+00:00 [info] <0.3156.0> connection <0.3156.0> (172.18.0.39:35038 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:54.543341+00:00 [info] <0.3170.0> accepting AMQP connection <0.3170.0> (172.18.0.39:35054 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:54.544095+00:00 [info] <0.3170.0> connection <0.3170.0> (172.18.0.39:35054 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:55.698544+00:00 [info] <0.3183.0> accepting AMQP connection <0.3183.0> (172.18.0.38:44620 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:55.699781+00:00 [info] <0.3183.0> connection <0.3183.0> (172.18.0.38:44620 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:55.701395+00:00 [info] <0.3196.0> accepting AMQP connection <0.3196.0> (172.18.0.38:44630 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:55.702313+00:00 [info] <0.3196.0> connection <0.3196.0> (172.18.0.38:44630 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:55.710049+00:00 [info] <0.3215.0> accepting AMQP connection <0.3215.0> (172.18.0.38:44634 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:55.711649+00:00 [info] <0.3215.0> connection <0.3215.0> (172.18.0.38:44634 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:55.713921+00:00 [info] <0.3228.0> accepting AMQP connection <0.3228.0> (172.18.0.38:44650 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:55.715079+00:00 [info] <0.3228.0> connection <0.3228.0> (172.18.0.38:44650 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:58.754328+00:00 [info] <0.3247.0> accepting AMQP connection <0.3247.0> (172.18.0.31:57384 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:58.755668+00:00 [info] <0.3247.0> connection <0.3247.0> (172.18.0.31:57384 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:58.757102+00:00 [info] <0.3260.0> accepting AMQP connection <0.3260.0> (172.18.0.31:57396 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:58.758082+00:00 [info] <0.3260.0> connection <0.3260.0> (172.18.0.31:57396 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+2025-06-13 12:57:58.759392+00:00 [info] <0.3273.0> accepting AMQP connection <0.3273.0> (172.18.0.31:57410 -> 172.18.0.2:5672)[0m
+2025-06-13 12:57:58.760325+00:00 [info] <0.3273.0> connection <0.3273.0> (172.18.0.31:57410 -> 172.18.0.2:5672): user 'guest' authenticated and granted access to vhost '/'[0m
+[38;5;87m2025-06-13 12:58:42.528867+00:00 [notice] <0.86.0>     alarm_handler: {set,{system_memory_high_watermark,[]}}[0m
+[38;5;87m2025-06-13 13:14:42.706506+00:00 [notice] <0.86.0>     alarm_handler: {clear,system_memory_high_watermark}[0m
+2025-06-13 13:16:40.958218+00:00 [info] <0.3183.0> closing AMQP connection <0.3183.0> (172.18.0.38:44620 -> 172.18.0.2:5672, vhost: '/', user: 'guest')[0m
+2025-06-13 13:16:40.959517+00:00 [info] <0.3196.0> closing AMQP connection <0.3196.0> (172.18.0.38:44630 -> 172.18.0.2:5672, vhost: '/', user: 'guest')[0m
+2025-06-13 13:16:47.704663+00:00 [info] <0.3215.0> closing AMQP connection <0.3215.0> (172.18.0.38:44634 -> 172.18.0.2:5672, vhost: '/', user: 'guest')[0m
+2025-06-13 13:16:47.705370+00:00 [info] <0.3228.0> closing AMQP connection <0.3228.0> (172.18.0.38:44650 -> 172.18.0.2:5672, vhost: '/', user: 'guest')[0m
