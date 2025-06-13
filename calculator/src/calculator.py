@@ -144,7 +144,7 @@ class CalculatorNode:
 
     def start_node(self):
         """
-        Starts the node
+        Starts the node, loading any previous state (if available)
         """
         self.load_state()
         try:
