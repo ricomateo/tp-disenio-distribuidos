@@ -107,13 +107,21 @@ class WorkerProtocol:
             tuple[bool, str]: (Éxito, Respuesta del controlador).
         """
         message = f"1\n{client_id}|{id_recibido}|{send_value}|{node}"
-        if not self.send_message(message):
+        
+        sended = self.send_message(message)
+        if not sended and self.is_running:
             self.listen()
             return self.insert_id(client_id, id_recibido, send_value, node)
+        elif not sended:
+            return False, ""
+        
         response = self.read_until_newline()
-        if not response:
+        if not response and self.is_running:
             self.listen()
             return self.insert_id(client_id, id_recibido, send_value, node)
+        elif not response:
+            return False, ""
+        
         parts = response.split("|")
         if parts[0] == "ERROR":
             logging.error(f"Error del controlador: {response}")
@@ -132,13 +140,20 @@ class WorkerProtocol:
             bool: True si la operación fue exitosa, False si falló.
         """
         message = f"2\n{client_id}"
-        if not self.send_message(message):
+        
+        sended = self.send_message(message)
+        if not sended and self.is_running:
             self.listen()
             return self.delete_client(client_id)
+        elif not sended:
+            return False
+        
         response = self.read_until_newline()
-        if not response:
+        if not response and self.is_running:
             self.listen()
             return self.delete_client(client_id)
+        elif not response:
+            return False
         elif response == "OK":
             return True
         logging.error(f"Error del controlador al eliminar cliente: {response}")
@@ -155,13 +170,20 @@ class WorkerProtocol:
             tuple[bool, str]: (Éxito, Respuesta del controlador).
         """
         message = f"3\n{client_id}|{count}"
-        if not self.send_message(message):
+        sended = self.send_message(message)
+        if not sended and self.is_running:
             self.listen()
             return self.send_final_count(client_id, count)
+        elif not sended:
+            return False, ""
+        
         response = self.read_until_newline()
-        if not response:
+        if not response and self.is_running:
             self.listen()
             return self.send_final_count(client_id, count)
+        elif not response:
+            return False, ""
+        
         parts = response.split("|")
         if parts[0] == "ERROR":
             logging.error(f"Error del controlador: {response}")

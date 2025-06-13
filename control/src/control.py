@@ -31,6 +31,7 @@ class ControlNode:
         self.router = bool(os.getenv("ROUTER", ""))
         self.locks_por_cliente = {}
         self.locks_por_nodo = {}
+        self.locks_final_counts_por_cliente = {}
         self.final_counts_por_cliente = {}
         self.dead_clients = set()
         self.restart_in_progress = {}
@@ -170,6 +171,9 @@ class ControlNode:
                 logging.error(f"Error saving dead clients state: {e}")
             
     def restart_node(self, nodo: str):
+        """
+        Se encarga de revivir un nodo caido y reiniciar su comunicacion con el worker si es el caso
+        """
         try:
             container = self.docker_client.containers.get(nodo)
             logging.info(f"Reiniciando el contenedor: {nodo}...")
@@ -240,7 +244,7 @@ class ControlNode:
                     response_message = response_prefix + b"\n"
             
             conn.sendall(response_message)
-            logging.info(f"Client {client_id} inserted ID {id_recibido}. Final signal: {client_finished if client_finished else 'None'}")
+            logging.info(f"Client {client_id} inserted ID {id_recibido}. Final signal: {client_finished}")
 
         except ValueError as ve:
             logging.error(f"Error parsing message for insert ID: {ve}. Message: '{mensaje}'")
@@ -250,7 +254,7 @@ class ControlNode:
             conn.sendall(b"ERROR| Internal failure inserting ID\n")
 
     def _handle_op_receive_final_count(self, conn: socket.socket):
-        """Handles operation code '4' (Receive Final Count)."""
+        """Handles operation code '3' (Receive Final Count)."""
         mensaje = self.read_until_newline(conn)
         if not mensaje:
             return # Let handle_id_client break the loop
@@ -299,6 +303,10 @@ class ControlNode:
         client_id = self.read_until_newline(conn)
         if not client_id:
             return 
+        
+        if client_id in self.dead_clients:
+            conn.sendall(b"OK\n")
+            return
 
         if client_id not in self.locks_por_cliente:
             self.locks_por_cliente[client_id] = threading.Lock() 
@@ -309,10 +317,13 @@ class ControlNode:
         logging.info(f"Client {client_id} requested deletion.")
         
     def handle_id_client(self, conn: socket.socket, addr, nodo: str):
+        """
+        Se encarga de ejecutar la funcion correspondiente segun la request del nodo worker
+        """
         logging.info(f"Nodo {nodo} conectado (ID/delete connection)")
         try:
-            conn.settimeout(10)
-            while not self.should_stop.is_set() and self.restart_in_progress[nodo] == False:
+            conn.settimeout(self.restart_interval)
+            while not self.should_stop.is_set() and self.restart_in_progress[nodo] is False:
                 try:
                     op_code = self.read_until_newline(conn)
                     if not op_code:
@@ -340,16 +351,16 @@ class ControlNode:
             """Loads and merges all id-to-send mappings for a specific client from all its node files."""
             id_to_send = {}
 
-            # Encuentra todos los archivos que pertenecen a ese client_id
-            pattern = os.path.join(self.state_dir, f"{client_id}_*.json")
-            client_files = glob.glob(pattern)
-
             # Acquirir todos los locks relacionados a ese client_id
             relevant_locks = []
             for lock_key, lock in self.locks_por_nodo.items():
                 if lock_key.startswith(f"{client_id}_"):
                     relevant_locks.append(lock)
                     lock.acquire()
+                    
+            # Encuentra todos los archivos que pertenecen a ese client_id
+            pattern = os.path.join(self.state_dir, f"{client_id}_*.json")
+            client_files = glob.glob(pattern)
 
             try:
                 for file_path in client_files:
@@ -400,27 +411,34 @@ class ControlNode:
         id_to_send = self._load_id_to_send(client_id)
         return len(id_to_send)
             
-    def insert_id(self, client_id: str, id_recibido: str, send: str, nodo: str) -> tuple[bool, int]:
+    def insert_id(self, client_id: str, id_recibido: str, send: str, nodo: str) -> bool:
         """
-        Inserta un ID para un cliente dado, registrando el nodo de origen.
-        Devuelve (True, count) si el ID ya existía (para *cualquier* nodo),
-        o (False, count) si fue una inserción nueva.
-        También actualiza el conteo de IDs únicos por cliente.
+        Inserta un ID para un cliente dado, guardandolo segun el nodo de origen.
+        Devuelve True si el ultimo paquete segun el final,
         """
-        client_finished = None
-        self.save_ids_state(client_id, nodo, id_recibido, send)
-        logging.debug(f"ID {id_recibido} nuevo para cliente {client_id}. Envio: {send}")
-        
-        # Check if the total count matches the expected final count
-        if client_id in self.final_counts_por_cliente:
-            total_count = self.calculate_unique_id_count(client_id)
-            if total_count >= self.final_counts_por_cliente[client_id]:
-                client_finished = client_id
-                logging.info(f"Client {client_id} current count {total_count} matches final count {self.final_counts_por_cliente[client_id]}.")
+        lock_key = f"{client_id}_{nodo}"
+        if lock_key not in self.locks_final_counts_por_cliente:
+            self.locks_final_counts_por_cliente[lock_key] = threading.Lock()
+        with self.locks_final_counts_por_cliente[lock_key]:
+            
+            client_finished = False
+            self.save_ids_state(client_id, nodo, id_recibido, send)
+            
+            # Check if the total count matches the expected final count
+            if client_id in self.final_counts_por_cliente:
+                total_count = self.calculate_unique_id_count(client_id)
+                if total_count >= self.final_counts_por_cliente[client_id]:
+                    client_finished = True
+                logging.info(f"Client {client_id} current count {total_count} vs final count {self.final_counts_por_cliente[client_id]}.")
 
         return client_finished
 
     def delete_client(self, client_id: str):
+        """
+        Agrega el cliente terminado a la lista de clientes muertos y lo baja a disco
+        Despues elimina el final de ese cliente y lo baja a disco
+        Finalmente limpia del disco todo lo relacionado a ese cliente 
+        """
         self.dead_clients.add(client_id)
         self.save_dead_clients_state()
         if client_id in self.final_counts_por_cliente:
@@ -433,18 +451,33 @@ class ControlNode:
         """
         Recibe el conteo final de un cliente y lo guarda.
         Devuelve True si el conteo recibido coincide con el conteo actual de IDs únicos, False en caso contrario.
-        Assumes lock for client_id is held by the caller.
         """
-        self.final_counts_por_cliente[client_id] = count_recibido
-        self.save_final_counts_state()
-        current_unique_id_count = self.calculate_unique_id_count(client_id)
-        is_match = (current_unique_id_count >= count_recibido)
-        
-        logging.info(f"Received final count for client {client_id}: {count_recibido}. Current unique IDs: {current_unique_id_count}. Match: {is_match}")
-        
-        return is_match
+        # Acquire all locks for this client across all nodes
+        relevant_locks = []
+        try:
+            for lock_key, lock in self.locks_final_counts_por_cliente.items():
+                if lock_key.startswith(f"{client_id}_"):
+                    relevant_locks.append(lock)
+                    lock.acquire()
+            
+            current_unique_id_count = self.calculate_unique_id_count(client_id)
+            is_match = (current_unique_id_count >= count_recibido)
+            
+            self.final_counts_por_cliente[client_id] = count_recibido
+            self.save_final_counts_state()
+            
+            logging.info(f"Received final count for client {client_id}: {count_recibido}. Current unique IDs: {current_unique_id_count}. Match: {is_match}")
+            
+            return is_match
+        finally:
+            # Release all acquired locks
+            for lock in relevant_locks:
+                lock.release()
     
     def handle_health_worker(self, nodo: str):
+        """
+        Se encarga de ver que no se haya caido el nodo worker mediante una conexión a su socket cada cierto tiempo
+        """
         while not self.should_stop.is_set():
             try:
                 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -458,6 +491,9 @@ class ControlNode:
                 self.restart_node(nodo)
 
     def healthcheck_next_control(self):
+        """
+        Se encarga de ver que no se haya caido el nodo control siguiente en el anillo mediante una conexión a su socket cada cierto tiempo
+        """
         if (self.next_node == 0):
             host = f'control'
         else:
@@ -477,6 +513,9 @@ class ControlNode:
             
 
     def control_health_server(self):
+        """
+        Se encarga de escuchar conexiones para que un nodo del anillo pueda detectar su caida al no poder conectarse y revivirlo
+        """
         health_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         health_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         health_server.bind((self.health_server_ip, self.health_server_port))
@@ -493,13 +532,15 @@ class ControlNode:
         health_server.close()
 
     def connect_to_worker(self, nodo: str):
-        while not self.should_stop.is_set() and self.restart_in_progress[nodo] == False:
+        """
+        Se encarga de conectarse al nodo worker y ocuparse de la sincronización de los counts del final
+        """
+        while not self.should_stop.is_set() and self.restart_in_progress[nodo] is False:
             try:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 sock.settimeout(self.restart_interval)
                 sock.connect((nodo, self.worker_port)) 
                 self.handle_id_client(sock, sock.getpeername(), nodo)
-                time.sleep(self.restart_interval)
             except Exception as e:
                 logging.warning(f"Fallo conexión inicial con {nodo}: {e}")
                 time.sleep(self.restart_interval)
