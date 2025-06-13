@@ -183,6 +183,8 @@ class CalculatorNode:
         Deletes the client data, both from memory and disk.
         """
         self.calculator.delete_client_data(client_id)
+        if client_id in self.processed_messages_by_client:
+            del self.processed_messages_by_client[client_id]
         try:
             os.remove(f"client.{client_id}.json")
         except Exception as e:
