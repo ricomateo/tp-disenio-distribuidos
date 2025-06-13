@@ -61,7 +61,7 @@ class LeaderQueue:
                 self.client_counters[client_id] = {}
 
             # Add the node id only if it is not already in the list
-            # This is so that duplicates are supported
+            # If a duplicate final is received, it will be ignored
             if node_id not in self.client_counters[client_id]:
                 self.client_counters[client_id][node_id] = count
                 # Save the state
