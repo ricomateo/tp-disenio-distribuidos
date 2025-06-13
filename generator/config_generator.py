@@ -893,7 +893,7 @@ class ConfigGenerator:
         worker_config = [
             JOIN_ACTORS, JOIN_RATINGS, CALCULATOR_AVERAGE_RATINGS, 
             CALCULATOR_BUDGET_COUNTRY, CALCULATOR_COUNT_ACTORS, 
-            CALCULATOR_RATIO_FEELINGS_NEGATIVE, CALCULATOR_RATIO_FEELINGS_POSITIVE,
+            CALCULATOR_RATIO_FEELINGS,
             AGGREGATOR_CALCULATOR_BUDGET_COUNTRY, AGGREGATOR_CALCULATOR_COUNT_ACTORS, 
             AGGREGATOR_CALCULATOR_RATIO_FEELINGS, DELIVER
         ]
@@ -902,6 +902,14 @@ class ConfigGenerator:
         for worker_type in worker_config:
             if worker_type == DELIVER:
                 included_containers_list.extend([QUERY_1, QUERY_2, QUERY_3, QUERY_4, QUERY_5])
+            elif worker_type == CALCULATOR_RATIO_FEELINGS:
+                instances = self.config_params.get(worker_type)
+                included_containers_list.extend(
+                    [f'{CALCULATOR_RATIO_FEELINGS_POSITIVE}' if i == 0 else f'{CALCULATOR_RATIO_FEELINGS_POSITIVE}_{i}' for i in range(instances)]
+                )
+                included_containers_list.extend(
+                    [f'{CALCULATOR_RATIO_FEELINGS_NEGATIVE}' if i == 0 else f'{CALCULATOR_RATIO_FEELINGS_NEGATIVE}_{i}' for i in range(instances)]
+                )
             else:
                 instances = self.config_params.get(JOIN_MOVIES, 1) if worker_type in [JOIN_ACTORS, JOIN_RATINGS] else self.config_params.get(worker_type, 1)
                 included_containers_list.extend(
