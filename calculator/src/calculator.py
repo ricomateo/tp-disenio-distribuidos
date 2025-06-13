@@ -128,13 +128,7 @@ class CalculatorNode:
 
             if success:
                 print(f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}")
-                filename = f"client.{client_id}.json"
-                data = json.dumps({
-                    "result": self.calculator.get_raw_result(client_id),
-                    "processed_messages": list(self.processed_messages_by_client[client_id])
-                })
-                # Save the state (atomically) to a file
-                atomic_write(filename, data)
+                self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 print(f" [x] Message {method.delivery_tag} acknowledged")
             else:
@@ -161,6 +155,19 @@ class CalculatorNode:
             if self.leader_queue:
                 self.leader_queue.join()
             self.close()
+
+    def save_state(self, client_id):
+        """
+        Saves the state by writing (atomically) it to the hard drive.
+        """
+        filename = f"client.{client_id}.json"
+        data = json.dumps({
+            "result": self.calculator.get_raw_result(client_id),
+            "processed_messages": list(self.processed_messages_by_client.get(client_id, []))
+        })
+        # Save the state (atomically) to a file
+        atomic_write(filename, data)
+
 
     def load_state(self):
         """
