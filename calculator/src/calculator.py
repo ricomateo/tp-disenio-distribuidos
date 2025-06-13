@@ -1,16 +1,15 @@
 import json
 import threading
+import os
+import signal
+import glob
+from datetime import datetime
+from src.calculation import Calculation
 from common.leader_queue import LeaderQueue
 from common.middleware import Middleware
 from common.packet import DataPacket, is_final_packet
 from common.atomic_write import atomic_write
-from datetime import datetime
-import os
-import signal
 from common.worker_protocol import WorkerProtocol
-from src.calculation import Calculation
-import math
-import glob
 
 class CalculatorNode:
     def __init__(self):
@@ -63,7 +62,7 @@ class CalculatorNode:
 
     def callback(self, ch, method, properties, body):
         try:
-            if self.running == False:
+            if not self.running:
                 self.input_rabbitmq.close_graceful(method)
                 return
             # Recibo el paquete y en caso de ser el ultimo, mando los datos y el final packet
@@ -71,7 +70,7 @@ class CalculatorNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             if header and is_final_packet(header):
-                client_id = packet.get("client_id") 
+                client_id = packet.get("client_id")
                 results = self.calculator.get_result(client_id)
                 self.output_rabbitmq.confirm_delivery()
 
@@ -90,9 +89,9 @@ class CalculatorNode:
                     )
                     self.output_rabbitmq.publish(data_packet.to_json())
                     count += 1
-                
+
                 # The node ids are duplicate in the ratio feelings calculators
-                # (we have calculator_ratio_feelings_negative_0 and calculator_ratio_feelings_positive_0,
+                # (we have calculator_ratio_feelings_negative_0 and calculator_ratio_feelings_positive_0
                 # both with node_id = 0) so to distinguish them when sending the final message,
                 # we set a different node_id for the negative calculators (appending zeroes)
                 if self.node_id_duplicate is True:
@@ -127,13 +126,13 @@ class CalculatorNode:
             # Add the packet id to the processed messages set
             self.processed_messages_by_client[client_id].add(id)
 
-            # TODO: delete processed messages when receiving final message
-            # TODO: persistence
-
             if success:
                 print(f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}")
                 filename = f"client.{client_id}.json"
-                data = json.dumps({"result": self.calculator.get_raw_result(client_id), "processed_messages": list(self.processed_messages_by_client[client_id])})
+                data = json.dumps({
+                    "result": self.calculator.get_raw_result(client_id),
+                    "processed_messages": list(self.processed_messages_by_client[client_id])
+                })
                 # Save the state (atomically) to a file
                 atomic_write(filename, data)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -150,6 +149,9 @@ class CalculatorNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def start_node(self):
+        """
+        Starts the node
+        """
         self.load_state()
         try:
             self.input_rabbitmq.consume(self.callback)
