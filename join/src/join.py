@@ -190,7 +190,7 @@ class JoinNode:
                 if not stored_keys:
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
-                print(" [🔄] Iniciando merge completo (eof_main=True)")    
+                print(" [🔄] Iniciando merge completo (eof_main=True)")
                 # Realizar merge completo: combinar router_buffer con todos los datos del disco
                 for key in stored_keys:
                     router_key = int(key)  # Convertir la clave a entero
@@ -212,7 +212,7 @@ class JoinNode:
 
                 # Limpiar el disco después del merge
                 storage.clean()
-                print(f" [✅] Disco limpio")
+                print(" [✅] Disco limpio")
 
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -255,7 +255,7 @@ class JoinNode:
             self.close()
 
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
+        print("Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
@@ -280,10 +280,10 @@ class JoinNode:
             # Limpiar eof_main del cliente
             if client_id in self.eof_main_by_client:
                 del self.eof_main_by_client[client_id]
-        print(f" [✅] Disco limpio y memoria limpia para '{client_id}'") 
+        print(f" [✅] Disco limpio y memoria limpia para '{client_id}'")
 
     def close(self):
-        print(f"Closing queues")
+        print("Closing queues")
         if self.leader_queue:
             self.leader_queue.close()
         if self.input_rabbitmq_1:
