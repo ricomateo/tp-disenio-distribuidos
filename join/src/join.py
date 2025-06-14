@@ -42,6 +42,7 @@ class JoinNode:
         self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
         self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.join_by = os.getenv("JOIN_BY", "id")
+        self.count_by_client = {}
 
         self.keep_columns = None
         keep_columns = os.getenv("KEEP_COLUMNS", "")
@@ -130,6 +131,8 @@ class JoinNode:
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
             router = int(movie.get(self.join_by))
+            if client_id not in self.count_by_client:
+                self.count_by_client[client_id] = 0
 
             if not router:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -174,12 +177,14 @@ class JoinNode:
             client_id = packet.get("client_id")
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_2}' terminó.")
-                self.clean(client_id)
-                # TODO: consider setting the right count here
+                count = self.count_by_client[client_id]
                 self.final_rabbitmq.send_final_with_node_id(
-                    client_id=client_id, node_id=self.node_id, count=0
+                    client_id=client_id, node_id=self.node_id, count=count
                 )
                 ch.basic_ack(delivery_tag=method.delivery_tag)
+                # Borro solo despues haber mandado el final y el ACK
+                # (si crashea antes, pierdo el count)
+                self.clean(client_id)
                 return
 
             packet = DataPacket.from_json(packet_json)
@@ -203,7 +208,9 @@ class JoinNode:
                     movie1 = self.router_buffer_by_client[client_id][router]
                 joined_packet = self.create_joined_packet(client_id, movie1, movie)
                 self.output_rabbitmq.publish(joined_packet.to_json())
+                self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                 print(f" Se envió un par con router '{router}' del cliente '{client_id}'")
+
             else:
                 # Si eof_main es False, guardar en el disco
                 if not is_eof_main:
@@ -237,6 +244,7 @@ class JoinNode:
                         for movie2 in stored_movies:
                             joined_packet = self.create_joined_packet(client_id, movie1, movie2)
                             self.output_rabbitmq.publish(joined_packet.to_json())
+                            self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                             print(f" Se juntó un par con key '{router_key}' y se envió al output")
 
                 # Limpiar el disco después del merge
@@ -259,7 +267,9 @@ class JoinNode:
         Crea un paquete para un client id a partir de dos entradas de distintas queues.
         """
         combined_movie = {**movie1, **movie2}
-        movie_id = hash(str(movie1) + str(movie2))
+        movie1_str = json.dumps(movie1, sort_keys=True)
+        movie2_str = json.dumps(movie2, sort_keys=True)
+        movie_id = hash(movie1_str + movie2_str)
         joined_packet = DataPacket(
             client_id=client_id,
             timestamp=datetime.utcnow().isoformat(),
@@ -374,6 +384,10 @@ class JoinNode:
 
             # Elimino el archivo con el estado del cliente
             self.delete_client_state(client_id)
+
+            # Limpiar count del cliente
+            if client_id in self.count_by_client:
+                del self.count_by_client
         print(f" [✅] Disco limpio y memoria limpia para '{client_id}'")
 
     def close(self):
