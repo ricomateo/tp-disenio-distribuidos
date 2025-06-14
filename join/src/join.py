@@ -43,6 +43,8 @@ class JoinNode:
         self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.join_by = os.getenv("JOIN_BY", "id")
         self.count_by_client = {}
+        
+        self.count_test = 0
 
         self.keep_columns = None
         keep_columns = os.getenv("KEEP_COLUMNS", "")
@@ -121,16 +123,25 @@ class JoinNode:
             client_id = packet.get("client_id")
 
             if is_final_packet(header):
-                print(f" [Main thread] Cola '{self.input_queue_1}' terminó para el cliente {client_id}.")
+                count = int(packet['count'])
+                print(f" [*] Cola '{self.input_queue_1}' terminó.")
                 with self.lock:
                     self.eof_main_by_client[client_id] = True
+                    buffer_count = len(self.router_buffer_by_client.get(client_id, {}))
                     self.save_state(client_id)
+                if count > buffer_count:
+                    print(f" [⚠️] Count final ({count}) es MAYOR que los datos acumulados ({buffer_count}) para el cliente {client_id}")
+                elif count < buffer_count:
+                    print(f" [⚠️] Count final ({count}) es MENOR que los datos acumulados ({buffer_count}) para el cliente {client_id}")
+                else:
+                    print(f" [✅] Count final ({count}) COINCIDE con los datos acumulados ({buffer_count}) para el cliente {client_id}")
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
             router = int(movie.get(self.join_by))
+            
             if client_id not in self.count_by_client:
                 self.count_by_client[client_id] = 0
 
@@ -177,9 +188,11 @@ class JoinNode:
             client_id = packet.get("client_id")
             if is_final_packet(header):
                 print(f" [Join thread] Cola '{self.input_queue_2}' terminó.")
-                count = self.count_by_client[client_id]
+                count = int(packet.get("count"))
+                print(f" [✅] Count final ({count}) CONTRA con los datos acumulados ({self.count_test}) para el cliente {client_id}")
+                count_send = self.count_by_client[client_id]
                 self.final_rabbitmq.send_final_with_node_id(
-                    client_id=client_id, node_id=self.node_id, count=count
+                    client_id=client_id, node_id=self.node_id, count=count_send
                 )
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 print(f" [Join thread] Se mandó el final al cliente {client_id}.")
@@ -191,14 +204,17 @@ class JoinNode:
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
             router = int(movie.get(self.join_by))
-
+            id = packet.id
+            
             if not router:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             # Obtener el StorageHandler para el cliente
             storage = self._get_storage_for_client(client_id)
-
+            
+            self.count_test += 1
+            
             with self.lock:
                 router_in_buffer = router in self.router_buffer_by_client.get(client_id, {})
                 is_eof_main = self.eof_main_by_client.get(client_id, False)
@@ -207,7 +223,7 @@ class JoinNode:
                 print(f" [Join thread] Router '{router}' found in router_buffer")
                 with self.lock:
                     movie1 = self.router_buffer_by_client[client_id][router]
-                joined_packet = self.create_joined_packet(client_id, movie1, movie)
+                joined_packet = self.create_joined_packet(client_id, movie1, movie, id)
                 self.output_rabbitmq.publish(joined_packet.to_json())
                 self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                 print(f" [Join thread] Se envió un par con router '{router}' del cliente '{client_id}'")
@@ -216,9 +232,9 @@ class JoinNode:
                 # Si eof_main es False, guardar en el disco
                 if not is_eof_main:
                     print(f" [Join thread 💾] Router '{router}' not in buffer, adding to disk")
-                    storage.add(str(router), movie)
+                    storage.add(str(router), movie, id)
                     print(f" [Join thread ✅] Added router '{router}' to disk")
-
+                    
             if is_eof_main:
                 stored_keys = storage.list_keys()
 
@@ -236,14 +252,14 @@ class JoinNode:
                             movie1 = self.router_buffer_by_client[client_id][router_key]
                         else:
                             continue
-                    stored_movies = storage.retrieve(key)
+                    stored_movies, stored_id = storage.retrieve(key)
                     if stored_movies:
                         # Asegurarse de que stored_movies sea una lista
                         if not isinstance(stored_movies, list):
                             stored_movies = [stored_movies]
                         print(f" [Join thread 🔍] Procesando router '{router_key}' con {len(stored_movies)} entradas en disco")
                         for movie2 in stored_movies:
-                            joined_packet = self.create_joined_packet(client_id, movie1, movie2)
+                            joined_packet = self.create_joined_packet(client_id, movie1, movie2, stored_id)
                             self.output_rabbitmq.publish(joined_packet.to_json())
                             self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                             print(f" Se juntó un par con key '{router_key}' y se envió al output")
@@ -263,14 +279,12 @@ class JoinNode:
             print(f" [!] Error processing message: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
-    def create_joined_packet(self, client_id: int, movie1, movie2):
+    def create_joined_packet(self, client_id: int, movie1, movie2, movie_id):
         """
         Crea un paquete para un client id a partir de dos entradas de distintas queues.
         """
         combined_movie = {**movie1, **movie2}
-        movie1_str = json.dumps(movie1, sort_keys=True)
-        movie2_str = json.dumps(movie2, sort_keys=True)
-        movie_id = hash(movie1_str + movie2_str)
+        
         joined_packet = DataPacket(
             client_id=client_id,
             timestamp=datetime.utcnow().isoformat(),
