@@ -1,0 +1,1169 @@
+[Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=False)...
+[Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+ [*] Waiting for messages in filter_2000_argentinarouter_2000_argentina
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 16 through the exchange using routing key: 1
+ [x] Message 1 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 58429 through the exchange using routing key: 1
+ [x] Message 2 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 27092 through the exchange using routing key: 2
+ [x] Message 3 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 18079 through the exchange using routing key: 1
+ [x] Message 4 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 19460 through the exchange using routing key: 2
+ [x] Message 5 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 204372 through the exchange using routing key: 0
+ [x] Message 6 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 1956 through the exchange using routing key: 0
+ [x] Message 7 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 16425 through the exchange using routing key: 0
+ [x] Message 8 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 99648 through the exchange using routing key: 0
+ [x] Message 9 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 83505 through the exchange using routing key: 0
+ [x] Message 10 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 58429 through the exchange using routing key: 1
+ [x] Message 11 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 27092 through the exchange using routing key: 2
+ [x] Message 12 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 16 through the exchange using routing key: 1
+ [x] Message 13 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 18079 through the exchange using routing key: 1
+ [x] Message 14 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 30125 through the exchange using routing key: 2
+ [x] Message 15 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 19460 through the exchange using routing key: 2
+ [x] Message 16 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 204372 through the exchange using routing key: 0
+ [x] Message 17 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 20316 through the exchange using routing key: 0
+ [x] Message 18 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 1956 through the exchange using routing key: 0
+ [x] Message 19 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 16425 through the exchange using routing key: 0
+ [x] Message 20 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 1653 through the exchange using routing key: 0
+ [x] Message 21 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 99648 through the exchange using routing key: 0
+ [x] Message 22 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 83505 through the exchange using routing key: 0
+ [x] Message 23 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 30125 through the exchange using routing key: 2
+ [x] Message 24 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 11556 through the exchange using routing key: 0
+ [x] Message 25 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 49681 through the exchange using routing key: 1
+ [x] Message 26 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 20316 through the exchange using routing key: 0
+ [x] Message 27 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 44413 through the exchange using routing key: 1
+ [x] Message 28 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 36971 through the exchange using routing key: 2
+ [x] Message 29 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 1653 through the exchange using routing key: 0
+ [x] Message 30 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 48121 through the exchange using routing key: 1
+ [x] Message 31 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 13653 through the exchange using routing key: 0
+ [x] Message 32 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 78237 through the exchange using routing key: 0
+ [x] Message 33 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 29952 through the exchange using routing key: 0
+ [x] Message 34 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 50724 through the exchange using routing key: 0
+ [x] Message 35 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 79767 through the exchange using routing key: 0
+ [x] Message 36 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 28710 through the exchange using routing key: 0
+ [x] Message 37 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 11556 through the exchange using routing key: 0
+ [x] Message 38 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 49681 through the exchange using routing key: 1
+ [x] Message 39 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 44413 through the exchange using routing key: 1
+ [x] Message 40 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 48121 through the exchange using routing key: 1
+ [x] Message 41 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 13653 through the exchange using routing key: 0
+ [x] Message 42 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 78237 through the exchange using routing key: 0
+ [x] Message 43 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 29952 through the exchange using routing key: 0
+ [x] Message 44 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 36971 through the exchange using routing key: 2
+ [x] Message 45 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 50724 through the exchange using routing key: 0
+ [x] Message 46 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 11148 through the exchange using routing key: 0
+ [x] Message 47 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 11148 through the exchange using routing key: 0
+ [x] Message 48 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 78705 through the exchange using routing key: 0
+ [x] Message 49 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 21043 through the exchange using routing key: 1
+ [x] Message 50 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 13317 through the exchange using routing key: 0
+ [x] Message 51 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 78705 through the exchange using routing key: 0
+ [x] Message 52 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 21043 through the exchange using routing key: 1
+ [x] Message 53 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 13317 through the exchange using routing key: 0
+ [x] Message 54 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 11928 through the exchange using routing key: 0
+ [x] Message 55 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 25376 through the exchange using routing key: 2
+ [x] Message 56 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 25532 through the exchange using routing key: 2
+ [x] Message 57 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 79767 through the exchange using routing key: 0
+ [x] Message 58 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 28710 through the exchange using routing key: 0
+ [x] Message 59 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 101006 through the exchange using routing key: 2
+ [x] Message 60 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 8898 through the exchange using routing key: 0
+ [x] Message 61 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 45336 through the exchange using routing key: 0
+ [x] Message 62 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 127257 through the exchange using routing key: 0
+ [x] Message 63 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 47065 through the exchange using routing key: 1
+ [x] Message 64 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 11928 through the exchange using routing key: 0
+ [x] Message 65 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 57489 through the exchange using routing key: 0
+ [x] Message 66 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 10817 through the exchange using routing key: 2
+ [x] Message 67 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 33107 through the exchange using routing key: 2
+ [x] Message 68 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 36241 through the exchange using routing key: 1
+ [x] Message 69 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 57019 through the exchange using routing key: 1
+ [x] Message 70 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 49073 through the exchange using routing key: 2
+ [x] Message 71 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 126104 through the exchange using routing key: 2
+ [x] Message 72 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 25376 through the exchange using routing key: 2
+ [x] Message 73 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 25532 through the exchange using routing key: 2
+ [x] Message 74 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 62342 through the exchange using routing key: 2
+ [x] Message 75 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 48596 through the exchange using routing key: 2
+ [x] Message 76 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 101006 through the exchange using routing key: 2
+ [x] Message 77 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 8898 through the exchange using routing key: 0
+ [x] Message 78 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 127257 through the exchange using routing key: 0
+ [x] Message 79 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 8900 through the exchange using routing key: 2
+ [x] Message 80 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 118204 through the exchange using routing key: 1
+ [x] Message 81 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 47383 through the exchange using routing key: 1
+ [x] Message 82 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 8900 through the exchange using routing key: 2
+ [x] Message 83 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 278458 through the exchange using routing key: 1
+ [x] Message 84 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 73889 through the exchange using routing key: 2
+ [x] Message 85 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 46558 through the exchange using routing key: 1
+ [x] Message 86 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 47261 through the exchange using routing key: 2
+ [x] Message 87 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 49913 through the exchange using routing key: 2
+ [x] Message 88 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 111188 through the exchange using routing key: 2
+ [x] Message 89 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 26864 through the exchange using routing key: 2
+ [x] Message 90 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 76696 through the exchange using routing key: 1
+ [x] Message 91 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 67884 through the exchange using routing key: 0
+ [x] Message 92 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 16092 through the exchange using routing key: 0
+ [x] Message 93 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 45336 through the exchange using routing key: 0
+ [x] Message 94 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 47065 through the exchange using routing key: 1
+ [x] Message 95 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 85544 through the exchange using routing key: 2
+ [x] Message 96 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 26864 through the exchange using routing key: 2
+ [x] Message 97 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 57489 through the exchange using routing key: 0
+ [x] Message 98 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 10817 through the exchange using routing key: 2
+ [x] Message 99 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 33107 through the exchange using routing key: 2
+ [x] Message 100 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 36241 through the exchange using routing key: 1
+ [x] Message 101 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 57019 through the exchange using routing key: 1
+ [x] Message 102 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 49073 through the exchange using routing key: 2
+ [x] Message 103 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 76696 through the exchange using routing key: 1
+ [x] Message 104 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 126104 through the exchange using routing key: 2
+ [x] Message 105 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 62342 through the exchange using routing key: 2
+ [x] Message 106 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 48596 through the exchange using routing key: 2
+ [x] Message 107 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 85544 through the exchange using routing key: 2
+ [x] Message 108 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 84302 through the exchange using routing key: 2
+ [x] Message 109 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 6636 through the exchange using routing key: 0
+ [x] Message 110 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 46558 through the exchange using routing key: 1
+ [x] Message 111 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 47261 through the exchange using routing key: 2
+ [x] Message 112 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 49913 through the exchange using routing key: 2
+ [x] Message 113 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 67884 through the exchange using routing key: 0
+ [x] Message 114 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 188761 through the exchange using routing key: 1
+ [x] Message 115 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 222759 through the exchange using routing key: 0
+ [x] Message 116 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 115173 through the exchange using routing key: 0
+ [x] Message 117 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 127880 through the exchange using routing key: 2
+ [x] Message 118 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 87380 through the exchange using routing key: 2
+ [x] Message 119 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 39378 through the exchange using routing key: 0
+ [x] Message 120 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 16092 through the exchange using routing key: 0
+ [x] Message 121 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 118204 through the exchange using routing key: 1
+ [x] Message 122 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 69278 through the exchange using routing key: 2
+ [x] Message 123 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 153158 through the exchange using routing key: 2
+ [x] Message 124 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 134096 through the exchange using routing key: 2
+ [x] Message 125 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 47383 through the exchange using routing key: 1
+ [x] Message 126 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 278458 through the exchange using routing key: 1
+ [x] Message 127 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 73889 through the exchange using routing key: 2
+ [x] Message 128 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 111188 through the exchange using routing key: 2
+ [x] Message 129 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 87017 through the exchange using routing key: 2
+ [x] Message 130 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 80717 through the exchange using routing key: 2
+ [x] Message 131 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 85549 through the exchange using routing key: 1
+ [x] Message 132 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 79983 through the exchange using routing key: 0
+ [x] Message 133 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 85543 through the exchange using routing key: 1
+ [x] Message 134 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 73293 through the exchange using routing key: 0
+ [x] Message 135 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 128237 through the exchange using routing key: 2
+ [x] Message 136 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 35837 through the exchange using routing key: 2
+ [x] Message 137 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 133786 through the exchange using routing key: 1
+ [x] Message 138 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 296778 through the exchange using routing key: 0
+ [x] Message 139 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 297677 through the exchange using routing key: 2
+ [x] Message 140 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 80437 through the exchange using routing key: 1
+ [x] Message 141 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 68047 through the exchange using routing key: 1
+ [x] Message 142 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 133082 through the exchange using routing key: 2
+ [x] Message 143 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 80717 through the exchange using routing key: 2
+ [x] Message 144 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 85549 through the exchange using routing key: 1
+ [x] Message 145 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 79983 through the exchange using routing key: 0
+ [x] Message 146 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 85543 through the exchange using routing key: 1
+ [x] Message 147 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 73293 through the exchange using routing key: 0
+ [x] Message 148 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 71114 through the exchange using routing key: 2
+ [x] Message 149 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 222772 through the exchange using routing key: 1
+ [x] Message 150 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 199851 through the exchange using routing key: 0
+ [x] Message 151 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 265195 through the exchange using routing key: 1
+ [x] Message 152 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 80437 through the exchange using routing key: 1
+ [x] Message 153 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 68047 through the exchange using routing key: 1
+ [x] Message 154 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 41272 through the exchange using routing key: 1
+ [x] Message 155 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 114285 through the exchange using routing key: 0
+ [x] Message 156 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 214761 through the exchange using routing key: 0
+ [x] Message 157 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 266031 through the exchange using routing key: 0
+ [x] Message 158 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 133082 through the exchange using routing key: 2
+ [x] Message 159 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 84302 through the exchange using routing key: 2
+ [x] Message 160 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 6636 through the exchange using routing key: 0
+ [x] Message 161 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 226227 through the exchange using routing key: 0
+ [x] Message 162 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 110393 through the exchange using routing key: 2
+ [x] Message 163 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 128598 through the exchange using routing key: 0
+ [x] Message 164 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 43432 through the exchange using routing key: 1
+ [x] Message 165 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 188761 through the exchange using routing key: 1
+ [x] Message 166 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 222759 through the exchange using routing key: 0
+ [x] Message 167 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 127445 through the exchange using routing key: 2
+ [x] Message 168 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 115173 through the exchange using routing key: 0
+ [x] Message 169 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 127880 through the exchange using routing key: 2
+ [x] Message 170 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 87380 through the exchange using routing key: 2
+ [x] Message 171 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 39378 through the exchange using routing key: 0
+ [x] Message 172 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 51548 through the exchange using routing key: 2
+ [x] Message 173 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 21409 through the exchange using routing key: 1
+ [x] Message 174 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 44989 through the exchange using routing key: 1
+ [x] Message 175 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 69278 through the exchange using routing key: 2
+ [x] Message 176 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 153158 through the exchange using routing key: 2
+ [x] Message 177 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 134096 through the exchange using routing key: 2
+ [x] Message 178 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 285463 through the exchange using routing key: 1
+ [x] Message 179 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 29275 through the exchange using routing key: 1
+ [x] Message 180 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 128062 through the exchange using routing key: 1
+ [x] Message 181 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 87017 through the exchange using routing key: 2
+ [x] Message 182 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 254719 through the exchange using routing key: 1
+ [x] Message 183 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 288312 through the exchange using routing key: 0
+ [x] Message 184 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 128237 through the exchange using routing key: 2
+ [x] Message 185 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 35837 through the exchange using routing key: 2
+ [x] Message 186 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 81022 through the exchange using routing key: 1
+ [x] Message 187 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 265563 through the exchange using routing key: 0
+ [x] Message 188 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 259843 through the exchange using routing key: 1
+ [x] Message 189 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 129115 through the exchange using routing key: 1
+ [x] Message 190 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 126883 through the exchange using routing key: 1
+ [x] Message 191 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 255979 through the exchange using routing key: 1
+ [x] Message 192 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 133786 through the exchange using routing key: 1
+ [x] Message 193 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 296778 through the exchange using routing key: 0
+ [x] Message 194 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 297677 through the exchange using routing key: 2
+ [x] Message 195 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 71114 through the exchange using routing key: 2
+ [x] Message 196 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 323214 through the exchange using routing key: 0
+ [x] Message 197 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 75193 through the exchange using routing key: 1
+ [x] Message 198 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 127326 through the exchange using routing key: 0
+ [x] Message 199 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 262788 through the exchange using routing key: 0
+ [x] Message 200 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 222772 through the exchange using routing key: 1
+ [x] Message 201 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 199851 through the exchange using routing key: 0
+ [x] Message 202 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 265195 through the exchange using routing key: 1
+ [x] Message 203 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 41272 through the exchange using routing key: 1
+ [x] Message 204 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 104431 through the exchange using routing key: 1
+ [x] Message 205 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 30688 through the exchange using routing key: 1
+ [x] Message 206 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 114285 through the exchange using routing key: 0
+ [x] Message 207 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 214761 through the exchange using routing key: 0
+ [x] Message 208 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 266031 through the exchange using routing key: 0
+ [x] Message 209 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 226227 through the exchange using routing key: 0
+ [x] Message 210 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 110393 through the exchange using routing key: 2
+ [x] Message 211 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 104431 through the exchange using routing key: 1
+ [x] Message 212 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 30688 through the exchange using routing key: 1
+ [x] Message 213 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 128598 through the exchange using routing key: 0
+ [x] Message 214 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 43432 through the exchange using routing key: 1
+ [x] Message 215 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 127445 through the exchange using routing key: 2
+ [x] Message 216 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 51548 through the exchange using routing key: 2
+ [x] Message 217 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 21409 through the exchange using routing key: 1
+ [x] Message 218 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 44989 through the exchange using routing key: 1
+ [x] Message 219 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 35005 through the exchange using routing key: 1
+ [x] Message 220 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 324578 through the exchange using routing key: 2
+ [x] Message 221 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 297641 through the exchange using routing key: 2
+ [x] Message 222 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 138167 through the exchange using routing key: 2
+ [x] Message 223 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 336664 through the exchange using routing key: 1
+ [x] Message 224 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 285463 through the exchange using routing key: 1
+ [x] Message 225 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 273261 through the exchange using routing key: 0
+ [x] Message 226 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 71118 through the exchange using routing key: 0
+ [x] Message 227 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 92780 through the exchange using routing key: 2
+ [x] Message 228 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 284870 through the exchange using routing key: 2
+ [x] Message 229 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 337115 through the exchange using routing key: 2
+ [x] Message 230 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 45722 through the exchange using routing key: 2
+ [x] Message 231 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 29275 through the exchange using routing key: 1
+ [x] Message 232 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 128062 through the exchange using routing key: 1
+ [x] Message 233 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 352161 through the exchange using routing key: 0
+ [x] Message 234 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 94649 through the exchange using routing key: 2
+ [x] Message 235 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 78115 through the exchange using routing key: 1
+ [x] Message 236 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 254719 through the exchange using routing key: 1
+ [x] Message 237 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 288312 through the exchange using routing key: 0
+ [x] Message 238 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 81022 through the exchange using routing key: 1
+ [x] Message 239 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 265563 through the exchange using routing key: 0
+ [x] Message 240 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 259843 through the exchange using routing key: 1
+ [x] Message 241 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 129115 through the exchange using routing key: 1
+ [x] Message 242 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 126883 through the exchange using routing key: 1
+ [x] Message 243 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 255979 through the exchange using routing key: 1
+ [x] Message 244 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 341744 through the exchange using routing key: 2
+ [x] Message 245 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 214758 through the exchange using routing key: 0
+ [x] Message 246 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 78570 through the exchange using routing key: 0
+ [x] Message 247 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 69985 through the exchange using routing key: 1
+ [x] Message 248 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 128070 through the exchange using routing key: 0
+ [x] Message 249 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 323214 through the exchange using routing key: 0
+ [x] Message 250 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 75193 through the exchange using routing key: 1
+ [x] Message 251 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 127326 through the exchange using routing key: 0
+ [x] Message 252 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 64462 through the exchange using routing key: 1
+ [x] Message 253 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 65795 through the exchange using routing key: 2
+ [x] Message 254 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 161024 through the exchange using routing key: 2
+ [x] Message 255 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 109690 through the exchange using routing key: 1
+ [x] Message 256 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 41924 through the exchange using routing key: 2
+ [x] Message 257 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 336808 through the exchange using routing key: 1
+ [x] Message 258 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 262788 through the exchange using routing key: 0
+ [x] Message 259 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 206292 through the exchange using routing key: 0
+ [x] Message 260 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 129933 through the exchange using routing key: 0
+ [x] Message 261 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 7274 through the exchange using routing key: 2
+ [x] Message 262 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 243934 through the exchange using routing key: 1
+ [x] Message 263 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 64462 through the exchange using routing key: 1
+ [x] Message 264 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 65795 through the exchange using routing key: 2
+ [x] Message 265 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 161024 through the exchange using routing key: 2
+ [x] Message 266 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 109690 through the exchange using routing key: 1
+ [x] Message 267 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 41924 through the exchange using routing key: 2
+ [x] Message 268 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 336808 through the exchange using routing key: 1
+ [x] Message 269 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 206292 through the exchange using routing key: 0
+ [x] Message 270 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 129933 through the exchange using routing key: 0
+ [x] Message 271 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 35005 through the exchange using routing key: 1
+ [x] Message 272 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 324578 through the exchange using routing key: 2
+ [x] Message 273 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 297641 through the exchange using routing key: 2
+ [x] Message 274 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 138167 through the exchange using routing key: 2
+ [x] Message 275 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 336664 through the exchange using routing key: 1
+ [x] Message 276 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 273261 through the exchange using routing key: 0
+ [x] Message 277 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 71118 through the exchange using routing key: 0
+ [x] Message 278 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 7274 through the exchange using routing key: 2
+ [x] Message 279 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 243934 through the exchange using routing key: 1
+ [x] Message 280 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 92780 through the exchange using routing key: 2
+ [x] Message 281 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 284870 through the exchange using routing key: 2
+ [x] Message 282 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 337115 through the exchange using routing key: 2
+ [x] Message 283 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 45722 through the exchange using routing key: 2
+ [x] Message 284 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 352161 through the exchange using routing key: 0
+ [x] Message 285 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 94649 through the exchange using routing key: 2
+ [x] Message 286 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 78115 through the exchange using routing key: 1
+ [x] Message 287 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 102873 through the exchange using routing key: 0
+ [x] Message 288 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 365002 through the exchange using routing key: 1
+ [x] Message 289 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 267579 through the exchange using routing key: 0
+ [x] Message 290 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 44282 through the exchange using routing key: 2
+ [x] Message 291 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 125619 through the exchange using routing key: 0
+ [x] Message 292 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 270909 through the exchange using routing key: 0
+ [x] Message 293 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 16916 through the exchange using routing key: 2
+ [x] Message 294 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 83266 through the exchange using routing key: 1
+ [x] Message 295 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 394374 through the exchange using routing key: 0
+ [x] Message 296 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 82999 through the exchange using routing key: 1
+ [x] Message 297 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 35026 through the exchange using routing key: 1
+ [x] Message 298 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 44282 through the exchange using routing key: 2
+ [x] Message 299 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 125619 through the exchange using routing key: 0
+ [x] Message 300 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 389995 through the exchange using routing key: 1
+ [x] Message 301 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 351454 through the exchange using routing key: 1
+ [x] Message 302 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 358505 through the exchange using routing key: 2
+ [x] Message 303 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 341744 through the exchange using routing key: 2
+ [x] Message 304 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 214758 through the exchange using routing key: 0
+ [x] Message 305 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 78570 through the exchange using routing key: 0
+ [x] Message 306 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 124198 through the exchange using routing key: 1
+ [x] Message 307 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 311215 through the exchange using routing key: 1
+ [x] Message 308 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 408537 through the exchange using routing key: 0
+ [x] Message 309 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 69985 through the exchange using routing key: 1
+ [x] Message 310 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 99896 through the exchange using routing key: 2
+ [x] Message 311 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 128070 through the exchange using routing key: 0
+ [x] Message 312 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 289180 through the exchange using routing key: 1
+ [x] Message 313 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 361251 through the exchange using routing key: 0
+ [x] Message 314 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 257487 through the exchange using routing key: 0
+ [x] Message 315 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 102873 through the exchange using routing key: 0
+ [x] Message 316 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 382906 through the exchange using routing key: 1
+ [x] Message 317 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 360365 through the exchange using routing key: 2
+ [x] Message 318 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 179302 through the exchange using routing key: 1
+ [x] Message 319 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 365002 through the exchange using routing key: 1
+ [x] Message 320 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 267579 through the exchange using routing key: 0
+ [x] Message 321 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 416680 through the exchange using routing key: 1
+ [x] Message 322 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 127304 through the exchange using routing key: 2
+ [x] Message 323 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 268297 through the exchange using routing key: 1
+ [x] Message 324 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 270909 through the exchange using routing key: 0
+ [x] Message 325 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 359736 through the exchange using routing key: 0
+ [x] Message 326 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 425942 through the exchange using routing key: 2
+ [x] Message 327 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 16916 through the exchange using routing key: 2
+ [x] Message 328 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 83266 through the exchange using routing key: 1
+ [x] Message 329 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 394374 through the exchange using routing key: 0
+ [x] Message 330 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 82999 through the exchange using routing key: 1
+ [x] Message 331 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 35026 through the exchange using routing key: 1
+ [x] Message 332 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 389995 through the exchange using routing key: 1
+ [x] Message 333 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 351454 through the exchange using routing key: 1
+ [x] Message 334 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 418718 through the exchange using routing key: 2
+ [x] Message 335 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 420648 through the exchange using routing key: 0
+ [x] Message 336 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 399615 through the exchange using routing key: 0
+ [x] Message 337 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 391617 through the exchange using routing key: 0
+ [x] Message 338 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 353989 through the exchange using routing key: 1
+ [x] Message 339 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 398830 through the exchange using routing key: 1
+ [x] Message 340 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 196324 through the exchange using routing key: 1
+ [x] Message 341 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 359641 through the exchange using routing key: 1
+ [x] Message 342 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 351809 through the exchange using routing key: 2
+ [x] Message 343 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 389578 through the exchange using routing key: 1
+ [x] Message 344 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 391617 through the exchange using routing key: 0
+ [x] Message 345 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 353989 through the exchange using routing key: 1
+ [x] Message 346 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 351067 through the exchange using routing key: 1
+ [x] Message 347 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 398830 through the exchange using routing key: 1
+ [x] Message 348 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 196324 through the exchange using routing key: 1
+ [x] Message 349 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 359641 through the exchange using routing key: 1
+ [x] Message 350 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 351809 through the exchange using routing key: 2
+ [x] Message 351 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 413666 through the exchange using routing key: 2
+ [x] Message 352 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 428863 through the exchange using routing key: 1
+ [x] Message 353 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 358505 through the exchange using routing key: 2
+ [x] Message 354 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 351067 through the exchange using routing key: 1
+ [x] Message 355 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 124198 through the exchange using routing key: 1
+ [x] Message 356 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 311215 through the exchange using routing key: 1
+ [x] Message 357 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 408537 through the exchange using routing key: 0
+ [x] Message 358 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 413666 through the exchange using routing key: 2
+ [x] Message 359 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 428863 through the exchange using routing key: 1
+ [x] Message 360 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 99896 through the exchange using routing key: 2
+ [x] Message 361 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 289180 through the exchange using routing key: 1
+ [x] Message 362 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 361251 through the exchange using routing key: 0
+ [x] Message 363 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 257487 through the exchange using routing key: 0
+ [x] Message 364 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 382906 through the exchange using routing key: 1
+ [x] Message 365 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 360365 through the exchange using routing key: 2
+ [x] Message 366 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 179302 through the exchange using routing key: 1
+ [x] Message 367 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 416680 through the exchange using routing key: 1
+ [x] Message 368 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 127304 through the exchange using routing key: 2
+ [x] Message 369 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 268297 through the exchange using routing key: 1
+ [x] Message 370 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 359736 through the exchange using routing key: 0
+ [x] Message 371 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 425942 through the exchange using routing key: 2
+ [x] Message 372 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 418718 through the exchange using routing key: 2
+ [x] Message 373 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 420648 through the exchange using routing key: 0
+ [x] Message 374 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+ [✓] Sent movie with id: 399615 through the exchange using routing key: 0
+ [x] Message 375 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 389578 through the exchange using routing key: 1
+ [x] Message 376 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 444935 through the exchange using routing key: 2
+ [x] Message 377 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 405446 through the exchange using routing key: 2
+ [x] Message 378 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 71576 through the exchange using routing key: 2
+ [x] Message 379 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 374764 through the exchange using routing key: 1
+ [x] Message 380 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+[Middleware] FinalPacket b'{"client_id":0,"count":62,"header":"FINAL"}' enviado directamente.
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+[Middleware] FinalPacket b'{"client_id":0,"count":68,"header":"FINAL"}' enviado directamente.
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+[Middleware] FinalPacket b'{"client_id":0,"count":62,"header":"FINAL"}' enviado directamente.
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 444935 through the exchange using routing key: 2
+ [x] Message 382 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 405446 through the exchange using routing key: 2
+ [x] Message 383 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+ [✓] Sent movie with id: 71576 through the exchange using routing key: 2
+ [x] Message 384 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+ [✓] Sent movie with id: 374764 through the exchange using routing key: 1
+ [x] Message 385 acknowledged
+ [x] Sent message to exchange router_2000_argentina with routing key 0
+[Middleware] FinalPacket b'{"client_id":1,"count":62,"header":"FINAL"}' enviado directamente.
+ [x] Sent message to exchange router_2000_argentina with routing key 1
+[Middleware] FinalPacket b'{"client_id":1,"count":68,"header":"FINAL"}' enviado directamente.
+ [x] Sent message to exchange router_2000_argentina with routing key 2
+[Middleware] FinalPacket b'{"client_id":1,"count":62,"header":"FINAL"}' enviado directamente.

@@ -1,0 +1,33 @@
+ [*] Waiting for messages in calculator_ratio_feelings
+[updated negative number - current negative average: (10.346473311839953, 770)
+ [x] Message 1 acknowledged
+[updated negative number - current negative average: (8058.21357219595, 1540)
+ [x] Message 2 acknowledged
+[updated negative number - current negative average: (5453.397594954433, 2279)
+ [x] Message 3 acknowledged
+[updated positive number - current positive average: (993.3889998724765, 1012)
+ [x] Message 4 acknowledged
+[updated positive number - current positive average: (2329.1667151817405, 2067)
+ [x] Message 5 acknowledged
+[updated positive number - current positive average: (5668.650541494209, 3091)
+ [x] Message 6 acknowledged
+ [x] Sent message to queue aggregator_calculator_ratio_feelings
+ [x] Sent message to queue aggregator_calculator_ratio_feelings
+ [x] Sent message to queue aggregator_calculator_ratio_feelings
+[Middleware] FinalPacket b'{"client_id":0,"count":0,"header":"FINAL"}' enviado directamente.
+[updated negative number - current negative average: (25.228982028944177, 739)
+ [x] Message 8 acknowledged
+[updated negative number - current negative average: (8230.83256093508, 1509)
+ [x] Message 9 acknowledged
+[updated negative number - current negative average: (5453.397594954433, 2279)
+ [x] Message 10 acknowledged
+[updated positive number - current positive average: (993.388999872476, 1012)
+ [x] Message 11 acknowledged
+[updated positive number - current positive average: (2329.16671518174, 2067)
+ [x] Message 12 acknowledged
+[updated positive number - current positive average: (5668.650541494209, 3091)
+ [x] Message 13 acknowledged
+ [x] Sent message to queue aggregator_calculator_ratio_feelings
+ [x] Sent message to queue aggregator_calculator_ratio_feelings
+ [x] Sent message to queue aggregator_calculator_ratio_feelings
+[Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.

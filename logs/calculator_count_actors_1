@@ -1,0 +1,1160 @@
+[Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
+[Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_1' (durable=False)...
+[Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_1' al exchange 'router_actors_2000_argentina'...
+StateFiles = []
+ [*] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_1
+[client - 0] Processed movie: 16
+ [x] Message 1 acknowledged
+[client - 0] Processed movie: 133786
+ [x] Message 2 acknowledged
+[client - 1] Processed movie: 222772
+ [x] Message 3 acknowledged
+[client - 1] Processed movie: 265195
+ [x] Message 4 acknowledged
+[client - 1] Processed movie: 41272
+ [x] Message 5 acknowledged
+[client - 1] Processed movie: 43432
+ [x] Message 6 acknowledged
+[client - 1] Processed movie: 21409
+ [x] Message 7 acknowledged
+[client - 1] Processed movie: 44989
+ [x] Message 8 acknowledged
+[client - 1] Processed movie: 29275
+ [x] Message 9 acknowledged
+[client - 1] Processed movie: 128062
+ [x] Message 10 acknowledged
+[client - 1] Processed movie: 285463
+ [x] Message 11 acknowledged
+[client - 1] Processed movie: 254719
+ [x] Message 12 acknowledged
+[client - 1] Processed movie: 81022
+ [x] Message 13 acknowledged
+[client - 0] Processed movie: 259843
+ [x] Message 14 acknowledged
+[client - 0] Processed movie: 129115
+ [x] Message 15 acknowledged
+[client - 0] Processed movie: 126883
+ [x] Message 16 acknowledged
+Skipped movie 'Balnearios' with missing or invalid cast
+[client - 0] Processed movie: 75193
+ [x] Message 18 acknowledged
+[client - 0] Processed movie: 104431
+ [x] Message 19 acknowledged
+Skipped movie 'Gemini' with missing or invalid cast
+[client - 1] Processed movie: 104431
+ [x] Message 21 acknowledged
+Skipped movie 'Gemini' with missing or invalid cast
+[client - 1] Processed movie: 35005
+ [x] Message 23 acknowledged
+[client - 1] Processed movie: 336664
+ [x] Message 24 acknowledged
+[client - 1] Processed movie: 78115
+ [x] Message 25 acknowledged
+[client - 0] Processed movie: 69985
+ [x] Message 26 acknowledged
+[client - 1] Processed movie: 64462
+ [x] Message 27 acknowledged
+[client - 1] Processed movie: 109690
+ [x] Message 28 acknowledged
+[client - 1] Processed movie: 336808
+ [x] Message 29 acknowledged
+[client - 0] Processed movie: 64462
+ [x] Message 30 acknowledged
+[client - 0] Processed movie: 109690
+ [x] Message 31 acknowledged
+Skipped movie 'Pin Boy' with missing or invalid cast
+[client - 0] Processed movie: 336808
+ [x] Message 33 acknowledged
+Skipped movie 'Pin Boy' with missing or invalid cast
+[client - 0] Processed movie: 365002
+ [x] Message 35 acknowledged
+[client - 1] Processed movie: 365002
+ [x] Message 36 acknowledged
+[client - 0] Processed movie: 83266
+ [x] Message 37 acknowledged
+[client - 0] Processed movie: 82999
+ [x] Message 38 acknowledged
+[client - 1] Processed movie: 83266
+ [x] Message 39 acknowledged
+[client - 1] Processed movie: 82999
+ [x] Message 40 acknowledged
+[client - 1] Processed movie: 35026
+ [x] Message 41 acknowledged
+[client - 0] Processed movie: 35026
+ [x] Message 42 acknowledged
+[client - 0] Processed movie: 389995
+ [x] Message 43 acknowledged
+[client - 0] Processed movie: 351454
+ [x] Message 44 acknowledged
+[client - 1] Processed movie: 353989
+ [x] Message 45 acknowledged
+[client - 1] Processed movie: 398830
+ [x] Message 46 acknowledged
+[client - 1] Processed movie: 389995
+ [x] Message 47 acknowledged
+[client - 1] Processed movie: 351454
+ [x] Message 48 acknowledged
+[client - 1] Processed movie: 196324
+ [x] Message 49 acknowledged
+[client - 1] Processed movie: 359641
+ [x] Message 50 acknowledged
+[client - 0] Processed movie: 353989
+ [x] Message 51 acknowledged
+[client - 0] Processed movie: 398830
+ [x] Message 52 acknowledged
+[client - 0] Processed movie: 196324
+ [x] Message 53 acknowledged
+[client - 0] Processed movie: 359641
+ [x] Message 54 acknowledged
+[client - 1] Processed movie: 124198
+ [x] Message 55 acknowledged
+[client - 1] Processed movie: 311215
+ [x] Message 56 acknowledged
+[client - 0] Processed movie: 124198
+ [x] Message 57 acknowledged
+[client - 0] Processed movie: 311215
+ [x] Message 58 acknowledged
+[client - 0] Processed movie: 289180
+ [x] Message 59 acknowledged
+[client - 0] Processed movie: 382906
+ [x] Message 60 acknowledged
+[client - 1] Processed movie: 289180
+ [x] Message 61 acknowledged
+Skipped movie 'Ánima Buenos Aires' with missing or invalid cast
+[client - 1] Processed movie: 416680
+ [x] Message 63 acknowledged
+[client - 1] Processed movie: 268297
+ [x] Message 64 acknowledged
+[client - 1] Processed movie: 382906
+ [x] Message 65 acknowledged
+Skipped movie 'Ánima Buenos Aires' with missing or invalid cast
+[client - 0] Processed movie: 416680
+ [x] Message 67 acknowledged
+[client - 0] Processed movie: 268297
+ [x] Message 68 acknowledged
+[client - 0] Processed movie: 351067
+ [x] Message 69 acknowledged
+[client - 1] Processed movie: 389578
+ [x] Message 70 acknowledged
+[client - 0] Processed movie: 428863
+ [x] Message 71 acknowledged
+[client - 1] Processed movie: 351067
+ [x] Message 72 acknowledged
+[client - 1] Processed movie: 428863
+ [x] Message 73 acknowledged
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Adrián Suar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Agustina Muñoz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Al Agami', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alan Sabbagh', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alberto Laiseca', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alejandra Flechner', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alejandro Goic', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alejandro Javier Bures', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alexandra Lamy', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alfredo Castro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alfredo Martín', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Aline Küppenheim', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alvin Astorga', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Amparo Noguera', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Anahí Martella', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Andrea Alfonso', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Andreu Lacondeguy', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'André Oumansky', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Angie Cepeda', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Anna Norberg', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Antonio Bolivar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Arnaldo André', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Atilio Pozzobon', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Beatriz Spelzini', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Berta Muñiz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Björk', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Blanca Lewin', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Brionne Davis', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Bruno Salomone', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cacho Buenaventura', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cam McCaul', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cameron Zink', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Camila Bordonaba', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cara Seymour', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carlos Chamarro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carlos Kaspar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carlos Sorin', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carmen Ruiz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carolina Fal', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carolina Pelleritti', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carolina Presno', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Caroline Sascha Cogez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Catherine Deneuve', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cecilia Dopazo', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Charlie Bewley', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Chino Darín', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Chloé Jouannet', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Christina Banegas', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Claudio Weppler', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Coca Guazzini', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cristina Brondo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cristián Campos', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'César Roldan', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Damián Guitián', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Campomenosi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Elías', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Muñoz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Prévost', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Rabinovich', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniela Catz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Darren Berrecloth', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'David Morse', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Capusotto', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Cremonesi', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Muñoz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Peretti', 'count': 3}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Rafecas', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Torres', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Vegezzi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Velázquez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Dolores Fonzi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Edda Díaz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Eduardo Paxeco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Eduardo Poli', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Emilia Ossandón', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Emilio Gutiérrez Caba', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Emma Jayne Carlton', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Esteban Lamothe', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Evangelina Salazar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Fernando Tejero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Francisco Reyes', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gabo Ferro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gabriel Corrado', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gabriel Flores González', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gael García Bernal', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gerardo Romano', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gisela Aringoli', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gloria Carrá', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Graciela Borges', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Guillermo Hönig', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gustavo Garzón', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Henny Trailes', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Hernan Penner', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Hernán Jiménez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Horacio Lavandera', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Horacio Marassi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Hugo Pisa', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Hugo Sigman', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Hugo Silva', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Héctor Noguera', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Ignacio Rogers', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Isabel Panasiuk', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jack Doolan', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jack Gordon', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jaime Torres', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jaime Vadell', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jairo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'James Doerfling', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jan Bijvoet', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Javier Niklison', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jean Dujardin', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jean-François Balmer', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jean-Marc Barr', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jens Albinus', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Joaquín Berthold', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Joel Grey', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'John Martinus', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'John Randolph Jones', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jordi Sánchez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jorge Noya', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'José Sancho', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Juan Falú', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Juan Palomino', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Juan Villegas', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julia Lübbert', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julia Volpato', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julian Gamble', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julieta Gullo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Katrine Falkenberg', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Kazuomi Takagi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Kiko Cerone', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Kurt Sorge', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Kyle Strait', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lars Michael Dinesen', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Laura Pamplona', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lautaro Delgado', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Leonel Arancibia', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Liliana Herrero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lucas Delgado', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lucas Laurens', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lucia Carolina Pecrul', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lucia Snieg', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luciana Jury', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luciano Cáceres', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luigi Sciamanna', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luis Gnecco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luis Luque', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luis Salinas', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luis Vitalino Grandón', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luke Reilly', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Macarena del Corro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Manolo Sarmiento', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marcelo Alonso', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marcial Tagle', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marcos Mundstock', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Maria Abadi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marian Farías Gómez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mariana Loyola', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marina Bellati', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mario Mahler', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marta Paccamicci', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Martín Cotari', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Martín Kohan', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'María Eugenia Suárez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mathias Sandor', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Matías Tapia', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Melvil Poupaud', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mercedes Morán', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mette Berggreen', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Michael Flessas', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Michael Silva', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Michaël Youn', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mike Kinrade', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mike Noble', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mirella Pascual', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mirta Busnelli', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mirta Wons', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mía Maestro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Natalia Oreiro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nicolás Blanco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nicolás Cancino', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nicolás Vázquez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nilbio Torres', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Noah Lazarus', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Norma Argentina', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Norman Briski', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Néstor Cantillana', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Obi Abili', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pablo Derqui', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pablo Echarri', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pablo Rago', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pablo Sigal', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Paola Barrientos', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Paprika Steen', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Patricia Montero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Paul Basagoitia', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Paula Galinelli Hertzog', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pedro Aznar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Peter Stormare', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pompeyo Audivert', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rafael Spregelburd', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Reathel Bean', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rebecca Dayan', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Ricardo Darín', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Ricardo Soulé', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rita Cortese', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Robbie Bourdon', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Roberto Cowal', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Roberto Farías', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Robin Bartlett', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rodrigo Bianco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rodrigo Lamoreaux', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Salvador Haidar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Samuel Shaw', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Sean-Michael Smith', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Sergio Boris', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Silvia Paz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Silvia Süller', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Siobhan Fallon', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Sofía Brito', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Sofía Palomino', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Soledad Villamil', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Stellan Skarsgård', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Susana Varela', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Sylvie Testud', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Tomas Mackinlay', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Tomás Ottaviano', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Tristán Colombo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Troels Asmussen', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Udo Kier', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Valeria Bertuccelli', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Vera Fogwill', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Victor Montero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Victoria Witemburg', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Vincent Paterson', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Vladica Kostic', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Walter Soria', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Will Janowitz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Yamila Greco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Yauenkü Miguee', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Zeljko Ivanek', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Zoe Hochbaum', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Óscar Kramer', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+ [x] Sent message to queue calculator_count_actorsfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":243,"header":"FINAL","node_id":"1"}' enviado directamente.
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Adrián Suar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Agustina Muñoz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Agustín Garvíe', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alan Sabbagh', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alberto Jiménez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alberto Laiseca', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alejandra Flechner', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alejandra Manzo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alejandro Goic', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alexandra Lamy', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Alfredo Castro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Aline Küppenheim', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Amparo Noguera', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Andrea Alfonso', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Andrea Quattrocchi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'André Oumansky', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Angie Cepeda', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Antonio Bolivar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Antonio Larreta', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Arnaldo André', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Arturo Goetz', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Atilio Pozzobon', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Benjamin Coelho', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Berta Muñiz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Blanca Lewin', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Brionne Davis', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Bruno Salomone', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cacho Buenaventura', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Camila Bordonaba', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Camila Fabbri', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carla Crespo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carlos Chamarro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carlos Donigian', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carlos Kaspar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carmen Ruiz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Caro Angus', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carolina Fal', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carolina Levi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carolina Pelleritti', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Carolina Presno', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cecilia Dopazo', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Charlie Bewley', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'China Zorrilla', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Chino Darín', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Chloé Jouannet', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Christina Banegas', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Claudia Cantero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Claudia Fontán', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Claudio Weppler', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Coca Guazzini', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cristian Salguero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cristina Brondo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Cristián Campos', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'César Bordón', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Campomenosi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Elías', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Hendler', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Muñoz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Prévost', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniel Rabinovich', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniela Catz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Daniela Pal', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Dany Casco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Darío Grandinetti', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Capusotto', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Cremonesi', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Muñoz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Peretti', 'count': 3}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Torres', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Diego Velázquez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Dolores Fonzi', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Edda Díaz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Edgardo Castro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Eduardo Blanco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Eduardo Paxeco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Eduardo Poli', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Elsa Bois', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Emilia Ossandón', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Emilio Gutiérrez Caba', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Emilse Roldán', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Esteban Bigliardi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Esteban Lamothe', 'count': 3}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Evangelina Salazar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Evelyn Scheidl', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Ezequiel Díaz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Felipe Villanueva', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Fernando Tejero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Floria Bloise', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Francisco Lumerman', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Francisco Reyes', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gabo Ferro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gabriel Corrado', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gabriel Goity', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gael García Bernal', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gerardo Romano', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Germán de Silva', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gloria Carrá', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Graciela Borges', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Guillermo Francella', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Gustavo Garzón', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Henny Trailes', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Henny Trayles', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Hernan Penner', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Hernán Jiménez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Horacio Lavandera', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Horacio Marassi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Hugo Silva', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Héctor Noguera', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Ignacio Rogers', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Inés Molina', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jack Doolan', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jack Gordon', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jaime Torres', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jaime Vadell', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jairo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jan Bijvoet', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jazmín Stuart', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jean Dujardin', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jean Pierre Noher', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jean-François Balmer', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Joaquín Berthold', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jonathan Da Rosa', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jordi Sánchez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jorge Noya', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Jorgelina Aruzzi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'José Sacristán', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'José Sancho', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Juan Diego Botto', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Juan Falú', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Juan Palomino', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julia Lübbert', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julia Martínez Rubio', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julian Gamble', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julieta Díaz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julieta Gullo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julieta Zylberberg', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julio Chávez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julián Larquier Tellarini', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Julián Tello', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Kazuomi Takagi', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Laura López Moyano', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Laura Pamplona', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Laura Paredes', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lautaro Delgado', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Leonardo Sbaraglia', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Leonor Manso', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Liliana Herrero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lucas Delgado', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lucia Carolina Pecrul', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Lucia Snieg', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luciana Jury', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luciano Cáceres', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luigi Sciamanna', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luis Gnecco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luis Luque', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luis Salinas', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Luis Vitalino Grandón', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Manolo Sarmiento', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Manuela Martelli', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mara Bestelli', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marcela Guerty', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marcela Kloosterboer', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marcelo Alonso', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marcial Tagle', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marcos Mundstock', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Maria Onetto', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marian Farías Gómez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mariana Loyola', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mariel Fernandéz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marina Bellati', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Marina Glezer', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Martin Feldman', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Martín Kohan', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'María Eugenia Suárez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'María Galiana', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'María Marull', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'María Nela Sinisterra', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'María Onetto', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'María Ucedo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'María Villar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'María del Carmen Jiménez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mathias Sandor', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mauricio Dayub', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Maximiliano Ghione', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Melvil Poupaud', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mercedes Fraile', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mercedes Morán', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Michael Silva', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Michaël Youn', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Miguel Dedovich', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mike Noble', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mirella Pascual', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mirta Busnelli', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mirta Wons', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mía Maestro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Mónica Villa', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nancy Dupláa', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Natalia Oreiro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nicolás Blanco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nicolás Cancino', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nicolás Francella', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nicolás Vázquez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nilbio Torres', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nora Cárpena', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Nora Zinsky', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Norma Aleandro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Norman Briski', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Néstor Cantillana', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Obi Abili', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Oscar Martínez', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Osmar Núñez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Osvaldo Bonet', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pablo Derqui', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pablo Echarri', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pablo Rago', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Paola Barrientos', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Patricia Montero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pedro Aznar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Peto Menahem', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pilar Gamboa', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Pompeyo Audivert', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rafael Federman', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rafael Spregelburd', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Raúl Rizzo', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rebecca Dayan', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Ricardo Darín', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rita Cortese', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Roberto Farías', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Roberto Rovira', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Robin Bartlett', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rocío Rodríguez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Rodrigo Bianco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Romina Paula', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Salvador Haidar', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Silvia Paz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Silvia Süller', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Silvina Bosco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Sofía Palomino', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Soledad Villamil', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Susana Pampin', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Susana Varela', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Susú Pecoraro', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Sylvie Testud', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Tatiana Giménez', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Tomás Ottaviano', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Ulises Dumont', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Valeria Bertuccelli', 'count': 2}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Valeria Lois', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Vando Villamil', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Vera Fogwill', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Verónica Llinás', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Victor Montero', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Victoria Witemburg', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Walter Cornás', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Walter Donado', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Walter Jakob', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Walter Soria', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Will Janowitz', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Yamila Greco', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Yauenkü Miguee', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Zoe Hochbaum', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Érica Rivas', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Óscar Kramer', 'count': 1}
+ [x] Sent message to queue calculator_count_actors
+ [x] Sent message to queue calculator_count_actorsfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":263,"header":"FINAL","node_id":"1"}' enviado directamente.

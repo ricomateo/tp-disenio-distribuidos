@@ -1,0 +1,59 @@
+Sent movies_metadata.csv file
+Sent ratings.csv file
+Sent credits.csv file
+Top 5 by total (descending):
+value: United States of America | total: 120153886644
+value: France | total: 2256831838
+value: United Kingdom | total: 1611604610
+value: India | total: 1169682797
+value: Japan | total: 832585873
+
+Top 1 by average (descending):
+id: 125619 | title: The forbidden education | average: 4.0
+
+Top 1 by average (ascending):
+id: 128598 | title: Left for Dead | average: 1.0
+
+Top 10 by count (descending):
+value: Ricardo Darín | count: 6
+value: Diego Peretti | count: 4
+value: Adrián Suar | count: 3
+value: Agustina Muñoz | count: 3
+value: Alejandro Awada | count: 3
+value: Elisa Carricajo | count: 3
+value: Federico Luppi | count: 3
+value: Dolores Fonzi | count: 3
+value: Pablo Echarri | count: 3
+value: Pablo Rago | count: 3
+
+title: La Cienaga | genres: Comedy, Drama
+title: Burnt Money | genres: Crime
+title: The City of No Limits | genres: Thriller, Drama
+title: Nicotina | genres: Drama, Action, Comedy, Thriller
+title: Lost Embrace | genres: Drama, Foreign
+title: The Holy Girl | genres: Drama, Foreign
+title: Whisky | genres: Comedy, Drama, Foreign
+title: The Aura | genres: Crime, Drama, Thriller
+title: Bombón: The Dog | genres: Drama
+title: Rolling Family | genres: Drama, Comedy
+title: The Method | genres: Drama, Thriller
+title: Every Stewardess Goes to Heaven | genres: Drama, Romance, Foreign
+title: Tetro | genres: Drama, Mystery
+title: The Last Summer of La Boyita | genres: Drama
+title: The Secret in Their Eyes | genres: Crime, Drama, Mystery, Romance
+title: Liverpool | genres: Drama
+title: The Headless Woman | genres: Drama, Mystery, Thriller
+title: The Fish Child | genres: Drama, Thriller, Romance, Foreign
+title: The Appeared | genres: Horror, Thriller, Mystery
+title: Cleopatra | genres: Drama, Comedy, Foreign
+title: Roma | genres: Drama, Foreign
+title: The Education of Fairies | genres: Drama
+title: Conversations with Mother | genres: Comedy, Drama, Foreign
+title: The Good Life | genres: Drama
+
+Top 2 by ratio (descending):
+feeling: POS | ratio: 5668.6505 | count: 3091
+feeling: NEG | ratio: 5453.3976 | count: 2279
+
+received finalization message, closing...
+Total time from connection to disconnection: 1036.20 seconds
