@@ -388,8 +388,8 @@ class JoinNode:
 
             # Limpiar count del cliente
             if client_id in self.count_by_client:
-                del self.count_by_client
-        print(f" [✅] Disco limpio y memoria limpia para '{client_id}'")
+                del self.count_by_client[client_id]
+        print(f" [✅] Disco limpio y memoria limpia para '{client_id}'") 
 
     def close(self):
         """
