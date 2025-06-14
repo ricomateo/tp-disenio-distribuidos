@@ -123,6 +123,7 @@ class JoinNode:
                 print(f" [*] Cola '{self.input_queue_1}' terminó.")
                 with self.lock:
                     self.eof_main_by_client[client_id] = True
+                    self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
@@ -143,6 +144,7 @@ class JoinNode:
                     self.router_buffer_by_client[client_id][router] = movie
                     print(f"Se guardo una nueva entrada para el router '{router}' en el cliente '{client_id}'. \
                             Tamaño actual buffer: {len(self.router_buffer_by_client[client_id])}")
+                    self.save_state(client_id)
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -239,6 +241,7 @@ class JoinNode:
 
                 # Limpiar el disco después del merge
                 storage.clean()
+                self.delete_client_state(client_id) # Se borra una vez que ya no se necesita
                 print(" [✅] Disco limpio")
 
 
@@ -272,6 +275,8 @@ class JoinNode:
         terminen. Por útimo, en caso de ser el líder espera a que termine la leader queue.
         """
         try:
+            self.load_all_states()
+
             t1 = threading.Thread(target=self.input_rabbitmq_1.consume, args=(self.main_callback,))
             t1.start()
             self.threads.append(t1)
@@ -392,5 +397,5 @@ class JoinNode:
             storage.clean_all()
         self.storages_by_client.clear()
         self.router_buffer_by_client.clear()
-        
+
         # Delete client state for all clients with current state using self.delete_client_state()
