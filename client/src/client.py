@@ -87,5 +87,4 @@ class Client:
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
         print(f"Sending finalization message...")
-        self.protocol.send_finalization()
         self.close()

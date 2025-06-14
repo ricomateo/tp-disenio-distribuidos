@@ -98,7 +98,7 @@ class ControlNode:
         with self.locks_por_nodo[lock_key]:
             try:
                 if os.path.exists(ids_file):
-                    shutil.copy2(ids_file, ids_tmp_file)
+                    shutil.copyfile(ids_file, ids_tmp_file)
                 else:
                     open(ids_tmp_file, "a").close()
 
