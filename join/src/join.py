@@ -30,15 +30,15 @@ class JoinNode:
         self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
         self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.join_by = os.getenv("JOIN_BY", "id")
-        
+
         self.keep_columns = None
         keep_columns = os.getenv("KEEP_COLUMNS", "")
         if keep_columns:
             self.keep_columns = [col.strip() for col in keep_columns.split(",") if col.strip()]
-        
+
         self.threads = []
-        
-        if self.output_exchange: 
+
+        if self.output_exchange:
             self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
             self.output_rabbitmq = Middleware(queue=self.output_queue)
@@ -57,19 +57,28 @@ class JoinNode:
             publish_to_exchange=False,
             routing_key=self.node_id
         )
-        
+
         self.final_rabbitmq = Middleware(
             queue=self.final_queue,
             consumer_tag=self.consumer_tag,
             publish_to_exchange=False
         )
-        
+
         self.leader_queue = None
         if int(self.node_id) == 0:
-            self.leader_queue = LeaderQueue(self.final_queue, self.output_queue, self.consumer_tag, self.cluster_size)
-            
-        self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
-        
+            self.leader_queue = LeaderQueue(
+                self.final_queue,
+                self.output_queue,
+                self.consumer_tag,
+                self.cluster_size,
+            )
+
+        self.control = WorkerProtocol(
+            self.health_server_ip,
+            self.health_server_port,
+            self.health_server_port,
+        )
+
     def _get_storage_for_client(self, client_id):
         """Obtiene o crea un StorageHandler para un cliente."""
         with self.lock:
@@ -86,12 +95,12 @@ class JoinNode:
             if not self.running:
                 self.input_rabbitmq_1.close_graceful(method)
                 return
-            
+
             packet_json = body.decode()
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
-            
+
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_1}' terminó.")
                 with self.lock:
@@ -115,7 +124,7 @@ class JoinNode:
                     print(f" [🆕] Creating new router_buffer entry for router '{router}' para cliente '{client_id}'")
                     self.router_buffer_by_client[client_id][router] = movie
                     print(f" [✅] Router '{router}' entry saved para cliente '{client_id}'. Current buffer size: {len(self.router_buffer_by_client[client_id])}")
-            
+
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
         except json.JSONDecodeError as e:
@@ -130,7 +139,7 @@ class JoinNode:
             if not self.running:
                 self.input_rabbitmq_2.close_graceful(method)
                 return
-            
+
             packet_json = body.decode()
             packet = json.loads(packet_json)
             header = packet.get("header")
@@ -155,11 +164,11 @@ class JoinNode:
 
             # Obtener el StorageHandler para el cliente
             storage = self._get_storage_for_client(client_id)
-            
+
             with self.lock:
                 router_in_buffer = router in self.router_buffer_by_client.get(client_id, {})
                 is_eof_main = self.eof_main_by_client.get(client_id, False)
-                
+
             if router_in_buffer:
                 print(f" [🔍] Router '{router}' found in router_buffer")
                 with self.lock:
@@ -167,14 +176,14 @@ class JoinNode:
                 joined_packet = self.create_joined_packet(client_id, movie1, movie)
                 self.output_rabbitmq.publish(joined_packet.to_json())
                 print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
-                
+
             else:
                 # Si eof_main es False, guardar en el disco
                 if not is_eof_main:
                     print(f" [💾] Router '{router}' not in buffer, adding to disk")
                     storage.add(str(router), movie)
                     print(f" [✅] Added router '{router}' to disk")
-                    
+
             if is_eof_main:
                 # Verificar si el disco está vacío
                 stored_keys = storage.list_keys()
@@ -200,11 +209,11 @@ class JoinNode:
                             joined_packet = self.create_joined_packet(client_id, movie1, movie2)
                             self.output_rabbitmq.publish(joined_packet.to_json())
                             print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
-                    
+
                 # Limpiar el disco después del merge
                 storage.clean()
                 print(f" [✅] Disco limpio")
-               
+
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -226,7 +235,7 @@ class JoinNode:
             id=str(id)
         )
         return joined_packet
-                
+
     def start_node(self):
         try:
             t1 = threading.Thread(target=self.input_rabbitmq_1.consume, args=(self.main_callback,))
@@ -237,7 +246,7 @@ class JoinNode:
             self.threads.append(t2)
             t1.join()
             t2.join()
-                  
+
         except Exception as e:
             print(f" [!] Error in join node: {e}")
         finally:
@@ -256,23 +265,23 @@ class JoinNode:
             self.input_rabbitmq_2.cancel_consumer()
         if self.leader_queue:
             self.leader_queue.close()
-    
+
     def clean(self, client_id):
         # Limpiar disco del cliente
         with self.lock:
             if client_id in self.storages_by_client:
                 self.storages_by_client[client_id].clean()
                 del self.storages_by_client[client_id]
-                
+
             # Limpiar router_buffer del cliente
             if client_id in self.router_buffer_by_client:
                 del self.router_buffer_by_client[client_id]
-        
+
             # Limpiar eof_main del cliente
             if client_id in self.eof_main_by_client:
                 del self.eof_main_by_client[client_id]
         print(f" [✅] Disco limpio y memoria limpia para '{client_id}'") 
-    
+
     def close(self):
         print(f"Closing queues")
         if self.leader_queue:
