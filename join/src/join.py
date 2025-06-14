@@ -305,7 +305,7 @@ class JoinNode:
             print(f" No se pudo eliminar el estado para el cliente de Id '{client_id}': {e}")
 
     def _sigterm_handler(self, signum, _):
-        print("Received SIGTERM signal")
+        print(f"Received SIGTERM signal, signum:{signum}")
         self.running = False
         if self.control:
             self.control.stop()
@@ -317,6 +317,10 @@ class JoinNode:
             self.leader_queue.close()
 
     def clean(self, client_id):
+        """
+        Limpia el estado del cliente, incluyendo los storages, el router buffer y el 
+        eof main, pero también el archivo con su estado en disco.
+        """
         # Limpiar disco del cliente
         with self.lock:
             if client_id in self.storages_by_client:
@@ -330,6 +334,9 @@ class JoinNode:
             # Limpiar eof_main del cliente
             if client_id in self.eof_main_by_client:
                 del self.eof_main_by_client[client_id]
+
+            # Elimino el archivo con el estado del cliente
+            self.delete_client_state(client_id)
         print(f" [✅] Disco limpio y memoria limpia para '{client_id}'")
 
     def close(self):
