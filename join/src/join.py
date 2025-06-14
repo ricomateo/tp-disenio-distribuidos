@@ -2,12 +2,14 @@ import json
 import os
 import signal
 import threading
+import glob
 from datetime import datetime
 from common.middleware import Middleware
 from common.storage_handler import StorageHandler
 from common.leader_queue import LeaderQueue
 from common.packet import DataPacket, is_final_packet
 from common.worker_protocol import WorkerProtocol
+from common.atomic_write import atomic_write
 
 class JoinNode:
     def __init__(self):
@@ -253,6 +255,54 @@ class JoinNode:
             if self.leader_queue:
                 self.leader_queue.join()
             self.close()
+
+    def save_state(self, client_id):
+        """
+        Guarda el estado del cliente en un archivo .json de forma atómica.
+        El archivo va a tener el nombre state.client.<client_id>.json
+        """
+        filename = f"state.client.{client_id}.json"
+        data = json.dumps({
+            "eof_main": self.eof_main_by_client.get(client_id, False),
+            "router_buffer": self.router_buffer_by_client.get(client_id, {}),
+        })
+        atomic_write(filename, data)
+
+    def load_all_states(self):
+        """
+        Carga todos los estados persistidos del disco en el nodo de los archivos 
+        state de cada cliente.
+        """
+        state_files: list[str] = glob.glob("state.client.*.json")
+        print(f" Cargando los estados previos de los siguientes archivos: {state_files}")
+        for client_state_file_path in state_files:
+            try:
+                # Note: Check if this should be an int or a string depending on client_id
+                # occurences if this node
+                client_id = client_state_file_path.split(".")[2]
+                with open(client_state_file_path, "r", encoding="utf-8") as f:
+                    state = json.load(f)
+
+                    # Check if this lock is needed
+                    with self.lock:
+                        self.eof_main_by_client[client_id] = state.get("eof_main", False)
+                        self.router_buffer_by_client[client_id] = state.get("router_buffer", {})
+                    print(f" [✅] Se restauró el estado para el client '{client_id}'")
+            except Exception as e:
+                print(f" [!] Error restaurando estado del archivo {client_state_file_path}: {e}")
+
+    def delete_client_state(self, client_id):
+        """
+        Borra el estado persistido del cliente recibido por parámetro.
+        """
+        filename = f"state.client.{client_id}.json"
+        try:
+            os.remove(filename)
+            print(f" Se eliminó el archivo de estado para el cliente de Id '{client_id}'")
+        except FileNotFoundError:
+            pass
+        except Exception as e:
+            print(f" No se pudo eliminar el estado para el cliente de Id '{client_id}': {e}")
 
     def _sigterm_handler(self, signum, _):
         print("Received SIGTERM signal")
