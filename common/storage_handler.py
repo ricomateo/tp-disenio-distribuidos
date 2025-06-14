@@ -65,13 +65,13 @@ class StorageHandler:
         except Exception as e:
             logging.error(f"Error al almacenar {key}: {e}")
 
-    def add(self, key, value):
+    def add(self, key, value, id):
         """Agrega un valor a una clave existente, concatenándolo como lista."""
         file_id = self._get_file_id(key)
         file_path = os.path.join(self.data_dir, f'data_{file_id}.json')
         try:
             # Leer datos existentes
-            data = {'value': []}
+            data = {'value': [], 'id': id}
             if os.path.exists(file_path):
                 with open(file_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
@@ -82,22 +82,22 @@ class StorageHandler:
             # Guardar datos actualizados
             with open(file_path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False)
-            logging.debug(f"Agregado {value} a {key} en {file_path}")
+            logging.debug(f"Agregado {value} e {id} a {key} en {file_path}")
         except Exception as e:
             logging.error(f"Error al agregar {value} a {key}: {e}")
 
     def retrieve(self, key):
         """Recupera el valor asociado a una clave."""
         if key not in self.index:
-            return ''
+            return '', ''
         file_id = self.index[key]
         file_path = os.path.join(self.data_dir, f'data_{file_id}.json')
         try:
             if not os.path.exists(file_path):
-                return ''
+                return '', ''
             with open(file_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                return data['value']
+                return data['value'], data['id']
         except Exception as e:
             logging.error(f"Error al recuperar {key}: {e}")
             return ''
