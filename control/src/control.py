@@ -118,7 +118,7 @@ class ControlNode:
         pattern = os.path.join(self.state_dir, f"{client_id}_*.json")
         client_files = glob.glob(pattern)
         relevant_locks = []
-        for lock_key, lock in self.locks_por_nodo.items():
+        for lock_key, lock in list(self.locks_por_nodo.items()):
             if lock_key.startswith(f"{client_id}_"):
                 relevant_locks.append(lock)
                 lock.acquire()
@@ -353,7 +353,7 @@ class ControlNode:
 
             # Acquirir todos los locks relacionados a ese client_id
             relevant_locks = []
-            for lock_key, lock in self.locks_por_nodo.items():
+            for lock_key, lock in list(self.locks_por_nodo.items()):
                 if lock_key.startswith(f"{client_id}_"):
                     relevant_locks.append(lock)
                     lock.acquire()
@@ -455,7 +455,8 @@ class ControlNode:
         # Acquire all locks for this client across all nodes
         relevant_locks = []
         try:
-            for lock_key, lock in self.locks_final_counts_por_cliente.items():
+      
+            for lock_key, lock in list(self.locks_final_counts_por_cliente.items()):
                 if lock_key.startswith(f"{client_id}_"):
                     relevant_locks.append(lock)
                     lock.acquire()
