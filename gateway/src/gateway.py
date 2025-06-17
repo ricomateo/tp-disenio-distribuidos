@@ -2,6 +2,7 @@
 import os
 import signal
 import socket
+from common.atomic_write import atomic_write
 from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
 from src.client_connection import ClientConnection
@@ -21,9 +22,9 @@ class Gateway:
         self.server.bind((self.host, self.port))
         self.server.listen(5)
         self.processes = []
-        self.client_counter = 0  # Contador para asignar IDs a los clientes
+          # Contador para asignar IDs a los clientes
         self.clients_dir = "clients"
-        
+        self.counter_file = "clients_counter.txt"
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "csv_queue")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
         self.input_queue = os.getenv("RABBITMQ_INPUT_QUEUE", "query_queue")
@@ -36,6 +37,8 @@ class Gateway:
             self.rabbitmq = Middleware(queue=self.output_queue)
             
         self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
+        
+        self.client_counter = self.load_counter()
         
     def _cleanup_dead_clients(self):
         """Lee los archivos en el directorio de clientes y envía mensajes de eliminación."""
@@ -66,7 +69,32 @@ class Gateway:
         except Exception as e:
             print(f"[Gateway] Error al limpiar clientes muertos: {e}")
        
-
+    def save_counter(self):
+        """Saves the client counter to disk."""
+        try:
+            atomic_write(self.counter_file, str(self.client_counter))
+        except Exception as e:
+            print(f"[Gateway] Error saving counter to {self.counter_file}: {self.e}")
+            
+    def load_counter(self):
+        """Loads the client counter from disk."""
+        try:
+            with open(self.counter_file, "r") as f:
+                content = f.read().strip()
+                if not content:  # Handle empty file
+                    print(f"[Gateway] Empty counter file at {self.counter_file}, starting with 0")
+                    return 0
+                counter = int(content)  # Parse string to integer
+                if counter < 0:
+                    raise ValueError("Counter cannot be negative")
+                return counter
+        except FileNotFoundError:
+            print(f"[Gateway] No counter file found at {self.counter_file}, starting with 0")
+            return 0
+        except (ValueError, OSError) as e:
+            print(f"[Gateway] Error reading counter from {self.counter_file}: {e}, starting with 0")
+            return 0
+                
     def start(self):
         """Inicia el servidor y acepta conexiones de clientes."""
         print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
@@ -78,6 +106,7 @@ class Gateway:
                 # Asignar un client_id único
                 client_id = self.client_counter
                 self.client_counter += 1
+                self.save_counter()
                 # Crear un proceso para manejar el cliente
                 process = ClientConnection(client_socket, addr, client_id, self.clients_dir)
                 self.processes.append(process)
