@@ -3,6 +3,7 @@ from dataclasses import dataclass, field
 import time
 
 FINAL = "FINAL"
+DELETE = "DELETE"
 
 @dataclass
 class Packet:
@@ -58,6 +59,24 @@ class FinalPacket:
         data_dict["header"] = FINAL
         return cls(**data_dict)
     
+# Definiendo DeletePacket
+@dataclass  
+class DeletePacket:  
+    type: str = DELETE
+    def __init__(self, client_id: int):
+        self.client_id = client_id
+        self.header = DELETE
+
+    def to_json(self):
+        return orjson.dumps(self.__dict__)
+
+    @classmethod
+    def from_json(cls, data):
+        # Parsear el JSON y añadir el valor "DELETE" al campo type
+        data_dict = orjson.loads(data)
+        data_dict["header"] = DELETE
+        return cls(**data_dict)
+    
 # Definiendo FinalPacket
 @dataclass
 class FinalPacketWithNodeId:
@@ -98,6 +117,11 @@ class QueryPacket(Packet):
     
 def is_final_packet(header):
     if header == FINAL:
+        return True
+    return False
+
+def is_delete_packet(header):
+    if header == DELETE:
         return True
     return False
 

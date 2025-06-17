@@ -5,7 +5,7 @@ import signal
 from datetime import datetime
 from common.middleware import Middleware
 
-from common.packet import DataPacket, is_final_packet
+from common.packet import DataPacket, is_delete_packet, is_final_packet
 
 import os
 
@@ -83,6 +83,10 @@ class ParserNode:
                 header = packet['header']
                 client_id = packet['client_id']
                 
+                if is_delete_packet(header):
+                    self.output_rabbitmq.send_delete(client_id=client_id, routing_key=self.filename)
+                    self.control.delete_client(client_id)
+                
                 if is_final_packet(header):
                     count = int(packet['count'])
                     final, count = self.control.send_final_count(client_id, count)
@@ -123,7 +127,7 @@ class ParserNode:
                     self.output_rabbitmq.publish(packet.to_json(), self.filename)
                     row_count += 1
                     
-                final, count = self.control.insert_id(client_id, id, str(row_count), self.node_id)
+                final, count = self.control.insert_id(client_id, id, str(row_count))
                 if final:
                     self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename, count=int(count))
                     self.control.delete_client(client_id)    

@@ -38,13 +38,20 @@ class Protocol:
             return {"msg_type": FIN_MSG_TYPE}
 
     def send_result(self, result: str):
-        message_type = QUERY_RESULT_MSG_TYPE.to_bytes(1, "big")
-        result = str(result).encode('utf-8')
-        result_len = len(result).to_bytes(4, "big")
+        try:
+            message_type = QUERY_RESULT_MSG_TYPE.to_bytes(1, "big")
+            result = str(result).encode('utf-8')
+            result_len = len(result).to_bytes(4, "big")
 
-        self.client_socket.sendall(message_type)
-        self.client_socket.sendall(result_len)
-        self.client_socket.sendall(result)
+            self.client_socket.sendall(message_type)
+            self.client_socket.sendall(result_len)
+            self.client_socket.sendall(result)
+            return True
+        
+        except Exception as e:
+            print(f"[ClientConnection] Error al enviar resultado: {e}")
+            return False
+            
 
     def send_finalization(self):
         message_type = FIN_MSG_TYPE.to_bytes(1, "big")

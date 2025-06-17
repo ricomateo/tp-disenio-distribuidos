@@ -1,6 +1,6 @@
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, is_final_packet
+from common.packet import DataPacket, is_delete_packet, is_final_packet
 from datetime import datetime
 import os
 import signal
@@ -64,6 +64,11 @@ class SentimentNode:
             header = packet.get("header")
             client_id = packet.get("client_id")
             
+            if is_delete_packet(header):
+                self.output_positive_rabbitmq.send_delete(client_id=client_id)
+                self.output_negative_rabbitmq.send_delete(client_id=client_id)
+                self.control.delete_client(client_id)
+            
             if is_final_packet(header):
                 
                 count = int(packet['count'])
@@ -112,7 +117,7 @@ class SentimentNode:
                 
             sentiment_code = "0" if sentiment == "POSITIVE" else "1" 
                
-            final, frequencies = self.control.insert_id(client_id, id, sentiment_code, self.node_id)
+            final, frequencies = self.control.insert_id(client_id, id, sentiment_code)
             if final:
                 freq_dict = {}
                 for pair in frequencies.split(","):

@@ -1,6 +1,6 @@
 import json
 from common.middleware import Middleware
-from common.packet import is_final_packet
+from common.packet import is_delete_packet, is_final_packet
 import os
 import signal
 
@@ -72,6 +72,11 @@ class RouterNode:
             header = packet.get("header")
             client_id = packet["client_id"]
             
+            if is_delete_packet(header):
+                for i in range(self.number_of_nodes):
+                    self.output_rabbitmq.send_delete(client_id=client_id, routing_key=str(i))
+                self.control.delete_client(client_id)
+            
             if is_final_packet(header):
                 count = int(packet['count'])
                 final, frequencies = self.control.send_final_count(client_id, count)
@@ -100,7 +105,7 @@ class RouterNode:
             # Routeo el mensaje segun el routing key
             self.output_rabbitmq.publish(packet_json, routing_key=routing_key)
             
-            final, frequencies = self.control.insert_id(client_id, id, routing_key, self.node_id)
+            final, frequencies = self.control.insert_id(client_id, id, routing_key)
             if final:
                 freq_dict = {}
                 for pair in frequencies.split(","):
