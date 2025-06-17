@@ -1,7 +1,7 @@
 import json
 from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
-from common.packet import DataPacket, is_final_packet
+from common.packet import DataPacket, is_delete_packet, is_final_packet
 from src.check_condition import check_condition
 from datetime import datetime
 import os
@@ -64,6 +64,10 @@ class FilterNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
+            
+            if is_delete_packet(header):
+                self.output_rabbitmq.send_delete(client_id=client_id)
+                self.control.delete_client(client_id)
             
             if is_final_packet(header):
                 count = int(packet['count'])

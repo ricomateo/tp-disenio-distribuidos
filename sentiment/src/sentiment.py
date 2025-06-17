@@ -1,6 +1,6 @@
 import json
 from common.middleware import Middleware
-from common.packet import DataPacket, is_final_packet
+from common.packet import DataPacket, is_delete_packet, is_final_packet
 from datetime import datetime
 import os
 import signal
@@ -63,6 +63,11 @@ class SentimentNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
+            
+            if is_delete_packet(header):
+                self.output_positive_rabbitmq.send_delete(client_id=client_id)
+                self.output_negative_rabbitmq.send_delete(client_id=client_id)
+                self.control.delete_client(client_id)
             
             if is_final_packet(header):
                 

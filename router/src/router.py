@@ -1,6 +1,6 @@
 import json
 from common.middleware import Middleware
-from common.packet import is_final_packet
+from common.packet import is_delete_packet, is_final_packet
 import os
 import signal
 
@@ -71,6 +71,11 @@ class RouterNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet["client_id"]
+            
+            if is_delete_packet(header):
+                for i in range(self.number_of_nodes):
+                    self.output_rabbitmq.send_delete(client_id=client_id, routing_key=str(i))
+                self.control.delete_client(client_id)
             
             if is_final_packet(header):
                 count = int(packet['count'])
