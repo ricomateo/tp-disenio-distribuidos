@@ -100,7 +100,7 @@ class RouterNode:
             # Routeo el mensaje segun el routing key
             self.output_rabbitmq.publish(packet_json, routing_key=routing_key)
             
-            final, frequencies = self.control.insert_id(client_id, id, routing_key, self.node_id)
+            final, frequencies = self.control.insert_id(client_id, id, routing_key)
             if final:
                 freq_dict = {}
                 for pair in frequencies.split(","):

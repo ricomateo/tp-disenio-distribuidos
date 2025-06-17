@@ -127,7 +127,7 @@ class ParserNode:
                     self.output_rabbitmq.publish(packet.to_json(), self.filename)
                     row_count += 1
                     
-                final, count = self.control.insert_id(client_id, id, str(row_count), self.node_id)
+                final, count = self.control.insert_id(client_id, id, str(row_count))
                 if final:
                     self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename, count=int(count))
                     self.control.delete_client(client_id)    

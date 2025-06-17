@@ -112,7 +112,7 @@ class SentimentNode:
                 
             sentiment_code = "0" if sentiment == "POSITIVE" else "1" 
                
-            final, frequencies = self.control.insert_id(client_id, id, sentiment_code, self.node_id)
+            final, frequencies = self.control.insert_id(client_id, id, sentiment_code)
             if final:
                 freq_dict = {}
                 for pair in frequencies.split(","):

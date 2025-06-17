@@ -212,7 +212,7 @@ class ControlNode:
                 return ""
         return ""
     
-    def _handle_op_insert_id(self, conn: socket.socket):
+    def _handle_op_insert_id(self, conn: socket.socket, nodo: str):
         """Handles operation code '1' (Insert ID)."""
         mensaje = self.read_until_newline(conn)
         if not mensaje:
@@ -220,10 +220,10 @@ class ControlNode:
 
         try:
            
-            parts = mensaje.split("|", 3)  # Limit split to 3 parts
-            if len(parts) != 4:
+            parts = mensaje.split("|", 2)  # Limit split to 3 parts
+            if len(parts) != 3:
                 raise ValueError("Invalid number of parts in message for insert ID")
-            client_id, id_recibido, send_value, nodo = parts
+            client_id, id_recibido, send_value = parts
 
             if client_id in self.dead_clients:
                 conn.sendall(b"3\n")
@@ -331,7 +331,7 @@ class ControlNode:
                     
                     # Dispatch based on op_code
                     if op_code == "1":
-                        self._handle_op_insert_id(conn)
+                        self._handle_op_insert_id(conn, nodo)
                     elif op_code == "2": 
                         self._handle_op_delete_client(conn)
                     elif op_code == "3": 
