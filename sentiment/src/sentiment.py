@@ -68,6 +68,8 @@ class SentimentNode:
                 self.output_positive_rabbitmq.send_delete(client_id=client_id)
                 self.output_negative_rabbitmq.send_delete(client_id=client_id)
                 self.control.delete_client(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
             
             if is_final_packet(header):
                 

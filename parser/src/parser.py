@@ -86,6 +86,8 @@ class ParserNode:
                 if is_delete_packet(header):
                     self.output_rabbitmq.send_delete(client_id=client_id, routing_key=self.filename)
                     self.control.delete_client(client_id)
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
                 
                 if is_final_packet(header):
                     count = int(packet['count'])
