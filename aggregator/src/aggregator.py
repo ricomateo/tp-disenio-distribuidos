@@ -43,52 +43,9 @@ class AggregatorNode:
                 self.delete_client(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
-            
+
             packet = DataPacket.from_json(packet_json)
-
-            # Procesar paquete segun la operación en cuestion
-            if self.operation == "total_invested":
-                # Sumo al recuento de lo invertido para ese pais
-                country = packet.data["value"]
-                invested = packet.data["total"]
-                
-                if client_id not in self.invested_per_country_by_client_id:
-                    self.invested_per_country_by_client_id[client_id] = {}
-
-                current_invested = self.invested_per_country_by_client_id[client_id].get(country, 0)
-                self.invested_per_country_by_client_id[client_id][country] = current_invested + invested
-            elif self.operation == "average":
-                # Calculo el promedio y actualizo el promedio para el sentimiento del que sea la película
-                sentiment = packet.data["feeling"]
-                average = float(packet.data["ratio"])
-                count = int(packet.data["count"])
-
-                if client_id not in self.average_positive_by_client_id:
-                    self.average_positive_by_client_id[client_id] = (0, 0)
-
-                if client_id not in self.average_negative_by_client_id:
-                    self.average_negative_by_client_id[client_id] = (0, 0)
-
-                if sentiment == "POS":
-                    new_count = self.average_positive_by_client_id[client_id][1] + count
-                    new_average = (self.average_positive_by_client_id[client_id][0] * self.average_positive_by_client_id[client_id][1] + average * count) / new_count
-                    self.average_positive_by_client_id[client_id] = (new_average, new_count)
-                    print(f"[updated positive number - current positive average: {self.average_positive_by_client_id[client_id]}")
-                else:
-                    new_count = self.average_negative_by_client_id[client_id][1] + count
-                    new_average = (self.average_negative_by_client_id[client_id][0] * self.average_negative_by_client_id[client_id][1] + average * count) / new_count
-                    self.average_negative_by_client_id[client_id] = (new_average, new_count)
-                    print(f"[updated negative number - current negative average: {self.average_negative_by_client_id[client_id]}")
-            elif self.operation == "count":
-                actor = packet.data["value"]
-                new_count_movies = packet.data["count"]
-                if client_id not in self.count_by_actors_by_client_id:
-                    self.count_by_actors_by_client_id[client_id] = {}
-
-                count_movies = self.count_by_actors_by_client_id[client_id].get(actor, 0)
-                self.count_by_actors_by_client_id[client_id][actor] = count_movies + new_count_movies
-              
-
+            self.process_packet(packet, client_id)
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")
 
@@ -100,12 +57,63 @@ class AggregatorNode:
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def start_node(self):
+        """
+        Starts the node
+        """
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
             print(f" [!] Error in aggregator node: {e}")
         finally:
             self.close()
+
+    def process_packet(self, packet, client_id):
+        """
+        Process the given packet for the given client_id
+        and updates its state.
+        """
+        # Procesar paquete segun la operación en cuestion
+        if self.operation == "total_invested":
+            # Sumo al recuento de lo invertido para ese pais
+            country = packet.data["value"]
+            invested = packet.data["total"]
+
+            if client_id not in self.invested_per_country_by_client_id:
+                self.invested_per_country_by_client_id[client_id] = {}
+
+            current_invested = self.invested_per_country_by_client_id[client_id].get(country, 0)
+            self.invested_per_country_by_client_id[client_id][country] = current_invested + invested
+        elif self.operation == "average":
+            # Calculo el promedio y actualizo el promedio para el sentimiento del que sea la película
+            sentiment = packet.data["feeling"]
+            average = float(packet.data["ratio"])
+            count = int(packet.data["count"])
+
+            if client_id not in self.average_positive_by_client_id:
+                self.average_positive_by_client_id[client_id] = (0, 0)
+
+            if client_id not in self.average_negative_by_client_id:
+                self.average_negative_by_client_id[client_id] = (0, 0)
+
+            if sentiment == "POS":
+                new_count = self.average_positive_by_client_id[client_id][1] + count
+                new_average = (self.average_positive_by_client_id[client_id][0] * self.average_positive_by_client_id[client_id][1] + average * count) / new_count
+                self.average_positive_by_client_id[client_id] = (new_average, new_count)
+                print(f"[updated positive number - current positive average: {self.average_positive_by_client_id[client_id]}")
+            else:
+                new_count = self.average_negative_by_client_id[client_id][1] + count
+                new_average = (self.average_negative_by_client_id[client_id][0] * self.average_negative_by_client_id[client_id][1] + average * count) / new_count
+                self.average_negative_by_client_id[client_id] = (new_average, new_count)
+                print(f"[updated negative number - current negative average: {self.average_negative_by_client_id[client_id]}")
+        elif self.operation == "count":
+            actor = packet.data["value"]
+            new_count_movies = packet.data["count"]
+            if client_id not in self.count_by_actors_by_client_id:
+                self.count_by_actors_by_client_id[client_id] = {}
+
+            count_movies = self.count_by_actors_by_client_id[client_id].get(actor, 0)
+            self.count_by_actors_by_client_id[client_id][actor] = count_movies + new_count_movies
+              
 
     def delete_client(self, client_id):
         """
