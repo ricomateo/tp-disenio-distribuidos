@@ -40,8 +40,8 @@ class AggregatorNode:
             if header and is_final_packet(header):
                 self.send_results(client_id)
                 self.output_rabbitmq.send_final(client_id=client_id)
-                self.delete_client(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
+                self.delete_client(client_id)
                 return
 
             packet = DataPacket.from_json(packet_json)
