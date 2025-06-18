@@ -213,6 +213,7 @@ class AggregatorNode:
         Sends the aggregated results for the given client_id.
         """
         if self.operation == "total_invested":
+            count = 0
             # Mando un paquete por país y después el final packet
             for country, value in self.invested_per_country_by_client_id[client_id].items():
                 packet = DataPacket(
@@ -221,9 +222,11 @@ class AggregatorNode:
                     data={
                         "value": country,
                         "total": value
-                    }
+                    },
+                    id=f"{client_id}-{count}"
                 )
                 self.output_rabbitmq.publish(packet.to_json())
+                count += 1
 
         elif self.operation == "average":
             # En caso de tener al menos una película para ese sentimiento, publico
@@ -236,7 +239,8 @@ class AggregatorNode:
                         "feeling": "POS",
                         "ratio": round(self.average_positive_by_client_id[client_id][0], 4),
                         "count": self.average_positive_by_client_id[client_id][1]
-                    }
+                    },
+                    id=f"{client_id}-1"
                 )
                 self.output_rabbitmq.publish(packet_pos.to_json())
 
@@ -248,11 +252,13 @@ class AggregatorNode:
                         "feeling": "NEG",
                         "ratio": round(self.average_negative_by_client_id[client_id][0], 4),
                         "count": self.average_negative_by_client_id[client_id][1]
-                    }
+                    },
+                    id=f"{client_id}-2"
                 )
                 self.output_rabbitmq.publish(packet_neg.to_json())
 
         elif self.operation == "count":
+            count = 0
             for actor, count in self.count_by_actors_by_client_id[client_id].items():
                 packet = DataPacket(
                     client_id=client_id,
@@ -260,9 +266,11 @@ class AggregatorNode:
                     data={
                         "value": actor,
                         "count": count
-                    }
+                    },
+                    id=f"{client_id}-{count}"
                 )
                 self.output_rabbitmq.publish(packet.to_json())
+                count += 1
 
     def load_state(self):
         """
