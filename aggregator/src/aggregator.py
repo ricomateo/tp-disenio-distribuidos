@@ -4,6 +4,7 @@ from common.packet import DataPacket, is_final_packet
 from datetime import datetime
 import os
 import signal
+import glob
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
 
@@ -78,6 +79,7 @@ class AggregatorNode:
         """
         Starts the node
         """
+        self.load_state()
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
@@ -137,6 +139,7 @@ class AggregatorNode:
         """
         Deletes the state for the given client.
         """
+        # TODO: delete the file from disk
         if self.operation == "total_invested":
             if client_id in self.invested_per_country_by_client_id:
                 del self.invested_per_country_by_client_id[client_id]
@@ -187,6 +190,20 @@ class AggregatorNode:
                 return self.count_by_actors_by_client_id[client_id]
         # Default empty state
         return {}
+
+    def set_state(self, client_id, state):
+        """
+        Sets the given state to the corresponding variable.
+        """
+        if self.operation == "total_invested":
+            self.invested_per_country_by_client_id[client_id] = state
+
+        elif self.operation == "average":
+            self.average_positive_by_client_id[client_id] = state["average_positive"]
+            self.average_negative_by_client_id[client_id] = state["average_negative"]
+
+        elif self.operation == "count":
+            self.count_by_actors_by_client_id[client_id] = state
 
     def send_results(self, client_id):
         """
@@ -243,6 +260,22 @@ class AggregatorNode:
                     }
                 )
                 self.output_rabbitmq.publish(packet.to_json())
+
+    def load_state(self):
+        """
+        Loads the state (partial result and processed messages) from disk, if available.
+        """
+        # Get a list of files that match the pattern client.*.json
+        state_files: list[str] = glob.glob("client.*.json")
+        print(f"StateFiles = {state_files}")
+        for file in state_files:
+            client_id = int(file.split(".")[1])
+            with open(file, "r", encoding="utf-8") as f:
+                data = json.loads(f.read())
+            self.processed_messages_by_client[client_id] = set(data.get("processed_messages", []))
+            state = data.get("state")
+            self.set_state(client_id, state)
+            print(f"Recovered state from client {client_id}, state = {state}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}")
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
