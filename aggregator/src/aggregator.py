@@ -25,12 +25,11 @@ class AggregatorNode:
         self.average_negative_by_client_id: dict[int, tuple[float, int]] = {} #(0, 0)
         self.invested_per_country_by_client_id: dict[int, dict[str, int]] = {}
         self.count_by_actors_by_client_id: dict[int, dict[str, int]] = {}
-        
         self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
 
     def callback(self, ch, method, properties, body):
         try:
-            if self.running == False:
+            if not self.running:
                 self.input_rabbitmq.close_graceful(method)
                 return
             # Recibir paquete y manejar el cierre en caso de ser un final packet
@@ -39,79 +38,11 @@ class AggregatorNode:
             header = packet.get("header")
             client_id = packet.get("client_id")
             if header and is_final_packet(header):
-                    if self.operation == "total_invested":
-                        # Mando un paquete por país y después el final packet
-                        for country, value in self.invested_per_country_by_client_id[client_id].items():
-                            packet = DataPacket(
-                                client_id=client_id,
-                                timestamp=datetime.utcnow().isoformat(),
-                                data={
-                                    "value": country,
-                                    "total": value
-                                }
-                            )
-                            self.output_rabbitmq.publish(packet.to_json())
-               
-                        if client_id in self.invested_per_country_by_client_id:
-                            del self.invested_per_country_by_client_id[client_id]
-                 
-                        self.output_rabbitmq.send_final(client_id=client_id)
-                    
-                    elif self.operation == "average":
-                        # En caso de tener al menos una película para ese sentimiento, publico
-                        # ese paquete en la queue y después mando el final packet
-                        if self.average_positive_by_client_id[client_id][1] > 0:
-                            packet_pos = DataPacket(
-                                client_id=client_id,
-                                timestamp=datetime.utcnow().isoformat(),
-                                data={
-                                    "feeling": "POS",
-                                    "ratio": round(self.average_positive_by_client_id[client_id][0], 4),
-                                    "count": self.average_positive_by_client_id[client_id][1]
-                                }
-                            )
-                            self.output_rabbitmq.publish(packet_pos.to_json())
-
-                        if self.average_negative_by_client_id[client_id][1] > 0:
-                            packet_neg = DataPacket(
-                                client_id=client_id,
-                                timestamp=datetime.utcnow().isoformat(),
-                                data={
-                                    "feeling": "NEG",
-                                    "ratio": round(self.average_negative_by_client_id[client_id][0], 4),
-                                    "count": self.average_negative_by_client_id[client_id][1]
-                                }
-                            )
-                            self.output_rabbitmq.publish(packet_neg.to_json())
-           
-                        if client_id in self.average_positive_by_client_id:
-                                del self.average_positive_by_client_id[client_id]
-                    
-                        if client_id in self.average_negative_by_client_id:
-                                del self.average_negative_by_client_id[client_id]
-            
-
-                        self.output_rabbitmq.send_final(client_id=client_id)
-                       
-                    elif self.operation == "count":
-                        for actor, count in self.count_by_actors_by_client_id[client_id].items():
-                            packet = DataPacket(
-                                client_id=client_id,
-                                timestamp=datetime.utcnow().isoformat(),
-                                data={
-                                    "value": actor,
-                                    "count": count
-                                }
-                            )
-                            self.output_rabbitmq.publish(packet.to_json())
-         
-                        if client_id in self.count_by_actors_by_client_id:
-                                del self.count_by_actors_by_client_id[client_id]
-               
-                        self.output_rabbitmq.send_final(client_id=client_id)
-                        
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    return
+                self.send_results(client_id)
+                self.output_rabbitmq.send_final(client_id=client_id)
+                self.delete_client(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
             
             packet = DataPacket.from_json(packet_json)
 
@@ -175,6 +106,80 @@ class AggregatorNode:
             print(f" [!] Error in aggregator node: {e}")
         finally:
             self.close()
+
+    def delete_client(self, client_id):
+        """
+        Deletes the state for the given client.
+        """
+        if self.operation == "total_invested":
+            if client_id in self.invested_per_country_by_client_id:
+                del self.invested_per_country_by_client_id[client_id]
+
+        elif self.operation == "average":
+            if client_id in self.average_positive_by_client_id:
+                del self.average_positive_by_client_id[client_id]
+            if client_id in self.average_negative_by_client_id:
+                del self.average_negative_by_client_id[client_id]
+
+        elif self.operation == "count":
+            if client_id in self.count_by_actors_by_client_id:
+                del self.count_by_actors_by_client_id[client_id]
+
+    def send_results(self, client_id):
+        """
+        Sends the aggregated results for the given client_id.
+        """
+        if self.operation == "total_invested":
+            # Mando un paquete por país y después el final packet
+            for country, value in self.invested_per_country_by_client_id[client_id].items():
+                packet = DataPacket(
+                    client_id=client_id,
+                    timestamp=datetime.utcnow().isoformat(),
+                    data={
+                        "value": country,
+                        "total": value
+                    }
+                )
+                self.output_rabbitmq.publish(packet.to_json())
+
+        elif self.operation == "average":
+            # En caso de tener al menos una película para ese sentimiento, publico
+            # ese paquete en la queue y después mando el final packet
+            if self.average_positive_by_client_id[client_id][1] > 0:
+                packet_pos = DataPacket(
+                    client_id=client_id,
+                    timestamp=datetime.utcnow().isoformat(),
+                    data={
+                        "feeling": "POS",
+                        "ratio": round(self.average_positive_by_client_id[client_id][0], 4),
+                        "count": self.average_positive_by_client_id[client_id][1]
+                    }
+                )
+                self.output_rabbitmq.publish(packet_pos.to_json())
+
+            if self.average_negative_by_client_id[client_id][1] > 0:
+                packet_neg = DataPacket(
+                    client_id=client_id,
+                    timestamp=datetime.utcnow().isoformat(),
+                    data={
+                        "feeling": "NEG",
+                        "ratio": round(self.average_negative_by_client_id[client_id][0], 4),
+                        "count": self.average_negative_by_client_id[client_id][1]
+                    }
+                )
+                self.output_rabbitmq.publish(packet_neg.to_json())
+
+        elif self.operation == "count":
+            for actor, count in self.count_by_actors_by_client_id[client_id].items():
+                packet = DataPacket(
+                    client_id=client_id,
+                    timestamp=datetime.utcnow().isoformat(),
+                    data={
+                        "value": actor,
+                        "count": count
+                    }
+                )
+                self.output_rabbitmq.publish(packet.to_json())
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
