@@ -4,7 +4,7 @@ from common.packet import DataPacket, is_final_packet
 from datetime import datetime
 import os
 import signal
-
+from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
 
 class AggregatorNode:
@@ -62,7 +62,8 @@ class AggregatorNode:
             # Set the message as processed
             self.processed_messages_by_client[client_id].add(packet.id)
             print(f"Processed packets = {self.processed_messages_by_client[client_id]}")
-            # TODO: save the state
+            # Save the state
+            self.save_state(client_id)
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")
 
@@ -149,6 +150,43 @@ class AggregatorNode:
         elif self.operation == "count":
             if client_id in self.count_by_actors_by_client_id:
                 del self.count_by_actors_by_client_id[client_id]
+
+    def save_state(self, client_id):
+        """
+        Saves the state by writing (atomically) it to the hard drive.
+        """
+        state = self.get_state(client_id)
+        processed_messages = list(self.processed_messages_by_client.get(client_id, []))
+        filename = f"client.{client_id}.json"
+        data = json.dumps({
+            "state": state,
+            "processed_messages": processed_messages
+        })
+        # Save the state (atomically) to a file
+        atomic_write(filename, data)
+
+
+    def get_state(self, client_id):
+        """
+        Returns the state of the given client. 
+        """
+        if self.operation == "total_invested":
+            if client_id in self.invested_per_country_by_client_id:
+                return self.invested_per_country_by_client_id[client_id]
+
+        elif self.operation == "average":
+            state = {"average_positive": (0, 0), "average_negative": (0, 0)}
+            if client_id in self.average_positive_by_client_id:
+                state["average_positive"] = self.average_positive_by_client_id[client_id]
+            if client_id in self.average_negative_by_client_id:
+                state["average_negative"] = self.average_negative_by_client_id[client_id]
+            return state
+
+        elif self.operation == "count":
+            if client_id in self.count_by_actors_by_client_id:
+                return self.count_by_actors_by_client_id[client_id]
+        # Default empty state
+        return {}
 
     def send_results(self, client_id):
         """
