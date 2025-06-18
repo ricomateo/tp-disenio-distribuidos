@@ -25,6 +25,8 @@ class AggregatorNode:
         self.average_negative_by_client_id: dict[int, tuple[float, int]] = {} #(0, 0)
         self.invested_per_country_by_client_id: dict[int, dict[str, int]] = {}
         self.count_by_actors_by_client_id: dict[int, dict[str, int]] = {}
+
+        self.processed_messages_by_client = {} # client_id to set of messages ids
         self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
 
     def callback(self, ch, method, properties, body):
@@ -45,7 +47,22 @@ class AggregatorNode:
                 return
 
             packet = DataPacket.from_json(packet_json)
+
+            # Initialize processed messages set
+            if client_id not in self.processed_messages_by_client:
+                self.processed_messages_by_client[client_id] = set()
+
+            # Skip duplicate messages
+            if packet.id in self.processed_messages_by_client[client_id]:
+                print(f"Duplicate packet with ID {packet.id}")
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+            # Process the packet
             self.process_packet(packet, client_id)
+            # Set the message as processed
+            self.processed_messages_by_client[client_id].add(packet.id)
+            print(f"Processed packets = {self.processed_messages_by_client[client_id]}")
+            # TODO: save the state
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print(f" [x] Message {method.delivery_tag} acknowledged")
 
