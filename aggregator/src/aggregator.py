@@ -62,7 +62,6 @@ class AggregatorNode:
             self.process_packet(packet, client_id)
             # Set the message as processed
             self.processed_messages_by_client[client_id].add(packet.id)
-            print(f"Processed packets = {self.processed_messages_by_client[client_id]}")
             # Save the state
             self.save_state(client_id)
             ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -278,7 +277,8 @@ class AggregatorNode:
         """
         # Get a list of files that match the pattern client.*.json
         state_files: list[str] = glob.glob("client.*.json")
-        print(f"StateFiles = {state_files}")
+        if len(state_files) != 0:
+            print(f"state_files = {state_files}")
         for file in state_files:
             client_id = int(file.split(".")[1])
             with open(file, "r", encoding="utf-8") as f:
