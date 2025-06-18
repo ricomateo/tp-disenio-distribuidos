@@ -1,10 +1,10 @@
 import json
-from common.middleware import Middleware
-from common.packet import DataPacket, is_final_packet
 from datetime import datetime
 import os
 import signal
 import glob
+from common.middleware import Middleware
+from common.packet import DataPacket, is_final_packet
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
 
@@ -139,7 +139,6 @@ class AggregatorNode:
         """
         Deletes the state for the given client.
         """
-        # TODO: delete the file from disk
         if self.operation == "total_invested":
             if client_id in self.invested_per_country_by_client_id:
                 del self.invested_per_country_by_client_id[client_id]
@@ -153,6 +152,10 @@ class AggregatorNode:
         elif self.operation == "count":
             if client_id in self.count_by_actors_by_client_id:
                 del self.count_by_actors_by_client_id[client_id]
+        try:
+            os.remove(f"client.{client_id}.json")
+        except Exception as e:
+            print(f"Failed to remove file for client {client_id}. Error: {e}")
 
     def save_state(self, client_id):
         """
