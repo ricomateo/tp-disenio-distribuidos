@@ -205,11 +205,12 @@ class DeliverNode:
             if is_final_packet(packet.get("header")):
                 client_id = packet.get("client_id")
                 final_response = self.generate_final_response(client_id)
+                final_response_str = json.dumps({"response": final_response}, ensure_ascii=False)
                 print(f"final response = {json.dumps(final_response, indent=4)}")
-                response_str = self._generate_response(client_id)
+                # response_str = self._generate_response(client_id)
                 query_packet = QueryPacket(
                     timestamp=datetime.utcnow().isoformat(),
-                    response=response_str
+                    response=final_response_str
                 )
                 self.output_rabbitmq.confirm_delivery()
                 self.output_rabbitmq.publish(query_packet.to_json(), str(client_id))
@@ -220,11 +221,8 @@ class DeliverNode:
 
             packet = DataPacket.from_json(body_decoded)
             self.process_packet(packet)
-            print(f"packet = {packet}")
-            print(f"packet.data = {json.dumps(packet.data, indent=4)}")
-            filtered_movie = self._process_movie(packet.data, packet.client_id)
 
-            print(f" [DeliverNode] Movie added: {filtered_movie} with id: {packet.client_id}")
+            print(f" [DeliverNode] Movie added with id: {packet.client_id}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
             print(f" [DeliverNode] Error: {e}")
@@ -255,8 +253,15 @@ class DeliverNode:
             response["result"] = top_5_countries
 
         elif self.query_number == 3:
+            keys_to_keep = ["id", "title", "average", "count"]
+            ratings = self.response_by_client.get(client_id, [])
+            filtered_ratings = []
+            # Remove unnecessary keys
+            for rating in ratings:
+                filtered_rating = {key: value for key, value in rating.items() if key in keys_to_keep}
+                filtered_ratings.append(filtered_rating)
             sorted_ratings = sorted(
-                self.response_by_client.get(client_id, []),
+                filtered_ratings,
                 key=lambda d: d["average"],
             )
             if len(sorted_ratings) > 0:
@@ -274,7 +279,7 @@ class DeliverNode:
 
         elif self.query_number == 5:
             response["result"] = self.response_by_client.get(client_id, [])
-        
+
         return response
 
 
