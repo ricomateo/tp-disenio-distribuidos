@@ -164,7 +164,7 @@ class CalculatorNode:
         data = json.dumps({
             "result": self.calculator.get_raw_result(client_id),
             "processed_messages": list(self.processed_messages_by_client.get(client_id, []))
-        })
+        }, ensure_ascii=False)
         # Save the state (atomically) to a file
         atomic_write(filename, data)
 
