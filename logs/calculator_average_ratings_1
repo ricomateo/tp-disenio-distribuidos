@@ -1,0 +1,346 @@
+[Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
+[Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_1' (durable=False)...
+[Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_1' al exchange 'router_ratings_calculated'...
+StateFiles = []
+ [*] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_1
+[client - 0] Processed movie: 16.0
+ [x] Message 1 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 2 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 3 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 4 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 5 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 6 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 7 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 8 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 9 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 10 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 11 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 12 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 13 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 14 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 15 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 16 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 17 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 18 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 19 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 20 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 21 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 22 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 23 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 24 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 25 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 26 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 27 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 28 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 29 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 30 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 31 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 32 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 33 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 34 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 35 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 36 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 37 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 38 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 39 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 40 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 41 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 42 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 43 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 44 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 45 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 46 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 47 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 48 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 49 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 50 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 51 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 52 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 53 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 54 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 55 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 56 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 57 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 58 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 59 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 60 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 61 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 62 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 63 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 64 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 65 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 66 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 67 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 68 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 69 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 70 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 71 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 72 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 73 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 74 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 75 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 76 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 77 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 78 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 79 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 80 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 81 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 82 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 83 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 84 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 85 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 86 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 87 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 88 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 89 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 90 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 91 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 92 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 93 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 94 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 95 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 96 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 97 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 98 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 99 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 100 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 101 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 102 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 103 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 104 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 105 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 106 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 107 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 108 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 109 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 110 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 111 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 112 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 113 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 114 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 115 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 116 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 117 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 118 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 119 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 120 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 121 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 122 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 123 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 124 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 125 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 126 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 127 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 128 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 129 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 130 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 131 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 132 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 133 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 134 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 135 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 136 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 137 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 138 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 139 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 140 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 141 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 142 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 143 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 144 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 145 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 146 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 147 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 148 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 149 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 150 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 151 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 152 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 153 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 154 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 155 acknowledged
+[client - 1] Processed movie: 16.0
+ [x] Message 156 acknowledged
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+Duplicate message: id: 0-969, title: Dancer in the Dark, client_id: 1
+[client - 0] Processed movie: 16.0
+ [x] Message 168 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 169 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 170 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 171 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 172 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 173 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 174 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 175 acknowledged
+[client - 0] Processed movie: 16.0
+ [x] Message 176 acknowledged

@@ -1,0 +1,133 @@
+[Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+ [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
+ [~] Filtering movie fields: ['value', 'total']
+ [~] Sorting by total (descending, top 5)
+ [*] Waiting for messages in aggregator_calculator_budget_country
+ [DeliverNode] Movie added: {'value': 'Argentina', 'total': 20500000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Australia', 'total': 606783711} with id: 0
+ [DeliverNode] Movie added: {'value': 'Austria', 'total': 23300000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Belgium', 'total': 12545000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Brazil', 'total': 39340473} with id: 0
+ [DeliverNode] Movie added: {'value': 'Canada', 'total': 602576454} with id: 0
+ [DeliverNode] Movie added: {'value': 'Chile', 'total': 250} with id: 0
+ [DeliverNode] Movie added: {'value': 'Bulgaria', 'total': 5796442} with id: 0
+ [DeliverNode] Movie added: {'value': 'China', 'total': 739707658} with id: 0
+ [DeliverNode] Movie added: {'value': 'Czech Republic', 'total': 2030000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Denmark', 'total': 44558534} with id: 0
+ [DeliverNode] Movie added: {'value': 'Colombia', 'total': 2500000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Estonia', 'total': 1233974} with id: 0
+ [DeliverNode] Movie added: {'value': 'Dominican Republic', 'total': 1500000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Finland', 'total': 73748444} with id: 0
+ [DeliverNode] Movie added: {'value': 'Egypt', 'total': 3500000} with id: 0
+ [DeliverNode] Movie added: {'value': 'France', 'total': 2256831838} with id: 0
+ [DeliverNode] Movie added: {'value': 'Germany', 'total': 403795958} with id: 0
+ [DeliverNode] Movie added: {'value': 'Hong Kong', 'total': 366886278} with id: 0
+ [DeliverNode] Movie added: {'value': 'Hungary', 'total': 5450000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Georgia', 'total': 1000000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Iceland', 'total': 9700000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Greece', 'total': 494000} with id: 0
+ [DeliverNode] Movie added: {'value': 'India', 'total': 1169682797} with id: 0
+ [DeliverNode] Movie added: {'value': 'Indonesia', 'total': 6700000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Ireland', 'total': 27310000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Iran', 'total': 185000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Israel', 'total': 6450000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Italy', 'total': 240907475} with id: 0
+ [DeliverNode] Movie added: {'value': 'Japan', 'total': 832585873} with id: 0
+ [DeliverNode] Movie added: {'value': 'Mexico', 'total': 53513456} with id: 0
+ [DeliverNode] Movie added: {'value': 'Netherlands', 'total': 23971367} with id: 0
+ [DeliverNode] Movie added: {'value': "Lao People's Democratic Republic", 'total': 5000} with id: 0
+ [DeliverNode] Movie added: {'value': 'New Zealand', 'total': 48512027} with id: 0
+ [DeliverNode] Movie added: {'value': 'Latvia', 'total': 6170000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Norway', 'total': 65033814} with id: 0
+ [DeliverNode] Movie added: {'value': 'Kazakhstan', 'total': 800010} with id: 0
+ [DeliverNode] Movie added: {'value': 'Pakistan', 'total': 2143149} with id: 0
+ [DeliverNode] Movie added: {'value': 'Lithuania', 'total': 400000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Peru', 'total': 1000000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Malaysia', 'total': 1220000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Philippines', 'total': 1443972} with id: 0
+ [DeliverNode] Movie added: {'value': 'Poland', 'total': 42751819} with id: 0
+ [DeliverNode] Movie added: {'value': 'Portugal', 'total': 3204460} with id: 0
+ [DeliverNode] Movie added: {'value': 'Nigeria', 'total': 2} with id: 0
+ [DeliverNode] Movie added: {'value': 'Romania', 'total': 8603912} with id: 0
+ [DeliverNode] Movie added: {'value': 'Russia', 'total': 787857067} with id: 0
+ [DeliverNode] Movie added: {'value': 'Serbia', 'total': 7720000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Singapore', 'total': 1070900} with id: 0
+ [DeliverNode] Movie added: {'value': 'South Africa', 'total': 61147487} with id: 0
+ [DeliverNode] Movie added: {'value': 'South Korea', 'total': 368504762} with id: 0
+ [DeliverNode] Movie added: {'value': 'Spain', 'total': 344177350} with id: 0
+ [DeliverNode] Movie added: {'value': 'Sweden', 'total': 156396211} with id: 0
+ [DeliverNode] Movie added: {'value': 'Thailand', 'total': 25825000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Turkey', 'total': 23934900} with id: 0
+ [DeliverNode] Movie added: {'value': 'United Kingdom', 'total': 1611604610} with id: 0
+ [DeliverNode] Movie added: {'value': 'United States of America', 'total': 120153886644} with id: 0
+ [DeliverNode] Movie added: {'value': 'Taiwan', 'total': 50332503} with id: 0
+ [DeliverNode] Movie added: {'value': 'Uruguay', 'total': 6000} with id: 0
+ [DeliverNode] Movie added: {'value': 'Ukraine', 'total': 722083} with id: 0
+ [DeliverNode] Movie added: {'value': 'Uganda', 'total': 200} with id: 0
+ [x] Sent message to exchange deliver with routing key 0
+ [x] Sent message to queue deliverfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":0,"header":"FINAL","node_id":"2"}' enviado directamente.
+ [DeliverNode] Movie added: {'value': 'Argentina', 'total': 20500000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Australia', 'total': 606783711} with id: 1
+ [DeliverNode] Movie added: {'value': 'Belgium', 'total': 12545000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Austria', 'total': 23300000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Brazil', 'total': 39340473} with id: 1
+ [DeliverNode] Movie added: {'value': 'Canada', 'total': 602576454} with id: 1
+ [DeliverNode] Movie added: {'value': 'Chile', 'total': 250} with id: 1
+ [DeliverNode] Movie added: {'value': 'Bulgaria', 'total': 5796442} with id: 1
+ [DeliverNode] Movie added: {'value': 'China', 'total': 739707658} with id: 1
+ [DeliverNode] Movie added: {'value': 'Czech Republic', 'total': 2030000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Denmark', 'total': 44558534} with id: 1
+ [DeliverNode] Movie added: {'value': 'Colombia', 'total': 2500000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Estonia', 'total': 1233974} with id: 1
+ [DeliverNode] Movie added: {'value': 'Dominican Republic', 'total': 1500000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Finland', 'total': 73748444} with id: 1
+ [DeliverNode] Movie added: {'value': 'Egypt', 'total': 3500000} with id: 1
+ [DeliverNode] Movie added: {'value': 'France', 'total': 2256831838} with id: 1
+ [DeliverNode] Movie added: {'value': 'Germany', 'total': 403795958} with id: 1
+ [DeliverNode] Movie added: {'value': 'Hong Kong', 'total': 366886278} with id: 1
+ [DeliverNode] Movie added: {'value': 'Hungary', 'total': 5450000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Georgia', 'total': 1000000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Iceland', 'total': 9700000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Greece', 'total': 494000} with id: 1
+ [DeliverNode] Movie added: {'value': 'India', 'total': 1169682797} with id: 1
+ [DeliverNode] Movie added: {'value': 'Indonesia', 'total': 6700000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Ireland', 'total': 27310000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Israel', 'total': 6450000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Iran', 'total': 185000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Italy', 'total': 240907475} with id: 1
+ [DeliverNode] Movie added: {'value': 'Japan', 'total': 832585873} with id: 1
+ [DeliverNode] Movie added: {'value': 'Mexico', 'total': 53513456} with id: 1
+ [DeliverNode] Movie added: {'value': 'Netherlands', 'total': 23971367} with id: 1
+ [DeliverNode] Movie added: {'value': 'New Zealand', 'total': 48512027} with id: 1
+ [DeliverNode] Movie added: {'value': "Lao People's Democratic Republic", 'total': 5000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Norway', 'total': 65033814} with id: 1
+ [DeliverNode] Movie added: {'value': 'Kazakhstan', 'total': 800010} with id: 1
+ [DeliverNode] Movie added: {'value': 'Latvia', 'total': 6170000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Pakistan', 'total': 2143149} with id: 1
+ [DeliverNode] Movie added: {'value': 'Peru', 'total': 1000000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Lithuania', 'total': 400000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Malaysia', 'total': 1220000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Philippines', 'total': 1443972} with id: 1
+ [DeliverNode] Movie added: {'value': 'Poland', 'total': 42751819} with id: 1
+ [DeliverNode] Movie added: {'value': 'Portugal', 'total': 3204460} with id: 1
+ [DeliverNode] Movie added: {'value': 'Romania', 'total': 8603912} with id: 1
+ [DeliverNode] Movie added: {'value': 'Nigeria', 'total': 2} with id: 1
+ [DeliverNode] Movie added: {'value': 'Russia', 'total': 787857067} with id: 1
+ [DeliverNode] Movie added: {'value': 'Serbia', 'total': 7720000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Singapore', 'total': 1070900} with id: 1
+ [DeliverNode] Movie added: {'value': 'South Africa', 'total': 61147487} with id: 1
+ [DeliverNode] Movie added: {'value': 'South Korea', 'total': 368504762} with id: 1
+ [DeliverNode] Movie added: {'value': 'Spain', 'total': 344177350} with id: 1
+ [DeliverNode] Movie added: {'value': 'Sweden', 'total': 156396211} with id: 1
+ [DeliverNode] Movie added: {'value': 'Thailand', 'total': 25825000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Turkey', 'total': 23934900} with id: 1
+ [DeliverNode] Movie added: {'value': 'United Kingdom', 'total': 1611604610} with id: 1
+ [DeliverNode] Movie added: {'value': 'United States of America', 'total': 120153886644} with id: 1
+ [DeliverNode] Movie added: {'value': 'Uruguay', 'total': 6000} with id: 1
+ [DeliverNode] Movie added: {'value': 'Taiwan', 'total': 50332503} with id: 1
+ [DeliverNode] Movie added: {'value': 'Ukraine', 'total': 722083} with id: 1
+ [DeliverNode] Movie added: {'value': 'Uganda', 'total': 200} with id: 1
+ [x] Sent message to exchange deliver with routing key 1
+ [x] Sent message to queue deliverfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":0,"header":"FINAL","node_id":"2"}' enviado directamente.

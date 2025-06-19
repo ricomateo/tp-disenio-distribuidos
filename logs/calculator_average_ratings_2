@@ -1,0 +1,179 @@
+[Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
+[Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_2' (durable=False)...
+[Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_2' al exchange 'router_ratings_calculated'...
+StateFiles = []
+ [*] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_2
+[client - 0] Processed movie: 69278.0
+ [x] Message 1 acknowledged
+[client - 1] Processed movie: 48596.0
+ [x] Message 2 acknowledged
+[client - 1] Processed movie: 80717.0
+ [x] Message 3 acknowledged
+[client - 0] Processed movie: 48596.0
+ [x] Message 4 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 5 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 6 acknowledged
+[client - 0] Processed movie: 80717.0
+ [x] Message 7 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 8 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 9 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 10 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 11 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 12 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 13 acknowledged
+[client - 1] Processed movie: 47261.0
+ [x] Message 14 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 15 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 16 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 17 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 18 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 19 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 20 acknowledged
+[client - 0] Processed movie: 47261.0
+ [x] Message 21 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 22 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 23 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 24 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 25 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 26 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 27 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 28 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 29 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 30 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 31 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 32 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 33 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 34 acknowledged
+[client - 1] Processed movie: 45722.0
+ [x] Message 35 acknowledged
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 1
+[client - 1] Processed movie: 69278.0
+ [x] Message 79 acknowledged
+Duplicate message: id: 27-311, title: Phase 7, client_id: 1
+[client - 0] Processed movie: 45722.0
+ [x] Message 81 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 82 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 83 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 84 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 85 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 86 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 87 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 88 acknowledged
+[client - 0] Processed movie: 45722.0
+ [x] Message 89 acknowledged
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+Duplicate message: id: 2-192, title: Don't Look Down, client_id: 0
+[client - 0] Processed movie: 69278.0
+ [x] Message 128 acknowledged

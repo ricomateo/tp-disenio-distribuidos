@@ -1,0 +1,26 @@
+[Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+ [~] DeliverNode listening on aggregator_calculator_ratio_feelings, will send to query_queue
+ [~] Filtering movie fields: ['feeling', 'ratio', 'count']
+ [~] Sorting by ratio (descending, top 2)
+FinalFiles = []
+ [*] Waiting for messages in aggregator_calculator_ratio_feelings
+ [*] Waiting for messages in deliverfinal
+node_id = 2
+node_id = 2
+node_id = 1
+node_id = 1
+node_id = 4
+node_id = 4
+ [DeliverNode] Movie added: {'feeling': 'POS', 'ratio': 5668.6505, 'count': 3091} with id: 0
+ [DeliverNode] Movie added: {'feeling': 'NEG', 'ratio': 5453.3976, 'count': 2279} with id: 0
+ [x] Sent message to exchange deliver with routing key 0
+ [x] Sent message to queue deliverfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":0,"header":"FINAL","node_id":"5"}' enviado directamente.
+node_id = 5
+ [DeliverNode] Movie added: {'feeling': 'POS', 'ratio': 5668.6505, 'count': 3091} with id: 1
+ [DeliverNode] Movie added: {'feeling': 'NEG', 'ratio': 5453.3976, 'count': 2279} with id: 1
+ [x] Sent message to exchange deliver with routing key 1
+ [x] Sent message to queue deliverfinal
+[Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":0,"header":"FINAL","node_id":"5"}' enviado directamente.
+node_id = 5

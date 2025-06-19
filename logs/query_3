@@ -1,0 +1,6 @@
+[Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+ [~] Filtering movie fields: ['id', 'title', 'average']
+ [~] Sorting by average (descending, top 1)
+ [~] Sorting by average (ascending, top 1)
+ [*] Waiting for messages in calculator_average_ratings

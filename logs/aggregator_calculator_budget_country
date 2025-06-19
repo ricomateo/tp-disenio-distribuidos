@@ -1,0 +1,405 @@
+ [*] Waiting for messages in calculator_budget_country
+ [x] Message 1 acknowledged
+ [x] Message 2 acknowledged
+ [x] Message 3 acknowledged
+ [x] Message 4 acknowledged
+ [x] Message 5 acknowledged
+ [x] Message 6 acknowledged
+ [x] Message 7 acknowledged
+ [x] Message 8 acknowledged
+ [x] Message 9 acknowledged
+ [x] Message 10 acknowledged
+ [x] Message 11 acknowledged
+ [x] Message 12 acknowledged
+ [x] Message 13 acknowledged
+ [x] Message 14 acknowledged
+ [x] Message 15 acknowledged
+ [x] Message 16 acknowledged
+ [x] Message 17 acknowledged
+ [x] Message 18 acknowledged
+ [x] Message 19 acknowledged
+ [x] Message 20 acknowledged
+ [x] Message 21 acknowledged
+ [x] Message 22 acknowledged
+ [x] Message 23 acknowledged
+ [x] Message 24 acknowledged
+ [x] Message 25 acknowledged
+ [x] Message 26 acknowledged
+ [x] Message 27 acknowledged
+ [x] Message 28 acknowledged
+ [x] Message 29 acknowledged
+ [x] Message 30 acknowledged
+ [x] Message 31 acknowledged
+ [x] Message 32 acknowledged
+ [x] Message 33 acknowledged
+ [x] Message 34 acknowledged
+ [x] Message 35 acknowledged
+ [x] Message 36 acknowledged
+ [x] Message 37 acknowledged
+ [x] Message 38 acknowledged
+ [x] Message 39 acknowledged
+ [x] Message 40 acknowledged
+ [x] Message 41 acknowledged
+ [x] Message 42 acknowledged
+ [x] Message 43 acknowledged
+ [x] Message 44 acknowledged
+ [x] Message 45 acknowledged
+ [x] Message 46 acknowledged
+ [x] Message 47 acknowledged
+ [x] Message 48 acknowledged
+ [x] Message 49 acknowledged
+ [x] Message 50 acknowledged
+ [x] Message 51 acknowledged
+ [x] Message 52 acknowledged
+ [x] Message 53 acknowledged
+ [x] Message 54 acknowledged
+ [x] Message 55 acknowledged
+ [x] Message 56 acknowledged
+ [x] Message 57 acknowledged
+ [x] Message 58 acknowledged
+ [x] Message 59 acknowledged
+ [x] Message 60 acknowledged
+ [x] Message 61 acknowledged
+ [x] Message 62 acknowledged
+ [x] Message 63 acknowledged
+ [x] Message 64 acknowledged
+ [x] Message 65 acknowledged
+ [x] Message 66 acknowledged
+ [x] Message 67 acknowledged
+ [x] Message 68 acknowledged
+ [x] Message 69 acknowledged
+ [x] Message 70 acknowledged
+ [x] Message 71 acknowledged
+ [x] Message 72 acknowledged
+ [x] Message 73 acknowledged
+ [x] Message 74 acknowledged
+ [x] Message 75 acknowledged
+ [x] Message 76 acknowledged
+ [x] Message 77 acknowledged
+ [x] Message 78 acknowledged
+ [x] Message 79 acknowledged
+ [x] Message 80 acknowledged
+ [x] Message 81 acknowledged
+ [x] Message 82 acknowledged
+ [x] Message 83 acknowledged
+ [x] Message 84 acknowledged
+ [x] Message 85 acknowledged
+ [x] Message 86 acknowledged
+ [x] Message 87 acknowledged
+ [x] Message 88 acknowledged
+ [x] Message 89 acknowledged
+ [x] Message 90 acknowledged
+ [x] Message 91 acknowledged
+ [x] Message 92 acknowledged
+ [x] Message 93 acknowledged
+ [x] Message 94 acknowledged
+ [x] Message 95 acknowledged
+ [x] Message 96 acknowledged
+ [x] Message 97 acknowledged
+ [x] Message 98 acknowledged
+ [x] Message 99 acknowledged
+ [x] Message 100 acknowledged
+ [x] Message 101 acknowledged
+ [x] Message 102 acknowledged
+ [x] Message 103 acknowledged
+ [x] Message 104 acknowledged
+ [x] Message 105 acknowledged
+ [x] Message 106 acknowledged
+ [x] Message 107 acknowledged
+ [x] Message 108 acknowledged
+ [x] Message 109 acknowledged
+ [x] Message 110 acknowledged
+ [x] Message 111 acknowledged
+ [x] Message 112 acknowledged
+ [x] Message 113 acknowledged
+ [x] Message 114 acknowledged
+ [x] Message 115 acknowledged
+ [x] Message 116 acknowledged
+ [x] Message 117 acknowledged
+ [x] Message 118 acknowledged
+ [x] Message 119 acknowledged
+ [x] Message 120 acknowledged
+ [x] Message 121 acknowledged
+ [x] Message 122 acknowledged
+ [x] Message 123 acknowledged
+ [x] Message 124 acknowledged
+ [x] Message 125 acknowledged
+ [x] Message 126 acknowledged
+ [x] Message 127 acknowledged
+ [x] Message 128 acknowledged
+ [x] Message 129 acknowledged
+ [x] Message 130 acknowledged
+ [x] Message 131 acknowledged
+ [x] Message 132 acknowledged
+ [x] Message 133 acknowledged
+ [x] Message 134 acknowledged
+ [x] Message 135 acknowledged
+ [x] Message 136 acknowledged
+ [x] Message 137 acknowledged
+ [x] Message 138 acknowledged
+ [x] Message 139 acknowledged
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+[Middleware] FinalPacket b'{"client_id":0,"count":0,"header":"FINAL"}' enviado directamente.
+ [x] Message 141 acknowledged
+ [x] Message 142 acknowledged
+ [x] Message 143 acknowledged
+ [x] Message 144 acknowledged
+ [x] Message 145 acknowledged
+ [x] Message 146 acknowledged
+ [x] Message 147 acknowledged
+ [x] Message 148 acknowledged
+ [x] Message 149 acknowledged
+ [x] Message 150 acknowledged
+ [x] Message 151 acknowledged
+ [x] Message 152 acknowledged
+ [x] Message 153 acknowledged
+ [x] Message 154 acknowledged
+ [x] Message 155 acknowledged
+ [x] Message 156 acknowledged
+ [x] Message 157 acknowledged
+ [x] Message 158 acknowledged
+ [x] Message 159 acknowledged
+ [x] Message 160 acknowledged
+ [x] Message 161 acknowledged
+ [x] Message 162 acknowledged
+ [x] Message 163 acknowledged
+ [x] Message 164 acknowledged
+ [x] Message 165 acknowledged
+ [x] Message 166 acknowledged
+ [x] Message 167 acknowledged
+ [x] Message 168 acknowledged
+ [x] Message 169 acknowledged
+ [x] Message 170 acknowledged
+ [x] Message 171 acknowledged
+ [x] Message 172 acknowledged
+ [x] Message 173 acknowledged
+ [x] Message 174 acknowledged
+ [x] Message 175 acknowledged
+ [x] Message 176 acknowledged
+ [x] Message 177 acknowledged
+ [x] Message 178 acknowledged
+ [x] Message 179 acknowledged
+ [x] Message 180 acknowledged
+ [x] Message 181 acknowledged
+ [x] Message 182 acknowledged
+ [x] Message 183 acknowledged
+ [x] Message 184 acknowledged
+ [x] Message 185 acknowledged
+ [x] Message 186 acknowledged
+ [x] Message 187 acknowledged
+ [x] Message 188 acknowledged
+ [x] Message 189 acknowledged
+ [x] Message 190 acknowledged
+ [x] Message 191 acknowledged
+ [x] Message 192 acknowledged
+ [x] Message 193 acknowledged
+ [x] Message 194 acknowledged
+ [x] Message 195 acknowledged
+ [x] Message 196 acknowledged
+ [x] Message 197 acknowledged
+ [x] Message 198 acknowledged
+ [x] Message 199 acknowledged
+ [x] Message 200 acknowledged
+ [x] Message 201 acknowledged
+ [x] Message 202 acknowledged
+ [x] Message 203 acknowledged
+ [x] Message 204 acknowledged
+ [x] Message 205 acknowledged
+ [x] Message 206 acknowledged
+ [x] Message 207 acknowledged
+ [x] Message 208 acknowledged
+ [x] Message 209 acknowledged
+ [x] Message 210 acknowledged
+ [x] Message 211 acknowledged
+ [x] Message 212 acknowledged
+ [x] Message 213 acknowledged
+ [x] Message 214 acknowledged
+ [x] Message 215 acknowledged
+ [x] Message 216 acknowledged
+ [x] Message 217 acknowledged
+ [x] Message 218 acknowledged
+ [x] Message 219 acknowledged
+ [x] Message 220 acknowledged
+ [x] Message 221 acknowledged
+ [x] Message 222 acknowledged
+ [x] Message 223 acknowledged
+ [x] Message 224 acknowledged
+ [x] Message 225 acknowledged
+ [x] Message 226 acknowledged
+ [x] Message 227 acknowledged
+ [x] Message 228 acknowledged
+ [x] Message 229 acknowledged
+ [x] Message 230 acknowledged
+ [x] Message 231 acknowledged
+ [x] Message 232 acknowledged
+ [x] Message 233 acknowledged
+ [x] Message 234 acknowledged
+ [x] Message 235 acknowledged
+ [x] Message 236 acknowledged
+ [x] Message 237 acknowledged
+ [x] Message 238 acknowledged
+ [x] Message 239 acknowledged
+ [x] Message 240 acknowledged
+ [x] Message 241 acknowledged
+ [x] Message 242 acknowledged
+ [x] Message 243 acknowledged
+ [x] Message 244 acknowledged
+ [x] Message 245 acknowledged
+ [x] Message 246 acknowledged
+ [x] Message 247 acknowledged
+ [x] Message 248 acknowledged
+ [x] Message 249 acknowledged
+ [x] Message 250 acknowledged
+ [x] Message 251 acknowledged
+ [x] Message 252 acknowledged
+ [x] Message 253 acknowledged
+ [x] Message 254 acknowledged
+ [x] Message 255 acknowledged
+ [x] Message 256 acknowledged
+ [x] Message 257 acknowledged
+ [x] Message 258 acknowledged
+ [x] Message 259 acknowledged
+ [x] Message 260 acknowledged
+ [x] Message 261 acknowledged
+ [x] Message 262 acknowledged
+ [x] Message 263 acknowledged
+ [x] Message 264 acknowledged
+ [x] Message 265 acknowledged
+ [x] Message 266 acknowledged
+ [x] Message 267 acknowledged
+ [x] Message 268 acknowledged
+ [x] Message 269 acknowledged
+ [x] Message 270 acknowledged
+ [x] Message 271 acknowledged
+ [x] Message 272 acknowledged
+ [x] Message 273 acknowledged
+ [x] Message 274 acknowledged
+ [x] Message 275 acknowledged
+ [x] Message 276 acknowledged
+ [x] Message 277 acknowledged
+ [x] Message 278 acknowledged
+ [x] Message 279 acknowledged
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+ [x] Sent message to queue aggregator_calculator_budget_country
+[Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.
