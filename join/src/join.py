@@ -251,14 +251,14 @@ class JoinNode:
                 movie1 = self.router_buffer_by_client[client_id][router_key]
             else:
                 continue
-            stored_movies, stored_id = storage.retrieve(key)
+            stored_movies = storage.retrieve(key)
             if stored_movies:
                 # Asegurarse de que stored_movies sea una lista
                 if not isinstance(stored_movies, list):
                     stored_movies = [stored_movies]
                 print(f" [🔍] Procesando router '{router_key}' con {len(stored_movies)} entradas en disco")
-                for movie2 in stored_movies:
-                    joined_packet = self.create_joined_packet(client_id, movie1, movie2, stored_id)
+                for movie2, id in stored_movies:
+                    joined_packet = self.create_joined_packet(client_id, movie1, movie2, id)
                     self.output_rabbitmq.publish(joined_packet.to_json())
                     self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                     print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
