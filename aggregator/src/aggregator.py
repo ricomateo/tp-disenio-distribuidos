@@ -151,6 +151,9 @@ class AggregatorNode:
         elif self.operation == "count":
             if client_id in self.count_by_actors_by_client_id:
                 del self.count_by_actors_by_client_id[client_id]
+
+        if client_id in self.processed_messages_by_client:
+            del self.processed_messages_by_client[client_id]
         try:
             os.remove(f"client.{client_id}.json")
         except Exception as e:
