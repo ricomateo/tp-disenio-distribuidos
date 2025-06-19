@@ -1,0 +1,1490 @@
+2025-06-19 04:08:39,793 [INFO] Loading system state...
+2025-06-19 04:08:44,830 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:08:44,848 [INFO] Nodo router_ratings_calculated conectado (ID/delete connection)
+2025-06-19 04:08:44,850 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:08:46,851 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:08:46,871 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:08:48,852 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:08:48,872 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:08:50,854 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:08:50,873 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:08:52,856 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:08:52,874 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:08:54,858 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:08:54,878 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:08:56,859 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:08:56,880 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:08:58,860 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:08:58,884 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:00,861 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:00,885 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:02,862 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:02,888 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:04,863 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:04,889 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:06,864 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:06,891 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:08,865 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:08,892 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:09,495 [INFO] Client 0 inserted ID 3-115. Final signal: False
+2025-06-19 04:09:10,867 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:10,895 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:12,869 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:12,902 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:13,786 [INFO] Client 0 inserted ID 4-11. Final signal: False
+2025-06-19 04:09:14,870 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:14,904 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:16,873 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:16,907 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:18,875 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:18,910 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:19,875 [INFO] Client 0 inserted ID 5-54. Final signal: False
+2025-06-19 04:09:20,878 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:20,912 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:22,879 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:22,914 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:24,880 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:24,889 [INFO] Client 0 inserted ID 6-522. Final signal: False
+2025-06-19 04:09:24,916 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:25,106 [INFO] Client 0 inserted ID 6-657. Final signal: False
+2025-06-19 04:09:25,334 [INFO] Client 0 inserted ID 6-770. Final signal: False
+2025-06-19 04:09:26,325 [INFO] Client 0 inserted ID 8-262. Final signal: False
+2025-06-19 04:09:26,881 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:26,917 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:27,593 [INFO] Client 1 inserted ID 8-262. Final signal: False
+2025-06-19 04:09:28,882 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:28,919 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:30,396 [INFO] Client 1 inserted ID 9-142. Final signal: False
+2025-06-19 04:09:30,895 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:30,922 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:31,559 [INFO] Client 1 inserted ID 9-418. Final signal: False
+2025-06-19 04:09:31,998 [INFO] Client 1 inserted ID 9-613. Final signal: False
+2025-06-19 04:09:32,897 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:32,929 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:34,345 [INFO] Client 1 inserted ID 10-219. Final signal: False
+2025-06-19 04:09:34,899 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:34,931 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:35,268 [INFO] Client 1 inserted ID 11-825. Final signal: False
+2025-06-19 04:09:36,902 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:36,933 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:37,580 [INFO] Client 0 inserted ID 9-142. Final signal: False
+2025-06-19 04:09:38,006 [INFO] Client 1 inserted ID 12-355. Final signal: False
+2025-06-19 04:09:38,687 [INFO] Client 0 inserted ID 9-418. Final signal: False
+2025-06-19 04:09:38,905 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:38,936 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:39,073 [INFO] Client 0 inserted ID 9-554. Final signal: False
+2025-06-19 04:09:39,212 [INFO] Client 0 inserted ID 9-613. Final signal: False
+2025-06-19 04:09:40,873 [INFO] Client 1 inserted ID 12-675. Final signal: False
+2025-06-19 04:09:40,906 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:40,940 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:41,115 [INFO] Client 0 inserted ID 10-219. Final signal: False
+2025-06-19 04:09:42,908 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:42,943 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:44,223 [INFO] Client 1 inserted ID 14-316. Final signal: False
+2025-06-19 04:09:44,783 [INFO] Client 1 inserted ID 14-514. Final signal: False
+2025-06-19 04:09:44,911 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:44,947 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:46,912 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:46,948 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:48,913 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:48,951 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:50,911 [INFO] Client 0 inserted ID 11-825. Final signal: False
+2025-06-19 04:09:50,918 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:50,954 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:52,919 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:52,956 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:53,485 [INFO] Client 0 inserted ID 12-355. Final signal: False
+2025-06-19 04:09:54,199 [INFO] Client 0 inserted ID 12-675. Final signal: False
+2025-06-19 04:09:54,661 [INFO] Client 0 inserted ID 15-686. Final signal: False
+2025-06-19 04:09:54,922 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:54,957 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:56,923 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:56,958 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:57,254 [INFO] Client 0 inserted ID 16-204. Final signal: False
+2025-06-19 04:09:58,926 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:09:58,960 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:09:59,064 [INFO] Client 1 inserted ID 15-686. Final signal: False
+2025-06-19 04:09:59,852 [INFO] Client 0 inserted ID 16-834. Final signal: False
+2025-06-19 04:09:59,912 [INFO] Client 0 inserted ID 16-864. Final signal: False
+2025-06-19 04:10:00,441 [INFO] Client 0 inserted ID 17-97. Final signal: False
+2025-06-19 04:10:00,928 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:00,963 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:01,028 [INFO] Client 0 inserted ID 17-346. Final signal: False
+2025-06-19 04:10:01,961 [INFO] Client 0 inserted ID 14-316. Final signal: False
+2025-06-19 04:10:02,064 [INFO] Client 0 inserted ID 14-363. Final signal: False
+2025-06-19 04:10:02,480 [INFO] Client 0 inserted ID 14-514. Final signal: False
+2025-06-19 04:10:02,880 [INFO] Client 0 inserted ID 17-512. Final signal: False
+2025-06-19 04:10:02,930 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:02,966 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:03,041 [INFO] Client 0 inserted ID 17-591. Final signal: False
+2025-06-19 04:10:03,280 [INFO] Client 0 inserted ID 17-704. Final signal: False
+2025-06-19 04:10:04,015 [INFO] Client 0 inserted ID 17-983. Final signal: False
+2025-06-19 04:10:04,931 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:04,970 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:05,212 [INFO] Client 1 inserted ID 16-73. Final signal: False
+2025-06-19 04:10:06,473 [INFO] Client 1 inserted ID 16-204. Final signal: False
+2025-06-19 04:10:06,933 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:06,971 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:07,441 [INFO] Client 0 inserted ID 19-908. Final signal: False
+2025-06-19 04:10:07,705 [INFO] Client 0 inserted ID 20-57. Final signal: False
+2025-06-19 04:10:07,971 [INFO] Client 0 inserted ID 20-177. Final signal: False
+2025-06-19 04:10:08,934 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:08,973 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:09,458 [INFO] Client 0 inserted ID 20-483. Final signal: False
+2025-06-19 04:10:09,761 [INFO] Client 0 inserted ID 20-620. Final signal: False
+2025-06-19 04:10:10,198 [INFO] Client 1 inserted ID 16-834. Final signal: False
+2025-06-19 04:10:10,260 [INFO] Client 1 inserted ID 16-864. Final signal: False
+2025-06-19 04:10:10,428 [INFO] Client 0 inserted ID 20-834. Final signal: False
+2025-06-19 04:10:10,935 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:10,976 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:11,033 [INFO] Client 1 inserted ID 17-97. Final signal: False
+2025-06-19 04:10:11,627 [INFO] Client 0 inserted ID 21-126. Final signal: False
+2025-06-19 04:10:12,623 [INFO] Client 0 inserted ID 21-577. Final signal: False
+2025-06-19 04:10:12,937 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:12,978 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:13,760 [INFO] Client 0 inserted ID 21-986. Final signal: False
+2025-06-19 04:10:14,647 [INFO] Client 0 inserted ID 22-364. Final signal: False
+2025-06-19 04:10:14,939 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:14,981 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:15,252 [INFO] Client 1 inserted ID 17-346. Final signal: False
+2025-06-19 04:10:15,960 [INFO] Client 0 inserted ID 22-845. Final signal: False
+2025-06-19 04:10:16,143 [INFO] Client 1 inserted ID 17-512. Final signal: False
+2025-06-19 04:10:16,335 [INFO] Client 1 inserted ID 17-591. Final signal: False
+2025-06-19 04:10:16,587 [INFO] Client 1 inserted ID 17-704. Final signal: False
+2025-06-19 04:10:16,939 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:16,980 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:17,176 [INFO] Client 1 inserted ID 17-983. Final signal: False
+2025-06-19 04:10:18,533 [INFO] Client 0 inserted ID 18-47. Final signal: False
+2025-06-19 04:10:18,941 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:18,984 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:20,383 [INFO] Client 0 inserted ID 18-795. Final signal: False
+2025-06-19 04:10:20,943 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:20,990 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:21,577 [INFO] Client 0 inserted ID 24-1. Final signal: False
+2025-06-19 04:10:21,925 [INFO] Client 0 inserted ID 24-177. Final signal: False
+2025-06-19 04:10:22,650 [INFO] Client 1 inserted ID 18-47. Final signal: False
+2025-06-19 04:10:22,945 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:22,994 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:24,655 [INFO] Client 0 inserted ID 24-684. Final signal: False
+2025-06-19 04:10:24,947 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:24,996 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:25,774 [INFO] Client 1 inserted ID 18-795. Final signal: False
+2025-06-19 04:10:26,949 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:26,999 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:27,758 [INFO] Client 1 inserted ID 25-423. Final signal: False
+2025-06-19 04:10:27,952 [INFO] Client 1 inserted ID 25-510. Final signal: False
+2025-06-19 04:10:28,950 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:29,000 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:30,362 [INFO] Client 0 inserted ID 27-6. Final signal: False
+2025-06-19 04:10:30,952 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:31,002 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:31,147 [INFO] Client 1 inserted ID 19-908. Final signal: False
+2025-06-19 04:10:31,468 [INFO] Client 1 inserted ID 20-57. Final signal: False
+2025-06-19 04:10:31,701 [INFO] Client 1 inserted ID 20-177. Final signal: False
+2025-06-19 04:10:32,954 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:33,004 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:33,310 [INFO] Client 1 inserted ID 20-483. Final signal: False
+2025-06-19 04:10:33,623 [INFO] Client 1 inserted ID 20-620. Final signal: False
+2025-06-19 04:10:34,332 [INFO] Client 0 inserted ID 27-726. Final signal: False
+2025-06-19 04:10:34,728 [INFO] Client 1 inserted ID 20-834. Final signal: False
+2025-06-19 04:10:34,791 [INFO] Client 0 inserted ID 27-913. Final signal: False
+2025-06-19 04:10:34,955 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:35,008 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:35,699 [INFO] Client 1 inserted ID 21-126. Final signal: False
+2025-06-19 04:10:36,957 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:37,010 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:37,235 [INFO] Client 1 inserted ID 21-577. Final signal: False
+2025-06-19 04:10:38,274 [INFO] Client 1 inserted ID 21-986. Final signal: False
+2025-06-19 04:10:38,741 [INFO] Client 1 inserted ID 28-235. Final signal: False
+2025-06-19 04:10:38,889 [INFO] Client 1 inserted ID 28-303. Final signal: False
+2025-06-19 04:10:38,959 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:39,011 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:39,106 [INFO] Client 1 inserted ID 28-394. Final signal: False
+2025-06-19 04:10:39,600 [INFO] Client 1 inserted ID 28-616. Final signal: False
+2025-06-19 04:10:40,835 [INFO] Client 1 inserted ID 22-364. Final signal: False
+2025-06-19 04:10:40,963 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:41,013 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:41,885 [INFO] Client 1 inserted ID 22-845. Final signal: False
+2025-06-19 04:10:42,964 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:43,015 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:43,663 [INFO] Client 0 inserted ID 30-288. Final signal: False
+2025-06-19 04:10:44,142 [INFO] Client 0 inserted ID 30-527. Final signal: False
+2025-06-19 04:10:44,288 [INFO] Client 0 inserted ID 30-561. Final signal: False
+2025-06-19 04:10:44,966 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:45,016 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:45,769 [INFO] Client 0 inserted ID 30-674. Final signal: False
+2025-06-19 04:10:46,032 [INFO] Client 0 inserted ID 30-811. Final signal: False
+2025-06-19 04:10:46,748 [INFO] Client 1 inserted ID 24-1. Final signal: False
+2025-06-19 04:10:46,968 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:47,017 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:47,154 [INFO] Client 1 inserted ID 24-177. Final signal: False
+2025-06-19 04:10:48,358 [INFO] Client 0 inserted ID 32-392. Final signal: False
+2025-06-19 04:10:48,969 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:49,019 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:49,319 [INFO] Client 1 inserted ID 24-684. Final signal: False
+2025-06-19 04:10:50,972 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:51,020 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:51,559 [INFO] Client 1 inserted ID 31-99. Final signal: False
+2025-06-19 04:10:51,840 [INFO] Client 1 inserted ID 31-247. Final signal: False
+2025-06-19 04:10:52,667 [INFO] Client 0 inserted ID 25-423. Final signal: False
+2025-06-19 04:10:52,829 [INFO] Client 0 inserted ID 25-510. Final signal: False
+2025-06-19 04:10:52,974 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:53,026 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:54,906 [INFO] Client 1 inserted ID 31-992. Final signal: False
+2025-06-19 04:10:54,976 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:55,029 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:55,987 [INFO] Client 0 inserted ID 26-166. Final signal: False
+2025-06-19 04:10:56,976 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:57,032 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:10:57,738 [INFO] Client 1 inserted ID 32-392. Final signal: False
+2025-06-19 04:10:58,979 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:10:59,045 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:00,308 [INFO] Client 1 inserted ID 26-166. Final signal: False
+2025-06-19 04:11:00,981 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:01,048 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:01,678 [INFO] Client 1 inserted ID 33-279. Final signal: False
+2025-06-19 04:11:02,985 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:03,049 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:03,575 [INFO] Client 1 inserted ID 33-567. Final signal: False
+2025-06-19 04:11:03,954 [INFO] Client 1 inserted ID 33-762. Final signal: False
+2025-06-19 04:11:04,010 [INFO] Client 1 inserted ID 33-788. Final signal: False
+2025-06-19 04:11:04,986 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:05,052 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:05,081 [INFO] Client 1 inserted ID 27-6. Final signal: False
+2025-06-19 04:11:06,937 [INFO] Client 1 inserted ID 34-394. Final signal: False
+2025-06-19 04:11:06,989 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:07,053 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:08,259 [INFO] Client 1 inserted ID 27-726. Final signal: False
+2025-06-19 04:11:08,619 [INFO] Client 1 inserted ID 27-913. Final signal: False
+2025-06-19 04:11:08,992 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:09,054 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:10,796 [INFO] Client 0 inserted ID 28-235. Final signal: False
+2025-06-19 04:11:10,993 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:10,995 [INFO] Client 0 inserted ID 28-303. Final signal: False
+2025-06-19 04:11:11,055 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:11,243 [INFO] Client 0 inserted ID 28-394. Final signal: False
+2025-06-19 04:11:11,743 [INFO] Client 1 inserted ID 35-214. Final signal: False
+2025-06-19 04:11:11,994 [INFO] Client 1 inserted ID 35-314. Final signal: False
+2025-06-19 04:11:12,996 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:13,023 [INFO] Client 1 inserted ID 35-757. Final signal: False
+2025-06-19 04:11:13,058 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:13,170 [INFO] Client 0 inserted ID 28-616. Final signal: False
+2025-06-19 04:11:14,997 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:15,060 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:16,999 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:17,063 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:19,005 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:19,071 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:20,502 [INFO] Client 1 inserted ID 36-910. Final signal: False
+2025-06-19 04:11:21,009 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:21,073 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:22,853 [INFO] Client 1 inserted ID 30-288. Final signal: False
+2025-06-19 04:11:23,010 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:23,075 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:24,189 [INFO] Client 1 inserted ID 37-483. Final signal: False
+2025-06-19 04:11:24,753 [INFO] Client 1 inserted ID 30-527. Final signal: False
+2025-06-19 04:11:24,833 [INFO] Client 1 inserted ID 30-561. Final signal: False
+2025-06-19 04:11:25,011 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:25,078 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:25,080 [INFO] Client 1 inserted ID 30-674. Final signal: False
+2025-06-19 04:11:25,356 [INFO] Client 1 inserted ID 30-811. Final signal: False
+2025-06-19 04:11:25,990 [INFO] Client 0 inserted ID 31-99. Final signal: False
+2025-06-19 04:11:26,611 [INFO] Client 1 inserted ID 37-723. Final signal: False
+2025-06-19 04:11:26,718 [INFO] Client 1 inserted ID 37-762. Final signal: False
+2025-06-19 04:11:27,013 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:27,080 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:27,146 [INFO] Client 1 inserted ID 37-946. Final signal: False
+2025-06-19 04:11:27,199 [INFO] Client 1 inserted ID 37-967. Final signal: False
+2025-06-19 04:11:27,936 [INFO] Client 0 inserted ID 31-247. Final signal: False
+2025-06-19 04:11:29,014 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:29,083 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:29,787 [INFO] Client 0 inserted ID 40-400. Final signal: False
+2025-06-19 04:11:29,895 [INFO] Client 0 inserted ID 40-428. Final signal: False
+2025-06-19 04:11:30,681 [INFO] Client 0 inserted ID 31-992. Final signal: False
+2025-06-19 04:11:31,015 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:31,089 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:31,598 [INFO] Client 0 inserted ID 33-279. Final signal: False
+2025-06-19 04:11:32,808 [INFO] Client 0 inserted ID 33-567. Final signal: False
+2025-06-19 04:11:33,016 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:33,091 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:33,258 [INFO] Client 0 inserted ID 33-762. Final signal: False
+2025-06-19 04:11:33,395 [INFO] Client 0 inserted ID 33-788. Final signal: False
+2025-06-19 04:11:35,019 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:35,094 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:36,203 [INFO] Client 0 inserted ID 34-394. Final signal: False
+2025-06-19 04:11:37,020 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:37,096 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:38,535 [INFO] Client 0 inserted ID 41-569. Final signal: False
+2025-06-19 04:11:39,021 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:39,098 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:39,558 [INFO] Client 0 inserted ID 35-214. Final signal: False
+2025-06-19 04:11:39,787 [INFO] Client 0 inserted ID 35-314. Final signal: False
+2025-06-19 04:11:40,818 [INFO] Client 0 inserted ID 35-757. Final signal: False
+2025-06-19 04:11:41,024 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:41,099 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:41,634 [INFO] Client 0 inserted ID 42-305. Final signal: False
+2025-06-19 04:11:41,871 [INFO] Client 0 inserted ID 42-409. Final signal: False
+2025-06-19 04:11:43,026 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:43,101 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:44,551 [INFO] Client 0 inserted ID 42-767. Final signal: False
+2025-06-19 04:11:45,028 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:45,104 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:46,315 [INFO] Client 0 inserted ID 36-910. Final signal: False
+2025-06-19 04:11:47,029 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:47,106 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:47,191 [INFO] Client 0 inserted ID 43-336. Final signal: False
+2025-06-19 04:11:48,467 [INFO] Client 0 inserted ID 43-791. Final signal: False
+2025-06-19 04:11:49,030 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:49,109 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:49,362 [INFO] Client 0 inserted ID 37-483. Final signal: False
+2025-06-19 04:11:50,042 [INFO] Client 0 inserted ID 37-723. Final signal: False
+2025-06-19 04:11:50,144 [INFO] Client 0 inserted ID 37-762. Final signal: False
+2025-06-19 04:11:51,030 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:51,112 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:51,296 [INFO] Client 0 inserted ID 37-946. Final signal: False
+2025-06-19 04:11:51,351 [INFO] Client 0 inserted ID 37-967. Final signal: False
+2025-06-19 04:11:52,654 [INFO] Client 1 inserted ID 42-305. Final signal: False
+2025-06-19 04:11:53,032 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:53,092 [INFO] Client 1 inserted ID 42-409. Final signal: False
+2025-06-19 04:11:53,113 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:53,889 [INFO] Client 1 inserted ID 42-767. Final signal: False
+2025-06-19 04:11:55,035 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:55,116 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:57,037 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:57,118 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:11:57,564 [INFO] Client 0 inserted ID 39-42. Final signal: False
+2025-06-19 04:11:59,040 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:11:59,123 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:00,494 [INFO] Client 0 inserted ID 39-801. Final signal: False
+2025-06-19 04:12:00,790 [INFO] Client 0 inserted ID 39-908. Final signal: False
+2025-06-19 04:12:01,044 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:01,124 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:01,360 [INFO] Client 0 inserted ID 45-916. Final signal: False
+2025-06-19 04:12:03,047 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:03,126 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:05,048 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:05,128 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:05,558 [INFO] Client 0 inserted ID 47-190. Final signal: False
+2025-06-19 04:12:07,052 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:07,130 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:08,058 [INFO] Client 0 inserted ID 47-945. Final signal: False
+2025-06-19 04:12:09,053 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:09,130 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:11,050 [INFO] Client 1 inserted ID 39-42. Final signal: False
+2025-06-19 04:12:11,055 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:11,132 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:13,058 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:13,133 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:14,320 [INFO] Client 1 inserted ID 47-190. Final signal: False
+2025-06-19 04:12:14,878 [INFO] Client 1 inserted ID 39-801. Final signal: False
+2025-06-19 04:12:15,060 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:15,118 [INFO] Client 1 inserted ID 39-908. Final signal: False
+2025-06-19 04:12:15,135 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:17,061 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:17,136 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:17,561 [INFO] Client 1 inserted ID 47-945. Final signal: False
+2025-06-19 04:12:18,139 [INFO] Client 1 inserted ID 40-400. Final signal: False
+2025-06-19 04:12:18,184 [INFO] Client 1 inserted ID 40-428. Final signal: False
+2025-06-19 04:12:19,063 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:19,139 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:21,065 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:21,141 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:23,070 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:23,142 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:23,198 [INFO] Client 1 inserted ID 41-569. Final signal: False
+2025-06-19 04:12:25,070 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:25,143 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:25,386 [INFO] Client 1 inserted ID 49-736. Final signal: False
+2025-06-19 04:12:25,939 [INFO] Client 0 inserted ID 44-212. Final signal: False
+2025-06-19 04:12:26,602 [INFO] Client 0 inserted ID 44-529. Final signal: False
+2025-06-19 04:12:26,654 [INFO] Client 0 inserted ID 44-557. Final signal: False
+2025-06-19 04:12:27,072 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:27,145 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:27,425 [INFO] Client 0 inserted ID 51-147. Final signal: False
+2025-06-19 04:12:27,744 [INFO] Client 0 inserted ID 51-301. Final signal: False
+2025-06-19 04:12:29,073 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:29,147 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:30,473 [INFO] Client 0 inserted ID 51-973. Final signal: False
+2025-06-19 04:12:31,076 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:31,149 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:31,343 [INFO] Client 1 inserted ID 43-336. Final signal: False
+2025-06-19 04:12:32,307 [INFO] Client 1 inserted ID 43-791. Final signal: False
+2025-06-19 04:12:33,077 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:33,150 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:33,494 [INFO] Client 0 inserted ID 52-793. Final signal: False
+2025-06-19 04:12:35,008 [INFO] Client 0 inserted ID 53-114. Final signal: False
+2025-06-19 04:12:35,082 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:35,151 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:35,252 [INFO] Client 0 inserted ID 53-181. Final signal: False
+2025-06-19 04:12:35,448 [INFO] Client 0 inserted ID 53-277. Final signal: False
+2025-06-19 04:12:35,544 [INFO] Client 1 inserted ID 44-212. Final signal: False
+2025-06-19 04:12:36,463 [INFO] Client 1 inserted ID 44-529. Final signal: False
+2025-06-19 04:12:36,523 [INFO] Client 1 inserted ID 44-557. Final signal: False
+2025-06-19 04:12:37,082 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:37,154 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:37,466 [INFO] Client 0 inserted ID 53-680. Final signal: False
+2025-06-19 04:12:38,359 [INFO] Client 0 inserted ID 53-944. Final signal: False
+2025-06-19 04:12:39,085 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:39,156 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:41,088 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:41,158 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:41,705 [INFO] Client 1 inserted ID 45-916. Final signal: False
+2025-06-19 04:12:43,090 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:43,139 [INFO] Client 0 inserted ID 54-811. Final signal: False
+2025-06-19 04:12:43,159 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:45,091 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:45,160 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:45,791 [INFO] Client 0 inserted ID 55-975. Final signal: False
+2025-06-19 04:12:47,092 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:47,161 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:49,093 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:49,162 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:50,050 [INFO] Client 1 inserted ID 55-975. Final signal: False
+2025-06-19 04:12:51,096 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:51,167 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:51,682 [INFO] Client 0 inserted ID 49-736. Final signal: False
+2025-06-19 04:12:52,751 [INFO] Client 0 inserted ID 58-52. Final signal: False
+2025-06-19 04:12:53,098 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:53,168 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:54,399 [INFO] Client 0 inserted ID 50-149. Final signal: False
+2025-06-19 04:12:55,100 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:55,170 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:56,536 [INFO] Client 0 inserted ID 50-386. Final signal: False
+2025-06-19 04:12:56,988 [INFO] Client 0 inserted ID 50-565. Final signal: False
+2025-06-19 04:12:57,101 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:57,171 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:57,676 [INFO] Client 0 inserted ID 59-35. Final signal: False
+2025-06-19 04:12:59,028 [INFO] Client 0 inserted ID 59-631. Final signal: False
+2025-06-19 04:12:59,056 [INFO] Client 0 inserted ID 59-643. Final signal: False
+2025-06-19 04:12:59,102 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:12:59,172 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:12:59,582 [INFO] Client 0 inserted ID 50-870. Final signal: False
+2025-06-19 04:12:59,763 [INFO] Client 0 inserted ID 50-950. Final signal: False
+2025-06-19 04:13:00,267 [INFO] Client 1 inserted ID 50-149. Final signal: False
+2025-06-19 04:13:00,770 [INFO] Client 1 inserted ID 50-386. Final signal: False
+2025-06-19 04:13:01,017 [INFO] Client 0 inserted ID 59-863. Final signal: False
+2025-06-19 04:13:01,103 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:01,175 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:01,568 [INFO] Client 1 inserted ID 59-35. Final signal: False
+2025-06-19 04:13:02,492 [INFO] Client 1 inserted ID 50-565. Final signal: False
+2025-06-19 04:13:03,104 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:03,178 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:04,007 [INFO] Client 1 inserted ID 50-870. Final signal: False
+2025-06-19 04:13:04,180 [INFO] Client 1 inserted ID 50-950. Final signal: False
+2025-06-19 04:13:04,329 [INFO] Client 1 inserted ID 59-631. Final signal: False
+2025-06-19 04:13:04,356 [INFO] Client 1 inserted ID 59-643. Final signal: False
+2025-06-19 04:13:04,818 [INFO] Client 1 inserted ID 59-863. Final signal: False
+2025-06-19 04:13:05,106 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:05,179 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:05,817 [INFO] Client 1 inserted ID 51-147. Final signal: False
+2025-06-19 04:13:06,214 [INFO] Client 1 inserted ID 51-301. Final signal: False
+2025-06-19 04:13:07,109 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:07,181 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:08,115 [INFO] Client 1 inserted ID 51-973. Final signal: False
+2025-06-19 04:13:09,113 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:09,183 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:10,638 [INFO] Client 1 inserted ID 52-793. Final signal: False
+2025-06-19 04:13:11,114 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:11,186 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:11,376 [INFO] Client 1 inserted ID 53-114. Final signal: False
+2025-06-19 04:13:11,543 [INFO] Client 1 inserted ID 53-181. Final signal: False
+2025-06-19 04:13:11,639 [INFO] Client 1 inserted ID 60-454. Final signal: False
+2025-06-19 04:13:12,555 [INFO] Client 1 inserted ID 60-802. Final signal: False
+2025-06-19 04:13:13,116 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:13,189 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:13,759 [INFO] Client 1 inserted ID 53-277. Final signal: False
+2025-06-19 04:13:14,913 [INFO] Client 1 inserted ID 53-680. Final signal: False
+2025-06-19 04:13:15,118 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:15,190 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:15,657 [INFO] Client 1 inserted ID 53-944. Final signal: False
+2025-06-19 04:13:17,120 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:17,193 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:17,648 [INFO] Client 1 inserted ID 54-811. Final signal: False
+2025-06-19 04:13:18,264 [INFO] Client 1 inserted ID 61-292. Final signal: False
+2025-06-19 04:13:18,884 [INFO] Client 1 inserted ID 61-363. Final signal: False
+2025-06-19 04:13:19,073 [INFO] Client 1 inserted ID 61-439. Final signal: False
+2025-06-19 04:13:19,121 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:19,194 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:20,036 [INFO] Client 1 inserted ID 61-812. Final signal: False
+2025-06-19 04:13:20,174 [INFO] Client 1 inserted ID 61-869. Final signal: False
+2025-06-19 04:13:21,124 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:21,196 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:21,722 [INFO] Client 0 inserted ID 56-683. Final signal: False
+2025-06-19 04:13:22,140 [INFO] Client 0 inserted ID 56-833. Final signal: False
+2025-06-19 04:13:22,264 [INFO] Client 0 inserted ID 56-906. Final signal: False
+2025-06-19 04:13:22,519 [INFO] Client 0 inserted ID 56-997. Final signal: False
+2025-06-19 04:13:23,127 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:23,200 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:24,544 [INFO] Client 1 inserted ID 56-683. Final signal: False
+2025-06-19 04:13:24,939 [INFO] Client 1 inserted ID 56-833. Final signal: False
+2025-06-19 04:13:25,129 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:25,202 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:25,292 [INFO] Client 1 inserted ID 56-906. Final signal: False
+2025-06-19 04:13:25,666 [INFO] Client 1 inserted ID 56-997. Final signal: False
+2025-06-19 04:13:27,129 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:27,208 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:28,922 [INFO] Client 1 inserted ID 58-52. Final signal: False
+2025-06-19 04:13:29,131 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:29,208 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:31,133 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:31,209 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:31,310 [INFO] Client 1 inserted ID 62-988. Final signal: False
+2025-06-19 04:13:33,135 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:33,211 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:33,731 [INFO] Client 0 inserted ID 60-454. Final signal: False
+2025-06-19 04:13:34,792 [INFO] Client 0 inserted ID 60-802. Final signal: False
+2025-06-19 04:13:35,137 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:35,214 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:35,395 [INFO] Client 0 inserted ID 65-663. Final signal: False
+2025-06-19 04:13:36,074 [INFO] Client 0 inserted ID 61-292. Final signal: False
+2025-06-19 04:13:36,236 [INFO] Client 0 inserted ID 61-363. Final signal: False
+2025-06-19 04:13:36,430 [INFO] Client 0 inserted ID 61-439. Final signal: False
+2025-06-19 04:13:37,137 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:37,214 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:37,248 [INFO] Client 0 inserted ID 65-991. Final signal: False
+2025-06-19 04:13:38,095 [INFO] Client 0 inserted ID 61-812. Final signal: False
+2025-06-19 04:13:38,233 [INFO] Client 0 inserted ID 61-869. Final signal: False
+2025-06-19 04:13:39,141 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:39,216 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:40,752 [INFO] Client 1 inserted ID 65-663. Final signal: False
+2025-06-19 04:13:41,142 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:41,216 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:41,545 [INFO] Client 1 inserted ID 65-991. Final signal: False
+2025-06-19 04:13:42,051 [INFO] Client 0 inserted ID 62-988. Final signal: False
+2025-06-19 04:13:43,143 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:43,218 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:45,145 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:45,222 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:46,142 [INFO] Client 0 inserted ID 64-84. Final signal: False
+2025-06-19 04:13:47,145 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:47,222 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:48,316 [INFO] Client 1 inserted ID 67-258. Final signal: False
+2025-06-19 04:13:48,950 [INFO] Client 1 inserted ID 67-536. Final signal: False
+2025-06-19 04:13:49,015 [INFO] Client 1 inserted ID 67-581. Final signal: False
+2025-06-19 04:13:49,147 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:49,224 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:49,434 [INFO] Client 0 inserted ID 64-995. Final signal: False
+2025-06-19 04:13:51,149 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:51,226 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:52,360 [INFO] Client 1 inserted ID 68-202. Final signal: False
+2025-06-19 04:13:53,151 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:53,228 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:53,989 [INFO] Client 1 inserted ID 64-84. Final signal: False
+2025-06-19 04:13:55,153 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:55,230 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:56,481 [INFO] Client 1 inserted ID 64-995. Final signal: False
+2025-06-19 04:13:57,155 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:57,231 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:57,363 [INFO] Client 1 inserted ID 68-856. Final signal: False
+2025-06-19 04:13:58,452 [INFO] Client 1 inserted ID 66-779. Final signal: False
+2025-06-19 04:13:59,159 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:13:59,233 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:13:59,878 [INFO] Client 0 inserted ID 67-258. Final signal: False
+2025-06-19 04:14:00,553 [INFO] Client 0 inserted ID 67-536. Final signal: False
+2025-06-19 04:14:00,643 [INFO] Client 0 inserted ID 67-581. Final signal: False
+2025-06-19 04:14:01,161 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:01,237 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:02,292 [INFO] Client 0 inserted ID 68-202. Final signal: False
+2025-06-19 04:14:02,827 [INFO] Client 1 inserted ID 69-365. Final signal: False
+2025-06-19 04:14:03,162 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:03,200 [INFO] Client 1 inserted ID 69-475. Final signal: False
+2025-06-19 04:14:03,237 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:03,277 [INFO] Client 0 inserted ID 68-470. Final signal: False
+2025-06-19 04:14:04,161 [INFO] Client 0 inserted ID 68-856. Final signal: False
+2025-06-19 04:14:05,165 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:05,239 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:06,140 [INFO] Client 1 inserted ID 70-155. Final signal: False
+2025-06-19 04:14:06,640 [INFO] Client 0 inserted ID 69-365. Final signal: False
+2025-06-19 04:14:07,075 [INFO] Client 0 inserted ID 69-475. Final signal: False
+2025-06-19 04:14:07,167 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:07,240 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:09,169 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:09,241 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:09,539 [INFO] Client 0 inserted ID 70-155. Final signal: False
+2025-06-19 04:14:10,466 [INFO] Client 1 inserted ID 71-48. Final signal: False
+2025-06-19 04:14:11,170 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:11,242 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:11,989 [INFO] Client 1 inserted ID 71-358. Final signal: False
+2025-06-19 04:14:12,380 [INFO] Client 0 inserted ID 71-48. Final signal: False
+2025-06-19 04:14:13,171 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:13,245 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:13,370 [INFO] Client 0 inserted ID 71-358. Final signal: False
+2025-06-19 04:14:15,172 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:15,247 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:16,435 [INFO] Client 1 inserted ID 72-292. Final signal: False
+2025-06-19 04:14:16,663 [INFO] Client 0 inserted ID 72-292. Final signal: False
+2025-06-19 04:14:17,177 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:17,251 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:17,454 [INFO] Client 1 inserted ID 72-649. Final signal: False
+2025-06-19 04:14:18,267 [INFO] Client 0 inserted ID 72-649. Final signal: False
+2025-06-19 04:14:19,179 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:19,252 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:19,497 [INFO] Client 1 inserted ID 73-372. Final signal: False
+2025-06-19 04:14:21,180 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:21,254 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:21,637 [INFO] Client 0 inserted ID 73-372. Final signal: False
+2025-06-19 04:14:22,775 [INFO] Client 1 inserted ID 74-418. Final signal: False
+2025-06-19 04:14:23,182 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:23,255 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:24,332 [INFO] Client 1 inserted ID 74-981. Final signal: False
+2025-06-19 04:14:25,183 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:25,256 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:25,760 [INFO] Client 1 inserted ID 75-372. Final signal: False
+2025-06-19 04:14:26,269 [INFO] Client 0 inserted ID 74-418. Final signal: False
+2025-06-19 04:14:27,187 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:27,257 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:27,376 [INFO] Client 1 inserted ID 75-701. Final signal: False
+2025-06-19 04:14:29,187 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:29,259 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:29,352 [INFO] Client 0 inserted ID 75-372. Final signal: False
+2025-06-19 04:14:29,796 [INFO] Client 0 inserted ID 74-981. Final signal: False
+2025-06-19 04:14:30,735 [INFO] Client 1 inserted ID 76-197. Final signal: False
+2025-06-19 04:14:30,739 [INFO] Client 0 inserted ID 75-701. Final signal: False
+2025-06-19 04:14:31,191 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:31,260 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:32,669 [INFO] Client 0 inserted ID 76-197. Final signal: False
+2025-06-19 04:14:32,738 [INFO] Client 1 inserted ID 76-715. Final signal: False
+2025-06-19 04:14:33,192 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:33,261 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:34,093 [INFO] Client 0 inserted ID 76-715. Final signal: False
+2025-06-19 04:14:34,191 [INFO] Client 1 inserted ID 76-929. Final signal: False
+2025-06-19 04:14:34,214 [INFO] Client 1 inserted ID 76-941. Final signal: False
+2025-06-19 04:14:34,661 [INFO] Client 1 inserted ID 77-22. Final signal: False
+2025-06-19 04:14:34,865 [INFO] Client 0 inserted ID 76-929. Final signal: False
+2025-06-19 04:14:35,128 [INFO] Client 0 inserted ID 76-941. Final signal: False
+2025-06-19 04:14:35,193 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:35,266 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:35,625 [INFO] Client 0 inserted ID 77-22. Final signal: False
+2025-06-19 04:14:37,195 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:37,267 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:38,773 [INFO] Client 1 inserted ID 78-9. Final signal: False
+2025-06-19 04:14:38,967 [INFO] Client 1 inserted ID 78-58. Final signal: False
+2025-06-19 04:14:39,197 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:39,268 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:39,801 [INFO] Client 1 inserted ID 78-326. Final signal: False
+2025-06-19 04:14:39,914 [INFO] Client 0 inserted ID 78-9. Final signal: False
+2025-06-19 04:14:40,003 [INFO] Client 1 inserted ID 78-384. Final signal: False
+2025-06-19 04:14:40,103 [INFO] Client 1 inserted ID 78-438. Final signal: False
+2025-06-19 04:14:40,227 [INFO] Client 0 inserted ID 78-58. Final signal: False
+2025-06-19 04:14:41,109 [INFO] Client 0 inserted ID 78-326. Final signal: False
+2025-06-19 04:14:41,200 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:41,269 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:41,379 [INFO] Client 0 inserted ID 78-384. Final signal: False
+2025-06-19 04:14:41,498 [INFO] Client 0 inserted ID 78-438. Final signal: False
+2025-06-19 04:14:42,225 [INFO] Client 1 inserted ID 78-908. Final signal: False
+2025-06-19 04:14:43,203 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:43,270 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:43,594 [INFO] Client 0 inserted ID 78-908. Final signal: False
+2025-06-19 04:14:45,204 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:45,273 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:47,207 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:47,276 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:47,584 [INFO] Client 1 inserted ID 80-272. Final signal: False
+2025-06-19 04:14:47,619 [INFO] Client 1 inserted ID 80-288. Final signal: False
+2025-06-19 04:14:49,208 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:49,278 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:50,110 [INFO] Client 1 inserted ID 80-986. Final signal: False
+2025-06-19 04:14:50,397 [INFO] Client 1 inserted ID 81-65. Final signal: False
+2025-06-19 04:14:51,210 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:51,281 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:51,650 [INFO] Client 0 inserted ID 80-272. Final signal: False
+2025-06-19 04:14:51,676 [INFO] Client 0 inserted ID 80-288. Final signal: False
+2025-06-19 04:14:51,702 [INFO] Client 1 inserted ID 81-343. Final signal: False
+2025-06-19 04:14:53,213 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:53,283 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:54,432 [INFO] Client 1 inserted ID 81-990. Final signal: False
+2025-06-19 04:14:54,713 [INFO] Client 0 inserted ID 81-65. Final signal: False
+2025-06-19 04:14:55,131 [INFO] Client 0 inserted ID 80-986. Final signal: False
+2025-06-19 04:14:55,215 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:55,285 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:55,492 [INFO] Client 0 inserted ID 81-343. Final signal: False
+2025-06-19 04:14:56,005 [INFO] Client 1 inserted ID 82-225. Final signal: False
+2025-06-19 04:14:57,217 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:57,286 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:57,913 [INFO] Client 0 inserted ID 81-990. Final signal: False
+2025-06-19 04:14:57,929 [INFO] Client 1 inserted ID 82-400. Final signal: False
+2025-06-19 04:14:57,962 [INFO] Client 1 inserted ID 82-417. Final signal: False
+2025-06-19 04:14:58,393 [INFO] Client 1 inserted ID 82-663. Final signal: False
+2025-06-19 04:14:59,218 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:14:59,290 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:14:59,327 [INFO] Client 0 inserted ID 82-225. Final signal: False
+2025-06-19 04:14:59,807 [INFO] Client 0 inserted ID 82-400. Final signal: False
+2025-06-19 04:14:59,835 [INFO] Client 0 inserted ID 82-417. Final signal: False
+2025-06-19 04:15:00,312 [INFO] Client 0 inserted ID 82-663. Final signal: False
+2025-06-19 04:15:00,318 [INFO] Client 1 inserted ID 82-835. Final signal: False
+2025-06-19 04:15:01,163 [INFO] Client 0 inserted ID 82-835. Final signal: False
+2025-06-19 04:15:01,220 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:01,292 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:03,085 [INFO] Client 1 inserted ID 83-639. Final signal: False
+2025-06-19 04:15:03,222 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:03,294 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:03,368 [INFO] Client 1 inserted ID 83-738. Final signal: False
+2025-06-19 04:15:05,224 [INFO] Client 0 inserted ID 83-639. Final signal: False
+2025-06-19 04:15:05,224 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:05,296 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:05,383 [INFO] Client 0 inserted ID 83-738. Final signal: False
+2025-06-19 04:15:07,225 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:07,298 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:08,329 [INFO] Client 1 inserted ID 84-871. Final signal: False
+2025-06-19 04:15:09,226 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:09,299 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:09,526 [INFO] Client 1 inserted ID 85-232. Final signal: False
+2025-06-19 04:15:10,104 [INFO] Client 0 inserted ID 84-871. Final signal: False
+2025-06-19 04:15:11,227 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:11,302 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:11,512 [INFO] Client 1 inserted ID 85-818. Final signal: False
+2025-06-19 04:15:11,743 [INFO] Client 0 inserted ID 85-232. Final signal: False
+2025-06-19 04:15:13,229 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:13,304 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:14,045 [INFO] Client 0 inserted ID 85-818. Final signal: False
+2025-06-19 04:15:14,214 [INFO] Client 1 inserted ID 86-493. Final signal: False
+2025-06-19 04:15:15,070 [INFO] Client 1 inserted ID 86-783. Final signal: False
+2025-06-19 04:15:15,230 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:15,306 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:17,040 [INFO] Client 1 inserted ID 87-290. Final signal: False
+2025-06-19 04:15:17,231 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:17,307 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:17,339 [INFO] Client 0 inserted ID 86-493. Final signal: False
+2025-06-19 04:15:18,578 [INFO] Client 1 inserted ID 87-745. Final signal: False
+2025-06-19 04:15:19,216 [INFO] Client 0 inserted ID 86-783. Final signal: False
+2025-06-19 04:15:19,234 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:19,308 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:20,489 [INFO] Client 0 inserted ID 87-290. Final signal: False
+2025-06-19 04:15:21,238 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:21,311 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:22,046 [INFO] Client 0 inserted ID 87-745. Final signal: False
+2025-06-19 04:15:23,239 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:23,312 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:25,240 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:25,314 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:26,954 [INFO] Client 1 inserted ID 89-330. Final signal: False
+2025-06-19 04:15:27,242 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:27,315 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:27,851 [INFO] Client 1 inserted ID 89-506. Final signal: False
+2025-06-19 04:15:29,134 [INFO] Client 1 inserted ID 89-925. Final signal: False
+2025-06-19 04:15:29,244 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:29,316 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:30,365 [INFO] Client 0 inserted ID 89-330. Final signal: False
+2025-06-19 04:15:31,245 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:31,320 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:31,461 [INFO] Client 0 inserted ID 89-506. Final signal: False
+2025-06-19 04:15:33,206 [INFO] Client 0 inserted ID 89-925. Final signal: False
+2025-06-19 04:15:33,246 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:33,321 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:33,786 [INFO] Client 1 inserted ID 91-366. Final signal: False
+2025-06-19 04:15:34,222 [INFO] Client 1 inserted ID 91-550. Final signal: False
+2025-06-19 04:15:34,938 [INFO] Client 1 inserted ID 91-791. Final signal: False
+2025-06-19 04:15:35,208 [INFO] Client 1 inserted ID 91-937. Final signal: False
+2025-06-19 04:15:35,248 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:35,323 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:35,853 [INFO] Client 0 inserted ID 91-366. Final signal: False
+2025-06-19 04:15:36,019 [INFO] Client 1 inserted ID 92-227. Final signal: False
+2025-06-19 04:15:36,250 [INFO] Client 1 inserted ID 92-326. Final signal: False
+2025-06-19 04:15:36,826 [INFO] Client 1 inserted ID 92-527. Final signal: False
+2025-06-19 04:15:36,980 [INFO] Client 0 inserted ID 91-550. Final signal: False
+2025-06-19 04:15:37,117 [INFO] Client 1 inserted ID 92-618. Final signal: False
+2025-06-19 04:15:37,253 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:37,324 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:37,587 [INFO] Client 1 inserted ID 92-749. Final signal: False
+2025-06-19 04:15:37,849 [INFO] Client 0 inserted ID 91-791. Final signal: False
+2025-06-19 04:15:38,228 [INFO] Client 0 inserted ID 91-937. Final signal: False
+2025-06-19 04:15:38,947 [INFO] Client 0 inserted ID 92-227. Final signal: False
+2025-06-19 04:15:39,099 [INFO] Client 0 inserted ID 92-326. Final signal: False
+2025-06-19 04:15:39,254 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:39,327 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:39,589 [INFO] Client 0 inserted ID 92-527. Final signal: False
+2025-06-19 04:15:39,868 [INFO] Client 0 inserted ID 92-618. Final signal: False
+2025-06-19 04:15:40,247 [INFO] Client 0 inserted ID 92-749. Final signal: False
+2025-06-19 04:15:40,565 [INFO] Client 1 inserted ID 93-221. Final signal: False
+2025-06-19 04:15:41,255 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:41,336 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:41,492 [INFO] Client 0 inserted ID 93-221. Final signal: False
+2025-06-19 04:15:42,022 [INFO] Client 1 inserted ID 93-517. Final signal: False
+2025-06-19 04:15:42,143 [INFO] Client 1 inserted ID 93-540. Final signal: False
+2025-06-19 04:15:42,524 [INFO] Client 0 inserted ID 93-517. Final signal: False
+2025-06-19 04:15:42,580 [INFO] Client 0 inserted ID 93-540. Final signal: False
+2025-06-19 04:15:43,256 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:43,337 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:45,258 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:45,337 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:45,527 [INFO] Client 0 inserted ID 94-575. Final signal: False
+2025-06-19 04:15:47,260 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:47,344 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:47,954 [INFO] Client 1 inserted ID 94-575. Final signal: False
+2025-06-19 04:15:49,262 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:49,345 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:49,551 [INFO] Client 1 inserted ID 95-659. Final signal: False
+2025-06-19 04:15:49,617 [INFO] Client 1 inserted ID 95-680. Final signal: False
+2025-06-19 04:15:49,672 [INFO] Client 1 inserted ID 95-703. Final signal: False
+2025-06-19 04:15:51,264 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:51,347 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:52,160 [INFO] Client 0 inserted ID 95-659. Final signal: False
+2025-06-19 04:15:52,229 [INFO] Client 0 inserted ID 95-680. Final signal: False
+2025-06-19 04:15:52,277 [INFO] Client 0 inserted ID 95-703. Final signal: False
+2025-06-19 04:15:53,241 [INFO] Client 1 inserted ID 96-589. Final signal: False
+2025-06-19 04:15:53,266 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:53,348 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:54,291 [INFO] Client 1 inserted ID 96-932. Final signal: False
+2025-06-19 04:15:55,087 [INFO] Client 1 inserted ID 97-181. Final signal: False
+2025-06-19 04:15:55,267 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:55,349 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:55,940 [INFO] Client 0 inserted ID 96-589. Final signal: False
+2025-06-19 04:15:55,990 [INFO] Client 1 inserted ID 97-429. Final signal: False
+2025-06-19 04:15:56,537 [INFO] Client 1 inserted ID 97-670. Final signal: False
+2025-06-19 04:15:57,267 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:57,350 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:57,859 [INFO] Client 1 inserted ID 98-158. Final signal: False
+2025-06-19 04:15:58,230 [INFO] Client 0 inserted ID 96-932. Final signal: False
+2025-06-19 04:15:58,590 [INFO] Client 1 inserted ID 98-391. Final signal: False
+2025-06-19 04:15:58,849 [INFO] Client 0 inserted ID 97-181. Final signal: False
+2025-06-19 04:15:59,271 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:15:59,354 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:15:59,851 [INFO] Client 1 inserted ID 98-742. Final signal: False
+2025-06-19 04:16:00,260 [INFO] Client 0 inserted ID 97-429. Final signal: False
+2025-06-19 04:16:00,710 [INFO] Client 0 inserted ID 97-670. Final signal: False
+2025-06-19 04:16:01,276 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:01,355 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:01,954 [INFO] Client 1 inserted ID 99-262. Final signal: False
+2025-06-19 04:16:03,020 [INFO] Client 1 inserted ID 100-2. Final signal: False
+2025-06-19 04:16:03,040 [INFO] Client 1 inserted ID 100-3. Final signal: False
+2025-06-19 04:16:03,105 [INFO] Client 1 inserted ID 99-735. Final signal: False
+2025-06-19 04:16:03,278 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:03,356 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:04,422 [INFO] Client 0 inserted ID 98-158. Final signal: False
+2025-06-19 04:16:05,251 [INFO] Client 0 inserted ID 98-391. Final signal: False
+2025-06-19 04:16:05,289 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:05,358 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:05,505 [INFO] Client 0 inserted ID 99-262. Final signal: False
+2025-06-19 04:16:06,737 [INFO] Client 0 inserted ID 98-742. Final signal: False
+2025-06-19 04:16:07,291 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:07,322 [INFO] Client 0 inserted ID 99-735. Final signal: False
+2025-06-19 04:16:07,360 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:08,039 [INFO] Client 0 inserted ID 100-2. Final signal: False
+2025-06-19 04:16:08,054 [INFO] Client 0 inserted ID 100-3. Final signal: False
+2025-06-19 04:16:09,291 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:09,362 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:11,295 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:11,364 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:13,300 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:13,366 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:15,301 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:15,368 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:17,302 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:17,369 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:19,303 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:19,370 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:21,304 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:21,371 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:23,307 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:23,372 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:25,310 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:25,373 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:26,267 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,268 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,271 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,279 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,281 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,284 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,289 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,291 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,294 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,295 [INFO] Client 0 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:26,298 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,300 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,306 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,307 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,309 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,313 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,319 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,321 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,323 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,329 [INFO] Client 0 inserted ID 0-969. Final signal: False
+2025-06-19 04:16:26,332 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,333 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,335 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,341 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,344 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,350 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,359 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,365 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,368 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,375 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,383 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,394 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,396 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,398 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,399 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,400 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,403 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,403 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,406 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,407 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,409 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,410 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,413 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,414 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,418 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,418 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,421 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,425 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,426 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,427 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,428 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,430 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,433 [INFO] Client 0 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:26,436 [INFO] Client 0 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:26,437 [INFO] Client 0 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:26,439 [INFO] Client 0 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:26,441 [INFO] Client 0 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:26,443 [INFO] Client 0 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:26,445 [INFO] Client 0 inserted ID 27-311. Final signal: False
+2025-06-19 04:16:26,449 [INFO] Received final count for client 0: 271. Current unique IDs: 217. Match: False
+2025-06-19 04:16:26,450 [INFO] Client 0 sent final count 271. Match: False.
+2025-06-19 04:16:27,316 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:27,374 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:27,456 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,463 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,465 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,470 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,471 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,472 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,475 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,476 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,479 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,482 [INFO] Client 1 inserted ID 1-322. Final signal: False
+2025-06-19 04:16:27,483 [INFO] Client 1 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:27,486 [INFO] Client 1 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:27,489 [INFO] Client 1 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:27,492 [INFO] Client 1 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:27,498 [INFO] Client 1 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:27,499 [INFO] Client 1 inserted ID 1-379. Final signal: False
+2025-06-19 04:16:27,503 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,504 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,506 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,509 [INFO] Client 1 inserted ID 0-969. Final signal: False
+2025-06-19 04:16:27,511 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,514 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,517 [INFO] Client 1 inserted ID 0-969. Final signal: False
+2025-06-19 04:16:27,518 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,521 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,528 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,531 [INFO] Client 1 inserted ID 0-969. Final signal: False
+2025-06-19 04:16:27,532 [INFO] Client 1 inserted ID 0-969. Final signal: False
+2025-06-19 04:16:27,541 [INFO] Client 1 inserted ID 0-969. Final signal: False
+2025-06-19 04:16:27,547 [INFO] Client 1 inserted ID 0-969. Final signal: False
+2025-06-19 04:16:27,551 [INFO] Client 1 inserted ID 0-969. Final signal: False
+2025-06-19 04:16:27,552 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,553 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,555 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,557 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,558 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,559 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,560 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,562 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,564 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,565 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,567 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,568 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,572 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,573 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,575 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,577 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,578 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,580 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,581 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,582 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,583 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,586 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,587 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,589 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,592 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,594 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,595 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,598 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,599 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,600 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,601 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,603 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,604 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,609 [INFO] Client 1 inserted ID 2-192. Final signal: False
+2025-06-19 04:16:27,612 [INFO] Client 1 inserted ID 27-311. Final signal: False
+2025-06-19 04:16:27,615 [INFO] Received final count for client 1: 271. Current unique IDs: 210. Match: False
+2025-06-19 04:16:27,615 [INFO] Client 1 sent final count 271. Match: False.
+2025-06-19 04:16:29,317 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:29,375 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:31,319 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:31,376 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:33,321 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:33,378 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:35,322 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:35,379 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:37,323 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:37,380 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:39,324 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:39,381 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:41,326 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:41,382 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:43,327 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:43,384 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:45,328 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:45,385 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:47,329 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:47,386 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:49,330 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:49,387 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:51,331 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:51,388 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:53,333 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:53,392 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:55,334 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:55,393 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:57,335 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:57,395 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:16:59,336 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:16:59,396 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:01,337 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:01,397 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:03,340 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:03,398 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:05,341 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:05,399 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:07,342 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:07,400 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:09,343 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:09,401 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:11,344 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:11,403 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:13,345 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:13,404 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:15,347 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:15,404 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:17,348 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:17,407 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:19,349 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:19,408 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:21,350 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:21,409 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:23,351 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:23,410 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:25,352 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:25,411 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:27,353 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:27,412 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:29,356 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:29,414 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:31,357 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:31,416 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:33,359 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:33,417 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:35,361 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:35,418 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:37,366 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:37,419 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:39,367 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:39,421 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:41,368 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:41,425 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:43,369 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:43,426 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:45,371 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:45,427 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:47,372 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:47,429 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:49,372 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:49,430 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:51,373 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:51,434 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:53,374 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:53,436 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:55,377 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:55,437 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:57,378 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:57,438 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:17:59,379 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:17:59,439 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:01,380 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:01,440 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:03,383 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:03,441 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:05,386 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:05,442 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:07,387 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:07,445 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:09,388 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:09,446 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:11,389 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:11,446 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:13,391 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:13,447 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:15,393 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:15,449 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:17,394 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:17,450 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:19,395 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:19,451 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:21,396 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:21,452 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:23,396 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:23,453 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:25,398 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:25,455 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:27,399 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:27,457 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:29,400 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:29,457 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:31,401 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:31,460 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:33,404 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:33,461 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:35,405 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:35,462 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:37,406 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:37,463 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:39,407 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:39,465 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:41,409 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:41,467 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:43,412 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:43,469 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:45,412 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:45,470 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:47,414 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:47,471 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:49,415 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:49,472 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:51,417 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:51,473 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:53,419 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:53,477 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:55,419 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:55,479 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:57,420 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:57,479 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:18:59,423 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:18:59,481 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:01,424 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:01,481 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:03,426 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:03,483 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:05,428 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:05,485 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:07,429 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:07,486 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:09,430 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:09,487 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:11,432 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:11,489 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:13,432 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:13,490 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:15,434 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:15,491 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:17,434 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:17,492 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:19,435 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:19,493 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:21,436 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:21,495 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:23,439 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:23,495 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:25,440 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:25,497 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:27,441 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:27,498 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:29,443 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:29,501 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:31,444 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:31,503 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:33,445 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:33,504 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:35,449 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:35,508 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:37,451 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:37,510 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:39,451 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:39,511 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:41,453 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:41,512 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:43,453 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:43,513 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:45,454 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:45,514 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:47,456 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:47,515 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:49,457 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:49,517 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:51,459 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:51,519 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:53,461 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:53,520 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:55,463 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:55,521 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:57,464 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:57,523 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:19:59,465 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:19:59,525 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:01,467 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:01,526 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:03,468 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:03,528 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:05,470 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:05,529 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:07,471 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:07,530 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:09,472 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:09,531 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:11,474 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:11,532 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:13,474 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:13,534 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:15,475 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:15,535 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:17,476 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:17,536 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:19,477 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:19,539 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:21,479 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:21,540 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:23,482 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:23,541 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:25,483 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:25,542 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:27,484 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:27,544 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:29,486 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:29,545 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:31,488 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:31,547 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:33,489 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:33,548 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:35,490 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:35,549 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:37,491 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:37,550 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:39,492 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:39,551 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:41,493 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:41,552 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:43,494 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:43,553 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:45,494 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:45,554 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:47,495 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:47,556 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:49,496 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:49,557 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:51,497 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:51,558 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:53,498 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:53,559 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:55,499 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:55,560 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:57,500 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:57,561 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:20:59,501 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:20:59,562 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:01,502 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:01,563 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:03,503 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:03,564 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:05,504 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:05,565 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:07,506 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:07,566 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:09,508 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:09,567 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:11,510 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:11,568 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:13,511 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:13,569 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:15,513 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:15,571 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:17,514 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:17,572 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:19,515 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:19,573 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:21,516 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:21,574 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:23,517 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:23,575 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:25,518 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:25,576 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:27,520 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:27,577 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:29,521 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:29,578 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:31,522 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:31,579 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:33,524 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:33,581 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:35,526 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:35,584 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:37,527 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:37,585 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:39,529 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:39,586 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:41,530 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:41,587 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:43,531 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:43,588 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:45,532 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:45,589 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:47,533 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:47,590 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:49,534 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:49,591 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:51,536 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:51,592 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:53,538 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:53,594 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:55,540 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:55,596 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:57,542 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:57,597 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:21:59,543 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:21:59,599 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:01,545 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:01,600 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:03,547 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:03,601 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:05,549 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:05,604 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:07,550 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:07,606 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:09,551 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:09,608 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:11,554 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:11,609 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:13,555 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:13,611 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:15,564 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:15,612 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:17,565 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:17,613 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:19,567 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:19,615 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:21,569 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:21,617 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:23,571 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:23,618 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:25,572 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:25,619 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:27,575 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:27,620 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:29,576 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:29,621 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:31,577 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:31,622 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:33,578 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:33,623 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:35,579 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:35,624 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:37,580 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:37,625 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:39,581 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:39,626 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:41,582 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:41,628 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:43,583 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:43,629 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:45,568 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:45,614 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:47,569 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:47,616 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:49,570 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:49,616 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:51,573 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:51,618 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:53,574 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:53,620 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:55,576 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:55,620 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:57,576 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:57,622 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:22:59,578 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:22:59,623 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:01,580 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:01,626 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:03,582 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:03,627 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:05,584 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:05,630 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:07,585 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:07,631 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:09,587 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:09,631 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:11,588 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:11,634 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:13,589 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:13,634 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:15,586 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:15,633 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:17,587 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:17,634 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:19,589 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:19,635 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:21,591 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:21,636 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:23,592 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:23,639 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:25,593 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:25,640 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:27,595 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:27,641 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:29,596 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:29,643 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:31,597 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:31,645 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:33,599 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:33,646 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:35,600 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:35,647 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:37,601 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:37,649 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:39,602 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:39,650 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:41,604 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:41,653 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:43,605 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:43,655 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:45,605 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:45,655 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:47,608 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:47,656 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:49,609 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:49,658 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:51,610 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:51,659 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:53,611 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:53,660 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:55,613 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:55,662 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:57,616 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:57,663 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:23:59,616 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:23:59,665 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:01,619 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:01,668 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:03,621 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:03,670 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:05,624 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:05,671 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:07,625 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:07,673 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:09,628 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:09,674 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:11,629 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:11,677 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:13,630 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:13,678 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:15,632 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:15,679 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:17,633 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:17,680 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:19,635 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:19,681 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:21,636 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:21,682 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:23,637 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:23,684 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
+2025-06-19 04:24:25,638 [INFO] Nodo control_12 conectado (Healthcheck connection)
+2025-06-19 04:24:25,685 [INFO] Nodo router_ratings_calculated conectado (Healthcheck connection)
