@@ -43,7 +43,7 @@ class JoinNode:
         self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.join_by = os.getenv("JOIN_BY", "id")
         self.count_by_client = {}
-        
+
         self.count_test = 0
 
         self.keep_columns = None
@@ -141,7 +141,7 @@ class JoinNode:
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
             router = int(movie.get(self.join_by))
-            
+
             if client_id not in self.count_by_client:
                 self.count_by_client[client_id] = 0
 
@@ -204,17 +204,17 @@ class JoinNode:
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
             router = int(movie.get(self.join_by))
-            id = packet.id
-            
+            packet_id = packet.id
+
             if not router:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             # Obtener el StorageHandler para el cliente
             storage = self._get_storage_for_client(client_id)
-            
+
             self.count_test += 1
-            
+
             with self.lock:
                 router_in_buffer = router in self.router_buffer_by_client.get(client_id, {})
                 is_eof_main = self.eof_main_by_client.get(client_id, False)
@@ -223,7 +223,7 @@ class JoinNode:
                 print(f" [Join thread] Router '{router}' found in router_buffer")
                 with self.lock:
                     movie1 = self.router_buffer_by_client[client_id][router]
-                joined_packet = self.create_joined_packet(client_id, movie1, movie, id)
+                joined_packet = self.create_joined_packet(client_id, movie1, movie, packet_id)
                 self.output_rabbitmq.publish(joined_packet.to_json())
                 self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                 print(f" [Join thread] Se envió un par con router '{router}' del cliente '{client_id}'")
@@ -232,9 +232,9 @@ class JoinNode:
                 # Si eof_main es False, guardar en el disco
                 if not is_eof_main:
                     print(f" [Join thread 💾] Router '{router}' not in buffer, adding to disk")
-                    storage.add(str(router), movie, id)
+                    storage.add(str(router), movie, packet_id)
                     print(f" [Join thread ✅] Added router '{router}' to disk")
-                    
+
             if is_eof_main:
                 stored_keys = storage.list_keys()
 
@@ -284,7 +284,7 @@ class JoinNode:
         Crea un paquete para un client id a partir de dos entradas de distintas queues.
         """
         combined_movie = {**movie1, **movie2}
-        
+
         joined_packet = DataPacket(
             client_id=client_id,
             timestamp=datetime.utcnow().isoformat(),
@@ -403,7 +403,7 @@ class JoinNode:
             # Limpiar count del cliente
             if client_id in self.count_by_client:
                 del self.count_by_client[client_id]
-        print(f" [✅] Disco limpio y memoria limpia para '{client_id}'") 
+        print(f" [✅] Disco limpio y memoria limpia para '{client_id}'")
 
     def close(self):
         """
@@ -426,5 +426,3 @@ class JoinNode:
             storage.clean_all()
         self.storages_by_client.clear()
         self.router_buffer_by_client.clear()
-
-        # Delete client state for all clients with current state using self.delete_client_state()
