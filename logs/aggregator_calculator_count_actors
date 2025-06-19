@@ -1404,6 +1404,17 @@
  [x] Message 1403 acknowledged
  [x] Message 1404 acknowledged
  [x] Message 1405 acknowledged
+ [x] Message 1406 acknowledged
+ [x] Message 1407 acknowledged
+ [x] Message 1408 acknowledged
+ [x] Message 1409 acknowledged
+ [x] Message 1410 acknowledged
+ [x] Message 1411 acknowledged
+ [x] Message 1412 acknowledged
+ [x] Message 1413 acknowledged
+ [x] Message 1414 acknowledged
+ [x] Message 1415 acknowledged
+ [x] Message 1416 acknowledged
  [x] Sent message to queue aggregator_calculator_count_actors
  [x] Sent message to queue aggregator_calculator_count_actors
  [x] Sent message to queue aggregator_calculator_count_actors
@@ -2586,17 +2597,6 @@
  [x] Sent message to queue aggregator_calculator_count_actors
  [x] Sent message to queue aggregator_calculator_count_actors
 [Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.
- [x] Message 1407 acknowledged
- [x] Message 1408 acknowledged
- [x] Message 1409 acknowledged
- [x] Message 1410 acknowledged
- [x] Message 1411 acknowledged
- [x] Message 1412 acknowledged
- [x] Message 1413 acknowledged
- [x] Message 1414 acknowledged
- [x] Message 1415 acknowledged
- [x] Message 1416 acknowledged
- [x] Message 1417 acknowledged
  [x] Message 1418 acknowledged
  [x] Message 1419 acknowledged
  [x] Message 1420 acknowledged

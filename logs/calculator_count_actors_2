@@ -3,196 +3,174 @@
 [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_2' al exchange 'router_actors_2000_argentina'...
 StateFiles = []
  [*] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_2
-[client - 0] Processed movie: 19460
- [x] Message 1 acknowledged
-[client - 0] Processed movie: 30125
- [x] Message 2 acknowledged
-[client - 0] Processed movie: 36971
- [x] Message 3 acknowledged
-[client - 0] Processed movie: 134096
- [x] Message 4 acknowledged
-[client - 0] Processed movie: 297677
- [x] Message 5 acknowledged
-[client - 0] Processed movie: 71114
- [x] Message 6 acknowledged
-[client - 0] Processed movie: 127445
- [x] Message 7 acknowledged
-[client - 0] Processed movie: 51548
- [x] Message 8 acknowledged
-[client - 1] Processed movie: 324578
- [x] Message 9 acknowledged
-[client - 1] Processed movie: 297641
- [x] Message 10 acknowledged
-[client - 1] Processed movie: 138167
- [x] Message 11 acknowledged
-[client - 1] Processed movie: 92780
- [x] Message 12 acknowledged
-[client - 0] Processed movie: 284870
- [x] Message 13 acknowledged
-[client - 0] Processed movie: 337115
- [x] Message 14 acknowledged
-[client - 0] Processed movie: 45722
- [x] Message 15 acknowledged
-[client - 0] Processed movie: 94649
- [x] Message 16 acknowledged
-[client - 0] Processed movie: 324578
- [x] Message 17 acknowledged
-[client - 0] Processed movie: 297641
- [x] Message 18 acknowledged
-[client - 0] Processed movie: 138167
- [x] Message 19 acknowledged
-[client - 0] Processed movie: 92780
- [x] Message 20 acknowledged
-[client - 1] Processed movie: 284870
- [x] Message 21 acknowledged
-[client - 1] Processed movie: 337115
- [x] Message 22 acknowledged
-[client - 1] Processed movie: 45722
- [x] Message 23 acknowledged
-[client - 1] Processed movie: 94649
- [x] Message 24 acknowledged
-[client - 0] Processed movie: 341744
- [x] Message 25 acknowledged
-[client - 0] Processed movie: 44282
- [x] Message 26 acknowledged
-[client - 0] Processed movie: 65795
- [x] Message 27 acknowledged
-[client - 0] Processed movie: 161024
- [x] Message 28 acknowledged
-[client - 0] Processed movie: 41924
- [x] Message 29 acknowledged
-[client - 0] Processed movie: 7274
- [x] Message 30 acknowledged
-[client - 1] Processed movie: 44282
- [x] Message 31 acknowledged
-[client - 1] Processed movie: 65795
- [x] Message 32 acknowledged
-[client - 1] Processed movie: 161024
- [x] Message 33 acknowledged
-[client - 1] Processed movie: 41924
- [x] Message 34 acknowledged
-[client - 1] Processed movie: 7274
- [x] Message 35 acknowledged
-[client - 1] Processed movie: 16916
- [x] Message 36 acknowledged
-[client - 0] Processed movie: 16916
- [x] Message 37 acknowledged
-[client - 1] Processed movie: 351809
- [x] Message 38 acknowledged
-[client - 0] Processed movie: 358505
- [x] Message 39 acknowledged
-[client - 0] Processed movie: 351809
- [x] Message 40 acknowledged
-[client - 1] Processed movie: 358505
- [x] Message 41 acknowledged
-[client - 1] Processed movie: 99896
- [x] Message 42 acknowledged
-[client - 0] Processed movie: 99896
- [x] Message 43 acknowledged
-[client - 1] Processed movie: 360365
- [x] Message 44 acknowledged
-[client - 1] Processed movie: 127304
- [x] Message 45 acknowledged
-[client - 1] Processed movie: 425942
- [x] Message 46 acknowledged
-[client - 0] Processed movie: 360365
- [x] Message 47 acknowledged
-[client - 0] Processed movie: 127304
- [x] Message 48 acknowledged
-[client - 0] Processed movie: 425942
- [x] Message 49 acknowledged
-[client - 0] Processed movie: 418718
- [x] Message 50 acknowledged
-[client - 1] Processed movie: 418718
- [x] Message 51 acknowledged
-[client - 1] Processed movie: 413666
- [x] Message 52 acknowledged
-[client - 0] Processed movie: 413666
- [x] Message 53 acknowledged
-[client - 1] Processed movie: 444935
- [x] Message 54 acknowledged
-[client - 1] Processed movie: 405446
- [x] Message 55 acknowledged
-[client - 1] Processed movie: 71576
- [x] Message 56 acknowledged
-[client - 0] Processed movie: 444935
- [x] Message 57 acknowledged
-[client - 0] Processed movie: 405446
- [x] Message 58 acknowledged
-[client - 0] Processed movie: 71576
- [x] Message 59 acknowledged
-[client - 1] Processed movie: 27092
- [x] Message 60 acknowledged
-[client - 1] Processed movie: 19460
- [x] Message 61 acknowledged
-[client - 1] Processed movie: 30125
- [x] Message 62 acknowledged
-[client - 1] Processed movie: 36971
- [x] Message 63 acknowledged
-[client - 1] Processed movie: 25376
- [x] Message 64 acknowledged
-[client - 1] Processed movie: 25532
- [x] Message 65 acknowledged
-[client - 1] Processed movie: 101006
- [x] Message 66 acknowledged
-[client - 1] Processed movie: 8900
- [x] Message 67 acknowledged
-[client - 1] Processed movie: 10817
- [x] Message 68 acknowledged
-[client - 1] Processed movie: 33107
- [x] Message 69 acknowledged
-[client - 1] Processed movie: 49073
- [x] Message 70 acknowledged
-[client - 1] Processed movie: 126104
- [x] Message 71 acknowledged
-[client - 1] Processed movie: 47261
- [x] Message 72 acknowledged
-Skipped movie 'Bolivia' with missing or invalid cast
-[client - 1] Processed movie: 62342
- [x] Message 74 acknowledged
-Skipped movie 'Ana and the Others' with missing or invalid cast
-[client - 1] Processed movie: 73889
- [x] Message 76 acknowledged
-[client - 1] Processed movie: 111188
- [x] Message 77 acknowledged
-[client - 1] Processed movie: 26864
- [x] Message 78 acknowledged
-[client - 1] Processed movie: 85544
- [x] Message 79 acknowledged
-[client - 1] Processed movie: 80717
- [x] Message 80 acknowledged
-[client - 1] Processed movie: 133082
- [x] Message 81 acknowledged
-[client - 1] Processed movie: 84302
- [x] Message 82 acknowledged
-[client - 1] Processed movie: 127880
- [x] Message 83 acknowledged
-[client - 1] Processed movie: 87380
- [x] Message 84 acknowledged
-[client - 1] Processed movie: 69278
- [x] Message 85 acknowledged
-[client - 1] Processed movie: 153158
- [x] Message 86 acknowledged
-[client - 1] Processed movie: 134096
- [x] Message 87 acknowledged
-[client - 1] Processed movie: 87017
- [x] Message 88 acknowledged
-[client - 1] Processed movie: 128237
- [x] Message 89 acknowledged
-[client - 1] Processed movie: 35837
- [x] Message 90 acknowledged
-[client - 1] Processed movie: 297677
- [x] Message 91 acknowledged
 [client - 1] Processed movie: 71114
- [x] Message 92 acknowledged
+ [x] Message 1 acknowledged
 [client - 1] Processed movie: 110393
- [x] Message 93 acknowledged
-[client - 1] Processed movie: 127445
- [x] Message 94 acknowledged
-[client - 1] Processed movie: 51548
- [x] Message 95 acknowledged
+ [x] Message 2 acknowledged
+[client - 0] Processed movie: 324578
+ [x] Message 3 acknowledged
+[client - 0] Processed movie: 297641
+ [x] Message 4 acknowledged
+[client - 0] Processed movie: 138167
+ [x] Message 5 acknowledged
+[client - 0] Processed movie: 92780
+ [x] Message 6 acknowledged
+[client - 1] Processed movie: 324578
+ [x] Message 7 acknowledged
+[client - 1] Processed movie: 297641
+ [x] Message 8 acknowledged
+[client - 0] Processed movie: 94649
+ [x] Message 9 acknowledged
+[client - 1] Processed movie: 138167
+ [x] Message 10 acknowledged
+[client - 1] Processed movie: 92780
+ [x] Message 11 acknowledged
+[client - 1] Processed movie: 284870
+ [x] Message 12 acknowledged
+[client - 1] Processed movie: 337115
+ [x] Message 13 acknowledged
+[client - 1] Processed movie: 45722
+ [x] Message 14 acknowledged
+[client - 1] Processed movie: 94649
+ [x] Message 15 acknowledged
+[client - 1] Processed movie: 44282
+ [x] Message 16 acknowledged
+[client - 0] Processed movie: 44282
+ [x] Message 17 acknowledged
 [client - 1] Processed movie: 341744
- [x] Message 96 acknowledged
+ [x] Message 18 acknowledged
+[client - 0] Processed movie: 341744
+ [x] Message 19 acknowledged
+[client - 0] Processed movie: 65795
+ [x] Message 20 acknowledged
+[client - 0] Processed movie: 161024
+ [x] Message 21 acknowledged
+[client - 0] Processed movie: 41924
+ [x] Message 22 acknowledged
+[client - 1] Processed movie: 65795
+ [x] Message 23 acknowledged
+[client - 1] Processed movie: 161024
+ [x] Message 24 acknowledged
+[client - 1] Processed movie: 41924
+ [x] Message 25 acknowledged
+[client - 0] Processed movie: 7274
+ [x] Message 26 acknowledged
+[client - 1] Processed movie: 7274
+ [x] Message 27 acknowledged
+[client - 0] Processed movie: 16916
+ [x] Message 28 acknowledged
+[client - 1] Processed movie: 16916
+ [x] Message 29 acknowledged
+[client - 0] Processed movie: 351809
+ [x] Message 30 acknowledged
+[client - 1] Processed movie: 351809
+ [x] Message 31 acknowledged
+[client - 0] Processed movie: 358505
+ [x] Message 32 acknowledged
+[client - 1] Processed movie: 358505
+ [x] Message 33 acknowledged
+[client - 0] Processed movie: 99896
+ [x] Message 34 acknowledged
+[client - 1] Processed movie: 99896
+ [x] Message 35 acknowledged
+[client - 0] Processed movie: 360365
+ [x] Message 36 acknowledged
+[client - 0] Processed movie: 127304
+ [x] Message 37 acknowledged
+[client - 0] Processed movie: 425942
+ [x] Message 38 acknowledged
+[client - 1] Processed movie: 360365
+ [x] Message 39 acknowledged
+[client - 1] Processed movie: 127304
+ [x] Message 40 acknowledged
+[client - 1] Processed movie: 425942
+ [x] Message 41 acknowledged
+[client - 1] Processed movie: 418718
+ [x] Message 42 acknowledged
+[client - 0] Processed movie: 418718
+ [x] Message 43 acknowledged
+[client - 1] Processed movie: 413666
+ [x] Message 44 acknowledged
+[client - 0] Processed movie: 413666
+ [x] Message 45 acknowledged
+[client - 0] Processed movie: 444935
+ [x] Message 46 acknowledged
+[client - 1] Processed movie: 27092
+ [x] Message 47 acknowledged
+[client - 1] Processed movie: 19460
+ [x] Message 48 acknowledged
+[client - 1] Processed movie: 30125
+ [x] Message 49 acknowledged
+[client - 1] Processed movie: 36971
+ [x] Message 50 acknowledged
+[client - 1] Processed movie: 25376
+ [x] Message 51 acknowledged
+[client - 1] Processed movie: 25532
+ [x] Message 52 acknowledged
+[client - 1] Processed movie: 101006
+ [x] Message 53 acknowledged
+[client - 1] Processed movie: 8900
+ [x] Message 54 acknowledged
+[client - 1] Processed movie: 10817
+ [x] Message 55 acknowledged
+[client - 1] Processed movie: 33107
+ [x] Message 56 acknowledged
+[client - 1] Processed movie: 49073
+ [x] Message 57 acknowledged
+[client - 1] Processed movie: 126104
+ [x] Message 58 acknowledged
+[client - 1] Processed movie: 62342
+ [x] Message 59 acknowledged
+Skipped movie 'Ana and the Others' with missing or invalid cast
+[client - 1] Processed movie: 47261
+ [x] Message 61 acknowledged
+Skipped movie 'Bolivia' with missing or invalid cast
+[client - 1] Processed movie: 73889
+ [x] Message 63 acknowledged
+[client - 1] Processed movie: 85544
+ [x] Message 64 acknowledged
+[client - 1] Processed movie: 80717
+ [x] Message 65 acknowledged
+[client - 1] Processed movie: 111188
+ [x] Message 66 acknowledged
+[client - 1] Processed movie: 26864
+ [x] Message 67 acknowledged
+[client - 1] Processed movie: 133082
+ [x] Message 68 acknowledged
+[client - 1] Processed movie: 84302
+ [x] Message 69 acknowledged
+[client - 1] Processed movie: 127880
+ [x] Message 70 acknowledged
+[client - 1] Processed movie: 87380
+ [x] Message 71 acknowledged
+[client - 1] Processed movie: 69278
+ [x] Message 72 acknowledged
+[client - 1] Processed movie: 153158
+ [x] Message 73 acknowledged
+[client - 1] Processed movie: 134096
+ [x] Message 74 acknowledged
+[client - 1] Processed movie: 87017
+ [x] Message 75 acknowledged
+[client - 1] Processed movie: 128237
+ [x] Message 76 acknowledged
+[client - 1] Processed movie: 35837
+ [x] Message 77 acknowledged
+[client - 1] Processed movie: 297677
+ [x] Message 78 acknowledged
+[client - 1] Processed movie: 127445
+ [x] Message 79 acknowledged
+[client - 1] Processed movie: 51548
+ [x] Message 80 acknowledged
+[client - 1] Processed movie: 444935
+ [x] Message 81 acknowledged
+[client - 1] Processed movie: 405446
+ [x] Message 82 acknowledged
+[client - 1] Processed movie: 71576
+ [x] Message 83 acknowledged
+[client - 0] Processed movie: 405446
+ [x] Message 84 acknowledged
+[client - 0] Processed movie: 71576
+ [x] Message 85 acknowledged
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Abian Vainstein', 'count': 1}
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Adriana Barraza', 'count': 1}
@@ -1158,58 +1136,80 @@ Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Ángela
  [x] Sent message to queue calculator_count_actorsfinal
 [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":481,"header":"FINAL","node_id":"2"}' enviado directamente.
 [client - 0] Processed movie: 27092
- [x] Message 98 acknowledged
+ [x] Message 87 acknowledged
+[client - 0] Processed movie: 19460
+ [x] Message 88 acknowledged
+[client - 0] Processed movie: 30125
+ [x] Message 89 acknowledged
+[client - 0] Processed movie: 36971
+ [x] Message 90 acknowledged
 [client - 0] Processed movie: 25376
- [x] Message 99 acknowledged
+ [x] Message 91 acknowledged
 [client - 0] Processed movie: 25532
- [x] Message 100 acknowledged
-[client - 0] Processed movie: 101006
- [x] Message 101 acknowledged
-[client - 0] Processed movie: 10817
- [x] Message 102 acknowledged
-[client - 0] Processed movie: 33107
- [x] Message 103 acknowledged
-[client - 0] Processed movie: 49073
- [x] Message 104 acknowledged
+ [x] Message 92 acknowledged
 [client - 0] Processed movie: 8900
- [x] Message 105 acknowledged
+ [x] Message 93 acknowledged
+[client - 0] Processed movie: 10817
+ [x] Message 94 acknowledged
+[client - 0] Processed movie: 33107
+ [x] Message 95 acknowledged
+[client - 0] Processed movie: 101006
+ [x] Message 96 acknowledged
+[client - 0] Processed movie: 49073
+ [x] Message 97 acknowledged
 [client - 0] Processed movie: 126104
- [x] Message 106 acknowledged
+ [x] Message 98 acknowledged
 [client - 0] Processed movie: 62342
- [x] Message 107 acknowledged
+ [x] Message 99 acknowledged
 Skipped movie 'Ana and the Others' with missing or invalid cast
 [client - 0] Processed movie: 47261
- [x] Message 109 acknowledged
+ [x] Message 101 acknowledged
 Skipped movie 'Bolivia' with missing or invalid cast
 [client - 0] Processed movie: 73889
- [x] Message 111 acknowledged
+ [x] Message 103 acknowledged
 [client - 0] Processed movie: 111188
- [x] Message 112 acknowledged
+ [x] Message 104 acknowledged
 [client - 0] Processed movie: 26864
- [x] Message 113 acknowledged
+ [x] Message 105 acknowledged
 [client - 0] Processed movie: 85544
- [x] Message 114 acknowledged
+ [x] Message 106 acknowledged
 [client - 0] Processed movie: 80717
- [x] Message 115 acknowledged
+ [x] Message 107 acknowledged
 [client - 0] Processed movie: 133082
- [x] Message 116 acknowledged
+ [x] Message 108 acknowledged
 [client - 0] Processed movie: 84302
- [x] Message 117 acknowledged
+ [x] Message 109 acknowledged
 [client - 0] Processed movie: 127880
- [x] Message 118 acknowledged
+ [x] Message 110 acknowledged
 [client - 0] Processed movie: 87380
- [x] Message 119 acknowledged
+ [x] Message 111 acknowledged
 [client - 0] Processed movie: 69278
- [x] Message 120 acknowledged
+ [x] Message 112 acknowledged
 [client - 0] Processed movie: 153158
- [x] Message 121 acknowledged
+ [x] Message 113 acknowledged
+[client - 0] Processed movie: 134096
+ [x] Message 114 acknowledged
 [client - 0] Processed movie: 87017
- [x] Message 122 acknowledged
+ [x] Message 115 acknowledged
 [client - 0] Processed movie: 128237
- [x] Message 123 acknowledged
+ [x] Message 116 acknowledged
 [client - 0] Processed movie: 35837
- [x] Message 124 acknowledged
+ [x] Message 117 acknowledged
+[client - 0] Processed movie: 297677
+ [x] Message 118 acknowledged
+[client - 0] Processed movie: 71114
+ [x] Message 119 acknowledged
 [client - 0] Processed movie: 110393
+ [x] Message 120 acknowledged
+[client - 0] Processed movie: 127445
+ [x] Message 121 acknowledged
+[client - 0] Processed movie: 51548
+ [x] Message 122 acknowledged
+[client - 0] Processed movie: 284870
+ [x] Message 123 acknowledged
+[client - 0] Processed movie: 337115
+ [x] Message 124 acknowledged
+[client - 0] Processed movie: 45722
  [x] Message 125 acknowledged
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Abian Vainstein', 'count': 1}
  [x] Sent message to queue calculator_count_actors

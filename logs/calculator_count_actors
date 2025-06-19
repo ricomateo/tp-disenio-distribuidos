@@ -5,184 +5,166 @@ FinalFiles = []
 [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
 StateFiles = []
  [*] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[client - 0] Processed movie: 204372
+[client - 1] Processed movie: 199851
  [x] Message 1 acknowledged
-[client - 0] Processed movie: 1956
+[client - 1] Processed movie: 128598
  [x] Message 2 acknowledged
-[client - 0] Processed movie: 16425
- [x] Message 3 acknowledged
-[client - 0] Processed movie: 99648
- [x] Message 4 acknowledged
-[client - 0] Processed movie: 127257
- [x] Message 5 acknowledged
-[client - 0] Processed movie: 266031
- [x] Message 6 acknowledged
-[client - 1] Processed movie: 262788
- [x] Message 7 acknowledged
 [client - 1] Processed movie: 288312
- [x] Message 8 acknowledged
+ [x] Message 3 acknowledged
 [client - 0] Processed movie: 265563
- [x] Message 9 acknowledged
+ [x] Message 4 acknowledged
+[client - 1] Processed movie: 262788
+ [x] Message 5 acknowledged
 [client - 0] Processed movie: 323214
- [x] Message 10 acknowledged
+ [x] Message 6 acknowledged
 [client - 0] Processed movie: 127326
- [x] Message 11 acknowledged
+ [x] Message 7 acknowledged
 [client - 1] Processed movie: 273261
- [x] Message 12 acknowledged
+ [x] Message 8 acknowledged
 [client - 1] Processed movie: 71118
- [x] Message 13 acknowledged
-[client - 0] Processed movie: 352161
- [x] Message 14 acknowledged
-[client - 0] Processed movie: 273261
- [x] Message 15 acknowledged
-[client - 0] Processed movie: 71118
- [x] Message 16 acknowledged
+ [x] Message 9 acknowledged
 [client - 1] Processed movie: 352161
- [x] Message 17 acknowledged
-[client - 0] Processed movie: 214758
- [x] Message 18 acknowledged
-[client - 0] Processed movie: 78570
- [x] Message 19 acknowledged
-[client - 0] Processed movie: 128070
- [x] Message 20 acknowledged
-[client - 0] Processed movie: 125619
- [x] Message 21 acknowledged
-[client - 0] Processed movie: 206292
- [x] Message 22 acknowledged
-[client - 0] Processed movie: 129933
- [x] Message 23 acknowledged
+ [x] Message 10 acknowledged
 [client - 1] Processed movie: 125619
- [x] Message 24 acknowledged
-Skipped movie '¡Vivan las Antipodas!' with missing or invalid cast
+ [x] Message 11 acknowledged
+[client - 0] Processed movie: 125619
+ [x] Message 12 acknowledged
+[client - 1] Processed movie: 214758
+ [x] Message 13 acknowledged
+[client - 1] Processed movie: 78570
+ [x] Message 14 acknowledged
+[client - 0] Processed movie: 214758
+ [x] Message 15 acknowledged
+[client - 0] Processed movie: 78570
+ [x] Message 16 acknowledged
+[client - 1] Processed movie: 128070
+ [x] Message 17 acknowledged
+[client - 0] Processed movie: 128070
+ [x] Message 18 acknowledged
+[client - 0] Processed movie: 206292
+ [x] Message 19 acknowledged
 [client - 1] Processed movie: 206292
- [x] Message 26 acknowledged
-[client - 1] Processed movie: 267579
- [x] Message 27 acknowledged
+ [x] Message 20 acknowledged
+[client - 0] Processed movie: 129933
+ [x] Message 21 acknowledged
 [client - 1] Processed movie: 129933
- [x] Message 28 acknowledged
-[client - 1] Processed movie: 270909
- [x] Message 29 acknowledged
-[client - 1] Processed movie: 394374
- [x] Message 30 acknowledged
+ [x] Message 22 acknowledged
 Skipped movie '¡Vivan las Antipodas!' with missing or invalid cast
-[client - 0] Processed movie: 267579
- [x] Message 32 acknowledged
-[client - 1] Processed movie: 391617
- [x] Message 33 acknowledged
+Skipped movie '¡Vivan las Antipodas!' with missing or invalid cast
+[client - 1] Processed movie: 267579
+ [x] Message 25 acknowledged
 [client - 0] Processed movie: 270909
- [x] Message 34 acknowledged
+ [x] Message 26 acknowledged
+[client - 0] Processed movie: 267579
+ [x] Message 27 acknowledged
 [client - 0] Processed movie: 394374
- [x] Message 35 acknowledged
+ [x] Message 28 acknowledged
 [client - 0] Processed movie: 391617
- [x] Message 36 acknowledged
+ [x] Message 29 acknowledged
+[client - 1] Processed movie: 270909
+ [x] Message 30 acknowledged
+[client - 1] Processed movie: 394374
+ [x] Message 31 acknowledged
+[client - 1] Processed movie: 391617
+ [x] Message 32 acknowledged
 [client - 0] Processed movie: 408537
- [x] Message 37 acknowledged
+ [x] Message 33 acknowledged
 [client - 1] Processed movie: 408537
- [x] Message 38 acknowledged
+ [x] Message 34 acknowledged
 [client - 1] Processed movie: 361251
- [x] Message 39 acknowledged
+ [x] Message 35 acknowledged
 [client - 1] Processed movie: 257487
- [x] Message 40 acknowledged
+ [x] Message 36 acknowledged
 [client - 0] Processed movie: 361251
- [x] Message 41 acknowledged
-[client - 1] Processed movie: 359736
- [x] Message 42 acknowledged
+ [x] Message 37 acknowledged
 [client - 0] Processed movie: 257487
- [x] Message 43 acknowledged
+ [x] Message 38 acknowledged
 [client - 0] Processed movie: 359736
- [x] Message 44 acknowledged
-[client - 0] Processed movie: 420648
- [x] Message 45 acknowledged
-[client - 0] Processed movie: 399615
- [x] Message 46 acknowledged
+ [x] Message 39 acknowledged
+[client - 1] Processed movie: 359736
+ [x] Message 40 acknowledged
 [client - 1] Processed movie: 420648
- [x] Message 47 acknowledged
+ [x] Message 41 acknowledged
 [client - 1] Processed movie: 399615
- [x] Message 48 acknowledged
+ [x] Message 42 acknowledged
+[client - 0] Processed movie: 420648
+ [x] Message 43 acknowledged
+[client - 0] Processed movie: 399615
+ [x] Message 44 acknowledged
 [client - 1] Processed movie: 204372
- [x] Message 49 acknowledged
+ [x] Message 45 acknowledged
 [client - 1] Processed movie: 1956
- [x] Message 50 acknowledged
+ [x] Message 46 acknowledged
 [client - 1] Processed movie: 16425
- [x] Message 51 acknowledged
+ [x] Message 47 acknowledged
 [client - 1] Processed movie: 99648
- [x] Message 52 acknowledged
+ [x] Message 48 acknowledged
 [client - 1] Processed movie: 83505
- [x] Message 53 acknowledged
+ [x] Message 49 acknowledged
 [client - 1] Processed movie: 20316
- [x] Message 54 acknowledged
+ [x] Message 50 acknowledged
 [client - 1] Processed movie: 1653
- [x] Message 55 acknowledged
+ [x] Message 51 acknowledged
 [client - 1] Processed movie: 11556
- [x] Message 56 acknowledged
+ [x] Message 52 acknowledged
 [client - 1] Processed movie: 13653
- [x] Message 57 acknowledged
+ [x] Message 53 acknowledged
 [client - 1] Processed movie: 78237
- [x] Message 58 acknowledged
+ [x] Message 54 acknowledged
 [client - 1] Processed movie: 29952
- [x] Message 59 acknowledged
+ [x] Message 55 acknowledged
 [client - 1] Processed movie: 50724
- [x] Message 60 acknowledged
-[client - 1] Processed movie: 11148
- [x] Message 61 acknowledged
-[client - 1] Processed movie: 78705
- [x] Message 62 acknowledged
+ [x] Message 56 acknowledged
 [client - 1] Processed movie: 79767
- [x] Message 63 acknowledged
+ [x] Message 57 acknowledged
 [client - 1] Processed movie: 28710
- [x] Message 64 acknowledged
+ [x] Message 58 acknowledged
+[client - 1] Processed movie: 11148
+ [x] Message 59 acknowledged
+[client - 1] Processed movie: 78705
+ [x] Message 60 acknowledged
 [client - 1] Processed movie: 13317
- [x] Message 65 acknowledged
-[client - 1] Processed movie: 127257
- [x] Message 66 acknowledged
+ [x] Message 61 acknowledged
 [client - 1] Processed movie: 11928
- [x] Message 67 acknowledged
+ [x] Message 62 acknowledged
+[client - 1] Processed movie: 127257
+ [x] Message 63 acknowledged
 [client - 1] Processed movie: 8898
- [x] Message 68 acknowledged
+ [x] Message 64 acknowledged
 Skipped movie 'The Employment' with missing or invalid cast
 [client - 1] Processed movie: 57489
- [x] Message 70 acknowledged
+ [x] Message 66 acknowledged
 [client - 1] Processed movie: 67884
- [x] Message 71 acknowledged
+ [x] Message 67 acknowledged
 [client - 1] Processed movie: 16092
- [x] Message 72 acknowledged
+ [x] Message 68 acknowledged
 [client - 1] Processed movie: 79983
- [x] Message 73 acknowledged
+ [x] Message 69 acknowledged
 [client - 1] Processed movie: 73293
- [x] Message 74 acknowledged
+ [x] Message 70 acknowledged
 [client - 1] Processed movie: 6636
- [x] Message 75 acknowledged
+ [x] Message 71 acknowledged
 [client - 1] Processed movie: 222759
- [x] Message 76 acknowledged
+ [x] Message 72 acknowledged
 [client - 1] Processed movie: 115173
- [x] Message 77 acknowledged
+ [x] Message 73 acknowledged
 [client - 1] Processed movie: 39378
- [x] Message 78 acknowledged
+ [x] Message 74 acknowledged
 [client - 1] Processed movie: 296778
- [x] Message 79 acknowledged
-[client - 1] Processed movie: 199851
- [x] Message 80 acknowledged
+ [x] Message 75 acknowledged
 [client - 1] Processed movie: 114285
- [x] Message 81 acknowledged
+ [x] Message 76 acknowledged
 [client - 1] Processed movie: 214761
- [x] Message 82 acknowledged
+ [x] Message 77 acknowledged
 [client - 1] Processed movie: 266031
- [x] Message 83 acknowledged
+ [x] Message 78 acknowledged
 Skipped movie 'The Disappeared' with missing or invalid cast
-[client - 1] Processed movie: 128598
- [x] Message 85 acknowledged
 [client - 1] Processed movie: 265563
- [x] Message 86 acknowledged
+ [x] Message 80 acknowledged
 [client - 1] Processed movie: 323214
- [x] Message 87 acknowledged
+ [x] Message 81 acknowledged
 [client - 1] Processed movie: 127326
- [x] Message 88 acknowledged
-[client - 1] Processed movie: 214758
- [x] Message 89 acknowledged
-[client - 1] Processed movie: 78570
- [x] Message 90 acknowledged
-[client - 1] Processed movie: 128070
- [x] Message 91 acknowledged
+ [x] Message 82 acknowledged
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': ' Belen Blanco', 'count': 1}
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Abel Dolz Doval', 'count': 1}
@@ -1023,72 +1005,91 @@ Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Érica 
  [x] Sent message to queue calculator_count_actors
  [x] Sent message to queue calculator_count_actorsfinal
 [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":419,"header":"FINAL","node_id":"0"}' enviado directamente.
-[client - 0] Processed movie: 83505
+[client - 0] Processed movie: 1956
 node_id = 0
- [x] Message 93 acknowledged
+ [x] Message 84 acknowledged
+[client - 0] Processed movie: 16425
+ [x] Message 85 acknowledged
+[client - 0] Processed movie: 99648
+ [x] Message 86 acknowledged
+[client - 0] Processed movie: 83505
+ [x] Message 87 acknowledged
+[client - 0] Processed movie: 204372
+ [x] Message 88 acknowledged
 [client - 0] Processed movie: 20316
- [x] Message 94 acknowledged
+ [x] Message 89 acknowledged
 [client - 0] Processed movie: 1653
- [x] Message 95 acknowledged
+ [x] Message 90 acknowledged
 [client - 0] Processed movie: 11556
- [x] Message 96 acknowledged
+ [x] Message 91 acknowledged
 [client - 0] Processed movie: 13653
- [x] Message 97 acknowledged
-[client - 0] Processed movie: 78237
- [x] Message 98 acknowledged
+ [x] Message 92 acknowledged
 [client - 0] Processed movie: 29952
- [x] Message 99 acknowledged
+ [x] Message 93 acknowledged
+[client - 0] Processed movie: 78237
+ [x] Message 94 acknowledged
 [client - 0] Processed movie: 50724
- [x] Message 100 acknowledged
+ [x] Message 95 acknowledged
 [client - 0] Processed movie: 79767
- [x] Message 101 acknowledged
+ [x] Message 96 acknowledged
 [client - 0] Processed movie: 28710
- [x] Message 102 acknowledged
+ [x] Message 97 acknowledged
 [client - 0] Processed movie: 11148
- [x] Message 103 acknowledged
+ [x] Message 98 acknowledged
 [client - 0] Processed movie: 78705
- [x] Message 104 acknowledged
+ [x] Message 99 acknowledged
 [client - 0] Processed movie: 13317
- [x] Message 105 acknowledged
+ [x] Message 100 acknowledged
+[client - 0] Processed movie: 127257
+ [x] Message 101 acknowledged
 [client - 0] Processed movie: 11928
- [x] Message 106 acknowledged
-[client - 0] Processed movie: 8898
- [x] Message 107 acknowledged
+ [x] Message 102 acknowledged
 Skipped movie 'The Employment' with missing or invalid cast
 [client - 0] Processed movie: 57489
- [x] Message 109 acknowledged
+ [x] Message 104 acknowledged
+[client - 0] Processed movie: 8898
+ [x] Message 105 acknowledged
 [client - 0] Processed movie: 67884
- [x] Message 110 acknowledged
+ [x] Message 106 acknowledged
 [client - 0] Processed movie: 16092
- [x] Message 111 acknowledged
+ [x] Message 107 acknowledged
 [client - 0] Processed movie: 79983
- [x] Message 112 acknowledged
+ [x] Message 108 acknowledged
 [client - 0] Processed movie: 73293
- [x] Message 113 acknowledged
+ [x] Message 109 acknowledged
 [client - 0] Processed movie: 6636
- [x] Message 114 acknowledged
+ [x] Message 110 acknowledged
 [client - 0] Processed movie: 222759
- [x] Message 115 acknowledged
+ [x] Message 111 acknowledged
 [client - 0] Processed movie: 115173
- [x] Message 116 acknowledged
+ [x] Message 112 acknowledged
 [client - 0] Processed movie: 39378
- [x] Message 117 acknowledged
+ [x] Message 113 acknowledged
+[client - 0] Processed movie: 114285
+ [x] Message 114 acknowledged
+[client - 0] Processed movie: 214761
+ [x] Message 115 acknowledged
+[client - 0] Processed movie: 266031
+ [x] Message 116 acknowledged
+Skipped movie 'The Disappeared' with missing or invalid cast
 [client - 0] Processed movie: 296778
  [x] Message 118 acknowledged
 [client - 0] Processed movie: 199851
  [x] Message 119 acknowledged
-[client - 0] Processed movie: 114285
- [x] Message 120 acknowledged
-[client - 0] Processed movie: 214761
- [x] Message 121 acknowledged
-Skipped movie 'The Disappeared' with missing or invalid cast
-[client - 0] Processed movie: 128598
- [x] Message 123 acknowledged
 [client - 0] Processed movie: 288312
- [x] Message 124 acknowledged
+ [x] Message 120 acknowledged
+[client - 0] Processed movie: 128598
+ [x] Message 121 acknowledged
 [client - 0] Processed movie: 262788
+ [x] Message 122 acknowledged
+[client - 0] Processed movie: 273261
+ [x] Message 123 acknowledged
+[client - 0] Processed movie: 71118
+ [x] Message 124 acknowledged
+[client - 0] Processed movie: 352161
  [x] Message 125 acknowledged
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': ' Belen Blanco', 'count': 1}
+node_id = 1
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Abel Dolz Doval', 'count': 1}
  [x] Sent message to queue calculator_count_actors
@@ -1105,7 +1106,6 @@ Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Adrián
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Adrián Giampani', 'count': 1}
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Agustin Nieves', 'count': 1}
-node_id = 1
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Agustina Sario', 'count': 1}
  [x] Sent message to queue calculator_count_actors
@@ -1156,6 +1156,10 @@ Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Antonia
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Antonia De Michelis', 'count': 1}
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Antonio Ugo', 'count': 1}
+node_id = 2
+Sending final with total_count = 1348
+ [x] Sent message to queue calculator_count_actors
+[Middleware] FinalPacket b'{"client_id":1,"count":1348,"header":"FINAL"}' enviado directamente.
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Armando Hernández', 'count': 1}
  [x] Sent message to queue calculator_count_actors
@@ -1170,12 +1174,8 @@ Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Bernard
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Beto Cuevas', 'count': 1}
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Billy Campbell', 'count': 1}
-node_id = 2
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Blanca Suárez', 'count': 1}
-Sending final with total_count = 1348
- [x] Sent message to queue calculator_count_actors
-[Middleware] FinalPacket b'{"client_id":1,"count":1348,"header":"FINAL"}' enviado directamente.
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Brad Krupsaw', 'count': 1}
  [x] Sent message to queue calculator_count_actors

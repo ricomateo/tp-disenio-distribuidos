@@ -6,148 +6,148 @@
  [*] Waiting for messages in filter_2000_argentinafilter_2000s_spain
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 58429, Title: La Cienaga, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
- [x] Message 4 acknowledged
+ [x] Message 2 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 27092, Title: Burnt Money, Genres: [{'id': 80, 'name': 'Crime'}]
- [x] Message 5 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 20316, Title: The City of No Limits, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}]
- [x] Message 12 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 11556, Title: Nicotina, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 53, 'name': 'Thriller'}]
- [x] Message 15 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 49681, Title: Lost Embrace, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 16 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 36971, Title: Whisky, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 17 acknowledged
+ [x] Message 3 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 58429, Title: La Cienaga, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
- [x] Message 20 acknowledged
+ [x] Message 7 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 27092, Title: Burnt Money, Genres: [{'id': 80, 'name': 'Crime'}]
- [x] Message 21 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 44413, Title: The Holy Girl, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 23 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 13653, Title: The Aura, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
- [x] Message 25 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 29952, Title: Bombón: The Dog, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 27 acknowledged
+ [x] Message 8 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 20316, Title: The City of No Limits, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}]
- [x] Message 32 acknowledged
+ [x] Message 20 acknowledged
  [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 127257, Title: Every Stewardess Goes to Heaven, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 36 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 79767, Title: Rolling Family, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
- [x] Message 37 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 21043, Title: The Method, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
- [x] Message 41 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 44413, Title: The Holy Girl, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 42 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 13653, Title: The Aura, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
- [x] Message 45 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 29952, Title: Bombón: The Dog, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 47 acknowledged
+ [✓] Filtered and Published to filter_2000s_spain: ID: 20316, Title: The City of No Limits, Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}]
+ [x] Message 24 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 11556, Title: Nicotina, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 53, 'name': 'Thriller'}]
- [x] Message 49 acknowledged
+ [x] Message 27 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 49681, Title: Lost Embrace, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 50 acknowledged
+ [x] Message 28 acknowledged
  [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 79767, Title: Rolling Family, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
- [x] Message 51 acknowledged
+ [✓] Filtered and Published to filter_2000s_spain: ID: 11556, Title: Nicotina, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 29 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 49681, Title: Lost Embrace, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 30 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 36971, Title: Whisky, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 53 acknowledged
+ [x] Message 31 acknowledged
  [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 11928, Title: Tetro, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}]
- [x] Message 54 acknowledged
+ [✓] Filtered and Published to filter_2000s_spain: ID: 36971, Title: Whisky, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 32 acknowledged
  [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 25376, Title: The Secret in Their Eyes, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 10749, 'name': 'Romance'}]
- [x] Message 55 acknowledged
+ [✓] Filtered and Published to filter_2000s_spain: ID: 44413, Title: The Holy Girl, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 33 acknowledged
  [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 101006, Title: Liverpool, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 57 acknowledged
+ [✓] Filtered and Published to filter_2000s_spain: ID: 44413, Title: The Holy Girl, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 34 acknowledged
  [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 8898, Title: The Headless Woman, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 53, 'name': 'Thriller'}]
- [x] Message 58 acknowledged
+ [✓] Filtered and Published to filter_2000s_spain: ID: 13653, Title: The Aura, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 36 acknowledged
  [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 21043, Title: The Method, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
- [x] Message 62 acknowledged
+ [✓] Filtered and Published to filter_2000s_spain: ID: 29952, Title: Bombón: The Dog, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 38 acknowledged
  [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 57489, Title: The Last Summer of La Boyita, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 66 acknowledged
+ [✓] Filtered and Published to filter_2000s_spain: ID: 13653, Title: The Aura, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 41 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 29952, Title: Bombón: The Dog, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 43 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 79767, Title: Rolling Family, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 45 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 79767, Title: Rolling Family, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}]
+ [x] Message 46 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 127257, Title: Every Stewardess Goes to Heaven, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 69 acknowledged
+ [x] Message 50 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 21043, Title: The Method, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 52 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 21043, Title: The Method, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 56 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 11928, Title: Tetro, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}]
- [x] Message 77 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 57489, Title: The Last Summer of La Boyita, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 79 acknowledged
+ [x] Message 57 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 25376, Title: The Secret in Their Eyes, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 10749, 'name': 'Romance'}]
- [x] Message 86 acknowledged
+ [x] Message 58 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 101006, Title: Liverpool, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 88 acknowledged
+ [x] Message 61 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 8898, Title: The Headless Woman, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 53, 'name': 'Thriller'}]
- [x] Message 91 acknowledged
+ [x] Message 62 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 11928, Title: Tetro, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}]
+ [x] Message 63 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 25376, Title: The Secret in Their Eyes, Genres: [{'id': 80, 'name': 'Crime'}, {'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 10749, 'name': 'Romance'}]
+ [x] Message 64 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 127257, Title: Every Stewardess Goes to Heaven, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
+ [x] Message 66 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 101006, Title: Liverpool, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 67 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 8898, Title: The Headless Woman, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 9648, 'name': 'Mystery'}, {'id': 53, 'name': 'Thriller'}]
+ [x] Message 68 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 57489, Title: The Last Summer of La Boyita, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 71 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 16092, Title: The Appeared, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 9648, 'name': 'Mystery'}]
- [x] Message 97 acknowledged
+ [x] Message 87 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 57489, Title: The Last Summer of La Boyita, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 90 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 16092, Title: The Appeared, Genres: [{'id': 27, 'name': 'Horror'}, {'id': 53, 'name': 'Thriller'}, {'id': 9648, 'name': 'Mystery'}]
- [x] Message 102 acknowledged
+ [x] Message 110 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 26864, Title: The Fish Child, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 108 acknowledged
+ [x] Message 111 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 26864, Title: The Fish Child, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 53, 'name': 'Thriller'}, {'id': 10749, 'name': 'Romance'}, {'id': 10769, 'name': 'Foreign'}]
  [x] Message 115 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 71114, Title: Cleopatra, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 163 acknowledged
+ [x] Message 164 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 71114, Title: Cleopatra, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 182 acknowledged
+ [x] Message 174 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 43432, Title: Roma, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 208 acknowledged
+ [x] Message 185 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 43432, Title: Roma, Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 211 acknowledged
+ [x] Message 201 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 35005, Title: Conversations with Mother, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 216 acknowledged
+ [x] Message 235 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 35005, Title: Conversations with Mother, Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10769, 'name': 'Foreign'}]
- [x] Message 230 acknowledged
- [x] Sent message to queue filter_2000s_spain
- [✓] Filtered and Published to filter_2000s_spain: ID: 196324, Title: The Good Life, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 291 acknowledged
+ [x] Message 240 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 65795, Title: The Education of Fairies, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 295 acknowledged
+ [x] Message 278 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 65795, Title: The Education of Fairies, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 310 acknowledged
+ [x] Message 282 acknowledged
  [x] Sent message to queue filter_2000s_spain
  [✓] Filtered and Published to filter_2000s_spain: ID: 196324, Title: The Good Life, Genres: [{'id': 18, 'name': 'Drama'}]
- [x] Message 352 acknowledged
+ [x] Message 312 acknowledged
+ [x] Sent message to queue filter_2000s_spain
+ [✓] Filtered and Published to filter_2000s_spain: ID: 196324, Title: The Good Life, Genres: [{'id': 18, 'name': 'Drama'}]
+ [x] Message 333 acknowledged
  [x] Sent message to queue filter_2000s_spain
 [Middleware] FinalPacket b'{"client_id":0,"count":"24","header":"FINAL"}' enviado directamente.
  [x] Sent message to queue filter_2000s_spain

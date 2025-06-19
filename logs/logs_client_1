@@ -45,7 +45,3 @@ value: Pablo Echarri | count: 6
 value: Rafael Spregelburd | count: 6
 value: Rodrigo de la Serna | count: 6
 
-Top 2 by ratio (descending):
-feeling: POS | ratio: 5668.6505 | count: 3091
-feeling: NEG | ratio: 5453.3976 | count: 2279
-

@@ -1,11 +1,11 @@
 [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
 [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+FinalFiles = []
  [~] DeliverNode listening on aggregator_calculator_ratio_feelings, will send to query_queue
  [~] Filtering movie fields: ['feeling', 'ratio', 'count']
  [~] Sorting by ratio (descending, top 2)
-FinalFiles = []
- [*] Waiting for messages in aggregator_calculator_ratio_feelings
  [*] Waiting for messages in deliverfinal
+ [*] Waiting for messages in aggregator_calculator_ratio_feelings
 node_id = 2
 node_id = 2
 node_id = 1

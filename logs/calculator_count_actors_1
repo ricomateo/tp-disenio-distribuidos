@@ -5,213 +5,264 @@ StateFiles = []
  [*] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_1
 [client - 0] Processed movie: 16
  [x] Message 1 acknowledged
-[client - 0] Processed movie: 18079
+[client - 1] Processed movie: 222772
  [x] Message 2 acknowledged
-[client - 0] Processed movie: 49681
+[client - 1] Processed movie: 265195
  [x] Message 3 acknowledged
-[client - 0] Processed movie: 21409
+[client - 1] Processed movie: 43432
  [x] Message 4 acknowledged
-[client - 0] Processed movie: 44989
- [x] Message 5 acknowledged
-[client - 0] Processed movie: 285463
- [x] Message 6 acknowledged
 [client - 1] Processed movie: 29275
- [x] Message 7 acknowledged
+ [x] Message 5 acknowledged
 [client - 1] Processed movie: 128062
- [x] Message 8 acknowledged
+ [x] Message 6 acknowledged
 [client - 1] Processed movie: 254719
- [x] Message 9 acknowledged
+ [x] Message 7 acknowledged
 [client - 1] Processed movie: 81022
- [x] Message 10 acknowledged
-[client - 0] Processed movie: 259843
- [x] Message 11 acknowledged
-[client - 0] Processed movie: 126883
- [x] Message 12 acknowledged
+ [x] Message 8 acknowledged
 [client - 0] Processed movie: 129115
- [x] Message 13 acknowledged
+ [x] Message 9 acknowledged
+[client - 0] Processed movie: 259843
+ [x] Message 10 acknowledged
+[client - 0] Processed movie: 126883
+ [x] Message 11 acknowledged
 Skipped movie 'Balnearios' with missing or invalid cast
 [client - 0] Processed movie: 75193
- [x] Message 15 acknowledged
-[client - 1] Processed movie: 35005
+ [x] Message 13 acknowledged
+[client - 1] Processed movie: 104431
+ [x] Message 14 acknowledged
+Skipped movie 'Gemini' with missing or invalid cast
+[client - 0] Processed movie: 104431
  [x] Message 16 acknowledged
-[client - 1] Processed movie: 336664
- [x] Message 17 acknowledged
-[client - 0] Processed movie: 78115
- [x] Message 18 acknowledged
-[client - 0] Processed movie: 35005
- [x] Message 19 acknowledged
+Skipped movie 'Gemini' with missing or invalid cast
 [client - 0] Processed movie: 336664
+ [x] Message 18 acknowledged
+[client - 1] Processed movie: 35005
+ [x] Message 19 acknowledged
+[client - 1] Processed movie: 336664
  [x] Message 20 acknowledged
 [client - 1] Processed movie: 78115
  [x] Message 21 acknowledged
-[client - 0] Processed movie: 69985
+[client - 1] Processed movie: 69985
  [x] Message 22 acknowledged
-[client - 0] Processed movie: 64462
+[client - 0] Processed movie: 69985
  [x] Message 23 acknowledged
-[client - 0] Processed movie: 109690
+[client - 0] Processed movie: 64462
  [x] Message 24 acknowledged
-[client - 0] Processed movie: 336808
+[client - 0] Processed movie: 109690
  [x] Message 25 acknowledged
-Skipped movie 'Pin Boy' with missing or invalid cast
+[client - 0] Processed movie: 336808
+ [x] Message 26 acknowledged
 [client - 1] Processed movie: 64462
  [x] Message 27 acknowledged
 [client - 1] Processed movie: 109690
  [x] Message 28 acknowledged
 [client - 1] Processed movie: 336808
  [x] Message 29 acknowledged
-[client - 1] Processed movie: 365002
- [x] Message 30 acknowledged
 Skipped movie 'Pin Boy' with missing or invalid cast
-[client - 1] Processed movie: 83266
+Skipped movie 'Pin Boy' with missing or invalid cast
+[client - 1] Processed movie: 365002
  [x] Message 32 acknowledged
-[client - 1] Processed movie: 82999
- [x] Message 33 acknowledged
-[client - 1] Processed movie: 35026
- [x] Message 34 acknowledged
-[client - 0] Processed movie: 365002
- [x] Message 35 acknowledged
-[client - 1] Processed movie: 389995
- [x] Message 36 acknowledged
-[client - 1] Processed movie: 351454
- [x] Message 37 acknowledged
-[client - 1] Processed movie: 353989
- [x] Message 38 acknowledged
-[client - 1] Processed movie: 398830
- [x] Message 39 acknowledged
 [client - 0] Processed movie: 83266
- [x] Message 40 acknowledged
+ [x] Message 33 acknowledged
+[client - 0] Processed movie: 365002
+ [x] Message 34 acknowledged
 [client - 0] Processed movie: 82999
- [x] Message 41 acknowledged
-[client - 1] Processed movie: 196324
- [x] Message 42 acknowledged
-[client - 1] Processed movie: 359641
- [x] Message 43 acknowledged
+ [x] Message 35 acknowledged
 [client - 0] Processed movie: 35026
- [x] Message 44 acknowledged
+ [x] Message 36 acknowledged
 [client - 0] Processed movie: 389995
- [x] Message 45 acknowledged
+ [x] Message 37 acknowledged
 [client - 0] Processed movie: 351454
- [x] Message 46 acknowledged
+ [x] Message 38 acknowledged
+[client - 1] Processed movie: 83266
+ [x] Message 39 acknowledged
+[client - 1] Processed movie: 82999
+ [x] Message 40 acknowledged
+[client - 1] Processed movie: 35026
+ [x] Message 41 acknowledged
+[client - 1] Processed movie: 389995
+ [x] Message 42 acknowledged
 [client - 0] Processed movie: 353989
- [x] Message 47 acknowledged
+ [x] Message 43 acknowledged
+[client - 1] Processed movie: 351454
+ [x] Message 44 acknowledged
 [client - 0] Processed movie: 398830
- [x] Message 48 acknowledged
+ [x] Message 45 acknowledged
 [client - 0] Processed movie: 196324
- [x] Message 49 acknowledged
+ [x] Message 46 acknowledged
 [client - 0] Processed movie: 359641
+ [x] Message 47 acknowledged
+[client - 1] Processed movie: 353989
+ [x] Message 48 acknowledged
+[client - 1] Processed movie: 398830
+ [x] Message 49 acknowledged
+[client - 1] Processed movie: 196324
  [x] Message 50 acknowledged
-[client - 0] Processed movie: 124198
+[client - 1] Processed movie: 359641
  [x] Message 51 acknowledged
-[client - 0] Processed movie: 311215
+[client - 0] Processed movie: 124198
  [x] Message 52 acknowledged
-[client - 1] Processed movie: 289180
- [x] Message 53 acknowledged
 [client - 1] Processed movie: 124198
+ [x] Message 53 acknowledged
+[client - 0] Processed movie: 311215
  [x] Message 54 acknowledged
 [client - 1] Processed movie: 311215
  [x] Message 55 acknowledged
 [client - 0] Processed movie: 289180
  [x] Message 56 acknowledged
-[client - 1] Processed movie: 382906
+[client - 1] Processed movie: 289180
  [x] Message 57 acknowledged
-Skipped movie 'Ánima Buenos Aires' with missing or invalid cast
-[client - 1] Processed movie: 416680
- [x] Message 59 acknowledged
-[client - 1] Processed movie: 268297
- [x] Message 60 acknowledged
+[client - 1] Processed movie: 382906
+ [x] Message 58 acknowledged
 [client - 0] Processed movie: 382906
- [x] Message 61 acknowledged
+ [x] Message 59 acknowledged
 Skipped movie 'Ánima Buenos Aires' with missing or invalid cast
 [client - 0] Processed movie: 416680
- [x] Message 63 acknowledged
+ [x] Message 61 acknowledged
 [client - 0] Processed movie: 268297
+ [x] Message 62 acknowledged
+Skipped movie 'Ánima Buenos Aires' with missing or invalid cast
+[client - 1] Processed movie: 416680
  [x] Message 64 acknowledged
-[client - 0] Processed movie: 389578
+[client - 1] Processed movie: 268297
  [x] Message 65 acknowledged
-[client - 1] Processed movie: 351067
- [x] Message 66 acknowledged
 [client - 1] Processed movie: 389578
+ [x] Message 66 acknowledged
+[client - 1] Processed movie: 351067
  [x] Message 67 acknowledged
-[client - 1] Processed movie: 428863
+[client - 0] Processed movie: 389578
  [x] Message 68 acknowledged
-[client - 0] Processed movie: 351067
+[client - 1] Processed movie: 428863
  [x] Message 69 acknowledged
-[client - 0] Processed movie: 428863
+[client - 0] Processed movie: 351067
  [x] Message 70 acknowledged
-[client - 1] Processed movie: 374764
+[client - 0] Processed movie: 428863
  [x] Message 71 acknowledged
-[client - 1] Processed movie: 16
+[client - 0] Processed movie: 374764
  [x] Message 72 acknowledged
-[client - 1] Processed movie: 58429
+[client - 0] Processed movie: 58429
  [x] Message 73 acknowledged
-[client - 1] Processed movie: 18079
+[client - 0] Processed movie: 18079
  [x] Message 74 acknowledged
-[client - 1] Processed movie: 49681
+[client - 0] Processed movie: 49681
  [x] Message 75 acknowledged
-[client - 1] Processed movie: 44413
+[client - 0] Processed movie: 44413
  [x] Message 76 acknowledged
 Skipped movie 'Mondovino' with missing or invalid cast
-[client - 1] Processed movie: 21043
+[client - 0] Processed movie: 21043
  [x] Message 78 acknowledged
-[client - 1] Processed movie: 47065
+[client - 0] Processed movie: 47065
  [x] Message 79 acknowledged
-[client - 1] Processed movie: 36241
+[client - 0] Processed movie: 36241
  [x] Message 80 acknowledged
-[client - 1] Processed movie: 57019
+[client - 0] Processed movie: 57019
  [x] Message 81 acknowledged
 Skipped movie 'Sins of My Father' with missing or invalid cast
-[client - 1] Processed movie: 118204
+[client - 0] Processed movie: 118204
  [x] Message 83 acknowledged
-[client - 1] Processed movie: 47383
+[client - 0] Processed movie: 47383
  [x] Message 84 acknowledged
-[client - 1] Processed movie: 278458
+[client - 0] Processed movie: 278458
  [x] Message 85 acknowledged
-[client - 1] Processed movie: 76696
+[client - 0] Processed movie: 76696
  [x] Message 86 acknowledged
-[client - 1] Processed movie: 85549
+[client - 0] Processed movie: 85549
  [x] Message 87 acknowledged
-[client - 1] Processed movie: 85543
+[client - 0] Processed movie: 85543
  [x] Message 88 acknowledged
-[client - 1] Processed movie: 80437
+[client - 0] Processed movie: 80437
  [x] Message 89 acknowledged
-[client - 1] Processed movie: 68047
+[client - 0] Processed movie: 68047
  [x] Message 90 acknowledged
-[client - 1] Processed movie: 188761
+[client - 0] Processed movie: 188761
  [x] Message 91 acknowledged
-[client - 1] Processed movie: 133786
+[client - 0] Processed movie: 41272
  [x] Message 92 acknowledged
-[client - 1] Processed movie: 222772
+[client - 0] Processed movie: 133786
  [x] Message 93 acknowledged
-[client - 1] Processed movie: 265195
+[client - 0] Processed movie: 222772
  [x] Message 94 acknowledged
-[client - 1] Processed movie: 41272
+[client - 0] Processed movie: 265195
  [x] Message 95 acknowledged
-[client - 1] Processed movie: 43432
+[client - 0] Processed movie: 29275
  [x] Message 96 acknowledged
-[client - 1] Processed movie: 21409
+[client - 0] Processed movie: 128062
  [x] Message 97 acknowledged
-[client - 1] Processed movie: 44989
+[client - 0] Processed movie: 254719
  [x] Message 98 acknowledged
-[client - 1] Processed movie: 285463
+[client - 0] Processed movie: 81022
  [x] Message 99 acknowledged
-[client - 1] Processed movie: 259843
+[client - 0] Processed movie: 43432
  [x] Message 100 acknowledged
-[client - 1] Processed movie: 129115
+[client - 0] Processed movie: 21409
  [x] Message 101 acknowledged
-[client - 1] Processed movie: 126883
+[client - 0] Processed movie: 44989
  [x] Message 102 acknowledged
+[client - 0] Processed movie: 285463
+ [x] Message 103 acknowledged
+[client - 0] Processed movie: 35005
+ [x] Message 104 acknowledged
+[client - 0] Processed movie: 78115
+ [x] Message 105 acknowledged
+[client - 1] Processed movie: 16
+ [x] Message 106 acknowledged
+[client - 1] Processed movie: 58429
+ [x] Message 107 acknowledged
+[client - 1] Processed movie: 18079
+ [x] Message 108 acknowledged
+[client - 1] Processed movie: 49681
+ [x] Message 109 acknowledged
+[client - 1] Processed movie: 44413
+ [x] Message 110 acknowledged
+Skipped movie 'Mondovino' with missing or invalid cast
+[client - 1] Processed movie: 21043
+ [x] Message 112 acknowledged
+[client - 1] Processed movie: 47065
+ [x] Message 113 acknowledged
+[client - 1] Processed movie: 57019
+ [x] Message 114 acknowledged
+[client - 1] Processed movie: 36241
+ [x] Message 115 acknowledged
+Skipped movie 'Sins of My Father' with missing or invalid cast
+[client - 1] Processed movie: 118204
+ [x] Message 117 acknowledged
+[client - 1] Processed movie: 47383
+ [x] Message 118 acknowledged
+[client - 1] Processed movie: 278458
+ [x] Message 119 acknowledged
+[client - 1] Processed movie: 76696
+ [x] Message 120 acknowledged
+[client - 1] Processed movie: 85549
+ [x] Message 121 acknowledged
+[client - 1] Processed movie: 85543
+ [x] Message 122 acknowledged
+[client - 1] Processed movie: 80437
+ [x] Message 123 acknowledged
+[client - 1] Processed movie: 68047
+ [x] Message 124 acknowledged
+[client - 1] Processed movie: 188761
+ [x] Message 125 acknowledged
+[client - 1] Processed movie: 133786
+ [x] Message 126 acknowledged
+[client - 1] Processed movie: 41272
+ [x] Message 127 acknowledged
+[client - 1] Processed movie: 21409
+ [x] Message 128 acknowledged
+[client - 1] Processed movie: 44989
+ [x] Message 129 acknowledged
+[client - 1] Processed movie: 285463
+ [x] Message 130 acknowledged
+[client - 1] Processed movie: 259843
+ [x] Message 131 acknowledged
+[client - 1] Processed movie: 129115
+ [x] Message 132 acknowledged
+[client - 1] Processed movie: 126883
+ [x] Message 133 acknowledged
 Skipped movie 'Balnearios' with missing or invalid cast
 [client - 1] Processed movie: 75193
- [x] Message 104 acknowledged
-[client - 1] Processed movie: 104431
- [x] Message 105 acknowledged
-Skipped movie 'Gemini' with missing or invalid cast
-[client - 1] Processed movie: 69985
- [x] Message 107 acknowledged
-[client - 0] Processed movie: 374764
- [x] Message 108 acknowledged
-[client - 0] Processed movie: 58429
- [x] Message 109 acknowledged
+ [x] Message 135 acknowledged
+[client - 1] Processed movie: 374764
+ [x] Message 136 acknowledged
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Abian Vainstein', 'count': 1}
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Abril Braunstein', 'count': 1}
@@ -1110,57 +1161,6 @@ Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Óscar 
  [x] Sent message to queue calculator_count_actors
  [x] Sent message to queue calculator_count_actorsfinal
 [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":448,"header":"FINAL","node_id":"1"}' enviado directamente.
-[client - 0] Processed movie: 44413
- [x] Message 111 acknowledged
-Skipped movie 'Mondovino' with missing or invalid cast
-[client - 0] Processed movie: 21043
- [x] Message 113 acknowledged
-[client - 0] Processed movie: 47065
- [x] Message 114 acknowledged
-[client - 0] Processed movie: 36241
- [x] Message 115 acknowledged
-[client - 0] Processed movie: 57019
- [x] Message 116 acknowledged
-Skipped movie 'Sins of My Father' with missing or invalid cast
-[client - 0] Processed movie: 118204
- [x] Message 118 acknowledged
-[client - 0] Processed movie: 47383
- [x] Message 119 acknowledged
-[client - 0] Processed movie: 278458
- [x] Message 120 acknowledged
-[client - 0] Processed movie: 76696
- [x] Message 121 acknowledged
-[client - 0] Processed movie: 85549
- [x] Message 122 acknowledged
-[client - 0] Processed movie: 85543
- [x] Message 123 acknowledged
-[client - 0] Processed movie: 80437
- [x] Message 124 acknowledged
-[client - 0] Processed movie: 68047
- [x] Message 125 acknowledged
-[client - 0] Processed movie: 188761
- [x] Message 126 acknowledged
-[client - 0] Processed movie: 133786
- [x] Message 127 acknowledged
-[client - 0] Processed movie: 222772
- [x] Message 128 acknowledged
-[client - 0] Processed movie: 41272
- [x] Message 129 acknowledged
-[client - 0] Processed movie: 265195
- [x] Message 130 acknowledged
-[client - 0] Processed movie: 43432
- [x] Message 131 acknowledged
-[client - 0] Processed movie: 29275
- [x] Message 132 acknowledged
-[client - 0] Processed movie: 128062
- [x] Message 133 acknowledged
-[client - 0] Processed movie: 254719
- [x] Message 134 acknowledged
-[client - 0] Processed movie: 81022
- [x] Message 135 acknowledged
-[client - 0] Processed movie: 104431
- [x] Message 136 acknowledged
-Skipped movie 'Gemini' with missing or invalid cast
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Abian Vainstein', 'count': 1}
  [x] Sent message to queue calculator_count_actors
 Resultados del cálculo: {'operation': 'count', 'key': 'cast', 'value': 'Abril Braunstein', 'count': 1}
