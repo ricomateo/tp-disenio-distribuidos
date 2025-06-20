@@ -250,6 +250,10 @@ class DeliverNode:
                 key=lambda d: d["total"],
                 reverse=True
             )[:5] # Get top 5
+            # Rename the keys
+            for register in top_5_countries:
+                register["country"] = register.pop("value")
+                register["budget"] = register.pop("total")
             response["result"] = top_5_countries
 
         elif self.query_number == 3:
@@ -267,18 +271,30 @@ class DeliverNode:
             if len(sorted_ratings) > 0:
                 worst_rating = sorted_ratings[0]
                 best_rating = sorted_ratings[-1]
+                # Rename the keys
+                worst_rating["rating"] = worst_rating.pop("average")
+                best_rating["rating"] = best_rating.pop("average")
                 response["result"] = [best_rating, worst_rating]
 
         elif self.query_number == 4:
             top_10_actors = sorted(
                 self.response_by_client.get(client_id, []),
-                key=lambda d: d["count"],
-                reverse=True
+                key=lambda k: (-k["count"], k["value"]),
             )[:10] # Get top 10
+            for actor in top_10_actors:
+                # Rename "value" to "name"
+                actor["name"] = actor.pop("value")
             response["result"] = top_10_actors
 
         elif self.query_number == 5:
-            response["result"] = self.response_by_client.get(client_id, [])
+            sentiment_ratios = self.response_by_client.get(client_id, [])
+            # Expand the feeling value
+            for ratio in sentiment_ratios:
+                if ratio.get("feeling") == "POS":
+                    ratio["feeling"] = "POSITIVE"
+                elif ratio.get("feeling") == "NEG":
+                    ratio["feeling"] = "NEGATIVE"
+            response["result"] = sentiment_ratios
 
         return response
 
