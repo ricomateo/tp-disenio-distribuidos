@@ -1,6 +1,5 @@
 import time
 import signal
-import time
 import json
 import os
 from src.protocol import Protocol
@@ -67,10 +66,14 @@ class Client:
         self.protocol.send_finalization()
 
     def print_results(self):
+        """
+        Receives and prints the query results
+        """
         results = {}
         while True:
             message = self.protocol.recv_message()
             if message["msg_type"] == QUERY_RESULT_MSG_TYPE:
+                # Deserialize the response
                 response = json.loads(message["result"])["response"]
                 query_number = response["query"]
                 result = response["result"]
@@ -79,12 +82,17 @@ class Client:
             elif message["msg_type"] == FIN_MSG_TYPE:
                 print("received finalization message, closing...")
                 break
+        # Save the results to a JSON file
         results_file_name = f"/app/output/results_{self.node_id}.json"
         with open(results_file_name, "w", encoding="utf-8") as f:
             data = json.dumps(results, ensure_ascii=False)
             f.write(data)
 
     def close(self):
+        """
+        Closes the protocol
+        """
+
         end_time = time.time()
         elapsed_time = end_time - self.start_time
         print(
@@ -93,8 +101,11 @@ class Client:
         self.protocol.close()
 
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
-        print(f"Sending finalization message...")
+        """
+        Sigterm handler
+        """
+        print("Received SIGTERM signal")
+        print("Sending finalization message...")
         self.close()
 
 
