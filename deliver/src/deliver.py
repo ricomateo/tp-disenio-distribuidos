@@ -69,7 +69,7 @@ class DeliverNode:
                     client_id=int(client_id), node_id=self.query_number, count=1
                 )
                 ch.basic_ack(delivery_tag=method.delivery_tag)
-                # TODO: delete the state after sending ACK
+                self.delete_client_data(client_id)
                 return
 
             packet = DataPacket.from_json(body_decoded)
@@ -224,6 +224,20 @@ class DeliverNode:
             if self.leader_queue:
                 self.leader_queue.join()
             self.close()
+
+    def delete_client_data(self, client_id):
+        """
+        Deletes the client data, both from memory and disk.
+        """
+        if client_id in self.response_by_client:
+            del self.response_by_client[client_id]
+        if client_id in self.processed_messages_by_client:
+            del self.processed_messages_by_client[client_id]
+        try:
+            os.remove(f"client.{client_id}.json")
+        except Exception as e:
+            print(f"Failed to remove file for client {client_id}. Error: {e}")
+        print(f"Deleted data for client {client_id}")
 
     def _sigterm_handler(self, signum, _):
         print("Received SIGTERM signal")
