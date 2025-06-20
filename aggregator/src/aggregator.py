@@ -169,7 +169,7 @@ class AggregatorNode:
         data = json.dumps({
             "state": state,
             "processed_messages": processed_messages
-        })
+        }, ensure_ascii=False)
         # Save the state (atomically) to a file
         atomic_write(filename, data)
 
