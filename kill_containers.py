@@ -33,6 +33,10 @@ def kill_containers_randomly(services: list[str]):
     while True:
         random_index = random.randint(0, services_len - 1)
         container_to_kill = services[random_index]
+        # Reduce the probability of killing a sentiment node to 10%
+        if container_to_kill.startswith("sentiment"):
+            if random.randint(1, 100) > 10:
+                continue
         docker_kill_command = f"docker kill {container_to_kill}".split(" ")
         try:
             subprocess.run(docker_kill_command, check=True)
