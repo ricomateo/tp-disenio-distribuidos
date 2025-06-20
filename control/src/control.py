@@ -98,7 +98,7 @@ class ControlNode:
         with self.locks_por_nodo[lock_key]:
             try:
                 if os.path.exists(ids_file):
-                    shutil.copy2(ids_file, ids_tmp_file)
+                    shutil.copyfile(ids_file, ids_tmp_file)
                 else:
                     open(ids_tmp_file, "a").close()
 
@@ -118,7 +118,7 @@ class ControlNode:
         pattern = os.path.join(self.state_dir, f"{client_id}_*.json")
         client_files = glob.glob(pattern)
         relevant_locks = []
-        for lock_key, lock in self.locks_por_nodo.items():
+        for lock_key, lock in list(self.locks_por_nodo.items()):
             if lock_key.startswith(f"{client_id}_"):
                 relevant_locks.append(lock)
                 lock.acquire()
@@ -212,7 +212,7 @@ class ControlNode:
                 return ""
         return ""
     
-    def _handle_op_insert_id(self, conn: socket.socket):
+    def _handle_op_insert_id(self, conn: socket.socket, nodo: str):
         """Handles operation code '1' (Insert ID)."""
         mensaje = self.read_until_newline(conn)
         if not mensaje:
@@ -220,10 +220,10 @@ class ControlNode:
 
         try:
            
-            parts = mensaje.split("|", 3)  # Limit split to 3 parts
-            if len(parts) != 4:
+            parts = mensaje.split("|", 2)  # Limit split to 3 parts
+            if len(parts) != 3:
                 raise ValueError("Invalid number of parts in message for insert ID")
-            client_id, id_recibido, send_value, nodo = parts
+            client_id, id_recibido, send_value = parts
 
             if client_id in self.dead_clients:
                 conn.sendall(b"3\n")
@@ -331,7 +331,7 @@ class ControlNode:
                     
                     # Dispatch based on op_code
                     if op_code == "1":
-                        self._handle_op_insert_id(conn)
+                        self._handle_op_insert_id(conn, nodo)
                     elif op_code == "2": 
                         self._handle_op_delete_client(conn)
                     elif op_code == "3": 
@@ -353,7 +353,7 @@ class ControlNode:
 
             # Acquirir todos los locks relacionados a ese client_id
             relevant_locks = []
-            for lock_key, lock in self.locks_por_nodo.items():
+            for lock_key, lock in list(self.locks_por_nodo.items()):
                 if lock_key.startswith(f"{client_id}_"):
                     relevant_locks.append(lock)
                     lock.acquire()
@@ -455,7 +455,8 @@ class ControlNode:
         # Acquire all locks for this client across all nodes
         relevant_locks = []
         try:
-            for lock_key, lock in self.locks_final_counts_por_cliente.items():
+      
+            for lock_key, lock in list(self.locks_final_counts_por_cliente.items()):
                 if lock_key.startswith(f"{client_id}_"):
                     relevant_locks.append(lock)
                     lock.acquire()

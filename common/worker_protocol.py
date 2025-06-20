@@ -95,7 +95,7 @@ class WorkerProtocol:
             self.conn = None
             return False
 
-    def insert_id(self, client_id: str, id_recibido: str, send_value: str, node: str) -> tuple[bool, str]:
+    def insert_id(self, client_id: str, id_recibido: str, send_value: str) -> tuple[bool, str]:
         """
         Envía una operación de inserción de ID (op_code=1) al controlador.
         
@@ -106,19 +106,19 @@ class WorkerProtocol:
         Returns:
             tuple[bool, str]: (Éxito, Respuesta del controlador).
         """
-        message = f"1\n{client_id}|{id_recibido}|{send_value}|{node}"
+        message = f"1\n{client_id}|{id_recibido}|{send_value}"
         
         sended = self.send_message(message)
         if not sended and self.is_running:
             self.listen()
-            return self.insert_id(client_id, id_recibido, send_value, node)
+            return self.insert_id(client_id, id_recibido, send_value)
         elif not sended:
             return False, ""
         
         response = self.read_until_newline()
         if not response and self.is_running:
             self.listen()
-            return self.insert_id(client_id, id_recibido, send_value, node)
+            return self.insert_id(client_id, id_recibido, send_value)
         elif not response:
             return False, ""
         

@@ -1,7 +1,7 @@
 import json
 from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
-from common.packet import DataPacket, is_final_packet
+from common.packet import DataPacket, is_delete_packet, is_final_packet
 from src.check_condition import check_condition
 from datetime import datetime
 import os
@@ -65,6 +65,12 @@ class FilterNode:
             header = packet.get("header")
             client_id = packet.get("client_id")
             
+            if is_delete_packet(header):
+                self.output_rabbitmq.send_delete(client_id=client_id)
+                self.control.delete_client(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+            
             if is_final_packet(header):
                 count = int(packet['count'])
                 final, count = self.control.send_final_count(client_id, count)
@@ -83,7 +89,7 @@ class FilterNode:
                 _, _, key = condition
                 value = movie.get(key)
                 if not check_condition(value, condition):
-                    final, count = self.control.insert_id(client_id, id, "0", self.node_id)
+                    final, count = self.control.insert_id(client_id, id, "0")
                     if final:
                         self.output_rabbitmq.send_final(client_id=client_id, count=count)
                         self.control.delete_client(client_id)
@@ -100,7 +106,7 @@ class FilterNode:
             # Publicar el paquete filtrado a la cola del gateway
             self.output_rabbitmq.publish(filtered_packet.to_json())
 
-            final, count = self.control.insert_id(client_id, id, "1", self.node_id)
+            final, count = self.control.insert_id(client_id, id, "1")
             if final:
                 self.output_rabbitmq.send_final(client_id=client_id, count=count)
                 self.control.delete_client(client_id)
