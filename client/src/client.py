@@ -115,40 +115,46 @@ def print_query_result(query_number, results):
     """
     print(f"========= QUERY {query_number} RESULTS =========")
     if query_number == 1:
-        print("title  |  genres")
+        # Extract the genres names
         for row in results:
-            title = row["title"]
-            genres = row["genres"]
-            print(f"{title}  |  {genres}")
+            genres = json.loads(row["genres"].replace("'", '"'))
+            row["genres"] = [genre["name"] for genre in genres]
+        print_table(["title", "genres"], results)
 
     elif query_number == 2:
-        print("country  |  budget")
-        for row in results:
-            country = row["country"]
-            budget = row["budget"]
-            print(f"{country} | {budget}")
+        print_table(["country", "budget"], results)
 
     elif query_number == 3:
-        print("title  |  rating")
-        for row in results:
-            title = row["title"]
-            rating = row["rating"]
-            print(f"{title}  |  {rating}")
+        print_table(["title", "rating"], results)
 
     elif query_number == 4:
-        print("name  |  count")
-        for row in results:
-            name = row["name"]
-            count = row["count"]
-            print(f"{name}  |  {count}")
+        print_table(["name", "count"], results)
 
     elif query_number == 5:
-        print("feeling  |  ratio")
-        for row in results:
-            feeling = row["feeling"]
-            ratio = row["ratio"]
-            print(f"{feeling}  |  {ratio}")
+        print_table(["feeling", "ratio"], results)
 
-    if len(results) == 0:
-        print("(no rows)")
     print("\n")
+
+
+def print_table(headers: list[str], data: dict):
+    if not data:
+        print("(no rows)")
+        return
+
+    # Calculate maximum column widths
+    column_widths = {header: len(header) for header in headers}
+    for row in data:
+        for header in headers:
+            value = str(row.get(header, ""))
+            column_widths[header] = max(column_widths[header], len(value))
+
+    header_line = " | ".join(header.ljust(column_widths[header]) for header in headers)
+    print(header_line)
+    print("-" * len(header_line))
+
+    for row in data:
+        row_values = []
+        for header in headers:
+            value = str(row.get(header, ""))
+            row_values.append(value.ljust(column_widths[header]))
+        print(" | ".join(row_values))
