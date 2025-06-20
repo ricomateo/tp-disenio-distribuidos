@@ -85,7 +85,7 @@ class DeliverNode:
                 self.response_by_client[client_id] = []
             self.response_by_client[client_id].append(data)
         except Exception as e:
-            print(f"alerta por subnormal: {e}")
+            print(f"Failed to process packet: {e}")
 
     def generate_final_response(self, client_id):
         """
