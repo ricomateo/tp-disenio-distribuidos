@@ -124,4 +124,4 @@ jupyter_results:
 		$(PWD)/$(JUPYTER_NOTEBOOK):/src/$(JUPYTER_NOTEBOOK) run-notebook
 
 test_against_notebook: up jupyter_results
-	$(PYTHON) $(COMPARE_SCRIPT) output/output.txt
+	$(PYTHON) $(COMPARE_SCRIPT) output/output.json
