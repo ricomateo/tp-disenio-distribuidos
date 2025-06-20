@@ -177,15 +177,14 @@ def compare_query_5(expected_result, client_result):
     expected_result = sorted(expected_result, key=lambda k: k["feeling"])
     client_result = sorted(client_result, key=lambda k: k["feeling"])
 
-    expected_len = 2
     diffs = []
-    if len(client_result) != 2:
+    if len(client_result) != len(expected_result):
         diffs.append(
-            f"List length mismatch: Expected {expected_len} elements, got {len(client_result)}."
+            f"List length mismatch: Expected {len(expected_result)} elements, got {len(client_result)}."
         )
         min_len = min(len(expected_result), len(client_result))
     else:
-        min_len = expected_len
+        min_len = len(expected_result)
 
     for i in range(min_len):
         expected_item = expected_result[i]
