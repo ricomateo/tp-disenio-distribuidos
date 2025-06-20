@@ -2,9 +2,10 @@
 import time
 import signal
 import time
+import json
+import os
 from src.protocol import Protocol
 from common.protocol_constants import QUERY_RESULT_MSG_TYPE, FIN_MSG_TYPE
-import os
 
 
 MOVIES_FILENAME = "movies_metadata.csv"
@@ -66,17 +67,22 @@ class Client:
         self.protocol.send_finalization()
     
     def print_results(self):
-        results_file_name = f"/app/output/results_{self.node_id}.txt"
-        with open(results_file_name, "w") as f:
-            while True:
-                message = self.protocol.recv_message()
-                if message["msg_type"] == QUERY_RESULT_MSG_TYPE:
-                    result = message["result"]
-                    print(f"{result}\n")
-                    f.write(f"{result}\n")
-                elif message["msg_type"] == FIN_MSG_TYPE:
-                    print(f"received finalization message, closing...")
-                    break
+        results = {}
+        while True:
+            message = self.protocol.recv_message()
+            print(f"received message {message}")
+            if message["msg_type"] == QUERY_RESULT_MSG_TYPE:
+                response = json.loads(message["result"])["response"]
+                query_number = response["query"]
+                result = response["result"]
+                results[query_number] = result
+            elif message["msg_type"] == FIN_MSG_TYPE:
+                print("received finalization message, closing...")
+                break
+        results_file_name = f"/app/output/results_{self.node_id}.json"
+        with open(results_file_name, "w", encoding="utf-8") as f:
+            data = json.dumps(results, ensure_ascii=False)
+            f.write(data)
 
     def close(self):
         end_time = time.time()  
