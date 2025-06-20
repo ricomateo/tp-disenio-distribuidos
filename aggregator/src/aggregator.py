@@ -8,6 +8,7 @@ from common.packet import DataPacket, is_final_packet
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
 
+
 class AggregatorNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
@@ -17,18 +18,22 @@ class AggregatorNode:
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
         self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
-        self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
+        self.input_rabbitmq = Middleware(
+            queue=self.input_queue, consumer_tag=self.consumer_tag
+        )
         self.output_rabbitmq = Middleware(queue=self.output_queue)
 
         self.operation = os.getenv("operation", "total_invested")
 
-        self.average_positive_by_client_id: dict[int, tuple[float, int]] = {} #(0, 0)
-        self.average_negative_by_client_id: dict[int, tuple[float, int]] = {} #(0, 0)
+        self.average_positive_by_client_id: dict[int, tuple[float, int]] = {}  # (0, 0)
+        self.average_negative_by_client_id: dict[int, tuple[float, int]] = {}  # (0, 0)
         self.invested_per_country_by_client_id: dict[int, dict[str, int]] = {}
         self.count_by_actors_by_client_id: dict[int, dict[str, int]] = {}
 
-        self.processed_messages_by_client = {} # client_id to set of messages ids
-        self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
+        self.processed_messages_by_client = {}  # client_id to set of messages ids
+        self.control = WorkerProtocol(
+            self.health_server_ip, self.health_server_port, self.health_server_port
+        )
 
     def callback(self, ch, method, properties, body):
         try:
@@ -69,10 +74,16 @@ class AggregatorNode:
 
         except json.JSONDecodeError as e:
             print(f" [!] Error decoding JSON: {e}")
-            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
+            ch.basic_nack(
+                delivery_tag=method.delivery_tag, multiple=False, requeue=False
+            )
         except Exception as e:
-            print(f" [!] operation is {self.operation}    Error processing message: {e}, raw packet is {packet_json}")
-            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
+            print(
+                f" [!] operation is {self.operation}    Error processing message: {e}, raw packet is {packet_json}"
+            )
+            ch.basic_nack(
+                delivery_tag=method.delivery_tag, multiple=False, requeue=False
+            )
 
     def start_node(self):
         """
@@ -100,8 +111,12 @@ class AggregatorNode:
             if client_id not in self.invested_per_country_by_client_id:
                 self.invested_per_country_by_client_id[client_id] = {}
 
-            current_invested = self.invested_per_country_by_client_id[client_id].get(country, 0)
-            self.invested_per_country_by_client_id[client_id][country] = current_invested + invested
+            current_invested = self.invested_per_country_by_client_id[client_id].get(
+                country, 0
+            )
+            self.invested_per_country_by_client_id[client_id][country] = (
+                current_invested + invested
+            )
         elif self.operation == "average":
             # Calculo el promedio y actualizo el promedio para el sentimiento del que sea la película
             sentiment = packet.data["feeling"]
@@ -116,14 +131,26 @@ class AggregatorNode:
 
             if sentiment == "POS":
                 new_count = self.average_positive_by_client_id[client_id][1] + count
-                new_average = (self.average_positive_by_client_id[client_id][0] * self.average_positive_by_client_id[client_id][1] + average * count) / new_count
+                new_average = (
+                    self.average_positive_by_client_id[client_id][0]
+                    * self.average_positive_by_client_id[client_id][1]
+                    + average * count
+                ) / new_count
                 self.average_positive_by_client_id[client_id] = (new_average, new_count)
-                print(f"[updated positive number - current positive average: {self.average_positive_by_client_id[client_id]}")
+                print(
+                    f"[updated positive number - current positive average: {self.average_positive_by_client_id[client_id]}"
+                )
             else:
                 new_count = self.average_negative_by_client_id[client_id][1] + count
-                new_average = (self.average_negative_by_client_id[client_id][0] * self.average_negative_by_client_id[client_id][1] + average * count) / new_count
+                new_average = (
+                    self.average_negative_by_client_id[client_id][0]
+                    * self.average_negative_by_client_id[client_id][1]
+                    + average * count
+                ) / new_count
                 self.average_negative_by_client_id[client_id] = (new_average, new_count)
-                print(f"[updated negative number - current negative average: {self.average_negative_by_client_id[client_id]}")
+                print(
+                    f"[updated negative number - current negative average: {self.average_negative_by_client_id[client_id]}"
+                )
         elif self.operation == "count":
             actor = packet.data["value"]
             new_count_movies = packet.data["count"]
@@ -131,8 +158,9 @@ class AggregatorNode:
                 self.count_by_actors_by_client_id[client_id] = {}
 
             count_movies = self.count_by_actors_by_client_id[client_id].get(actor, 0)
-            self.count_by_actors_by_client_id[client_id][actor] = count_movies + new_count_movies
-              
+            self.count_by_actors_by_client_id[client_id][actor] = (
+                count_movies + new_count_movies
+            )
 
     def delete_client(self, client_id):
         """
@@ -166,17 +194,16 @@ class AggregatorNode:
         state = self.get_state(client_id)
         processed_messages = list(self.processed_messages_by_client.get(client_id, []))
         filename = f"client.{client_id}.json"
-        data = json.dumps({
-            "state": state,
-            "processed_messages": processed_messages
-        }, ensure_ascii=False)
+        data = json.dumps(
+            {"state": state, "processed_messages": processed_messages},
+            ensure_ascii=False,
+        )
         # Save the state (atomically) to a file
         atomic_write(filename, data)
 
-
     def get_state(self, client_id):
         """
-        Returns the state of the given client. 
+        Returns the state of the given client.
         """
         if self.operation == "total_invested":
             if client_id in self.invested_per_country_by_client_id:
@@ -185,9 +212,13 @@ class AggregatorNode:
         elif self.operation == "average":
             state = {"average_positive": (0, 0), "average_negative": (0, 0)}
             if client_id in self.average_positive_by_client_id:
-                state["average_positive"] = self.average_positive_by_client_id[client_id]
+                state["average_positive"] = self.average_positive_by_client_id[
+                    client_id
+                ]
             if client_id in self.average_negative_by_client_id:
-                state["average_negative"] = self.average_negative_by_client_id[client_id]
+                state["average_negative"] = self.average_negative_by_client_id[
+                    client_id
+                ]
             return state
 
         elif self.operation == "count":
@@ -217,15 +248,14 @@ class AggregatorNode:
         if self.operation == "total_invested":
             count = 0
             # Mando un paquete por país y después el final packet
-            for country, value in self.invested_per_country_by_client_id[client_id].items():
+            for country, value in self.invested_per_country_by_client_id[
+                client_id
+            ].items():
                 packet = DataPacket(
                     client_id=client_id,
                     timestamp=datetime.utcnow().isoformat(),
-                    data={
-                        "value": country,
-                        "total": value
-                    },
-                    id=f"{client_id}-{count}"
+                    data={"value": country, "total": value},
+                    id=f"{client_id}-{count}",
                 )
                 self.output_rabbitmq.publish(packet.to_json())
                 count += 1
@@ -239,10 +269,12 @@ class AggregatorNode:
                     timestamp=datetime.utcnow().isoformat(),
                     data={
                         "feeling": "POS",
-                        "ratio": round(self.average_positive_by_client_id[client_id][0], 4),
-                        "count": self.average_positive_by_client_id[client_id][1]
+                        "ratio": round(
+                            self.average_positive_by_client_id[client_id][0], 4
+                        ),
+                        "count": self.average_positive_by_client_id[client_id][1],
                     },
-                    id=f"{client_id}-1"
+                    id=f"{client_id}-1",
                 )
                 self.output_rabbitmq.publish(packet_pos.to_json())
 
@@ -252,27 +284,26 @@ class AggregatorNode:
                     timestamp=datetime.utcnow().isoformat(),
                     data={
                         "feeling": "NEG",
-                        "ratio": round(self.average_negative_by_client_id[client_id][0], 4),
-                        "count": self.average_negative_by_client_id[client_id][1]
+                        "ratio": round(
+                            self.average_negative_by_client_id[client_id][0], 4
+                        ),
+                        "count": self.average_negative_by_client_id[client_id][1],
                     },
-                    id=f"{client_id}-2"
+                    id=f"{client_id}-2",
                 )
                 self.output_rabbitmq.publish(packet_neg.to_json())
 
         elif self.operation == "count":
-            count = 0
+            packet_id = 0
             for actor, count in self.count_by_actors_by_client_id[client_id].items():
                 packet = DataPacket(
                     client_id=client_id,
                     timestamp=datetime.utcnow().isoformat(),
-                    data={
-                        "value": actor,
-                        "count": count
-                    },
-                    id=f"{client_id}-{count}"
+                    data={"value": actor, "count": count},
+                    id=f"{client_id}-{packet_id}",
                 )
                 self.output_rabbitmq.publish(packet.to_json())
-                count += 1
+                packet_id += 1
 
     def load_state(self):
         """
@@ -286,10 +317,14 @@ class AggregatorNode:
             client_id = int(file.split(".")[1])
             with open(file, "r", encoding="utf-8") as f:
                 data = json.loads(f.read())
-            self.processed_messages_by_client[client_id] = set(data.get("processed_messages", []))
+            self.processed_messages_by_client[client_id] = set(
+                data.get("processed_messages", [])
+            )
             state = data.get("state")
             self.set_state(client_id, state)
-            print(f"Recovered state from client {client_id}, state = {state}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}")
+            print(
+                f"Recovered state from client {client_id}, state = {state}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}"
+            )
 
     def _sigterm_handler(self, signum, _):
         print(f"Received SIGTERM signal")
@@ -305,4 +340,3 @@ class AggregatorNode:
             self.input_rabbitmq.close()
         if self.output_rabbitmq:
             self.output_rabbitmq.close()
-    
