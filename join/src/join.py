@@ -241,7 +241,9 @@ class JoinNode:
                     movie1 = self.router_buffer_by_client[client_id][router]
                 joined_packet = self.create_joined_packet(client_id, movie1, movie, id)
                 self.output_rabbitmq.publish(joined_packet.to_json())
-                self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
+
+                with self.lock:
+                    self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                 print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
             else:
                 # Si eof_main es False, guardar en el disco
@@ -288,10 +290,11 @@ class JoinNode:
         for key in stored_keys:
             router_key = int(key)  # Convertir la clave a entero
             # Proteger acceso a router_buffer_by_client
-            if router_key in self.router_buffer_by_client.get(client_id, {}):
-                movie1 = self.router_buffer_by_client[client_id][router_key]
-            else:
-                continue
+            with self.lock:
+                if router_key in self.router_buffer_by_client.get(client_id, {}):
+                    movie1 = self.router_buffer_by_client[client_id][router_key]
+                else:
+                    continue
             stored_movies = storage.retrieve(key)
             if stored_movies:
                 # Asegurarse de que stored_movies sea una lista
@@ -301,7 +304,8 @@ class JoinNode:
                 for movie2, id in stored_movies:
                     joined_packet = self.create_joined_packet(client_id, movie1, movie2, id)
                     self.output_rabbitmq.publish(joined_packet.to_json())
-                    self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
+                    with self.lock:
+                        self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                     print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
 
         # Limpiar el disco después del merge
