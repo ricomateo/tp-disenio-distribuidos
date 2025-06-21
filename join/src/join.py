@@ -117,7 +117,7 @@ class JoinNode:
             packet_json = body.decode()
             packet = json.loads(packet_json)
             header = packet.get("header")
-            client_id = packet.get("client_id")
+            client_id = str(packet.get("client_id"))
 
             if is_final_packet(header):
                 count = int(packet['count'])
@@ -195,7 +195,7 @@ class JoinNode:
             packet_json = body.decode()
             packet = json.loads(packet_json)
             header = packet.get("header")
-            client_id = packet.get("client_id")
+            client_id = str(packet.get("client_id"))
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_2}' terminó.")
                 count = int(packet.get("count"))
