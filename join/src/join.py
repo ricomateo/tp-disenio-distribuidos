@@ -28,7 +28,7 @@ class JoinNode:
         self.running = True
         self.eof_main_by_client = {}  # EOF main por cliente
         self.storages_by_client = {}  # StorageHandler por cliente
-        self.lock = threading.Lock()
+        self.lock = threading.RLock()
         self.node_id = os.getenv("NODE_ID", "")
         self.cluster_size = int(os.getenv("CLUSTER_SIZE", ""))
         self.input_queue_1 = f"{os.getenv('RABBITMQ_QUEUE_1', 'movie_queue_1')}_{self.node_id}"
