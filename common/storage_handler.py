@@ -71,7 +71,7 @@ class StorageHandler:
         file_path = os.path.join(self.data_dir, f'data_{file_id}.json')
         try:
             # Leer datos existentes
-            data = {'value': [], 'id': id}
+            data = {'value': []}
             if os.path.exists(file_path):
                 with open(file_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
@@ -90,15 +90,15 @@ class StorageHandler:
     def retrieve(self, key):
         """Recupera el valor asociado a una clave."""
         if key not in self.index:
-            return '', ''
+            return ''
         file_id = self.index[key]
         file_path = os.path.join(self.data_dir, f'data_{file_id}.json')
         try:
             if not os.path.exists(file_path):
-                return '', ''
+                return ''
             with open(file_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                return data['value'], data['id']
+                return data['value']
         except Exception as e:
             logging.error(f"Error al recuperar {key}: {e}")
             return ''
