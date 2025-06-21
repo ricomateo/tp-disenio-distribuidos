@@ -138,8 +138,6 @@ class JoinNode:
                     else:
                         print("activo main")
                         self.eof_main_by_client[client_id] = True
-
-                        # Analizar este save state
                         self.save_state(client_id)
                 if count > buffer_count:
                     print(f" [⚠️] Count final ({count}) es MAYOR que los datos acumulados ({buffer_count}) para el cliente {client_id}")
@@ -213,6 +211,7 @@ class JoinNode:
                     else:
                         print("activo join")
                         self.eof_main_by_client[client_id] = True
+                        self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
@@ -244,6 +243,7 @@ class JoinNode:
 
                 with self.lock:
                     self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
+                    self.save_state(client_id)
                 print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
             else:
                 # Si eof_main es False, guardar en el disco
@@ -307,6 +307,8 @@ class JoinNode:
                     with self.lock:
                         self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                     print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
+
+        self.save_state(client_id)
 
         # Limpiar el disco después del merge
         storage.clean()
