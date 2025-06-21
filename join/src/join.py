@@ -43,7 +43,8 @@ class JoinNode:
         self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.join_by = os.getenv("JOIN_BY", "id")
         self.count_by_client = {}
-        
+        self.processed_messages_by_client = {}
+        self.processed_messages_by_client_queue_2 = {}
         self.count_test = 0
 
         self.keep_columns = None
@@ -155,6 +156,17 @@ class JoinNode:
             movie = packet.data
             router = int(movie.get(self.join_by))
 
+            if client_id not in self.count_by_client:
+                self.count_by_client[client_id] = 0
+
+            if client_id not in self.processed_messages_by_client:
+                self.processed_messages_by_client[client_id] = set()
+            
+            if packet.id in self.processed_messages_by_client[client_id]:
+                print(f"[Queue 1] Duplicate packet {packet.id}")
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+
             if not router:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
@@ -168,6 +180,7 @@ class JoinNode:
                     self.router_buffer_by_client[client_id][router] = movie
                     print(f" [Main thread] Se guardo una nueva entrada para el router '{router}' en el cliente '{client_id}'. \
                             Tamaño actual buffer: {len(self.router_buffer_by_client[client_id])}")
+                    self.processed_messages_by_client[client_id].add(packet.id)
                     self.save_state(client_id)
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -225,6 +238,14 @@ class JoinNode:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             
+            if client_id not in self.processed_messages_by_client_queue_2:
+                self.processed_messages_by_client_queue_2[client_id] = set()
+
+            if packet.id in self.processed_messages_by_client_queue_2[client_id]:
+                print(f"[Queue 2] Duplicate packet {packet.id}")
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+            
             self.count_test += 1
             
             with self.lock:
@@ -253,8 +274,9 @@ class JoinNode:
                         storage = self._get_storage_for_client(client_id)
                         print(f" [💾] Router '{router}' not in buffer, adding to disk")
                         storage.add(str(router), movie, id)
-                        print(f" [✅] Added router '{router}' to disk")
-
+                        print(f" [✅] Added router '{router}' to disk")  
+            # Set packet as processed
+            self.processed_messages_by_client_queue_2[client_id].add(packet.id)
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
         except json.JSONDecodeError as e:
