@@ -345,6 +345,7 @@ class JoinNode:
         data = json.dumps({
             "eof_main": self.eof_main_by_client.get(client_id, False),
             "router_buffer": self.router_buffer_by_client.get(client_id, {}),
+            "count": self.count_by_client.get(client_id, 0)
         })
         atomic_write(filename, data)
 
@@ -367,6 +368,7 @@ class JoinNode:
                     with self.lock:
                         self.eof_main_by_client[client_id] = state.get("eof_main", False)
                         self.router_buffer_by_client[client_id] = state.get("router_buffer", {})
+                        self.count_by_client[client_id] = state.get("count", 0)
                     print(f" [✅] Se restauró el estado para el client '{client_id}'")
                     print(f"El estado restaurado es {state}")
             except Exception as e:
