@@ -111,8 +111,8 @@ ensure-results-consistency-3:
 	$(PYTHON) ./$(COMPARE_SCRIPT) testing/received_output.txt testing/received_output_2.txt
 
 clear:
-	docker stop $(shell docker ps -aq) 
-	docker rm $(shell docker ps -aq) 
+	docker-compose down
+	docker system prune -f
 	docker network prune -f
 
 jupyter_results: 

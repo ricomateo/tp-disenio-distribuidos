@@ -2,8 +2,6 @@ import json
 import os
 from datetime import datetime
 import signal
-import glob
-from common.atomic_write import atomic_write
 from common.leader_queue import LeaderQueue
 from common.packet import DataPacket, QueryPacket, is_final_packet
 from common.middleware import Middleware
@@ -31,7 +29,6 @@ class DeliverNode:
         )
         self.cluster_size = int(os.getenv("CLUSTER_SIZE", ""))
         self.leader_queue = None
-        self.processed_messages_by_client = {}
         if int(self.query_number) == 5:
             self.leader_queue = LeaderQueue(
                 self.final_queue,
@@ -66,33 +63,14 @@ class DeliverNode:
                 self.output_rabbitmq.confirm_delivery()
                 self.output_rabbitmq.publish(query_packet.to_json(), str(client_id))
                 self.final_rabbitmq.send_final_with_node_id(
-                    client_id=int(client_id), node_id=self.query_number, count=1
+                    client_id=int(client_id), node_id=self.query_number, count=0
                 )
                 ch.basic_ack(delivery_tag=method.delivery_tag)
-                self.delete_client_data(client_id)
                 return
 
             packet = DataPacket.from_json(body_decoded)
-            client_id = packet.client_id
-
-            print(f"Received packet with id {packet.id}")
-            # Initialize set of processed messages
-            if client_id not in self.processed_messages_by_client:
-                self.processed_messages_by_client[client_id] = set()
-
-            # If the message has been processed, ignore it
-            if packet.id in self.processed_messages_by_client[client_id]:
-                print(f"Duplicate packet = {packet}")
-                ch.basic_ack(delivery_tag=method.delivery_tag)
-                return
-
             self.process_packet(packet)
 
-            # Set the message as processed
-            self.processed_messages_by_client[client_id].add(packet.id)
-
-            # Save the state before sending the ACK
-            self.save_state(client_id)
             print(f" [DeliverNode] Movie added with id: {packet.client_id}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
@@ -180,42 +158,8 @@ class DeliverNode:
             f" [~] DeliverNode listening on {self.input_queue}, will send to {self.output_queue}"
         )
 
-    def save_state(self, client_id):
-        """
-        Saves the state by writing it (atomically) to the hard drive.
-        """
-        state = self.response_by_client.get(client_id, [])
-        processed_messages = list(self.processed_messages_by_client.get(client_id, []))
-        filename = f"client.{client_id}.json"
-        data = json.dumps(
-            {"state": state, "processed_messages": processed_messages},
-            ensure_ascii=False,
-        )
-        # Save the state (atomically) to a file
-        atomic_write(filename, data)
-
-    def load_state(self):
-        """
-        Loads the state (partial result and processed messages) from disk, if available.
-        """
-        # Get a list of files that match the pattern client.*.json
-        state_files: list[str] = glob.glob("client.*.json")
-        for file in state_files:
-            client_id = int(file.split(".")[1])
-            with open(file, "r", encoding="utf-8") as f:
-                data: dict = json.loads(f.read())
-            self.processed_messages_by_client[client_id] = set(
-                data.get("processed_messages", [])
-            )
-            self.response_by_client[client_id] = data.get("state", [])
-            # TODO: remove this print
-            print(
-                f"Recovered data for client {client_id}.\nData: {json.dumps(data, indent=4)}"
-            )
-
     def start_node(self):
         self._log_startup()
-        self.load_state()
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
@@ -224,20 +168,6 @@ class DeliverNode:
             if self.leader_queue:
                 self.leader_queue.join()
             self.close()
-
-    def delete_client_data(self, client_id):
-        """
-        Deletes the client data, both from memory and disk.
-        """
-        if client_id in self.response_by_client:
-            del self.response_by_client[client_id]
-        if client_id in self.processed_messages_by_client:
-            del self.processed_messages_by_client[client_id]
-        try:
-            os.remove(f"client.{client_id}.json")
-        except Exception as e:
-            print(f"Failed to remove file for client {client_id}. Error: {e}")
-        print(f"Deleted data for client {client_id}")
 
     def _sigterm_handler(self, signum, _):
         print("Received SIGTERM signal")
