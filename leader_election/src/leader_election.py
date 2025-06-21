@@ -38,6 +38,15 @@ class LeaderElectionParticipant:
         self.listen()
 
     def listen(self):
+        """
+        Listens for incoming messages.
+
+        If the peers receive no messages within the given DEFAULT_TIMEOUT, an
+        election is triggered.
+
+        Every LEADER_TIMEOUT seconds, the leader broadcasts a PING to let the
+        peers know he's alive (and to avoid the peers timeout to be triggered).
+        """
         while self.running:
             try:
                 message = self.protocol.recv_message()
