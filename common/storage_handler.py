@@ -2,6 +2,7 @@ import os
 import json
 import uuid
 import logging
+from common.atomic_write import atomic_write
 
 class StorageHandler:
     def __init__(self, data_dir='./data'):
@@ -39,8 +40,7 @@ class StorageHandler:
                     logging.error(f"Error al eliminar {meta_file}: {e}")
             return
         try:
-            with open(meta_file, 'w', encoding='utf-8') as f:
-                json.dump(self.index, f, ensure_ascii=False, indent=2)
+            atomic_write(meta_file, json.dumps(self.index, ensure_ascii=False))
             logging.debug(f"Índice guardado en {meta_file}")
         except Exception as e:
             logging.error(f"Error al guardar índice: {e}")
@@ -59,8 +59,7 @@ class StorageHandler:
         file_path = os.path.join(self.data_dir, f'data_{file_id}.json')
         try:
             data = {'value': value}
-            with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False)
+            atomic_write(file_path, json.dumps(data, ensure_ascii=False))
             logging.debug(f"Almacenado {key} en {file_path}")
         except Exception as e:
             logging.error(f"Error al almacenar {key}: {e}")
@@ -81,8 +80,7 @@ class StorageHandler:
             # Agregar el nuevo valor con su id como un diccionario
             data['value'].append((value, id))
             # Guardar datos actualizados
-            with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False)
+            atomic_write(file_path, json.dumps(data, ensure_ascii=False))
             logging.debug(f"Agregado {value} con id {id} a {key} en {file_path}")
         except Exception as e:
             logging.error(f"Error al agregar {value} a {key}: {e}")
