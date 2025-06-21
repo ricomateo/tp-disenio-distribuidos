@@ -5,8 +5,10 @@ from src.leader_election import LeaderElectionParticipant
 def main():
     id = int(os.getenv("NODE_ID"))
     number_of_peers = int(os.getenv("CLUSTER_SIZE"))
-    participant = LeaderElectionParticipant(id, number_of_peers)
-    participant.run()
+    peer_prefix = "peer"
+    port = 6969
+    participant = LeaderElectionParticipant(id, number_of_peers, port, peer_prefix)
+    participant.start()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,40 @@
+services:
+  peer:
+    build:
+      context: .
+      dockerfile: leader_election/Dockerfile
+    container_name: peer
+    environment:
+      - PYTHONUNBUFFERED=1
+      - NODE_ID=0
+      - CLUSTER_SIZE=3
+    networks:
+      - peer_net
+
+  peer_1:
+    build:
+      context: .
+      dockerfile: leader_election/Dockerfile
+    container_name: peer_1
+    environment:
+      - PYTHONUNBUFFERED=1
+      - NODE_ID=1
+      - CLUSTER_SIZE=3
+    networks:
+      - peer_net
+  
+  peer_2:
+    build:
+      context: .
+      dockerfile: leader_election/Dockerfile
+    container_name: peer_2
+    environment:
+      - PYTHONUNBUFFERED=1
+      - NODE_ID=2
+      - CLUSTER_SIZE=3
+    networks:
+      - peer_net
+
+networks:
+  peer_net:
+    driver: bridge
