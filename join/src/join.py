@@ -497,8 +497,5 @@ class JoinNode:
             self.input_rabbitmq_2.close()
         if self.final_rabbitmq:
             self.final_rabbitmq.close()
-        for client_id, storage in self.storages_by_client.items():
-            print(f" [🧹] Limpiando almacenamiento para cliente '{client_id}'")
-            storage.clean_all()
         self.storages_by_client.clear()
         self.router_buffer_by_client.clear()
