@@ -15,12 +15,17 @@ class LeaderElectionParticipant:
         self.participating = False
         self.peer_prefix = peer_prefix
         self.running = True
+        self.current_leader = None
         print(f"am_i_leader = {self.am_i_leader}")
 
     def start(self):
         process = multiprocessing.Process(target=self.listen)
         process.start()
-        self.start_election()
+        time.sleep(0.5)
+        while True:
+            print("Iniciando eleccion...")
+            self.start_election()
+            time.sleep(5)
 
     def start_election(self):
         self.participating = True
@@ -28,8 +33,7 @@ class LeaderElectionParticipant:
         if peer_id == self.number_of_peers:
             peer_id = 0
         peer_address = self.get_peer_address(peer_id)
-        peer_port = self.port
-        self.protocol.send_election(peer_address, peer_port, self.id)
+        self.protocol.send_election(peer_address, self.id)
 
     def get_peer_address(self, peer_id: int):
         if peer_id == 0:
@@ -41,6 +45,8 @@ class LeaderElectionParticipant:
             message = self.protocol.recv_message()
             if is_election(message):
                 self.handle_election_message(message)
+            elif is_leader(message):
+                self.handle_leader_message(message)
             else:
                 print(f"Recibo mensaje desconocido {message}")
 
@@ -58,18 +64,32 @@ class LeaderElectionParticipant:
             leader_id = max(self.id, leader_id)
             # Get the address of the peer next to me
             peer_address = self.get_peer_next_to(self.id)
-            peer_port = self.port
-            self.protocol.send_election(peer_address, peer_port, leader_id)
+            self.protocol.send_election(peer_address, leader_id)
 
         elif self.participating:
             if leader_id == self.id:
-                print(f"soy el lider! id: {leader_id}")
+                self.participating = False
+                peer_address = self.get_peer_next_to(self.id)
+                self.protocol.send_leader(peer_address, leader_id)
             elif leader_id > self.id:
                 peer_address = self.get_peer_next_to(self.id)
-                peer_port = self.port
-                self.protocol.send_election(peer_address, peer_port, leader_id)
+                self.protocol.send_election(peer_address, leader_id)
+
+    def handle_leader_message(self, message):
+        leader_id = message.get("id")
+        print(f"Recibo nuevo leader = {leader_id}")
+        self.participating = False
+        if leader_id != self.current_leader:
+            peer_address = self.get_peer_next_to(self.id)
+            self.protocol.send_leader(peer_address, leader_id)
+        self.current_leader = leader_id
 
 
 def is_election(message):
     message_type = message.get("msg_type")
     return message_type == "election"
+
+
+def is_leader(message):
+    message_type = message.get("msg_type")
+    return message_type == "leader"
