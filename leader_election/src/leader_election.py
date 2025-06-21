@@ -1,38 +1,31 @@
 import time
 import socket
 from src.protocol import Protocol
-import multiprocessing
+
+TIMEOUT = 2
+LEADER_TIMEOUT = TIMEOUT * 0.75
 
 
 class LeaderElectionParticipant:
     def __init__(self, id: int, number_of_peers: int, port: int, peer_prefix: str):
         self.id = id
         self.number_of_peers = number_of_peers
-        self.am_i_leader = id == (number_of_peers - 1)
         self.port = port
         self.address = "0.0.0.0"
-        self.protocol = Protocol(self.address, self.port)
+        self.protocol = Protocol(self.address, self.port, TIMEOUT)
         self.participating = False
         self.peer_prefix = peer_prefix
         self.running = True
         self.current_leader = None
-        print(f"am_i_leader = {self.am_i_leader}")
 
     def start(self):
-        process = multiprocessing.Process(target=self.listen)
-        process.start()
-        time.sleep(0.5)
-        while True:
-            print("Iniciando eleccion...")
-            self.start_election()
-            time.sleep(5)
-
-    def start_election(self):
-        self.participating = True
-        peer_id = self.id + 1
-        if peer_id == self.number_of_peers:
-            peer_id = 0
-        self.send_election(self.id)
+        # The node with ID 0 waits for all other nodes to start
+        # and triggers an election to choose the starting leader
+        if self.id == 0 and self.number_of_peers > 1:
+            time.sleep(1)
+            self.participating = True
+            self.send_election(self.id)
+        self.listen()
 
     def get_peer_address(self, peer_id: int):
         if peer_id == 0:
@@ -41,19 +34,29 @@ class LeaderElectionParticipant:
 
     def listen(self):
         while self.running:
-            message = self.protocol.recv_message()
-            if is_election(message):
-                self.handle_election_message(message)
-            elif is_leader(message):
-                self.handle_leader_message(message)
-            else:
-                print(f"Recibo mensaje desconocido {message}")
-
-    def get_peer_next_to(self, peer_id):
-        next_peer_id = peer_id + 1
-        if next_peer_id == self.number_of_peers:
-            next_peer_id = 0
-        return self.get_peer_address(next_peer_id)
+            try:
+                message = self.protocol.recv_message()
+            except socket.timeout:
+                if self.am_i_leader():
+                    self.broadcast_ping()
+                    continue
+                # If no PING messages are received within the given time,
+                # trigger an election
+                self.participating = True
+                self.send_election(self.id)
+            try:
+                if is_election(message):
+                    self.handle_election_message(message)
+                elif is_leader(message):
+                    self.handle_leader_message(message)
+                    if self.am_i_leader():
+                        self.protocol.set_timeout(LEADER_TIMEOUT)
+                elif is_ping(message):
+                    continue
+                else:
+                    print(f"Recibo mensaje desconocido {message}")
+            except Exception as e:
+                print(f"Failed to decode message '{message}'. Error: {e}")
 
     def handle_election_message(self, message):
         leader_id = message.get("id")
@@ -123,6 +126,20 @@ class LeaderElectionParticipant:
         ]
         return peers_addresses
 
+    def broadcast_ping(self):
+        peers_addresses = self.get_peers_addresses()
+        my_address = self.get_peer_address(self.id)
+        for peer in peers_addresses:
+            if peer == my_address:
+                continue
+            try:
+                self.protocol.send_ping(peer)
+            except Exception:
+                pass
+
+    def am_i_leader(self):
+        return self.id == self.current_leader
+
 
 def is_election(message):
     message_type = message.get("msg_type")
@@ -132,3 +149,8 @@ def is_election(message):
 def is_leader(message):
     message_type = message.get("msg_type")
     return message_type == "leader"
+
+
+def is_ping(message):
+    message_type = message.get("msg_type")
+    return message_type == "ping"

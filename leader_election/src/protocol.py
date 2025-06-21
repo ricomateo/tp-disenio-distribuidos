@@ -1,31 +1,30 @@
 import socket
 
-PING = 1
-PONG = 2
-ELECTION = 3
-LEADER = 4
+ELECTION = 1
+LEADER = 2
+PING = 3
 
 
 class Protocol:
-    def __init__(self, address, port):
+    def __init__(self, address, port, timeout):
         self.address = address
         self.port = port
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.settimeout(timeout)
         self.socket.bind(("0.0.0.0", 6969))
         self.socket.listen()
 
     def recv_message(self):
-        peer_socket, address = self.socket.accept()
+        peer_socket, _ = self.socket.accept()
         msg_type = int.from_bytes(self._recv_exact(peer_socket, 1), "big")
-        print(f"RECEIVED MSG_TYPE = {msg_type}")
         if msg_type == ELECTION:
             leader_id = int.from_bytes(self._recv_exact(peer_socket, 1), "big")
-            print(f"Received id {leader_id}")
             return {"msg_type": "election", "id": leader_id}
         elif msg_type == LEADER:
             leader_id = int.from_bytes(self._recv_exact(peer_socket, 1), "big")
-            print(f"Received id {leader_id}")
             return {"msg_type": "leader", "id": leader_id}
+        elif msg_type == PING:
+            return {"msg_type": "ping"}
 
     def send_election(self, address, leader_id: int):
         print(f"Enviando election a {address}...")
@@ -52,6 +51,23 @@ class Protocol:
         print(f"Leader enviado!")
         # TODO: check the close
         peer_socket.close()
+
+    def send_ping(self, address):
+        print(f"Enviando PING a {address}...")
+        peer_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        peer_socket.connect((address, self.port))
+
+        message_type = PING.to_bytes(1, "big")
+        peer_socket.sendall(message_type)
+        print(f"PING enviado!")
+        # TODO: check the close
+        peer_socket.close()
+
+    def set_timeout(self, timeout: int):
+        try:
+            self.socket.settimeout(timeout)
+        except Exception as e:
+            print(f"Failed to set timeout {timeout}. Error: {e}")
 
     def _recv_exact(self, peer_socket, n: int):
         """
