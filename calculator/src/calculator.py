@@ -3,7 +3,6 @@ import threading
 import os
 import signal
 import glob
-from common.consistent_hash import consistent_hash
 from datetime import datetime
 from src.calculation import Calculation
 from common.leader_queue import LeaderQueue
@@ -12,7 +11,6 @@ from common.packet import DataPacket, is_final_packet
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
 
-
 class CalculatorNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
@@ -20,19 +18,15 @@ class CalculatorNode:
         self.node_id = os.getenv("NODE_ID")
         self.cluster_size = int(os.getenv("CLUSTER_SIZE", ""))
         self.finished_event = threading.Event()
-        base_queue = os.getenv("RABBITMQ_QUEUE", "movie_queue_1")
+        base_queue = os.getenv('RABBITMQ_QUEUE', 'movie_queue_1')
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "default_output")
-        self.consumer_tag = (
-            f"{os.getenv('RABBITMQ_CONSUMER_TAG', 'default_consumer')}_{self.node_id}"
-        )
+        self.consumer_tag = f"{os.getenv('RABBITMQ_CONSUMER_TAG', 'default_consumer')}_{self.node_id}"
         self.exchange = os.getenv("RABBITMQ_EXCHANGE")
         self.operation = os.getenv("OPERATION", "")
         self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
         self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.output_rabbitmq = Middleware(queue=self.output_queue)
-        self.input_queue = (
-            f"{base_queue}_{self.node_id}" if self.exchange else base_queue
-        )
+        self.input_queue = f"{base_queue}_{self.node_id}" if self.exchange else base_queue
         self.routing_key = os.getenv("ROUTING_KEY") or self.node_id
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE")
         self.node_id_duplicate: bool = os.getenv("NODE_ID_DUPLICATE", "") == "true"
@@ -40,39 +34,31 @@ class CalculatorNode:
         self.final_rabbitmq = None
         self.threads = []
         self.processed_messages_by_client = {}
-
+        
         self.leader_queue = None
         if int(self.node_id) == 0 and self.exchange != "router_negative_sentiment":
-            self.leader_queue = LeaderQueue(
-                self.final_queue,
-                self.output_queue,
-                self.consumer_tag,
-                self.cluster_size,
-            )
-
+            self.leader_queue = LeaderQueue(self.final_queue, self.output_queue, self.consumer_tag, self.cluster_size)
+        
         if self.final_queue:
             self.final_rabbitmq = Middleware(
-                queue=self.final_queue,
-                consumer_tag=self.consumer_tag,
-                publish_to_exchange=False,
-            )
-
+            queue=self.final_queue,
+            consumer_tag=self.consumer_tag,
+            publish_to_exchange=False
+        )
+        
         if self.exchange:  # <- si hay exchange, lo usamos
             self.input_rabbitmq = Middleware(
                 queue=self.input_queue,
                 consumer_tag=self.consumer_tag,
                 exchange=self.exchange,
                 publish_to_exchange=False,
-                routing_key=self.routing_key,
+                routing_key=self.routing_key
             )
         else:  # <- si no, conectamos directo a la cola
-            self.input_rabbitmq = Middleware(
-                queue=self.input_queue, consumer_tag=self.consumer_tag
-            )
+            self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
+            
+        self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
 
-        self.control = WorkerProtocol(
-            self.health_server_ip, self.health_server_port, self.health_server_port
-        )
 
     def callback(self, ch, method, properties, body):
         try:
@@ -90,15 +76,16 @@ class CalculatorNode:
 
                 count = 0
                 for result in results:
-                    id = str(consistent_hash(str(self.node_id) + str(result)))
-                    print(
-                        f"Resultados del cálculo (client_id = {client_id}): {result}, id = {id}"
-                    )
+                    print("Resultados del cálculo:", result)
+                    id = str(hash( str(self.node_id) + str(result)))
                     data_packet = DataPacket(
                         client_id=client_id,
                         timestamp=datetime.utcnow().isoformat(),
-                        data={"source": f"calculator_{self.operation}", **result},
-                        id=id,
+                        data={
+                            "source": f"calculator_{self.operation}",
+                            **result
+                        },
+                        id=id
                     )
                     self.output_rabbitmq.publish(data_packet.to_json())
                     count += 1
@@ -130,9 +117,7 @@ class CalculatorNode:
             # If the message has been already processed, skip it
             if id in self.processed_messages_by_client[client_id]:
                 title = movie.get("title")
-                print(
-                    f"Duplicate message: id: {id}, title: {title}, client_id: {client_id}"
-                )
+                print(f"Duplicate message: id: {id}, title: {title}, client_id: {client_id}")
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
@@ -142,27 +127,20 @@ class CalculatorNode:
             self.processed_messages_by_client[client_id].add(id)
 
             if success:
-                print(
-                    f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}"
-                )
+                print(f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}")
                 self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 print(f" [x] Message {method.delivery_tag} acknowledged")
             else:
-                ch.basic_nack(
-                    delivery_tag=method.delivery_tag, multiple=False, requeue=False
-                )
+                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
+
 
         except json.JSONDecodeError as e:
             print(f" [!] Error decoding JSON: {e}")
-            ch.basic_nack(
-                delivery_tag=method.delivery_tag, multiple=False, requeue=False
-            )
+            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
             print(f" [!] Error processing message: {e}, raw packet is {packet_json}")
-            ch.basic_nack(
-                delivery_tag=method.delivery_tag, multiple=False, requeue=False
-            )
+            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def start_node(self):
         """
@@ -183,17 +161,13 @@ class CalculatorNode:
         Saves the state by writing (atomically) it to the hard drive.
         """
         filename = f"client.{client_id}.json"
-        data = json.dumps(
-            {
-                "result": self.calculator.get_raw_result(client_id),
-                "processed_messages": list(
-                    self.processed_messages_by_client.get(client_id, [])
-                ),
-            },
-            ensure_ascii=False,
-        )
+        data = json.dumps({
+            "result": self.calculator.get_raw_result(client_id),
+            "processed_messages": list(self.processed_messages_by_client.get(client_id, []))
+        }, ensure_ascii=False)
         # Save the state (atomically) to a file
         atomic_write(filename, data)
+
 
     def load_state(self):
         """
@@ -208,12 +182,8 @@ class CalculatorNode:
                 state = json.loads(f.read())
                 result = state.get("result")
                 self.calculator.load_result(client_id, result)
-                self.processed_messages_by_client[client_id] = set(
-                    state.get("processed_messages", [])
-                )
-            print(
-                f"Recovered state from client {client_id}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}"
-            )
+                self.processed_messages_by_client[client_id] = set(state.get("processed_messages", []))
+            print(f"Recovered state from client {client_id}, result = {result}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}")
 
     def delete_client_data(self, client_id: int):
         """
@@ -247,3 +217,5 @@ class CalculatorNode:
             self.input_rabbitmq.close()
         if self.output_rabbitmq:
             self.output_rabbitmq.close()
+        
+       
