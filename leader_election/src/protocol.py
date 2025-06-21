@@ -20,10 +20,17 @@ class LeaderElectionProtocol:
 
     def recv_message(self) -> dict:
         """
-        Receives a single message
+        Accepts an incoming connection and returns the message
         """
-        # TODO: check whether to cose the connection here
         peer_socket, _ = self.socket.accept()
+        message = self.recv_and_decode_message(peer_socket)
+        peer_socket.close()
+        return message
+
+    def recv_and_decode_message(self, peer_socket) -> dict:
+        """
+        Receives and decodes a single message
+        """
         msg_type = int.from_bytes(self._recv_exact(peer_socket, 1), "big")
         if msg_type == ELECTION:
             leader_id = int.from_bytes(self._recv_exact(peer_socket, 1), "big")
@@ -33,8 +40,7 @@ class LeaderElectionProtocol:
             return {"msg_type": "leader", "id": leader_id}
         if msg_type == PING:
             return {"msg_type": "ping"}
-        else:
-            return {"msg_type": msg_type}
+        return {"msg_type": msg_type}
 
     def send_election(self, address, leader_id: int):
         """
@@ -47,7 +53,8 @@ class LeaderElectionProtocol:
         leader_id = leader_id.to_bytes(1, "big")
         peer_socket.sendall(message_type)
         peer_socket.sendall(leader_id)
-        # TODO: check the close
+
+        peer_socket.shutdown(socket.SHUT_RDWR)
         peer_socket.close()
 
     def send_leader(self, address, leader_id: int):
@@ -61,7 +68,8 @@ class LeaderElectionProtocol:
         leader_id = leader_id.to_bytes(1, "big")
         peer_socket.sendall(message_type)
         peer_socket.sendall(leader_id)
-        # TODO: check the close
+
+        peer_socket.shutdown(socket.SHUT_RDWR)
         peer_socket.close()
 
     def send_ping(self, address):
@@ -73,7 +81,8 @@ class LeaderElectionProtocol:
 
         message_type = PING.to_bytes(1, "big")
         peer_socket.sendall(message_type)
-        # TODO: check the close
+
+        peer_socket.shutdown(socket.SHUT_RDWR)
         peer_socket.close()
 
     def set_timeout(self, timeout: int):
