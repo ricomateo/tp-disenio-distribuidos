@@ -143,8 +143,6 @@ class JoinNode:
                     else:
                         print("activo main")
                         self.eof_main_by_client[client_id] = True
-
-                        # Analizar este save state
                         self.save_state(client_id)
                 if count > buffer_count:
                     print(f" [⚠️] Count final ({count}) es MAYOR que los datos acumulados ({buffer_count}) para el cliente {client_id}")
@@ -226,6 +224,7 @@ class JoinNode:
                     else:
                         print("activo join")
                         self.eof_main_by_client[client_id] = True
+                        self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 # Borro solo despues haber mandado el final y el ACK
                 # (si crashea antes, pierdo el count)
@@ -269,6 +268,8 @@ class JoinNode:
                 self.packets_sent_by_client[client_id].add(id)
                 print(f"type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
                 print(f"packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
+                self.save_state(client_id)
+
                 print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
             else:
                 # Si eof_main es False, guardar en el disco
