@@ -208,21 +208,21 @@ class JoinNode:
             header = packet.get("header")
             client_id = int(packet.get("client_id"))
             if is_final_packet(header):
-                print(f" [*] Cola '{self.input_queue_2}' terminó.")
+                print(f" [Join thread *]  Cola '{self.input_queue_2}' terminó.")
                 count = int(packet.get("count"))
-                print(f" [✅] Count final ({count}) CONTRA con los datos acumulados ({self.count_test}) para el cliente {client_id}")
+                print(f" [Join thread ✅] Count final ({count}) CONTRA con los datos acumulados ({self.count_test}) para el cliente {client_id}")
                 with self.lock:
                     if self.eof_main_by_client[client_id] is True:
-                        print("merge + final del join")
+                        print("[Join thread] merge + final del join")
                         self.merge(client_id)
                         count_send = len(self.packets_sent_by_client[client_id])
                         self.final_rabbitmq.send_final_with_node_id(
                             client_id=client_id, node_id=self.node_id, count=count_send
                         )
-                        print("merge + final del join fin")
+                        print("[Join thread] merge + final del join fin")
                         print(f" [Join thread] Se mandó el final al cliente {client_id}.")
                     else:
-                        print("activo join")
+                        print("[Join thread] activo join")
                         self.eof_main_by_client[client_id] = True
                         self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -251,7 +251,7 @@ class JoinNode:
 
             with self.lock:
                 if client_id not in self.packets_sent_by_client:
-                    print(f"Initializing packets_sent[client_id={client_id}]")
+                    print(f"[Join thread] Initializing packets_sent[client_id={client_id}]")
                     self.packets_sent_by_client[client_id] = set()
                 if client_id not in self.eof_main_by_client:
                     self.eof_main_by_client[client_id] = False
@@ -266,18 +266,18 @@ class JoinNode:
                 self.output_rabbitmq.publish(joined_packet.to_json())
                 # Set packet as 'sent'
                 self.packets_sent_by_client[client_id].add(id)
-                print(f"type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
-                print(f"packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
+                print(f"[Join thread] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
+                print(f"[Join thread] packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
                 self.save_state(client_id)
 
-                print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
+                print(f" [Join thread ✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
             else:
                 # Si eof_main es False, guardar en el disco
                 if not is_eof_main:
                     # Obtener el StorageHandler para el cliente
                     with self.lock:
                         storage = self._get_storage_for_client(client_id)
-                        print(f" [💾] Router '{router}' not in buffer, adding to disk")
+                        print(f" [Join thread 💾] Router '{router}' not in buffer, adding to disk for client {client_id}")
                         storage.add(str(router), movie, id)
                         print(f" [✅] Added router '{router}' to disk")  
             
@@ -329,15 +329,15 @@ class JoinNode:
                 # Asegurarse de que stored_movies sea una lista
                 if not isinstance(stored_movies, list):
                     stored_movies = [stored_movies]
-                print(f" [🔍] Procesando router '{router_key}' con {len(stored_movies)} entradas en disco")
+                print(f" [Merge 🔍] Procesando router '{router_key}' con {len(stored_movies)} entradas en disco")
                 for movie2, id in stored_movies:
                     joined_packet = self.create_joined_packet(client_id, movie1, movie2, id)
                     self.output_rabbitmq.publish(joined_packet.to_json())
                     self.packets_sent_by_client[client_id].add(id)
-                    print(f"type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
+                    print(f"[Merge] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
                     self.save_queue_2_state(client_id)
-                    print(f"[Saved] packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
-                    print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")      
+                    print(f"[Merge] Saved packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
+                    print(f" [Merge ✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
 
     def start_node(self):
         """
@@ -380,6 +380,8 @@ class JoinNode:
         filename = f"queue_2.client.{client_id}.json"
         if len(self.packets_sent_by_client[client_id]) != 0:
             print(f"Saving packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
+        else:
+            print(f"Todavía no se mandaron mensajes, processed messages es {self.processed_messages_by_client_queue_2.get(client_id, [])}")
         data = json.dumps({
             "processed_messages": list(self.processed_messages_by_client_queue_2.get(client_id, [])),
             "packets_sent": list(self.packets_sent_by_client.get(client_id, []))
@@ -423,6 +425,10 @@ class JoinNode:
                     print(f"Recovered packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
             except Exception as e:
                 print(f" [!] Error restaurando estado del archivo {state_file}: {e}")
+
+        for cid in [0, 1]:
+            storage = self._get_storage_for_client(cid)
+            print(f"Recover, las keys que contiene el archivo para el cliente {cid} es: {storage.list_keys()}")
 
     def delete_client_state(self, client_id):
         """
