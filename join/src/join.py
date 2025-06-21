@@ -275,8 +275,10 @@ class JoinNode:
                         print(f" [💾] Router '{router}' not in buffer, adding to disk")
                         storage.add(str(router), movie, id)
                         print(f" [✅] Added router '{router}' to disk")  
+            
             # Set packet as processed
             self.processed_messages_by_client_queue_2[client_id].add(packet.id)
+            self.save_processed_messages_from_queue_2(client_id)
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
         except json.JSONDecodeError as e:
@@ -367,7 +369,13 @@ class JoinNode:
         data = json.dumps({
             "eof_main": self.eof_main_by_client.get(client_id, False),
             "router_buffer": self.router_buffer_by_client.get(client_id, {}),
+            "processed_messages": list(self.processed_messages_by_client.get(client_id, [])),
         })
+        atomic_write(filename, data)
+
+    def save_processed_messages_from_queue_2(self, client_id):
+        filename = f"processed_messages_queue_2.client.{client_id}.json"
+        data = json.dumps(list(self.processed_messages_by_client_queue_2.get(client_id, [])))
         atomic_write(filename, data)
 
     def load_all_states(self):
@@ -389,10 +397,22 @@ class JoinNode:
                     with self.lock:
                         self.eof_main_by_client[client_id] = state.get("eof_main", False)
                         self.router_buffer_by_client[client_id] = state.get("router_buffer", {})
+                        self.processed_messages_by_client[client_id] = set(state.get("processed_messages", []))
+                        print(f"Recovered len(self.processed_messages_by_client[{client_id}] = {len(self.processed_messages_by_client[client_id])}")
                     print(f" [✅] Se restauró el estado para el client '{client_id}'")
                     print(f"El estado restaurado es {state}")
             except Exception as e:
                 print(f" [!] Error restaurando estado del archivo {client_state_file_path}: {e}")
+
+        processed_messages_queue_2_files: list[str] = glob.glob("processed_messages_queue_2.client.*.json")
+        for processed_messages_file in processed_messages_queue_2_files:
+            try:
+                client_id = processed_messages_file.split(".")[2]
+                with open(processed_messages_file, "r", encoding="utf-8") as f:
+                    with self.lock:
+                        self.processed_messages_by_client_queue_2[client_id] = set(json.load(f))
+            except Exception as e:
+                print(f" [!] Error restaurando estado del archivo {processed_messages_file}: {e}")
 
     def delete_client_state(self, client_id):
         """
