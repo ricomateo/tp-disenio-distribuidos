@@ -32,8 +32,7 @@ class LeaderElectionParticipant:
         peer_id = self.id + 1
         if peer_id == self.number_of_peers:
             peer_id = 0
-        peer_address = self.get_peer_address(peer_id)
-        self.protocol.send_election(peer_address, self.id)
+        self.send_election(self.id)
 
     def get_peer_address(self, peer_id: int):
         if peer_id == 0:
@@ -62,27 +61,67 @@ class LeaderElectionParticipant:
         if not self.participating:
             self.participating = True
             leader_id = max(self.id, leader_id)
-            # Get the address of the peer next to me
-            peer_address = self.get_peer_next_to(self.id)
-            self.protocol.send_election(peer_address, leader_id)
+            self.send_election(leader_id)
 
         elif self.participating:
             if leader_id == self.id:
                 self.participating = False
-                peer_address = self.get_peer_next_to(self.id)
-                self.protocol.send_leader(peer_address, leader_id)
+                self.send_leader(leader_id)
             elif leader_id > self.id:
-                peer_address = self.get_peer_next_to(self.id)
-                self.protocol.send_election(peer_address, leader_id)
+                self.send_election(leader_id)
 
     def handle_leader_message(self, message):
         leader_id = message.get("id")
         print(f"Recibo nuevo leader = {leader_id}")
         self.participating = False
         if leader_id != self.current_leader:
-            peer_address = self.get_peer_next_to(self.id)
-            self.protocol.send_leader(peer_address, leader_id)
+            self.send_leader(leader_id)
         self.current_leader = leader_id
+
+    def send_election(self, id):
+        """
+        Sends ELECTION message to the first peer it finds alive in the ring order
+        """
+        peers_id_list = list(range(0, self.number_of_peers))
+        peers_sorted_circularly = (
+            peers_id_list[self.id + 1 :] + peers_id_list[: self.id + 1]
+        )
+        for peer_id in peers_sorted_circularly:
+            peer_address = self.get_peer_address(peer_id)
+            try:
+                self.protocol.send_election(peer_address, id)
+            except Exception as e:
+                continue
+            break
+
+    def send_leader(self, id):
+        """
+        Sends LEADER message to the first peer it finds alive in the ring order
+        """
+        peers_addresses = self.get_peers_addresses()
+        for peer in peers_addresses:
+            try:
+                self.protocol.send_leader(peer, id)
+            except Exception as e:
+                continue
+            break
+
+    def get_peers_addresses(self):
+        """
+        Returns the addresses of the peers sorted in a circular way, starting
+        from the peer next to me.
+
+        For example, if the cluster size is 5 (the id list is [0,1,2,3,4]) and my ID
+        is 2, then the peers will be in the following order: [3,4,0,1,2].
+        """
+        peers_id_list = list(range(0, self.number_of_peers))
+        peers_ids_sorted_circularly = (
+            peers_id_list[self.id + 1 :] + peers_id_list[: self.id + 1]
+        )
+        peers_addresses = [
+            self.get_peer_address(peer_id) for peer_id in peers_ids_sorted_circularly
+        ]
+        return peers_addresses
 
 
 def is_election(message):
