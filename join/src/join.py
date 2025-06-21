@@ -144,6 +144,7 @@ class JoinNode:
                         print("activo main")
                         self.eof_main_by_client[client_id] = True
                         self.save_state(client_id)
+                        self.save_queue_2_state(client_id)
                 if count > buffer_count:
                     print(f" [⚠️] Count final ({count}) es MAYOR que los datos acumulados ({buffer_count}) para el cliente {client_id}")
                 elif count < buffer_count:
@@ -180,6 +181,7 @@ class JoinNode:
                             Tamaño actual buffer: {len(self.router_buffer_by_client[client_id])}")
                     self.processed_messages_by_client[client_id].add(packet.id)
                     self.save_state(client_id)
+                    self.save_queue_2_state(client_id)
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -225,6 +227,7 @@ class JoinNode:
                         print("[Join thread] activo join")
                         self.eof_main_by_client[client_id] = True
                         self.save_state(client_id)
+                        self.save_queue_2_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 # Borro solo despues haber mandado el final y el ACK
                 # (si crashea antes, pierdo el count)
@@ -269,6 +272,7 @@ class JoinNode:
                 print(f"[Join thread] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
                 print(f"[Join thread] packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
                 self.save_state(client_id)
+                self.save_queue_2_state(client_id)
 
                 print(f" [Join thread ✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
             else:
@@ -279,11 +283,11 @@ class JoinNode:
                         storage = self._get_storage_for_client(client_id)
                         print(f" [Join thread 💾] Router '{router}' not in buffer, adding to disk for client {client_id}")
                         storage.add(str(router), movie, id)
-                        print(f" [✅] Added router '{router}' to disk")  
-            
-            # Set packet as processed
-            self.processed_messages_by_client_queue_2[client_id].add(packet.id)
-            self.save_queue_2_state(client_id)
+                        self.save_queue_2_state(client_id)
+                        self.processed_messages_by_client_queue_2[client_id].add(packet.id)
+                        print(f" [Join thread ✅] Added router '{router}' to disk for client {client_id}")
+
+
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
         except json.JSONDecodeError as e:
