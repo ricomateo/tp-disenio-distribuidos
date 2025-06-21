@@ -155,9 +155,6 @@ class JoinNode:
             movie = packet.data
             router = int(movie.get(self.join_by))
 
-            if client_id not in self.count_by_client:
-                self.count_by_client[client_id] = 0
-
             if not router:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
@@ -217,10 +214,6 @@ class JoinNode:
                         print("activo join")
                         self.eof_main_by_client[client_id] = True
                 ch.basic_ack(delivery_tag=method.delivery_tag)
-                print(f" [Join thread] Se mandó el final al cliente {client_id}.")
-                # Borro solo despues haber mandado el final y el ACK
-                # (si crashea antes, pierdo el count)
-                self.clean(client_id)
                 return
 
             packet = DataPacket.from_json(packet_json)
@@ -250,7 +243,6 @@ class JoinNode:
                 self.output_rabbitmq.publish(joined_packet.to_json())
                 self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                 print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
-                
             else:
                 # Si eof_main es False, guardar en el disco
                 if not is_eof_main:
@@ -259,7 +251,7 @@ class JoinNode:
                         storage = self._get_storage_for_client(client_id)
                         print(f" [💾] Router '{router}' not in buffer, adding to disk")
                         storage.add(str(router), movie, id)
-                        print(f" [✅] Added router '{router}' to disk")  
+                        print(f" [✅] Added router '{router}' to disk")
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -275,7 +267,7 @@ class JoinNode:
         Crea un paquete para un client id a partir de dos entradas de distintas queues.
         """
         combined_movie = {**movie1, **movie2}
-        
+
         joined_packet = DataPacket(
             client_id=client_id,
             timestamp=datetime.utcnow().isoformat(),
@@ -284,7 +276,7 @@ class JoinNode:
             id=str(movie_id)
         )
         return joined_packet
-    
+
     def merge(self, client_id):
         storage = self._get_storage_for_client(client_id)
         # Verificar si el disco está vacío
@@ -311,11 +303,11 @@ class JoinNode:
                     self.output_rabbitmq.publish(joined_packet.to_json())
                     self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                     print(f" [✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
-            
+
         # Limpiar el disco después del merge
         storage.clean()
         print(f" [✅] Disco limpio")            
-                
+
     def start_node(self):
         """
         Levanta el nodo, corriendo un nodo para cada cola de input, y luego espera que ambas 
@@ -372,6 +364,7 @@ class JoinNode:
                         self.eof_main_by_client[client_id] = state.get("eof_main", False)
                         self.router_buffer_by_client[client_id] = state.get("router_buffer", {})
                     print(f" [✅] Se restauró el estado para el client '{client_id}'")
+                    print(f"El estado restaurado es {state}")
             except Exception as e:
                 print(f" [!] Error restaurando estado del archivo {client_state_file_path}: {e}")
 
@@ -409,11 +402,11 @@ class JoinNode:
         if client_id in self.storages_by_client:
             self.storages_by_client[client_id].clean()
             del self.storages_by_client[client_id]
-            
+
         # Limpiar router_buffer del cliente
         if client_id in self.router_buffer_by_client:
             del self.router_buffer_by_client[client_id]
-    
+
         # Limpiar eof_main del cliente
         if client_id in self.eof_main_by_client:
             del self.eof_main_by_client[client_id]
