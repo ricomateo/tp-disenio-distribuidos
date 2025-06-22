@@ -899,6 +899,39 @@ class ConfigGenerator:
         return len(all_worker_types_in_order)
             
 
+
+    def _generate_controls_gateway(self, total_stateful_nodes):
+        included_containers_list = []
+        instances = self.config_params.get(GATEWAY)
+        included_containers_list.extend(
+                    [f'{GATEWAY}' if i == 0 else f'{GATEWAY}_{i}' for i in range(instances)]
+        )
+        
+        included_containers_str = ','.join(included_containers_list)
+
+        current_node_id = total_stateful_nodes 
+        next_node_id = 0  
+
+        # Define environment for the single stateful control node
+        environment = [
+            f'NODE_NAME={current_node_id}',
+            f'NEXT_NODE={next_node_id}',
+            f'HEALTH_SERVER_PORT={HEALTH_PORT}',
+            f'HEALTH_SERVER_IP=0.0.0.0',
+            f'SLEEP_INTERVAL={SLEEP_INTERVAL}',
+            f'RESTART_INTERVAL={RESTART_INTERVAL}',
+            f'ONLY_HEALTHCHECK=1',
+            f'LEADER_ELECTION=1',
+            f'INCLUDED_CONTAINERS={included_containers_str}'
+        ]
+
+        # Generate the single stateful control node
+        self._generate_control_stateful(
+            environment=environment,
+            start_node_id=current_node_id
+        )
+
+
     def _generate_controls(self):
         total_stateless_nodes = self._generate_controls_stateless()
         # Define stateful worker configuration
@@ -907,7 +940,7 @@ class ConfigGenerator:
             CALCULATOR_BUDGET_COUNTRY, CALCULATOR_COUNT_ACTORS, 
             CALCULATOR_RATIO_FEELINGS,
             AGGREGATOR_CALCULATOR_BUDGET_COUNTRY, AGGREGATOR_CALCULATOR_COUNT_ACTORS, 
-            AGGREGATOR_CALCULATOR_RATIO_FEELINGS, DELIVER#, GATEWAY
+            AGGREGATOR_CALCULATOR_RATIO_FEELINGS, DELIVER
         ]
         
         included_containers_list = []
@@ -929,9 +962,11 @@ class ConfigGenerator:
                 )
 
         included_containers_str = ','.join(included_containers_list)
+        
+        total_stateful_nodes = total_stateless_nodes + 1
 
         current_node_id = total_stateless_nodes  # Stateful node follows stateless nodes
-        next_node_id = 0  # Connects back to the first stateless node
+        next_node_id = total_stateful_nodes  # Connects back to the first stateless node
 
         # Define environment for the single stateful control node
         environment = [
@@ -950,6 +985,8 @@ class ConfigGenerator:
             environment=environment,
             start_node_id=current_node_id
         )
+        
+        self._generate_controls_gateway(total_stateful_nodes)
         
     def _generate_control_stateful(self, environment, start_node_id=None):
         depends_on = {

@@ -26,8 +26,13 @@ class ControlNode:
         self.restart_interval = float(os.getenv("RESTART_INTERVAL") or '5')
         included_containers_env = os.getenv("INCLUDED_CONTAINERS", "")
         self.included_containers = included_containers_env.split(',')
+        
         only_healthcheck_str = os.getenv("ONLY_HEALTHCHECK", "0")
+        only_leader_election = os.getenv("LEADER_ELECTION", "0")
+        
         self.only_healthcheck = only_healthcheck_str == "1"
+        self.leader_election = only_leader_election == "1"
+        
         self.router = bool(os.getenv("ROUTER", ""))
         self.locks_por_cliente = {}
         self.locks_por_nodo = {}
@@ -489,6 +494,8 @@ class ControlNode:
                 time.sleep(self.sleep_interval)
             except Exception as e:
                 logging.warning(f"Nodo {nodo} no respondió al healthcheck: {e}, intentando reiniciar...")
+                if self.leader_election:
+                    time.sleep(self.restart_interval)
                 self.restart_node(nodo)
 
     def healthcheck_next_control(self):
