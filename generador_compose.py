@@ -38,7 +38,8 @@ def initialize_config(config_file="config.ini"):
         "CALCULATOR_AVERAGE_RATINGS",
         "CALCULATOR_RATIO_FEELINGS",
         "JOIN_MOVIES",
-        "SENTIMENT"
+        "SENTIMENT",
+        "GATEWAY"
     ]
     
     
