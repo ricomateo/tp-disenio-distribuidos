@@ -14,21 +14,30 @@ CREDITS_FILENAME = "credits.csv"
 class Client:
     def __init__(self, hosts: list[str], port: int, batch_size: int):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
-        # Connect to the first host it finds available
-        for host in hosts:
-            print(f"Attempt to connect to: {host}")
-            try:
-                self.protocol = Protocol(host, port)
-            except Exception as e:
-                print(f"Failed to connect to host: {host}. Error: {e}")
-                continue
-            print(f"Connected to {host}")
-            break
-        
+        self.hosts = hosts
+        self.port = port
+        self.protocol = None
+
         self.batch_size = batch_size
         self.start_time = time.time()
 
         self.node_id = int(os.getenv("NODE_ID"))
+
+    def connect_to_gateway(self):
+        """
+        Connect to the first gateway it finds available
+        """
+        for host in self.hosts:
+            print(f"Attempt to connect to: {host}")
+            try:
+                self.protocol = Protocol(host, self.port)
+                return
+            except Exception as e:
+                print(f"Failed to connect to host: {host}. Error: {e}")
+                continue
+        # By this point, the client has tried to connect to all gateways
+        # but none of them responded
+        raise NoGatewaysAvailable("No gateways available")
 
     def send_movies_file(self, filepath: str):
         filename = MOVIES_FILENAME
@@ -168,3 +177,9 @@ def print_table(headers: list[str], data: dict):
             value = str(row.get(header, ""))
             row_values.append(value.ljust(column_widths[header]))
         print(" | ".join(row_values))
+
+
+class NoGatewaysAvailable(Exception):
+    """
+    Error raised when there are no gateways available.
+    """
