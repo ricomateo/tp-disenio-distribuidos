@@ -112,14 +112,14 @@ class Gateway:
 
     def start(self):
         """Inicia el servidor y acepta conexiones de clientes."""
+        self._cleanup_dead_clients()
 
         # Start only if I am the leader
         self.block_until_i_am_the_leader()
-        print(f"I am the leader!")
-        self.server.listen(5)
 
+        self.server.listen(5)
         print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
-        self._cleanup_dead_clients()
+
         try:
             while self.running:
                 client_socket, addr = self.server.accept()
