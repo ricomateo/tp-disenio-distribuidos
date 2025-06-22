@@ -150,7 +150,6 @@ class JoinNode:
                     print(f" [⚠️] Count final ({count}) es MENOR que los datos acumulados ({buffer_count}) para el cliente {client_id}")
                 else:
                     print(f" [✅] Count final ({count}) COINCIDE con los datos acumulados ({buffer_count}) para el cliente {client_id}")
-                   
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
@@ -219,10 +218,9 @@ class JoinNode:
                         self.final_rabbitmq.send_final_with_node_id(
                             client_id=client_id, node_id=self.node_id, count=count_send
                         )
-                        print("[Join thread] merge + final del join fin")
                         print(f" [Join thread] Se mandó el final al cliente {client_id}.")
                     else:
-                        print("[Join thread] activo join")
+                        print("[Join thread] activo main by client")
                         self.eof_main_by_client[client_id] = True
                         self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -267,7 +265,6 @@ class JoinNode:
                 # Set packet as 'sent'
                 self.packets_sent_by_client[client_id].add(id)
                 print(f"[Join thread] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
-                print(f"[Join thread] packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
                 self.save_state(client_id)
 
                 print(f" [Join thread ✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
@@ -282,7 +279,6 @@ class JoinNode:
                         self.save_state(client_id)
                         self.processed_messages_by_client_queue_2[client_id].add(packet.id)
                         print(f" [Join thread ✅] Added router '{router}' to disk for client {client_id}")
-
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -334,7 +330,6 @@ class JoinNode:
                     joined_packet = self.create_joined_packet(client_id, movie1, movie2, id)
                     self.output_rabbitmq.publish(joined_packet.to_json())
                     self.packets_sent_by_client[client_id].add(id)
-                    print(f"[Merge] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
                     print(f"[Merge] Saved packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
                     print(f" [Merge ✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
 
@@ -395,7 +390,7 @@ class JoinNode:
                     self.processed_messages_by_client[client_id] = set(state.get("processed_messages", []))
                     self.processed_messages_by_client_queue_2[client_id] = set(state.get("processed_messages_queue_2", []))
                     self.packets_sent_by_client[client_id] = set(state.get("packets_sent", []))
-                            
+
             except Exception as e:
                 print(f"Error loading state from {state_file}: {e}")
 
