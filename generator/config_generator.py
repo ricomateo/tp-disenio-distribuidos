@@ -1,3 +1,5 @@
+import json
+
 CLIENTS = 'clients'
 FINAL = 'final'
 QUERY_1 = 'query_1'
@@ -95,6 +97,16 @@ class ConfigGenerator:
     def _generate_clients(self):
         """Generate client service with dependencies on all other services."""
         instances = self.config_params.get(CLIENTS)
+        gateway_instances = self.config_params.get(GATEWAY)
+
+        gateways = []
+        for i in range(gateway_instances):
+            gateway_host = f"gateway_{i}"
+            if i == 0:
+                gateway_host = "gateway"
+            gateways.append(gateway_host)
+
+
         movies_file = self.config_params["movies_file"]
         ratings_file = self.config_params["ratings_file"]
         credits_file = self.config_params["credits_file"]
@@ -109,7 +121,7 @@ class ConfigGenerator:
             service_name='client',
             dockerfile='client/Dockerfile',
             environment=[
-                'GATEWAY_HOST=gateway',
+                f'GATEWAY_HOSTS={json.dumps(gateways)}',
                 'GATEWAY_PORT=9999',
                 'BATCH_SIZE=1000'
             ],

@@ -12,9 +12,19 @@ CREDITS_FILENAME = "credits.csv"
 
 
 class Client:
-    def __init__(self, host: str, port: int, batch_size: int):
+    def __init__(self, hosts: list[str], port: int, batch_size: int):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
-        self.protocol = Protocol(host, port)
+        # Connect to the first host it finds available
+        for host in hosts:
+            print(f"Attempt to connect to: {host}")
+            try:
+                self.protocol = Protocol(host, port)
+            except Exception as e:
+                print(f"Failed to connect to host: {host}. Error: {e}")
+                continue
+            print(f"Connected to {host}")
+            break
+        
         self.batch_size = batch_size
         self.start_time = time.time()
 

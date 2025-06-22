@@ -1,12 +1,13 @@
 import os
+import json
 from src.client import Client
 
 if __name__ == "__main__":
-    host = os.getenv("GATEWAY_HOST")
+    hosts: list[str] = json.loads(os.getenv("GATEWAY_HOSTS"))
     port = int(os.getenv("GATEWAY_PORT"))
     batch_size = int(os.getenv("BATCH_SIZE", "1000"))
 
-    client = Client(host, port, batch_size)
+    client = Client(hosts, port, batch_size)
     try:
         client.send_movies_file("movies_metadata.csv")
         client.send_ratings_file("ratings.csv")

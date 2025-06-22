@@ -22,7 +22,6 @@ class Gateway:
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server.bind((self.host, self.port))
-        self.server.listen(5)
         self.processes = []
           # Contador para asignar IDs a los clientes
         self.clients_dir = "clients"
@@ -105,7 +104,7 @@ class Gateway:
         # Start only if I am the leader
         self.block_until_i_am_the_leader()
         print(f"I am the leader!")
-
+        self.server.listen(5)
 
         print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
         self._cleanup_dead_clients()
