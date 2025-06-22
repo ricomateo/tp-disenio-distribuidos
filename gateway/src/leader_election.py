@@ -2,6 +2,8 @@ import time
 import socket
 import threading
 import logging
+import os
+from common.atomic_write import atomic_write
 from src.leader_election_protocol import LeaderElectionProtocol
 
 # This is required to mute the pika logging
@@ -10,6 +12,8 @@ logging.basicConfig(level=logging.INFO, format="LEADER_ELECTION - [%(levelname)s
 
 DEFAULT_TIMEOUT = 2
 LEADER_TIMEOUT = DEFAULT_TIMEOUT * 0.2
+
+LEADER_FILE = "leader"
 
 
 class LeaderElector:
@@ -48,7 +52,7 @@ class LeaderElector:
         if self.number_of_peers == 1:
             logging.info("Setting myself as the leader since there are no peers")
             self.set_current_leader(self.id)
-        elif self.id == 0 and self.number_of_peers > 1:
+        elif self.should_trigger_election():
             time.sleep(1)
             self.participating = True
             self.send_election(self.id)
@@ -188,6 +192,7 @@ class LeaderElector:
         self.participating = False
         self.current_leader = leader_id
         self.semaphore.release()
+        atomic_write(LEADER_FILE, str(leader_id))
 
     def get_peers_addresses(self) -> list[str]:
         """
@@ -219,6 +224,13 @@ class LeaderElector:
         if peer_id == 0:
             return self.peer_prefix  # e.g. "gateway"
         return f"{self.peer_prefix}_{peer_id}"  # e.g "gateway_1"
+
+    def should_trigger_election(self):
+        previous_leader = os.path.exists(LEADER_FILE)
+        if previous_leader:
+            return False
+        return self.id == 0 and self.number_of_peers > 1
+
 
     def close(self):
         self.running = False
