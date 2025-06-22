@@ -39,7 +39,8 @@ class LeaderElectionProtocol:
             leader_id = int.from_bytes(self._recv_exact(peer_socket, 1), "big")
             return {"msg_type": "leader", "id": leader_id}
         if msg_type == PING:
-            return {"msg_type": "ping"}
+            leader_id = int.from_bytes(self._recv_exact(peer_socket, 1), "big")
+            return {"msg_type": "ping", "id": leader_id}
         return {"msg_type": msg_type}
 
     def send_election(self, address, leader_id: int):
@@ -72,7 +73,7 @@ class LeaderElectionProtocol:
         peer_socket.shutdown(socket.SHUT_RDWR)
         peer_socket.close()
 
-    def send_ping(self, address):
+    def send_ping(self, address, leader_id):
         """
         Sends the PING message to the given address
         """
@@ -80,7 +81,9 @@ class LeaderElectionProtocol:
         peer_socket.connect((address, self.port))
 
         message_type = PING.to_bytes(1, "big")
+        leader_id = leader_id.to_bytes(1, "big")
         peer_socket.sendall(message_type)
+        peer_socket.sendall(leader_id)
 
         peer_socket.shutdown(socket.SHUT_RDWR)
         peer_socket.close()

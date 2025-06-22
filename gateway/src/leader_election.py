@@ -102,6 +102,9 @@ class LeaderElector:
                             self.semaphore.release()
                             self.released_semaphore = True
                 elif is_ping(message):
+                    if not self.current_leader:
+                        self.current_leader = message.get("id")
+                        logging.info("Received leader id %s", self.current_leader)
                     continue
                 else:
                     logging.debug("Received unknown message %s.", message)
@@ -175,7 +178,7 @@ class LeaderElector:
             if peer == my_address:
                 continue
             try:
-                self.protocol.send_ping(peer)
+                self.protocol.send_ping(peer, self.id)
             except Exception:
                 pass
 
