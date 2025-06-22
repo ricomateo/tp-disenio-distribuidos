@@ -1,6 +1,7 @@
 import socket
 
-
+CLIENT_COUNT_REQUEST = 1 
+ 
 class GatewayConnection:
     """
     Represents a connection between the leader gateway and a peer gateway.
@@ -20,11 +21,30 @@ class GatewayConnection:
         gateway.close()
         return client_count
 
+    def recv_replica_message(self) -> dict:
+        gateway, address = self.gateway_socket.accept()
+        msg_type = int.from_bytes(self._recv_exact(1, gateway), "big")
+        if msg_type == CLIENT_COUNT_REQUEST:
+            gateway.close()
+            return {"msg_type": "client_count_request", "from": address}
+        gateway.close()
+        return {"msg_type": "unknown"}
+
     def send_client_count(self, address, client_count):
         peer_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         peer_socket.connect((address, 7778))
 
         client_count_as_bytes = client_count.to_bytes(4, "big")
+        peer_socket.sendall(client_count_as_bytes)
+
+        peer_socket.shutdown(socket.SHUT_RDWR)
+        peer_socket.close()
+
+    def send_client_count_request(self, address):
+        peer_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        peer_socket.connect((address, 7778))
+
+        client_count_as_bytes = CLIENT_COUNT_REQUEST.to_bytes(1, "big")
         peer_socket.sendall(client_count_as_bytes)
 
         peer_socket.shutdown(socket.SHUT_RDWR)

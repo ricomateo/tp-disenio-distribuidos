@@ -2,6 +2,7 @@ import os
 import signal
 import socket
 import threading
+import time
 from common.atomic_write import atomic_write
 from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
@@ -36,6 +37,8 @@ class Gateway:
         self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
 
         self.gateway_connection = GatewayConnection()
+        self.replicas_listener = None
+        self.client_count_listener_thread = None
 
         if self.output_exchange:
             self.rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
@@ -118,19 +121,36 @@ class Gateway:
         """Inicia el servidor y acepta conexiones de clientes."""
         self._cleanup_dead_clients()
 
-        # Listen for the client count on a different thread
-        client_count_listener_thread = threading.Thread(
-            target=self.listen_for_client_count
+        # Block until a leader is elected
+        self.block_until_a_leader_is_elected()
+
+        # The semaphore may be released by the close() function
+        # so we check if we are still running
+        if not self.running:
+            return
+
+        if not self.am_i_leader():
+            # If i am not the leader, start a thread that connects
+            # to the leader
+            self.client_count_listener_thread = threading.Thread(
+                target=self.listen_for_client_count
+            )
+            self.client_count_listener_thread.start()
+            
+            # Loop until I become the leader or a SIGTERM is received
+            while True:
+                self.block_until_a_leader_is_elected()
+                if not self.running:
+                    return
+                if self.am_i_leader():
+                    break
+
+        # As the leader, start a thread listening for
+        # messages from the gateway replicas
+        self.replicas_listener = threading.Thread(
+            target=self.listen_for_replicas_messages
         )
-        client_count_listener_thread.start()
-
-        # Start only if I am the leader
-        self.block_until_i_am_the_leader()
-        self.gateway_connection.close()
-
-        # If Im the leader, join the thread that listens for the client count
-        client_count_listener_thread.join()
-
+        self.replicas_listener.start()
         try:
             self.server.listen(5)
             print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
@@ -165,6 +185,7 @@ class Gateway:
         """Cierra el servidor y todos los procesos."""
         self.running = False
         if self.server:
+            self.server.shutdown(socket.SHUT_RDWR)
             self.server.close()
             print("[Gateway ] Servidor cerrado")
 
@@ -172,8 +193,17 @@ class Gateway:
         if self.leader_elector:
             self.leader_elector.close()
 
+        if self.replicas_listener:
+            self.gateway_connection.close()
+            self.replicas_listener.join()
+
+        if self.client_count_listener_thread:
+            self.gateway_connection.close()
+            self.client_count_listener_thread.join()
+
         # Terminar todos los procesos
         for process in self.processes:
+            process.close()
             process.finish()
         print("[Gateway ] Todos los procesos terminados")
 
@@ -181,19 +211,19 @@ class Gateway:
         """
         Starts the leader elector on a new thread
 
-        The leader elector has a semaphore. When it becomes the leader,
-        it will call release() on the semaphore.
+        The leader elector has a semaphore that signals when a
+        new leader is elected.
 
         The main thread of the gateway is blocked waiting on semaphore.acquire()
-        so it will unblock when the leader elector becomes the leader.
+        so it will unblock when a new leader is elected.
         """
-        self.leader_elector_semaphore = threading.Semaphore(1)
         # Acquire the semaphore and hand it to the leader election participant
+        self.leader_elector_semaphore = threading.Semaphore(1)
         self.leader_elector_semaphore.acquire()
 
         # Start the leader elector on a new thread.
-        # If it becomes the leader, it will release the semaphore, allowing
-        # the gateway to start
+        # When a leader is elected, the leader elector will call
+        # release() on the semaphore, unblocking the gateway
         self.leader_elector = LeaderElector(
             peer_id=self.node_id,
             number_of_peers=self.cluster_size,
@@ -202,24 +232,64 @@ class Gateway:
             semaphore=self.leader_elector_semaphore,
         )
 
-    def block_until_i_am_the_leader(self):
-        """
-        Blocks until the leader elector becomes the leader.
-        """
+    def block_until_a_leader_is_elected(self):
         self.leader_elector_semaphore.acquire()
 
     def listen_for_client_count(self):
         """
-        Listens for updates on the client count.
+        Requests the client count to the leader, and then just
+        waits for incoming messages from the leader.
         This should only be executed by the Gateway replicas (not the leader)
         """
         listening = True
+        leader_id = self.leader_elector.current_leader
+        
+        if leader_id is not None:
+            # Request the first client count to the leader
+            leader_address = f"gateway_{leader_id}"
+            if leader_id == 0:
+                leader_address = "gateway"
+            time.sleep(0.1)
+            # Try 5 times
+            for _ in range(5):
+                try:
+                    self.gateway_connection.send_client_count_request(leader_address)
+                    print(f"Sent client_count_request to the leader {leader_address}!")
+                    break
+                except Exception as e:
+                    print(f"Failed to request client_count_request. Error: {e}")
+                    # Backoff
+                    time.sleep(0.1)
+                    continue
+
         while listening:
             try:
                 self.client_counter = self.gateway_connection.recv_client_count()
                 print(f"New client count = {self.client_counter}")
                 self.save_counter()
             except OSError:
+                listening = False
+            except Exception as e:
+                print(f"Failed to receive client count. Error: {e}")
+
+    def listen_for_replicas_messages(self):
+        """
+        Listens for messages from the replicas (requests for the client count)
+        This should only be executed by the Gateway leader (not the replicas)
+        """
+        listening = True
+        while listening:
+            try:
+                print("Waiting for incoming replica messages")
+                message = self.gateway_connection.recv_replica_message()
+                if message.get("msg_type") == "client_count_request":
+                    replica_address, _ = message.get("from")
+                    self.gateway_connection.send_client_count(replica_address, self.client_counter)
+                    print("Received client_count_request message")
+                else:
+                    print(f"Received unknown message {message}")
+            except OSError:
+                print("Disconnecting...")
                 listening = False
             except Exception as e:
                 print(f"Failed to receive client count. Error: {e}")
@@ -242,3 +312,7 @@ class Gateway:
                 self.gateway_connection.send_client_count(address, self.client_counter)
             except Exception as e:
                 print(f"Failed to send client count to address {address}. Error: {e}")
+
+    def am_i_leader(self) -> bool:
+        leader_id = self.leader_elector.current_leader
+        return self.node_id == leader_id
