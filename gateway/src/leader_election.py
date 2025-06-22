@@ -3,7 +3,7 @@ import socket
 import threading
 from src.leader_election_protocol import LeaderElectionProtocol
 
-DEFAULT_TIMEOUT = 2
+DEFAULT_TIMEOUT = 1
 LEADER_TIMEOUT = DEFAULT_TIMEOUT * 0.75
 
 
@@ -74,8 +74,10 @@ class LeaderElector:
                 # trigger an election (the leader may be dead)
                 self.participating = True
                 self.send_election(self.id)
+                continue
             except Exception as e:
                 print(f"Failed to receive message. Error: {e}")
+                continue
             try:
                 if is_election(message):
                     self.handle_election_message(message)
