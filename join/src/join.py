@@ -102,7 +102,7 @@ class JoinNode:
         if client_id not in self.storages_by_client:
             storage_dir = f'./storage_{self.node_id}_{client_id}'
             self.storages_by_client[client_id] = StorageHandler(data_dir=storage_dir)
-            print(f" [🆕] Creado StorageHandler para cliente '{client_id}' en '{storage_dir}'")
+            print(f" [🆕] Creado StorageHandler para cliente '{client_id}' en '{storage_dir}' con tamanio {len(self.storages_by_client[client_id].list_keys())}")
         return self.storages_by_client[client_id]
 
     def main_callback(self, ch, method, properties, body):
@@ -144,7 +144,6 @@ class JoinNode:
                         print("activo main")
                         self.eof_main_by_client[client_id] = True
                         self.save_state(client_id)
-                        self.save_queue_2_state(client_id)
                 if count > buffer_count:
                     print(f" [⚠️] Count final ({count}) es MAYOR que los datos acumulados ({buffer_count}) para el cliente {client_id}")
                 elif count < buffer_count:
@@ -181,7 +180,6 @@ class JoinNode:
                             Tamaño actual buffer: {len(self.router_buffer_by_client[client_id])}")
                     self.processed_messages_by_client[client_id].add(packet.id)
                     self.save_state(client_id)
-                    self.save_queue_2_state(client_id)
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -227,7 +225,6 @@ class JoinNode:
                         print("[Join thread] activo join")
                         self.eof_main_by_client[client_id] = True
                         self.save_state(client_id)
-                        self.save_queue_2_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 # Borro solo despues haber mandado el final y el ACK
                 # (si crashea antes, pierdo el count)
@@ -272,7 +269,6 @@ class JoinNode:
                 print(f"[Join thread] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
                 print(f"[Join thread] packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
                 self.save_state(client_id)
-                self.save_queue_2_state(client_id)
 
                 print(f" [Join thread ✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
             else:
@@ -283,7 +279,7 @@ class JoinNode:
                         storage = self._get_storage_for_client(client_id)
                         print(f" [Join thread 💾] Router '{router}' not in buffer, adding to disk for client {client_id}")
                         storage.add(str(router), movie, id)
-                        self.save_queue_2_state(client_id)
+                        self.save_state(client_id)
                         self.processed_messages_by_client_queue_2[client_id].add(packet.id)
                         print(f" [Join thread ✅] Added router '{router}' to disk for client {client_id}")
 
@@ -339,7 +335,6 @@ class JoinNode:
                     self.output_rabbitmq.publish(joined_packet.to_json())
                     self.packets_sent_by_client[client_id].add(id)
                     print(f"[Merge] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
-                    self.save_queue_2_state(client_id)
                     print(f"[Merge] Saved packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
                     print(f" [Merge ✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
 
@@ -367,72 +362,42 @@ class JoinNode:
                 self.leader_queue.join()
             self.close()
 
-    def save_state(self, client_id):
+    def save_state(self, client_id: int):
         """
         Guarda el estado del cliente en un archivo .json de forma atómica.
         El archivo va a tener el nombre state.client.<client_id>.json
         """
         filename = f"state.client.{client_id}.json"
-        data = json.dumps({
+        data = {
             "eof_main": self.eof_main_by_client.get(client_id, False),
             "router_buffer": self.router_buffer_by_client.get(client_id, {}),
             "processed_messages": list(self.processed_messages_by_client.get(client_id, [])),
-        })
-        atomic_write(filename, data)
-
-    def save_queue_2_state(self, client_id):
-        filename = f"queue_2.client.{client_id}.json"
-        if len(self.packets_sent_by_client[client_id]) != 0:
-            print(f"Saving packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
-        else:
-            print(f"Todavía no se mandaron mensajes, processed messages es {self.processed_messages_by_client_queue_2.get(client_id, [])}")
-        data = json.dumps({
-            "processed_messages": list(self.processed_messages_by_client_queue_2.get(client_id, [])),
-            "packets_sent": list(self.packets_sent_by_client.get(client_id, []))
-        })
-        atomic_write(filename, data)
+            "processed_messages_queue_2": list(self.processed_messages_by_client_queue_2.get(client_id, [])),
+            "packets_sent": list(self.packets_sent_by_client.get(client_id, [])),
+        }
+        atomic_write(filename, json.dumps(data))
 
     def load_all_states(self):
         """
         Carga todos los estados persistidos del disco en el nodo de los archivos 
         state de cada cliente.
         """
-        state_files: list[str] = glob.glob("state.client.*.json")
-        print(f" Cargando los estados previos de los siguientes archivos: {state_files}")
-        for client_state_file_path in state_files:
-            try:
-                # Note: Check if this should be an int or a string depending on client_id
-                # occurences if this node
-                client_id = int(client_state_file_path.split(".")[2])
-                with open(client_state_file_path, "r", encoding="utf-8") as f:
-                    state = json.load(f)
-                    self.eof_main_by_client[client_id] = state.get("eof_main", False)
-                    self.router_buffer_by_client[client_id] = state.get("router_buffer", {})
-                    self.processed_messages_by_client[client_id] = set(
-                        state.get("processed_messages", [])
-                    )
-                    print(f"Recovered len(self.processed_messages_by_client[{client_id}] = {len(self.processed_messages_by_client[client_id])}")
-                    print(f" [✅] Se restauró el estado para el client '{client_id}'")
-                    print(f"El estado restaurado es {state}")
-            except Exception as e:
-                print(f" [!] Error restaurando estado del archivo {client_state_file_path}: {e}")
-
-        queue_2_state_files: list[str] = glob.glob("queue_2.client.*.json")
-        for state_file in queue_2_state_files:
+        state_files = glob.glob("state.client.*.json")
+        for state_file in state_files:
             try:
                 client_id = int(state_file.split(".")[2])
                 with open(state_file, "r", encoding="utf-8") as f:
-                    queue_2_state = json.load(f)
-                    self.processed_messages_by_client_queue_2[client_id] = set(queue_2_state.get("processed_messages"))
-                    self.packets_sent_by_client[client_id] = set(queue_2_state.get("packets_sent"))
-                    print(f"client_id={client_id} in self.packets_by_client: {client_id in self.packets_sent_by_client}")
-                    print(f"Recovered packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
-            except Exception as e:
-                print(f" [!] Error restaurando estado del archivo {state_file}: {e}")
+                    state = json.load(f)
 
-        for cid in [0, 1]:
-            storage = self._get_storage_for_client(cid)
-            print(f"Recover, las keys que contiene el archivo para el cliente {cid} es: {storage.list_keys()}")
+                    # Cargar estado principal
+                    self.eof_main_by_client[client_id] = state.get("eof_main", False)
+                    self.router_buffer_by_client[client_id] = state.get("router_buffer", {})
+                    self.processed_messages_by_client[client_id] = set(state.get("processed_messages", []))
+                    self.processed_messages_by_client_queue_2[client_id] = set(state.get("processed_messages_queue_2", []))
+                    self.packets_sent_by_client[client_id] = set(state.get("packets_sent", []))
+                            
+            except Exception as e:
+                print(f"Error loading state from {state_file}: {e}")
 
     def delete_client_state(self, client_id):
         """
