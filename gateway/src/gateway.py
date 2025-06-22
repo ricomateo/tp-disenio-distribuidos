@@ -32,7 +32,8 @@ class Gateway:
         self.input_queue = os.getenv("RABBITMQ_INPUT_QUEUE", "query_queue")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
-        
+        self.node_id = int(os.getenv("NODE_ID"))
+        self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
         if self.output_exchange:
             self.rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
@@ -157,8 +158,16 @@ class Gateway:
         self.leader_elector_semaphore = threading.Semaphore(1)
         # Acquire the semaphore and hand it to the leader election participant
         self.leader_elector_semaphore.acquire()
-        print("initially acquired semaphore")
-        self.leader_elector = LeaderElector(0, 1, 7777, "gateway", self.leader_elector_semaphore)
+
+
+
+        self.leader_elector = LeaderElector(
+            peer_id=self.node_id,
+            number_of_peers=self.cluster_size,
+            port=7777,
+            peer_prefix="gateway",
+            semaphore=self.leader_elector_semaphore
+        )
         # Start the leader elector on a new thread.
         # If it becomes the leader, it will release the semaphore, allowing
         # the gateway to start
