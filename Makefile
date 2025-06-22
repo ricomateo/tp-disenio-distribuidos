@@ -125,3 +125,17 @@ jupyter_results:
 
 test_against_notebook: up jupyter_results
 	$(PYTHON) $(COMPARE_SCRIPT) output/output.json
+
+new_client:
+	docker build -f client/Dockerfile -t tp-client .
+	docker run -d -e GATEWAY_HOSTS='["gateway","gateway_1","gateway_2","gateway_3","gateway_4"]' \
+		-e PYTHONUNBUFFERED=1 \
+		-e GATEWAY_PORT=9999 \
+		-e BATCH_SIZE=1000 \
+		-e NODE_ID=0 \
+		-v ./output:/app/output \
+		-v ./data/movies_metadata_reduced.csv:/src/movies_metadata.csv \
+		-v ./data/ratings_small.csv:/src/ratings.csv \
+		-v ./data/credits.csv:/src/credits.csv \
+		--network tp-disenio-distribuidos_app-network \
+		tp-client
