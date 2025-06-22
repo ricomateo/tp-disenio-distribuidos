@@ -130,7 +130,6 @@ class Gateway:
 
         # If Im the leader, join the thread that listens for the client count
         client_count_listener_thread.join()
-        print("Joined gateway connection server")
 
         try:
             self.server.listen(5)
