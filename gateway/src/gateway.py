@@ -8,6 +8,7 @@ from common.worker_protocol import WorkerProtocol
 from src.client_connection import ClientConnection
 from common.middleware import Middleware
 from src.leader_election import LeaderElector
+from src.gateway_connection import GatewayConnection
 
 
 class Gateway:
@@ -33,6 +34,10 @@ class Gateway:
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
         self.node_id = int(os.getenv("NODE_ID"))
         self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
+
+        self.gateway_connection = GatewayConnection()
+        self.leader = False
+
         if self.output_exchange:
             self.rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
@@ -114,8 +119,20 @@ class Gateway:
         """Inicia el servidor y acepta conexiones de clientes."""
         self._cleanup_dead_clients()
 
+        # Listen for the client count on a different thread
+        client_count_listener_thread = threading.Thread(
+            target=self.listen_for_client_count
+        )
+        client_count_listener_thread.start()
+
         # Start only if I am the leader
         self.block_until_i_am_the_leader()
+        self.leader = True
+        self.gateway_connection.close()
+
+        # If Im the leader, join the thread that listens for the client count
+        client_count_listener_thread.join()
+        print("Joined gateway connection server")
 
         self.server.listen(5)
         print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
@@ -128,6 +145,7 @@ class Gateway:
                 client_id = self.client_counter
                 self.client_counter += 1
                 self.save_counter()
+                self.broadcast_client_count()
                 # Crear un proceso para manejar el cliente
                 process = ClientConnection(
                     client_socket, addr, client_id, self.clients_dir
@@ -192,3 +210,35 @@ class Gateway:
         Blocks until the leader elector becomes the leader.
         """
         self.leader_elector_semaphore.acquire()
+
+    def listen_for_client_count(self):
+        """
+        Listens for updates on the client count.
+        This should only be executed by the Gateway replicas (not the leader)
+        """
+        while not self.leader:
+            try:
+                self.client_counter = self.gateway_connection.recv_client_count()
+                print(f"New client count = {self.client_counter}")
+                self.save_counter()
+            except Exception as e:
+                print(f"Failed to receive client count. Error: {e}")
+
+    def broadcast_client_count(self):
+        """
+        Broadcasts the client count to all the Gateway replicas.
+        This should only be executed by the Gateway leader.
+        """
+        addresses = []
+        for i in range(self.cluster_size):
+            if i == self.node_id:
+                continue
+            address = f"gateway_{i}"
+            if i == 0:
+                address = "gateway"
+            addresses.append(address)
+        for address in addresses:
+            try:
+                self.gateway_connection.send_client_count(address, self.client_counter)
+            except Exception as e:
+                print(f"Failed to send client count to address {address}. Error: {e}")
