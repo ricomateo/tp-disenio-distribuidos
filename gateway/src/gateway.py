@@ -1,4 +1,3 @@
-
 import os
 import signal
 import socket
@@ -9,6 +8,7 @@ from common.worker_protocol import WorkerProtocol
 from src.client_connection import ClientConnection
 from common.middleware import Middleware
 from src.leader_election import LeaderElector
+
 
 class Gateway:
     def __init__(self, host: str, port: int):
@@ -23,7 +23,7 @@ class Gateway:
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server.bind((self.host, self.port))
         self.processes = []
-          # Contador para asignar IDs a los clientes
+        # Contador para asignar IDs a los clientes
         self.clients_dir = "clients"
         self.counter_file = "clients_counter.txt"
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "csv_queue")
@@ -37,22 +37,26 @@ class Gateway:
             self.rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
             self.rabbitmq = Middleware(queue=self.output_queue)
-            
-        self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
-        
+
+        self.control = WorkerProtocol(
+            self.health_server_ip, self.health_server_port, self.health_server_port
+        )
+
         self.client_counter = self.load_counter()
         self.start_leader_elector()
-    
+
     def _cleanup_dead_clients(self):
         """Lee los archivos en el directorio de clientes y envía mensajes de eliminación."""
         os.makedirs(self.clients_dir, exist_ok=True)
         try:
             for filename in os.listdir(self.clients_dir):
-                if filename.endswith('.txt'):
+                if filename.endswith(".txt"):
                     try:
                         client_id = int(filename[:-4])  # ej. 2.txt -> 2
                         file_path = os.path.join(self.clients_dir, filename)
-                        print(f"[Gateway] Enviando mensaje de eliminación para cliente muerto {client_id}")
+                        print(
+                            f"[Gateway] Enviando mensaje de eliminación para cliente muerto {client_id}"
+                        )
 
                         # Leer todas las routing keys (nombres de archivo) del archivo
                         with open(file_path, "r") as f:
@@ -60,7 +64,9 @@ class Gateway:
 
                         # Enviar delete para cada routing_key asociada al cliente
                         for rk in routing_keys:
-                            self.rabbitmq.send_delete(client_id=client_id, routing_key=rk)
+                            self.rabbitmq.send_delete(
+                                client_id=client_id, routing_key=rk
+                            )
 
                         # Eliminar el archivo luego de procesar
                         os.remove(file_path)
@@ -71,33 +77,39 @@ class Gateway:
                         print(f"[Gateway] Error al eliminar cliente {filename}: {e}")
         except Exception as e:
             print(f"[Gateway] Error al limpiar clientes muertos: {e}")
-       
+
     def save_counter(self):
         """Saves the client counter to disk."""
         try:
             atomic_write(self.counter_file, str(self.client_counter))
         except Exception as e:
             print(f"[Gateway] Error saving counter to {self.counter_file}: {self.e}")
-            
+
     def load_counter(self):
         """Loads the client counter from disk."""
         try:
             with open(self.counter_file, "r") as f:
                 content = f.read().strip()
                 if not content:  # Handle empty file
-                    print(f"[Gateway] Empty counter file at {self.counter_file}, starting with 0")
+                    print(
+                        f"[Gateway] Empty counter file at {self.counter_file}, starting with 0"
+                    )
                     return 0
                 counter = int(content)  # Parse string to integer
                 if counter < 0:
                     raise ValueError("Counter cannot be negative")
                 return counter
         except FileNotFoundError:
-            print(f"[Gateway] No counter file found at {self.counter_file}, starting with 0")
+            print(
+                f"[Gateway] No counter file found at {self.counter_file}, starting with 0"
+            )
             return 0
         except (ValueError, OSError) as e:
-            print(f"[Gateway] Error reading counter from {self.counter_file}: {e}, starting with 0")
+            print(
+                f"[Gateway] Error reading counter from {self.counter_file}: {e}, starting with 0"
+            )
             return 0
-                
+
     def start(self):
         """Inicia el servidor y acepta conexiones de clientes."""
 
@@ -117,9 +129,11 @@ class Gateway:
                 self.client_counter += 1
                 self.save_counter()
                 # Crear un proceso para manejar el cliente
-                process = ClientConnection(client_socket, addr, client_id, self.clients_dir)
+                process = ClientConnection(
+                    client_socket, addr, client_id, self.clients_dir
+                )
                 self.processes.append(process)
-           
+
         except Exception as e:
             print(f"[Gateway] Error en el servidor: {e}")
         finally:
@@ -139,6 +153,10 @@ class Gateway:
         if self.server:
             self.server.close()
             print(f"[Gateway ] Servidor cerrado")
+
+        if self.leader_elector:
+            self.leader_elector.close()
+
         # Terminar todos los procesos
         for process in self.processes:
             process.finish()
@@ -158,21 +176,16 @@ class Gateway:
         # Acquire the semaphore and hand it to the leader election participant
         self.leader_elector_semaphore.acquire()
 
-
-
+        # Start the leader elector on a new thread.
+        # If it becomes the leader, it will release the semaphore, allowing
+        # the gateway to start
         self.leader_elector = LeaderElector(
             peer_id=self.node_id,
             number_of_peers=self.cluster_size,
             port=7777,
             peer_prefix="gateway",
-            semaphore=self.leader_elector_semaphore
+            semaphore=self.leader_elector_semaphore,
         )
-        # Start the leader elector on a new thread.
-        # If it becomes the leader, it will release the semaphore, allowing
-        # the gateway to start
-        self.leader_elector_thread = threading.Thread(target=self.leader_elector.start)
-        self.leader_elector_thread.start()
-        print("started the leader elector")
 
     def block_until_i_am_the_leader(self):
         """

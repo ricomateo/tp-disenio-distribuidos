@@ -29,6 +29,8 @@ class LeaderElector:
         self.current_leader = None
         self.semaphore = semaphore
         self.released_semaphore = False
+        self.process = threading.Thread(target=self.start)
+        self.process.start()
 
     def start(self):
         """
@@ -197,6 +199,11 @@ class LeaderElector:
         if peer_id == 0:
             return self.peer_prefix  # e.g. "gateway"
         return f"{self.peer_prefix}_{peer_id}"  # e.g "gateway_1"
+
+    def close(self):
+        self.running = False
+        self.protocol.close()
+        self.process.join()
 
 
 def is_election(message):

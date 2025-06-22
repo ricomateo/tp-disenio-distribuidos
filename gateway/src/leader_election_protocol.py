@@ -106,3 +106,7 @@ class LeaderElectionProtocol:
                 raise ConnectionError("Connection closed")
             data += received_bytes
         return data
+
+    def close(self):
+        self.socket.shutdown(socket.SHUT_RDWR)
+        self.socket.close()
