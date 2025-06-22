@@ -8,8 +8,8 @@ from src.leader_election_protocol import LeaderElectionProtocol
 logging.getLogger("pika").setLevel(logging.WARNING)
 logging.basicConfig(level=logging.INFO, format="LEADER_ELECTION - [%(levelname)s] %(message)s")
 
-DEFAULT_TIMEOUT = 1
-LEADER_TIMEOUT = DEFAULT_TIMEOUT * 0.75
+DEFAULT_TIMEOUT = 2
+LEADER_TIMEOUT = DEFAULT_TIMEOUT * 0.2
 
 
 class LeaderElector:
@@ -94,6 +94,7 @@ class LeaderElector:
                     # After the leader is elected, set its timeout
                     # to the leader timeout (which is shorter than the default)
                     if self.am_i_leader():
+                        self.broadcast_ping()
                         self.protocol.set_timeout(LEADER_TIMEOUT)
                 elif is_ping(message):
                     if not self.current_leader:
@@ -101,6 +102,7 @@ class LeaderElector:
                         if leader_id is not None:
                             self.set_current_leader(leader_id)
                             logging.info("Received leader id %s", self.current_leader)
+                            self.send_leader(leader_id)
                     continue
                 else:
                     logging.debug("Received unknown message %s.", message)
@@ -159,7 +161,7 @@ class LeaderElector:
         for peer in peers_addresses:
             try:
                 self.protocol.send_leader(peer, id)
-                logging.info("Sent ELECTION message with ID %s to peer %s", id, peer)
+                logging.info("Sent LEADER message with ID %s to peer %s", id, peer)
             except Exception:
                 continue
             break
