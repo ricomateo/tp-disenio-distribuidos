@@ -1,7 +1,12 @@
 import time
 import socket
 import threading
+import logging
 from src.leader_election_protocol import LeaderElectionProtocol
+
+# This is required to mute the pika logging
+logging.getLogger("pika").setLevel(logging.WARNING)
+logging.basicConfig(level=logging.INFO, format="LEADER_ELECTION - [%(levelname)s] %(message)s")
 
 DEFAULT_TIMEOUT = 1
 LEADER_TIMEOUT = DEFAULT_TIMEOUT * 0.75
@@ -41,8 +46,8 @@ class LeaderElector:
         The node with id 0 waits for all other nodes to start and
         triggers an election to choose the starting leader.
         """
-        print("starting leader elector")
         if self.number_of_peers == 1:
+            logging.info("Setting myself as the leader since there are no peers")
             self.current_leader = self.id
             self.semaphore.release()
             self.released_semaphore = True
@@ -74,11 +79,15 @@ class LeaderElector:
 
                 # If no PING messages are received within the given time,
                 # trigger an election (the leader may be dead)
+                logging.info(
+                    "Current leader %s is dead. Starting new election.",
+                    self.current_leader
+                )
                 self.participating = True
                 self.send_election(self.id)
                 continue
             except Exception as e:
-                print(f"Failed to receive message. Error: {e}")
+                logging.debug("Failed to receive message. Error: %s", e)
                 continue
             try:
                 if is_election(message):
@@ -91,14 +100,13 @@ class LeaderElector:
                         self.protocol.set_timeout(LEADER_TIMEOUT)
                         if not self.released_semaphore:
                             self.semaphore.release()
-                            print("Released the semaphore!")
                             self.released_semaphore = True
                 elif is_ping(message):
                     continue
                 else:
-                    print(f"Recibo mensaje desconocido {message}")
+                    logging.debug("Received unknown message %s.", message)
             except Exception as e:
-                print(f"Failed to decode message '{message}'. Error: {e}")
+                logging.warning("Failed to decode message %s. Error: %s", message, e)
 
     def send_election(self, id):
         """
@@ -112,13 +120,14 @@ class LeaderElector:
             peer_address = self.get_peer_address(peer_id)
             try:
                 self.protocol.send_election(peer_address, id)
+                logging.info("Sent ELECTION message with ID %s to peer %s", id, peer_address)
             except Exception:
                 continue
             break
 
     def handle_election_message(self, message):
         leader_id = message.get("id")
-        print(f"Recibo election con leader_id = {leader_id}")
+        logging.info("Received ELECTION message with leader ID: %s", leader_id)
         if not self.participating:
             self.participating = True
             leader_id = max(self.id, leader_id)
@@ -136,11 +145,11 @@ class LeaderElector:
         Handles the leader message.
         """
         leader_id = message.get("id")
-        print(f"Recibo nuevo leader = {leader_id}")
         self.participating = False
         if leader_id != self.current_leader:
             self.send_leader(leader_id)
         self.current_leader = leader_id
+        logging.info("New leader elected with ID: %s", self.current_leader)
 
     def send_leader(self, id):
         """
@@ -150,6 +159,7 @@ class LeaderElector:
         for peer in peers_addresses:
             try:
                 self.protocol.send_leader(peer, id)
+                logging.info("Sent ELECTION message with ID %s to peer %s", id, peer)
             except Exception:
                 continue
             break
