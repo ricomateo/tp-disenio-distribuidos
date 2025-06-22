@@ -185,7 +185,6 @@ class Gateway:
         """Cierra el servidor y todos los procesos."""
         self.running = False
         if self.server:
-            self.server.shutdown(socket.SHUT_RDWR)
             self.server.close()
             print("[Gateway ] Servidor cerrado")
 
