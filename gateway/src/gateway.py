@@ -143,6 +143,12 @@ class Gateway:
                 if not self.running:
                     return
                 if self.am_i_leader():
+                    # Join the listener thread and create a new GatewayConnection
+                    # This is required to use a clean socket
+                    self.gateway_connection.close()
+                    self.client_count_listener_thread.join()
+                    self.client_count_listener_thread = None
+                    self.gateway_connection = GatewayConnection()
                     break
 
         # As the leader, start a thread listening for
@@ -188,9 +194,6 @@ class Gateway:
             self.server.close()
             print("[Gateway ] Servidor cerrado")
 
-        self.leader_elector_semaphore.release()
-        if self.leader_elector:
-            self.leader_elector.close()
 
         if self.replicas_listener:
             self.gateway_connection.close()
@@ -204,6 +207,10 @@ class Gateway:
         for process in self.processes:
             process.close()
             process.finish()
+        
+        self.leader_elector_semaphore.release()
+        if self.leader_elector:
+            self.leader_elector.close()
         print("[Gateway ] Todos los procesos terminados")
 
     def start_leader_elector(self):
@@ -277,9 +284,9 @@ class Gateway:
         This should only be executed by the Gateway leader (not the replicas)
         """
         listening = True
+        print("Waiting for incoming replica messages")
         while listening:
             try:
-                print("Waiting for incoming replica messages")
                 message = self.gateway_connection.recv_replica_message()
                 if message.get("msg_type") == "client_count_request":
                     replica_address, _ = message.get("from")
