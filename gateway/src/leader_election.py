@@ -33,7 +33,6 @@ class LeaderElector:
         self.running = True
         self.current_leader = None
         self.semaphore = semaphore
-        self.released_semaphore = False
         self.process = threading.Thread(target=self.start)
         self.process.start()
 
@@ -48,9 +47,7 @@ class LeaderElector:
         """
         if self.number_of_peers == 1:
             logging.info("Setting myself as the leader since there are no peers")
-            self.current_leader = self.id
-            self.semaphore.release()
-            self.released_semaphore = True
+            self.set_current_leader(self.id)
         elif self.id == 0 and self.number_of_peers > 1:
             time.sleep(1)
             self.participating = True
@@ -98,13 +95,12 @@ class LeaderElector:
                     # to the leader timeout (which is shorter than the default)
                     if self.am_i_leader():
                         self.protocol.set_timeout(LEADER_TIMEOUT)
-                        if not self.released_semaphore:
-                            self.semaphore.release()
-                            self.released_semaphore = True
                 elif is_ping(message):
                     if not self.current_leader:
-                        self.current_leader = message.get("id")
-                        logging.info("Received leader id %s", self.current_leader)
+                        leader_id = message.get("id")
+                        if leader_id is not None:
+                            self.set_current_leader(leader_id)
+                            logging.info("Received leader id %s", self.current_leader)
                     continue
                 else:
                     logging.debug("Received unknown message %s.", message)
@@ -149,10 +145,11 @@ class LeaderElector:
         """
         leader_id = message.get("id")
         self.participating = False
-        if leader_id != self.current_leader:
-            self.send_leader(leader_id)
-        self.current_leader = leader_id
-        logging.info("New leader elected with ID: %s", self.current_leader)
+        if leader_id == self.current_leader:
+            return
+        logging.info("New leader elected with ID: %s", leader_id)
+        self.set_current_leader(leader_id)
+        self.send_leader(leader_id)
 
     def send_leader(self, id):
         """
@@ -181,6 +178,14 @@ class LeaderElector:
                 self.protocol.send_ping(peer, self.id)
             except Exception:
                 pass
+
+    def set_current_leader(self, leader_id):
+        """
+        Sets the current leader as leader_id and signals the semaphore
+        """
+        self.participating = False
+        self.current_leader = leader_id
+        self.semaphore.release()
 
     def get_peers_addresses(self) -> list[str]:
         """
