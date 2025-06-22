@@ -36,7 +36,6 @@ class Gateway:
         self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
 
         self.gateway_connection = GatewayConnection()
-        self.leader = False
 
         if self.output_exchange:
             self.rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
@@ -88,7 +87,7 @@ class Gateway:
         try:
             atomic_write(self.counter_file, str(self.client_counter))
         except Exception as e:
-            print(f"[Gateway] Error saving counter to {self.counter_file}: {self.e}")
+            print(f"[Gateway] Error saving counter to {self.counter_file}: {e}")
 
     def load_counter(self):
         """Loads the client counter from disk."""
@@ -127,17 +126,15 @@ class Gateway:
 
         # Start only if I am the leader
         self.block_until_i_am_the_leader()
-        self.leader = True
         self.gateway_connection.close()
 
         # If Im the leader, join the thread that listens for the client count
         client_count_listener_thread.join()
         print("Joined gateway connection server")
 
-        self.server.listen(5)
-        print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
-
         try:
+            self.server.listen(5)
+            print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
             while self.running:
                 client_socket, addr = self.server.accept()
                 print(f"[Gateway] Nueva conexión de {addr}")
@@ -160,7 +157,7 @@ class Gateway:
 
     def _sigterm_handler(self, signum, _):
         """Maneja la señal SIGTERM para cerrar el servidor."""
-        print(f"[Gateway ] Recibida señal SIGTERM")
+        print("[Gateway ] Recibida señal SIGTERM")
         if self.control:
             self.control.stop()
         self.close()
@@ -170,15 +167,16 @@ class Gateway:
         self.running = False
         if self.server:
             self.server.close()
-            print(f"[Gateway ] Servidor cerrado")
+            print("[Gateway ] Servidor cerrado")
 
+        self.leader_elector_semaphore.release()
         if self.leader_elector:
             self.leader_elector.close()
 
         # Terminar todos los procesos
         for process in self.processes:
             process.finish()
-        print(f"[Gateway ] Todos los procesos terminados")
+        print("[Gateway ] Todos los procesos terminados")
 
     def start_leader_elector(self):
         """
@@ -216,11 +214,14 @@ class Gateway:
         Listens for updates on the client count.
         This should only be executed by the Gateway replicas (not the leader)
         """
-        while not self.leader:
+        listening = True
+        while listening:
             try:
                 self.client_counter = self.gateway_connection.recv_client_count()
                 print(f"New client count = {self.client_counter}")
                 self.save_counter()
+            except OSError:
+                listening = False
             except Exception as e:
                 print(f"Failed to receive client count. Error: {e}")
 
