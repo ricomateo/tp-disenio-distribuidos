@@ -2,11 +2,13 @@
 import os
 import signal
 import socket
+import threading
 from common.atomic_write import atomic_write
 from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
 from src.client_connection import ClientConnection
 from common.middleware import Middleware
+from src.leader_election import LeaderElector
 
 class Gateway:
     def __init__(self, host: str, port: int):
@@ -39,7 +41,8 @@ class Gateway:
         self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
         
         self.client_counter = self.load_counter()
-        
+        self.start_leader_elector()
+    
     def _cleanup_dead_clients(self):
         """Lee los archivos en el directorio de clientes y envía mensajes de eliminación."""
         os.makedirs(self.clients_dir, exist_ok=True)
@@ -97,6 +100,12 @@ class Gateway:
                 
     def start(self):
         """Inicia el servidor y acepta conexiones de clientes."""
+
+        # Start only if I am the leader
+        self.block_until_i_am_the_leader()
+        print(f"I am the leader!")
+
+
         print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
         self._cleanup_dead_clients()
         try:
@@ -134,3 +143,31 @@ class Gateway:
         for process in self.processes:
             process.finish()
         print(f"[Gateway ] Todos los procesos terminados")
+
+    def start_leader_elector(self):
+        """
+        Starts the leader elector on a new thread
+
+        The leader elector has a semaphore. When it becomes the leader,
+        it will call release() on the semaphore.
+
+        The main thread of the gateway is blocked waiting on semaphore.acquire()
+        so it will unblock when the leader elector becomes the leader.
+        """
+        self.leader_elector_semaphore = threading.Semaphore(1)
+        # Acquire the semaphore and hand it to the leader election participant
+        self.leader_elector_semaphore.acquire()
+        print("initially acquired semaphore")
+        self.leader_elector = LeaderElector(0, 1, 7777, "gateway", self.leader_elector_semaphore)
+        # Start the leader elector on a new thread.
+        # If it becomes the leader, it will release the semaphore, allowing
+        # the gateway to start
+        self.leader_elector_thread = threading.Thread(target=self.leader_elector.start)
+        self.leader_elector_thread.start()
+        print("started the leader elector")
+
+    def block_until_i_am_the_leader(self):
+        """
+        Blocks until the leader elector becomes the leader.
+        """
+        self.leader_elector_semaphore.acquire()

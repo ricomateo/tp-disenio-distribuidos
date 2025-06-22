@@ -1,17 +1,25 @@
 import time
 import socket
-from src.protocol import LeaderElectionProtocol
+import threading
+from src.leader_election_protocol import LeaderElectionProtocol
 
 DEFAULT_TIMEOUT = 2
 LEADER_TIMEOUT = DEFAULT_TIMEOUT * 0.75
 
 
-class LeaderElectionParticipant:
+class LeaderElector:
     """
     A participant in the leader election algorithm
     """
 
-    def __init__(self, peer_id: int, number_of_peers: int, port: int, peer_prefix: str):
+    def __init__(
+        self,
+        peer_id: int,
+        number_of_peers: int,
+        port: int,
+        peer_prefix: str,
+        semaphore: threading.Semaphore,
+    ):
         self.id = peer_id
         self.number_of_peers = number_of_peers
         self.protocol = LeaderElectionProtocol(port=port, timeout=DEFAULT_TIMEOUT)
@@ -19,6 +27,8 @@ class LeaderElectionParticipant:
         self.peer_prefix = peer_prefix
         self.running = True
         self.current_leader = None
+        self.semaphore = semaphore
+        self.released_semaphore = False
 
     def start(self):
         """
@@ -29,8 +39,11 @@ class LeaderElectionParticipant:
         The node with id 0 waits for all other nodes to start and
         triggers an election to choose the starting leader.
         """
+        print("starting leader elector")
         if self.number_of_peers == 1:
             self.current_leader = self.id
+            self.semaphore.release()
+            self.released_semaphore = True
         elif self.id == 0 and self.number_of_peers > 1:
             time.sleep(1)
             self.participating = True
@@ -72,6 +85,10 @@ class LeaderElectionParticipant:
                     # to the leader timeout (which is shorter than the default)
                     if self.am_i_leader():
                         self.protocol.set_timeout(LEADER_TIMEOUT)
+                        if not self.released_semaphore:
+                            self.semaphore.release()
+                            print("Released the semaphore!")
+                            self.released_semaphore = True
                 elif is_ping(message):
                     continue
                 else:
