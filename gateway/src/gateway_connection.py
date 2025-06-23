@@ -10,6 +10,7 @@ class GatewayConnection:
     def __init__(self):
         # Socket for communicating with the gateway leader
         self.gateway_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.gateway_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.host = "0.0.0.0"
         self.port = 7778
         self.gateway_socket.bind((self.host, self.port))
