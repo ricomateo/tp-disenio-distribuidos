@@ -198,20 +198,24 @@ class Gateway:
         if self.replicas_listener:
             self.gateway_connection.close()
             self.replicas_listener.join()
+            print("[Gateway] Replicas listener cerrado")
 
         if self.client_count_listener_thread:
             self.gateway_connection.close()
             self.client_count_listener_thread.join()
+            print("[Gateway] Client count listener cerrado")
 
-        # Terminar todos los procesos
-        for process in self.processes:
-            process.close()
-            process.finish()
-        
         self.leader_elector_semaphore.release()
         if self.leader_elector:
             self.leader_elector.close()
+            print("[Gateway] Leader elector cerrado")
+
+        # Terminar todos los procesos
+        for process in self.processes:
+            # process.close()
+            process.finish()
         print("[Gateway ] Todos los procesos terminados")
+        
 
     def start_leader_elector(self):
         """
