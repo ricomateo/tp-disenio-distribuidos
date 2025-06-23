@@ -248,7 +248,7 @@ class Gateway:
         This should only be executed by the Gateway replicas (not the leader)
         """
         listening = True
-        leader_id = self.leader_elector.current_leader
+        leader_id = self.get_leader_id()
         
         if leader_id is not None:
             # Request the first client count to the leader
@@ -319,6 +319,11 @@ class Gateway:
             except Exception as e:
                 print(f"Failed to send client count to address {address}. Error: {e}")
 
+
     def am_i_leader(self) -> bool:
-        leader_id = self.leader_elector.current_leader
+        leader_id = self.get_leader_id()
         return self.node_id == leader_id
+
+    def get_leader_id(self) -> int:
+        with self.leader_elector.current_leader_lock:
+            return self.leader_elector.current_leader

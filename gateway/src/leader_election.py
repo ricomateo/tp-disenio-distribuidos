@@ -35,6 +35,7 @@ class LeaderElector:
         self.participating = False
         self.peer_prefix = peer_prefix
         self.running = True
+        self.current_leader_lock = threading.Lock()
         self.current_leader = None
         self.semaphore = semaphore
         self.process = threading.Thread(target=self.start)
@@ -190,7 +191,8 @@ class LeaderElector:
         Sets the current leader as leader_id and signals the semaphore
         """
         self.participating = False
-        self.current_leader = leader_id
+        with self.current_leader_lock:
+            self.current_leader = leader_id
         self.semaphore.release()
         atomic_write(LEADER_FILE, str(leader_id))
 
