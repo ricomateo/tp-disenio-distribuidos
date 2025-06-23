@@ -15,7 +15,7 @@ class LeaderQueue:
         self.consumer_tag = consumer_tag
         self.cluster_size = cluster_size
         self.client_counters = {} # dict[client_id, dict[node_id, count]]
-        self.delete_list = []
+        self.delete_list = {}
         
         self.final_rabbitmq = Middleware(
             queue=final_queue,
