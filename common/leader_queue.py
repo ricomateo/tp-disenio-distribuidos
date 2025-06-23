@@ -80,6 +80,10 @@ class LeaderQueue:
 
             if is_final_packet(header):
                 # If the length of the dict is equal to the cluster size, send the final
+                if client_id in self.delete_list:
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
+                
                 if len(self.client_counters[client_id].keys()) == self.cluster_size:
                     total_count = 0
                     for count in self.client_counters[client_id].values():
@@ -90,8 +94,7 @@ class LeaderQueue:
                     )
                     # Send ACK and only then delete the client data
                     ch.basic_ack(delivery_tag=method.delivery_tag)
-                    if client_id not in self.delete_list:
-                        self.delete_client(client_id)
+                    self.delete_client(client_id)
                     return
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
