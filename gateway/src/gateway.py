@@ -212,7 +212,6 @@ class Gateway:
 
         # Terminar todos los procesos
         for process in self.processes:
-            # process.close()
             process.finish()
         print("[Gateway ] Todos los procesos terminados")
         
