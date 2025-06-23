@@ -8,7 +8,7 @@ from datetime import datetime
 from src.calculation import Calculation
 from common.leader_queue import LeaderQueue
 from common.middleware import Middleware
-from common.packet import DataPacket, is_final_packet
+from common.packet import DataPacket, is_delete_packet, is_final_packet
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
 
@@ -83,8 +83,15 @@ class CalculatorNode:
             packet_json = body.decode()
             packet = json.loads(packet_json)
             header = packet.get("header")
+            client_id = packet.get("client_id")
+            
+            if header and is_delete_packet(header):
+                self.output_rabbitmq.send_delete(client_id=client_id)
+                self.delete_client_data(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+                
             if header and is_final_packet(header):
-                client_id = packet.get("client_id")
                 results = self.calculator.get_result(client_id)
                 self.output_rabbitmq.confirm_delivery()
 
@@ -120,7 +127,6 @@ class CalculatorNode:
 
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
-            client_id = packet.client_id
             id = packet.id
 
             # Initialize processed messages set

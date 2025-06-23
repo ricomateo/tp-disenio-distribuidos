@@ -6,7 +6,7 @@ from datetime import datetime
 from common.middleware import Middleware
 from common.storage_handler import StorageHandler
 from common.leader_queue import LeaderQueue
-from common.packet import DataPacket, is_final_packet
+from common.packet import DataPacket, is_delete_packet, is_final_packet
 from common.worker_protocol import WorkerProtocol
 
 class JoinNode:
@@ -92,6 +92,13 @@ class JoinNode:
             header = packet.get("header")
             client_id = packet.get("client_id")
             
+            if header and is_delete_packet(header):
+                with self.lock:
+                    self.output_rabbitmq.send_delete(client_id=client_id)
+                    self.clean(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+            
             if is_final_packet(header):
                 count = int(packet['count'])
                 print(f" [*] Cola '{self.input_queue_1}' terminó.")
@@ -157,6 +164,14 @@ class JoinNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
+            
+            if header and is_delete_packet(header):
+                with self.lock:
+                    self.output_rabbitmq.send_delete(client_id=client_id)
+                    self.clean(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+            
             if is_final_packet(header):
                 print(f" [*] Cola '{self.input_queue_2}' terminó.")
                 count = int(packet.get("count"))
@@ -201,7 +216,8 @@ class JoinNode:
                 with self.lock:
                     movie1 = self.router_buffer_by_client[client_id][router]
                 joined_packet = self.create_joined_packet(client_id, movie1, movie, id)
-                self.output_rabbitmq.publish(joined_packet.to_json())
+                with self.lock:
+                    self.output_rabbitmq.publish(joined_packet.to_json())
                 self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
                 print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
                 

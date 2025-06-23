@@ -5,7 +5,7 @@ import signal
 import glob
 from common.atomic_write import atomic_write
 from common.leader_queue import LeaderQueue
-from common.packet import DataPacket, QueryPacket, is_final_packet
+from common.packet import DataPacket, QueryPacket, is_delete_packet, is_final_packet
 from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
 
@@ -53,8 +53,16 @@ class DeliverNode:
             # Recibo el paquete, si es el último mando los resultados
             body_decoded = body.decode()
             packet = json.loads(body_decoded)
-            if is_final_packet(packet.get("header")):
-                client_id = packet.get("client_id")
+            header = packet.get("header")
+            client_id = packet.get("client_id")
+            
+            if header and is_delete_packet(header):
+                self.final_rabbitmq.send_delete_with_node_id(client_id=client_id, node_id=self.query_number)
+                self.delete_client_data(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+            
+            if header and is_final_packet(header):
                 final_response = self.generate_final_response(client_id)
                 final_response_str = json.dumps(
                     {"response": final_response}, ensure_ascii=False
@@ -73,7 +81,6 @@ class DeliverNode:
                 return
 
             packet = DataPacket.from_json(body_decoded)
-            client_id = packet.client_id
 
             print(f"Received packet with id {packet.id}")
             # Initialize set of processed messages

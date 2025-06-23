@@ -4,7 +4,7 @@ import os
 import signal
 import glob
 from common.middleware import Middleware
-from common.packet import DataPacket, is_final_packet
+from common.packet import DataPacket, is_delete_packet, is_final_packet
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
 
@@ -45,6 +45,13 @@ class AggregatorNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
+            
+            if header and is_delete_packet(header):
+                self.output_rabbitmq.send_delete(client_id=client_id)
+                self.delete_client(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+            
             if header and is_final_packet(header):
                 self.send_results(client_id)
                 self.output_rabbitmq.send_final(client_id=client_id)

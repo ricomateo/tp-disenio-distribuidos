@@ -5,7 +5,7 @@ import os
 import time
 from datetime import datetime
 import uuid
-from common.packet import FinalPacket, FinalPacketWithNodeId, DeletePacket
+from common.packet import DeletePacketWithNodeId, FinalPacket, FinalPacketWithNodeId, DeletePacket
 RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', 'rabbitmq')
 RABBITMQ_PORT = int(os.getenv('RABBITMQ_PORT', '5672'))
 RABBITMQ_HEARTBEAT = int(os.getenv('RABBITMQ_HEARTBEAT', '1200'))
@@ -100,6 +100,14 @@ class Middleware:
         final_packet = DeletePacket(client_id)
         self.publish(final_packet.to_json(), routing_key)
         print(f"[Middleware] DeletePacket {final_packet.to_json()} enviado directamente.")
+        
+    def send_delete_with_node_id(self, client_id, node_id, routing_key=''):
+        """Publica un paquete DELETE (con node_id) a través de este middleware."""
+        if not self.channel:
+            self.connect()
+        delete_packet = DeletePacketWithNodeId(client_id=client_id, node_id=node_id)
+        self.publish(delete_packet.to_json(), routing_key)
+        print(f"[Middleware] DeletePacketWithNodeId {delete_packet.to_json()} enviado directamente.")
 
     # TODO: sacar client_id=0 como default
     def send_final(self, client_id=0, routing_key='', count=0):
