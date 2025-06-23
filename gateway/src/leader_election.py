@@ -237,6 +237,7 @@ class LeaderElector:
     def close(self):
         self.running = False
         self.protocol.close()
+        logging.shutdown()
         self.process.join()
 
 
