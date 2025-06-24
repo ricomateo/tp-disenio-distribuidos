@@ -50,6 +50,7 @@ class ControlNode:
         self.threads = []
         self.should_stop = threading.Event()
         self.save_lock = threading.Lock()
+        self.lock_for_creating_locks = threading.Lock()
         self.load_state()
         self.docker_client = docker.from_env()
         # Registrar manejador de SIGTERM
@@ -96,7 +97,7 @@ class ControlNode:
         
         # Get or create lock for this node_id-client_id pair
         if lock_key not in self.locks_por_nodo:
-            with threading.Lock():  # Ensure thread-safe creation of new lock
+            with self.lock_for_creating_locks:  # Ensure thread-safe creation of new lock
                 if lock_key not in self.locks_por_nodo:
                     self.locks_por_nodo[lock_key] = threading.Lock()
         
