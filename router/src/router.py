@@ -1,10 +1,13 @@
 import json
-from common.middleware import Middleware
-from common.packet import is_delete_packet, is_final_packet
 import os
 import signal
-
+import logging
+from common.logger import init_logging
+from common.middleware import Middleware
+from common.packet import is_delete_packet, is_final_packet
 from common.worker_protocol import WorkerProtocol
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class RouterNode:
     """
@@ -60,10 +63,7 @@ class RouterNode:
         segun routing_key = msg.id % number_of_nodes.
         """
         try:
-            if self.running == False:
-                # if self.input_rabbitmq.check_no_consumers():
-                #     for i in range(self.number_of_nodes):
-                #         self.output_rabbitmq.send_final(routing_key=str(i))
+            if not self.running:
                 self.input_rabbitmq.close_graceful(method)
                 return
            
@@ -73,13 +73,19 @@ class RouterNode:
             client_id = packet["client_id"]
             
             if is_delete_packet(header):
+                logging.info("Received DELETE packet for client %s", client_id)
                 for i in range(self.number_of_nodes):
                     self.output_rabbitmq.send_delete(client_id=client_id, routing_key=str(i))
+                    logging.info(
+                        "Sent DELETE packet for client %s through the routing key %s",
+                        client_id, str(i)
+                    )
                 self.control.delete_client(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             
             if is_final_packet(header):
+                logging.info("Received FINAL packet from the client %s", client_id)
                 count = int(packet['count'])
                 final, frequencies = self.control.send_final_count(client_id, count)
                 if final:
@@ -89,9 +95,13 @@ class RouterNode:
                         freq_dict[int(node_id)] = int(count)
                     for i in range(self.number_of_nodes):
                         self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i), count=freq_dict.get(i, 0))
+                        logging.info(
+                            "Sent FINAL packet for client %s through the routing key %s",
+                            client_id, str(i)
+                        )
                     self.control.delete_client(client_id)
-                
-                
+                else:
+                    logging.warning("Missing packets to reach the final count")
                 # Mando ack del final packet
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
@@ -109,24 +119,32 @@ class RouterNode:
             
             final, frequencies = self.control.insert_id(client_id, id, routing_key)
             if final:
+                logging.info("Received data packet from client %s and it is the last one.", client_id)
                 freq_dict = {}
                 for pair in frequencies.split(","):
                     node_id, count = pair.split(":")
                     freq_dict[int(node_id)] = int(count)
                 for i in range(self.number_of_nodes):
                     self.output_rabbitmq.send_final(client_id=client_id, routing_key=str(i), count=freq_dict.get(i, 0))
+                    logging.info(
+                        "Sent FINAL packet for client %s through the routing key %s",
+                        client_id, str(i)
+                    )
                 self.control.delete_client(client_id)
                 
-            print(f" [✓] Sent movie with id: {movie_id} through the exchange using routing key: {routing_key}")
+            logging.debug(
+                "Sent movie with id: %s through the exchange using routing key: %s",
+                movie_id, routing_key
+            )
             
             ch.basic_ack(delivery_tag=method.delivery_tag)
-            print(f" [x] Message {method.delivery_tag} acknowledged")
+            logging.debug("Message %s acknowledged", method.delivery_tag)
 
         except json.JSONDecodeError as e:
-            print(f" [!] Error decoding JSON: {e}")
+            logging.warning("Error decoding JSON: %s", e)
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
-            print(f" [!] Error processing message: {e}")
+            logging.warning("Error processing message: %s", e)
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
 
@@ -134,20 +152,20 @@ class RouterNode:
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
-            print(f" [!] Error in router node: {e}")
+            logging.warning("Error in router node: %s", e)
         finally:
             self.close()
 
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
+        logging.info("Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
         if self.input_rabbitmq:
             self.input_rabbitmq.cancel_consumer()
-    
+
     def close(self):
-        print(f"Closing queues")
+        logging.info("Closing queues")
         if self.input_rabbitmq:
             self.input_rabbitmq.close()
         if self.output_rabbitmq:

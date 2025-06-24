@@ -3,6 +3,8 @@ import signal
 import socket
 import threading
 import time
+import logging
+from common.logger import init_logging
 from common.atomic_write import atomic_write
 from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
@@ -10,6 +12,8 @@ from src.client_connection import ClientConnection
 from common.middleware import Middleware
 from src.leader_election import LeaderElector
 from src.gateway_connection import GatewayConnection
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 
 class Gateway:
@@ -61,8 +65,9 @@ class Gateway:
                     try:
                         client_id = int(filename[:-4])  # ej. 2.txt -> 2
                         file_path = os.path.join(self.clients_dir, filename)
-                        print(
-                            f"[Gateway] Enviando mensaje de eliminación para cliente muerto {client_id}"
+                        logging.info(
+                            "[Gateway] Enviando mensaje de eliminación para cliente muerto %s",
+                            client_id,
                         )
 
                         # Leer todas las routing keys (nombres de archivo) del archivo
@@ -79,18 +84,24 @@ class Gateway:
                         os.remove(file_path)
 
                     except ValueError:
-                        print(f"[Gateway] Nombre de archivo inválido: {filename}")
+                        logging.warning(
+                            "[Gateway] Nombre de archivo inválido: %s", filename
+                        )
                     except Exception as e:
-                        print(f"[Gateway] Error al eliminar cliente {filename}: {e}")
+                        logging.warning(
+                            "[Gateway] Error al eliminar cliente %s: %s", filename, e
+                        )
         except Exception as e:
-            print(f"[Gateway] Error al limpiar clientes muertos: {e}")
+            logging.error("[Gateway] Error al limpiar clientes muertos: %s", e)
 
     def save_counter(self):
         """Saves the client counter to disk."""
         try:
             atomic_write(self.counter_file, str(self.client_counter))
         except Exception as e:
-            print(f"[Gateway] Error saving counter to {self.counter_file}: {e}")
+            logging.error(
+                "[Gateway] Error saving counter to %s: %s", self.counter_file, e
+            )
 
     def load_counter(self):
         """Loads the client counter from disk."""
@@ -98,8 +109,9 @@ class Gateway:
             with open(self.counter_file, "r") as f:
                 content = f.read().strip()
                 if not content:  # Handle empty file
-                    print(
-                        f"[Gateway] Empty counter file at {self.counter_file}, starting with 0"
+                    logging.debug(
+                        "[Gateway] Empty counter file at %s, starting with 0",
+                        self.counter_file,
                     )
                     return 0
                 counter = int(content)  # Parse string to integer
@@ -107,13 +119,16 @@ class Gateway:
                     raise ValueError("Counter cannot be negative")
                 return counter
         except FileNotFoundError:
-            print(
-                f"[Gateway] No counter file found at {self.counter_file}, starting with 0"
+            logging.warning(
+                "[Gateway] No counter file found at %s, starting with 0",
+                self.counter_file,
             )
             return 0
         except (ValueError, OSError) as e:
-            print(
-                f"[Gateway] Error reading counter from {self.counter_file}: {e}, starting with 0"
+            logging.warning(
+                "[Gateway] Error reading counter from %s: %s, starting with 0",
+                self.counter_file,
+                e,
             )
             return 0
 
@@ -136,7 +151,7 @@ class Gateway:
                 target=self.listen_for_client_count
             )
             self.client_count_listener_thread.start()
-            
+
             # Loop until I become the leader or a SIGTERM is received
             while True:
                 self.block_until_a_leader_is_elected()
@@ -159,10 +174,10 @@ class Gateway:
         self.replicas_listener.start()
         try:
             self.server.listen(5)
-            print(f"[Gateway] Escuchando en {self.host}:{self.port}...")
+            logging.info("[Gateway] Escuchando en %s:%s", self.host, self.port)
             while self.running:
                 client_socket, addr = self.server.accept()
-                print(f"[Gateway] Nueva conexión de {addr}")
+                logging.info("[Gateway] Nueva conexión de %s", addr)
                 # Asignar un client_id único
                 client_id = self.client_counter
                 self.client_counter += 1
@@ -175,14 +190,14 @@ class Gateway:
                 self.processes.append(process)
 
         except Exception as e:
-            print(f"[Gateway] Error en el servidor: {e}")
+            logging.info("[Gateway] Error en el servidor: %s", e)
         finally:
             if self.running == True:
                 self.close()
 
     def _sigterm_handler(self, signum, _):
         """Maneja la señal SIGTERM para cerrar el servidor."""
-        print("[Gateway ] Recibida señal SIGTERM")
+        logging.info("[Gateway ] Recibida señal SIGTERM")
         if self.control:
             self.control.stop()
         self.close()
@@ -192,29 +207,27 @@ class Gateway:
         self.running = False
         if self.server:
             self.server.close()
-            print("[Gateway ] Servidor cerrado")
-
+            logging.info("[Gateway ] Servidor cerrado")
 
         if self.replicas_listener:
             self.gateway_connection.close()
             self.replicas_listener.join()
-            print("[Gateway] Replicas listener cerrado")
+            logging.info("[Gateway] Replicas listener cerrado")
 
         if self.client_count_listener_thread:
             self.gateway_connection.close()
             self.client_count_listener_thread.join()
-            print("[Gateway] Client count listener cerrado")
+            logging.info("[Gateway] Client count listener cerrado")
 
         self.leader_elector_semaphore.release()
         if self.leader_elector:
             self.leader_elector.close()
-            print("[Gateway] Leader elector cerrado")
+            logging.info("[Gateway] Leader elector cerrado")
 
         # Terminar todos los procesos
         for process in self.processes:
             process.finish()
-        print("[Gateway ] Todos los procesos terminados")
-        
+        logging.info("[Gateway ] Todos los procesos terminados")
 
     def start_leader_elector(self):
         """
@@ -252,7 +265,7 @@ class Gateway:
         """
         listening = True
         leader_id = self.get_leader_id()
-        
+
         if leader_id is not None:
             # Request the first client count to the leader
             leader_address = f"gateway_{leader_id}"
@@ -263,10 +276,14 @@ class Gateway:
             for _ in range(5):
                 try:
                     self.gateway_connection.send_client_count_request(leader_address)
-                    print(f"Sent client_count_request to the leader {leader_address}!")
+                    logging.debug(
+                        "Sent client_count_request to the leader %s", leader_address
+                    )
                     break
                 except Exception as e:
-                    print(f"Failed to request client_count_request. Error: {e}")
+                    logging.warning(
+                        "Failed to request client_count_request. Error: %s", e
+                    )
                     # Backoff
                     time.sleep(0.1)
                     continue
@@ -274,12 +291,12 @@ class Gateway:
         while listening:
             try:
                 self.client_counter = self.gateway_connection.recv_client_count()
-                print(f"New client count = {self.client_counter}")
+                logging.debug("New client count:  %s", self.client_counter)
                 self.save_counter()
             except OSError:
                 listening = False
             except Exception as e:
-                print(f"Failed to receive client count. Error: {e}")
+                logging.info("Failed to receive client count. Error: %s", e)
 
     def listen_for_replicas_messages(self):
         """
@@ -287,21 +304,23 @@ class Gateway:
         This should only be executed by the Gateway leader (not the replicas)
         """
         listening = True
-        print("Waiting for incoming replica messages")
+        logging.info("Waiting for incoming replica messages")
         while listening:
             try:
                 message = self.gateway_connection.recv_replica_message()
                 if message.get("msg_type") == "client_count_request":
                     replica_address, _ = message.get("from")
-                    self.gateway_connection.send_client_count(replica_address, self.client_counter)
-                    print("Received client_count_request message")
+                    self.gateway_connection.send_client_count(
+                        replica_address, self.client_counter
+                    )
+                    logging.debug("Received client_count_request message")
                 else:
-                    print(f"Received unknown message {message}")
+                    logging.warning("Received unknown message %s", message)
             except OSError:
-                print("Disconnecting...")
+                logging.warning("Disconnecting")
                 listening = False
             except Exception as e:
-                print(f"Failed to receive client count. Error: {e}")
+                logging.warning("Failed to receive client count. Error: %s", e)
 
     def broadcast_client_count(self):
         """
@@ -320,8 +339,9 @@ class Gateway:
             try:
                 self.gateway_connection.send_client_count(address, self.client_counter)
             except Exception as e:
-                print(f"Failed to send client count to address {address}. Error: {e}")
-
+                logging.error(
+                    "Failed to send client count to address %s . Error: %s", address, e
+                )
 
     def am_i_leader(self) -> bool:
         leader_id = self.get_leader_id()
