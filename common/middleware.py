@@ -2,13 +2,15 @@
 import pika
 import orjson
 import os
-import time
-from datetime import datetime
-import uuid
+import logging
 from common.packet import DeletePacketWithNodeId, FinalPacket, FinalPacketWithNodeId, DeletePacket
+from common.logger import init_logging
+
 RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', 'rabbitmq')
 RABBITMQ_PORT = int(os.getenv('RABBITMQ_PORT', '5672'))
 RABBITMQ_HEARTBEAT = int(os.getenv('RABBITMQ_HEARTBEAT', '1200'))
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class Middleware:
     def __init__(self, queue, consumer_tag = None, exchange=None, exchange_type='direct', publish_to_exchange=True, routing_key=''):
@@ -31,14 +33,13 @@ class Middleware:
                 heartbeat=RABBITMQ_HEARTBEAT))
         self.channel = self.connection.channel()
         if self.exchange:
-            print(f"[Middleware] Declarando exchange '{self.exchange}' de tipo '{self.exchange_type}'...")
+            logging.info("[Middleware] Declarando exchange '%s' de tipo '%s'...", self.exchange, self.exchange_type)
             self.channel.exchange_declare(exchange=self.exchange, exchange_type=self.exchange_type, durable=True)
             
             if self.queue:
-                print(f"[Middleware] Declarando cola '{self.queue}' (durable=False)...")
+                logging.info("[Middleware] Declarando cola '%s' (durable=True)...", self.queue)
                 self.channel.queue_declare(queue=self.queue, durable=True)
-                
-                print(f"[Middleware] Enlazando cola '{self.queue}' al exchange '{self.exchange}'...")
+                logging.info("[Middleware] Enlazando cola '%s' al exchange '%s'...", self.queue, self.exchange)
                 self.channel.queue_bind(queue=self.queue, exchange=self.exchange, routing_key=self.routing_key)
         else:
             self.channel.queue_declare(queue=self.queue, durable=True)
@@ -59,7 +60,7 @@ class Middleware:
                 body=body,
                 properties=pika.BasicProperties(delivery_mode=2)
             )
-            print(f" [x] Sent message to exchange {self.exchange} with routing key {routing_key}")
+            logging.debug("Sent message to exchange %s with routing key %s", self.exchange, routing_key)
 
         else:
             self.channel.basic_publish(
@@ -68,7 +69,7 @@ class Middleware:
                 body=body,
                 properties=pika.BasicProperties(delivery_mode=2)
             )
-            print(f" [x] Sent message to queue {self.queue}")
+            logging.debug("Sent message to queue %s", self.queue)
 
     
     def consume(self, callback):
@@ -89,7 +90,7 @@ class Middleware:
             auto_ack=False,
             consumer_tag=self.consumer_tag
         )
-        print(f" [*] Waiting for messages in {self.queue}")
+        logging.info("Waiting for messages in %s", self.queue)
         self.channel.start_consuming()
         
     # TODO: sacar client_id=0 como default
@@ -99,15 +100,15 @@ class Middleware:
             self.connect()
         final_packet = DeletePacket(client_id)
         self.publish(final_packet.to_json(), routing_key)
-        print(f"[Middleware] DeletePacket {final_packet.to_json()} enviado directamente.")
-        
+        logging.info("[Middleware] DeletePacket %s enviado directamente.", final_packet.to_json())
+
     def send_delete_with_node_id(self, client_id, node_id, routing_key=''):
         """Publica un paquete DELETE (con node_id) a través de este middleware."""
         if not self.channel:
             self.connect()
         delete_packet = DeletePacketWithNodeId(client_id=client_id, node_id=node_id)
         self.publish(delete_packet.to_json(), routing_key)
-        print(f"[Middleware] DeletePacketWithNodeId {delete_packet.to_json()} enviado directamente.")
+        logging.info("[Middleware] DeletePacketWithNodeId %s enviado directamente.", delete_packet.to_json())
 
     # TODO: sacar client_id=0 como default
     def send_final(self, client_id=0, routing_key='', count=0):
@@ -116,7 +117,7 @@ class Middleware:
             self.connect()
         final_packet = FinalPacket(client_id, count)
         self.publish(final_packet.to_json(), routing_key)
-        print(f"[Middleware] FinalPacket {final_packet.to_json()} enviado directamente.")
+        logging.info("[Middleware] FinalPacket %s enviado directamente.", final_packet.to_json())
 
     def send_final_with_node_id(self, client_id, node_id, count, routing_key=''):
         """Publica un paquete FINAL (con node_id) a través de este middleware."""
@@ -124,29 +125,7 @@ class Middleware:
             self.connect()
         final_packet = FinalPacketWithNodeId(client_id=client_id, node_id=node_id, count=count)
         self.publish(final_packet.to_json(), routing_key)
-        print(f"[Middleware] FinalPacketWithNodeId {final_packet.to_json()} enviado directamente.")
-                
-    def check_no_consumers(self):
-        """Verifica si hay 0 consumidores en la cola de control."""
-        if not self.channel:
-            self.connect()
-        result = self.channel.queue_declare(queue=self.queue, passive=True)
-        consumer_count = result.method.consumer_count
-        print(f" [x] Control queue has {consumer_count} active consumers")
-        return consumer_count == 1
-    
-    def check_messages(self):
-        if not self.channel:
-            self.connect()
-        result = self.channel.queue_declare(queue=self.queue, passive=True)
-        count = result.method.message_count
-        print(f" [x] Queue has {count} messages")
-    
-    def purge(self):
-        if not self.channel:
-            self.connect()
-        self.channel.queue_purge(queue=self.queue)
-        print(f"[Middleware] Cola '{self.queue}' purgada.")
+        logging.info("[Middleware] FinalPacketWithNodeId %s enviado directamente.",final_packet.to_json())
         
     def close_graceful(self, method):
         if self.channel:
@@ -159,14 +138,14 @@ class Middleware:
             if self.connection and not self.connection.is_closed:
                 self.connection.close()
         except Exception as e:
-            print(f"Failed to close connection. Error: {e}")
+            logging.error("Failed to close connection. Error: %s", e)
             
     def cancel_consumer(self):
         if self.channel and self.channel.is_open:
             self.connection.add_callback_threadsafe(self.channel.stop_consuming)
         if not self.is_consumed and self.channel and self.channel.is_open:
             self.connection.add_callback_threadsafe(lambda: self.channel.basic_cancel(self.consumer_tag))
-            print("Consumidor cancelado exitosamente")
+            logging.info("Consumidor cancelado exitosamente")
 
     def confirm_delivery(self):
         if self.channel:
@@ -175,4 +154,4 @@ class Middleware:
     def delete_queue(self):
         if self.channel:
             self.channel.queue_delete(queue=self.queue)
-            print(f"[Middleware] Cola '{self.queue}' eliminada.") 
+            logging.info("[Middleware] Cola '%s' eliminada.", self.queue) 
