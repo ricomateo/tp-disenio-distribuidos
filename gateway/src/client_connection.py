@@ -2,11 +2,15 @@ import os
 import json
 import signal
 import multiprocessing
+import logging
+from common.logger import init_logging
 from common.atomic_write import atomic_write
 from src.protocol import Protocol
 from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE, FIN_MSG_TYPE
 from common.middleware import Middleware
 from common.packet import is_final_packet
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class ClientConnection:
     def __init__(self, socket, addr, client_id, clients_dir, ):
@@ -50,7 +54,7 @@ class ClientConnection:
             content = "\n".join(filenames) + "\n"
             atomic_write(client_file, content)
         except Exception as e:
-            print(f"[ClientConnection] Error al guardar archivos del cliente {self.client_id}: {e}")
+            logging.error("[ClientConnection] Error al guardar archivos del cliente %s: %s", self.client_id, e)
 
     def _remove_client(self):
         """Elimina el archivo <client_id>.txt del directorio."""
@@ -59,16 +63,16 @@ class ClientConnection:
             if os.path.exists(client_file):
                 os.remove(client_file)
         except Exception as e:
-            print(f"[ClientConnection] Error al eliminar archivo {self.client_id}: {e}")
+            logging.warning("[ClientConnection] Error al eliminar archivo %s:%s", self.client_id, e)
 
     def handle_client(self, addr, client_id):
         """Maneja un cliente en un proceso separado."""
         signal.signal(signal.SIGTERM, self._sigterm_handler)
         client_running = True
-        
+
         try:
             while client_running:
-                if self.running == False:
+                if not self.running:
                     break
                 
                 msg = self.client.recv_message()
@@ -89,7 +93,7 @@ class ClientConnection:
                     self.publish_file_batch(msg, msg_filename)
 
                 elif msg["msg_type"] == EOF_MSG_TYPE:
-                    print(f"[Gateway - Client {client_id}] Archivo CSV recibido correctamente.")
+                    logging.debug("[Gateway - Client %s] Archivo CSV recibido correctamente.", client_id)
                     msg_filename = msg["filename"]
                     self.rabbitmq.send_final(self.client_id, msg_filename, self.batch_count_by_file[filename])
 
@@ -98,13 +102,13 @@ class ClientConnection:
                     client_running = False
 
         except ConnectionError:
-            print(f"[Client {client_id}] Cliente desconectado")
+            logging.warning("[Client %s] Cliente desconectado", client_id)
             self.send_delete()
         except Exception as e:
-            print(f"[Client {client_id}] Error: {e}")
+            logging.warning("[Client %s] Error: %s", client_id, e)
             self.send_delete()
         finally:
-            print(f"[Client {client_id}] Cerrando recursos del cliente")
+            logging.info("[Client %s] Cerrando recursos del cliente", client_id)
             self.rabbitmq_receiver.delete_queue()
             self.close()
 
@@ -125,36 +129,36 @@ class ClientConnection:
                 packet = json.loads(packet_json)
 
                 if is_final_packet(packet.get("header")):
-                        self.client.send_finalization()
-                        ch.basic_ack(delivery_tag=method.delivery_tag)
-                        ch.stop_consuming()
-                        self._remove_client()
-                        return
+                    self.client.send_finalization()
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    ch.stop_consuming()
+                    self._remove_client()
+                    return
 
                 response_str = packet.get("response")
                 if response_str:
-                    print(f"[Gateway  - Client {client_id} - RESULT] Resultado final recibido:\n{response_str}")
+                    logging.debug("[Gateway  - Client %s - RESULT] Resultado final recibido:\n%s", client_id, response_str)
                     if not self.client.send_result(response_str):
                        ch.basic_ack(delivery_tag=method.delivery_tag)
                        ch.stop_consuming() 
                        self.send_delete()
                 else:
-                    print(f"[Gateway - Client {client_id} - RESULT] Packet recibido sin campo 'response'. Ignorado.")
+                    logging.warning(f"[Gateway - Client %s - RESULT] Packet recibido sin campo 'response'. Ignorado.", client_id)
 
                 ch.basic_ack(delivery_tag=method.delivery_tag)
             except json.JSONDecodeError as e:
-                print(f"[Client {client_id} - RESULT] Error decoding JSON: {e}")
+                logging.warning("[Client %s - RESULT] Error decoding JSON: %s", client_id, e)
                 ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
             except Exception as e:
-                print(f"[Client {client_id} - RESULT] Error processing message: {e}")
+                logging.warning("[Client %s - RESULT] Error processing message: %s", client_id, e)
                 ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
-        print(f"[Client {client_id}] Escuchando resultados en {self.input_queue}...")
+        logging.info("[Client %s] Escuchando resultados en %s...", client_id, self.input_queue)
         self.rabbitmq_receiver.consume(callback_reader)
 
     def _sigterm_handler(self, signum, _):
         """Maneja la señal SIGTERM para cerrar el servidor."""
-        print(f"[Client {self.client_id}] Recibida señal SIGTERM")
+        logging.info("[Client %s] Recibida señal SIGTERM", self.client_id)
         self.running = False
         if self.rabbitmq_receiver:
             self.rabbitmq_receiver.cancel_consumer()
@@ -167,13 +171,13 @@ class ClientConnection:
             self.rabbitmq_receiver.close()
             self.client.close()
         except Exception as e:
-            print(f"[Client {self.client_id}] Closing Error: {e}")
-        
+            logging.info("[Client %s] Closing Error: {e}", self.client_id)
+
     def finish(self):
         if self.process.is_alive():
             self.process.terminate()
             self.process.join()
-            
+
     def send_delete(self):
         for fname in self.batch_count_by_file:
             self.rabbitmq.send_delete(client_id=self.client_id, routing_key=fname)
