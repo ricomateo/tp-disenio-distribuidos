@@ -19,7 +19,7 @@ def get_services_to_kill() -> list[str]:
     # Loop in reverse so that elements can be removed on the run
     for i, service in reversed(list(enumerate(services))):
         # Remove clients and join
-        if service.startswith("client") or service.startswith("join"):
+        if service.startswith("client") or service.startswith("join") or service.startswith("gateway"):
             services.pop(i)
     print(f"services = {services}")
     return services
@@ -42,7 +42,7 @@ def kill_containers_randomly(services: list[str]):
             subprocess.run(docker_kill_command, check=True)
         except Exception as e:
             print(f"Failed to kill container {container_to_kill}. Error: {e}")
-        time.sleep(0.2)
+        time.sleep(1)
 
 
 def main():

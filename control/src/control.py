@@ -9,7 +9,7 @@ import time
 import logging
 import signal
 import docker
-from typing import Dict, Set
+from common.atomic_write import atomic_write
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -111,7 +111,9 @@ class ControlNode:
                 with open(ids_tmp_file, "a") as f:
                     json.dump({"id": id, "send": send}, f)
                     f.write("\n")
-                
+                    # Flush the contents
+                    f.flush()
+                    os.fsync(f.fileno())
                 # Atomically replace the original file
                 os.replace(ids_tmp_file, ids_file)
                 logging.debug(f"Appended ID {id} for client {client_id} on node {node_id}")
@@ -150,12 +152,11 @@ class ControlNode:
         """
         Saves the entire final_counts_por_cliente dictionary.
         """
-        tmp_file = self.final_counts_file + ".tmp"
         with self.save_lock:
             try:
-                with open(tmp_file, "w") as f:
-                    json.dump(self.final_counts_por_cliente, f)
-                os.replace(tmp_file, self.final_counts_file)
+                file = self.final_counts_file
+                content = json.dumps(self.final_counts_por_cliente)
+                atomic_write(file, content)
                 logging.debug("Saved final counts state.")
             except Exception as e:
                 logging.error(f"Error saving final counts state: {e}")
@@ -165,12 +166,11 @@ class ControlNode:
         Saves the entire dead_clients set.
         Sets need to be converted to list for JSON serialization.
         """
-        tmp_file = self.dead_clients_file + ".tmp"
         with self.save_lock:
             try:
-                with open(tmp_file, "w") as f:
-                    json.dump(list(self.dead_clients), f) # Convert set to list for JSON
-                os.replace(tmp_file, self.dead_clients_file)
+                file = self.dead_clients_file
+                content = json.dumps(self.dead_clients)
+                atomic_write(file, content)
                 logging.debug("Saved dead clients state.")
             except Exception as e:
                 logging.error(f"Error saving dead clients state: {e}")
