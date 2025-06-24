@@ -28,12 +28,10 @@ class Client:
         Connect to the first gateway it finds available
         """
         for host in self.hosts:
-            print(f"Attempt to connect to: {host}")
             try:
                 self.protocol = Protocol(host, self.port)
                 return
-            except Exception as e:
-                print(f"Failed to connect to host: {host}. Error: {e}")
+            except Exception:
                 continue
         # By this point, the client has tried to connect to all gateways
         # but none of them responded
