@@ -1,11 +1,15 @@
 import json
-from common.middleware import Middleware
-from common.worker_protocol import WorkerProtocol
-from common.packet import DataPacket, is_delete_packet, is_final_packet
-from src.check_condition import check_condition
+import logging
 from datetime import datetime
 import os
 import signal
+from src.check_condition import check_condition
+from common.logger import init_logging
+from common.middleware import Middleware
+from common.worker_protocol import WorkerProtocol
+from common.packet import DataPacket, is_delete_packet, is_final_packet
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class FilterNode:
     def __init__(self):
@@ -112,31 +116,34 @@ class FilterNode:
                 self.control.delete_client(client_id)
             
             
-            print(f" [✓] Filtered and Published to {self.output_queue}: ID: {movie.get('id')}, Title: {movie.get('title', 'Unknown')}, Genres: {movie.get('genres')}")
+            logging.debug(
+                "Filtered and Published to %s: ID: %s, Title: %s , Genres: %s",
+                self.output_queue, movie.get('id'), movie.get('title', 'Unknown'), movie.get('genres')
+            )
             ch.basic_ack(delivery_tag=method.delivery_tag)
-            print(f" [x] Message {method.delivery_tag} acknowledged")
+            logging.debug("Message %s acknowledged", method.delivery_tag)
 
         except json.JSONDecodeError as e:
-            print(f" [!] Error decoding JSON: {e}")
+            logging.warning("Error decoding JSON: %s", e)
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
-            print(f" [!] Error processing message: {e}")
+            logging.warning("Error processing message: %s", e)
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def start_node(self, filters):
         self.filters = filters
-        print(f" [~] Applying filters: {self.filters}")
+        logging.info("Applying filters: %s", self.filters)
 
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
-            print(f" [!] Error in filter node: {e}")
+            logging.warning("Error in filter node: %s", e)
         finally:
             self.close()
             
 
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
+        logging.info("Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
@@ -144,7 +151,7 @@ class FilterNode:
             self.input_rabbitmq.cancel_consumer()
     
     def close(self):
-        print(f"Closing queues")
+        logging.info("Closing queues")
         if self.input_rabbitmq:
             self.input_rabbitmq.close()
         if self.output_rabbitmq:
