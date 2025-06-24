@@ -104,6 +104,32 @@ class FinalPacketWithNodeId:
         data_dict["header"] = FINAL
         return cls(**data_dict)
     
+# Definiendo DeletePacket
+@dataclass
+class DeletePacketWithNodeId:
+    """
+    Delete packet que incluye node_id para identificar el sender
+    y soportar delete duplicados.
+    Se usa en el deliver, que reciben los delete
+    de distintos nodos, y elimina la queue
+    una vez que reciben el delete de todos los nodos.
+    """
+    type: str = DELETE
+    def __init__(self, client_id: int, node_id: str):
+        self.client_id = client_id
+        self.header = DELETE
+        self.node_id = node_id
+
+    def to_json(self):
+        return orjson.dumps(self.__dict__)
+
+    @classmethod
+    def from_json(cls, data):
+        # Parsear el JSON y añadir el valor "DELETE" al campo type
+        data_dict = orjson.loads(data)
+        data_dict["header"] = DELETE
+        return cls(**data_dict)
+    
 @dataclass
 class QueryPacket(Packet):
     response: str

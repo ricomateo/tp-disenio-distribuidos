@@ -9,7 +9,7 @@ import time
 import logging
 import signal
 import docker
-from typing import Dict, Set
+from common.atomic_write import atomic_write
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -26,8 +26,13 @@ class ControlNode:
         self.restart_interval = float(os.getenv("RESTART_INTERVAL") or '5')
         included_containers_env = os.getenv("INCLUDED_CONTAINERS", "")
         self.included_containers = included_containers_env.split(',')
+        
         only_healthcheck_str = os.getenv("ONLY_HEALTHCHECK", "0")
+        only_leader_election = os.getenv("LEADER_ELECTION", "0")
+        
         self.only_healthcheck = only_healthcheck_str == "1"
+        self.leader_election = only_leader_election == "1"
+        
         self.router = bool(os.getenv("ROUTER", ""))
         self.locks_por_cliente = {}
         self.locks_por_nodo = {}
@@ -45,6 +50,7 @@ class ControlNode:
         self.threads = []
         self.should_stop = threading.Event()
         self.save_lock = threading.Lock()
+        self.lock_for_creating_locks = threading.Lock()
         self.load_state()
         self.docker_client = docker.from_env()
         # Registrar manejador de SIGTERM
@@ -91,7 +97,7 @@ class ControlNode:
         
         # Get or create lock for this node_id-client_id pair
         if lock_key not in self.locks_por_nodo:
-            with threading.Lock():  # Ensure thread-safe creation of new lock
+            with self.lock_for_creating_locks:  # Ensure thread-safe creation of new lock
                 if lock_key not in self.locks_por_nodo:
                     self.locks_por_nodo[lock_key] = threading.Lock()
         
@@ -106,7 +112,9 @@ class ControlNode:
                 with open(ids_tmp_file, "a") as f:
                     json.dump({"id": id, "send": send}, f)
                     f.write("\n")
-                
+                    # Flush the contents
+                    f.flush()
+                    os.fsync(f.fileno())
                 # Atomically replace the original file
                 os.replace(ids_tmp_file, ids_file)
                 logging.debug(f"Appended ID {id} for client {client_id} on node {node_id}")
@@ -145,12 +153,11 @@ class ControlNode:
         """
         Saves the entire final_counts_por_cliente dictionary.
         """
-        tmp_file = self.final_counts_file + ".tmp"
         with self.save_lock:
             try:
-                with open(tmp_file, "w") as f:
-                    json.dump(self.final_counts_por_cliente, f)
-                os.replace(tmp_file, self.final_counts_file)
+                file = self.final_counts_file
+                content = json.dumps(self.final_counts_por_cliente)
+                atomic_write(file, content)
                 logging.debug("Saved final counts state.")
             except Exception as e:
                 logging.error(f"Error saving final counts state: {e}")
@@ -160,12 +167,11 @@ class ControlNode:
         Saves the entire dead_clients set.
         Sets need to be converted to list for JSON serialization.
         """
-        tmp_file = self.dead_clients_file + ".tmp"
         with self.save_lock:
             try:
-                with open(tmp_file, "w") as f:
-                    json.dump(list(self.dead_clients), f) # Convert set to list for JSON
-                os.replace(tmp_file, self.dead_clients_file)
+                file = self.dead_clients_file
+                content = json.dumps(self.dead_clients)
+                atomic_write(file, content)
                 logging.debug("Saved dead clients state.")
             except Exception as e:
                 logging.error(f"Error saving dead clients state: {e}")
@@ -489,6 +495,8 @@ class ControlNode:
                 time.sleep(self.sleep_interval)
             except Exception as e:
                 logging.warning(f"Nodo {nodo} no respondió al healthcheck: {e}, intentando reiniciar...")
+                if self.leader_election:
+                    time.sleep(self.restart_interval)
                 self.restart_node(nodo)
 
     def healthcheck_next_control(self):

@@ -22,7 +22,7 @@ class ClientConnection:
         self.input_queue = os.getenv("RABBITMQ_INPUT_QUEUE", "query_queue")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
-        
+
         if self.output_exchange:
             self.rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         else:
@@ -90,6 +90,7 @@ class ClientConnection:
 
                 elif msg["msg_type"] == EOF_MSG_TYPE:
                     print(f"[Gateway - Client {client_id}] Archivo CSV recibido correctamente.")
+                    msg_filename = msg["filename"]
                     self.rabbitmq.send_final(self.client_id, msg_filename, self.batch_count_by_file[filename])
 
                 elif msg["msg_type"] == FIN_MSG_TYPE:

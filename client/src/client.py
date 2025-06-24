@@ -12,13 +12,30 @@ CREDITS_FILENAME = "credits.csv"
 
 
 class Client:
-    def __init__(self, host: str, port: int, batch_size: int):
+    def __init__(self, hosts: list[str], port: int, batch_size: int):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
-        self.protocol = Protocol(host, port)
+        self.hosts = hosts
+        self.port = port
+        self.protocol = None
+
         self.batch_size = batch_size
         self.start_time = time.time()
 
         self.node_id = int(os.getenv("NODE_ID"))
+
+    def connect_to_gateway(self):
+        """
+        Connect to the first gateway it finds available
+        """
+        for host in self.hosts:
+            try:
+                self.protocol = Protocol(host, self.port)
+                return
+            except Exception:
+                continue
+        # By this point, the client has tried to connect to all gateways
+        # but none of them responded
+        raise NoGatewaysAvailable("No gateways available")
 
     def send_movies_file(self, filepath: str):
         filename = MOVIES_FILENAME
@@ -76,6 +93,8 @@ class Client:
                 # Deserialize the response
                 response = json.loads(message["result"])["response"]
                 query_number = response["query"]
+                if query_number in results:
+                    continue
                 result = response["result"]
                 results[query_number] = result
                 print_query_result(query_number, result)
@@ -158,3 +177,9 @@ def print_table(headers: list[str], data: dict):
             value = str(row.get(header, ""))
             row_values.append(value.ljust(column_widths[header]))
         print(" | ".join(row_values))
+
+
+class NoGatewaysAvailable(Exception):
+    """
+    Error raised when there are no gateways available.
+    """

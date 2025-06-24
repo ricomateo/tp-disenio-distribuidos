@@ -4,7 +4,7 @@ import os
 import glob
 import sys
 from common.middleware import Middleware
-from common.packet import is_final_packet
+from common.packet import is_delete_packet, is_final_packet
 from common.atomic_write import atomic_write
 
 class LeaderQueue:
@@ -15,6 +15,7 @@ class LeaderQueue:
         self.consumer_tag = consumer_tag
         self.cluster_size = cluster_size
         self.client_counters = {} # dict[client_id, dict[node_id, count]]
+        self.delete_list = {}
         
         self.final_rabbitmq = Middleware(
             queue=final_queue,
@@ -68,9 +69,21 @@ class LeaderQueue:
                 self.save_state(client_id)
             else: # TODO: remove this, only for debugging
                 print(f"Duplicate final from node: {node_id}")
+                
+            if is_delete_packet(header):
+                self.delete_list[client_id] = True
+                if len(self.client_counters[client_id].keys()) == self.cluster_size:
+                    self.delete_client(client_id)
+                    self.output_rabbitmq.delete_queue()
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
 
             if is_final_packet(header):
                 # If the length of the dict is equal to the cluster size, send the final
+                if client_id in self.delete_list:
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
+                
                 if len(self.client_counters[client_id].keys()) == self.cluster_size:
                     total_count = 0
                     for count in self.client_counters[client_id].values():
