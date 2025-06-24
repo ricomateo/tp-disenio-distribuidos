@@ -93,6 +93,8 @@ class Client:
                 # Deserialize the response
                 response = json.loads(message["result"])["response"]
                 query_number = response["query"]
+                if query_number in results:
+                    continue
                 result = response["result"]
                 results[query_number] = result
                 print_query_result(query_number, result)
