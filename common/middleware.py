@@ -100,7 +100,7 @@ class Middleware:
             self.connect()
         final_packet = DeletePacket(client_id)
         self.publish(final_packet.to_json(), routing_key)
-        logging.info("[Middleware] DeletePacket %s enviado directamente.", final_packet.to_json())
+        logging.debug("[Middleware] DeletePacket %s enviado directamente.", final_packet.to_json())
 
     def send_delete_with_node_id(self, client_id, node_id, routing_key=''):
         """Publica un paquete DELETE (con node_id) a través de este middleware."""
@@ -108,7 +108,7 @@ class Middleware:
             self.connect()
         delete_packet = DeletePacketWithNodeId(client_id=client_id, node_id=node_id)
         self.publish(delete_packet.to_json(), routing_key)
-        logging.info("[Middleware] DeletePacketWithNodeId %s enviado directamente.", delete_packet.to_json())
+        logging.debug("[Middleware] DeletePacketWithNodeId %s enviado directamente.", delete_packet.to_json())
 
     # TODO: sacar client_id=0 como default
     def send_final(self, client_id=0, routing_key='', count=0):
@@ -117,7 +117,7 @@ class Middleware:
             self.connect()
         final_packet = FinalPacket(client_id, count)
         self.publish(final_packet.to_json(), routing_key)
-        logging.info("[Middleware] FinalPacket %s enviado directamente.", final_packet.to_json())
+        logging.debug("[Middleware] FinalPacket %s enviado directamente.", final_packet.to_json())
 
     def send_final_with_node_id(self, client_id, node_id, count, routing_key=''):
         """Publica un paquete FINAL (con node_id) a través de este middleware."""
@@ -125,7 +125,7 @@ class Middleware:
             self.connect()
         final_packet = FinalPacketWithNodeId(client_id=client_id, node_id=node_id, count=count)
         self.publish(final_packet.to_json(), routing_key)
-        logging.info("[Middleware] FinalPacketWithNodeId %s enviado directamente.",final_packet.to_json())
+        logging.debug("[Middleware] FinalPacketWithNodeId %s enviado directamente.",final_packet.to_json())
         
     def close_graceful(self, method):
         if self.channel:
