@@ -57,10 +57,7 @@ class FilterNode:
         
     def callback(self, ch, method, properties, body):
         try:
-            # TODO: ver si hay que cambiar esto
-            if self.running == False:
-                # if self.input_rabbitmq.check_no_consumers():
-                #     self.output_rabbitmq.send_final()
+            if not self.running:
                 self.input_rabbitmq.close_graceful(method)
                 return
 
@@ -70,16 +67,20 @@ class FilterNode:
             client_id = packet.get("client_id")
             
             if is_delete_packet(header):
+                logging.info("Received DELETE packet for client %s", client_id)
                 self.output_rabbitmq.send_delete(client_id=client_id)
+                logging.info("Sent DELETE packet for client %s", client_id)
                 self.control.delete_client(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             
             if is_final_packet(header):
+                logging.info("Received FINAL packet from client %s", client_id)
                 count = int(packet['count'])
                 final, count = self.control.send_final_count(client_id, count)
                 if final:
                     self.output_rabbitmq.send_final(client_id=client_id, count=count)
+                    logging.info("Sent FINAL packet for client %s", client_id)
                     self.control.delete_client(client_id)
                 
                 ch.basic_ack(delivery_tag=method.delivery_tag)
