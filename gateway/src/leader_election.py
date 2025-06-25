@@ -102,7 +102,7 @@ class LeaderElector:
                         self.broadcast_ping()
                         self.protocol.set_timeout(LEADER_TIMEOUT)
                 elif is_ping(message):
-                    if not self.current_leader:
+                    if self.current_leader is None:
                         leader_id = message.get("id")
                         if leader_id is not None:
                             self.set_current_leader(leader_id)
