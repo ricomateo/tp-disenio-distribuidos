@@ -8,13 +8,17 @@ DEAD_CLIENTS_FILE = "dead_clients.json"
 
 class DeadClientsTracker:
     """
-    Tracks the dead clients
+    Tracks the dead clients and performs cleanup
+    of dead client files.
     """
 
     def __init__(self):
-        # Load the state
+        """
+        Tries to load the dead clients from the DEAD_CLIENTS_FILE,
+        and looks for dead client state files to remove (and removes them if there are any)
+        """
         try:
-            with open("dead_clients.json", "r", encoding="utf-8") as f:
+            with open(DEAD_CLIENTS_FILE, "r", encoding="utf-8") as f:
                 self.dead_clients = set(json.loads(f.read()))
         except Exception as e:
             logging.warning("Failed to read '%s' file. Error: %s", DEAD_CLIENTS_FILE, e)
@@ -47,14 +51,14 @@ class DeadClientsTracker:
             client_state_file = f"client.{dead_client}.json"
             if not os.path.exists(client_state_file):
                 continue
-            logging.info(
+            logging.debug(
                 "Client %s is dead but %s was not removed",
                 dead_client,
                 client_state_file,
             )
             try:
                 os.remove(client_state_file)
-                logging.info("Removed file %s", client_state_file)
+                logging.debug("Removed file %s", client_state_file)
             except Exception as e:
                 logging.error(
                     "Failed to remove file '%s'. Error: %s", client_state_file, e
