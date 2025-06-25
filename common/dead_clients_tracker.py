@@ -20,6 +20,8 @@ class DeadClientsTracker:
             logging.warning("Failed to read '%s' file. Error: %s", DEAD_CLIENTS_FILE, e)
             self.dead_clients = set()
 
+        self._remove_leftover_files()
+
     def set_client_as_dead(self, client_id):
         """
         Sets the given client as dead
@@ -34,7 +36,7 @@ class DeadClientsTracker:
         """
         return client_id in self.dead_clients
 
-    def remove_left_over_files(self):
+    def _remove_leftover_files(self):
         """
         Removes the left over client state files
 
