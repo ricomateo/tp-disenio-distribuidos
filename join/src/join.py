@@ -211,14 +211,14 @@ class JoinNode:
                             client_id=client_id, node_id=self.node_id, count=count_send
                         )
                         print(f" [Join thread] Se mandó el final al cliente {client_id}.")
+                        ch.basic_ack(delivery_tag=method.delivery_tag)
+                        self.clean(client_id)
+                        return
                     else:
                         print("[Join thread] activo main by client")
                         self.eof_main_by_client[client_id] = True
                         self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
-                # Borro solo despues haber mandado el final y el ACK
-                # (si crashea antes, pierdo el count)
-                self.clean(client_id)
                 return
 
             packet = DataPacket.from_json(packet_json)
