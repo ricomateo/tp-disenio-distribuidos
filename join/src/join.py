@@ -327,7 +327,7 @@ class JoinNode:
         print(" [🔄] Iniciando merge completo (eof_main=True)")    
         # Realizar merge completo: combinar router_buffer con todos los datos del disco
         for key in stored_keys:
-            router_key = key
+            router_key = int(key)
             # Proteger acceso a router_buffer_by_client
             with self.lock:
                 if router_key in self.router_buffer_by_client.get(client_id, {}):
