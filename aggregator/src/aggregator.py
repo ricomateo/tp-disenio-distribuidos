@@ -7,6 +7,7 @@ from common.middleware import Middleware
 from common.packet import DataPacket, is_delete_packet, is_final_packet
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
+from common.dead_clients_tracker import DeadClientsTracker
 
 
 class AggregatorNode:
@@ -22,6 +23,7 @@ class AggregatorNode:
             queue=self.input_queue, consumer_tag=self.consumer_tag
         )
         self.output_rabbitmq = Middleware(queue=self.output_queue)
+        self.dead_clients_tracker = DeadClientsTracker()
 
         self.operation = os.getenv("operation", "total_invested")
 
@@ -45,18 +47,23 @@ class AggregatorNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
-            
+
             if header and is_delete_packet(header):
                 self.output_rabbitmq.send_delete(client_id=client_id)
+                self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
-            
+
             if header and is_final_packet(header):
+                if self.dead_clients_tracker.client_is_dead(client_id):
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
                 self.send_results(client_id)
                 self.output_rabbitmq.send_final(client_id=client_id)
-                ch.basic_ack(delivery_tag=method.delivery_tag)
+                self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             packet = DataPacket.from_json(packet_json)
