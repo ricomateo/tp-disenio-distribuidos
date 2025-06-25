@@ -347,7 +347,7 @@ class JoinNode:
             "count_by_client": self.count_by_client.get(client_id, 0)
         })
 
-        print(f"Guardo en el archivo {filename} la data {data}")
+        #print(f"Guardo en el archivo {filename} la data {data}")
         atomic_write(filename, data)
 
     def load_all_states(self):
@@ -372,11 +372,11 @@ class JoinNode:
                         self.count_by_client[client_id] = int(state.get("count_by_client", 0))
 
                     print(f" [✅] Se restauró el estado para el client '{client_id}'")
-                    print(f"El estado restaurado es {state}")
+                    #print(f"El estado restaurado es {state}")
 
                     storage = self._get_storage_for_client(client_id)
                     keys = storage.list_keys()
-                    print(f"Las keys guardadas en el storage para el cliente {client_id} es {keys}")
+                    #print(f"Las keys guardadas en el storage para el cliente {client_id} es {keys}")
             except Exception as e:
                 print(f" [!] Error restaurando estado del archivo {client_state_file_path}: {e}")
 
@@ -441,24 +441,24 @@ class JoinNode:
         """
 
         # Este print es debugging, se puede sacar
-        state_files: list[str] = glob.glob("state.client.*.json")
-        print(f" Mostrando los estados finales de los siguientes archivos: {state_files}")
-        for client_state_file_path in state_files:
-            try:
-                client_id = client_state_file_path.split(".")[2]
+        # state_files: list[str] = glob.glob("state.client.*.json")
+        # print(f" Mostrando los estados finales de los siguientes archivos: {state_files}")
+        # for client_state_file_path in state_files:
+        #     try:
+        #         client_id = client_state_file_path.split(".")[2]
                 
-                # READ the actual state file instead of creating new data
-                with open(client_state_file_path, "r", encoding="utf-8") as f:
-                    state = json.load(f)
+        #         # READ the actual state file instead of creating new data
+        #         with open(client_state_file_path, "r", encoding="utf-8") as f:
+        #             state = json.load(f)
                 
-                print(f"El estado final guardado para cliente {client_id} es: {state}")
+        #         print(f"El estado final guardado para cliente {client_id} es: {state}")
 
-                storage = self._get_storage_for_client(client_id)
-                keys = storage.list_keys()
-                print(f"Las keys guardadas en el storage para el cliente {client_id} es {keys}")
+        #         storage = self._get_storage_for_client(client_id)
+        #         keys = storage.list_keys()
+        #         print(f"Las keys guardadas en el storage para el cliente {client_id} es {keys}")
                 
-            except Exception as e:
-                print(f" [!] Error leyendo estado del archivo {client_state_file_path}: {e}")
+        #     except Exception as e:
+        #         print(f" [!] Error leyendo estado del archivo {client_state_file_path}: {e}")
 
 
         print("Closing queues")
