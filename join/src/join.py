@@ -177,6 +177,7 @@ class JoinNode:
 
             with self.lock:
                 # Inicializar router_buffer para el cliente si no existe
+                self.processed_messages_by_client[client_id].add(packet.id)
                 if client_id not in self.router_buffer_by_client:
                     self.router_buffer_by_client[client_id] = {}
                 if router not in self.router_buffer_by_client[client_id]:
@@ -184,7 +185,6 @@ class JoinNode:
                     self.router_buffer_by_client[client_id][router] = movie
                     print(f" [Main thread] Se guardo una nueva entrada para el router '{router}' en el cliente '{client_id}'. \
                             Tamaño actual buffer: {len(self.router_buffer_by_client[client_id])}")
-                    self.processed_messages_by_client[client_id].add(packet.id)
                     self.save_state(client_id)
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -270,6 +270,7 @@ class JoinNode:
                     self.eof_main_by_client[client_id] = False
                 router_in_buffer = router in self.router_buffer_by_client.get(client_id, {})
                 is_eof_main = self.eof_main_by_client[client_id]
+                self.processed_messages_by_client_queue_2[client_id].add(packet.id)
 
             if router_in_buffer:
                 print(f" [Join thread] Router '{router}' found in router_buffer")
@@ -291,7 +292,6 @@ class JoinNode:
                         print(f" [Join thread 💾] Router '{router}' not in buffer, adding to disk for client {client_id}")
                         storage.add(str(router), movie, id)
                         self.save_state(client_id)
-                        self.processed_messages_by_client_queue_2[client_id].add(packet.id)
                         print(f" [Join thread ✅] Added router '{router}' to disk for client {client_id}")
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
