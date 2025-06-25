@@ -3,7 +3,9 @@ import threading
 import os
 import signal
 import glob
+import logging
 from common.consistent_hash import consistent_hash
+from common.logger import init_logging
 from datetime import datetime
 from src.calculation import Calculation
 from common.leader_queue import LeaderQueue
@@ -12,6 +14,7 @@ from common.packet import DataPacket, is_delete_packet, is_final_packet
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
 
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class CalculatorNode:
     def __init__(self):
@@ -40,6 +43,7 @@ class CalculatorNode:
         self.final_rabbitmq = None
         self.threads = []
         self.processed_messages_by_client = {}
+        self.dead_clients = set()
 
         self.leader_queue = None
         if int(self.node_id) == 0 and self.exchange != "router_negative_sentiment":
@@ -84,14 +88,20 @@ class CalculatorNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
-            
+
             if header and is_delete_packet(header):
                 self.output_rabbitmq.send_delete(client_id=client_id)
+                self.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
-                
+
             if header and is_final_packet(header):
+                # Ignore final packets from dead clients
+                if client_id in self.dead_clients:
+                    print("Received FINAL packet from dead client %s", client_id)
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
                 results = self.calculator.get_result(client_id)
                 self.output_rabbitmq.confirm_delivery()
 
@@ -121,8 +131,9 @@ class CalculatorNode:
                 self.final_rabbitmq.send_final_with_node_id(
                     client_id=client_id, count=count, node_id=node_id
                 )
-                ch.basic_ack(delivery_tag=method.delivery_tag)
+                self.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             packet = DataPacket.from_json(packet_json)
@@ -175,6 +186,7 @@ class CalculatorNode:
         Starts the node, loading any previous state (if available)
         """
         self.load_state()
+        self.load_dead_clients_and_remove_leftover_files()
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
@@ -201,6 +213,12 @@ class CalculatorNode:
         # Save the state (atomically) to a file
         atomic_write(filename, data)
 
+    def set_client_as_dead(self, client_id):
+        self.dead_clients.add(client_id)
+        filename = "dead_clients.json"
+        content = json.dumps(list(self.dead_clients))
+        atomic_write(filename, content)
+
     def load_state(self):
         """
         Loads the state (partial result and processed messages) from disk, if available.
@@ -220,6 +238,30 @@ class CalculatorNode:
             print(
                 f"Recovered state from client {client_id}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}"
             )
+
+    def load_dead_clients_and_remove_leftover_files(self):
+        """
+        Attempts to load the dead clients from the dead_clients.json file.
+        It also checks for left over files for dead clients.
+        """
+
+        # Load the state
+        try:
+            with open("dead_clients.json", "r", encoding="utf-8") as f:
+                self.dead_clients = set(json.loads(f.read()))
+        except Exception as e:
+            logging.warning("Failed to read 'dead_clients.json' file. Error: %s", e)
+
+        # Look for left over files
+        for dead_client in self.dead_clients:
+            client_state_file = f"client.{dead_client}.json"
+            if os.path.exists(client_state_file):
+                logging.info("Client %s is dead but %s was not removed", dead_client, client_state_file)
+                try:
+                    os.remove(client_state_file)
+                    logging.info("Removed file %s", client_state_file)
+                except Exception as e:
+                    logging.error("Failed to remove file '%s'. Error: %s", client_state_file, e)
 
     def delete_client_data(self, client_id: int):
         """
