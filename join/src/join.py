@@ -28,7 +28,7 @@ class JoinNode:
         self.running = True
         self.eof_main_by_client = {}  # EOF main por cliente
         self.storages_by_client = {}  # StorageHandler por cliente
-        self.lock = threading.RLock()
+        self.lock = threading.Lock()
         self.node_id = os.getenv("NODE_ID", "")
         self.cluster_size = int(os.getenv("CLUSTER_SIZE", ""))
         self.input_queue_1 = f"{os.getenv('RABBITMQ_QUEUE_1', 'movie_queue_1')}_{self.node_id}"
@@ -42,12 +42,7 @@ class JoinNode:
         self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
         self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.join_by = os.getenv("JOIN_BY", "id")
-        # packets_sent_by_client guarda para cada cliente un set() con los ids de los paquetes enviados
-        # Esto permite obtener el count de forma consistente. Este valor se guarda a disco
-        self.packets_sent_by_client = {}
-        self.processed_messages_by_client = {}
-        self.processed_messages_by_client_queue_2 = {}
-        self.count_test = 0
+        self.count_by_client = {}
 
         self.keep_columns = None
         keep_columns = os.getenv("KEEP_COLUMNS", "")
@@ -84,18 +79,10 @@ class JoinNode:
 
         self.leader_queue = None
         if int(self.node_id) == 0:
-            self.leader_queue = LeaderQueue(
-                self.final_queue,
-                self.output_queue,
-                self.consumer_tag,
-                self.cluster_size,
-            )
+            self.leader_queue = LeaderQueue(self.final_queue, self.output_queue, self.consumer_tag, self.cluster_size)
 
-        self.control = WorkerProtocol(
-            self.health_server_ip,
-            self.health_server_port,
-            self.health_server_port,
-        )
+        self.control = WorkerProtocol(self.health_server_ip, self.health_server_port, self.health_server_port)
+        self.load_all_states()
 
     def _get_storage_for_client(self, client_id):
         """Obtiene o crea un StorageHandler para un cliente."""
@@ -139,7 +126,7 @@ class JoinNode:
                     if self.eof_main_by_client[client_id] is True:
                         print("merge + final del main")
                         self.merge(client_id)
-                        count_send = len(self.packets_sent_by_client[client_id])
+                        count_send = self.count_by_client[client_id]
                         self.final_rabbitmq.send_final_with_node_id(
                             client_id=client_id, node_id=self.node_id, count=count_send
                         )
@@ -164,13 +151,6 @@ class JoinNode:
             movie = packet.data
             router = int(movie.get(self.join_by))
 
-            if client_id not in self.processed_messages_by_client:
-                self.processed_messages_by_client[client_id] = set()
-            
-            if packet.id in self.processed_messages_by_client[client_id]:
-                ch.basic_ack(delivery_tag=method.delivery_tag)
-                return
-
             if not router:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
@@ -184,7 +164,6 @@ class JoinNode:
                     self.router_buffer_by_client[client_id][router] = movie
                     print(f" [Main thread] Se guardo una nueva entrada para el router '{router}' en el cliente '{client_id}'. \
                             Tamaño actual buffer: {len(self.router_buffer_by_client[client_id])}")
-                    self.processed_messages_by_client[client_id].add(packet.id)
                     self.save_state(client_id)
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -223,13 +202,11 @@ class JoinNode:
             
             if is_final_packet(header):
                 print(f" [Join thread *]  Cola '{self.input_queue_2}' terminó.")
-                count = int(packet.get("count"))
-                print(f" [Join thread ✅] Count final ({count}) CONTRA con los datos acumulados ({self.count_test}) para el cliente {client_id}")
                 with self.lock:
                     if self.eof_main_by_client[client_id] is True:
                         print("[Join thread] merge + final del join")
                         self.merge(client_id)
-                        count_send = len(self.packets_sent_by_client[client_id])
+                        count_send = self.count_by_client[client_id]
                         self.final_rabbitmq.send_final_with_node_id(
                             client_id=client_id, node_id=self.node_id, count=count_send
                         )
@@ -253,19 +230,10 @@ class JoinNode:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
-            if client_id not in self.processed_messages_by_client_queue_2:
-                self.processed_messages_by_client_queue_2[client_id] = set()
-
-            if packet.id in self.processed_messages_by_client_queue_2[client_id]:
-                ch.basic_ack(delivery_tag=method.delivery_tag)
-                return
-
-            self.count_test += 1
-
             with self.lock:
-                if client_id not in self.packets_sent_by_client:
+                if client_id not in self.count_by_client:
                     print(f"[Join thread] Initializing packets_sent[client_id={client_id}]")
-                    self.packets_sent_by_client[client_id] = set()
+                    self.count_by_client[client_id] = 0
                 if client_id not in self.eof_main_by_client:
                     self.eof_main_by_client[client_id] = False
                 router_in_buffer = router in self.router_buffer_by_client.get(client_id, {})
@@ -278,10 +246,10 @@ class JoinNode:
                 joined_packet = self.create_joined_packet(client_id, movie1, movie, id)
                 with self.lock:
                     self.output_rabbitmq.publish(joined_packet.to_json())
-                self.packets_sent_by_client[client_id].add(id)
-                print(f"[Join thread] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
+                self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
+                print(f"CAMBIA EL COUNT BY CLIENT PARA EL CLIENTE {client_id}")
+                print(f" [✓] Joined and published router '{router}' para cliente '{client_id}' to output_rabbitmq")
                 self.save_state(client_id)
-                
             else:
                 # Si eof_main es False, guardar en el disco
                 if not is_eof_main:
@@ -291,7 +259,6 @@ class JoinNode:
                         print(f" [Join thread 💾] Router '{router}' not in buffer, adding to disk for client {client_id}")
                         storage.add(str(router), movie, id)
                         self.save_state(client_id)
-                        self.processed_messages_by_client_queue_2[client_id].add(packet.id)
                         print(f" [Join thread ✅] Added router '{router}' to disk for client {client_id}")
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -327,13 +294,12 @@ class JoinNode:
         print(" [🔄] Iniciando merge completo (eof_main=True)")    
         # Realizar merge completo: combinar router_buffer con todos los datos del disco
         for key in stored_keys:
-            router_key = key
+            router_key = int(key)
             # Proteger acceso a router_buffer_by_client
-            with self.lock:
-                if router_key in self.router_buffer_by_client.get(client_id, {}):
-                    movie1 = self.router_buffer_by_client[client_id][router_key]
-                else:
-                    continue
+            if router_key in self.router_buffer_by_client.get(client_id, {}):
+                movie1 = self.router_buffer_by_client[client_id][router_key]
+            else:
+                continue
             stored_movies = storage.retrieve(key)
             if stored_movies:
                 # Asegurarse de que stored_movies sea una lista
@@ -343,9 +309,9 @@ class JoinNode:
                 for movie2, id in stored_movies:
                     joined_packet = self.create_joined_packet(client_id, movie1, movie2, id)
                     self.output_rabbitmq.publish(joined_packet.to_json())
-                    self.packets_sent_by_client[client_id].add(id)
-                    print(f"[Merge] Saved packets_sent[client_id={client_id}] = {len(self.packets_sent_by_client[client_id])}")
-                    print(f" [Merge ✓] Joined and published router '{router_key}' from disk to output_rabbitmq")
+                    self.count_by_client[client_id] = self.count_by_client.get(client_id, 0) + 1
+                    print(f"CAMBIA EL COUNT BY CLIENT PARA EL CLIENTE {client_id}")
+                    print(f" [Merge ✓] Joined and published router '{router_key}' from disk to output_rabbitmq")        
 
     def start_node(self):
         """
@@ -353,8 +319,6 @@ class JoinNode:
         terminen. Por útimo, en caso de ser el líder espera a que termine la leader queue.
         """
         try:
-            self.load_all_states()
-
             t1 = threading.Thread(target=self.input_rabbitmq_1.consume, args=(self.main_callback,))
             t1.start()
             self.threads.append(t1)
@@ -371,42 +335,51 @@ class JoinNode:
                 self.leader_queue.join()
             self.close()
 
-    def save_state(self, client_id: int):
+    def save_state(self, client_id):
         """
         Guarda el estado del cliente en un archivo .json de forma atómica.
         El archivo va a tener el nombre state.client.<client_id>.json
         """
         filename = f"state.client.{client_id}.json"
-        data = {
+        data = json.dumps({
             "eof_main": self.eof_main_by_client.get(client_id, False),
             "router_buffer": self.router_buffer_by_client.get(client_id, {}),
-            "processed_messages": list(self.processed_messages_by_client.get(client_id, [])),
-            "processed_messages_queue_2": list(self.processed_messages_by_client_queue_2.get(client_id, [])),
-            "packets_sent": list(self.packets_sent_by_client.get(client_id, [])),
-        }
-        atomic_write(filename, json.dumps(data))
+            "count_by_client": self.count_by_client.get(client_id, 0)
+        })
+
+        print(f"Guardo en el archivo {filename} la data {data}")
+        atomic_write(filename, data)
 
     def load_all_states(self):
         """
         Carga todos los estados persistidos del disco en el nodo de los archivos 
         state de cada cliente.
         """
-        state_files = glob.glob("state.client.*.json")
-        for state_file in state_files:
+        state_files: list[str] = glob.glob("state.client.*.json")
+        print(f" Cargando los estados previos de los siguientes archivos: {state_files}")
+        for client_state_file_path in state_files:
             try:
-                client_id = int(state_file.split(".")[2])
-                with open(state_file, "r", encoding="utf-8") as f:
+                client_id = int(client_state_file_path.split(".")[2])
+                with open(client_state_file_path, "r", encoding="utf-8") as f:
                     state = json.load(f)
 
-                    # Cargar estado principal
-                    self.eof_main_by_client[client_id] = state.get("eof_main", False)
-                    self.router_buffer_by_client[client_id] = state.get("router_buffer", {})
-                    self.processed_messages_by_client[client_id] = set(state.get("processed_messages", []))
-                    self.processed_messages_by_client_queue_2[client_id] = set(state.get("processed_messages_queue_2", []))
-                    self.packets_sent_by_client[client_id] = set(state.get("packets_sent", []))
+                    raw_buffer = state.get("router_buffer", {})
+                    router_buffer = {int(k): v for k, v in raw_buffer.items()}
 
+                    with self.lock:
+                        self.eof_main_by_client[client_id] = state.get("eof_main", False)
+                        self.router_buffer_by_client[client_id] = router_buffer
+                        self.count_by_client[client_id] = int(state.get("count_by_client", 0))
+
+                    print(f" [✅] Se restauró el estado para el client '{client_id}'")
+                    print(f"El estado restaurado es {state}")
+
+                    storage = self._get_storage_for_client(client_id)
+                    keys = storage.list_keys()
+                    print(f"Las keys guardadas en el storage para el cliente {client_id} es {keys}")
             except Exception as e:
-                print(f"Error loading state from {state_file}: {e}")
+                print(f" [!] Error restaurando estado del archivo {client_state_file_path}: {e}")
+
 
     def delete_client_state(self, client_id):
         """
@@ -455,8 +428,8 @@ class JoinNode:
         self.delete_client_state(client_id)
 
         # Limpiar count del cliente
-        if client_id in self.packets_sent_by_client:
-            del self.packets_sent_by_client[client_id]
+        if client_id in self.count_by_client:
+            del self.count_by_client[client_id]
         print(f" [✅] Disco limpio y memoria limpia para '{client_id}'") 
 
     def close(self):
@@ -466,6 +439,28 @@ class JoinNode:
         diccionarios de storage by client y router_buffer, el storage para los clientes y el
         storage para el fault tolerance.
         """
+
+        # Este print es debugging, se puede sacar
+        state_files: list[str] = glob.glob("state.client.*.json")
+        print(f" Mostrando los estados finales de los siguientes archivos: {state_files}")
+        for client_state_file_path in state_files:
+            try:
+                client_id = client_state_file_path.split(".")[2]
+                
+                # READ the actual state file instead of creating new data
+                with open(client_state_file_path, "r", encoding="utf-8") as f:
+                    state = json.load(f)
+                
+                print(f"El estado final guardado para cliente {client_id} es: {state}")
+
+                storage = self._get_storage_for_client(client_id)
+                keys = storage.list_keys()
+                print(f"Las keys guardadas en el storage para el cliente {client_id} es {keys}")
+                
+            except Exception as e:
+                print(f" [!] Error leyendo estado del archivo {client_state_file_path}: {e}")
+
+
         print("Closing queues")
         if self.leader_queue:
             self.leader_queue.close()
