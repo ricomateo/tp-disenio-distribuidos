@@ -101,7 +101,7 @@ class CalculatorNode:
             if header and is_final_packet(header):
                 # Ignore final packets from dead clients
                 if self.dead_clients_tracker.client_is_dead(client_id):
-                    print("Received FINAL packet from dead client %s", client_id)
+                    logging.debug("Received FINAL packet from dead client %s", client_id)
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
                 results = self.calculator.get_result(client_id)
@@ -110,7 +110,7 @@ class CalculatorNode:
                 count = 0
                 for result in results:
                     id = str(consistent_hash(str(self.node_id) + str(result)))
-                    print(
+                    logging.info(
                         f"Resultados del cálculo (client_id = {client_id}): {result}, id = {id}"
                     )
                     data_packet = DataPacket(
@@ -149,7 +149,7 @@ class CalculatorNode:
             # If the message has been already processed, skip it
             if id in self.processed_messages_by_client[client_id]:
                 title = movie.get("title")
-                print(
+                logging.debug(
                     f"Duplicate message: id: {id}, title: {title}, client_id: {client_id}"
                 )
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -161,24 +161,24 @@ class CalculatorNode:
             self.processed_messages_by_client[client_id].add(id)
 
             if success:
-                print(
+                logging.debug(
                     f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}"
                 )
                 self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
-                print(f" [x] Message {method.delivery_tag} acknowledged")
+                logging.debug(f" [x] Message {method.delivery_tag} acknowledged")
             else:
                 ch.basic_nack(
                     delivery_tag=method.delivery_tag, multiple=False, requeue=False
                 )
 
         except json.JSONDecodeError as e:
-            print(f" [!] Error decoding JSON: {e}")
+            logging.error(f" [!] Error decoding JSON: {e}")
             ch.basic_nack(
                 delivery_tag=method.delivery_tag, multiple=False, requeue=False
             )
         except Exception as e:
-            print(f" [!] Error processing message: {e}, raw packet is {packet_json}")
+            logging.error(f" [!] Error processing message: {e}, raw packet is {packet_json}")
             ch.basic_nack(
                 delivery_tag=method.delivery_tag, multiple=False, requeue=False
             )
@@ -191,7 +191,7 @@ class CalculatorNode:
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
-            print(f" [!] Error in calculator node: {e}")
+             logging.error(f" [!] Error in calculator node: {e}")
         finally:
             if self.leader_queue:
                 self.leader_queue.join()
@@ -220,7 +220,7 @@ class CalculatorNode:
         """
         # Get a list of files that match the pattern client.*.json
         state_files: list[str] = glob.glob("client.*.json")
-        print(f"StateFiles = {state_files}")
+        logging.debug(f"StateFiles = {state_files}")
         for file in state_files:
             client_id = int(file.split(".")[1])
             with open(file, "r", encoding="utf-8") as f:
@@ -230,7 +230,7 @@ class CalculatorNode:
                 self.processed_messages_by_client[client_id] = set(
                     state.get("processed_messages", [])
                 )
-            print(
+            logging.info(
                 f"Recovered state from client {client_id}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}"
             )
 
@@ -244,10 +244,10 @@ class CalculatorNode:
         try:
             os.remove(f"client.{client_id}.json")
         except Exception as e:
-            print(f"Failed to remove file for client {client_id}. Error: {e}")
+             logging.error(f"Failed to remove file for client {client_id}. Error: {e}")
 
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
+        logging.info(f"Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
@@ -259,7 +259,7 @@ class CalculatorNode:
             self.leader_queue.close()
 
     def close(self):
-        print(f"Closing queues")
+        logging.debug(f"Closing queues")
         if self.leader_queue:
             self.leader_queue.close()
         if self.input_rabbitmq:

@@ -9,10 +9,11 @@ import time
 import logging
 import signal
 import docker
+from common.logger import init_logging
 from common.atomic_write import atomic_write
 
 # Configurar logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class ControlNode:
     def __init__(self):
@@ -250,7 +251,7 @@ class ControlNode:
                     response_message = response_prefix + b"\n"
             
             conn.sendall(response_message)
-            logging.info(f"Client {client_id} inserted ID {id_recibido}. Final signal: {client_finished}")
+            logging.debug(f"Client {client_id} inserted ID {id_recibido}. Final signal: {client_finished}")
 
         except ValueError as ve:
             logging.error(f"Error parsing message for insert ID: {ve}. Message: '{mensaje}'")
@@ -293,7 +294,6 @@ class ControlNode:
                     response_message = response_prefix + b"\n"
                 
             conn.sendall(response_message)
-            logging.info(f"Client {client_id} sent final count {count_recibido}. Match: {is_match}.") # Log total send only if match
 
 
         except ValueError as ve:
@@ -326,7 +326,7 @@ class ControlNode:
         """
         Se encarga de ejecutar la funcion correspondiente segun la request del nodo worker
         """
-        logging.info(f"Nodo {nodo} conectado (ID/delete connection)")
+        logging.debug(f"Nodo {nodo} conectado (ID/delete connection)")
         try:
             conn.settimeout(self.restart_interval)
             while not self.should_stop.is_set() and self.restart_in_progress[nodo] is False:
@@ -490,7 +490,7 @@ class ControlNode:
                 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 client_socket.settimeout(self.restart_interval)
                 client_socket.connect((nodo, self.health_server_port))
-                logging.info(f"Nodo {nodo} conectado (Healthcheck connection)")
+                logging.debug(f"Nodo {nodo} conectado (Healthcheck connection)")
                 client_socket.close()
                 time.sleep(self.sleep_interval)
             except Exception as e:
@@ -513,7 +513,7 @@ class ControlNode:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 sock.settimeout(self.restart_interval)
                 sock.connect((host, self.health_server_port))
-                logging.info(f"Nodo {host} conectado (Healthcheck connection)")
+                logging.debug(f"Nodo {host} conectado (Healthcheck connection)")
                 sock.close()
                 time.sleep(self.sleep_interval)
             except Exception as e:

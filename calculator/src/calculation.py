@@ -1,6 +1,11 @@
 import ast
 import json
 from typing import Dict, Tuple, List, Set
+import logging
+from common.logger import init_logging
+import os
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 COUNT = "COUNT_BY"
 AVERAGE = "AVERAGE_BY"
@@ -49,16 +54,15 @@ class Calculation:
             return value
         try:
             parsed = ast.literal_eval(value)
-            #print(f"Parsed result: {parsed!r}")
             return parsed
         except (ValueError, SyntaxError) as e:
-            print(f"Error parsing string '{value}': {e}")
+            logging.error(f"Error parsing string '{value}': {e}")
         try:
             parsed = json.loads(value)
-            print(f"Parsed result: {parsed!r}")
+            logging.error(f"Parsed result: {parsed!r}")
             return parsed
         except json.JSONDecodeError as e:
-            print(f"Error parsing JSON string '{value}': {e}")
+            logging.error(f"Error parsing JSON string '{value}': {e}")
         return None
     
     def process_count_operation(self, client_id: int, movie: Dict) -> bool:
@@ -92,7 +96,7 @@ class Calculation:
                     processed = True
 
         if not processed:
-            print(f"Skipped movie '{title}' with missing or invalid {self.key}")
+            logging.debug(f"Skipped movie '{title}' with missing or invalid {self.key}")
 
         return processed
 
@@ -140,10 +144,10 @@ class Calculation:
                         processed = True
 
                 if not processed:
-                    print(f"Skipped movie '{title}' with invalid {self.key}")
+                    logging.debug(f"Skipped movie '{title}' with invalid {self.key}")
                 return processed
             except (ValueError, TypeError):
-                print(f"Skipped movie '{title}' with invalid {self.value_field}")
+                logging.error(f"Skipped movie '{title}' with invalid {self.value_field}")
                 return False
         return False
     
@@ -169,7 +173,7 @@ class Calculation:
 
             return True
         except (ValueError, TypeError):
-            print(f"Skipped movie '{title}' with invalid {self.numerator} or {self.denominator}")
+            logging.error(f"Skipped movie '{title}' with invalid {self.numerator} or {self.denominator}")
             return False
 
     def process_sum_operation(self, client_id: int, movie: Dict) -> bool:
@@ -188,7 +192,7 @@ class Calculation:
 
             parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
             if not isinstance(parsed_keys, list):
-                print(f"Skipped movie '{title}' with invalid {self.key}")
+                logging.warning(f"Skipped movie '{title}' with invalid {self.key}")
                 return False
 
             for key_item in parsed_keys:
@@ -203,13 +207,12 @@ class Calculation:
                         self.sums_by_client[client_id][key_item] = self.sums_by_client[client_id].get(key_item, 0) + value
             return True
         except (ValueError, TypeError):
-            print(f"Skipped movie '{title}' with invalid {self.value_field}")
+            logging.error(f"Skipped movie '{title}' with invalid {self.value_field}")
             return False
 
     def process_movie(self, client_id: int, movie: Dict) -> bool:
         """Process a movie based on the operation, return True if processed successfully."""
         try:
-            title = movie.get("title", "Unknown")
             
             if self.op_type == COUNT:
                 return self.process_count_operation(client_id, movie)
@@ -222,7 +225,7 @@ class Calculation:
             return False
 
         except Exception as e:
-            print(f"Error processing movie '{title}': {e}")
+            logging.error(f"Error processing movie : {e}")
             return False
 
     def get_result(self, client_id: int) -> List[Dict]:

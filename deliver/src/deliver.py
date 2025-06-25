@@ -10,6 +10,11 @@ from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
 from common.dead_clients_tracker import DeadClientsTracker
 
+import logging
+from common.logger import init_logging
+
+# Configurar logging
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class DeliverNode:
     def __init__(self):
@@ -75,7 +80,7 @@ class DeliverNode:
                 final_response_str = json.dumps(
                     {"response": final_response}, ensure_ascii=False
                 )
-                print(f"final response = {json.dumps(final_response, indent=4)}")
+                logging.info(f"final response = {json.dumps(final_response, indent=4)}")
                 query_packet = QueryPacket(
                     timestamp=datetime.utcnow().isoformat(), response=final_response_str
                 )
@@ -91,14 +96,14 @@ class DeliverNode:
 
             packet = DataPacket.from_json(body_decoded)
 
-            print(f"Received packet with id {packet.id}")
+            logging.debug(f"Received packet with id {packet.id}")
             # Initialize set of processed messages
             if client_id not in self.processed_messages_by_client:
                 self.processed_messages_by_client[client_id] = set()
 
             # If the message has been processed, ignore it
             if packet.id in self.processed_messages_by_client[client_id]:
-                print(f"Duplicate packet = {packet}")
+                logging.debug(f"Duplicate packet = {packet}")
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
@@ -109,10 +114,10 @@ class DeliverNode:
 
             # Save the state before sending the ACK
             self.save_state(client_id)
-            print(f" [DeliverNode] Movie added with id: {packet.client_id}")
+            logging.debug(f" [DeliverNode] Added with id: {packet.id}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
-            print(f" [DeliverNode] Error: {e}")
+            logging.error(f" [DeliverNode] Error: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
 
     def process_packet(self, packet: DataPacket):
@@ -123,7 +128,7 @@ class DeliverNode:
                 self.response_by_client[client_id] = []
             self.response_by_client[client_id].append(data)
         except Exception as e:
-            print(f"Failed to process packet: {e}")
+            logging.error(f"Failed to process packet: {e}")
 
     def generate_final_response(self, client_id):
         """
@@ -190,12 +195,6 @@ class DeliverNode:
 
         return response
 
-    def _log_startup(self):
-        """Log startup information about queues, filters, and columns."""
-        print(
-            f" [~] DeliverNode listening on {self.input_queue}, will send to {self.output_queue}"
-        )
-
     def save_state(self, client_id):
         """
         Saves the state by writing it (atomically) to the hard drive.
@@ -224,18 +223,17 @@ class DeliverNode:
                 data.get("processed_messages", [])
             )
             self.response_by_client[client_id] = data.get("state", [])
-            # TODO: remove this print
-            print(
+            
+            logging.info(
                 f"Recovered data for client {client_id}.\nData: {json.dumps(data, indent=4)}"
             )
 
     def start_node(self):
-        self._log_startup()
         self.load_state()
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
-            print(f" [!] Error in deliver node: {e}")
+            logging.error(f" [!] Error in deliver node: {e}")
         finally:
             if self.leader_queue:
                 self.leader_queue.join()
@@ -252,11 +250,11 @@ class DeliverNode:
         try:
             os.remove(f"client.{client_id}.json")
         except Exception as e:
-            print(f"Failed to remove file for client {client_id}. Error: {e}")
-        print(f"Deleted data for client {client_id}")
+            logging.error(f"Failed to remove file for client {client_id}. Error: {e}")
+        logging.debug(f"Deleted data for client {client_id}")
 
     def _sigterm_handler(self, signum, _):
-        print("Received SIGTERM signal")
+        logging.info("Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
@@ -266,7 +264,7 @@ class DeliverNode:
             self.leader_queue.close()
 
     def close(self):
-        print("Closing queues")
+        logging.debug("Closing queues")
         if self.leader_queue:
             self.leader_queue.close()
         if self.input_rabbitmq:

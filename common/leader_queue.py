@@ -2,10 +2,16 @@ import threading
 import json
 import os
 import glob
-import sys
 from common.middleware import Middleware
 from common.packet import is_delete_packet, is_final_packet
 from common.atomic_write import atomic_write
+import logging
+
+from common.logger import init_logging
+
+
+# Configurar logging
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class LeaderQueue:
     def __init__(self, final_queue, output_queue, consumer_tag, cluster_size, output_exchange = None):
@@ -54,7 +60,7 @@ class LeaderQueue:
             client_id = packet.get("client_id")
             node_id = packet.get("node_id")
             count: int = packet.get("count", 0)
-            print(f"node_id = {node_id}")
+            logging.info(f"node_id = {node_id} with count: {count} for client {client_id} arrived")
 
             # For each client_id, keep a dict that contains the ids of the nodes
             # that sent a FINAL packet, and the count for each node
@@ -68,7 +74,7 @@ class LeaderQueue:
                 # Save the state
                 self.save_state(client_id)
             else: # TODO: remove this, only for debugging
-                print(f"Duplicate final from node: {node_id}")
+                 logging.debug(f"Duplicate final from node: {node_id}")
                 
             if is_delete_packet(header):
                 self.delete_list[client_id] = True
@@ -88,7 +94,7 @@ class LeaderQueue:
                     total_count = 0
                     for count in self.client_counters[client_id].values():
                         total_count += count
-                    print(f"Sending final with total_count = {total_count}")
+                    logging.info(f"Sending final with total_count = {total_count}")
                     self.output_rabbitmq.send_final(
                         client_id=client_id, routing_key=str(client_id), count=total_count
                     )
@@ -98,7 +104,7 @@ class LeaderQueue:
                     return
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
-            print(f" [!] Error in shared callback for {self.final_queue}: {e}")
+            logging.error(f" [!] Error in shared callback for {self.final_queue}: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def consume(self):
@@ -108,9 +114,9 @@ class LeaderQueue:
             self.final_rabbitmq.consume(self.callback)
 
         except Exception as e:
-            print(f" [!] Error consuming queue {self.final_queue}: {e}")
+            logging.error(f" [!] Error consuming queue {self.final_queue}: {e}")
         finally:
-            print(f" [!] Stopped consuming queue {self.final_queue}")
+            logging.debug(f" [!] Stopped consuming queue {self.final_queue}")
             self.output_rabbitmq.close()
             self.final_rabbitmq.close()
 
@@ -132,7 +138,7 @@ class LeaderQueue:
         try:
             os.remove(file)
         except Exception as e:
-            print(f"Failed to remove file {file}. Error: {e}")
+             logging.error(f"Failed to remove file {file}. Error: {e}")
 
     def load_state(self):
         """
@@ -140,7 +146,7 @@ class LeaderQueue:
         """
         # Get a list of files that match the pattern client.*.json
         state_files: list[str] = glob.glob("final.*.json")
-        print(f"FinalFiles = {state_files}")
+        logging.info(f"FinalFiles = {state_files}")
         for file in state_files:
             client_id = int(file.split(".")[1])
             try:
@@ -148,8 +154,8 @@ class LeaderQueue:
                     state = json.loads(f.read())
                     self.client_counters[client_id] = state
             except Exception as e:
-                print(f"Failed to read file {file}. Error: {e}")
-            print(f"Recovered state from client {client_id}, state = {state}")
+                 logging.error(f"Failed to read file {file}. Error: {e}")
+            logging.info(f"Recovered state from client {client_id}, state = {state}")
 
 
     def filename_for_client(self, client_id) -> str:

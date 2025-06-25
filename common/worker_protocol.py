@@ -1,8 +1,11 @@
 import socket
-import sys
 import threading
-import time
+import os
 import logging
+from common.logger import init_logging
+
+# Configurar logging
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class WorkerProtocol:
     def __init__(self, host: str, port: int, health_port: int):
@@ -32,7 +35,7 @@ class WorkerProtocol:
             except socket.timeout:
                 continue
             except Exception as e:
-                print(f"Error en control_health_server: {e}")
+                logging.error(f"Error en control_health_server: {e}")
         health_server.close()
         
     def healthcheck_listen(self):
@@ -48,7 +51,7 @@ class WorkerProtocol:
             except socket.timeout:
                 continue
             except Exception as e:
-                print(f"Error en control_health_server: {e}")
+                logging.error(f"Error en control_health_server: {e}")
         health_server.close()
 
     def read_until_newline(self) -> str:
