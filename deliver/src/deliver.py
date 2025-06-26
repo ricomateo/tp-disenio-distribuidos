@@ -93,7 +93,7 @@ class DeliverNode:
                 query_packet = QueryPacket(
                     timestamp=datetime.utcnow().isoformat(), response=final_response_str
                 )
-                self.output_rabbitmq.confirm_delivery()
+
                 self.output_rabbitmq.publish(query_packet.to_json(), str(client_id))
                 logging.info("Sent final response for client %s", client_id)
                 self.final_rabbitmq.send_final_with_node_id(
