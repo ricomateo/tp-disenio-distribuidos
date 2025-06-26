@@ -6,7 +6,7 @@ import yaml
 
 def get_services_to_kill() -> list[str]:
     """
-    Returns the services that can be killed (does notn include rabbitmq, gateway and join nodes)
+    Returns the services that can be killed (does not include rabbitmq, gateway and clients)
     """
     docker_compose_file = "docker-compose-gen.yaml"
     with open(docker_compose_file, "r", encoding="utf-8") as f:
@@ -18,8 +18,8 @@ def get_services_to_kill() -> list[str]:
     services.remove("gateway")
     # Loop in reverse so that elements can be removed on the run
     for i, service in reversed(list(enumerate(services))):
-        # Remove clients and join
-        if service.startswith("client") or service.startswith("join") or service.startswith("gateway"):
+        # Remove clients and gateways
+        if service.startswith("client") or service.startswith("gateway"):
             services.pop(i)
     print(f"services = {services}")
     return services
