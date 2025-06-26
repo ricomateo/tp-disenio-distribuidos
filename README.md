@@ -374,3 +374,7 @@ La escritura del estado en disco se hace a través de la función `atomic_write`
 ### Sobre la elección de líder en el gateway
 
 Decidimos utilizar la elección de líder en el gateway porque de esta forma nos cubrimos de una posible caída del nodo que escucha las conexiones de los clientes, ya que, en caso de que se caiga el gateway líder, el cual está en espera de conexiones entrantes de clientes, se va a disparar una elección de líder para que se ocupe de escuchar las nuevas conexiones entrantes.
+
+### El manejo de clientes que se desconectan
+
+Los clientes que se desconectan del gateway no van a escuchar la respuesta, por lo que cuando el gateway detecta que un cliente se desconectó, entonces envía un mensaje `delete_client`, que se va a propagar entre todos los nodos del sistema, de tal forma que se borre toda la información persistida destinada al cliente desconectado.
