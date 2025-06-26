@@ -8,6 +8,7 @@ from common.leader_queue import LeaderQueue
 from common.packet import DataPacket, QueryPacket, is_delete_packet, is_final_packet
 from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
+from common.dead_clients_tracker import DeadClientsTracker
 
 
 class DeliverNode:
@@ -44,6 +45,7 @@ class DeliverNode:
         self.control = WorkerProtocol(
             self.health_server_ip, self.health_server_port, self.health_server_port
         )
+        self.dead_clients_tracker = DeadClientsTracker()
 
     def callback(self, ch, method, properties, body):
         try:
@@ -55,14 +57,20 @@ class DeliverNode:
             packet = json.loads(body_decoded)
             header = packet.get("header")
             client_id = packet.get("client_id")
-            
+
             if header and is_delete_packet(header):
-                self.final_rabbitmq.send_delete_with_node_id(client_id=client_id, node_id=self.query_number)
+                self.final_rabbitmq.send_delete_with_node_id(
+                    client_id=client_id, node_id=self.query_number
+                )
+                self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
-            
+
             if header and is_final_packet(header):
+                if self.dead_clients_tracker.client_is_dead(client_id):
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
                 final_response = self.generate_final_response(client_id)
                 final_response_str = json.dumps(
                     {"response": final_response}, ensure_ascii=False
@@ -76,8 +84,9 @@ class DeliverNode:
                 self.final_rabbitmq.send_final_with_node_id(
                     client_id=int(client_id), node_id=self.query_number, count=1
                 )
-                ch.basic_ack(delivery_tag=method.delivery_tag)
+                self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             packet = DataPacket.from_json(body_decoded)

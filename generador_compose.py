@@ -14,6 +14,9 @@ def initialize_config(config_file="config.ini"):
     
     if not config.has_section("NODES"):
         raise ValueError("Config file not found")
+    
+    if not config.has_section("LOGGING"):
+        raise ValueError("Missing LOGGING section")
 
     config_params = {}
     
@@ -46,6 +49,8 @@ def initialize_config(config_file="config.ini"):
     for key in container_keys:
         config_params[key.lower()] = int(config["NODES"].get(key, 0))
 
+    config_params["LOG_LEVEL"] = config["LOGGING"].get("LOG_LEVEL")
+
     config_params["clients"] = int(config["CLIENTS"].get("CLIENTS", 1))
     
     for file, path in config["FILES"].items():
@@ -60,7 +65,7 @@ def main():
     docker_compose_config = generator.generate()
     with open("docker-compose-gen.yaml", "w") as f:
         yaml.dump(docker_compose_config, f,
-                  sort_keys=False, default_flow_style=False)
+            sort_keys=False, default_flow_style=False)
 
     print("Generated docker-compose-gen.yaml")
 

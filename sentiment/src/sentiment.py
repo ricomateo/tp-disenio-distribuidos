@@ -1,11 +1,15 @@
 import json
-from common.middleware import Middleware
-from common.packet import DataPacket, is_delete_packet, is_final_packet
-from datetime import datetime
 import os
 import signal
-from common.worker_protocol import WorkerProtocol
+import logging
+from common.logger import init_logging
 from transformers import pipeline
+from datetime import datetime
+from common.middleware import Middleware
+from common.packet import DataPacket, is_delete_packet, is_final_packet
+from common.worker_protocol import WorkerProtocol
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 class SentimentNode:
     def __init__(self):
@@ -21,13 +25,13 @@ class SentimentNode:
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "sentiment_consumer")
         self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
         self.node_id = int(os.getenv("NODE_ID"))
-        
+
         self.health_server_ip = os.getenv("HEALTH_SERVER_IP", "0.0.0.0")
         self.health_server_port = int(os.getenv("HEALTH_SERVER_PORT", "10000"))
         self.worker_port = int(os.getenv("WORKER_PORT", "9000"))
         self.input_rabbitmq = None
-        
-        if self.exchange:  
+
+        if self.exchange:
             self.input_rabbitmq = Middleware(
                 queue=self.input_queue,
                 consumer_tag=self.consumer_tag,
@@ -35,27 +39,22 @@ class SentimentNode:
                 publish_to_exchange=False,
                 routing_key=self.routing_key
             )
-        else:  
+        else:
             self.input_rabbitmq = Middleware(queue=self.input_queue, consumer_tag=self.consumer_tag)
-            
+
 
         self.output_positive_rabbitmq = Middleware(queue=self.output_positive_queue)
         self.output_negative_rabbitmq = Middleware(queue=self.output_negative_queue)
-        
-        print("listen")
+
         self.control = WorkerProtocol(self.health_server_ip, self.worker_port, self.health_server_port)
         self.control.listen()
-        print("listened")
-        
+
         self.sentiment_analyzer = pipeline('sentiment-analysis', model='distilbert-base-uncased-finetuned-sst-2-english')
-        
-        
+
 
     def callback(self, ch, method, properties, body):
         try:
-            if self.running == False:
-                #self.output_positive_rabbitmq.send_final()
-                #self.output_negative_rabbitmq.send_final()
+            if not self.running:
                 self.input_rabbitmq.close_graceful(method)
                 return
             # Recibir paquete y mandar final packet si se recibe uno
@@ -65,14 +64,16 @@ class SentimentNode:
             client_id = packet.get("client_id")
             
             if is_delete_packet(header):
+                logging.info("Receive DELETE packet from client %s", client_id)
                 self.output_positive_rabbitmq.send_delete(client_id=client_id)
                 self.output_negative_rabbitmq.send_delete(client_id=client_id)
+                logging.info("Sent DELETE packet for client %s to both output queues", client_id)
                 self.control.delete_client(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
-            
+
             if is_final_packet(header):
-                
+                logging.info("Received FINAL packet from client %s", client_id)
                 count = int(packet['count'])
                 final, frequencies = self.control.send_final_count(client_id, count)
                 
@@ -83,13 +84,14 @@ class SentimentNode:
                         freq_dict[int(node_id)] = int(count)
                     self.output_positive_rabbitmq.send_final(client_id=client_id, count=freq_dict.get(0, 0))
                     self.output_negative_rabbitmq.send_final(client_id=client_id, count=freq_dict.get(1, 0))
+                    logging.info("Sent the FINAL packet for client %s to both output queues (positive and negative)", client_id)
                     self.control.delete_client(client_id)
-                    
+                else:
+                    logging.info("Missing packets from client %s to reach the final count", client_id)
                 # Mando ack del final packet
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
-            
-            
+
             packet = DataPacket.from_json(packet_json)
             movie = packet.data
             id = packet.id
@@ -115,12 +117,13 @@ class SentimentNode:
             elif sentiment == "NEGATIVE":
                 self.output_negative_rabbitmq.publish(filtered_packet.to_json())
             else:
-                print("[--------------] No es positivo ni negativo")
-                
+                logging.warning("Packet sentiment is not POSITIVE nor NEGATIVE")
+
             sentiment_code = "0" if sentiment == "POSITIVE" else "1" 
-               
+
             final, frequencies = self.control.insert_id(client_id, id, sentiment_code)
             if final:
+                logging.info("Received packet from client %s is the last one.", client_id)
                 freq_dict = {}
                 for pair in frequencies.split(","):
                     node_id, count = pair.split(":")
@@ -128,29 +131,29 @@ class SentimentNode:
                 self.output_positive_rabbitmq.send_final(client_id=client_id, count=freq_dict.get(0, 0))
                 self.output_negative_rabbitmq.send_final(client_id=client_id, count=freq_dict.get(1, 0))
                 self.control.delete_client(client_id)
-            
+
             ch.basic_ack(delivery_tag=method.delivery_tag)
-            print(f" [x] Message {method.delivery_tag} acknowledged")
+            logging.debug("Message %s acknowledged", method.delivery_tag)
 
         except json.JSONDecodeError as e:
-            print(f" [!] Error decoding JSON: {e}")
+            logging.warning("Error decoding JSON: %s", e)
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
         except Exception as e:
-            print(f" [!] Error processing message: {e}")
+            logging.warning("Error processing message: %s", e)
             ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
 
     def start_node(self):
-        print(f" [~] Starting sentiment analyzer")
+        logging.info("Starting sentiment analyzer")
 
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
-            print(f" [!] Error in filter node: {e}")
+            logging.error("Error in filter node: %s", e)
         finally:
             self.close()
     
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
+        logging.info("Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
@@ -158,7 +161,7 @@ class SentimentNode:
             self.input_rabbitmq.cancel_consumer()
 
     def close(self):
-        print(f"Closing queues")
+        logging.info("Closing queues")
         if self.input_rabbitmq:
             self.input_rabbitmq.close()
         if self.output_positive_rabbitmq:

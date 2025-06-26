@@ -1,15 +1,18 @@
 import json
-import pandas as pd
 from io import StringIO
 import signal
 from datetime import datetime
-from common.middleware import Middleware
-
-from common.packet import DataPacket, is_delete_packet, is_final_packet
-
 import os
-
+import logging
+import pandas as pd
+from common.logger import init_logging
+from common.middleware import Middleware
+from common.packet import DataPacket, is_delete_packet, is_final_packet
 from common.worker_protocol import WorkerProtocol
+
+
+init_logging(os.getenv("LOG_LEVEL"))
+
 
 class ParserNode:
     def __init__(self):
@@ -63,116 +66,113 @@ class ParserNode:
                     old_name, new_name = pair.split(":")
                     self.rename_columns.append((old_name.strip(), new_name.strip()))
             except ValueError as e:
-                print(f" [~] Invalid REPLACE format: {replace_str}, error: {e}. No columns will be renamed.")
+                logging.warning("Invalid REPLACE format: %s, error: %s. No columns will be renamed.", replace_str, e)
         
         self.control = WorkerProtocol(self.health_server_ip, self.worker_port, self.health_server_port)
         self.control.listen()
    
     def callback(self, ch, method, properties, body):
-
-
-            try:
-                # TODO: ver si hay que cambiar esto
-                if self.running == False:
-                    # if self.input_rabbitmq.check_no_consumers():
-                    #     self.output_rabbitmq.send_final(routing_key=self.filename)
-                    self.input_rabbitmq.close_graceful(method)
-                    return
-                # Parseo el mensaje
-                packet = json.loads(body)
-                header = packet['header']
-                client_id = packet['client_id']
-                
-                if is_delete_packet(header):
-                    self.output_rabbitmq.send_delete(client_id=client_id, routing_key=self.filename)
-                    self.control.delete_client(client_id)
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    return
-                
-                if is_final_packet(header):
-                    count = int(packet['count'])
-                    final, count = self.control.send_final_count(client_id, count)
-                    if final:
-                        self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename, count=count)
-                        self.control.delete_client(client_id)
-                    
-                    # Mando ack del final packet
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    return
-                
-                rows = packet['rows']
-                id = packet['id']
-
-                # Creo el string CSV
-                csv_text = header + "\n" + "\n".join(rows)
-                df = pd.read_csv(StringIO(csv_text))
-                
-                print(f" [~] Conservando solo columnas: {self.keep_columns}")
-                columns_to_keep = list(set(df.columns).intersection(self.keep_columns))
-                df = df[columns_to_keep]
-                df = df.dropna().copy()
-                print(" [x] Received and processed CSV:")
-                
-                # Apply column renaming for each pair if the old column exists
-                rename_dict = {old: new for old, new in self.rename_columns if old in df.columns}
-                if rename_dict:
-                    df.rename(columns=rename_dict, inplace=True)
-
-                row_count = 0
-                for _, row in df.iterrows():
-                    packet = DataPacket(
-                            client_id=client_id,
-                            timestamp=datetime.utcnow().isoformat(),
-                            data=row.to_dict(),
-                            id=f"{id}-{row_count}"
-                    )
-                    self.output_rabbitmq.publish(packet.to_json(), self.filename)
-                    row_count += 1
-                    
-                final, count = self.control.insert_id(client_id, id, str(row_count))
-                if final:
-                    self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename, count=int(count))
-                    self.control.delete_client(client_id)    
-                
+        try:
+            if not self.running:
+                self.input_rabbitmq.close_graceful(method)
+                return
+            # Parseo el mensaje
+            packet = json.loads(body)
+            header = packet['header']
+            client_id = packet['client_id']
+            
+            if is_delete_packet(header):
+                logging.info("Received DELETE packet for client %s", client_id)
+                self.output_rabbitmq.send_delete(client_id=client_id, routing_key=self.filename)
+                logging.info("Sent DELETE packet for client %s", client_id)
+                self.control.delete_client(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
-                print(f" [x] Message {method.delivery_tag} acknowledged")
-            except json.JSONDecodeError as e:
-                print(f" [!] Error decoding JSON: {e}")
-                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
-            except Exception as e:
-                print(f" [!] Error processing message: {e}")
-                ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
+                return
+            
+            if is_final_packet(header):
+                logging.info("Received FINAL packet from client %s", client_id)
+                count = int(packet['count'])
+                final, count = self.control.send_final_count(client_id, count)
+                if final:
+                    self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename, count=count)
+                    logging.info("Sent FINAL packet for client %s", client_id)
+                    self.control.delete_client(client_id)
+                
+                # Mando ack del final packet
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+            
+            rows = packet['rows']
+            id = packet['id']
+
+            # Creo el string CSV
+            csv_text = header + "\n" + "\n".join(rows)
+            df = pd.read_csv(StringIO(csv_text))
+            
+            logging.debug("Conservando solo columnas: %s", self.keep_columns)
+            columns_to_keep = list(set(df.columns).intersection(self.keep_columns))
+            df = df[columns_to_keep]
+            df = df.dropna().copy()
+            logging.debug("Received and processed CSV:")
+            
+            # Apply column renaming for each pair if the old column exists
+            rename_dict = {old: new for old, new in self.rename_columns if old in df.columns}
+            if rename_dict:
+                df.rename(columns=rename_dict, inplace=True)
+
+            row_count = 0
+            for _, row in df.iterrows():
+                packet = DataPacket(
+                        client_id=client_id,
+                        timestamp=datetime.utcnow().isoformat(),
+                        data=row.to_dict(),
+                        id=f"{id}-{row_count}"
+                )
+                self.output_rabbitmq.publish(packet.to_json(), self.filename)
+                row_count += 1
+                
+            final, count = self.control.insert_id(client_id, id, str(row_count))
+            if final:
+                self.output_rabbitmq.send_final(client_id=client_id, routing_key=self.filename, count=int(count))
+                self.control.delete_client(client_id)    
+            
+            ch.basic_ack(delivery_tag=method.delivery_tag)
+            logging.debug("Message %s acknowledged", method.delivery_tag)
+        except json.JSONDecodeError as e:
+            logging.warning("Error decoding JSON: %s", e)
+            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
+        except Exception as e:
+            logging.warning("Error processing message: %s", e)
+            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
        
 
     def start_node(self):
-        print(f" [~] Starting ParserNode: input_queue={self.input_queue}, output_queue={self.output_queue}")
+        logging.info("Starting ParserNode: input_queue=%s, output_queue=%s", self.input_queue, self.output_queue)
         if self.keep_movies_columns:
-            print(f" [~] Keeping movies columns: {self.keep_movies_columns}")
+            logging.info("Keeping movies columns: %s", self.keep_movies_columns)
         if self.keep_ratings_columns:
-            print(f" [~] Keeping ratings columns: {self.keep_ratings_columns}")
+            logging.info("Keeping ratings columns: %s", self.keep_ratings_columns)
         if self.rename_columns:
-            print(f" [~] Renaming columns: {self.rename_columns}")
+            logging.info("Renaming columns: %s", self.rename_columns)
       
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
-            print(f" [!] Error in parser node: {e}")
+            logging.error("Error in parser node: %s", e)
         finally:
             self.close()
-           
+
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
+        logging.info("Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
         if self.input_rabbitmq:
             self.input_rabbitmq.cancel_consumer()
-    
+
     def close(self):
-        print(f"Closing queues")
+        logging.info("Closing queues")
         if self.input_rabbitmq:
             self.input_rabbitmq.close()
         if self.output_rabbitmq:
             self.output_rabbitmq.close()
-        
-    

@@ -256,7 +256,8 @@ class ConfigGenerator:
             current_environment.extend(environment)
             current_environment.append(f'NODE_ID={node_id}')
             current_environment.append(f'CLUSTER_SIZE={cluster_size if cluster_size is not None else instances}')
-
+            log_level = self.config_params["LOG_LEVEL"]
+            current_environment.append(f"LOG_LEVEL={log_level}")
             
 
             # Build service configuration

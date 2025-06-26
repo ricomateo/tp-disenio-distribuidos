@@ -3,7 +3,9 @@ import threading
 import os
 import signal
 import glob
+import logging
 from common.consistent_hash import consistent_hash
+from common.logger import init_logging
 from datetime import datetime
 from src.calculation import Calculation
 from common.leader_queue import LeaderQueue
@@ -11,6 +13,9 @@ from common.middleware import Middleware
 from common.packet import DataPacket, is_delete_packet, is_final_packet
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
+from common.dead_clients_tracker import DeadClientsTracker
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 
 class CalculatorNode:
@@ -40,6 +45,7 @@ class CalculatorNode:
         self.final_rabbitmq = None
         self.threads = []
         self.processed_messages_by_client = {}
+        self.dead_clients_tracker = DeadClientsTracker()
 
         self.leader_queue = None
         if int(self.node_id) == 0 and self.exchange != "router_negative_sentiment":
@@ -84,14 +90,20 @@ class CalculatorNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
-            
+
             if header and is_delete_packet(header):
                 self.output_rabbitmq.send_delete(client_id=client_id)
+                self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
-                
+
             if header and is_final_packet(header):
+                # Ignore final packets from dead clients
+                if self.dead_clients_tracker.client_is_dead(client_id):
+                    print("Received FINAL packet from dead client %s", client_id)
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
                 results = self.calculator.get_result(client_id)
                 self.output_rabbitmq.confirm_delivery()
 
@@ -121,8 +133,9 @@ class CalculatorNode:
                 self.final_rabbitmq.send_final_with_node_id(
                     client_id=client_id, count=count, node_id=node_id
                 )
-                ch.basic_ack(delivery_tag=method.delivery_tag)
+                self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
+                ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
             packet = DataPacket.from_json(packet_json)

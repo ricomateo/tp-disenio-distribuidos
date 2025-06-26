@@ -51,7 +51,7 @@ class LeaderElector:
         triggers an election to choose the starting leader.
         """
         if self.number_of_peers == 1:
-            logging.info("Setting myself as the leader since there are no peers")
+            logging.info("[LEADER_ELECTION] Setting myself as the leader since there are no peers")
             self.set_current_leader(self.id)
         elif self.should_trigger_election():
             time.sleep(1)
@@ -89,7 +89,7 @@ class LeaderElector:
                 self.send_election(self.id)
                 continue
             except Exception as e:
-                logging.debug("Failed to receive message. Error: %s", e)
+                logging.debug("[LEADER_ELECTION] Failed to receive message. Error: %s", e)
                 continue
             try:
                 if is_election(message):
@@ -102,17 +102,17 @@ class LeaderElector:
                         self.broadcast_ping()
                         self.protocol.set_timeout(LEADER_TIMEOUT)
                 elif is_ping(message):
-                    if not self.current_leader:
+                    if self.current_leader is None:
                         leader_id = message.get("id")
                         if leader_id is not None:
                             self.set_current_leader(leader_id)
-                            logging.info("Received leader id %s", self.current_leader)
+                            logging.info("[LEADER_ELECTION] Received leader id %s", self.current_leader)
                             self.send_leader(leader_id)
                     continue
                 else:
-                    logging.debug("Received unknown message %s.", message)
+                    logging.debug("[LEADER_ELECTION] Received unknown message %s.", message)
             except Exception as e:
-                logging.warning("Failed to decode message %s. Error: %s", message, e)
+                logging.warning("[LEADER_ELECTION] Failed to decode message %s. Error: %s", message, e)
 
     def send_election(self, id):
         """
@@ -126,14 +126,14 @@ class LeaderElector:
             peer_address = self.get_peer_address(peer_id)
             try:
                 self.protocol.send_election(peer_address, id)
-                logging.info("Sent ELECTION message with ID %s to peer %s", id, peer_address)
+                logging.info("[LEADER_ELECTION] Sent ELECTION message with ID %s to peer %s", id, peer_address)
             except Exception:
                 continue
             break
 
     def handle_election_message(self, message):
         leader_id = message.get("id")
-        logging.info("Received ELECTION message with leader ID: %s", leader_id)
+        logging.info("[LEADER_ELECTION] Received ELECTION message with leader ID: %s", leader_id)
         if not self.participating:
             self.participating = True
             leader_id = max(self.id, leader_id)
@@ -154,7 +154,7 @@ class LeaderElector:
         self.participating = False
         if leader_id == self.current_leader:
             return
-        logging.info("New leader elected with ID: %s", leader_id)
+        logging.info("[LEADER_ELECTION] New leader elected with ID: %s", leader_id)
         self.set_current_leader(leader_id)
         self.send_leader(leader_id)
 
@@ -166,7 +166,7 @@ class LeaderElector:
         for peer in peers_addresses:
             try:
                 self.protocol.send_leader(peer, id)
-                logging.info("Sent LEADER message with ID %s to peer %s", id, peer)
+                logging.info("[LEADER_ELECTION] Sent LEADER message with ID %s to peer %s", id, peer)
             except Exception:
                 continue
             break
