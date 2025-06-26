@@ -280,7 +280,6 @@ class JoinNode:
                     self.eof_main_by_client[client_id] = (False, False)
                 router_in_buffer = router in self.router_buffer_by_client.get(client_id, {})
                 is_eof_main = self.eof_main_by_client[client_id][0]
-                self.processed_messages_by_client_queue_2[client_id].add(packet.id)
 
             if router_in_buffer:
                 print(f" [Join thread] Router '{router}' found in router_buffer")
@@ -289,9 +288,10 @@ class JoinNode:
                 joined_packet = self.create_joined_packet(client_id, movie1, movie, id)
                 with self.lock:
                     self.output_rabbitmq.publish(joined_packet.to_json())
-                self.packets_sent_by_client[client_id].add(id)
-                print(f"[Join thread] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
-                self.save_state(client_id)
+                    self.processed_messages_by_client_queue_2[client_id].add(packet.id)
+                    self.packets_sent_by_client[client_id].add(id)
+                    print(f"[Join thread] type(client_id) = {type(client_id)} sent_packet {id}, packets_sent[client_id{client_id}] = {self.packets_sent_by_client[client_id]}")
+                    self.save_state(client_id)
                 
             else:
                 # Si eof_main es False, guardar en el disco
@@ -301,6 +301,7 @@ class JoinNode:
                         storage = self._get_storage_for_client(client_id)
                         print(f" [Join thread 💾] Router '{router}' not in buffer, adding to disk for client {client_id}")
                         storage.add(str(router), movie, id)
+                        self.processed_messages_by_client_queue_2[client_id].add(packet.id)
                         self.save_state(client_id)
                         print(f" [Join thread ✅] Added router '{router}' to disk for client {client_id}")
 
