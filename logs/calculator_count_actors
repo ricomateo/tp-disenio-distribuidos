@@ -6,130 +6,523 @@ FinalFiles = []
 [INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
 StateFiles = []
 [INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
+[client - 0] Processed movie: 58429
+ [x] Message 1 acknowledged
+[client - 1] Processed movie: 58429
+ [x] Message 2 acknowledged
+Duplicate message: id: 4-695, title: La Cienaga, client_id: 1
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
 FinalFiles = []
 [INFO] Waiting for messages in calculator_count_actorsfinal
 [INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
 [INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
 [INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
+StateFiles = ['client.1.json', 'client.0.json']
+Recovered state from client 1, len(processed_messages) = 1
+Recovered state from client 0, len(processed_messages) = 1
 [INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
+[client - 0] Processed movie: 128598
+ [x] Message 1 acknowledged
+Duplicate message: id: 26-633, title: Left for Dead, client_id: 0
+[client - 1] Processed movie: 128598
+ [x] Message 3 acknowledged
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
 FinalFiles = []
 [INFO] Waiting for messages in calculator_count_actorsfinal
 [INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
 [INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
 [INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
+StateFiles = ['client.1.json', 'client.0.json']
+Recovered state from client 1, len(processed_messages) = 2
+Recovered state from client 0, len(processed_messages) = 2
 [INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
+[client - 0] Processed movie: 125619
+ [x] Message 1 acknowledged
+[client - 1] Processed movie: 125619
+ [x] Message 2 acknowledged
+Duplicate message: id: 34-507, title: The forbidden education, client_id: 1
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
 FinalFiles = []
 [INFO] Waiting for messages in calculator_count_actorsfinal
 [INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
 [INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
 [INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
+StateFiles = ['client.1.json', 'client.0.json']
+Recovered state from client 1, len(processed_messages) = 3
+Recovered state from client 0, len(processed_messages) = 3
 [INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
+[client - 0] Processed movie: 408537
+ [x] Message 1 acknowledged
+Duplicate message: id: 40-677, title: The Distinguished Citizen, client_id: 0
+[client - 1] Processed movie: 408537
+ [x] Message 3 acknowledged
+[client - 1] Processed movie: 99896
+ [x] Message 4 acknowledged
+Duplicate message: id: 41-19, title: The Custodian, client_id: 1
+Duplicate message: id: 41-19, title: The Custodian, client_id: 1
+[client - 0] Processed movie: 99896
+ [x] Message 7 acknowledged
+[client - 1] Processed movie: 361251
+ [x] Message 8 acknowledged
+Duplicate message: id: 41-454, title: Road to La Paz, client_id: 1
+Duplicate message: id: 41-454, title: Road to La Paz, client_id: 1
+[client - 1] Processed movie: 257487
+ [x] Message 11 acknowledged
+[client - 0] Processed movie: 361251
+ [x] Message 12 acknowledged
+Duplicate message: id: 41-454, title: Road to La Paz, client_id: 0
+[client - 0] Processed movie: 257487
+ [x] Message 14 acknowledged
+Duplicate message: id: 41-651, title: Inevitable, client_id: 0
+[client - 1] Processed movie: 360365
+ [x] Message 16 acknowledged
+[client - 1] Processed movie: 127304
+ [x] Message 17 acknowledged
+[client - 1] Processed movie: 359736
+ [x] Message 18 acknowledged
+Duplicate message: id: 42-315, title: Human, client_id: 1
+[client - 1] Processed movie: 425942
+ [x] Message 20 acknowledged
+Duplicate message: id: 42-422, title: Black Snow, client_id: 1
+[client - 0] Processed movie: 360365
+ [x] Message 22 acknowledged
+Duplicate message: id: 42-83, title: Tini: The New Life of Violetta, client_id: 0
+[client - 0] Processed movie: 127304
+ [x] Message 24 acknowledged
+[client - 0] Processed movie: 359736
+ [x] Message 25 acknowledged
+[client - 0] Processed movie: 425942
+ [x] Message 26 acknowledged
+Duplicate message: id: 42-422, title: Black Snow, client_id: 0
+Duplicate message: id: 42-422, title: Black Snow, client_id: 0
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Adnen Helali', 'count': 1}, id = 3409985474175b885581821ee5498ffb2aee1664c521238cd032498ccfaa1053
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Adrián Salzedo', 'count': 1}, id = 0a322e0623c12551974ef2f0557c74248eb279d4fcb2314d4e02dadef353d8b7
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Alan Stivelman', 'count': 1}, id = 4b86f781986e5fe4db866ea68e72c347c020b97ab9559c9e97520907c2c14fff
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Alberto Anchart', 'count': 1}, id = 8fba40480ff7b49a7b8e2c318e741520943054ef4234e511bb6d2ef1daf3962c
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Alejandra Figueroa', 'count': 1}, id = 8f07741290932c698026d0e2e2d55b145d0d85c4553c0f463ecedfbebb38761b
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Alejandro Awada', 'count': 1}, id = 055a77f03a59e6e61ccb5bffff033544417bf738c6ca19ee283b477d9d06a1af
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Amira Adre', 'count': 1}, id = e8633ef9ab3e14e7b7ac54c1c7f943e1a42eccd10b071f0e5bd779c3fefda586
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Andrea Frigerio', 'count': 1}, id = 82c14a16db18842d3533c9d835c51b717d223bfbf7e5de2dd9b647a2acb9d5d6
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Andres Bagg', 'count': 1}, id = 17e0bd69183058c497b156b6ac947154c76ae3eaaee44cddd1061cbbf2646f1e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Andrés Herrera', 'count': 1}, id = 0d73f62f473c547cfba42e17a916081ce9088cd9a05c450c5c58ec47d9554dd0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Antonella Costa', 'count': 1}, id = 18fb99488ce7439a806e803b0b29b5828469a7e07de41a243b3fe714f8a7e6ba
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Beatrice Arnera', 'count': 1}, id = 025730ff2ab9a654b273330b21d852eaa1debd9763533efa9aecae94120acd73
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Belén Chavanne', 'count': 1}, id = 8bbdee1aa151e0aa4870f4f528a5edba5e89f53ed4ba327f279e87372a697ff3
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Biel Montoro', 'count': 1}, id = 3f1ff22630be3ecd3b65391a0351a99c26f383f340bfd5dcc0f67096cd6219b7
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Brad Krupsaw', 'count': 1}, id = 560fcf85b9a55853c6c700b7832ea990ef6c7fc192cd9bd87a81a82d95b1fc1c
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Carolina Peleritti', 'count': 1}, id = d3e5cb170b6699cdd0fc493a3d604cee25c2a235b4c0c7bb7561e3af674ff499
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Dady Brieva', 'count': 1}, id = 14b384f63157b79f61d60c8ab329a6eec625d4095049fd1a77ae2bcbc41ad9a5
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Daniel Valenzuela', 'count': 1}, id = 5eef325fa85e43ba09fe9cd8a333781a3c81ab24313b80b6f5bea64176e6229e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Darío Grandinetti', 'count': 1}, id = ffc422d894486de0299736d4175bdd8fd0fe323fbd535d1988f80f46d5085913
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Diego Ramos', 'count': 1}, id = c679e6aa8811bb6e2049b9cc6ac1fbc8293e8d73ff50629713dc565efc09883d
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Dolores Fonzi', 'count': 1}, id = 4dd45c1816003772496eb28b5bd444cda830f4f0289d8ba3917f541d30c4bbe9
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Eliana Grosso', 'count': 1}, id = cd3663153a38f32c789cf000bda7bbac4fd2d4dfc3102fd7cd2ab7922699323e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Elisa Carricajo', 'count': 1}, id = 73e806b6226d8fbf137dbc9ae5bd6ed7d1b613398730987abdb700da5102107d
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Elvira Onetto', 'count': 1}, id = 9acf826189472445f9dcb37ca9481d8b4d0a197dfc680e584c3011a6ccef97a0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Ernesto Suarez', 'count': 1}, id = 5ffaf1d08ed0030fa48d9ff123e7a9d69095b60ee6735a51b9b98022c6b4ef99
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Federico Luppi', 'count': 2}, id = 01e98d666cdf6c77c5a8c9cafce4a9dac3d1bcd51cd248440bf98d80d2b81760
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Florencia Erdozain', 'count': 1}, id = 0dd27653105e1b0e40875831f991522b01148306e707d3c46383e513c265c13a
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Franca Gallo', 'count': 1}, id = d2cb9f8e8d0086bfcd98f1a960b58a9b03fd09e8b6876cd2c9793ef605e5e8a5
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Francisco Viciana', 'count': 1}, id = bc43475eb3a06f5cb33e5cebe36ea0bc9eb562095eb063570a176146d4d316c4
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Gastón Pauls', 'count': 1}, id = 15dedf357f6375377e56510a3c21c46f450f8a3224e1e4f31603c73bf0db66a0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Georgina Amorós', 'count': 1}, id = 4a01fc5bd97d66d6613d46bedb0dd4d2f369af7158285d6507d7d9c5675a9dc0
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Germán Kraus', 'count': 1}, id = 26ed2f13d8f97529e4a2b1224ad4b6008482750b4a0319000707a0bfb5e91db3
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Graciela Borges', 'count': 1}, id = 4b397bbbc37b4de97a87e875cd40170dbbfe15657a66b9575ee7f5c980d9192c
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Guadalupe Docampo', 'count': 1}, id = efea27a9c58a2e47edfdde3f60110958008ee294f41cb3c8cb57ca775809a990
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Iván Luengo', 'count': 1}, id = 81408e52eda667c41f05d04cc502fb9aaeb4eacf737b5c6ac0d8c19df18aad54
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Iván Steinhardt', 'count': 1}, id = 23afc041be76359ba0121c2addaaab51ad9c7b8ceab3f4488cc1c7a25681f502
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Janet Bar', 'count': 1}, id = c05d8e2ed4607608a2e4a834121c02a96a2ceec8ce429cb0af0beab8e2b21f31
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Javier De la Vega', 'count': 1}, id = 736b180c4f36ebc65b44d310b602e7a90642320205ec197272196c72bf81770b
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Jimena Del Pozo', 'count': 1}, id = c5dcfc9e27be90180456421261ff6f37f22db55d75729db83f69e65b8e12ad49
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Jonás Elfenbaum', 'count': 1}, id = f85d692d54de9ca97b25b8654fa5b276667527cf45d7e5f2b066db73a0666e7f
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Jorge Blanco', 'count': 1}, id = 7355ab597a0bbf0e6ce1cf860dafd1e4adcbba0d293327863d1341005d21c3b3
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Jota David Ojeda', 'count': 1}, id = 43ea21730f11a967e47fc38b6d74d48a644272d603aaaaab2b976fbff85de2a8
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Julio Chávez', 'count': 1}, id = 47f5a726a1d3985d37a298bec8439d3b80b9a175d91af2e6101ccc58c6dd7f6e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Laia Costa', 'count': 1}, id = c04760d5f80ab4a81acc17a475954885d6855a5f1fdf0b7621204a462e05e21b
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Leonardo Cecchi', 'count': 1}, id = 2352f2d92b038245c5dfa9921ce08430553e994e1c9c3c54e09e1abc446efd30
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Leonardo Sbaraglia', 'count': 1}, id = 614dc4f4ae4a13c1860fdf53778c3025420f9de6d10344ecb2678173e4687298
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Leonora Balcarce', 'count': 1}, id = 72a0bcb542ba48c8065f757724fdff927221f64a336d66b26ca36a21d5bd0d28
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': "Liah O'Prey", 'count': 1}, id = 065a4c3b63b721758098e171320971be3070bb63c3124107184c337fa08bb8ac
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Mabel Rivera', 'count': 1}, id = b7c162ec9c28ec69f3b5741f4e7a937d99353ce32d07ee0056e32161cf043902
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Manuel Vicente', 'count': 1}, id = dda557d0c4f39ad104f62e493e30f312faa55d07816bcc2864ec2886165e5d5f
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': "Marcelo D'Andrea", 'count': 1}, id = 5ffdf1bd330de51addc08c8abfcf157198af09d3526d933ccad16b49c0199820
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Maria Canale', 'count': 1}, id = 8c5fd9ccf57d5b84b38c4d9559d22712ef8b4a08b52129d52889939cc5aa19d9
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Maria Clara Alonso', 'count': 1}, id = 6ceff9dfb3deb90929807e9316afb29f39994a6efccfb08006d1a9ce6aa5748c
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Maria del Carmen Antelo', 'count': 1}, id = b9466ae23a4c06e70a7e1e22a2e8f47f622be6c5192520b9d6f13fa67ea0cc72
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Mariana Seligmann', 'count': 1}, id = 4989fb4adfde4e0d706420b86040f1967d2660ce62d5f45e5932e56e0271d333
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Marina Groshaus', 'count': 1}, id = 8e8920e5a330ade1de7a58ce1911d441cc4c0aca6ee6f0435e644d54e534e23a
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Martina Stoessel', 'count': 1}, id = 56815b38518b07f7878baa67d7c39c38f1dc3fbe0b296a41d2f4cf789f203529
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Martín Adjemián', 'count': 1}, id = e0e35390321fd47a7642e663a580814637f76be94d0505838083ce1a7aa68cf0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'María Alché', 'count': 1}, id = 04d75e08f8ce6af83b3ae506ac6fb5f8f59bd8f7c83bcdc92cc934cfec386cff
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Mercedes Lambre', 'count': 1}, id = 459ea2e59a04d6cc5725b49927770991606da0e3bf9126498caf52927c254a99
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Mercedes Morán', 'count': 1}, id = 4ef4997a87ca548c0adfb6adb10b8b54df79492d5916145d3cd36be20a05b4c0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Mikel Iglesias', 'count': 1}, id = 0a55ed1cd3a9af57d5bf892ea33c2dacb283c6ebfee3ff766e7f9f9abda1a4d1
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Nancy Encinas', 'count': 1}, id = 440877034ff34102a9a559082e2a7367dfe023b730c0a2e245a524a85ceac137
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Nicolás Valenzuela', 'count': 1}, id = 28d19935910bd7d41aa6ff9b73f21dd5d868f8b43bfababafc076d45f26cdee8
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Nora Navas', 'count': 1}, id = 2b39dab85b63f38bee17be4fac64ffe329c246e3f5d63f437384eb8621202595
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Oliver Kolker', 'count': 1}, id = ea9813203d6cc47a9966d37f55b271d6a5c8acc2993b20b6767b931e5f04d111
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Oscar Martínez', 'count': 1}, id = c9ecf8c6be8fbb6d83780a46365194651fd84c97ec96040d7960f699961485f8
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Osmar Núñez', 'count': 1}, id = 723635b75e6cb529b836a745ca1ae445aca322ba40a504e18f7acafb0db1471c
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Pasquale Di Nuzzo', 'count': 1}, id = 84680e6602c47bbe2c1e6586e5278c3e36e56a44a3450aa94196859556edb89e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Paula Siero', 'count': 1}, id = be1284b54d176e1d21753d28134deb76968fb1ef6d20302306ae709141883124
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Ricardo Darín', 'count': 1}, id = e7f78a56d4cc2089b5265fff11db5e6059bfd858f0d7ce40e7a33e27c60030e6
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Ridder van Kooten', 'count': 1}, id = 5bb1f465a4da235e34f690ab3474aa2ed3be7e23670c50dfc4603bac6af15ccd
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Rodrigo Noya', 'count': 1}, id = ed0507672db8c92166bf48c635146c62859822a5c78e8cdc70cc58380dacd99e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Rodrigo de la Serna', 'count': 1}, id = c35f14877873dacd3b3162ca272e635f6e145c3f68df9a7167bab6f99b80faaa
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Sandro Molfesa', 'count': 1}, id = 8a30fd16dcfca15a5a4b6019f2a460e907231dd85399be08630f3e629ad08e73
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Santiago Magariños', 'count': 1}, id = 7583e309f83361dbde4f54329c0048f3aefa500f1b7e1e8f8c6937dd6a530934
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Silvia Baylé', 'count': 1}, id = c9c7b0b85274f135c80b0640e752ae93bce5abffd3f65d426d89b12b176e052a
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Sofia Bertolotto', 'count': 1}, id = 4b8af7bd98382e05159592e437590942a2ae05575b24b04804dffabdbe5966e6
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Sofia Carson', 'count': 1}, id = 40ba8d1e20c24197a8f49a68cf2e9aa7fecf6079f9203f7321240b7560d22ec4
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Soledad Arocena', 'count': 1}, id = 66f0fd2d9944798440a98e39effd9fd98181cb946a73509e929bb6793e41907e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Stella Maris Closas', 'count': 1}, id = f54c0c814b5a6405e17fef28f067fca7f51a5659de471b88fad54299744d6c28
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Teresa Gioia', 'count': 1}, id = a24c449ff7e6dc0f5ec244f5787692cc5833ac7d514364a51a055f4d6470b81c
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Tulio Gomez Alzaga', 'count': 1}, id = 3ee2d98d16c9ac023e9af47710e8972660769c9b2450e3c803a608f8d0619c01
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Victoria Larriveu', 'count': 1}, id = 758a037b83278aa5dc47ecd24f5d52260163590185142790405b6776142bb6d1
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Victoria Maurette', 'count': 1}, id = 08508a4f86d856a001e6d0d78a5736f7d4a6bed9a52f35424ac191ca9bd357da
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 1): {'operation': 'count', 'key': 'cast', 'value': 'Ángela Molina', 'count': 1}, id = c5c676f2b6f72dc25e4ed6b21150921dd6d3d65983b056e5c587764813049dba
+[DEBUG] Sent message to queue calculator_count_actors
 [DEBUG] Sent message to queue calculator_count_actorsfinal
-[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":0,"header":"FINAL","node_id":"0"}' enviado directamente.
-node_id = 0
-Failed to remove file for client 0. Error: [Errno 2] No such file or directory: 'client.0.json'
+[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":86,"header":"FINAL","node_id":"0"}' enviado directamente.
+node_id = 0[client - 0] Processed movie: 289180
+
+Sending final with total_count = 86
+ [x] Message 30 acknowledged
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":86,"header":"FINAL"}' enviado directamente.
+[client - 0] Processed movie: 382906
+ [x] Message 31 acknowledged
+Skipped movie 'Ánima Buenos Aires' with missing or invalid cast
+[client - 0] Processed movie: 416680
+ [x] Message 33 acknowledged
+Duplicate message: id: 42-294, title: Gilda, No Me Arrepiento de Este Amor, client_id: 0
+Duplicate message: id: 42-294, title: Gilda, No Me Arrepiento de Este Amor, client_id: 0
+[client - 0] Processed movie: 268297
+ [x] Message 36 acknowledged
 [ERROR] confirm_delivery: confirmation was already enabled on channel=1
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Adnen Helali', 'count': 1}, id = 3409985474175b885581821ee5498ffb2aee1664c521238cd032498ccfaa1053
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Adrián Salzedo', 'count': 1}, id = 0a322e0623c12551974ef2f0557c74248eb279d4fcb2314d4e02dadef353d8b7
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Agustina Muñoz', 'count': 1}, id = 7ff5a62efb877354e6bf37ddada4234a1b5183f0e3f3588ec1119983469d2a86
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Alan Stivelman', 'count': 1}, id = 4b86f781986e5fe4db866ea68e72c347c020b97ab9559c9e97520907c2c14fff
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Alberto Anchart', 'count': 1}, id = 8fba40480ff7b49a7b8e2c318e741520943054ef4234e511bb6d2ef1daf3962c
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Alejandra Figueroa', 'count': 1}, id = 8f07741290932c698026d0e2e2d55b145d0d85c4553c0f463ecedfbebb38761b
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Alejandro Awada', 'count': 1}, id = 055a77f03a59e6e61ccb5bffff033544417bf738c6ca19ee283b477d9d06a1af
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Amira Adre', 'count': 1}, id = e8633ef9ab3e14e7b7ac54c1c7f943e1a42eccd10b071f0e5bd779c3fefda586
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Andrea Frigerio', 'count': 1}, id = 82c14a16db18842d3533c9d835c51b717d223bfbf7e5de2dd9b647a2acb9d5d6
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Andres Bagg', 'count': 1}, id = 17e0bd69183058c497b156b6ac947154c76ae3eaaee44cddd1061cbbf2646f1e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Andrés Herrera', 'count': 1}, id = 0d73f62f473c547cfba42e17a916081ce9088cd9a05c450c5c58ec47d9554dd0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Antonella Costa', 'count': 1}, id = 18fb99488ce7439a806e803b0b29b5828469a7e07de41a243b3fe714f8a7e6ba
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Beatrice Arnera', 'count': 1}, id = 025730ff2ab9a654b273330b21d852eaa1debd9763533efa9aecae94120acd73
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Belén Chavanne', 'count': 1}, id = 8bbdee1aa151e0aa4870f4f528a5edba5e89f53ed4ba327f279e87372a697ff3
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Biel Montoro', 'count': 1}, id = 3f1ff22630be3ecd3b65391a0351a99c26f383f340bfd5dcc0f67096cd6219b7
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Blanca Lewin', 'count': 1}, id = ffa1bd1e9db16ebd09f1bd95541f0d33227e7bc8e1d14752cd23680c176aaed8
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Brad Krupsaw', 'count': 1}, id = 560fcf85b9a55853c6c700b7832ea990ef6c7fc192cd9bd87a81a82d95b1fc1c
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Carolina Peleritti', 'count': 1}, id = d3e5cb170b6699cdd0fc493a3d604cee25c2a235b4c0c7bb7561e3af674ff499
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Coca Guazzini', 'count': 1}, id = efb59807e75fb5802293e024004e616d1a0ee3bd46300e69384409a964b556d9
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Dady Brieva', 'count': 1}, id = 14b384f63157b79f61d60c8ab329a6eec625d4095049fd1a77ae2bcbc41ad9a5
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Daniel Muñoz', 'count': 1}, id = e544fc14b319e53ef77b6d598b3d64922989774e6d791fcfcda5c55bd7ebfaae
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Daniel Valenzuela', 'count': 1}, id = 5eef325fa85e43ba09fe9cd8a333781a3c81ab24313b80b6f5bea64176e6229e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Darío Grandinetti', 'count': 1}, id = ffc422d894486de0299736d4175bdd8fd0fe323fbd535d1988f80f46d5085913
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Diego Ramos', 'count': 1}, id = c679e6aa8811bb6e2049b9cc6ac1fbc8293e8d73ff50629713dc565efc09883d
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Dolores Fonzi', 'count': 2}, id = f366b262c0cf0d7f94033cb68363bcb55b745861eb014a0808c748c1625b25ab
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Eliana Grosso', 'count': 1}, id = cd3663153a38f32c789cf000bda7bbac4fd2d4dfc3102fd7cd2ab7922699323e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Elisa Carricajo', 'count': 1}, id = 73e806b6226d8fbf137dbc9ae5bd6ed7d1b613398730987abdb700da5102107d
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Elvira Onetto', 'count': 1}, id = 9acf826189472445f9dcb37ca9481d8b4d0a197dfc680e584c3011a6ccef97a0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Emilia Ossandón', 'count': 1}, id = 1b392168c0c24bbf03350628a3e391cba80a0454b33484fc8354a77f90a0aead
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Ernesto Suarez', 'count': 1}, id = 5ffaf1d08ed0030fa48d9ff123e7a9d69095b60ee6735a51b9b98022c6b4ef99
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Federico Luppi', 'count': 2}, id = 01e98d666cdf6c77c5a8c9cafce4a9dac3d1bcd51cd248440bf98d80d2b81760
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Florencia Erdozain', 'count': 1}, id = 0dd27653105e1b0e40875831f991522b01148306e707d3c46383e513c265c13a
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Franca Gallo', 'count': 1}, id = d2cb9f8e8d0086bfcd98f1a960b58a9b03fd09e8b6876cd2c9793ef605e5e8a5
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Francisco Viciana', 'count': 1}, id = bc43475eb3a06f5cb33e5cebe36ea0bc9eb562095eb063570a176146d4d316c4
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Gastón Pauls', 'count': 1}, id = 15dedf357f6375377e56510a3c21c46f450f8a3224e1e4f31603c73bf0db66a0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Georgina Amorós', 'count': 1}, id = 4a01fc5bd97d66d6613d46bedb0dd4d2f369af7158285d6507d7d9c5675a9dc0
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Germán Kraus', 'count': 1}, id = 26ed2f13d8f97529e4a2b1224ad4b6008482750b4a0319000707a0bfb5e91db3
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Graciela Borges', 'count': 1}, id = 4b397bbbc37b4de97a87e875cd40170dbbfe15657a66b9575ee7f5c980d9192c
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Guadalupe Docampo', 'count': 1}, id = efea27a9c58a2e47edfdde3f60110958008ee294f41cb3c8cb57ca775809a990
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Ignacio Rogers', 'count': 1}, id = e8628e037c3c61865358adb5eaad84db3a1f17a3bae1b4183d783266272c0e4b
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Iván Luengo', 'count': 1}, id = 81408e52eda667c41f05d04cc502fb9aaeb4eacf737b5c6ac0d8c19df18aad54
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Iván Steinhardt', 'count': 1}, id = 23afc041be76359ba0121c2addaaab51ad9c7b8ceab3f4488cc1c7a25681f502
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Janet Bar', 'count': 1}, id = c05d8e2ed4607608a2e4a834121c02a96a2ceec8ce429cb0af0beab8e2b21f31
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Javier De la Vega', 'count': 1}, id = 736b180c4f36ebc65b44d310b602e7a90642320205ec197272196c72bf81770b
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Jimena Del Pozo', 'count': 1}, id = c5dcfc9e27be90180456421261ff6f37f22db55d75729db83f69e65b8e12ad49
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Jonás Elfenbaum', 'count': 1}, id = f85d692d54de9ca97b25b8654fa5b276667527cf45d7e5f2b066db73a0666e7f
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Jorge Blanco', 'count': 1}, id = 7355ab597a0bbf0e6ce1cf860dafd1e4adcbba0d293327863d1341005d21c3b3
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Jota David Ojeda', 'count': 1}, id = 43ea21730f11a967e47fc38b6d74d48a644272d603aaaaab2b976fbff85de2a8
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Julia Lübbert', 'count': 1}, id = f41364773a0d1d7094ce60c2fdcbf3f086c4eb4611f15c7029d20b37b50730fd
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Julian Gamble', 'count': 1}, id = 0f8595feea5162fe27e62448d09e8ac5e6e209b4d513516d770def0c81b904a0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Julio Chávez', 'count': 1}, id = 47f5a726a1d3985d37a298bec8439d3b80b9a175d91af2e6101ccc58c6dd7f6e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Laia Costa', 'count': 1}, id = c04760d5f80ab4a81acc17a475954885d6855a5f1fdf0b7621204a462e05e21b
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Leonardo Cecchi', 'count': 1}, id = 2352f2d92b038245c5dfa9921ce08430553e994e1c9c3c54e09e1abc446efd30
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Leonardo Sbaraglia', 'count': 1}, id = 614dc4f4ae4a13c1860fdf53778c3025420f9de6d10344ecb2678173e4687298
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Leonora Balcarce', 'count': 1}, id = 72a0bcb542ba48c8065f757724fdff927221f64a336d66b26ca36a21d5bd0d28
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': "Liah O'Prey", 'count': 1}, id = 065a4c3b63b721758098e171320971be3070bb63c3124107184c337fa08bb8ac
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Mabel Rivera', 'count': 1}, id = b7c162ec9c28ec69f3b5741f4e7a937d99353ce32d07ee0056e32161cf043902
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Manuel Vicente', 'count': 1}, id = dda557d0c4f39ad104f62e493e30f312faa55d07816bcc2864ec2886165e5d5f
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': "Marcelo D'Andrea", 'count': 1}, id = 5ffdf1bd330de51addc08c8abfcf157198af09d3526d933ccad16b49c0199820
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Maria Canale', 'count': 1}, id = 8c5fd9ccf57d5b84b38c4d9559d22712ef8b4a08b52129d52889939cc5aa19d9
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Maria Clara Alonso', 'count': 1}, id = 6ceff9dfb3deb90929807e9316afb29f39994a6efccfb08006d1a9ce6aa5748c
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Maria del Carmen Antelo', 'count': 1}, id = b9466ae23a4c06e70a7e1e22a2e8f47f622be6c5192520b9d6f13fa67ea0cc72
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Mariana Loyola', 'count': 1}, id = fc22485f2b9417d435f6f35badf482ff12dcab847994ab108d31cf8c5b40d506
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Mariana Seligmann', 'count': 1}, id = 4989fb4adfde4e0d706420b86040f1967d2660ce62d5f45e5932e56e0271d333
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Marina Groshaus', 'count': 1}, id = 8e8920e5a330ade1de7a58ce1911d441cc4c0aca6ee6f0435e644d54e534e23a
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Martina Stoessel', 'count': 1}, id = 56815b38518b07f7878baa67d7c39c38f1dc3fbe0b296a41d2f4cf789f203529
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Martín Adjemián', 'count': 1}, id = e0e35390321fd47a7642e663a580814637f76be94d0505838083ce1a7aa68cf0
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'María Alché', 'count': 1}, id = 04d75e08f8ce6af83b3ae506ac6fb5f8f59bd8f7c83bcdc92cc934cfec386cff
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Mercedes Lambre', 'count': 1}, id = 459ea2e59a04d6cc5725b49927770991606da0e3bf9126498caf52927c254a99
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Mercedes Morán', 'count': 1}, id = 4ef4997a87ca548c0adfb6adb10b8b54df79492d5916145d3cd36be20a05b4c0
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Mikel Iglesias', 'count': 1}, id = 0a55ed1cd3a9af57d5bf892ea33c2dacb283c6ebfee3ff766e7f9f9abda1a4d1
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Nancy Encinas', 'count': 1}, id = 440877034ff34102a9a559082e2a7367dfe023b730c0a2e245a524a85ceac137
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Natalia Oreiro', 'count': 1}, id = b2f2ba0e6b2258b3f8d23e15e4c043483a734d1e05b8d47170246648f0bb1444
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Nicolás Valenzuela', 'count': 1}, id = 28d19935910bd7d41aa6ff9b73f21dd5d868f8b43bfababafc076d45f26cdee8
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Nora Navas', 'count': 1}, id = 2b39dab85b63f38bee17be4fac64ffe329c246e3f5d63f437384eb8621202595
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Oliver Kolker', 'count': 1}, id = ea9813203d6cc47a9966d37f55b271d6a5c8acc2993b20b6767b931e5f04d111
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Oscar Martínez', 'count': 1}, id = c9ecf8c6be8fbb6d83780a46365194651fd84c97ec96040d7960f699961485f8
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Osmar Núñez', 'count': 1}, id = 723635b75e6cb529b836a745ca1ae445aca322ba40a504e18f7acafb0db1471c
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Pasquale Di Nuzzo', 'count': 1}, id = 84680e6602c47bbe2c1e6586e5278c3e36e56a44a3450aa94196859556edb89e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Paula Siero', 'count': 1}, id = be1284b54d176e1d21753d28134deb76968fb1ef6d20302306ae709141883124
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Rafael Spregelburd', 'count': 1}, id = 908de08459a2894c9d4191c7c1f70fb81edcb698755458f92058d47af56d6d07
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Rebecca Dayan', 'count': 1}, id = b34a7e8ae6c9afa69d9b7ebb9cb6c5e604e039309144af8380dae6e2388a93bd
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Ricardo Darín', 'count': 1}, id = e7f78a56d4cc2089b5265fff11db5e6059bfd858f0d7ce40e7a33e27c60030e6
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Ridder van Kooten', 'count': 1}, id = 5bb1f465a4da235e34f690ab3474aa2ed3be7e23670c50dfc4603bac6af15ccd
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Robin Bartlett', 'count': 1}, id = 59207c348f2c0eee1648c2ecefe769e5a4c45c3b7327966fa56c691f8064892b
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Rodrigo Noya', 'count': 1}, id = ed0507672db8c92166bf48c635146c62859822a5c78e8cdc70cc58380dacd99e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Rodrigo de la Serna', 'count': 1}, id = c35f14877873dacd3b3162ca272e635f6e145c3f68df9a7167bab6f99b80faaa
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Sandro Molfesa', 'count': 1}, id = 8a30fd16dcfca15a5a4b6019f2a460e907231dd85399be08630f3e629ad08e73
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Santiago Magariños', 'count': 1}, id = 7583e309f83361dbde4f54329c0048f3aefa500f1b7e1e8f8c6937dd6a530934
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Silvia Baylé', 'count': 1}, id = c9c7b0b85274f135c80b0640e752ae93bce5abffd3f65d426d89b12b176e052a
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Sofia Bertolotto', 'count': 1}, id = 4b8af7bd98382e05159592e437590942a2ae05575b24b04804dffabdbe5966e6
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Sofia Carson', 'count': 1}, id = 40ba8d1e20c24197a8f49a68cf2e9aa7fecf6079f9203f7321240b7560d22ec4
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Soledad Arocena', 'count': 1}, id = 66f0fd2d9944798440a98e39effd9fd98181cb946a73509e929bb6793e41907e
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Stella Maris Closas', 'count': 1}, id = f54c0c814b5a6405e17fef28f067fca7f51a5659de471b88fad54299744d6c28
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Teresa Gioia', 'count': 1}, id = a24c449ff7e6dc0f5ec244f5787692cc5833ac7d514364a51a055f4d6470b81c
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Tulio Gomez Alzaga', 'count': 1}, id = 3ee2d98d16c9ac023e9af47710e8972660769c9b2450e3c803a608f8d0619c01
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Victoria Larriveu', 'count': 1}, id = 758a037b83278aa5dc47ecd24f5d52260163590185142790405b6776142bb6d1
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Victoria Maurette', 'count': 1}, id = 08508a4f86d856a001e6d0d78a5736f7d4a6bed9a52f35424ac191ca9bd357da
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Will Janowitz', 'count': 1}, id = a9ac54fcddf0f1319dcde6cc8df7e2f7060ca355d9cb7d23d5a39d2045a7179b
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
+Resultados del cálculo (client_id = 0): {'operation': 'count', 'key': 'cast', 'value': 'Ángela Molina', 'count': 1}, id = c5c676f2b6f72dc25e4ed6b21150921dd6d3d65983b056e5c587764813049dba
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] Sent message to queue calculator_count_actors
 [DEBUG] Sent message to queue calculator_count_actorsfinal
-[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":0,"header":"FINAL","node_id":"0"}' enviado directamente.
-Sending final with total_count = 0
-[DEBUG] Sent message to queue calculator_count_actors
-[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":0,"header":"FINAL"}' enviado directamente.
+[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":100,"header":"FINAL","node_id":"0"}' enviado directamente.
 node_id = 0
-Failed to remove file for client 1. Error: [Errno 2] No such file or directory: 'client.1.json'
-Received FINAL packet from dead client %s 1
-Sending final with total_count = 0
+Sending final with total_count = 100
+Received FINAL packet from dead client %s 0
 [DEBUG] Sent message to queue calculator_count_actors
-[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.
-FinalFiles = []
-[INFO] Waiting for messages in calculator_count_actorsfinal
-[INFO] [Middleware] Declarando exchange 'router_actors_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_actors_2000_argentinacalculator_count_actors_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_actors_2000_argentinacalculator_count_actors_0' al exchange 'router_actors_2000_argentina'...
-StateFiles = []
-[INFO] Waiting for messages in router_actors_2000_argentinacalculator_count_actors_0
+[DEBUG] Sent message to queue calculator_count_actors
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":100,"header":"FINAL"}' enviado directamente.

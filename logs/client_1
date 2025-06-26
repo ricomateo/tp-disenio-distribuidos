@@ -18,7 +18,25 @@ La Cienaga | ['Comedy', 'Drama']
 
 
 ========= QUERY 3 RESULTS =========
-(no rows)
+title                   | rating
+--------------------------------
+The forbidden education | 4.0   
+Left for Dead           | 1.0   
+
+
+========= QUERY 4 RESULTS =========
+name               | count
+--------------------------
+Federico Luppi     | 2    
+Adnen Helali       | 1    
+Adrián Salzedo     | 1    
+Alan Stivelman     | 1    
+Alberto Anchart    | 1    
+Alejandra Figueroa | 1    
+Alejandro Awada    | 1    
+Amira Adre         | 1    
+Andrea Frigerio    | 1    
+Andres Bagg        | 1    
 
 
 ========= QUERY 5 RESULTS =========
@@ -28,3 +46,5 @@ POSITIVE | 16.8747
 NEGATIVE | 5.5442 
 
 
+received finalization message, closing...
+Total time from connection to disconnection: 268.27 seconds

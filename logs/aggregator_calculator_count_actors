@@ -6,19 +6,461 @@
 [INFO] Waiting for messages in calculator_count_actors
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
 [INFO] Waiting for messages in calculator_count_actors
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [x] Message 1 acknowledged
+Duplicate packet with ID 3409985474175b885581821ee5498ffb2aee1664c521238cd032498ccfaa1053
+ [x] Message 3 acknowledged
+ [x] Message 4 acknowledged
+ [x] Message 5 acknowledged
+ [x] Message 6 acknowledged
+ [x] Message 7 acknowledged
+Duplicate packet with ID 055a77f03a59e6e61ccb5bffff033544417bf738c6ca19ee283b477d9d06a1af
+ [x] Message 9 acknowledged
+ [x] Message 10 acknowledged
+ [x] Message 11 acknowledged
+ [x] Message 12 acknowledged
+ [x] Message 13 acknowledged
+Duplicate packet with ID 18fb99488ce7439a806e803b0b29b5828469a7e07de41a243b3fe714f8a7e6ba
+ [x] Message 15 acknowledged
+ [x] Message 16 acknowledged
+ [x] Message 17 acknowledged
+ [x] Message 18 acknowledged
+ [x] Message 19 acknowledged
+ [x] Message 20 acknowledged
+Duplicate packet with ID 14b384f63157b79f61d60c8ab329a6eec625d4095049fd1a77ae2bcbc41ad9a5
+ [x] Message 22 acknowledged
+ [x] Message 23 acknowledged
+ [x] Message 24 acknowledged
+ [x] Message 25 acknowledged
+ [x] Message 26 acknowledged
+ [x] Message 27 acknowledged
+ [x] Message 28 acknowledged
+ [x] Message 29 acknowledged
+ [x] Message 30 acknowledged
+ [x] Message 31 acknowledged
+ [x] Message 32 acknowledged
+ [x] Message 33 acknowledged
+ [x] Message 34 acknowledged
+ [x] Message 35 acknowledged
+Duplicate packet with ID 4a01fc5bd97d66d6613d46bedb0dd4d2f369af7158285d6507d7d9c5675a9dc0
+ [x] Message 37 acknowledged
+ [x] Message 38 acknowledged
+ [x] Message 39 acknowledged
+ [x] Message 40 acknowledged
+ [x] Message 41 acknowledged
+ [x] Message 42 acknowledged
+ [x] Message 43 acknowledged
+ [x] Message 44 acknowledged
+ [x] Message 45 acknowledged
+Duplicate packet with ID f85d692d54de9ca97b25b8654fa5b276667527cf45d7e5f2b066db73a0666e7f
+ [x] Message 47 acknowledged
+ [x] Message 48 acknowledged
+Duplicate packet with ID 43ea21730f11a967e47fc38b6d74d48a644272d603aaaaab2b976fbff85de2a8
+ [x] Message 50 acknowledged
+ [x] Message 51 acknowledged
+Duplicate packet with ID c04760d5f80ab4a81acc17a475954885d6855a5f1fdf0b7621204a462e05e21b
+ [x] Message 53 acknowledged
+ [x] Message 54 acknowledged
+ [x] Message 55 acknowledged
+Duplicate packet with ID 72a0bcb542ba48c8065f757724fdff927221f64a336d66b26ca36a21d5bd0d28
+ [x] Message 57 acknowledged
+ [x] Message 58 acknowledged
+Duplicate packet with ID b7c162ec9c28ec69f3b5741f4e7a937d99353ce32d07ee0056e32161cf043902
+ [x] Message 60 acknowledged
+ [x] Message 61 acknowledged
+ [x] Message 62 acknowledged
+ [x] Message 63 acknowledged
+ [x] Message 64 acknowledged
+ [x] Message 65 acknowledged
+ [x] Message 66 acknowledged
+ [x] Message 67 acknowledged
+Duplicate packet with ID 56815b38518b07f7878baa67d7c39c38f1dc3fbe0b296a41d2f4cf789f203529
+ [x] Message 69 acknowledged
+ [x] Message 70 acknowledged
+ [x] Message 71 acknowledged
+ [x] Message 72 acknowledged
+ [x] Message 73 acknowledged
+Duplicate packet with ID 0a55ed1cd3a9af57d5bf892ea33c2dacb283c6ebfee3ff766e7f9f9abda1a4d1
+ [x] Message 75 acknowledged
+Duplicate packet with ID 440877034ff34102a9a559082e2a7367dfe023b730c0a2e245a524a85ceac137
+ [x] Message 77 acknowledged
+ [x] Message 78 acknowledged
+ [x] Message 79 acknowledged
+ [x] Message 80 acknowledged
+ [x] Message 81 acknowledged
+Duplicate packet with ID 723635b75e6cb529b836a745ca1ae445aca322ba40a504e18f7acafb0db1471c
+ [x] Message 83 acknowledged
+ [x] Message 84 acknowledged
+ [x] Message 85 acknowledged
+ [x] Message 86 acknowledged
+ [x] Message 87 acknowledged
+ [x] Message 88 acknowledged
+ [x] Message 89 acknowledged
+ [x] Message 90 acknowledged
+ [x] Message 91 acknowledged
+ [x] Message 92 acknowledged
+ [x] Message 93 acknowledged
+ [x] Message 94 acknowledged
+ [x] Message 95 acknowledged
+ [x] Message 96 acknowledged
+ [x] Message 97 acknowledged
+ [x] Message 98 acknowledged
+ [x] Message 99 acknowledged
+ [x] Message 100 acknowledged
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.
+ [x] Message 102 acknowledged
+ [x] Message 103 acknowledged
+ [x] Message 104 acknowledged
+ [x] Message 105 acknowledged
+ [x] Message 106 acknowledged
+Duplicate packet with ID 8fba40480ff7b49a7b8e2c318e741520943054ef4234e511bb6d2ef1daf3962c
+ [x] Message 108 acknowledged
+ [x] Message 109 acknowledged
+ [x] Message 110 acknowledged
+ [x] Message 111 acknowledged
+Duplicate packet with ID 82c14a16db18842d3533c9d835c51b717d223bfbf7e5de2dd9b647a2acb9d5d6
+ [x] Message 113 acknowledged
+ [x] Message 114 acknowledged
+ [x] Message 115 acknowledged
+ [x] Message 116 acknowledged
+ [x] Message 117 acknowledged
+ [x] Message 118 acknowledged
+ [x] Message 119 acknowledged
+ [x] Message 120 acknowledged
+ [x] Message 121 acknowledged
+ [x] Message 122 acknowledged
+ [x] Message 123 acknowledged
+ [x] Message 124 acknowledged
+ [x] Message 125 acknowledged
+ [x] Message 126 acknowledged
+ [x] Message 127 acknowledged
+ [x] Message 128 acknowledged
+ [x] Message 129 acknowledged
+ [x] Message 130 acknowledged
+ [x] Message 131 acknowledged
+ [x] Message 132 acknowledged
+ [x] Message 133 acknowledged
+ [x] Message 134 acknowledged
+ [x] Message 135 acknowledged
+ [x] Message 136 acknowledged
+ [x] Message 137 acknowledged
+ [x] Message 138 acknowledged
+ [x] Message 139 acknowledged
+Duplicate packet with ID 4a01fc5bd97d66d6613d46bedb0dd4d2f369af7158285d6507d7d9c5675a9dc0
+ [x] Message 141 acknowledged
+Duplicate packet with ID 26ed2f13d8f97529e4a2b1224ad4b6008482750b4a0319000707a0bfb5e91db3
+ [x] Message 143 acknowledged
+ [x] Message 144 acknowledged
+ [x] Message 145 acknowledged
+ [x] Message 146 acknowledged
+ [x] Message 147 acknowledged
+Duplicate packet with ID 23afc041be76359ba0121c2addaaab51ad9c7b8ceab3f4488cc1c7a25681f502
+ [x] Message 149 acknowledged
+ [x] Message 150 acknowledged
+ [x] Message 151 acknowledged
+Duplicate packet with ID c5dcfc9e27be90180456421261ff6f37f22db55d75729db83f69e65b8e12ad49
+ [x] Message 153 acknowledged
+ [x] Message 154 acknowledged
+ [x] Message 155 acknowledged
+ [x] Message 156 acknowledged
+Duplicate packet with ID f41364773a0d1d7094ce60c2fdcbf3f086c4eb4611f15c7029d20b37b50730fd
+ [x] Message 158 acknowledged
+ [x] Message 159 acknowledged
+ [x] Message 160 acknowledged
+ [x] Message 161 acknowledged
+ [x] Message 162 acknowledged
+ [x] Message 163 acknowledged
+ [x] Message 164 acknowledged
+ [x] Message 165 acknowledged
+Duplicate packet with ID b7c162ec9c28ec69f3b5741f4e7a937d99353ce32d07ee0056e32161cf043902
+ [x] Message 167 acknowledged
+Duplicate packet with ID dda557d0c4f39ad104f62e493e30f312faa55d07816bcc2864ec2886165e5d5f
+ [x] Message 169 acknowledged
+Duplicate packet with ID 5ffdf1bd330de51addc08c8abfcf157198af09d3526d933ccad16b49c0199820
+ [x] Message 171 acknowledged
+ [x] Message 172 acknowledged
+ [x] Message 173 acknowledged
+ [x] Message 174 acknowledged
+ [x] Message 175 acknowledged
+ [x] Message 176 acknowledged
+Duplicate packet with ID 8e8920e5a330ade1de7a58ce1911d441cc4c0aca6ee6f0435e644d54e534e23a
+ [x] Message 178 acknowledged
+ [x] Message 179 acknowledged
+ [x] Message 180 acknowledged
+ [x] Message 181 acknowledged
+ [x] Message 182 acknowledged
+Duplicate packet with ID 4ef4997a87ca548c0adfb6adb10b8b54df79492d5916145d3cd36be20a05b4c0
+ [x] Message 184 acknowledged
+ [x] Message 185 acknowledged
+Duplicate packet with ID 440877034ff34102a9a559082e2a7367dfe023b730c0a2e245a524a85ceac137
+ [x] Message 187 acknowledged
+ [x] Message 188 acknowledged
+ [x] Message 189 acknowledged
+ [x] Message 190 acknowledged
+ [x] Message 191 acknowledged
+ [x] Message 192 acknowledged
+Duplicate packet with ID 723635b75e6cb529b836a745ca1ae445aca322ba40a504e18f7acafb0db1471c
+ [x] Message 194 acknowledged
+ [x] Message 195 acknowledged
+ [x] Message 196 acknowledged
+Duplicate packet with ID 908de08459a2894c9d4191c7c1f70fb81edcb698755458f92058d47af56d6d07
+ [x] Message 198 acknowledged
+ [x] Message 199 acknowledged
+ [x] Message 200 acknowledged
+ [x] Message 201 acknowledged
+Duplicate packet with ID 59207c348f2c0eee1648c2ecefe769e5a4c45c3b7327966fa56c691f8064892b
+ [x] Message 203 acknowledged
+ [x] Message 204 acknowledged
+ [x] Message 205 acknowledged
+ [x] Message 206 acknowledged
+ [x] Message 207 acknowledged
+ [x] Message 208 acknowledged
+ [x] Message 209 acknowledged
+ [x] Message 210 acknowledged
+ [x] Message 211 acknowledged
+Duplicate packet with ID f54c0c814b5a6405e17fef28f067fca7f51a5659de471b88fad54299744d6c28
+ [x] Message 213 acknowledged
+ [x] Message 214 acknowledged
+ [x] Message 215 acknowledged
+ [x] Message 216 acknowledged
+ [x] Message 217 acknowledged
+Duplicate packet with ID a9ac54fcddf0f1319dcde6cc8df7e2f7060ca355d9cb7d23d5a39d2045a7179b
+ [x] Message 219 acknowledged
+Duplicate packet with ID c5c676f2b6f72dc25e4ed6b21150921dd6d3d65983b056e5c587764813049dba
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] Sent message to queue aggregator_calculator_count_actors
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":0,"header":"FINAL"}' enviado directamente.
 [INFO] Waiting for messages in calculator_count_actors
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
 [INFO] Waiting for messages in calculator_count_actors
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_count_actors
- [!] operation is count    Error processing message: 0, raw packet is {"client_id":0,"count":0,"header":"FINAL"}
- [!] operation is count    Error processing message: 1, raw packet is {"client_id":1,"count":0,"header":"FINAL"}
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_count_actors
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_count_actors
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_count_actors
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
 [INFO] Waiting for messages in calculator_count_actors

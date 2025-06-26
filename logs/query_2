@@ -2,32 +2,24 @@
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
  [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
 [INFO] Waiting for messages in aggregator_calculator_budget_country
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_budget_country
 Received packet with id 0-0
  [DeliverNode] Movie added with id: 0
-Received packet with id 0-0
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:46:26.831238', data={'value': 'Argentina', 'total': 3000000})
 Received packet with id 0-1
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-2
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-2
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:46:26.831804', data={'value': 'Austria', 'total': 22800000})
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:11:52.365276', data={'value': 'Austria', 'total': 22800000})
 Received packet with id 0-3
  [DeliverNode] Movie added with id: 0
-Received packet with id 0-3
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:46:26.831902', data={'value': 'Brazil', 'total': 3000000})
 Received packet with id 0-4
  [DeliverNode] Movie added with id: 0
+Received packet with id 0-4
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:11:52.366194', data={'value': 'Canada', 'total': 2720093})
 Received packet with id 0-5
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-6
  [DeliverNode] Movie added with id: 0
-Received packet with id 0-6
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:46:26.832101', data={'value': 'Czech Republic', 'total': 30000})
 Received packet with id 0-7
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-8
@@ -36,12 +28,8 @@ Received packet with id 0-9
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-10
  [DeliverNode] Movie added with id: 0
-Received packet with id 0-10
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:46:26.832336', data={'value': 'Greece', 'total': 480000})
 Received packet with id 0-11
  [DeliverNode] Movie added with id: 0
-Received packet with id 0-11
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:46:26.832485', data={'value': 'Hong Kong', 'total': 7500000})
 Received packet with id 0-12
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-13
@@ -50,8 +38,12 @@ Received packet with id 0-14
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-15
  [DeliverNode] Movie added with id: 0
+Received packet with id 0-15
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:11:52.371905', data={'value': 'Japan', 'total': 5035625})
 Received packet with id 0-16
  [DeliverNode] Movie added with id: 0
+Received packet with id 0-16
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:11:52.372038', data={'value': 'Mexico', 'total': 5000000})
 Received packet with id 0-17
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-18
@@ -62,22 +54,26 @@ Received packet with id 0-20
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-21
  [DeliverNode] Movie added with id: 0
-Received packet with id 0-21
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:46:26.833360', data={'value': 'Peru', 'total': 300000})
 Received packet with id 0-22
  [DeliverNode] Movie added with id: 0
+Received packet with id 0-22
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:11:52.372358', data={'value': 'Philippines', 'total': 357678})
 Received packet with id 0-23
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-24
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-25
  [DeliverNode] Movie added with id: 0
+Received packet with id 0-25
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:11:52.372517', data={'value': 'Russia', 'total': 71900614})
 Received packet with id 0-26
  [DeliverNode] Movie added with id: 0
+Received packet with id 0-26
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:11:52.372593', data={'value': 'Singapore', 'total': 100})
 Received packet with id 0-27
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-27
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:46:26.833677', data={'value': 'South Korea', 'total': 15005620})
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:11:52.372669', data={'value': 'South Korea', 'total': 15005620})
 Received packet with id 0-28
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-29
@@ -88,6 +84,8 @@ Received packet with id 0-31
  [DeliverNode] Movie added with id: 0
 Received packet with id 0-32
  [DeliverNode] Movie added with id: 0
+Received packet with id 0-32
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:11:52.376912', data={'value': 'United States of America', 'total': 8137769947})
 final response = {
     "query": 2,
     "result": [
@@ -117,41 +115,22 @@ final response = {
 [DEBUG] Sent message to queue deliverfinal
 [DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":1,"header":"FINAL","node_id":2}' enviado directamente.
 Deleted data for client 0
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_budget_country
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_budget_country
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_budget_country
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_budget_country
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_budget_country
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_budget_country
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_budget_country
 Received packet with id 1-0
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-1
  [DeliverNode] Movie added with id: 1
-Received packet with id 1-1
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:47:33.358948', data={'value': 'Australia', 'total': 12600032})
 Received packet with id 1-2
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-3
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-4
  [DeliverNode] Movie added with id: 1
+Received packet with id 1-4
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:13.764755', data={'value': 'Canada', 'total': 2720093})
 Received packet with id 1-5
  [DeliverNode] Movie added with id: 1
+Received packet with id 1-5
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:13.764843', data={'value': 'China', 'total': 50000000})
 Received packet with id 1-6
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-7
@@ -164,18 +143,20 @@ Received packet with id 1-10
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-11
  [DeliverNode] Movie added with id: 1
+Received packet with id 1-11
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:13.765158', data={'value': 'Hong Kong', 'total': 7500000})
 Received packet with id 1-12
  [DeliverNode] Movie added with id: 1
+Received packet with id 1-12
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:13.765239', data={'value': 'Hungary', 'total': 650000})
 Received packet with id 1-13
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-14
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-14
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:47:33.359973', data={'value': 'Indonesia', 'total': 2000000})
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:13.765359', data={'value': 'Indonesia', 'total': 2000000})
 Received packet with id 1-15
  [DeliverNode] Movie added with id: 1
-Received packet with id 1-15
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:47:33.360078', data={'value': 'Japan', 'total': 5035625})
 Received packet with id 1-16
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-17
@@ -187,7 +168,7 @@ Received packet with id 1-19
 Received packet with id 1-20
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-20
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:47:33.360389', data={'value': 'Norway', 'total': 7500000})
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:13.765638', data={'value': 'Norway', 'total': 7500000})
 Received packet with id 1-21
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-22
@@ -198,6 +179,8 @@ Received packet with id 1-24
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-25
  [DeliverNode] Movie added with id: 1
+Received packet with id 1-25
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:13.765908', data={'value': 'Russia', 'total': 71900614})
 Received packet with id 1-26
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-27
@@ -206,14 +189,16 @@ Received packet with id 1-28
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-29
  [DeliverNode] Movie added with id: 1
+Received packet with id 1-29
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:13.766165', data={'value': 'Taiwan', 'total': 400000})
 Received packet with id 1-30
  [DeliverNode] Movie added with id: 1
 Received packet with id 1-31
  [DeliverNode] Movie added with id: 1
-Received packet with id 1-31
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:47:33.362723', data={'value': 'United Kingdom', 'total': 124959461})
 Received packet with id 1-32
  [DeliverNode] Movie added with id: 1
+Received packet with id 1-32
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:13.766327', data={'value': 'United States of America', 'total': 8137769947})
 final response = {
     "query": 2,
     "result": [
@@ -239,13 +224,11 @@ final response = {
         }
     ]
 }
+[ERROR] confirm_delivery: confirmation was already enabled on channel=1
 [DEBUG] Sent message to exchange deliver with routing key 1
 [DEBUG] Sent message to queue deliverfinal
 [DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":1,"header":"FINAL","node_id":2}' enviado directamente.
 Deleted data for client 1
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_budget_country
 [INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
  [~] DeliverNode listening on aggregator_calculator_budget_country, will send to query_queue
 [INFO] Waiting for messages in aggregator_calculator_budget_country

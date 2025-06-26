@@ -1,17 +1,17 @@
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
 [INFO] Waiting for messages in calculator_budget_country
  [x] Message 1 acknowledged
-Duplicate packet with ID 5cad1f4edb4ea3372fbe6373f6de970a31e205b404341f501f4b063afabe489e
- [x] Message 3 acknowledged
+ [x] Message 2 acknowledged
+Duplicate packet with ID 97c9c9a174cb39630c818cb667b5d1a0b8b7229c63a7056f0c8c15cab81b411d
  [x] Message 4 acknowledged
  [x] Message 5 acknowledged
  [x] Message 6 acknowledged
  [x] Message 7 acknowledged
-Duplicate packet with ID 24efdf84b01c8857892feca378bbb7210e9daf13fe92f4e2547b03b98325b70d
+ [x] Message 8 acknowledged
  [x] Message 9 acknowledged
  [x] Message 10 acknowledged
  [x] Message 11 acknowledged
- [x] Message 12 acknowledged
+Duplicate packet with ID f1fae7f6d4329223acc0ae4b60081efb40209f9fef9fabcd289a3c2b92622c9d
  [x] Message 13 acknowledged
  [x] Message 14 acknowledged
  [x] Message 15 acknowledged
@@ -26,7 +26,7 @@ Duplicate packet with ID 24efdf84b01c8857892feca378bbb7210e9daf13fe92f4e2547b03b
  [x] Message 24 acknowledged
  [x] Message 25 acknowledged
  [x] Message 26 acknowledged
- [x] Message 27 acknowledged
+Duplicate packet with ID 619edd499be912cb6cfaaecd8bcace6fbec2107e173174bdaff893560b368007
  [x] Message 28 acknowledged
  [x] Message 29 acknowledged
  [x] Message 30 acknowledged
@@ -35,6 +35,8 @@ Duplicate packet with ID 24efdf84b01c8857892feca378bbb7210e9daf13fe92f4e2547b03b
  [x] Message 33 acknowledged
  [x] Message 34 acknowledged
  [x] Message 35 acknowledged
+ [x] Message 36 acknowledged
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
 [DEBUG] Sent message to queue aggregator_calculator_budget_country
 [DEBUG] Sent message to queue aggregator_calculator_budget_country
 [DEBUG] Sent message to queue aggregator_calculator_budget_country
@@ -81,45 +83,72 @@ Duplicate packet with ID 24efdf84b01c8857892feca378bbb7210e9daf13fe92f4e2547b03b
 [INFO] Waiting for messages in calculator_budget_country
  [x] Message 1 acknowledged
  [x] Message 2 acknowledged
-Duplicate packet with ID 97c9c9a174cb39630c818cb667b5d1a0b8b7229c63a7056f0c8c15cab81b411d
+ [x] Message 3 acknowledged
  [x] Message 4 acknowledged
  [x] Message 5 acknowledged
  [x] Message 6 acknowledged
  [x] Message 7 acknowledged
  [x] Message 8 acknowledged
  [x] Message 9 acknowledged
-Duplicate packet with ID 303eab84970e0563b3109ff4ad8d7cf80acdf96a0269fbe32aec38bd1061e6cf
- [x] Message 11 acknowledged
-Duplicate packet with ID a2e8965b07cea4f8ee5f8666bfb854e9e92a480884a6daefc4cbdb473ac1e7d8
+ [x] Message 10 acknowledged
+Duplicate packet with ID f1fae7f6d4329223acc0ae4b60081efb40209f9fef9fabcd289a3c2b92622c9d
+ [x] Message 12 acknowledged
  [x] Message 13 acknowledged
  [x] Message 14 acknowledged
  [x] Message 15 acknowledged
-Duplicate packet with ID e2c808ac60a286ae3f8e66731bce9edabd90279777f885aa41ab351f2aad67e3
+ [x] Message 16 acknowledged
  [x] Message 17 acknowledged
  [x] Message 18 acknowledged
  [x] Message 19 acknowledged
- [x] Message 20 acknowledged
+Duplicate packet with ID 0a9a6b828cd38dfb2a31db7b5ea4affc9a656c1bc0ac1239cccc973a6ef5a3db
  [x] Message 21 acknowledged
  [x] Message 22 acknowledged
-Duplicate packet with ID 0a9a6b828cd38dfb2a31db7b5ea4affc9a656c1bc0ac1239cccc973a6ef5a3db
+ [x] Message 23 acknowledged
  [x] Message 24 acknowledged
  [x] Message 25 acknowledged
  [x] Message 26 acknowledged
  [x] Message 27 acknowledged
+ [x] Message 28 acknowledged
+Duplicate packet with ID 5cad1f4edb4ea3372fbe6373f6de970a31e205b404341f501f4b063afabe489e
+Duplicate packet with ID 5cad1f4edb4ea3372fbe6373f6de970a31e205b404341f501f4b063afabe489e
+Duplicate packet with ID 97c9c9a174cb39630c818cb667b5d1a0b8b7229c63a7056f0c8c15cab81b411d
+Duplicate packet with ID 1b17b829fc0908b9eced8ac22ea918ca3a4e489858caeed495467123d34f43f2
+Duplicate packet with ID 402e7d45c2e9487beb866854b49e239f02b579ddd0a1d01bb5412232e8e4d95a
+Duplicate packet with ID e9b0f00fe0b188c603864445eef823a7775da9ce71f3ea8a202a2a715d798028
+Duplicate packet with ID e9b0f00fe0b188c603864445eef823a7775da9ce71f3ea8a202a2a715d798028
+Duplicate packet with ID 24efdf84b01c8857892feca378bbb7210e9daf13fe92f4e2547b03b98325b70d
+Duplicate packet with ID 5f4223718f330d1f1f39fec84ee2b2461c11e823a4315bd8bcb9602329c0c47a
+Duplicate packet with ID 303eab84970e0563b3109ff4ad8d7cf80acdf96a0269fbe32aec38bd1061e6cf
+Duplicate packet with ID a2e8965b07cea4f8ee5f8666bfb854e9e92a480884a6daefc4cbdb473ac1e7d8
+Duplicate packet with ID f1fae7f6d4329223acc0ae4b60081efb40209f9fef9fabcd289a3c2b92622c9d
+Duplicate packet with ID abef33b552eabbda65fecd525852e17bfb5d23f80c3468f4a13eb029bfa2b9d2
+Duplicate packet with ID e2c808ac60a286ae3f8e66731bce9edabd90279777f885aa41ab351f2aad67e3
+Duplicate packet with ID 2812c3c5d0a350966888ed957d539c8033a52effe2b0609d78a98961070c7bc3
+Duplicate packet with ID 64b62172e31a128472839637ec88da52cee4693bdd672b647c10f919bab5a1b9
+Duplicate packet with ID c699358ad17e1c2d2b8bfc19eb2df2b2106a294cb999fd3310adacca3d12fd22
+Duplicate packet with ID 9e0857e9f3fd2f9eff9b9f281c312e7424b9c1c2bf31b60ff241a58dcc1c56bf
+Duplicate packet with ID 9e0857e9f3fd2f9eff9b9f281c312e7424b9c1c2bf31b60ff241a58dcc1c56bf
+Duplicate packet with ID fd46d97d581bca317ee87210ebdc1a21a6969d265ab686b6fc6e03299892fb93
+Duplicate packet with ID 0a9a6b828cd38dfb2a31db7b5ea4affc9a656c1bc0ac1239cccc973a6ef5a3db
+Duplicate packet with ID cb3c00f19cae8591161a2c5c059ca44c0b79cb528fbd3c2e1c63de3546701bc7
+Duplicate packet with ID 41167627330ce5adcfc6431d667a120035dddd499d9024fb99e04f1925c8732f
+Duplicate packet with ID 429c3cb27e2590e1ff97f9ad0ba395723730849bec23749acca74a66c0ac7cb8
 Duplicate packet with ID b1cb0ca4c90ebefcc358188ccbc9de08395dc7a0e5bf16bcf8ca60aee9032cc1
- [x] Message 29 acknowledged
- [x] Message 30 acknowledged
- [x] Message 31 acknowledged
- [x] Message 32 acknowledged
+Duplicate packet with ID f2993f88805e470b2dcdd439975ee4470c9f0753cae8853b60d4e0475e5f6d9e
+Duplicate packet with ID 619edd499be912cb6cfaaecd8bcace6fbec2107e173174bdaff893560b368007
+Duplicate packet with ID e2427a736224a9af47e66df248d6a22bfab3aacbb8e8a42e7c351ec636e1ef2e
 Duplicate packet with ID c24cfbf238c23b33b8db9b0cc9f51eca534e03de41d218f11d45de20a0c045e9
- [x] Message 34 acknowledged
- [x] Message 35 acknowledged
- [x] Message 36 acknowledged
- [x] Message 37 acknowledged
-Duplicate packet with ID d5b047d75541f30f10fd334e19fe0cca187ac71e52974077e5e646527c1f2e16
- [x] Message 39 acknowledged
- [x] Message 40 acknowledged
- [x] Message 41 acknowledged
+ [x] Message 58 acknowledged
+ [x] Message 59 acknowledged
+Duplicate packet with ID 2e8d0e4a06050eca80c1d2b2436a03993b7be3d28e8bbde09877bf9c90ce227f
+ [x] Message 61 acknowledged
+ [x] Message 62 acknowledged
+ [x] Message 63 acknowledged
+ [x] Message 64 acknowledged
+ [x] Message 65 acknowledged
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
 [DEBUG] Sent message to queue aggregator_calculator_budget_country
 [DEBUG] Sent message to queue aggregator_calculator_budget_country
 [DEBUG] Sent message to queue aggregator_calculator_budget_country
@@ -161,10 +190,6 @@ Duplicate packet with ID d5b047d75541f30f10fd334e19fe0cca187ac71e52974077e5e6465
 [DEBUG] Sent message to queue aggregator_calculator_budget_country
 [DEBUG] Sent message to queue aggregator_calculator_budget_country
 [DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.
-[INFO] Waiting for messages in calculator_budget_country
-[INFO] Waiting for messages in calculator_budget_country
-[INFO] Waiting for messages in calculator_budget_country
-[INFO] Waiting for messages in calculator_budget_country
 [INFO] Waiting for messages in calculator_budget_country
 [INFO] Waiting for messages in calculator_budget_country
 [INFO] Waiting for messages in calculator_budget_country

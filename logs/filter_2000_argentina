@@ -6,277 +6,166 @@
 [INFO] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
 [INFO] Waiting for messages in parserfilter_2000_argentina
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 289180, Title: H. , Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}, {'id': 878, 'name': 'Science Fiction'}]
-[DEBUG] Message 355 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 361251, Title: Road to La Paz , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 987 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 361251, Title: Road to La Paz , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 988 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 408537, Title: The Distinguished Citizen , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1265 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 257487, Title: Inevitable , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1531 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 257487, Title: Inevitable , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1532 acknowledged
+[DEBUG] Message 727 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 99896, Title: The Custodian , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1927 acknowledged
+[DEBUG] Message 1122 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 289180, Title: H. , Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}, {'id': 878, 'name': 'Science Fiction'}]
+[DEBUG] Message 1317 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 361251, Title: Road to La Paz , Genres: [{'id': 18, 'name': 'Drama'}]
+[DEBUG] Message 1618 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 361251, Title: Road to La Paz , Genres: [{'id': 18, 'name': 'Drama'}]
+[DEBUG] Message 1619 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 257487, Title: Inevitable , Genres: [{'id': 18, 'name': 'Drama'}]
+[DEBUG] Message 1841 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 382906, Title: Rara , Genres: [{'id': 10751, 'name': 'Family'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 2073 acknowledged
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
- [~] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Waiting for messages in parserfilter_2000_argentina
+[DEBUG] Message 2085 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 360365, Title: Tini: The New Life of Violetta , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
-[DEBUG] Message 164 acknowledged
+[DEBUG] Message 2340 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 179302, Title: Ánima Buenos Aires , Genres: [{'id': 16, 'name': 'Animation'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 365 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Message 2468 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 416680, Title: Gilda, No Me Arrepiento de Este Amor , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
-[DEBUG] Message 484 acknowledged
+[DEBUG] Message 2584 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 416680, Title: Gilda, No Me Arrepiento de Este Amor , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
+[DEBUG] Message 2585 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 127304, Title: Dibu 3 , Genres: []
-[DEBUG] Message 487 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 268297, Title: The Film Critic , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 500 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 359736, Title: Human , Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 9648, 'name': 'Mystery'}]
-[DEBUG] Message 505 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 359736, Title: Human , Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 9648, 'name': 'Mystery'}]
-[DEBUG] Message 506 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 360365, Title: Tini: The New Life of Violetta , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
-[DEBUG] Message 536 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 425942, Title: Black Snow , Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
-[DEBUG] Message 692 acknowledged
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
- [~] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Waiting for messages in parserfilter_2000_argentina
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 179302, Title: Ánima Buenos Aires , Genres: [{'id': 16, 'name': 'Animation'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 87 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 416680, Title: Gilda, No Me Arrepiento de Este Amor , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
-[DEBUG] Message 435 acknowledged
+[DEBUG] Message 2589 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 127304, Title: Dibu 3 , Genres: []
-[DEBUG] Message 448 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 268297, Title: The Film Critic , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 503 acknowledged
+[DEBUG] Message 2590 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 268297, Title: The Film Critic , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 505 acknowledged
+[DEBUG] Message 2604 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 359736, Title: Human , Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 9648, 'name': 'Mystery'}]
-[DEBUG] Message 545 acknowledged
+[DEBUG] Message 2609 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 425942, Title: Black Snow , Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
-[DEBUG] Message 731 acknowledged
+[DEBUG] Message 2730 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 425942, Title: Black Snow , Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
+[DEBUG] Message 2731 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 58429, Title: La Cienaga , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1327 acknowledged
+[DEBUG] Message 3475 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 128598, Title: Left for Dead , Genres: [{'id': 37, 'name': 'Western'}, {'id': 28, 'name': 'Action'}, {'id': 27, 'name': 'Horror'}]
-[DEBUG] Message 1328 acknowledged
+[DEBUG] Message 3476 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 125619, Title: The forbidden education , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 99, 'name': 'Documentary'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1330 acknowledged
+[DEBUG] Message 3477 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 125619, Title: The forbidden education , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 99, 'name': 'Documentary'}, {'id': 18, 'name': 'Drama'}]
+[DEBUG] Message 3478 acknowledged
 [INFO] Received FINAL packet from client 0
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":"16","header":"FINAL"}' enviado directamente.
 [INFO] Sent FINAL packet for client 0
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 58429, Title: La Cienaga , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 2083 acknowledged
+[INFO] Received FINAL packet from client 0
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 408537, Title: The Distinguished Citizen , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 3094 acknowledged
+[DEBUG] Message 4218 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 99896, Title: The Custodian , Genres: [{'id': 18, 'name': 'Drama'}]
+[DEBUG] Message 4612 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 408537, Title: The Distinguished Citizen , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 3313 acknowledged
+[DEBUG] Message 5387 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 99896, Title: The Custodian , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 3720 acknowledged
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
- [~] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Waiting for messages in parserfilter_2000_argentina
+[DEBUG] Message 5771 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 289180, Title: H. , Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}, {'id': 878, 'name': 'Science Fiction'}]
-[DEBUG] Message 358 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 99896, Title: The Custodian , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 506 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 289180, Title: H. , Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}, {'id': 878, 'name': 'Science Fiction'}]
-[DEBUG] Message 863 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 289180, Title: H. , Genres: [{'id': 53, 'name': 'Thriller'}, {'id': 18, 'name': 'Drama'}, {'id': 878, 'name': 'Science Fiction'}]
-[DEBUG] Message 864 acknowledged
+[DEBUG] Message 5965 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 361251, Title: Road to La Paz , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 897 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 361251, Title: Road to La Paz , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 898 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 361251, Title: Road to La Paz , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1322 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Message 6254 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 257487, Title: Inevitable , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1586 acknowledged
+[DEBUG] Message 6473 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 257487, Title: Inevitable , Genres: [{'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1695 acknowledged
+[DEBUG] Message 6474 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 382906, Title: Rara , Genres: [{'id': 10751, 'name': 'Family'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 1946 acknowledged
+[DEBUG] Message 6725 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 382906, Title: Rara , Genres: [{'id': 10751, 'name': 'Family'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 2334 acknowledged
+[DEBUG] Message 6726 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 360365, Title: Tini: The New Life of Violetta , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
-[DEBUG] Message 2600 acknowledged
+[DEBUG] Message 6969 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 360365, Title: Tini: The New Life of Violetta , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
-[DEBUG] Message 2717 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 360365, Title: Tini: The New Life of Violetta , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
-[DEBUG] Message 2718 acknowledged
+[DEBUG] Message 6970 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 179302, Title: Ánima Buenos Aires , Genres: [{'id': 16, 'name': 'Animation'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 2853 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 179302, Title: Ánima Buenos Aires , Genres: [{'id': 16, 'name': 'Animation'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 2893 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 179302, Title: Ánima Buenos Aires , Genres: [{'id': 16, 'name': 'Animation'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 2894 acknowledged
+[DEBUG] Message 7087 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 416680, Title: Gilda, No Me Arrepiento de Este Amor , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
-[DEBUG] Message 3055 acknowledged
+[DEBUG] Message 7200 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 127304, Title: Dibu 3 , Genres: []
-[DEBUG] Message 3058 acknowledged
+[DEBUG] Message 7204 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 268297, Title: The Film Critic , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 3078 acknowledged
+[DEBUG] Message 7220 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 359736, Title: Human , Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 9648, 'name': 'Mystery'}]
-[DEBUG] Message 3083 acknowledged
+[DEBUG] Message 7225 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 425942, Title: Black Snow , Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
-[DEBUG] Message 3199 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 416680, Title: Gilda, No Me Arrepiento de Este Amor , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 10402, 'name': 'Music'}]
-[DEBUG] Message 3378 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 127304, Title: Dibu 3 , Genres: []
-[DEBUG] Message 3383 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 127304, Title: Dibu 3 , Genres: []
-[DEBUG] Message 3384 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 268297, Title: The Film Critic , Genres: [{'id': 18, 'name': 'Drama'}, {'id': 35, 'name': 'Comedy'}, {'id': 10769, 'name': 'Foreign'}]
-[DEBUG] Message 3399 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 359736, Title: Human , Genres: [{'id': 99, 'name': 'Documentary'}, {'id': 9648, 'name': 'Mystery'}]
-[DEBUG] Message 3405 acknowledged
+[DEBUG] Message 7345 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 425942, Title: Black Snow , Genres: [{'id': 9648, 'name': 'Mystery'}, {'id': 18, 'name': 'Drama'}, {'id': 80, 'name': 'Crime'}, {'id': 53, 'name': 'Thriller'}]
-[DEBUG] Message 3658 acknowledged
-[ERROR] Error al leer desde 0.0.0.0: [Errno 104] Connection reset by peer
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
- [~] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Waiting for messages in parserfilter_2000_argentina
+[DEBUG] Message 7346 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 58429, Title: La Cienaga , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 334 acknowledged
+[DEBUG] Message 8061 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 58429, Title: La Cienaga , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
+[DEBUG] Message 8062 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 128598, Title: Left for Dead , Genres: [{'id': 37, 'name': 'Western'}, {'id': 28, 'name': 'Action'}, {'id': 27, 'name': 'Horror'}]
-[DEBUG] Message 340 acknowledged
+[DEBUG] Message 8063 acknowledged
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] Filtered and Published to filter_2000_argentina: ID: 125619, Title: The forbidden education , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 99, 'name': 'Documentary'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 357 acknowledged
+[DEBUG] Message 8064 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 128598, Title: Left for Dead , Genres: [{'id': 37, 'name': 'Western'}, {'id': 28, 'name': 'Action'}, {'id': 27, 'name': 'Horror'}]
+[DEBUG] Message 8065 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 125619, Title: The forbidden education , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 99, 'name': 'Documentary'}, {'id': 18, 'name': 'Drama'}]
+[DEBUG] Message 8066 acknowledged
+[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
+[DEBUG] Filtered and Published to filter_2000_argentina: ID: 125619, Title: The forbidden education , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 99, 'name': 'Documentary'}, {'id': 18, 'name': 'Drama'}]
+[DEBUG] Message 8067 acknowledged
 [INFO] Received FINAL packet from client 1
 [DEBUG] Sent message to exchange filter_2000_argentina with routing key 
 [DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":"16","header":"FINAL"}' enviado directamente.
 [INFO] Sent FINAL packet for client 1
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 58429, Title: La Cienaga , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 529 acknowledged
-[DEBUG] Sent message to exchange filter_2000_argentina with routing key 
-[DEBUG] Filtered and Published to filter_2000_argentina: ID: 58429, Title: La Cienaga , Genres: [{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]
-[DEBUG] Message 530 acknowledged
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
- [~] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Waiting for messages in parserfilter_2000_argentina
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
- [~] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Waiting for messages in parserfilter_2000_argentina
-[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
-[INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'parserfilter_2000_argentina' al exchange 'parser'...
- [~] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Applying filters: {1: ('in', ['Argentina'], 'production_countries'), 2: ('more_date', 1999.0, 'release_date')}
-[INFO] Waiting for messages in parserfilter_2000_argentina
 [INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
 [INFO] [Middleware] Declarando exchange 'parser' de tipo 'direct'...
 [INFO] [Middleware] Declarando cola 'parserfilter_2000_argentina' (durable=True)...

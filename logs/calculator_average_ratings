@@ -6,127 +6,38 @@ FinalFiles = []
 [INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
 StateFiles = []
 [INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_average_ratingsfinal
-[INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_ratings_calculatedcalculator_average_ratings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_ratings_calculatedcalculator_average_ratings_0' al exchange 'router_ratings_calculated'...
-StateFiles = []
-[INFO] Waiting for messages in router_ratings_calculatedcalculator_average_ratings_0
-[DEBUG] Sent message to queue calculator_average_ratingsfinal
-[DEBUG] Sent message to queue calculator_average_ratingsfinal
-[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":0,"header":"FINAL","node_id":"0"}' enviado directamente.
-Failed to remove file for client 0. Error: [Errno 2] No such file or directory: 'client.0.json'
-node_id = 0
-Sending final with total_count = 0
+[client - 1] Processed movie: 128598.0
+ [x] Message 1 acknowledged
+Duplicate message: id: 0-28, title: Left for Dead, client_id: 1
+[client - 1] Processed movie: 125619.0
+ [x] Message 3 acknowledged
+[client - 0] Processed movie: 125619.0
+ [x] Message 4 acknowledged
+Duplicate message: id: 0-27, title: The forbidden education, client_id: 0
+[client - 0] Processed movie: 128598.0
+ [x] Message 6 acknowledged
+Resultados del cálculo (client_id = 0): {'operation': 'average', 'key': 'id', 'id': 125619, 'value_field': 'rating', 'average': 4.0, 'count': 1, 'title': 'The forbidden education'}, id = f41eba4d4ca13d4de23cd83b69213a6fde14ce6e19b9a11f09ce7bcf37c56627
 [DEBUG] Sent message to queue calculator_average_ratings
-[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":0,"header":"FINAL"}' enviado directamente.
-node_id = 0
-Sending final with total_count = 0
 [DEBUG] Sent message to queue calculator_average_ratings
-[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":0,"header":"FINAL"}' enviado directamente.
+Resultados del cálculo (client_id = 0): {'operation': 'average', 'key': 'id', 'id': 128598, 'value_field': 'rating', 'average': 1.0, 'count': 1, 'title': 'Left for Dead'}, id = c10cf7e73b5a62f138f2761748b3afc45992768dad7dd131e40c184c53e1e023
+[DEBUG] Sent message to queue calculator_average_ratings
+[DEBUG] Sent message to queue calculator_average_ratingsfinal
+[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":2,"header":"FINAL","node_id":"0"}' enviado directamente.
+node_id = 0
+Sending final with total_count = 2
+[DEBUG] Sent message to queue calculator_average_ratings
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":2,"header":"FINAL"}' enviado directamente.
 [ERROR] confirm_delivery: confirmation was already enabled on channel=1
-[DEBUG] Sent message to queue calculator_average_ratingsfinal
-[DEBUG] Sent message to queue calculator_average_ratingsfinal
-[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":0,"header":"FINAL","node_id":"0"}' enviado directamente.
-node_id = 0
-Sending final with total_count = 0
+Resultados del cálculo (client_id = 1): {'operation': 'average', 'key': 'id', 'id': 125619, 'value_field': 'rating', 'average': 4.0, 'count': 1, 'title': 'The forbidden education'}, id = f41eba4d4ca13d4de23cd83b69213a6fde14ce6e19b9a11f09ce7bcf37c56627
 [DEBUG] Sent message to queue calculator_average_ratings
-Failed to remove file for client 1. Error: [Errno 2] No such file or directory: 'client.1.json'
-[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.
-node_id = 0
-Sending final with total_count = 0
+Resultados del cálculo (client_id = 1): {'operation': 'average', 'key': 'id', 'id': 128598, 'value_field': 'rating', 'average': 1.0, 'count': 1, 'title': 'Left for Dead'}, id = c10cf7e73b5a62f138f2761748b3afc45992768dad7dd131e40c184c53e1e023
 [DEBUG] Sent message to queue calculator_average_ratings
-[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.
+[DEBUG] Sent message to queue calculator_average_ratingsfinal
+[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":2,"header":"FINAL","node_id":"0"}' enviado directamente.
+node_id = 0
+Sending final with total_count = 2
+[DEBUG] Sent message to queue calculator_average_ratings
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":2,"header":"FINAL"}' enviado directamente.
 FinalFiles = []
 [INFO] Waiting for messages in calculator_average_ratingsfinal
 [INFO] [Middleware] Declarando exchange 'router_ratings_calculated' de tipo 'direct'...

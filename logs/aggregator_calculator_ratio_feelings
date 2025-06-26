@@ -6,49 +6,25 @@
 [INFO] Waiting for messages in calculator_ratio_feelings
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
 [INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-[INFO] Waiting for messages in calculator_ratio_feelings
-[updated negative number - current negative average: (5.544237351986518, 129)
- [x] Message 1 acknowledged
-[updated positive number - current positive average: (16.87473955988653, 195)
- [x] Message 2 acknowledged
-Duplicate packet with ID 8bd03a886cbc73fff225bf157cca5652668b366f42e863c403a67debe22563f8
-[DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
-[DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
-[DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
-[DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
-[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":0,"header":"FINAL"}' enviado directamente.
-[INFO] Waiting for messages in calculator_ratio_feelings
-[INFO] Waiting for messages in calculator_ratio_feelings
 [updated negative number - current negative average: (5.544237351986516, 129)
  [x] Message 1 acknowledged
 [updated positive number - current positive average: (16.874739559886535, 195)
  [x] Message 2 acknowledged
-Duplicate packet with ID c9153dc1f86c0fe29dc1c6ffcfb453d72b7f07e298f4ec0660fb2d7c088b1e9b
+[DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
+[DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
+[DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":0,"header":"FINAL"}' enviado directamente.
+[updated negative number - current negative average: (5.544237351986516, 129)
+ [x] Message 4 acknowledged
+[updated positive number - current positive average: (16.874739559886535, 195)
+ [x] Message 5 acknowledged
+Duplicate packet with ID 46cd201413ce0ccbe7f7737169f6dadcca1e01808718d351a74fd6838093ebe1
+[DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
 [DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
 [DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
 [DEBUG] Sent message to queue aggregator_calculator_ratio_feelings
 [DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.
+[INFO] Waiting for messages in calculator_ratio_feelings
 [INFO] Waiting for messages in calculator_ratio_feelings
 [INFO] Waiting for messages in calculator_ratio_feelings
 [INFO] Waiting for messages in calculator_ratio_feelings

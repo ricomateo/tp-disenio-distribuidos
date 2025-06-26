@@ -18,63 +18,110 @@
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
  [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
 [INFO] Waiting for messages in calculator_average_ratings
+Received packet with id f41eba4d4ca13d4de23cd83b69213a6fde14ce6e19b9a11f09ce7bcf37c56627
+ [DeliverNode] Movie added with id: 0
+Received packet with id f41eba4d4ca13d4de23cd83b69213a6fde14ce6e19b9a11f09ce7bcf37c56627
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:13:34.815845', data={'source': 'calculator_average_by:id,rating', 'operation': 'average', 'key': 'id', 'id': 125619, 'value_field': 'rating', 'average': 4.0, 'count': 1, 'title': 'The forbidden education'})
+Received packet with id c10cf7e73b5a62f138f2761748b3afc45992768dad7dd131e40c184c53e1e023
+ [DeliverNode] Movie added with id: 0
+final response = {
+    "query": 3,
+    "result": [
+        {
+            "id": 125619,
+            "count": 1,
+            "title": "The forbidden education",
+            "rating": 4.0
+        },
+        {
+            "id": 128598,
+            "count": 1,
+            "title": "Left for Dead",
+            "rating": 1.0
+        }
+    ]
+}
 [INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
  [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
-[INFO] Waiting for messages in calculator_average_ratings
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
-[INFO] Waiting for messages in calculator_average_ratings
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
-[INFO] Waiting for messages in calculator_average_ratings
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
-[INFO] Waiting for messages in calculator_average_ratings
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
-[INFO] Waiting for messages in calculator_average_ratings
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
-[INFO] Waiting for messages in calculator_average_ratings
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
-[INFO] Waiting for messages in calculator_average_ratings
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
-[INFO] Waiting for messages in calculator_average_ratings
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+Recovered data for client 0.
+Data: {
+    "state": [
+        {
+            "source": "calculator_average_by:id,rating",
+            "operation": "average",
+            "key": "id",
+            "id": 125619,
+            "value_field": "rating",
+            "average": 4.0,
+            "count": 1,
+            "title": "The forbidden education"
+        },
+        {
+            "source": "calculator_average_by:id,rating",
+            "operation": "average",
+            "key": "id",
+            "id": 128598,
+            "value_field": "rating",
+            "average": 1.0,
+            "count": 1,
+            "title": "Left for Dead"
+        }
+    ],
+    "processed_messages": [
+        "c10cf7e73b5a62f138f2761748b3afc45992768dad7dd131e40c184c53e1e023",
+        "f41eba4d4ca13d4de23cd83b69213a6fde14ce6e19b9a11f09ce7bcf37c56627"
+    ]
+}
 [INFO] Waiting for messages in calculator_average_ratings
 final response = {
     "query": 3,
-    "result": []
+    "result": [
+        {
+            "id": 125619,
+            "count": 1,
+            "title": "The forbidden education",
+            "rating": 4.0
+        },
+        {
+            "id": 128598,
+            "count": 1,
+            "title": "Left for Dead",
+            "rating": 1.0
+        }
+    ]
 }
 [DEBUG] Sent message to exchange deliver with routing key 0
 [DEBUG] Sent message to queue deliverfinal
 [DEBUG] Sent message to queue deliverfinal
 [DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":1,"header":"FINAL","node_id":3}' enviado directamente.
-Failed to remove file for client 0. Error: [Errno 2] No such file or directory: 'client.0.json'
 Deleted data for client 0
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
-[INFO] Waiting for messages in calculator_average_ratings
+Received packet with id f41eba4d4ca13d4de23cd83b69213a6fde14ce6e19b9a11f09ce7bcf37c56627
+ [DeliverNode] Movie added with id: 1
+Received packet with id c10cf7e73b5a62f138f2761748b3afc45992768dad7dd131e40c184c53e1e023
+ [DeliverNode] Movie added with id: 1
 final response = {
     "query": 3,
-    "result": []
+    "result": [
+        {
+            "id": 125619,
+            "count": 1,
+            "title": "The forbidden education",
+            "rating": 4.0
+        },
+        {
+            "id": 128598,
+            "count": 1,
+            "title": "Left for Dead",
+            "rating": 1.0
+        }
+    ]
 }
+[ERROR] confirm_delivery: confirmation was already enabled on channel=1
+[DEBUG] Sent message to exchange deliver with routing key 1
 [DEBUG] Sent message to exchange deliver with routing key 1
 [DEBUG] Sent message to queue deliverfinal
 [DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":1,"header":"FINAL","node_id":3}' enviado directamente.
-Failed to remove file for client 1. Error: [Errno 2] No such file or directory: 'client.1.json'
 Deleted data for client 1
 [INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
  [~] DeliverNode listening on calculator_average_ratings, will send to query_queue

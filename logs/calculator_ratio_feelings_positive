@@ -8,512 +8,433 @@ StateFiles = []
 [INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
 [client - 0] Processed movie: 862
  [x] Message 1 acknowledged
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.0.json']
-Recovered state from client 0, len(processed_messages) = 1
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
 [client - 0] Processed movie: 31357
- [x] Message 1 acknowledged
-Duplicate message: id: 0-3, title: None, client_id: 0
-Duplicate message: id: 0-3, title: None, client_id: 0
-Duplicate message: id: 0-3, title: None, client_id: 0
-Duplicate message: id: 0-3, title: None, client_id: 0
+ [x] Message 2 acknowledged
 [client - 0] Processed movie: 949
- [x] Message 6 acknowledged
-Duplicate message: id: 0-5, title: None, client_id: 0
-Duplicate message: id: 0-5, title: None, client_id: 0
+ [x] Message 3 acknowledged
 Duplicate message: id: 0-5, title: None, client_id: 0
 [client - 0] Processed movie: 9091
- [x] Message 10 acknowledged
+ [x] Message 5 acknowledged
 [client - 0] Processed movie: 10858
- [x] Message 11 acknowledged
-Duplicate message: id: 0-13, title: None, client_id: 0
+ [x] Message 6 acknowledged
 Duplicate message: id: 0-13, title: None, client_id: 0
 [client - 0] Processed movie: 451
- [x] Message 14 acknowledged
+ [x] Message 8 acknowledged
 Duplicate message: id: 0-24, title: None, client_id: 0
-Duplicate message: id: 0-24, title: None, client_id: 0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.0.json']
-Recovered state from client 0, len(processed_messages) = 6
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
 [client - 0] Processed movie: 9263
- [x] Message 1 acknowledged
-Duplicate message: id: 0-26, title: None, client_id: 0
+ [x] Message 10 acknowledged
 [client - 0] Processed movie: 63
- [x] Message 3 acknowledged
-Duplicate message: id: 0-31, title: None, client_id: 0
-Duplicate message: id: 0-31, title: None, client_id: 0
-Duplicate message: id: 0-31, title: None, client_id: 0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.0.json']
-Recovered state from client 0, len(processed_messages) = 8
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.0.json']
-Recovered state from client 0, len(processed_messages) = 8
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
+ [x] Message 11 acknowledged
 [client - 0] Processed movie: 9598
- [x] Message 1 acknowledged
+ [x] Message 12 acknowledged
 [client - 0] Processed movie: 687
- [x] Message 2 acknowledged
+ [x] Message 13 acknowledged
+Duplicate message: id: 0-34, title: None, client_id: 0
 [client - 0] Processed movie: 9312
- [x] Message 3 acknowledged
+ [x] Message 15 acknowledged
 Duplicate message: id: 0-42, title: None, client_id: 0
 [client - 0] Processed movie: 577
- [x] Message 5 acknowledged
+ [x] Message 17 acknowledged
 Duplicate message: id: 0-43, title: None, client_id: 0
 Duplicate message: id: 0-43, title: None, client_id: 0
 [client - 0] Processed movie: 11861
- [x] Message 8 acknowledged
+ [x] Message 20 acknowledged
+Duplicate message: id: 0-44, title: None, client_id: 0
 [client - 0] Processed movie: 807
- [x] Message 9 acknowledged
-Duplicate message: id: 0-45, title: None, client_id: 0
-Duplicate message: id: 0-45, title: None, client_id: 0
-Duplicate message: id: 0-45, title: None, client_id: 0
+ [x] Message 22 acknowledged
 Duplicate message: id: 0-45, title: None, client_id: 0
 [client - 0] Processed movie: 10530
- [x] Message 14 acknowledged
+ [x] Message 24 acknowledged
+Duplicate message: id: 0-46, title: None, client_id: 0
 [client - 0] Processed movie: 629
- [x] Message 15 acknowledged
+ [x] Message 26 acknowledged
+Duplicate message: id: 0-48, title: None, client_id: 0
 Duplicate message: id: 0-48, title: None, client_id: 0
 Duplicate message: id: 0-48, title: None, client_id: 0
 [client - 0] Processed movie: 11448
- [x] Message 18 acknowledged
+ [x] Message 30 acknowledged
 [client - 0] Processed movie: 11859
- [x] Message 19 acknowledged
+ [x] Message 31 acknowledged
 Duplicate message: id: 0-69, title: None, client_id: 0
 Duplicate message: id: 0-69, title: None, client_id: 0
 Duplicate message: id: 0-69, title: None, client_id: 0
 [client - 0] Processed movie: 9102
- [x] Message 23 acknowledged
+ [x] Message 35 acknowledged
+Duplicate message: id: 0-74, title: None, client_id: 0
 Duplicate message: id: 0-74, title: None, client_id: 0
 [client - 0] Processed movie: 400
- [x] Message 25 acknowledged
-Duplicate message: id: 0-79, title: None, client_id: 0
+ [x] Message 38 acknowledged
 Duplicate message: id: 0-79, title: None, client_id: 0
 [client - 0] Processed movie: 10534
- [x] Message 28 acknowledged
-[client - 0] Processed movie: 2086
- [x] Message 29 acknowledged
-[client - 0] Processed movie: 9095
- [x] Message 30 acknowledged
-[client - 0] Processed movie: 334541
- [x] Message 31 acknowledged
-Duplicate message: id: 1-62, title: None, client_id: 0
-Duplicate message: id: 1-62, title: None, client_id: 0
-[client - 0] Processed movie: 12158
- [x] Message 34 acknowledged
-[client - 0] Processed movie: 334543
- [x] Message 35 acknowledged
-[client - 0] Processed movie: 197
- [x] Message 36 acknowledged
-[client - 0] Processed movie: 78406
- [x] Message 37 acknowledged
-[client - 0] Processed movie: 338964
- [x] Message 38 acknowledged
-Duplicate message: id: 1-102, title: None, client_id: 0
-[client - 0] Processed movie: 22279
  [x] Message 40 acknowledged
-Duplicate message: id: 0-144, title: None, client_id: 0
-Duplicate message: id: 0-144, title: None, client_id: 0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.0.json']
-Recovered state from client 0, len(processed_messages) = 30
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
+Duplicate message: id: 0-84, title: None, client_id: 0
+Duplicate message: id: 0-84, title: None, client_id: 0
+[client - 0] Processed movie: 2086
+ [x] Message 43 acknowledged
+[client - 0] Processed movie: 9095
+ [x] Message 44 acknowledged
+[client - 0] Processed movie: 12158
+ [x] Message 45 acknowledged
+[client - 0] Processed movie: 197
+ [x] Message 46 acknowledged
+[client - 0] Processed movie: 78406
+ [x] Message 47 acknowledged
+Duplicate message: id: 0-116, title: None, client_id: 0
+[client - 0] Processed movie: 22279
+ [x] Message 49 acknowledged
 Duplicate message: id: 0-144, title: None, client_id: 0
 [client - 0] Processed movie: 568
- [x] Message 2 acknowledged
+ [x] Message 51 acknowledged
+Duplicate message: id: 0-146, title: None, client_id: 0
+Duplicate message: id: 0-146, title: None, client_id: 0
 [client - 0] Processed movie: 414
- [x] Message 3 acknowledged
-Duplicate message: id: 0-149, title: None, client_id: 0
+ [x] Message 54 acknowledged
 [client - 0] Processed movie: 20649
- [x] Message 5 acknowledged
+ [x] Message 55 acknowledged
 Duplicate message: id: 0-155, title: None, client_id: 0
 [client - 0] Processed movie: 1572
- [x] Message 7 acknowledged
+ [x] Message 57 acknowledged
+Duplicate message: id: 0-161, title: None, client_id: 0
+Duplicate message: id: 0-161, title: None, client_id: 0
 [client - 0] Processed movie: 6520
- [x] Message 8 acknowledged
+ [x] Message 60 acknowledged
 [client - 0] Processed movie: 9886
- [x] Message 9 acknowledged
+ [x] Message 61 acknowledged
 [client - 0] Processed movie: 9482
- [x] Message 10 acknowledged
+ [x] Message 62 acknowledged
+Duplicate message: id: 0-169, title: None, client_id: 0
 [client - 0] Processed movie: 9344
- [x] Message 11 acknowledged
+ [x] Message 64 acknowledged
 [client - 0] Processed movie: 9071
- [x] Message 12 acknowledged
-Duplicate message: id: 0-172, title: None, client_id: 0
-Duplicate message: id: 0-172, title: None, client_id: 0
+ [x] Message 65 acknowledged
 Duplicate message: id: 0-172, title: None, client_id: 0
 [client - 0] Processed movie: 9070
- [x] Message 16 acknowledged
+ [x] Message 67 acknowledged
+Duplicate message: id: 0-177, title: None, client_id: 0
 [client - 0] Processed movie: 11980
- [x] Message 17 acknowledged
+ [x] Message 69 acknowledged
 Duplicate message: id: 0-184, title: None, client_id: 0
 [client - 0] Processed movie: 10802
- [x] Message 19 acknowledged
+ [x] Message 71 acknowledged
+Duplicate message: id: 0-189, title: None, client_id: 0
+Duplicate message: id: 0-189, title: None, client_id: 0
 Duplicate message: id: 0-189, title: None, client_id: 0
 [client - 0] Processed movie: 10149
- [x] Message 21 acknowledged
+ [x] Message 75 acknowledged
 [client - 0] Processed movie: 9348
- [x] Message 22 acknowledged
-Duplicate message: id: 0-192, title: None, client_id: 0
+ [x] Message 76 acknowledged
 Duplicate message: id: 0-192, title: None, client_id: 0
 [client - 0] Processed movie: 281
- [x] Message 25 acknowledged
+ [x] Message 78 acknowledged
 [client - 0] Processed movie: 9560
- [x] Message 26 acknowledged
-Duplicate message: id: 0-203, title: None, client_id: 0
+ [x] Message 79 acknowledged
 Duplicate message: id: 0-203, title: None, client_id: 0
 Duplicate message: id: 0-203, title: None, client_id: 0
 [client - 0] Processed movie: 9804
- [x] Message 30 acknowledged
+ [x] Message 82 acknowledged
 [client - 0] Processed movie: 50797
- [x] Message 31 acknowledged
+ [x] Message 83 acknowledged
+Duplicate message: id: 0-209, title: None, client_id: 0
 [client - 0] Processed movie: 76
- [x] Message 32 acknowledged
+ [x] Message 85 acknowledged
 Duplicate message: id: 0-211, title: None, client_id: 0
 Duplicate message: id: 0-211, title: None, client_id: 0
 [client - 0] Processed movie: 11017
- [x] Message 35 acknowledged
+ [x] Message 88 acknowledged
+Duplicate message: id: 0-212, title: None, client_id: 0
+Duplicate message: id: 0-212, title: None, client_id: 0
 [client - 0] Processed movie: 9382
- [x] Message 36 acknowledged
+ [x] Message 91 acknowledged
 [client - 0] Processed movie: 1909
- [x] Message 37 acknowledged
-Duplicate message: id: 0-219, title: None, client_id: 0
+ [x] Message 92 acknowledged
 [client - 0] Processed movie: 14275
- [x] Message 39 acknowledged
+ [x] Message 93 acknowledged
 [client - 0] Processed movie: 1024
- [x] Message 40 acknowledged
+ [x] Message 94 acknowledged
 Duplicate message: id: 0-242, title: None, client_id: 0
 Duplicate message: id: 0-242, title: None, client_id: 0
 [client - 0] Processed movie: 17207
- [x] Message 43 acknowledged
-Duplicate message: id: 0-243, title: None, client_id: 0
-Duplicate message: id: 0-243, title: None, client_id: 0
+ [x] Message 97 acknowledged
 Duplicate message: id: 0-243, title: None, client_id: 0
 [client - 0] Processed movie: 628
- [x] Message 47 acknowledged
-Duplicate message: id: 0-248, title: None, client_id: 0
+ [x] Message 99 acknowledged
 Duplicate message: id: 0-248, title: None, client_id: 0
 [client - 0] Processed movie: 6280
- [x] Message 50 acknowledged
+ [x] Message 101 acknowledged
+Duplicate message: id: 0-251, title: None, client_id: 0
 Duplicate message: id: 0-251, title: None, client_id: 0
 [client - 0] Processed movie: 11
- [x] Message 52 acknowledged
-Duplicate message: id: 0-255, title: None, client_id: 0
+ [x] Message 104 acknowledged
 Duplicate message: id: 0-255, title: None, client_id: 0
 [client - 0] Processed movie: 18183
- [x] Message 55 acknowledged
-Duplicate message: id: 0-260, title: None, client_id: 0
-Duplicate message: id: 0-260, title: None, client_id: 0
-Duplicate message: id: 0-260, title: None, client_id: 0
+ [x] Message 106 acknowledged
 [client - 0] Processed movie: 4476
- [x] Message 59 acknowledged
-Duplicate message: id: 0-261, title: None, client_id: 0
-[client - 0] Processed movie: 361777
- [x] Message 61 acknowledged
-Duplicate message: id: 1-193, title: None, client_id: 0
-Duplicate message: id: 1-193, title: None, client_id: 0
-Duplicate message: id: 1-193, title: None, client_id: 0
-Duplicate message: id: 1-193, title: None, client_id: 0
-Duplicate message: id: 1-193, title: None, client_id: 0
+ [x] Message 107 acknowledged
 [client - 0] Processed movie: 3036
- [x] Message 67 acknowledged
+ [x] Message 108 acknowledged
+Duplicate message: id: 0-268, title: None, client_id: 0
+Duplicate message: id: 0-268, title: None, client_id: 0
 [client - 0] Processed movie: 17402
- [x] Message 68 acknowledged
+ [x] Message 111 acknowledged
 [client - 0] Processed movie: 1945
- [x] Message 69 acknowledged
-[client - 0] Processed movie: 345920
- [x] Message 70 acknowledged
-Duplicate message: id: 1-214, title: None, client_id: 0
+ [x] Message 112 acknowledged
 [client - 0] Processed movie: 680
- [x] Message 72 acknowledged
-Duplicate message: id: 0-291, title: None, client_id: 0
+ [x] Message 113 acknowledged
 [client - 0] Processed movie: 12106
- [x] Message 74 acknowledged
+ [x] Message 114 acknowledged
 Duplicate message: id: 0-298, title: None, client_id: 0
 Duplicate message: id: 0-298, title: None, client_id: 0
 [client - 0] Processed movie: 3586
- [x] Message 77 acknowledged
-Duplicate message: id: 0-299, title: None, client_id: 0
-Duplicate message: id: 0-299, title: None, client_id: 0
-[client - 0] Processed movie: 33065
- [x] Message 80 acknowledged
-Duplicate message: id: 1-223, title: None, client_id: 0
-Duplicate message: id: 1-223, title: None, client_id: 0
-Duplicate message: id: 1-223, title: None, client_id: 0
-[client - 0] Processed movie: 33534
- [x] Message 84 acknowledged
-Duplicate message: id: 1-224, title: None, client_id: 0
-[client - 0] Processed movie: 392142
- [x] Message 86 acknowledged
+ [x] Message 117 acknowledged
 [client - 0] Processed movie: 22586
- [x] Message 87 acknowledged
-Duplicate message: id: 0-307, title: None, client_id: 0
-Duplicate message: id: 0-307, title: None, client_id: 0
+ [x] Message 118 acknowledged
 [client - 0] Processed movie: 2164
- [x] Message 90 acknowledged
+ [x] Message 119 acknowledged
+Duplicate message: id: 0-310, title: None, client_id: 0
+Duplicate message: id: 0-310, title: None, client_id: 0
+Duplicate message: id: 0-310, title: None, client_id: 0
+Duplicate message: id: 0-310, title: None, client_id: 0
 [client - 0] Processed movie: 278
- [x] Message 91 acknowledged
+ [x] Message 124 acknowledged
 [client - 0] Processed movie: 9067
- [x] Message 92 acknowledged
+ [x] Message 125 acknowledged
+Duplicate message: id: 0-320, title: None, client_id: 0
+Duplicate message: id: 0-320, title: None, client_id: 0
+Duplicate message: id: 0-320, title: None, client_id: 0
 [client - 0] Processed movie: 25066
- [x] Message 93 acknowledged
-Duplicate message: id: 0-323, title: None, client_id: 0
+ [x] Message 129 acknowledged
 [client - 0] Processed movie: 9271
- [x] Message 95 acknowledged
-Duplicate message: id: 0-331, title: None, client_id: 0
-Duplicate message: id: 0-331, title: None, client_id: 0
+ [x] Message 130 acknowledged
 [client - 0] Processed movie: 236
- [x] Message 98 acknowledged
+ [x] Message 131 acknowledged
+Duplicate message: id: 0-335, title: None, client_id: 0
 [client - 0] Processed movie: 3049
- [x] Message 99 acknowledged
-Duplicate message: id: 0-337, title: None, client_id: 0
-Duplicate message: id: 0-337, title: None, client_id: 0
+ [x] Message 133 acknowledged
 Duplicate message: id: 0-337, title: None, client_id: 0
 [client - 0] Processed movie: 10497
- [x] Message 103 acknowledged
-[client - 0] Processed movie: 347026
- [x] Message 104 acknowledged
-Duplicate message: id: 1-272, title: None, client_id: 0
-Duplicate message: id: 1-272, title: None, client_id: 0
-Duplicate message: id: 1-272, title: None, client_id: 0
+ [x] Message 135 acknowledged
 [client - 0] Processed movie: 13
- [x] Message 108 acknowledged
+ [x] Message 136 acknowledged
+Duplicate message: id: 0-349, title: None, client_id: 0
 Duplicate message: id: 0-349, title: None, client_id: 0
 [client - 0] Processed movie: 712
- [x] Message 110 acknowledged
-Duplicate message: id: 0-350, title: None, client_id: 0
-Duplicate message: id: 0-350, title: None, client_id: 0
-Duplicate message: id: 0-350, title: None, client_id: 0
-Duplicate message: id: 0-350, title: None, client_id: 0
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.0.json']
-Recovered state from client 0, len(processed_messages) = 83
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
+ [x] Message 139 acknowledged
 [client - 0] Processed movie: 10879
- [x] Message 1 acknowledged
+ [x] Message 140 acknowledged
+Duplicate message: id: 0-353, title: None, client_id: 0
 [client - 0] Processed movie: 1689
- [x] Message 2 acknowledged
+ [x] Message 142 acknowledged
 Duplicate message: id: 0-358, title: None, client_id: 0
 [client - 0] Processed movie: 854
- [x] Message 4 acknowledged
+ [x] Message 144 acknowledged
 [client - 0] Processed movie: 2788
- [x] Message 5 acknowledged
+ [x] Message 145 acknowledged
 Duplicate message: id: 0-365, title: None, client_id: 0
 [client - 0] Processed movie: 12160
- [x] Message 7 acknowledged
-Duplicate message: id: 0-376, title: None, client_id: 0
-Duplicate message: id: 0-376, title: None, client_id: 0
-Duplicate message: id: 0-376, title: None, client_id: 0
-[client - 0] Processed movie: 329981
- [x] Message 11 acknowledged
-Duplicate message: id: 1-303, title: None, client_id: 0
-Duplicate message: id: 1-303, title: None, client_id: 0
-Duplicate message: id: 0-376, title: None, client_id: 0
-Duplicate message: id: 0-376, title: None, client_id: 0
+ [x] Message 147 acknowledged
 [client - 0] Processed movie: 26352
- [x] Message 16 acknowledged
-Duplicate message: id: 0-380, title: None, client_id: 0
-Duplicate message: id: 0-380, title: None, client_id: 0
+ [x] Message 148 acknowledged
 Duplicate message: id: 0-380, title: None, client_id: 0
 [client - 0] Processed movie: 22067
- [x] Message 20 acknowledged
-Duplicate message: id: 0-384, title: None, client_id: 0
-Duplicate message: id: 0-384, title: None, client_id: 0
+ [x] Message 150 acknowledged
 [client - 0] Processed movie: 11667
- [x] Message 23 acknowledged
+ [x] Message 151 acknowledged
+Duplicate message: id: 0-386, title: None, client_id: 0
+Duplicate message: id: 0-386, title: None, client_id: 0
+Duplicate message: id: 0-386, title: None, client_id: 0
 Duplicate message: id: 0-386, title: None, client_id: 0
 [client - 0] Processed movie: 2654
- [x] Message 25 acknowledged
+ [x] Message 156 acknowledged
+Duplicate message: id: 0-400, title: None, client_id: 0
 [client - 0] Processed movie: 10436
- [x] Message 26 acknowledged
+ [x] Message 158 acknowledged
+Duplicate message: id: 0-405, title: None, client_id: 0
+Duplicate message: id: 0-405, title: None, client_id: 0
 [client - 0] Processed movie: 4722
- [x] Message 27 acknowledged
+ [x] Message 161 acknowledged
 [client - 0] Processed movie: 1607
- [x] Message 28 acknowledged
+ [x] Message 162 acknowledged
+Duplicate message: id: 0-421, title: None, client_id: 0
 Duplicate message: id: 0-421, title: None, client_id: 0
 Duplicate message: id: 0-421, title: None, client_id: 0
 [client - 0] Processed movie: 117553
- [x] Message 31 acknowledged
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.0.json']
-Recovered state from client 0, len(processed_messages) = 97
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
+ [x] Message 166 acknowledged
+Duplicate message: id: 0-423, title: None, client_id: 0
+Duplicate message: id: 0-423, title: None, client_id: 0
 [client - 0] Processed movie: 6075
- [x] Message 1 acknowledged
+ [x] Message 169 acknowledged
+Duplicate message: id: 0-424, title: None, client_id: 0
 [client - 0] Processed movie: 9571
- [x] Message 2 acknowledged
+ [x] Message 171 acknowledged
+Duplicate message: id: 0-434, title: None, client_id: 0
 [client - 0] Processed movie: 1634
- [x] Message 3 acknowledged
+ [x] Message 173 acknowledged
+Duplicate message: id: 0-448, title: None, client_id: 0
+Duplicate message: id: 0-448, title: None, client_id: 0
 [client - 0] Processed movie: 5503
- [x] Message 4 acknowledged
-Duplicate message: id: 0-450, title: None, client_id: 0
-[client - 0] Processed movie: 277834
- [x] Message 6 acknowledged
-Duplicate message: id: 1-376, title: None, client_id: 0
-Duplicate message: id: 1-376, title: None, client_id: 0
+ [x] Message 176 acknowledged
 [client - 0] Processed movie: 329
- [x] Message 9 acknowledged
-Duplicate message: id: 0-473, title: None, client_id: 0
-Duplicate message: id: 0-473, title: None, client_id: 0
-Duplicate message: id: 0-473, title: None, client_id: 0
-Duplicate message: id: 0-473, title: None, client_id: 0
+ [x] Message 177 acknowledged
 Duplicate message: id: 0-473, title: None, client_id: 0
 [client - 0] Processed movie: 9593
- [x] Message 15 acknowledged
+ [x] Message 179 acknowledged
+Duplicate message: id: 0-478, title: None, client_id: 0
+Duplicate message: id: 0-478, title: None, client_id: 0
+Duplicate message: id: 0-478, title: None, client_id: 0
+Duplicate message: id: 0-478, title: None, client_id: 0
+Duplicate message: id: 0-478, title: None, client_id: 0
 Duplicate message: id: 0-478, title: None, client_id: 0
 [client - 0] Processed movie: 9516
- [x] Message 17 acknowledged
+ [x] Message 186 acknowledged
+Duplicate message: id: 0-486, title: None, client_id: 0
 Duplicate message: id: 0-486, title: None, client_id: 0
 Duplicate message: id: 0-486, title: None, client_id: 0
 [client - 0] Processed movie: 2320
- [x] Message 20 acknowledged
-Duplicate message: id: 0-487, title: None, client_id: 0
+ [x] Message 190 acknowledged
 [client - 0] Processed movie: 11231
- [x] Message 22 acknowledged
+ [x] Message 191 acknowledged
 [client - 0] Processed movie: 10447
- [x] Message 23 acknowledged
+ [x] Message 192 acknowledged
+Duplicate message: id: 0-497, title: None, client_id: 0
+Duplicate message: id: 0-497, title: None, client_id: 0
+Duplicate message: id: 0-497, title: None, client_id: 0
 [client - 0] Processed movie: 9559
- [x] Message 24 acknowledged
-Duplicate message: id: 0-500, title: None, client_id: 0
+ [x] Message 196 acknowledged
 [client - 0] Processed movie: 9800
- [x] Message 26 acknowledged
+ [x] Message 197 acknowledged
 Duplicate message: id: 0-501, title: None, client_id: 0
-Duplicate message: id: 0-501, title: None, client_id: 0
-Duplicate message: id: 0-501, title: None, client_id: 0
-[client - 0] Processed movie: 376866
- [x] Message 30 acknowledged
-Duplicate message: id: 1-387, title: None, client_id: 0
 [client - 0] Processed movie: 713
- [x] Message 32 acknowledged
-Duplicate message: id: 0-502, title: None, client_id: 0
+ [x] Message 199 acknowledged
 [client - 0] Processed movie: 8291
- [x] Message 34 acknowledged
+ [x] Message 200 acknowledged
+Duplicate message: id: 0-503, title: None, client_id: 0
 Duplicate message: id: 0-503, title: None, client_id: 0
 [client - 0] Processed movie: 1245
- [x] Message 36 acknowledged
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
-FinalFiles = []
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.0.json']
-Recovered state from client 0, len(processed_messages) = 114
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
-Duplicate message: id: 0-508, title: None, client_id: 0
-Duplicate message: id: 0-508, title: None, client_id: 0
-[client - 0] Processed movie: 363093
- [x] Message 3 acknowledged
-Duplicate message: id: 1-391, title: None, client_id: 0
+ [x] Message 203 acknowledged
 [client - 0] Processed movie: 8005
- [x] Message 5 acknowledged
+ [x] Message 204 acknowledged
+Duplicate message: id: 0-513, title: None, client_id: 0
+Duplicate message: id: 0-513, title: None, client_id: 0
 [client - 0] Processed movie: 47889
- [x] Message 6 acknowledged
+ [x] Message 207 acknowledged
 Duplicate message: id: 0-516, title: None, client_id: 0
 [client - 0] Processed movie: 14534
- [x] Message 8 acknowledged
-Duplicate message: id: 0-517, title: None, client_id: 0
+ [x] Message 209 acknowledged
 [client - 0] Processed movie: 424
- [x] Message 10 acknowledged
-[client - 0] Processed movie: 365942
- [x] Message 11 acknowledged
-[client - 0] Processed movie: 330459
- [x] Message 12 acknowledged
-Duplicate message: id: 1-408, title: None, client_id: 0
-Duplicate message: id: 1-408, title: None, client_id: 0
+ [x] Message 210 acknowledged
+Duplicate message: id: 0-520, title: None, client_id: 0
 [client - 0] Processed movie: 11592
- [x] Message 15 acknowledged
+ [x] Message 212 acknowledged
 Duplicate message: id: 0-525, title: None, client_id: 0
-[client - 0] Processed movie: 259695
- [x] Message 17 acknowledged
+Duplicate message: id: 0-525, title: None, client_id: 0
+Duplicate message: id: 0-525, title: None, client_id: 0
+Duplicate message: id: 0-525, title: None, client_id: 0
+Duplicate message: id: 0-525, title: None, client_id: 0
 [client - 0] Processed movie: 8850
- [x] Message 18 acknowledged
+ [x] Message 218 acknowledged
 Duplicate message: id: 0-526, title: None, client_id: 0
 [client - 0] Processed movie: 858
- [x] Message 20 acknowledged
+ [x] Message 220 acknowledged
 Duplicate message: id: 0-532, title: None, client_id: 0
 Duplicate message: id: 0-532, title: None, client_id: 0
 [client - 0] Processed movie: 9057
- [x] Message 23 acknowledged
+ [x] Message 223 acknowledged
+Duplicate message: id: 0-541, title: None, client_id: 0
+Duplicate message: id: 0-541, title: None, client_id: 0
 [client - 0] Processed movie: 10057
- [x] Message 24 acknowledged
-[client - 0] Processed movie: 346672
- [x] Message 25 acknowledged
-Duplicate message: id: 1-421, title: None, client_id: 0
-Duplicate message: id: 1-421, title: None, client_id: 0
-Duplicate message: id: 1-421, title: None, client_id: 0
-Duplicate message: id: 1-421, title: None, client_id: 0
+ [x] Message 226 acknowledged
+Duplicate message: id: 0-545, title: None, client_id: 0
 [client - 0] Processed movie: 15139
- [x] Message 30 acknowledged
-Duplicate message: id: 0-550, title: None, client_id: 0
+ [x] Message 228 acknowledged
 [client - 0] Processed movie: 771
- [x] Message 32 acknowledged
-[client - 0] Processed movie: 291328
- [x] Message 33 acknowledged
-Duplicate message: id: 1-428, title: None, client_id: 0
-[client - 0] Processed movie: 121173
- [x] Message 35 acknowledged
-Duplicate message: id: 1-430, title: None, client_id: 0
-[client - 0] Processed movie: 422603
- [x] Message 37 acknowledged
-Duplicate message: id: 1-434, title: None, client_id: 0
-Duplicate message: id: 1-434, title: None, client_id: 0
+ [x] Message 229 acknowledged
+Duplicate message: id: 0-577, title: None, client_id: 0
+Duplicate message: id: 0-577, title: None, client_id: 0
+Duplicate message: id: 0-577, title: None, client_id: 0
+Duplicate message: id: 0-577, title: None, client_id: 0
 [client - 0] Processed movie: 812
- [x] Message 40 acknowledged
+ [x] Message 234 acknowledged
 Duplicate message: id: 0-579, title: None, client_id: 0
 [client - 0] Processed movie: 581
- [x] Message 42 acknowledged
+ [x] Message 236 acknowledged
+Duplicate message: id: 0-581, title: None, client_id: 0
+Duplicate message: id: 0-581, title: None, client_id: 0
+Duplicate message: id: 0-581, title: None, client_id: 0
 [client - 0] Processed movie: 268
- [x] Message 43 acknowledged
+ [x] Message 240 acknowledged
+Duplicate message: id: 0-583, title: None, client_id: 0
+Duplicate message: id: 0-583, title: None, client_id: 0
+Duplicate message: id: 0-583, title: None, client_id: 0
 Duplicate message: id: 0-583, title: None, client_id: 0
 [client - 0] Processed movie: 274
- [x] Message 45 acknowledged
+ [x] Message 245 acknowledged
 [client - 0] Processed movie: 408
- [x] Message 46 acknowledged
+ [x] Message 246 acknowledged
 [client - 0] Processed movie: 10020
- [x] Message 47 acknowledged
+ [x] Message 247 acknowledged
 [client - 0] Processed movie: 10895
- [x] Message 48 acknowledged
+ [x] Message 248 acknowledged
+Duplicate message: id: 0-587, title: None, client_id: 0
 [client - 0] Processed movie: 114
- [x] Message 49 acknowledged
+ [x] Message 250 acknowledged
+Duplicate message: id: 0-588, title: None, client_id: 0
+[client - 0] Processed movie: 377447
+ [x] Message 252 acknowledged
+[client - 0] Processed movie: 393559
+ [x] Message 253 acknowledged
+Duplicate message: id: 0-620, title: None, client_id: 0
+Duplicate message: id: 0-620, title: None, client_id: 0
+Duplicate message: id: 0-620, title: None, client_id: 0
+[client - 0] Processed movie: 387845
+ [x] Message 257 acknowledged
+[client - 0] Processed movie: 376565
+ [x] Message 258 acknowledged
+Duplicate message: id: 0-690, title: None, client_id: 0
+[client - 0] Processed movie: 369885
+ [x] Message 260 acknowledged
+Duplicate message: id: 0-840, title: None, client_id: 0
+Duplicate message: id: 0-840, title: None, client_id: 0
+Duplicate message: id: 0-840, title: None, client_id: 0
+Duplicate message: id: 0-840, title: None, client_id: 0
+[client - 0] Processed movie: 207932
+ [x] Message 265 acknowledged
+Duplicate message: id: 0-877, title: None, client_id: 0
+[client - 0] Processed movie: 335796
+ [x] Message 267 acknowledged
+Duplicate message: id: 0-879, title: None, client_id: 0
+Duplicate message: id: 0-879, title: None, client_id: 0
+[client - 0] Processed movie: 136799
+ [x] Message 270 acknowledged
+Duplicate message: id: 0-895, title: None, client_id: 0
+[client - 0] Processed movie: 286567
+ [x] Message 272 acknowledged
+Duplicate message: id: 0-931, title: None, client_id: 0
+Duplicate message: id: 0-931, title: None, client_id: 0
+[client - 0] Processed movie: 343611
+ [x] Message 275 acknowledged
+Duplicate message: id: 0-976, title: None, client_id: 0
+[client - 0] Processed movie: 334541
+ [x] Message 277 acknowledged
+[client - 0] Processed movie: 334543
+ [x] Message 278 acknowledged
+Duplicate message: id: 1-63, title: None, client_id: 0
+[client - 0] Processed movie: 338964
+ [x] Message 280 acknowledged
+Duplicate message: id: 1-102, title: None, client_id: 0
+[client - 0] Processed movie: 361777
+ [x] Message 282 acknowledged
+[client - 0] Processed movie: 345920
+ [x] Message 283 acknowledged
+[client - 0] Processed movie: 33065
+ [x] Message 284 acknowledged
+[client - 0] Processed movie: 33534
+ [x] Message 285 acknowledged
+[client - 0] Processed movie: 392142
+ [x] Message 286 acknowledged
+[client - 0] Processed movie: 347026
+ [x] Message 287 acknowledged
+[client - 0] Processed movie: 329981
+ [x] Message 288 acknowledged
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
 FinalFiles = []
 [INFO] Waiting for messages in calculator_ratio_feelingsfinal
@@ -523,438 +444,616 @@ FinalFiles = []
 StateFiles = ['client.0.json']
 Recovered state from client 0, len(processed_messages) = 141
 [INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
-[client - 0] Processed movie: 381374
+[client - 0] Processed movie: 277834
  [x] Message 1 acknowledged
-[client - 0] Processed movie: 381284
+[client - 0] Processed movie: 376866
  [x] Message 2 acknowledged
-Duplicate message: id: 1-458, title: None, client_id: 0
-[client - 0] Processed movie: 377447
- [x] Message 4 acknowledged
-[client - 0] Processed movie: 393559
+[client - 0] Processed movie: 363093
+ [x] Message 3 acknowledged
+Duplicate message: id: 1-391, title: None, client_id: 0
+[client - 0] Processed movie: 365942
  [x] Message 5 acknowledged
-Duplicate message: id: 0-620, title: None, client_id: 0
-[client - 0] Processed movie: 387845
+[client - 0] Processed movie: 330459
+ [x] Message 6 acknowledged
+[client - 0] Processed movie: 259695
  [x] Message 7 acknowledged
-Duplicate message: id: 0-621, title: None, client_id: 0
-Duplicate message: id: 0-621, title: None, client_id: 0
+Duplicate message: id: 1-410, title: None, client_id: 0
+[client - 0] Processed movie: 346672
+ [x] Message 9 acknowledged
+Duplicate message: id: 1-421, title: None, client_id: 0
+[client - 0] Processed movie: 291328
+ [x] Message 11 acknowledged
+[client - 0] Processed movie: 121173
+ [x] Message 12 acknowledged
+Duplicate message: id: 1-430, title: None, client_id: 0
+[client - 0] Processed movie: 422603
+ [x] Message 14 acknowledged
+[client - 0] Processed movie: 381374
+ [x] Message 15 acknowledged
+Duplicate message: id: 1-439, title: None, client_id: 0
+Duplicate message: id: 1-439, title: None, client_id: 0
+[client - 0] Processed movie: 381284
+ [x] Message 18 acknowledged
+Duplicate message: id: 1-458, title: None, client_id: 0
 [client - 0] Processed movie: 332979
- [x] Message 10 acknowledged
+ [x] Message 20 acknowledged
 Duplicate message: id: 1-483, title: None, client_id: 0
 Duplicate message: id: 1-483, title: None, client_id: 0
 Duplicate message: id: 1-483, title: None, client_id: 0
 [client - 0] Processed movie: 52939
- [x] Message 14 acknowledged
-Duplicate message: id: 1-499, title: None, client_id: 0
-[client - 0] Processed movie: 376565
- [x] Message 16 acknowledged
-Duplicate message: id: 0-690, title: None, client_id: 0
+ [x] Message 24 acknowledged
 [client - 0] Processed movie: 342737
- [x] Message 18 acknowledged
+ [x] Message 25 acknowledged
 [client - 0] Processed movie: 311324
- [x] Message 19 acknowledged
-Duplicate message: id: 1-555, title: None, client_id: 0
-Duplicate message: id: 1-555, title: None, client_id: 0
+ [x] Message 26 acknowledged
 [client - 0] Processed movie: 310307
- [x] Message 22 acknowledged
+ [x] Message 27 acknowledged
+Duplicate message: id: 1-566, title: None, client_id: 0
 Duplicate message: id: 1-566, title: None, client_id: 0
 [client - 0] Processed movie: 335797
- [x] Message 24 acknowledged
+ [x] Message 30 acknowledged
 [client - 0] Processed movie: 413543
- [x] Message 25 acknowledged
-Duplicate message: id: 1-600, title: None, client_id: 0
-Duplicate message: id: 1-600, title: None, client_id: 0
-Duplicate message: id: 1-600, title: None, client_id: 0
-[client - 0] Processed movie: 369885
- [x] Message 29 acknowledged
-Duplicate message: id: 0-840, title: None, client_id: 0
-Duplicate message: id: 0-840, title: None, client_id: 0
-[client - 0] Processed movie: 207932
- [x] Message 32 acknowledged
-[client - 0] Processed movie: 335796
- [x] Message 33 acknowledged
-Duplicate message: id: 0-879, title: None, client_id: 0
-[client - 0] Processed movie: 136799
- [x] Message 35 acknowledged
-[client - 0] Processed movie: 286567
- [x] Message 36 acknowledged
-Duplicate message: id: 0-931, title: None, client_id: 0
-[client - 0] Processed movie: 343611
- [x] Message 38 acknowledged
+ [x] Message 31 acknowledged
 [client - 0] Processed movie: 121856
- [x] Message 39 acknowledged
+ [x] Message 32 acknowledged
+Duplicate message: id: 1-715, title: None, client_id: 0
+Duplicate message: id: 1-715, title: None, client_id: 0
 [client - 0] Processed movie: 381289
- [x] Message 40 acknowledged
+ [x] Message 35 acknowledged
 Duplicate message: id: 1-720, title: None, client_id: 0
 [client - 0] Processed movie: 360814
- [x] Message 42 acknowledged
+ [x] Message 37 acknowledged
 [client - 0] Processed movie: 167449
- [x] Message 43 acknowledged
+ [x] Message 38 acknowledged
+Duplicate message: id: 1-760, title: None, client_id: 0
 [client - 0] Processed movie: 388399
- [x] Message 44 acknowledged
-Duplicate message: id: 1-791, title: None, client_id: 0
+ [x] Message 40 acknowledged
 Duplicate message: id: 1-791, title: None, client_id: 0
 [client - 0] Processed movie: 334524
- [x] Message 47 acknowledged
+ [x] Message 42 acknowledged
+Duplicate message: id: 1-792, title: None, client_id: 0
+Duplicate message: id: 1-792, title: None, client_id: 0
+Duplicate message: id: 1-792, title: None, client_id: 0
 [client - 0] Processed movie: 342473
- [x] Message 48 acknowledged
+ [x] Message 46 acknowledged
+Duplicate message: id: 1-823, title: None, client_id: 0
+Duplicate message: id: 1-823, title: None, client_id: 0
+Duplicate message: id: 1-823, title: None, client_id: 0
+Duplicate message: id: 1-823, title: None, client_id: 0
 [client - 0] Processed movie: 370964
- [x] Message 49 acknowledged
+ [x] Message 51 acknowledged
 Duplicate message: id: 1-832, title: None, client_id: 0
 [client - 0] Processed movie: 404378
- [x] Message 51 acknowledged
+ [x] Message 53 acknowledged
+Duplicate message: id: 1-868, title: None, client_id: 0
 [client - 0] Processed movie: 47971
- [x] Message 52 acknowledged
-Duplicate message: id: 1-871, title: None, client_id: 0
+ [x] Message 55 acknowledged
 [client - 0] Processed movie: 292280
- [x] Message 54 acknowledged
-Duplicate message: id: 1-872, title: None, client_id: 0
-[client - 0] Processed movie: 324849
  [x] Message 56 acknowledged
-[client - 0] Processed movie: 409502
+[client - 0] Processed movie: 324849
  [x] Message 57 acknowledged
+Duplicate message: id: 1-875, title: None, client_id: 0
 [client - 0] Processed movie: 335791
- [x] Message 58 acknowledged
-Duplicate message: id: 1-892, title: None, client_id: 0
+ [x] Message 59 acknowledged
 Duplicate message: id: 1-892, title: None, client_id: 0
 Duplicate message: id: 1-892, title: None, client_id: 0
 [client - 0] Processed movie: 383785
  [x] Message 62 acknowledged
-Duplicate message: id: 1-916, title: None, client_id: 0
+[client - 0] Processed movie: 409502
+ [x] Message 63 acknowledged
+Duplicate message: id: 2-1, title: None, client_id: 0
+Duplicate message: id: 2-1, title: None, client_id: 0
 [client - 0] Processed movie: 396616
- [x] Message 64 acknowledged
+ [x] Message 66 acknowledged
+Duplicate message: id: 2-36, title: None, client_id: 0
 Duplicate message: id: 2-36, title: None, client_id: 0
 [client - 0] Processed movie: 14564
- [x] Message 66 acknowledged
-[client - 0] Processed movie: 63996
- [x] Message 67 acknowledged
-[client - 0] Processed movie: 393519
- [x] Message 68 acknowledged
-[client - 0] Processed movie: 324552
  [x] Message 69 acknowledged
+Duplicate message: id: 2-37, title: None, client_id: 0
+Duplicate message: id: 2-37, title: None, client_id: 0
+Duplicate message: id: 2-37, title: None, client_id: 0
+Duplicate message: id: 2-37, title: None, client_id: 0
+Duplicate message: id: 2-37, title: None, client_id: 0
+[client - 0] Processed movie: 63996
+ [x] Message 75 acknowledged
+Duplicate message: id: 2-61, title: None, client_id: 0
+Duplicate message: id: 2-61, title: None, client_id: 0
+[client - 0] Processed movie: 393519
+ [x] Message 78 acknowledged
+[client - 0] Processed movie: 324552
+ [x] Message 79 acknowledged
+Duplicate message: id: 2-106, title: None, client_id: 0
+Duplicate message: id: 2-106, title: None, client_id: 0
+Duplicate message: id: 2-106, title: None, client_id: 0
 [client - 0] Processed movie: 419430
- [x] Message 70 acknowledged
+ [x] Message 83 acknowledged
+Duplicate message: id: 2-107, title: None, client_id: 0
 [client - 0] Processed movie: 293167
- [x] Message 71 acknowledged
+ [x] Message 85 acknowledged
+Duplicate message: id: 2-109, title: None, client_id: 0
 [client - 0] Processed movie: 180863
- [x] Message 72 acknowledged
+ [x] Message 87 acknowledged
+Duplicate message: id: 2-112, title: None, client_id: 0
+Duplicate message: id: 2-112, title: None, client_id: 0
 [client - 0] Processed movie: 241258
- [x] Message 73 acknowledged
-Duplicate message: id: 2-151, title: None, client_id: 0
-Duplicate message: id: 2-151, title: None, client_id: 0
+ [x] Message 90 acknowledged
+node_id = 00000
 [client - 0] Processed movie: 321612
- [x] Message 76 acknowledged
-Duplicate message: id: 2-155, title: None, client_id: 0
+ [x] Message 91 acknowledged
 Duplicate message: id: 2-155, title: None, client_id: 0
 [client - 0] Processed movie: 295693
- [x] Message 79 acknowledged
+ [x] Message 93 acknowledged
+Duplicate message: id: 2-167, title: None, client_id: 0
+Duplicate message: id: 2-167, title: None, client_id: 0
 Duplicate message: id: 2-167, title: None, client_id: 0
 [client - 0] Processed movie: 315837
- [x] Message 81 acknowledged
+ [x] Message 97 acknowledged
 Duplicate message: id: 2-236, title: None, client_id: 0
-Duplicate message: id: 2-1, title: None, client_id: 0
-Duplicate message: id: 2-1, title: None, client_id: 0
-Duplicate message: id: 2-36, title: None, client_id: 0
-Duplicate message: id: 2-37, title: None, client_id: 0
-Duplicate message: id: 2-61, title: None, client_id: 0
-Duplicate message: id: 2-61, title: None, client_id: 0
-Duplicate message: id: 2-62, title: None, client_id: 0
-Duplicate message: id: 2-62, title: None, client_id: 0
+Duplicate message: id: 2-236, title: None, client_id: 0
 [client - 0] Processed movie: 425942
- [x] Message 91 acknowledged
-Duplicate message: id: 2-62, title: None, client_id: 0
-Duplicate message: id: 2-106, title: None, client_id: 0
-Duplicate message: id: 2-106, title: None, client_id: 0
-Duplicate message: id: 2-106, title: None, client_id: 0
-Duplicate message: id: 2-107, title: None, client_id: 0
-Duplicate message: id: 2-107, title: None, client_id: 0
-Duplicate message: id: 2-107, title: None, client_id: 0
-Duplicate message: id: 2-109, title: None, client_id: 0
-Duplicate message: id: 2-112, title: None, client_id: 0
-Duplicate message: id: 2-112, title: None, client_id: 0
-Duplicate message: id: 2-112, title: None, client_id: 0
+ [x] Message 100 acknowledged
+Duplicate message: id: 2-332, title: None, client_id: 0
 [client - 0] Processed movie: 330947
- [x] Message 103 acknowledged
-Duplicate message: id: 2-456, title: None, client_id: 0
-Duplicate message: id: 2-456, title: None, client_id: 0
-Duplicate message: id: 2-151, title: None, client_id: 0
-Duplicate message: id: 2-155, title: None, client_id: 0
-Duplicate message: id: 2-167, title: None, client_id: 0
+ [x] Message 102 acknowledged
 [client - 0] Processed movie: 73981
- [x] Message 109 acknowledged
-Duplicate message: id: 2-603, title: None, client_id: 0
-Duplicate message: id: 2-603, title: None, client_id: 0
-Duplicate message: id: 2-236, title: None, client_id: 0
-Duplicate message: id: 2-332, title: None, client_id: 0
-Duplicate message: id: 2-332, title: None, client_id: 0
-Duplicate message: id: 2-332, title: None, client_id: 0
+ [x] Message 103 acknowledged
 [client - 0] Processed movie: 345938
- [x] Message 116 acknowledged
+ [x] Message 104 acknowledged
+Duplicate message: id: 2-760, title: None, client_id: 0
 Duplicate message: id: 2-760, title: None, client_id: 0
 [client - 0] Processed movie: 395992
- [x] Message 118 acknowledged
+ [x] Message 107 acknowledged
+Duplicate message: id: 2-765, title: None, client_id: 0
 Duplicate message: id: 2-765, title: None, client_id: 0
 Duplicate message: id: 2-765, title: None, client_id: 0
 [client - 0] Processed movie: 314095
- [x] Message 121 acknowledged
-Duplicate message: id: 2-456, title: None, client_id: 0
+ [x] Message 111 acknowledged
+Duplicate message: id: 2-780, title: None, client_id: 0
+Duplicate message: id: 2-780, title: None, client_id: 0
 [client - 0] Processed movie: 305470
- [x] Message 123 acknowledged
-Duplicate message: id: 2-812, title: None, client_id: 0
-Duplicate message: id: 2-812, title: None, client_id: 0
+ [x] Message 114 acknowledged
 Duplicate message: id: 2-812, title: None, client_id: 0
 Duplicate message: id: 2-812, title: None, client_id: 0
 [client - 0] Processed movie: 334521
- [x] Message 128 acknowledged
-Resultados del cálculo (client_id = 0): {'operation': 'ratio', 'feeling': 'POS', 'ratio': 16.87473955988653, 'count': 195}, id = 8bd03a886cbc73fff225bf157cca5652668b366f42e863c403a67debe22563f8
+ [x] Message 117 acknowledged
+Resultados del cálculo (client_id = 0): {'operation': 'ratio', 'feeling': 'POS', 'ratio': 16.874739559886535, 'count': 195}, id = c9153dc1f86c0fe29dc1c6ffcfb453d72b7f07e298f4ec0660fb2d7c088b1e9b
 [DEBUG] Sent message to queue calculator_ratio_feelings
-node_id = 00000
-[DEBUG] Sent message to queue calculator_ratio_feelings
-[DEBUG] Sent message to queue calculator_ratio_feelingsfinal
 [DEBUG] Sent message to queue calculator_ratio_feelingsfinal
 [DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":1,"header":"FINAL","node_id":"0"}' enviado directamente.
-node_id = 00000
-Duplicate final from node: 00000
 node_id = 0
+[client - 1] Processed movie: 862
 Sending final with total_count = 2
 [DEBUG] Sent message to queue calculator_ratio_feelings
 [DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":2,"header":"FINAL"}' enviado directamente.
-node_id = 0
-[client - 0] Processed movie: 73981
- [x] Message 130 acknowledged
-[client - 1] Processed movie: 862
- [x] Message 131 acknowledged
+ [x] Message 119 acknowledged
+Duplicate message: id: 0-0, title: None, client_id: 1
 [client - 1] Processed movie: 31357
- [x] Message 132 acknowledged
+ [x] Message 121 acknowledged
+Duplicate message: id: 0-3, title: None, client_id: 1
 [client - 1] Processed movie: 949
- [x] Message 133 acknowledged
+ [x] Message 123 acknowledged
+Duplicate message: id: 0-5, title: None, client_id: 1
+Duplicate message: id: 0-5, title: None, client_id: 1
 [client - 1] Processed movie: 9091
- [x] Message 134 acknowledged
-Duplicate message: id: 0-8, title: None, client_id: 1
-Duplicate message: id: 0-8, title: None, client_id: 1
-Duplicate message: id: 0-8, title: None, client_id: 1
-Duplicate message: id: 0-8, title: None, client_id: 1
-Duplicate message: id: 0-8, title: None, client_id: 1
-Duplicate message: id: 0-8, title: None, client_id: 1
+ [x] Message 126 acknowledged
 [client - 1] Processed movie: 10858
- [x] Message 141 acknowledged
-Duplicate message: id: 0-13, title: None, client_id: 1
+ [x] Message 127 acknowledged
 Duplicate message: id: 0-13, title: None, client_id: 1
 Duplicate message: id: 0-13, title: None, client_id: 1
 Duplicate message: id: 0-13, title: None, client_id: 1
 [client - 1] Processed movie: 451
- [x] Message 146 acknowledged
+ [x] Message 131 acknowledged
+Duplicate message: id: 0-24, title: None, client_id: 1
 [client - 1] Processed movie: 9263
- [x] Message 147 acknowledged
-Duplicate message: id: 0-26, title: None, client_id: 1
-Duplicate message: id: 0-26, title: None, client_id: 1
+ [x] Message 133 acknowledged
 [client - 1] Processed movie: 63
- [x] Message 150 acknowledged
+ [x] Message 134 acknowledged
+Duplicate message: id: 0-31, title: None, client_id: 1
+Duplicate message: id: 0-31, title: None, client_id: 1
 [client - 1] Processed movie: 9598
- [x] Message 151 acknowledged
-Duplicate message: id: 0-32, title: None, client_id: 1
-Duplicate message: id: 0-32, title: None, client_id: 1
+ [x] Message 137 acknowledged
 [client - 1] Processed movie: 687
- [x] Message 154 acknowledged
+ [x] Message 138 acknowledged
 [client - 1] Processed movie: 9312
- [x] Message 155 acknowledged
+ [x] Message 139 acknowledged
+Duplicate message: id: 0-42, title: None, client_id: 1
 [client - 1] Processed movie: 577
- [x] Message 156 acknowledged
-Duplicate message: id: 0-43, title: None, client_id: 1
+ [x] Message 141 acknowledged
 [client - 1] Processed movie: 11861
- [x] Message 158 acknowledged
+ [x] Message 142 acknowledged
 [client - 1] Processed movie: 807
- [x] Message 159 acknowledged
+ [x] Message 143 acknowledged
+Duplicate message: id: 0-45, title: None, client_id: 1
 [client - 1] Processed movie: 10530
- [x] Message 160 acknowledged
+ [x] Message 145 acknowledged
+Duplicate message: id: 0-46, title: None, client_id: 1
 [client - 1] Processed movie: 629
- [x] Message 161 acknowledged
-Duplicate message: id: 0-48, title: None, client_id: 1
-Duplicate message: id: 0-48, title: None, client_id: 1
-Duplicate message: id: 0-48, title: None, client_id: 1
-Duplicate message: id: 0-48, title: None, client_id: 1
-Duplicate message: id: 0-48, title: None, client_id: 1
+ [x] Message 147 acknowledged
 Duplicate message: id: 0-48, title: None, client_id: 1
 [client - 1] Processed movie: 11448
- [x] Message 168 acknowledged
+ [x] Message 149 acknowledged
+Duplicate message: id: 0-50, title: None, client_id: 1
+Duplicate message: id: 0-50, title: None, client_id: 1
 Duplicate message: id: 0-50, title: None, client_id: 1
 [client - 1] Processed movie: 11859
- [x] Message 170 acknowledged
-Duplicate message: id: 0-69, title: None, client_id: 1
+ [x] Message 153 acknowledged
 Duplicate message: id: 0-69, title: None, client_id: 1
 [client - 1] Processed movie: 9102
- [x] Message 173 acknowledged
+ [x] Message 155 acknowledged
 [client - 1] Processed movie: 400
- [x] Message 174 acknowledged
+ [x] Message 156 acknowledged
+Duplicate message: id: 0-79, title: None, client_id: 1
 [client - 1] Processed movie: 10534
- [x] Message 175 acknowledged
+ [x] Message 158 acknowledged
+Duplicate message: id: 0-84, title: None, client_id: 1
 [client - 1] Processed movie: 2086
- [x] Message 176 acknowledged
-[DEBUG] Client 0 is dead but client.0.json was not removed
-[DEBUG] Removed file client.0.json
-FinalFiles = ['final.0.json']
-Recovered state from client 0, state = {'0': 1}
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.1.json']
-Recovered state from client 1, len(processed_messages) = 22
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
+ [x] Message 160 acknowledged
+Duplicate message: id: 0-87, title: None, client_id: 1
 [client - 1] Processed movie: 9095
- [x] Message 1 acknowledged
+ [x] Message 162 acknowledged
+Duplicate message: id: 0-89, title: None, client_id: 1
 [client - 1] Processed movie: 12158
- [x] Message 2 acknowledged
-[client - 0] Processed movie: 345938
- [x] Message 3 acknowledged
-[client - 0] Processed movie: 395992
- [x] Message 4 acknowledged
-[client - 0] Processed movie: 314095
- [x] Message 5 acknowledged
+ [x] Message 164 acknowledged
+Duplicate message: id: 0-90, title: None, client_id: 1
 [client - 1] Processed movie: 197
- [x] Message 6 acknowledged
-[client - 0] Processed movie: 305470
- [x] Message 7 acknowledged
-[client - 0] Processed movie: 334521
- [x] Message 8 acknowledged
-Duplicate message: id: 2-816, title: None, client_id: 0
+ [x] Message 166 acknowledged
+Duplicate message: id: 0-107, title: None, client_id: 1
 [client - 1] Processed movie: 78406
- [x] Message 10 acknowledged
-Duplicate message: id: 0-116, title: None, client_id: 1
+ [x] Message 168 acknowledged
 Duplicate message: id: 0-116, title: None, client_id: 1
 [client - 1] Processed movie: 22279
- [x] Message 13 acknowledged
-Duplicate message: id: 0-144, title: None, client_id: 1
-Duplicate message: id: 0-144, title: None, client_id: 1
+ [x] Message 170 acknowledged
 [client - 1] Processed movie: 568
- [x] Message 16 acknowledged
+ [x] Message 171 acknowledged
+Duplicate message: id: 0-146, title: None, client_id: 1
+Duplicate message: id: 0-146, title: None, client_id: 1
+Duplicate message: id: 0-146, title: None, client_id: 1
 [client - 1] Processed movie: 414
- [x] Message 17 acknowledged
+ [x] Message 175 acknowledged
 [client - 1] Processed movie: 20649
- [x] Message 18 acknowledged
-Duplicate message: id: 0-155, title: None, client_id: 1
-Duplicate message: id: 0-155, title: None, client_id: 1
-Duplicate message: id: 0-155, title: None, client_id: 1
-Duplicate message: id: 0-155, title: None, client_id: 1
+ [x] Message 176 acknowledged
 [client - 1] Processed movie: 1572
- [x] Message 23 acknowledged
+ [x] Message 177 acknowledged
 [client - 1] Processed movie: 6520
- [x] Message 24 acknowledged
+ [x] Message 178 acknowledged
 Duplicate message: id: 0-164, title: None, client_id: 1
 Duplicate message: id: 0-164, title: None, client_id: 1
 [client - 1] Processed movie: 9886
- [x] Message 27 acknowledged
+ [x] Message 181 acknowledged
+Duplicate message: id: 0-168, title: None, client_id: 1
 [client - 1] Processed movie: 9482
- [x] Message 28 acknowledged
-Duplicate message: id: 0-169, title: None, client_id: 1
+ [x] Message 183 acknowledged
 [client - 1] Processed movie: 9344
- [x] Message 30 acknowledged
+ [x] Message 184 acknowledged
 [client - 1] Processed movie: 9071
- [x] Message 31 acknowledged
+ [x] Message 185 acknowledged
+Duplicate message: id: 0-172, title: None, client_id: 1
 Duplicate message: id: 0-172, title: None, client_id: 1
 Duplicate message: id: 0-172, title: None, client_id: 1
 [client - 1] Processed movie: 9070
- [x] Message 34 acknowledged
+ [x] Message 189 acknowledged
 Duplicate message: id: 0-177, title: None, client_id: 1
 [client - 1] Processed movie: 11980
- [x] Message 36 acknowledged
+ [x] Message 191 acknowledged
+Duplicate message: id: 0-184, title: None, client_id: 1
 [client - 1] Processed movie: 10802
- [x] Message 37 acknowledged
+ [x] Message 193 acknowledged
 [client - 1] Processed movie: 10149
- [x] Message 38 acknowledged
-Duplicate message: id: 0-190, title: None, client_id: 1
+ [x] Message 194 acknowledged
 [client - 1] Processed movie: 9348
- [x] Message 40 acknowledged
-Duplicate message: id: 0-192, title: None, client_id: 1
-Duplicate message: id: 0-192, title: None, client_id: 1
-Duplicate message: id: 0-192, title: None, client_id: 1
+ [x] Message 195 acknowledged
 [client - 1] Processed movie: 281
- [x] Message 44 acknowledged
+ [x] Message 196 acknowledged
 [client - 1] Processed movie: 9560
- [x] Message 45 acknowledged
+ [x] Message 197 acknowledged
+Duplicate message: id: 0-203, title: None, client_id: 1
 [client - 1] Processed movie: 9804
- [x] Message 46 acknowledged
-Duplicate message: id: 0-204, title: None, client_id: 1
-Duplicate message: id: 0-204, title: None, client_id: 1
+ [x] Message 199 acknowledged
 [client - 1] Processed movie: 50797
- [x] Message 49 acknowledged
+ [x] Message 200 acknowledged
 [client - 1] Processed movie: 76
- [x] Message 50 acknowledged
+ [x] Message 201 acknowledged
+Duplicate message: id: 0-211, title: None, client_id: 1
 [client - 1] Processed movie: 11017
- [x] Message 51 acknowledged
+ [x] Message 203 acknowledged
 Duplicate message: id: 0-212, title: None, client_id: 1
 Duplicate message: id: 0-212, title: None, client_id: 1
 [client - 1] Processed movie: 9382
- [x] Message 54 acknowledged
+ [x] Message 206 acknowledged
 [client - 1] Processed movie: 1909
- [x] Message 55 acknowledged
+ [x] Message 207 acknowledged
 Duplicate message: id: 0-219, title: None, client_id: 1
 [client - 1] Processed movie: 14275
- [x] Message 57 acknowledged
+ [x] Message 209 acknowledged
 Duplicate message: id: 0-241, title: None, client_id: 1
 [client - 1] Processed movie: 1024
- [x] Message 59 acknowledged
+ [x] Message 211 acknowledged
+Duplicate message: id: 0-242, title: None, client_id: 1
 [client - 1] Processed movie: 17207
- [x] Message 60 acknowledged
-Duplicate message: id: 0-243, title: None, client_id: 1
+ [x] Message 213 acknowledged
 [client - 1] Processed movie: 628
- [x] Message 62 acknowledged
-Duplicate message: id: 0-248, title: None, client_id: 1
+ [x] Message 214 acknowledged
 [client - 1] Processed movie: 6280
- [x] Message 64 acknowledged
+ [x] Message 215 acknowledged
+Duplicate message: id: 0-251, title: None, client_id: 1
+Duplicate message: id: 0-251, title: None, client_id: 1
+Duplicate message: id: 0-251, title: None, client_id: 1
 [client - 1] Processed movie: 11
- [x] Message 65 acknowledged
+ [x] Message 219 acknowledged
+Duplicate message: id: 0-255, title: None, client_id: 1
 Duplicate message: id: 0-255, title: None, client_id: 1
 Duplicate message: id: 0-255, title: None, client_id: 1
 [client - 1] Processed movie: 18183
- [x] Message 68 acknowledged
-Duplicate message: id: 0-260, title: None, client_id: 1
+ [x] Message 223 acknowledged
 [client - 1] Processed movie: 4476
- [x] Message 70 acknowledged
+ [x] Message 224 acknowledged
+Duplicate message: id: 0-261, title: None, client_id: 1
 [client - 1] Processed movie: 3036
- [x] Message 71 acknowledged
-Duplicate message: id: 0-268, title: None, client_id: 1
+ [x] Message 226 acknowledged
 [client - 1] Processed movie: 17402
- [x] Message 73 acknowledged
+ [x] Message 227 acknowledged
 [client - 1] Processed movie: 1945
- [x] Message 74 acknowledged
-Duplicate message: id: 0-277, title: None, client_id: 1
-Duplicate message: id: 0-277, title: None, client_id: 1
-Duplicate message: id: 0-277, title: None, client_id: 1
+ [x] Message 228 acknowledged
 Duplicate message: id: 0-277, title: None, client_id: 1
 [client - 1] Processed movie: 680
- [x] Message 79 acknowledged
-Duplicate message: id: 0-291, title: None, client_id: 1
+ [x] Message 230 acknowledged
+[client - 1] Processed movie: 12106
+ [x] Message 231 acknowledged
+Duplicate message: id: 0-298, title: None, client_id: 1
+Duplicate message: id: 0-298, title: None, client_id: 1
+[client - 1] Processed movie: 3586
+ [x] Message 234 acknowledged
+Duplicate message: id: 0-299, title: None, client_id: 1
+Duplicate message: id: 0-299, title: None, client_id: 1
+[client - 1] Processed movie: 22586
+ [x] Message 237 acknowledged
+[client - 1] Processed movie: 2164
+ [x] Message 238 acknowledged
+Duplicate message: id: 0-310, title: None, client_id: 1
+[client - 1] Processed movie: 278
+ [x] Message 240 acknowledged
+Duplicate message: id: 0-312, title: None, client_id: 1
+Duplicate message: id: 0-312, title: None, client_id: 1
+Duplicate message: id: 0-312, title: None, client_id: 1
+[client - 1] Processed movie: 9067
+ [x] Message 244 acknowledged
+Duplicate message: id: 0-320, title: None, client_id: 1
+Duplicate message: id: 0-320, title: None, client_id: 1
+[client - 1] Processed movie: 25066
+ [x] Message 247 acknowledged
+Duplicate message: id: 0-323, title: None, client_id: 1
+Duplicate message: id: 0-323, title: None, client_id: 1
+[client - 1] Processed movie: 9271
+ [x] Message 250 acknowledged
+[client - 1] Processed movie: 236
+ [x] Message 251 acknowledged
+Duplicate message: id: 0-335, title: None, client_id: 1
+[client - 1] Processed movie: 3049
+ [x] Message 253 acknowledged
+[client - 1] Processed movie: 10497
+ [x] Message 254 acknowledged
+Duplicate message: id: 0-340, title: None, client_id: 1
+Duplicate message: id: 0-340, title: None, client_id: 1
+[client - 1] Processed movie: 13
+ [x] Message 257 acknowledged
+[client - 1] Processed movie: 712
+ [x] Message 258 acknowledged
+Duplicate message: id: 0-350, title: None, client_id: 1
+[client - 1] Processed movie: 10879
+ [x] Message 260 acknowledged
+Duplicate message: id: 0-353, title: None, client_id: 1
+Duplicate message: id: 0-353, title: None, client_id: 1
+Duplicate message: id: 0-353, title: None, client_id: 1
+[client - 1] Processed movie: 1689
+ [x] Message 264 acknowledged
+Duplicate message: id: 0-358, title: None, client_id: 1
+[client - 1] Processed movie: 854
+ [x] Message 266 acknowledged
+[client - 1] Processed movie: 2788
+ [x] Message 267 acknowledged
+Duplicate message: id: 0-365, title: None, client_id: 1
+[client - 1] Processed movie: 12160
+ [x] Message 269 acknowledged
+Duplicate message: id: 0-376, title: None, client_id: 1
+Duplicate message: id: 0-376, title: None, client_id: 1
+[client - 1] Processed movie: 26352
+ [x] Message 272 acknowledged
+Duplicate message: id: 0-380, title: None, client_id: 1
+[client - 1] Processed movie: 22067
+ [x] Message 274 acknowledged
+[client - 1] Processed movie: 11667
+ [x] Message 275 acknowledged
+Duplicate message: id: 0-386, title: None, client_id: 1
+Duplicate message: id: 0-386, title: None, client_id: 1
+[client - 1] Processed movie: 2654
+ [x] Message 278 acknowledged
+[client - 1] Processed movie: 10436
+ [x] Message 279 acknowledged
+[client - 1] Processed movie: 4722
+ [x] Message 280 acknowledged
+Duplicate message: id: 0-419, title: None, client_id: 1
+[client - 1] Processed movie: 1607
+ [x] Message 282 acknowledged
+Duplicate message: id: 0-421, title: None, client_id: 1
+[client - 1] Processed movie: 117553
+ [x] Message 284 acknowledged
+[client - 1] Processed movie: 6075
+ [x] Message 285 acknowledged
+[client - 1] Processed movie: 9571
+ [x] Message 286 acknowledged
+Duplicate message: id: 0-434, title: None, client_id: 1
+Duplicate message: id: 0-434, title: None, client_id: 1
+Duplicate message: id: 0-434, title: None, client_id: 1
+[client - 1] Processed movie: 1634
+ [x] Message 290 acknowledged
+[client - 1] Processed movie: 5503
+ [x] Message 291 acknowledged
+[client - 1] Processed movie: 329
+ [x] Message 292 acknowledged
+Duplicate message: id: 0-473, title: None, client_id: 1
+[client - 1] Processed movie: 9593
+ [x] Message 294 acknowledged
+[client - 1] Processed movie: 9516
+ [x] Message 295 acknowledged
+Duplicate message: id: 0-486, title: None, client_id: 1
+Duplicate message: id: 0-486, title: None, client_id: 1
+Duplicate message: id: 0-486, title: None, client_id: 1
+[client - 1] Processed movie: 2320
+ [x] Message 299 acknowledged
+[client - 1] Processed movie: 11231
+ [x] Message 300 acknowledged
+Duplicate message: id: 0-495, title: None, client_id: 1
+Duplicate message: id: 0-495, title: None, client_id: 1
+Duplicate message: id: 0-495, title: None, client_id: 1
+[client - 1] Processed movie: 10447
+ [x] Message 304 acknowledged
+[client - 1] Processed movie: 9559
+ [x] Message 305 acknowledged
+Duplicate message: id: 0-500, title: None, client_id: 1
+Duplicate message: id: 0-500, title: None, client_id: 1
+[client - 1] Processed movie: 9800
+ [x] Message 308 acknowledged
+[client - 1] Processed movie: 713
+ [x] Message 309 acknowledged
+Duplicate message: id: 0-502, title: None, client_id: 1
+Duplicate message: id: 0-502, title: None, client_id: 1
+Duplicate message: id: 0-502, title: None, client_id: 1
+[client - 1] Processed movie: 8291
+ [x] Message 313 acknowledged
+Duplicate message: id: 0-503, title: None, client_id: 1
+Duplicate message: id: 0-503, title: None, client_id: 1
+[client - 1] Processed movie: 1245
+ [x] Message 316 acknowledged
+Duplicate message: id: 0-508, title: None, client_id: 1
+[client - 1] Processed movie: 8005
+ [x] Message 318 acknowledged
+Duplicate message: id: 0-513, title: None, client_id: 1
+[client - 1] Processed movie: 47889
+ [x] Message 320 acknowledged
+Duplicate message: id: 0-516, title: None, client_id: 1
+Duplicate message: id: 0-516, title: None, client_id: 1
+[client - 1] Processed movie: 14534
+ [x] Message 323 acknowledged
+Duplicate message: id: 0-517, title: None, client_id: 1
+Duplicate message: id: 0-517, title: None, client_id: 1
+Duplicate message: id: 0-517, title: None, client_id: 1
+[client - 1] Processed movie: 424
+ [x] Message 327 acknowledged
+[client - 1] Processed movie: 11592
+ [x] Message 328 acknowledged
+Duplicate message: id: 0-525, title: None, client_id: 1
+[client - 1] Processed movie: 8850
+ [x] Message 330 acknowledged
+[client - 1] Processed movie: 858
+ [x] Message 331 acknowledged
+Duplicate message: id: 0-532, title: None, client_id: 1
+Duplicate message: id: 0-532, title: None, client_id: 1
+[client - 1] Processed movie: 9057
+ [x] Message 334 acknowledged
+Duplicate message: id: 0-541, title: None, client_id: 1
+Duplicate message: id: 0-541, title: None, client_id: 1
+Duplicate message: id: 0-541, title: None, client_id: 1
+Duplicate message: id: 0-541, title: None, client_id: 1
+[client - 1] Processed movie: 10057
+ [x] Message 339 acknowledged
+Duplicate message: id: 0-545, title: None, client_id: 1
+[client - 1] Processed movie: 15139
+ [x] Message 341 acknowledged
+[client - 1] Processed movie: 771
+ [x] Message 342 acknowledged
+Duplicate message: id: 0-577, title: None, client_id: 1
+[client - 1] Processed movie: 812
+ [x] Message 344 acknowledged
+Duplicate message: id: 0-579, title: None, client_id: 1
+[client - 1] Processed movie: 581
+ [x] Message 346 acknowledged
+Duplicate message: id: 0-581, title: None, client_id: 1
+[client - 1] Processed movie: 268
+ [x] Message 348 acknowledged
+Duplicate message: id: 0-583, title: None, client_id: 1
+Duplicate message: id: 0-583, title: None, client_id: 1
+Duplicate message: id: 0-583, title: None, client_id: 1
+Duplicate message: id: 0-583, title: None, client_id: 1
+[client - 1] Processed movie: 274
+ [x] Message 353 acknowledged
+Duplicate message: id: 0-584, title: None, client_id: 1
+Duplicate message: id: 0-584, title: None, client_id: 1
+[client - 1] Processed movie: 408
+ [x] Message 356 acknowledged
+Duplicate message: id: 0-585, title: None, client_id: 1
+[client - 1] Processed movie: 10020
+ [x] Message 358 acknowledged
+[client - 1] Processed movie: 10895
+ [x] Message 359 acknowledged
+Duplicate message: id: 0-587, title: None, client_id: 1
+[client - 1] Processed movie: 114
+ [x] Message 361 acknowledged
+Duplicate message: id: 0-588, title: None, client_id: 1
+[client - 1] Processed movie: 377447
+ [x] Message 363 acknowledged
+[client - 1] Processed movie: 393559
+ [x] Message 364 acknowledged
+Duplicate message: id: 0-620, title: None, client_id: 1
+[client - 1] Processed movie: 387845
+ [x] Message 366 acknowledged
+Duplicate message: id: 0-621, title: None, client_id: 1
+Duplicate message: id: 0-621, title: None, client_id: 1
+[client - 1] Processed movie: 376565
+ [x] Message 369 acknowledged
+Duplicate message: id: 0-690, title: None, client_id: 1
+Duplicate message: id: 0-690, title: None, client_id: 1
+Duplicate message: id: 0-690, title: None, client_id: 1
+[client - 1] Processed movie: 369885
+ [x] Message 373 acknowledged
+Duplicate message: id: 0-840, title: None, client_id: 1
+Duplicate message: id: 0-840, title: None, client_id: 1
+[client - 1] Processed movie: 207932
+ [x] Message 376 acknowledged
+[client - 1] Processed movie: 335796
+ [x] Message 377 acknowledged
+Duplicate message: id: 0-879, title: None, client_id: 1
+Duplicate message: id: 0-879, title: None, client_id: 1
+[client - 1] Processed movie: 136799
+ [x] Message 380 acknowledged
+Duplicate message: id: 0-895, title: None, client_id: 1
+[client - 1] Processed movie: 286567
+ [x] Message 382 acknowledged
+Duplicate message: id: 0-931, title: None, client_id: 1
+Duplicate message: id: 0-931, title: None, client_id: 1
+Duplicate message: id: 0-931, title: None, client_id: 1
+Duplicate message: id: 0-931, title: None, client_id: 1
+Duplicate message: id: 0-931, title: None, client_id: 1
+Duplicate message: id: 0-931, title: None, client_id: 1
+[client - 1] Processed movie: 343611
+ [x] Message 389 acknowledged
 Duplicate message: id: 0-0, title: None, client_id: 1
 Duplicate message: id: 0-3, title: None, client_id: 1
-[client - 1] Processed movie: 12106
- [x] Message 83 acknowledged
-[client - 1] Processed movie: 3586
- [x] Message 84 acknowledged
-Duplicate message: id: 0-299, title: None, client_id: 1
 Duplicate message: id: 0-5, title: None, client_id: 1
 Duplicate message: id: 0-8, title: None, client_id: 1
 Duplicate message: id: 0-8, title: None, client_id: 1
-Duplicate message: id: 0-8, title: None, client_id: 1
-Duplicate message: id: 0-8, title: None, client_id: 1
-Duplicate message: id: 0-8, title: None, client_id: 1
 Duplicate message: id: 0-13, title: None, client_id: 1
-[client - 1] Processed movie: 22586
- [x] Message 93 acknowledged
+Duplicate message: id: 0-13, title: None, client_id: 1
+Duplicate message: id: 0-24, title: None, client_id: 1
 Duplicate message: id: 0-24, title: None, client_id: 1
 Duplicate message: id: 0-26, title: None, client_id: 1
 Duplicate message: id: 0-31, title: None, client_id: 1
 Duplicate message: id: 0-32, title: None, client_id: 1
-Duplicate message: id: 0-32, title: None, client_id: 1
+Duplicate message: id: 0-34, title: None, client_id: 1
+Duplicate message: id: 0-34, title: None, client_id: 1
+Duplicate message: id: 0-34, title: None, client_id: 1
 Duplicate message: id: 0-34, title: None, client_id: 1
 Duplicate message: id: 0-42, title: None, client_id: 1
 Duplicate message: id: 0-42, title: None, client_id: 1
 Duplicate message: id: 0-43, title: None, client_id: 1
 Duplicate message: id: 0-43, title: None, client_id: 1
 Duplicate message: id: 0-44, title: None, client_id: 1
+Duplicate message: id: 0-44, title: None, client_id: 1
+Duplicate message: id: 0-44, title: None, client_id: 1
+Duplicate message: id: 0-44, title: None, client_id: 1
+Duplicate message: id: 0-44, title: None, client_id: 1
 Duplicate message: id: 0-45, title: None, client_id: 1
 Duplicate message: id: 0-45, title: None, client_id: 1
 Duplicate message: id: 0-46, title: None, client_id: 1
-Duplicate message: id: 0-46, title: None, client_id: 1
 Duplicate message: id: 0-48, title: None, client_id: 1
 Duplicate message: id: 0-48, title: None, client_id: 1
 Duplicate message: id: 0-48, title: None, client_id: 1
@@ -962,48 +1061,25 @@ Duplicate message: id: 0-48, title: None, client_id: 1
 Duplicate message: id: 0-50, title: None, client_id: 1
 Duplicate message: id: 0-50, title: None, client_id: 1
 Duplicate message: id: 0-50, title: None, client_id: 1
-Duplicate message: id: 0-307, title: None, client_id: 1
+Duplicate message: id: 0-69, title: None, client_id: 1
 Duplicate message: id: 0-69, title: None, client_id: 1
 Duplicate message: id: 0-69, title: None, client_id: 1
 Duplicate message: id: 0-74, title: None, client_id: 1
 Duplicate message: id: 0-79, title: None, client_id: 1
 Duplicate message: id: 0-79, title: None, client_id: 1
+Duplicate message: id: 0-79, title: None, client_id: 1
 Duplicate message: id: 0-84, title: None, client_id: 1
-[client - 1] Processed movie: 2164
- [x] Message 123 acknowledged
-Duplicate message: id: 0-310, title: None, client_id: 1
-[client - 1] Processed movie: 278
- [x] Message 125 acknowledged
 Duplicate message: id: 0-87, title: None, client_id: 1
 Duplicate message: id: 0-87, title: None, client_id: 1
-Duplicate message: id: 0-312, title: None, client_id: 1
-[client - 1] Processed movie: 9067
- [x] Message 129 acknowledged
-[client - 1] Processed movie: 25066
- [x] Message 130 acknowledged
-Duplicate message: id: 0-323, title: None, client_id: 1
-Duplicate message: id: 0-323, title: None, client_id: 1
-Duplicate message: id: 0-323, title: None, client_id: 1
-[client - 1] Processed movie: 9271
- [x] Message 134 acknowledged
-[client - 1] Processed movie: 236
- [x] Message 135 acknowledged
-Duplicate message: id: 0-335, title: None, client_id: 1
-Duplicate message: id: 0-335, title: None, client_id: 1
-Duplicate message: id: 0-335, title: None, client_id: 1
-Duplicate message: id: 0-335, title: None, client_id: 1
-[client - 1] Processed movie: 3049
- [x] Message 140 acknowledged
-Duplicate message: id: 0-337, title: None, client_id: 1
-Duplicate message: id: 0-337, title: None, client_id: 1
-Duplicate message: id: 0-89, title: None, client_id: 1
 Duplicate message: id: 0-89, title: None, client_id: 1
 Duplicate message: id: 0-89, title: None, client_id: 1
 Duplicate message: id: 0-90, title: None, client_id: 1
+Duplicate message: id: 0-90, title: None, client_id: 1
+Duplicate message: id: 0-90, title: None, client_id: 1
+Duplicate message: id: 0-90, title: None, client_id: 1
 Duplicate message: id: 0-107, title: None, client_id: 1
-Duplicate message: id: 0-107, title: None, client_id: 1
-[client - 1] Processed movie: 10497
- [x] Message 149 acknowledged
+Duplicate message: id: 0-116, title: None, client_id: 1
+Duplicate message: id: 0-116, title: None, client_id: 1
 Duplicate message: id: 0-116, title: None, client_id: 1
 Duplicate message: id: 0-116, title: None, client_id: 1
 Duplicate message: id: 0-144, title: None, client_id: 1
@@ -1013,15 +1089,13 @@ Duplicate message: id: 0-146, title: None, client_id: 1
 Duplicate message: id: 0-149, title: None, client_id: 1
 Duplicate message: id: 0-155, title: None, client_id: 1
 Duplicate message: id: 0-161, title: None, client_id: 1
-Duplicate message: id: 0-164, title: None, client_id: 1
-Duplicate message: id: 0-164, title: None, client_id: 1
+Duplicate message: id: 0-161, title: None, client_id: 1
 Duplicate message: id: 0-164, title: None, client_id: 1
 Duplicate message: id: 0-168, title: None, client_id: 1
 Duplicate message: id: 0-168, title: None, client_id: 1
+Duplicate message: id: 0-168, title: None, client_id: 1
+Duplicate message: id: 0-168, title: None, client_id: 1
 Duplicate message: id: 0-169, title: None, client_id: 1
-Duplicate message: id: 0-169, title: None, client_id: 1
-Duplicate message: id: 0-171, title: None, client_id: 1
-Duplicate message: id: 0-171, title: None, client_id: 1
 Duplicate message: id: 0-171, title: None, client_id: 1
 Duplicate message: id: 0-172, title: None, client_id: 1
 Duplicate message: id: 0-172, title: None, client_id: 1
@@ -1029,714 +1103,392 @@ Duplicate message: id: 0-172, title: None, client_id: 1
 Duplicate message: id: 0-172, title: None, client_id: 1
 Duplicate message: id: 0-177, title: None, client_id: 1
 Duplicate message: id: 0-184, title: None, client_id: 1
-Duplicate message: id: 0-184, title: None, client_id: 1
 Duplicate message: id: 0-189, title: None, client_id: 1
 Duplicate message: id: 0-190, title: None, client_id: 1
 Duplicate message: id: 0-192, title: None, client_id: 1
+Duplicate message: id: 0-192, title: None, client_id: 1
+Duplicate message: id: 0-192, title: None, client_id: 1
 Duplicate message: id: 0-194, title: None, client_id: 1
-[client - 1] Processed movie: 13
- [x] Message 180 acknowledged
-[client - 1] Processed movie: 712
- [x] Message 181 acknowledged
-Duplicate message: id: 0-350, title: None, client_id: 1
-Duplicate message: id: 0-350, title: None, client_id: 1
-Duplicate message: id: 0-203, title: None, client_id: 1
-Duplicate message: id: 0-203, title: None, client_id: 1
-Duplicate message: id: 0-203, title: None, client_id: 1
+Duplicate message: id: 0-194, title: None, client_id: 1
 Duplicate message: id: 0-203, title: None, client_id: 1
 Duplicate message: id: 0-204, title: None, client_id: 1
 Duplicate message: id: 0-204, title: None, client_id: 1
-Duplicate message: id: 0-204, title: None, client_id: 1
-Duplicate message: id: 0-204, title: None, client_id: 1
-Duplicate message: id: 0-204, title: None, client_id: 1
-Duplicate message: id: 0-204, title: None, client_id: 1
-Duplicate message: id: 0-204, title: None, client_id: 1
-[client - 1] Processed movie: 10879
- [x] Message 195 acknowledged
-Duplicate message: id: 0-209, title: None, client_id: 1
 Duplicate message: id: 0-209, title: None, client_id: 1
 Duplicate message: id: 0-209, title: None, client_id: 1
 Duplicate message: id: 0-211, title: None, client_id: 1
 Duplicate message: id: 0-211, title: None, client_id: 1
 Duplicate message: id: 0-211, title: None, client_id: 1
-Duplicate message: id: 0-211, title: None, client_id: 1
-Duplicate message: id: 0-211, title: None, client_id: 1
-Duplicate message: id: 0-212, title: None, client_id: 1
 Duplicate message: id: 0-212, title: None, client_id: 1
 Duplicate message: id: 0-214, title: None, client_id: 1
 Duplicate message: id: 0-219, title: None, client_id: 1
-Duplicate message: id: 0-241, title: None, client_id: 1
-Duplicate message: id: 0-241, title: None, client_id: 1
+Duplicate message: id: 0-219, title: None, client_id: 1
 Duplicate message: id: 0-241, title: None, client_id: 1
 Duplicate message: id: 0-241, title: None, client_id: 1
 Duplicate message: id: 0-242, title: None, client_id: 1
 Duplicate message: id: 0-242, title: None, client_id: 1
 Duplicate message: id: 0-242, title: None, client_id: 1
-Duplicate message: id: 0-243, title: None, client_id: 1
+Duplicate message: id: 0-242, title: None, client_id: 1
 Duplicate message: id: 0-243, title: None, client_id: 1
 Duplicate message: id: 0-248, title: None, client_id: 1
 Duplicate message: id: 0-248, title: None, client_id: 1
 Duplicate message: id: 0-251, title: None, client_id: 1
-Duplicate message: id: 0-255, title: None, client_id: 1
+Duplicate message: id: 0-251, title: None, client_id: 1
+Duplicate message: id: 0-251, title: None, client_id: 1
 Duplicate message: id: 0-255, title: None, client_id: 1
 Duplicate message: id: 0-260, title: None, client_id: 1
 Duplicate message: id: 0-261, title: None, client_id: 1
-[client - 1] Processed movie: 1689
- [x] Message 224 acknowledged
-[client - 1] Processed movie: 854
- [x] Message 225 acknowledged
-[DEBUG] Client 0 is dead but client.0.json was not removed
-[DEBUG] Removed file client.0.json
-FinalFiles = ['final.0.json']
-Recovered state from client 0, state = {'0': 1}
-[INFO] Waiting for messages in calculator_ratio_feelingsfinal
-[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
-[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
-[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
-StateFiles = ['client.1.json']
-Recovered state from client 1, len(processed_messages) = 77
-[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
-[client - 1] Processed movie: 2788
- [x] Message 1 acknowledged
-[client - 1] Processed movie: 12160
- [x] Message 2 acknowledged
-Duplicate message: id: 0-376, title: None, client_id: 1
+Duplicate message: id: 0-261, title: None, client_id: 1
 Duplicate message: id: 0-268, title: None, client_id: 1
-Duplicate message: id: 0-268, title: None, client_id: 1
-Duplicate message: id: 0-268, title: None, client_id: 1
-[client - 1] Processed movie: 26352
- [x] Message 7 acknowledged
-[client - 1] Processed movie: 22067
- [x] Message 8 acknowledged
-Duplicate message: id: 0-384, title: None, client_id: 1
-Duplicate message: id: 0-384, title: None, client_id: 1
-Duplicate message: id: 0-384, title: None, client_id: 1
-Duplicate message: id: 0-384, title: None, client_id: 1
 Duplicate message: id: 0-273, title: None, client_id: 1
-Duplicate message: id: 0-277, title: None, client_id: 1
-Duplicate message: id: 0-277, title: None, client_id: 1
 Duplicate message: id: 0-277, title: None, client_id: 1
 Duplicate message: id: 0-291, title: None, client_id: 1
 Duplicate message: id: 0-291, title: None, client_id: 1
 Duplicate message: id: 0-298, title: None, client_id: 1
+Duplicate message: id: 0-298, title: None, client_id: 1
 Duplicate message: id: 0-299, title: None, client_id: 1
 Duplicate message: id: 0-307, title: None, client_id: 1
-Duplicate message: id: 0-307, title: None, client_id: 1
 Duplicate message: id: 0-310, title: None, client_id: 1
-Duplicate message: id: 0-310, title: None, client_id: 1
-Duplicate message: id: 0-310, title: None, client_id: 1
-Duplicate message: id: 0-312, title: None, client_id: 1
-Duplicate message: id: 0-312, title: None, client_id: 1
 Duplicate message: id: 0-312, title: None, client_id: 1
 Duplicate message: id: 0-320, title: None, client_id: 1
 Duplicate message: id: 0-323, title: None, client_id: 1
 Duplicate message: id: 0-331, title: None, client_id: 1
 Duplicate message: id: 0-331, title: None, client_id: 1
+Duplicate message: id: 0-331, title: None, client_id: 1
+Duplicate message: id: 0-331, title: None, client_id: 1
 Duplicate message: id: 0-335, title: None, client_id: 1
+Duplicate message: id: 0-337, title: None, client_id: 1
 Duplicate message: id: 0-337, title: None, client_id: 1
 Duplicate message: id: 0-340, title: None, client_id: 1
 Duplicate message: id: 0-340, title: None, client_id: 1
-Duplicate message: id: 0-340, title: None, client_id: 1
-Duplicate message: id: 0-340, title: None, client_id: 1
+Duplicate message: id: 0-349, title: None, client_id: 1
 Duplicate message: id: 0-349, title: None, client_id: 1
 Duplicate message: id: 0-350, title: None, client_id: 1
-Duplicate message: id: 0-350, title: None, client_id: 1
-Duplicate message: id: 0-350, title: None, client_id: 1
 Duplicate message: id: 0-353, title: None, client_id: 1
-Duplicate message: id: 0-353, title: None, client_id: 1
-Duplicate message: id: 0-353, title: None, client_id: 1
-Duplicate message: id: 0-353, title: None, client_id: 1
-Duplicate message: id: 0-353, title: None, client_id: 1
-Duplicate message: id: 0-353, title: None, client_id: 1
-Duplicate message: id: 0-353, title: None, client_id: 1
-[client - 1] Processed movie: 11667
- [x] Message 50 acknowledged
 Duplicate message: id: 0-358, title: None, client_id: 1
 Duplicate message: id: 0-358, title: None, client_id: 1
 Duplicate message: id: 0-360, title: None, client_id: 1
-[client - 1] Processed movie: 2654
- [x] Message 54 acknowledged
-Duplicate message: id: 0-400, title: None, client_id: 1
-Duplicate message: id: 0-400, title: None, client_id: 1
-[client - 1] Processed movie: 10436
- [x] Message 57 acknowledged
+Duplicate message: id: 0-360, title: None, client_id: 1
+Duplicate message: id: 0-360, title: None, client_id: 1
 Duplicate message: id: 0-365, title: None, client_id: 1
 Duplicate message: id: 0-365, title: None, client_id: 1
-[client - 1] Processed movie: 4722
- [x] Message 60 acknowledged
-[client - 1] Processed movie: 1607
- [x] Message 61 acknowledged
-[client - 1] Processed movie: 117553
- [x] Message 62 acknowledged
-[client - 1] Processed movie: 6075
- [x] Message 63 acknowledged
-Duplicate message: id: 0-376, title: None, client_id: 1
+Duplicate message: id: 0-365, title: None, client_id: 1
 Duplicate message: id: 0-376, title: None, client_id: 1
 Duplicate message: id: 0-380, title: None, client_id: 1
+Duplicate message: id: 0-380, title: None, client_id: 1
+Duplicate message: id: 0-380, title: None, client_id: 1
+Duplicate message: id: 0-380, title: None, client_id: 1
+Duplicate message: id: 0-380, title: None, client_id: 1
+Duplicate message: id: 0-384, title: None, client_id: 1
 Duplicate message: id: 0-384, title: None, client_id: 1
 Duplicate message: id: 0-386, title: None, client_id: 1
 Duplicate message: id: 0-386, title: None, client_id: 1
 Duplicate message: id: 0-386, title: None, client_id: 1
 Duplicate message: id: 0-400, title: None, client_id: 1
 Duplicate message: id: 0-400, title: None, client_id: 1
+Duplicate message: id: 0-400, title: None, client_id: 1
+Duplicate message: id: 0-400, title: None, client_id: 1
+Duplicate message: id: 0-400, title: None, client_id: 1
+Duplicate message: id: 0-405, title: None, client_id: 1
 Duplicate message: id: 0-405, title: None, client_id: 1
 Duplicate message: id: 0-419, title: None, client_id: 1
 Duplicate message: id: 0-421, title: None, client_id: 1
-Duplicate message: id: 0-421, title: None, client_id: 1
-Duplicate message: id: 0-421, title: None, client_id: 1
 Duplicate message: id: 0-423, title: None, client_id: 1
 Duplicate message: id: 0-424, title: None, client_id: 1
-[client - 1] Processed movie: 9571
- [x] Message 80 acknowledged
-[client - 1] Processed movie: 1634
- [x] Message 81 acknowledged
+Duplicate message: id: 0-424, title: None, client_id: 1
+Duplicate message: id: 0-424, title: None, client_id: 1
+Duplicate message: id: 0-434, title: None, client_id: 1
+Duplicate message: id: 0-434, title: None, client_id: 1
 Duplicate message: id: 0-448, title: None, client_id: 1
-[client - 1] Processed movie: 5503
- [x] Message 83 acknowledged
-Duplicate message: id: 0-434, title: None, client_id: 1
-Duplicate message: id: 0-434, title: None, client_id: 1
-Duplicate message: id: 0-434, title: None, client_id: 1
-[client - 1] Processed movie: 329
- [x] Message 87 acknowledged
-Duplicate message: id: 0-473, title: None, client_id: 1
-Duplicate message: id: 0-473, title: None, client_id: 1
-[client - 1] Processed movie: 9593
- [x] Message 90 acknowledged
-[client - 1] Processed movie: 9516
- [x] Message 91 acknowledged
-Duplicate message: id: 0-486, title: None, client_id: 1
-[client - 1] Processed movie: 2320
- [x] Message 93 acknowledged
-Duplicate message: id: 0-487, title: None, client_id: 1
-[client - 1] Processed movie: 11231
- [x] Message 95 acknowledged
-Duplicate message: id: 0-495, title: None, client_id: 1
-[client - 1] Processed movie: 10447
- [x] Message 97 acknowledged
-Duplicate message: id: 0-497, title: None, client_id: 1
-[client - 1] Processed movie: 9559
- [x] Message 99 acknowledged
-Duplicate message: id: 0-500, title: None, client_id: 1
-Duplicate message: id: 0-500, title: None, client_id: 1
-[client - 1] Processed movie: 9800
- [x] Message 102 acknowledged
-Duplicate message: id: 0-501, title: None, client_id: 1
-Duplicate message: id: 0-501, title: None, client_id: 1
-[client - 1] Processed movie: 713
- [x] Message 105 acknowledged
-[client - 1] Processed movie: 8291
- [x] Message 106 acknowledged
-[client - 1] Processed movie: 1245
- [x] Message 107 acknowledged
-[client - 1] Processed movie: 8005
- [x] Message 108 acknowledged
-Duplicate message: id: 0-513, title: None, client_id: 1
-[client - 1] Processed movie: 47889
- [x] Message 110 acknowledged
-[client - 1] Processed movie: 14534
- [x] Message 111 acknowledged
-Duplicate message: id: 0-517, title: None, client_id: 1
+Duplicate message: id: 0-448, title: None, client_id: 1
 Duplicate message: id: 0-448, title: None, client_id: 1
 Duplicate message: id: 0-450, title: None, client_id: 1
-Duplicate message: id: 0-450, title: None, client_id: 1
-Duplicate message: id: 0-450, title: None, client_id: 1
-Duplicate message: id: 0-450, title: None, client_id: 1
-Duplicate message: id: 0-450, title: None, client_id: 1
-[client - 1] Processed movie: 424
- [x] Message 119 acknowledged
-[client - 1] Processed movie: 11592
- [x] Message 120 acknowledged
-[client - 1] Processed movie: 8850
- [x] Message 121 acknowledged
-Duplicate message: id: 0-526, title: None, client_id: 1
-[client - 1] Processed movie: 858
- [x] Message 123 acknowledged
-Duplicate message: id: 0-532, title: None, client_id: 1
-[client - 1] Processed movie: 9057
- [x] Message 125 acknowledged
-[client - 1] Processed movie: 10057
- [x] Message 126 acknowledged
-Duplicate message: id: 0-545, title: None, client_id: 1
-Duplicate message: id: 0-545, title: None, client_id: 1
-[client - 1] Processed movie: 15139
- [x] Message 129 acknowledged
-Duplicate message: id: 0-473, title: None, client_id: 1
 Duplicate message: id: 0-473, title: None, client_id: 1
 Duplicate message: id: 0-473, title: None, client_id: 1
 Duplicate message: id: 0-478, title: None, client_id: 1
-Duplicate message: id: 0-478, title: None, client_id: 1
-Duplicate message: id: 0-478, title: None, client_id: 1
-[client - 1] Processed movie: 771
- [x] Message 136 acknowledged
-Duplicate message: id: 0-577, title: None, client_id: 1
-[client - 1] Processed movie: 812
- [x] Message 138 acknowledged
-[client - 1] Processed movie: 581
- [x] Message 139 acknowledged
-Duplicate message: id: 0-581, title: None, client_id: 1
-[client - 1] Processed movie: 268
- [x] Message 141 acknowledged
-Duplicate message: id: 0-486, title: None, client_id: 1
-Duplicate message: id: 0-486, title: None, client_id: 1
 Duplicate message: id: 0-486, title: None, client_id: 1
 Duplicate message: id: 0-487, title: None, client_id: 1
-[client - 1] Processed movie: 274
- [x] Message 146 acknowledged
-Duplicate message: id: 0-584, title: None, client_id: 1
-[client - 1] Processed movie: 408
- [x] Message 148 acknowledged
+Duplicate message: id: 0-487, title: None, client_id: 1
 Duplicate message: id: 0-495, title: None, client_id: 1
 Duplicate message: id: 0-497, title: None, client_id: 1
 Duplicate message: id: 0-500, title: None, client_id: 1
 Duplicate message: id: 0-501, title: None, client_id: 1
 Duplicate message: id: 0-501, title: None, client_id: 1
 Duplicate message: id: 0-501, title: None, client_id: 1
-[client - 1] Processed movie: 10020
- [x] Message 155 acknowledged
+Duplicate message: id: 0-501, title: None, client_id: 1
+Duplicate message: id: 0-502, title: None, client_id: 1
 Duplicate message: id: 0-502, title: None, client_id: 1
 Duplicate message: id: 0-503, title: None, client_id: 1
+Duplicate message: id: 0-503, title: None, client_id: 1
 Duplicate message: id: 0-508, title: None, client_id: 1
-Duplicate message: id: 0-508, title: None, client_id: 1
-[client - 1] Processed movie: 10895
- [x] Message 160 acknowledged
-Duplicate message: id: 0-587, title: None, client_id: 1
-[client - 1] Processed movie: 114
- [x] Message 162 acknowledged
-Duplicate message: id: 0-588, title: None, client_id: 1
-Duplicate message: id: 0-588, title: None, client_id: 1
 Duplicate message: id: 0-513, title: None, client_id: 1
 Duplicate message: id: 0-516, title: None, client_id: 1
 Duplicate message: id: 0-517, title: None, client_id: 1
 Duplicate message: id: 0-517, title: None, client_id: 1
 Duplicate message: id: 0-517, title: None, client_id: 1
-[client - 1] Processed movie: 377447
- [x] Message 170 acknowledged
-Duplicate message: id: 0-614, title: None, client_id: 1
-[client - 1] Processed movie: 393559
- [x] Message 172 acknowledged
-Duplicate message: id: 0-620, title: None, client_id: 1
-[client - 1] Processed movie: 387845
- [x] Message 174 acknowledged
-Duplicate message: id: 0-621, title: None, client_id: 1
+Duplicate message: id: 0-520, title: None, client_id: 1
 Duplicate message: id: 0-520, title: None, client_id: 1
 Duplicate message: id: 0-525, title: None, client_id: 1
+Duplicate message: id: 0-525, title: None, client_id: 1
 Duplicate message: id: 0-526, title: None, client_id: 1
+Duplicate message: id: 0-532, title: None, client_id: 1
 Duplicate message: id: 0-532, title: None, client_id: 1
 Duplicate message: id: 0-541, title: None, client_id: 1
 Duplicate message: id: 0-541, title: None, client_id: 1
 Duplicate message: id: 0-545, title: None, client_id: 1
 Duplicate message: id: 0-545, title: None, client_id: 1
 Duplicate message: id: 0-550, title: None, client_id: 1
-Duplicate message: id: 0-550, title: None, client_id: 1
-Duplicate message: id: 0-550, title: None, client_id: 1
-Duplicate message: id: 0-550, title: None, client_id: 1
 Duplicate message: id: 0-577, title: None, client_id: 1
-Duplicate message: id: 0-577, title: None, client_id: 1
+Duplicate message: id: 0-579, title: None, client_id: 1
+Duplicate message: id: 0-579, title: None, client_id: 1
 Duplicate message: id: 0-579, title: None, client_id: 1
 Duplicate message: id: 0-579, title: None, client_id: 1
 Duplicate message: id: 0-581, title: None, client_id: 1
 Duplicate message: id: 0-583, title: None, client_id: 1
 Duplicate message: id: 0-583, title: None, client_id: 1
 Duplicate message: id: 0-584, title: None, client_id: 1
-Duplicate message: id: 0-584, title: None, client_id: 1
-Duplicate message: id: 0-584, title: None, client_id: 1
 Duplicate message: id: 0-585, title: None, client_id: 1
 Duplicate message: id: 0-585, title: None, client_id: 1
-Duplicate message: id: 0-586, title: None, client_id: 1
 Duplicate message: id: 0-586, title: None, client_id: 1
 Duplicate message: id: 0-586, title: None, client_id: 1
 Duplicate message: id: 0-587, title: None, client_id: 1
 Duplicate message: id: 0-588, title: None, client_id: 1
-Duplicate message: id: 0-588, title: None, client_id: 1
-[client - 1] Processed movie: 376565
- [x] Message 206 acknowledged
-Duplicate message: id: 0-690, title: None, client_id: 1
-Duplicate message: id: 0-690, title: None, client_id: 1
+Duplicate message: id: 0-614, title: None, client_id: 1
 Duplicate message: id: 0-614, title: None, client_id: 1
 Duplicate message: id: 0-620, title: None, client_id: 1
 Duplicate message: id: 0-621, title: None, client_id: 1
 Duplicate message: id: 0-621, title: None, client_id: 1
-[client - 1] Processed movie: 369885
- [x] Message 213 acknowledged
 Duplicate message: id: 0-690, title: None, client_id: 1
-[client - 1] Processed movie: 207932
- [x] Message 215 acknowledged
+Duplicate message: id: 0-840, title: None, client_id: 1
+Duplicate message: id: 0-840, title: None, client_id: 1
 Duplicate message: id: 0-877, title: None, client_id: 1
 Duplicate message: id: 0-877, title: None, client_id: 1
-[client - 1] Processed movie: 335796
- [x] Message 218 acknowledged
-[client - 1] Processed movie: 136799
- [x] Message 219 acknowledged
+Duplicate message: id: 0-877, title: None, client_id: 1
+Duplicate message: id: 0-879, title: None, client_id: 1
 Duplicate message: id: 0-895, title: None, client_id: 1
-[client - 1] Processed movie: 286567
- [x] Message 221 acknowledged
-[client - 1] Processed movie: 343611
- [x] Message 222 acknowledged
+Duplicate message: id: 0-931, title: None, client_id: 1
+Duplicate message: id: 0-931, title: None, client_id: 1
 Duplicate message: id: 0-976, title: None, client_id: 1
-Duplicate message: id: 0-840, title: None, client_id: 1
-Duplicate message: id: 0-840, title: None, client_id: 1
 [client - 1] Processed movie: 334541
- [x] Message 226 acknowledged
+ [x] Message 632 acknowledged
+Duplicate message: id: 1-62, title: None, client_id: 1
+Duplicate message: id: 1-62, title: None, client_id: 1
+Duplicate message: id: 1-62, title: None, client_id: 1
 [client - 1] Processed movie: 334543
- [x] Message 227 acknowledged
+ [x] Message 636 acknowledged
 Duplicate message: id: 1-63, title: None, client_id: 1
-Duplicate message: id: 0-877, title: None, client_id: 1
-Duplicate message: id: 0-877, title: None, client_id: 1
-Duplicate message: id: 0-879, title: None, client_id: 1
-Duplicate message: id: 0-879, title: None, client_id: 1
+Duplicate message: id: 1-63, title: None, client_id: 1
 [client - 1] Processed movie: 338964
- [x] Message 233 acknowledged
-Duplicate message: id: 0-895, title: None, client_id: 1
+ [x] Message 639 acknowledged
 [client - 1] Processed movie: 361777
- [x] Message 235 acknowledged
-Duplicate message: id: 0-931, title: None, client_id: 1
-Duplicate message: id: 0-931, title: None, client_id: 1
-Duplicate message: id: 0-931, title: None, client_id: 1
+ [x] Message 640 acknowledged
+Duplicate message: id: 1-193, title: None, client_id: 1
 [client - 1] Processed movie: 345920
- [x] Message 239 acknowledged
+ [x] Message 642 acknowledged
+Duplicate message: id: 1-214, title: None, client_id: 1
+Duplicate message: id: 1-214, title: None, client_id: 1
+Duplicate message: id: 1-214, title: None, client_id: 1
 [client - 1] Processed movie: 33065
- [x] Message 240 acknowledged
-Duplicate message: id: 1-223, title: None, client_id: 1
+ [x] Message 646 acknowledged
 [client - 1] Processed movie: 33534
- [x] Message 242 acknowledged
-Duplicate message: id: 1-224, title: None, client_id: 1
-Duplicate message: id: 1-224, title: None, client_id: 1
+ [x] Message 647 acknowledged
 [client - 1] Processed movie: 392142
- [x] Message 245 acknowledged
-Duplicate message: id: 0-976, title: None, client_id: 1
-Duplicate message: id: 0-976, title: None, client_id: 1
-Duplicate message: id: 0-976, title: None, client_id: 1
-Duplicate message: id: 0-976, title: None, client_id: 1
+ [x] Message 648 acknowledged
+Duplicate message: id: 1-232, title: None, client_id: 1
 [client - 1] Processed movie: 347026
- [x] Message 250 acknowledged
+ [x] Message 650 acknowledged
 [client - 1] Processed movie: 329981
- [x] Message 251 acknowledged
-Duplicate message: id: 1-62, title: None, client_id: 1
-Duplicate message: id: 1-62, title: None, client_id: 1
-Duplicate message: id: 1-63, title: None, client_id: 1
-Duplicate message: id: 1-63, title: None, client_id: 1
-Duplicate message: id: 1-63, title: None, client_id: 1
-Duplicate message: id: 1-102, title: None, client_id: 1
+ [x] Message 651 acknowledged
 [client - 1] Processed movie: 277834
- [x] Message 258 acknowledged
+ [x] Message 652 acknowledged
+Duplicate message: id: 1-376, title: None, client_id: 1
 Duplicate message: id: 1-376, title: None, client_id: 1
 Duplicate message: id: 1-376, title: None, client_id: 1
 [client - 1] Processed movie: 376866
- [x] Message 261 acknowledged
+ [x] Message 656 acknowledged
 [client - 1] Processed movie: 363093
- [x] Message 262 acknowledged
-Duplicate message: id: 1-391, title: None, client_id: 1
+ [x] Message 657 acknowledged
 [client - 1] Processed movie: 365942
- [x] Message 264 acknowledged
+ [x] Message 658 acknowledged
 Duplicate message: id: 1-407, title: None, client_id: 1
 [client - 1] Processed movie: 330459
- [x] Message 266 acknowledged
-Duplicate message: id: 1-408, title: None, client_id: 1
+ [x] Message 660 acknowledged
 [client - 1] Processed movie: 259695
- [x] Message 268 acknowledged
-Duplicate message: id: 1-410, title: None, client_id: 1
-Duplicate message: id: 1-410, title: None, client_id: 1
+ [x] Message 661 acknowledged
 [client - 1] Processed movie: 346672
- [x] Message 271 acknowledged
-Duplicate message: id: 1-193, title: None, client_id: 1
+ [x] Message 662 acknowledged
 [client - 1] Processed movie: 291328
- [x] Message 273 acknowledged
+ [x] Message 663 acknowledged
+Duplicate message: id: 1-428, title: None, client_id: 1
+Duplicate message: id: 1-428, title: None, client_id: 1
 [client - 1] Processed movie: 121173
- [x] Message 274 acknowledged
-Duplicate message: id: 1-430, title: None, client_id: 1
+ [x] Message 666 acknowledged
 Duplicate message: id: 1-430, title: None, client_id: 1
 [client - 1] Processed movie: 422603
- [x] Message 277 acknowledged
-Duplicate message: id: 1-214, title: None, client_id: 1
-Duplicate message: id: 1-223, title: None, client_id: 1
-Duplicate message: id: 1-223, title: None, client_id: 1
-Duplicate message: id: 1-224, title: None, client_id: 1
-Duplicate message: id: 1-224, title: None, client_id: 1
-Duplicate message: id: 1-232, title: None, client_id: 1
-[client - 1] Processed movie: 381374
- [x] Message 284 acknowledged
-Duplicate message: id: 1-272, title: None, client_id: 1
-Duplicate message: id: 1-272, title: None, client_id: 1
-[client - 1] Processed movie: 381284
- [x] Message 287 acknowledged
-Duplicate message: id: 1-303, title: None, client_id: 1
-Duplicate message: id: 1-376, title: None, client_id: 1
-Duplicate message: id: 1-376, title: None, client_id: 1
-Duplicate message: id: 1-376, title: None, client_id: 1
-Duplicate message: id: 1-387, title: None, client_id: 1
-Duplicate message: id: 1-387, title: None, client_id: 1
-[client - 1] Processed movie: 332979
- [x] Message 294 acknowledged
-Duplicate message: id: 1-483, title: None, client_id: 1
-Duplicate message: id: 1-391, title: None, client_id: 1
-Duplicate message: id: 1-407, title: None, client_id: 1
-Duplicate message: id: 1-408, title: None, client_id: 1
-Duplicate message: id: 1-408, title: None, client_id: 1
-Duplicate message: id: 1-410, title: None, client_id: 1
-Duplicate message: id: 1-421, title: None, client_id: 1
-Duplicate message: id: 1-421, title: None, client_id: 1
-Duplicate message: id: 1-421, title: None, client_id: 1
-Duplicate message: id: 1-428, title: None, client_id: 1
-Duplicate message: id: 1-428, title: None, client_id: 1
-Duplicate message: id: 1-428, title: None, client_id: 1
-Duplicate message: id: 1-428, title: None, client_id: 1
-Duplicate message: id: 1-428, title: None, client_id: 1
-Duplicate message: id: 1-430, title: None, client_id: 1
+ [x] Message 668 acknowledged
 Duplicate message: id: 1-434, title: None, client_id: 1
+Duplicate message: id: 1-434, title: None, client_id: 1
+[client - 1] Processed movie: 381374
+ [x] Message 671 acknowledged
 Duplicate message: id: 1-439, title: None, client_id: 1
+Duplicate message: id: 1-439, title: None, client_id: 1
+[client - 1] Processed movie: 381284
+ [x] Message 674 acknowledged
 Duplicate message: id: 1-458, title: None, client_id: 1
+[client - 1] Processed movie: 332979
+ [x] Message 676 acknowledged
+Duplicate message: id: 1-483, title: None, client_id: 1
 [client - 1] Processed movie: 52939
- [x] Message 313 acknowledged
-Duplicate message: id: 1-483, title: None, client_id: 1
-Duplicate message: id: 1-483, title: None, client_id: 1
+ [x] Message 678 acknowledged
 Duplicate message: id: 1-499, title: None, client_id: 1
 [client - 1] Processed movie: 342737
- [x] Message 317 acknowledged
+ [x] Message 680 acknowledged
+Duplicate message: id: 1-509, title: None, client_id: 1
 Duplicate message: id: 1-509, title: None, client_id: 1
 Duplicate message: id: 1-509, title: None, client_id: 1
 Duplicate message: id: 1-509, title: None, client_id: 1
 [client - 1] Processed movie: 311324
- [x] Message 321 acknowledged
-Duplicate message: id: 1-555, title: None, client_id: 1
-Duplicate message: id: 1-555, title: None, client_id: 1
-Duplicate message: id: 1-555, title: None, client_id: 1
-Duplicate message: id: 1-555, title: None, client_id: 1
-Duplicate message: id: 1-509, title: None, client_id: 1
+ [x] Message 685 acknowledged
 [client - 1] Processed movie: 310307
- [x] Message 327 acknowledged
-Duplicate message: id: 1-566, title: None, client_id: 1
-Duplicate message: id: 1-566, title: None, client_id: 1
-Duplicate message: id: 1-566, title: None, client_id: 1
-Duplicate message: id: 1-555, title: None, client_id: 1
-Duplicate message: id: 1-555, title: None, client_id: 1
+ [x] Message 686 acknowledged
 [client - 1] Processed movie: 335797
- [x] Message 333 acknowledged
-Duplicate message: id: 1-599, title: None, client_id: 1
+ [x] Message 687 acknowledged
 [client - 1] Processed movie: 413543
- [x] Message 335 acknowledged
-Duplicate message: id: 1-600, title: None, client_id: 1
-Duplicate message: id: 1-600, title: None, client_id: 1
-Duplicate message: id: 1-566, title: None, client_id: 1
-Duplicate message: id: 1-566, title: None, client_id: 1
-Duplicate message: id: 1-566, title: None, client_id: 1
+ [x] Message 688 acknowledged
 [client - 1] Processed movie: 121856
- [x] Message 341 acknowledged
-Duplicate message: id: 1-715, title: None, client_id: 1
+ [x] Message 689 acknowledged
 [client - 1] Processed movie: 381289
- [x] Message 343 acknowledged
-Duplicate message: id: 1-720, title: None, client_id: 1
+ [x] Message 690 acknowledged
 [client - 1] Processed movie: 360814
- [x] Message 345 acknowledged
-Duplicate message: id: 1-599, title: None, client_id: 1
-Duplicate message: id: 1-599, title: None, client_id: 1
-Duplicate message: id: 1-600, title: None, client_id: 1
-Duplicate message: id: 1-600, title: None, client_id: 1
-Duplicate message: id: 1-600, title: None, client_id: 1
-Duplicate message: id: 1-600, title: None, client_id: 1
+ [x] Message 691 acknowledged
 [client - 1] Processed movie: 167449
- [x] Message 352 acknowledged
+ [x] Message 692 acknowledged
 [client - 1] Processed movie: 388399
- [x] Message 353 acknowledged
+ [x] Message 693 acknowledged
+Duplicate message: id: 1-791, title: None, client_id: 1
 [client - 1] Processed movie: 334524
- [x] Message 354 acknowledged
+ [x] Message 695 acknowledged
 Duplicate message: id: 1-792, title: None, client_id: 1
 [client - 1] Processed movie: 342473
- [x] Message 356 acknowledged
+ [x] Message 697 acknowledged
 Duplicate message: id: 1-823, title: None, client_id: 1
 Duplicate message: id: 1-823, title: None, client_id: 1
 [client - 1] Processed movie: 370964
- [x] Message 359 acknowledged
+ [x] Message 700 acknowledged
+Duplicate message: id: 1-832, title: None, client_id: 1
 [client - 1] Processed movie: 404378
- [x] Message 360 acknowledged
-Duplicate message: id: 1-868, title: None, client_id: 1
+ [x] Message 702 acknowledged
 Duplicate message: id: 1-868, title: None, client_id: 1
 [client - 1] Processed movie: 47971
- [x] Message 363 acknowledged
+ [x] Message 704 acknowledged
 Duplicate message: id: 1-871, title: None, client_id: 1
+Duplicate message: id: 1-871, title: None, client_id: 1
+Duplicate message: id: 1-871, title: None, client_id: 1
+FinalFiles = []
+[INFO] Waiting for messages in calculator_ratio_feelingsfinal
+[INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
+StateFiles = ['client.1.json']
+Recovered state from client 1, len(processed_messages) = 170
+[INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
 [client - 1] Processed movie: 292280
- [x] Message 365 acknowledged
-[client - 1] Processed movie: 324849
- [x] Message 366 acknowledged
-[client - 1] Processed movie: 335791
- [x] Message 367 acknowledged
-Duplicate message: id: 1-892, title: None, client_id: 1
-Duplicate message: id: 1-892, title: None, client_id: 1
-Duplicate message: id: 1-892, title: None, client_id: 1
-Duplicate message: id: 1-892, title: None, client_id: 1
-[client - 1] Processed movie: 383785
- [x] Message 372 acknowledged
-Duplicate message: id: 1-916, title: None, client_id: 1
-Duplicate message: id: 1-916, title: None, client_id: 1
-Duplicate message: id: 1-715, title: None, client_id: 1
-Duplicate message: id: 1-715, title: None, client_id: 1
-Duplicate message: id: 1-715, title: None, client_id: 1
-Duplicate message: id: 1-715, title: None, client_id: 1
-Duplicate message: id: 1-715, title: None, client_id: 1
-Duplicate message: id: 1-715, title: None, client_id: 1
-Duplicate message: id: 1-720, title: None, client_id: 1
-Duplicate message: id: 1-720, title: None, client_id: 1
-Duplicate message: id: 1-720, title: None, client_id: 1
-Duplicate message: id: 1-726, title: None, client_id: 1
-Duplicate message: id: 1-760, title: None, client_id: 1
-Duplicate message: id: 1-760, title: None, client_id: 1
-Duplicate message: id: 1-791, title: None, client_id: 1
-Duplicate message: id: 1-792, title: None, client_id: 1
-Duplicate message: id: 1-823, title: None, client_id: 1
-Duplicate message: id: 1-832, title: None, client_id: 1
-Duplicate message: id: 1-868, title: None, client_id: 1
-Duplicate message: id: 1-868, title: None, client_id: 1
-Duplicate message: id: 1-868, title: None, client_id: 1
-Duplicate message: id: 1-871, title: None, client_id: 1
-Duplicate message: id: 1-871, title: None, client_id: 1
+ [x] Message 1 acknowledged
 Duplicate message: id: 1-872, title: None, client_id: 1
+[client - 1] Processed movie: 324849
+ [x] Message 3 acknowledged
 Duplicate message: id: 1-875, title: None, client_id: 1
-Duplicate message: id: 1-875, title: None, client_id: 1
-Duplicate message: id: 1-875, title: None, client_id: 1
-Duplicate message: id: 1-892, title: None, client_id: 1
-Duplicate message: id: 1-892, title: None, client_id: 1
-Duplicate message: id: 1-892, title: None, client_id: 1
-Duplicate message: id: 1-916, title: None, client_id: 1
-Duplicate message: id: 1-916, title: None, client_id: 1
-Duplicate message: id: 1-916, title: None, client_id: 1
+[client - 1] Processed movie: 335791
+ [x] Message 5 acknowledged
+[client - 1] Processed movie: 383785
+ [x] Message 6 acknowledged
 [client - 1] Processed movie: 409502
- [x] Message 406 acknowledged
+ [x] Message 7 acknowledged
 [client - 1] Processed movie: 396616
- [x] Message 407 acknowledged
+ [x] Message 8 acknowledged
 Duplicate message: id: 2-36, title: None, client_id: 1
 [client - 1] Processed movie: 14564
- [x] Message 409 acknowledged
-Duplicate message: id: 2-37, title: None, client_id: 1
-Duplicate message: id: 2-37, title: None, client_id: 1
+ [x] Message 10 acknowledged
 [client - 1] Processed movie: 63996
- [x] Message 412 acknowledged
-Duplicate message: id: 2-61, title: None, client_id: 1
-Duplicate message: id: 2-61, title: None, client_id: 1
+ [x] Message 11 acknowledged
 [client - 1] Processed movie: 393519
- [x] Message 415 acknowledged
-Duplicate message: id: 2-62, title: None, client_id: 1
-Duplicate message: id: 2-62, title: None, client_id: 1
-Duplicate message: id: 2-62, title: None, client_id: 1
-Duplicate message: id: 2-1, title: None, client_id: 1
-Duplicate message: id: 2-36, title: None, client_id: 1
-Duplicate message: id: 2-36, title: None, client_id: 1
-Duplicate message: id: 2-36, title: None, client_id: 1
-Duplicate message: id: 2-37, title: None, client_id: 1
-Duplicate message: id: 2-37, title: None, client_id: 1
-Duplicate message: id: 2-61, title: None, client_id: 1
-Duplicate message: id: 2-61, title: None, client_id: 1
-Duplicate message: id: 2-61, title: None, client_id: 1
-Duplicate message: id: 2-62, title: None, client_id: 1
+ [x] Message 12 acknowledged
 Duplicate message: id: 2-62, title: None, client_id: 1
 [client - 1] Processed movie: 324552
- [x] Message 430 acknowledged
+ [x] Message 14 acknowledged
 Duplicate message: id: 2-106, title: None, client_id: 1
 Duplicate message: id: 2-106, title: None, client_id: 1
 Duplicate message: id: 2-106, title: None, client_id: 1
 [client - 1] Processed movie: 419430
- [x] Message 434 acknowledged
+ [x] Message 18 acknowledged
+Duplicate message: id: 2-107, title: None, client_id: 1
+Duplicate message: id: 2-107, title: None, client_id: 1
+Duplicate message: id: 2-107, title: None, client_id: 1
 Duplicate message: id: 2-107, title: None, client_id: 1
 [client - 1] Processed movie: 293167
- [x] Message 436 acknowledged
+ [x] Message 23 acknowledged
 [client - 1] Processed movie: 180863
- [x] Message 437 acknowledged
-Duplicate message: id: 2-112, title: None, client_id: 1
-Duplicate message: id: 2-106, title: None, client_id: 1
-Duplicate message: id: 2-106, title: None, client_id: 1
-Duplicate message: id: 2-107, title: None, client_id: 1
-Duplicate message: id: 2-107, title: None, client_id: 1
-Duplicate message: id: 2-109, title: None, client_id: 1
+ [x] Message 24 acknowledged
 Duplicate message: id: 2-112, title: None, client_id: 1
 [client - 1] Processed movie: 241258
- [x] Message 445 acknowledged
-Duplicate message: id: 2-151, title: None, client_id: 1
-Duplicate message: id: 2-151, title: None, client_id: 1
-Duplicate message: id: 2-151, title: None, client_id: 1
-Duplicate message: id: 2-151, title: None, client_id: 1
+ [x] Message 26 acknowledged
 [client - 1] Processed movie: 321612
- [x] Message 450 acknowledged
-Duplicate message: id: 2-155, title: None, client_id: 1
-Duplicate message: id: 2-155, title: None, client_id: 1
+ [x] Message 27 acknowledged
 Duplicate message: id: 2-155, title: None, client_id: 1
 Duplicate message: id: 2-155, title: None, client_id: 1
 Duplicate message: id: 2-155, title: None, client_id: 1
 [client - 1] Processed movie: 295693
- [x] Message 456 acknowledged
-Duplicate message: id: 2-167, title: None, client_id: 1
-Duplicate message: id: 2-167, title: None, client_id: 1
-Duplicate message: id: 2-167, title: None, client_id: 1
+ [x] Message 31 acknowledged
 [client - 1] Processed movie: 315837
- [x] Message 460 acknowledged
+ [x] Message 32 acknowledged
+Duplicate message: id: 2-236, title: None, client_id: 1
+Duplicate message: id: 2-236, title: None, client_id: 1
 Duplicate message: id: 2-236, title: None, client_id: 1
 [client - 1] Processed movie: 425942
- [x] Message 462 acknowledged
-Duplicate message: id: 2-236, title: None, client_id: 1
-Duplicate message: id: 2-236, title: None, client_id: 1
-Duplicate message: id: 2-236, title: None, client_id: 1
+ [x] Message 36 acknowledged
+Duplicate message: id: 2-332, title: None, client_id: 1
 [client - 1] Processed movie: 330947
- [x] Message 466 acknowledged
-Duplicate message: id: 2-456, title: None, client_id: 1
-Duplicate message: id: 2-332, title: None, client_id: 1
-Duplicate message: id: 2-332, title: None, client_id: 1
-Duplicate message: id: 2-456, title: None, client_id: 1
-Duplicate message: id: 2-456, title: None, client_id: 1
-Duplicate message: id: 2-456, title: None, client_id: 1
-Duplicate message: id: 2-456, title: None, client_id: 1
+ [x] Message 38 acknowledged
 [client - 1] Processed movie: 73981
- [x] Message 474 acknowledged
-Duplicate message: id: 2-603, title: None, client_id: 1
-Duplicate message: id: 2-603, title: None, client_id: 1
+ [x] Message 39 acknowledged
 Duplicate message: id: 2-603, title: None, client_id: 1
 Duplicate message: id: 2-603, title: None, client_id: 1
 [client - 1] Processed movie: 345938
- [x] Message 479 acknowledged
-Duplicate message: id: 2-760, title: None, client_id: 1
+ [x] Message 42 acknowledged
 [client - 1] Processed movie: 395992
- [x] Message 481 acknowledged
-Duplicate message: id: 2-760, title: None, client_id: 1
+ [x] Message 43 acknowledged
 Duplicate message: id: 2-765, title: None, client_id: 1
 [client - 1] Processed movie: 314095
- [x] Message 484 acknowledged
-Duplicate message: id: 2-780, title: None, client_id: 1
-Duplicate message: id: 2-780, title: None, client_id: 1
-Duplicate message: id: 2-780, title: None, client_id: 1
-Duplicate message: id: 2-780, title: None, client_id: 1
+ [x] Message 45 acknowledged
 [client - 1] Processed movie: 305470
- [x] Message 489 acknowledged
-Duplicate message: id: 2-812, title: None, client_id: 1
+ [x] Message 46 acknowledged
 Duplicate message: id: 2-812, title: None, client_id: 1
 [client - 1] Processed movie: 334521
- [x] Message 492 acknowledged
-Duplicate message: id: 2-812, title: None, client_id: 1
-Duplicate message: id: 2-812, title: None, client_id: 1
-Duplicate message: id: 2-816, title: None, client_id: 1
+ [x] Message 48 acknowledged
 Resultados del cálculo (client_id = 1): {'operation': 'ratio', 'feeling': 'POS', 'ratio': 16.874739559886535, 'count': 195}, id = c9153dc1f86c0fe29dc1c6ffcfb453d72b7f07e298f4ec0660fb2d7c088b1e9b
-node_id = 00000
-[DEBUG] Sent message to queue calculator_ratio_feelings
 [DEBUG] Sent message to queue calculator_ratio_feelings
 [DEBUG] Sent message to queue calculator_ratio_feelingsfinal
 [DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":1,"header":"FINAL","node_id":"0"}' enviado directamente.
 node_id = 0
+node_id = 00000
 Sending final with total_count = 2
 [DEBUG] Sent message to queue calculator_ratio_feelings
+[DEBUG] Sent message to queue calculator_ratio_feelings
 [DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":2,"header":"FINAL"}' enviado directamente.
-FinalFiles = ['final.0.json']
-Recovered state from client 0, state = {'0': 1}
+FinalFiles = []
 [INFO] Waiting for messages in calculator_ratio_feelingsfinal
 [INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
 [INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
 [INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
 StateFiles = []
 [INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
-FinalFiles = ['final.0.json']
-Recovered state from client 0, state = {'0': 1}
+FinalFiles = []
 [INFO] Waiting for messages in calculator_ratio_feelingsfinal
 [INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
 [INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...
 [INFO] [Middleware] Enlazando cola 'router_positive_sentimentcalculator_ratio_feelings_0' al exchange 'router_positive_sentiment'...
 StateFiles = []
 [INFO] Waiting for messages in router_positive_sentimentcalculator_ratio_feelings_0
-FinalFiles = ['final.0.json']
-Recovered state from client 0, state = {'0': 1}
+FinalFiles = []
 [INFO] Waiting for messages in calculator_ratio_feelingsfinal
 [INFO] [Middleware] Declarando exchange 'router_positive_sentiment' de tipo 'direct'...
 [INFO] [Middleware] Declarando cola 'router_positive_sentimentcalculator_ratio_feelings_0' (durable=True)...

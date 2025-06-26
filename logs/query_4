@@ -10,43 +10,565 @@
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
  [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
 [INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on aggregator_calculator_count_actors, will send to query_queue
-[INFO] Waiting for messages in aggregator_calculator_count_actors
+Received packet with id 1-0
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-1
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-1
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.668256', data={'value': 'Adrián Salzedo', 'count': 1})
+Received packet with id 1-2
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-3
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-3
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.668442', data={'value': 'Alberto Anchart', 'count': 1})
+Received packet with id 1-4
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-5
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-6
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-7
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-8
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-9
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-10
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-10
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.668902', data={'value': 'Antonella Costa', 'count': 1})
+Received packet with id 1-11
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-12
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-13
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-14
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-15
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-16
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-17
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-18
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-19
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-19
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.669376', data={'value': 'Diego Ramos', 'count': 1})
+Received packet with id 1-20
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-21
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-22
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-23
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-24
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-24
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.669702', data={'value': 'Ernesto Suarez', 'count': 1})
+Received packet with id 1-25
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-25
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.669783', data={'value': 'Federico Luppi', 'count': 2})
+Received packet with id 1-26
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-27
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-27
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.669910', data={'value': 'Franca Gallo', 'count': 1})
+Received packet with id 1-28
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-29
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-30
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-31
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-32
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-32
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.670147', data={'value': 'Graciela Borges', 'count': 1})
+Received packet with id 1-33
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-33
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.670224', data={'value': 'Guadalupe Docampo', 'count': 1})
+Received packet with id 1-34
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-35
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-36
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-37
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-38
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-38
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.670459', data={'value': 'Jimena Del Pozo', 'count': 1})
+Received packet with id 1-39
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-40
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-40
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.670575', data={'value': 'Jorge Blanco', 'count': 1})
+Received packet with id 1-41
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-42
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-43
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-43
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.671164', data={'value': 'Laia Costa', 'count': 1})
+Received packet with id 1-44
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-45
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-45
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.671933', data={'value': 'Leonardo Sbaraglia', 'count': 1})
+Received packet with id 1-46
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-47
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-48
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-49
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-50
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-51
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-51
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.672673', data={'value': 'Maria Canale', 'count': 1})
+Received packet with id 1-52
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-53
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-54
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-55
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-55
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.673308', data={'value': 'Marina Groshaus', 'count': 1})
+Received packet with id 1-56
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-57
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-58
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-59
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-60
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-61
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-62
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-62
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.674029', data={'value': 'Nancy Encinas', 'count': 1})
+Received packet with id 1-63
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-63
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.674320', data={'value': 'Nicolás Valenzuela', 'count': 1})
+Received packet with id 1-64
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-64
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.674472', data={'value': 'Nora Navas', 'count': 1})
+Received packet with id 1-65
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-66
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-67
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-67
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.675538', data={'value': 'Osmar Núñez', 'count': 1})
+Received packet with id 1-68
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-68
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.676019', data={'value': 'Pasquale Di Nuzzo', 'count': 1})
+Received packet with id 1-69
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-70
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-71
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-72
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-72
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.676737', data={'value': 'Rodrigo Noya', 'count': 1})
+Received packet with id 1-73
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-74
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-75
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-76
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-77
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-78
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-79
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-80
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-81
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-82
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-83
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-84
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-85
+ [DeliverNode] Movie added with id: 1
+Received packet with id 1-85
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:14:52.678577', data={'value': 'Ángela Molina', 'count': 1})
+final response = {
+    "query": 4,
+    "result": [
+        {
+            "count": 2,
+            "name": "Federico Luppi"
+        },
+        {
+            "count": 1,
+            "name": "Adnen Helali"
+        },
+        {
+            "count": 1,
+            "name": "Adri\u00e1n Salzedo"
+        },
+        {
+            "count": 1,
+            "name": "Alan Stivelman"
+        },
+        {
+            "count": 1,
+            "name": "Alberto Anchart"
+        },
+        {
+            "count": 1,
+            "name": "Alejandra Figueroa"
+        },
+        {
+            "count": 1,
+            "name": "Alejandro Awada"
+        },
+        {
+            "count": 1,
+            "name": "Amira Adre"
+        },
+        {
+            "count": 1,
+            "name": "Andrea Frigerio"
+        },
+        {
+            "count": 1,
+            "name": "Andres Bagg"
+        }
+    ]
+}
+[DEBUG] Sent message to exchange deliver with routing key 1
+[DEBUG] Sent message to queue deliverfinal
+[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":1,"header":"FINAL","node_id":4}' enviado directamente.
+Deleted data for client 1
+Received packet with id 0-0
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-0
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.140087', data={'value': 'Adnen Helali', 'count': 1})
+Received packet with id 0-1
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-2
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-3
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-4
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-5
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-6
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-7
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-8
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-8
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.140860', data={'value': 'Andrea Frigerio', 'count': 1})
+Received packet with id 0-9
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-10
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-10
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.141100', data={'value': 'Andrés Herrera', 'count': 1})
+Received packet with id 0-11
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-12
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-13
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-14
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-15
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-16
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-17
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-18
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-19
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-19
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.141731', data={'value': 'Dady Brieva', 'count': 1})
+Received packet with id 0-20
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-21
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-22
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-23
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-23
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.142074', data={'value': 'Diego Ramos', 'count': 1})
+Received packet with id 0-24
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-25
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-26
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-27
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-28
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-29
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-30
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-31
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-32
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-33
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-34
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-35
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-36
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-36
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.142957', data={'value': 'Germán Kraus', 'count': 1})
+Received packet with id 0-37
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-37
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.143074', data={'value': 'Graciela Borges', 'count': 1})
+Received packet with id 0-38
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-39
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-40
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-41
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-42
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-42
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.143472', data={'value': 'Janet Bar', 'count': 1})
+Received packet with id 0-43
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-44
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-45
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-46
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-47
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-48
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-49
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-50
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-50
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.144042', data={'value': 'Julio Chávez', 'count': 1})
+Received packet with id 0-51
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-52
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-52
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.144272', data={'value': 'Leonardo Cecchi', 'count': 1})
+Received packet with id 0-53
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-54
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-55
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-55
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.144483', data={'value': "Liah O'Prey", 'count': 1})
+Received packet with id 0-56
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-57
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-58
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-59
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-59
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.144809', data={'value': 'Maria Canale', 'count': 1})
+Received packet with id 0-60
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-60
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.144970', data={'value': 'Maria Clara Alonso', 'count': 1})
+Received packet with id 0-61
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-62
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-63
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-64
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-65
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-66
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-67
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-68
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-69
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-69
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.145631', data={'value': 'Mercedes Morán', 'count': 1})
+Received packet with id 0-70
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-71
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-72
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-72
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.145851', data={'value': 'Natalia Oreiro', 'count': 1})
+Received packet with id 0-73
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-74
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-75
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-76
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-77
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-77
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.146243', data={'value': 'Osmar Núñez', 'count': 1})
+Received packet with id 0-78
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-78
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.146365', data={'value': 'Pasquale Di Nuzzo', 'count': 1})
+Received packet with id 0-79
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-80
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-80
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.146620', data={'value': 'Rafael Spregelburd', 'count': 1})
+Received packet with id 0-81
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-82
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-83
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-84
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-85
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-85
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.146999', data={'value': 'Rodrigo Noya', 'count': 1})
+Received packet with id 0-86
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-86
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.147106', data={'value': 'Rodrigo de la Serna', 'count': 1})
+Received packet with id 0-87
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-88
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-89
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-90
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-91
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-92
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-93
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-94
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-95
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-96
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-96
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.147871', data={'value': 'Victoria Larriveu', 'count': 1})
+Received packet with id 0-97
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-98
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-98
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.148040', data={'value': 'Will Janowitz', 'count': 1})
+Received packet with id 0-99
+ [DeliverNode] Movie added with id: 0
+Received packet with id 0-99
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:15:07.148213', data={'value': 'Ángela Molina', 'count': 1})
+final response = {
+    "query": 4,
+    "result": [
+        {
+            "count": 2,
+            "name": "Dolores Fonzi"
+        },
+        {
+            "count": 2,
+            "name": "Federico Luppi"
+        },
+        {
+            "count": 1,
+            "name": "Adnen Helali"
+        },
+        {
+            "count": 1,
+            "name": "Adri\u00e1n Salzedo"
+        },
+        {
+            "count": 1,
+            "name": "Agustina Mu\u00f1oz"
+        },
+        {
+            "count": 1,
+            "name": "Alan Stivelman"
+        },
+        {
+            "count": 1,
+            "name": "Alberto Anchart"
+        },
+        {
+            "count": 1,
+            "name": "Alejandra Figueroa"
+        },
+        {
+            "count": 1,
+            "name": "Alejandro Awada"
+        },
+        {
+            "count": 1,
+            "name": "Amira Adre"
+        }
+    ]
+}
+[ERROR] confirm_delivery: confirmation was already enabled on channel=1
+[DEBUG] Sent message to exchange deliver with routing key 0
+[DEBUG] Sent message to queue deliverfinal
+[DEBUG] Sent message to queue deliverfinal
+[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":1,"header":"FINAL","node_id":4}' enviado directamente.
+Deleted data for client 0

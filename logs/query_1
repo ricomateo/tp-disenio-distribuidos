@@ -6,14 +6,6 @@
 [WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
  [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
 [INFO] Waiting for messages in filter_2000s_spain
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
 Received packet with id 2-960
  [DeliverNode] Movie added with id: 0
 final response = {
@@ -21,70 +13,38 @@ final response = {
     "result": [
         {
             "id": 58429,
-            "genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]",
-            "title": "La Cienaga"
+            "title": "La Cienaga",
+            "genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]"
         }
     ]
 }
-[DEBUG] Sent message to exchange deliver with routing key 0
 [DEBUG] Sent message to exchange deliver with routing key 0
 [DEBUG] Sent message to queue deliverfinal
 [DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":1,"header":"FINAL","node_id":1}' enviado directamente.
 Deleted data for client 0
-Received packet with id 2-960
- [DeliverNode] Movie added with id: 0
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[DEBUG] Client 0 is dead but client.0.json was not removed
-[DEBUG] Removed file client.0.json
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
 [INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
  [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
 [INFO] Waiting for messages in filter_2000s_spain
 Received packet with id 2-960
  [DeliverNode] Movie added with id: 1
+Received packet with id 2-960
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:16.733727', data={'id': 58429, 'title': 'La Cienaga', 'genres': "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]"})
+Received packet with id 2-960
+Duplicate packet = DataPacket(timestamp='2025-06-26T00:12:16.733727', data={'id': 58429, 'title': 'La Cienaga', 'genres': "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]"})
 final response = {
     "query": 1,
     "result": [
         {
-            "genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]",
+            "id": 58429,
             "title": "La Cienaga",
-            "id": 58429
+            "genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]"
         }
     ]
 }
 [DEBUG] Sent message to exchange deliver with routing key 1
-[DEBUG] Sent message to exchange deliver with routing key 1
 [DEBUG] Sent message to queue deliverfinal
 [DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":1,"header":"FINAL","node_id":1}' enviado directamente.
 Deleted data for client 1
-Received packet with id 2-960
- [DeliverNode] Movie added with id: 1
-Received packet with id 2-960
-Duplicate packet = DataPacket(timestamp='2025-06-25T23:48:08.451330', data={'id': 58429, 'genres': "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]", 'title': 'La Cienaga'})
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
-[DEBUG] Client 1 is dead but client.1.json was not removed
-[DEBUG] Removed file client.1.json
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
-[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
- [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
-[INFO] Waiting for messages in filter_2000s_spain
 [INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
  [~] DeliverNode listening on filter_2000s_spain, will send to query_queue
 [INFO] Waiting for messages in filter_2000s_spain

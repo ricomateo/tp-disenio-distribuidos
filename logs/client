@@ -1,6 +1,12 @@
 Sent movies_metadata.csv file
 Sent ratings.csv file
 Sent credits.csv file
+========= QUERY 1 RESULTS =========
+title      | genres             
+--------------------------------
+La Cienaga | ['Comedy', 'Drama']
+
+
 ========= QUERY 2 RESULTS =========
 country                  | budget    
 -------------------------------------
@@ -11,14 +17,11 @@ Russia                   | 71900614
 France                   | 69228000  
 
 
-========= QUERY 1 RESULTS =========
-title      | genres             
---------------------------------
-La Cienaga | ['Comedy', 'Drama']
-
-
 ========= QUERY 3 RESULTS =========
-(no rows)
+title                   | rating
+--------------------------------
+The forbidden education | 4.0   
+Left for Dead           | 1.0   
 
 
 ========= QUERY 5 RESULTS =========
@@ -28,3 +31,20 @@ POSITIVE | 16.8747
 NEGATIVE | 5.5442 
 
 
+========= QUERY 4 RESULTS =========
+name               | count
+--------------------------
+Dolores Fonzi      | 2    
+Federico Luppi     | 2    
+Adnen Helali       | 1    
+Adrián Salzedo     | 1    
+Agustina Muñoz     | 1    
+Alan Stivelman     | 1    
+Alberto Anchart    | 1    
+Alejandra Figueroa | 1    
+Alejandro Awada    | 1    
+Amira Adre         | 1    
+
+
+received finalization message, closing...
+Total time from connection to disconnection: 229.50 seconds
