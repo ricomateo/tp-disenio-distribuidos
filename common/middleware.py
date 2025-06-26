@@ -63,6 +63,7 @@ class Middleware:
             )
             logging.debug("Sent message to exchange %s with routing key %s", self.exchange, routing_key)
             if random.randint(1, 100) < 10:
+                logging.info("Sending duplicate packet")
                 self.channel.basic_publish(
                     exchange=self.exchange,
                     routing_key=routing_key,
@@ -80,6 +81,7 @@ class Middleware:
             )
             logging.debug("Sent message to queue %s", self.queue)
             if random.randint(1, 100) < 10:
+                logging.info("Sending duplicate packet")
                 self.channel.basic_publish(
                     exchange='',
                     routing_key=self.queue,
