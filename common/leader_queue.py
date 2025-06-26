@@ -86,6 +86,8 @@ class LeaderQueue:
                 logging.debug(
                     "Duplicate FINAL from node: %s and client: %s", node_id, client_id
                 )
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
 
             if is_final_packet(header):
                 if client_id in self.delete_list:
