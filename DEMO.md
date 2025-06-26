@@ -101,10 +101,10 @@ docker logs gateway | grep LEADER_ELECTION
 
 ## Catástrofe
 
-1. Moverse a la rama `catastrofe` con:
+1. Moverse a la rama `demo-catastrofe` con:
 
 ```bash
-git checkout catastrofe
+git checkout demo-catastrofe
 ```
 
 2. Asegurarse de que no hay containers corriendo con:
