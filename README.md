@@ -421,6 +421,16 @@ Cabe destacar que el nodo de control no filtra paquetes duplicados al momento de
 
 En conclusión, los nodos de control no solo se encargan de monitorear y mantener activos los nodos de la lógica de negocio, sino que también cumplen un rol clave en la coordinación del procesamiento final entre los nodos stateless, es decir, aquellos que comparten una misma cola y no persisten información en disco. En estos casos, el nodo de control es responsable de llevar el seguimiento del conteo y asegurar que se cumpla el envío del final únicamente cuando todos los paquetes correspondientes hayan sido procesados correctamente, garantizando así la integridad del flujo de datos.
 
+### Nuevo Diagrama de despliegue
+
+En el diagrama de despliegue se incorporaron los nodos de control. Aquellos conectados entre sí mediante flechas de doble sentido representan los nodos encargados de coordinar la finalización de los nodos stateless, que por su propia naturaleza no pueden determinar cuándo deben finalizar. El resto de los nodos de control se encargan exclusivamente de supervisar el estado de los nodos stateful, monitoreando su disponibilidad y correcto funcionamiento.
+
+![image despliegue](img/vista_fisica/despliegue_fallos.png)
+
+Esta configuración genera un anillo de 18 nodos de control alrededor del sistema, lo que permite implementar mecanismos distribuidos de detección y recuperación ante fallos. De esta forma, el sistema se vuelve tolerante a fallos, ya que siempre hay nodos de control monitoreando el estado del sistema y coordinando su correcto cierre y reinicio en caso de ser necesario.
+
+![image despliegue](img/vista_fisica/despliegue_anillo.png)
+
 ### Sobre la elección de líder en el gateway
 
 Decidimos utilizar la elección de líder en el gateway porque de esta forma nos cubrimos de una posible caída del nodo que escucha las conexiones de los clientes, ya que, en caso de que se caiga el gateway líder, el cual está en espera de conexiones entrantes de clientes, se va a disparar una elección de líder para que se ocupe de escuchar las nuevas conexiones entrantes.
