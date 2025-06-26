@@ -54,6 +54,7 @@ sequenceDiagram
 
     Stateful node-->>Input queue: consume()
     Input queue-->>Stateful node: DataPacket (⚠️ duplicado)
+    Stateful node->>Stateful node: is_processed(DataPacket) -> false
     Stateful node->>Stateful node: process_packet(DataPacket)
     Note right of Stateful node: Dado que en la ejecución anterior el nodo <br>no alcanzó a persistir el estado (y por lo tanto no marcó<br> el paquete como procesado), por más que el<br> paquete sea duplicado, lo va a interpetar<br> como un paquete nuevo porque en<br> realidad nunca llegó a procesarlo del todo.
     Stateful node->>Stateful node: set_as_processed(DataPacket)
@@ -151,7 +152,7 @@ Si el nodo se cae luego de enviar el `FinalPacketWithNodeId`, en la siguiente it
 Si el nodo se cae antes de eliminar los datos del cliente, pero luego de haberlo marcado como muerto, entonces al reiniciarse va a realizar una limpieza de los datos que hayan quedado, utilizando el módulo [dead_clients_tracker](../common/dead_clients_tracker.py).
 Esto garantiza que la información de los clientes siempre se elimine por más que haya fallas.
 
-```
+```mermaid
 sequenceDiagram
     participant Input queue
     participant Stateful node
