@@ -381,15 +381,45 @@ La forma de garantizar que los nodos del sistema tengan una alta disponibilidad 
 
 La idea es que cada nodo de control tiene un hilo que se encarga de escuchar la conexión de health-check del anterior, en la que simplemente acepta la conexión y la cierra, y otro hilo que realiza health-check del nodo siguiente, que se conecta con el nodo mediante TCP y luego cierra dicha conexión.
 
-Además de esos dos hilos, cada nodo de control se encarga de comunicarse con los hilos worker de los nodos de la lógica de negocio (dichos hilos existen para comunicarse con los nodos de control). Contamos con un hilo que hace el health-check a secas, y otro que responde consultas para los nodos sin estado.
+Cada nodo de control también realiza health-checks periódicos a los hilos worker de los nodos de la lógica de negocio, asegurando que estén activos y funcionando correctamente. Esta supervisión constante permite detectar fallas tempranas y mantener la integridad del sistema.
 
-Además de controlar que los nodos de la lógica de negocio se mantengan vivos, también los nodos de control manejan requests de los hilos worker de los nodos de negocio.
+Además de monitorear la disponibilidad de los nodos de negocio, los nodos de control también gestionan las solicitudes que provienen de los hilos worker.
+
+En cuanto a la arquitectura, los nodos stateless cuentan con un nodo de control dedicado exclusivamente a ellos, encargado de coordinar el envío de los finals y calcular sus conteos necesarios. Por otro lado, los nodos stateful son supervisados por un único nodo de control, dado que la mayoría de sus hilos solo realizan health-checks. La excepción es el gateway, que dispone de un nodo de control separado para facilitar la elección de líder y permitir una recuperación rápida de gateways de respaldo.
 
 Existen tres tipos de request:
 
-- insert id: Inserta el id del paquete recibido para el cliente en cuestión, persistiendo dicha información en un archivo específico para ese cliente. Después de insertar el elemento, calcula el count de ids únicos en dicho archivo, y en caso de que la cuenta alcance el número del final count para ese cliente se devuelve true, señalizando que se terminaron de procesar todos los paquetes para ese nodo.
-- delete client: Elimina la información persistida para un cliente en específico, ya sea porque se terminaron los paquetes para ese cliente o porque el cliente se desconectó.
-- receive final count: Recibe la información acerca de cuantos paquetes se deberían procesar para el cliente en cuestión, leída en el final packet. En caso de que los mensajes insertados sean iguales a esta cantidad de leídos necesarios, entonces de le informará al nodo que hizo la request.
+- Insert id: Inserta el ID y el send del paquete recibido en disco, almacenando esta información en un archivo específico para el cliente correspondiente. Luego de la inserción, si se detecta que ya se recibió un paquete final, se calcula la cantidad de IDs únicos almacenados en dicho archivo. En caso de que esta cantidad coincida con el conteo final esperado para ese cliente, la función devuelve true junto con el valor del nuevo count final, indicando que se han procesado todos los paquetes correspondientes a ese nodo.
+
+- Delete client: Elimina toda la información persistida asociada a un cliente específico, ya sea porque se completó el procesamiento de sus paquetes o porque el cliente se desconectó. Además, registra al cliente en una lista de clientes muertos para seguimiento.
+
+- Receive final count: Recibe la información acerca de la cantidad total de paquetes que deberían procesarse para un cliente, extraída del paquete final. A continuación, calcula el número de IDs únicos almacenados en el archivo correspondiente. Si este número alcanza el conteo final esperado para el cliente, la función devuelve true junto con el valor del nuevo count final, señalando que el procesamiento de todos los paquetes para ese nodo ha finalizado.
+
+![control](img/vista_desarollo/nodo_control_1.png)
+
+En este ejemplo, un paquete llega después de que se recibió el paquete final. Al recibir el paquete final, el filtro lo guarda en disco y verifica si se cumple el conteo esperado de 6 IDs. Al observar que solo tiene 5 IDs almacenados, determina que el conteo aún no se ha completado y devuelve final=false.
+
+Cuando finalmente llega ese paquete pendiente, el filtro lo procesa y lo envía al nodo de control, que también lo guarda en disco. Ahora, con el paquete final ya activado, el nodo de control verifica que se hayan recibido los 6 IDs esperados. Como la condición se cumple, envía final=true y send=3, indicando que de los 6 paquetes, solo 3 fueron filtrados hacia el siguiente nodo router.
+
+Luego, el filtro envía el paquete final con count=3 y, finalmente, solicita al nodo que elimine toda la información persistida en disco correspondiente al cliente 2.
+
+![control](img/vista_desarollo/nodo_control.png)
+
+En este ejemplo, un paquete llega al nodo router, que lo enruta hacia el nodo calculator (nodo 0). A su vez, el router notifica al nodo de control, enviándole la información con send=0. El nodo de control persiste este dato en disco y devuelve final=false, ya que aún no ha recibido el paquete final.
+
+Cuando finalmente llega el paquete final, el nodo de control revisa si la cantidad de IDs únicos almacenados en disco coincide con el final count esperado. Al cumplirse esta condición, responde con final=true y la información del reparto (send), que indica cuántos paquetes se enviaron a cada ruta. En este caso, fueron 3 a calculator y 3 a calculator_1.
+
+Una vez que el router recibe esta respuesta, envía los paquetes finales correspondientes a cada nodo destino. Finalmente, le indica al nodo de control que elimine del disco toda la información relacionada con ese cliente, completando así el ciclo de procesamiento.
+
+![control](img/vista_desarollo/nodo_control_disco.png)
+
+Por motivos de performance, cada nodo y cliente cuenta con su propio archivo de almacenamiento. Esto permite que múltiples nodos escriban paquetes del mismo cliente en paralelo, sin necesidad de competir por acceso a un único archivo compartido. De esta manera, se maximiza la concurrencia y se evita el bloqueo entre nodos durante la escritura.
+
+Cuando se detecta la llegada de un paquete final —o si este ya fue recibido previamente—, el nodo de control adquiere los locks de todos los archivos asociados a ese cliente antes de proceder a leerlos. Esto garantiza la exclusión mutua durante el conteo de IDs únicos y evita condiciones de carrera.
+
+Cabe destacar que el nodo de control no filtra paquetes duplicados al momento de guardarlos en disco, ya que la prioridad está puesta en la velocidad de escritura. Los duplicados se filtran únicamente al momento de hacer el conteo, aceptando así un mayor uso de disco en favor de un procesamiento más eficiente ante cargas altas o escenarios concurrentes.
+
+En conclusión, los nodos de control no solo se encargan de monitorear y mantener activos los nodos de la lógica de negocio, sino que también cumplen un rol clave en la coordinación del procesamiento final entre los nodos stateless, es decir, aquellos que comparten una misma cola y no persisten información en disco. En estos casos, el nodo de control es responsable de llevar el seguimiento del conteo y asegurar que se cumpla el envío del final únicamente cuando todos los paquetes correspondientes hayan sido procesados correctamente, garantizando así la integridad del flujo de datos.
 
 ### Sobre la elección de líder en el gateway
 
