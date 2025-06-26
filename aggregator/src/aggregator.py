@@ -23,7 +23,7 @@ class AggregatorNode:
             queue=self.input_queue, consumer_tag=self.consumer_tag
         )
         self.output_rabbitmq = Middleware(queue=self.output_queue)
-        self.dead_clients_tracker = DeadClientsTracker()
+        self.dead_clients_tracker = DeadClientsTracker(is_join_node=False, node_id=0)
 
         self.operation = os.getenv("operation", "total_invested")
 
