@@ -63,8 +63,8 @@ class Middleware:
             )
             logging.debug("Sent message to exchange %s with routing key %s", self.exchange, routing_key)
             
-            # duplicate 20% of the packets 
-            if random.randint(1, 100) < 20:
+            # duplicate 50% of the packets 
+            if random.randint(1, 100) < 50:
                 self.channel.basic_publish(
                     exchange=self.exchange,
                     routing_key=routing_key,
@@ -81,8 +81,8 @@ class Middleware:
             )
             logging.debug("Sent message to queue %s", self.queue)
             
-            # duplicate 20% of the packets 
-            if random.randint(1, 100) < 20:
+            # duplicate 50% of the packets 
+            if random.randint(1, 100) < 50:
                 self.channel.basic_publish(
                     exchange='',
                     routing_key=self.queue,
