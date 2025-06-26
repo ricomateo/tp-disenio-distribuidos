@@ -45,7 +45,9 @@ class CalculatorNode:
         self.final_rabbitmq = None
         self.threads = []
         self.processed_messages_by_client = {}
-        self.dead_clients_tracker = DeadClientsTracker(is_join_node=False, node_id=self.node_id)
+        self.dead_clients_tracker = DeadClientsTracker(
+            is_join_node=False, node_id=self.node_id
+        )
 
         self.leader_queue = None
         if int(self.node_id) == 0 and self.exchange != "router_negative_sentiment":
@@ -92,6 +94,7 @@ class CalculatorNode:
             client_id = packet.get("client_id")
 
             if header and is_delete_packet(header):
+                logging.info("Received DELETE packet for client %s", client_id)
                 self.output_rabbitmq.send_delete(client_id=client_id)
                 self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
@@ -101,17 +104,21 @@ class CalculatorNode:
             if header and is_final_packet(header):
                 # Ignore final packets from dead clients
                 if self.dead_clients_tracker.client_is_dead(client_id):
-                    print("Received FINAL packet from dead client %s", client_id)
+                    logging.info("Received FINAL packet from dead client %s", client_id)
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
+                logging.info("Received FINAL packet from client %s", client_id)
                 results = self.calculator.get_result(client_id)
                 self.output_rabbitmq.confirm_delivery()
 
                 count = 0
                 for result in results:
                     id = str(consistent_hash(str(self.node_id) + str(result)))
-                    print(
-                        f"Resultados del cálculo (client_id = {client_id}): {result}, id = {id}"
+                    logging.debug(
+                        "Results (client_id = %s): %s, id = %s",
+                        client_id,
+                        result,
+                        id,
                     )
                     data_packet = DataPacket(
                         client_id=client_id,
@@ -121,7 +128,9 @@ class CalculatorNode:
                     )
                     self.output_rabbitmq.publish(data_packet.to_json())
                     count += 1
-
+                logging.info(
+                    "Sent results for client %s to the output queue.", client_id
+                )
                 # The node ids are duplicate in the ratio feelings calculators
                 # (we have calculator_ratio_feelings_negative_0 and calculator_ratio_feelings_positive_0
                 # both with node_id = 0) so to distinguish them when sending the final message,
@@ -132,6 +141,9 @@ class CalculatorNode:
                     node_id = self.node_id
                 self.final_rabbitmq.send_final_with_node_id(
                     client_id=client_id, count=count, node_id=node_id
+                )
+                logging.info(
+                    "Sent FINAL packet for client %s to leader's queue", client_id
                 )
                 self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
@@ -149,8 +161,11 @@ class CalculatorNode:
             # If the message has been already processed, skip it
             if id in self.processed_messages_by_client[client_id]:
                 title = movie.get("title")
-                print(
-                    f"Duplicate message: id: {id}, title: {title}, client_id: {client_id}"
+                logging.debug(
+                    "Duplicate message: id: %s, title: %s, client_id: %s",
+                    id,
+                    title,
+                    client_id,
                 )
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
@@ -161,24 +176,28 @@ class CalculatorNode:
             self.processed_messages_by_client[client_id].add(id)
 
             if success:
-                print(
-                    f"[client - {client_id}] Processed movie: {movie.get('id', 'Unknown')}"
+                logging.debug(
+                    "[client - %s] Processed movie: %s",
+                    client_id,
+                    movie.get("id", "Unknown"),
                 )
                 self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
-                print(f" [x] Message {method.delivery_tag} acknowledged")
+                logging.debug("Message %s acknowledged", method.delivery_tag)
             else:
                 ch.basic_nack(
                     delivery_tag=method.delivery_tag, multiple=False, requeue=False
                 )
 
         except json.JSONDecodeError as e:
-            print(f" [!] Error decoding JSON: {e}")
+            logging.warning("Error decoding JSON: %s", e)
             ch.basic_nack(
                 delivery_tag=method.delivery_tag, multiple=False, requeue=False
             )
         except Exception as e:
-            print(f" [!] Error processing message: {e}, raw packet is {packet_json}")
+            logging.warning(
+                "Error processing message: %s, raw packet is %s", e, packet_json
+            )
             ch.basic_nack(
                 delivery_tag=method.delivery_tag, multiple=False, requeue=False
             )
@@ -191,7 +210,7 @@ class CalculatorNode:
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
-            print(f" [!] Error in calculator node: {e}")
+            logging.error("Error in calculator node: %s", e)
         finally:
             if self.leader_queue:
                 self.leader_queue.join()
@@ -220,19 +239,26 @@ class CalculatorNode:
         """
         # Get a list of files that match the pattern client.*.json
         state_files: list[str] = glob.glob("client.*.json")
-        print(f"StateFiles = {state_files}")
+        logging.debug("persisted files = %s", state_files)
         for file in state_files:
-            client_id = int(file.split(".")[1])
-            with open(file, "r", encoding="utf-8") as f:
-                state = json.loads(f.read())
-                result = state.get("result")
-                self.calculator.load_result(client_id, result)
-                self.processed_messages_by_client[client_id] = set(
-                    state.get("processed_messages", [])
+            try:
+                client_id = int(file.split(".")[1])
+                with open(file, "r", encoding="utf-8") as f:
+                    state = json.loads(f.read())
+                    result = state.get("result")
+                    self.calculator.load_result(client_id, result)
+                    self.processed_messages_by_client[client_id] = set(
+                        state.get("processed_messages", [])
+                    )
+                logging.debug(
+                    "Recovered state from client %s, len(processed_messages) = %s",
+                    client_id,
+                    len(self.processed_messages_by_client[client_id]),
                 )
-            print(
-                f"Recovered state from client {client_id}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}"
-            )
+            except Exception as e:
+                logging.warning(
+                    "Failed to recover state for client %s. Error: %s", client_id, e
+                )
 
     def delete_client_data(self, client_id: int):
         """
@@ -243,11 +269,14 @@ class CalculatorNode:
             del self.processed_messages_by_client[client_id]
         try:
             os.remove(f"client.{client_id}.json")
+            logging.info("Deleted client %s data", client_id)
         except Exception as e:
-            print(f"Failed to remove file for client {client_id}. Error: {e}")
+            logging.warning(
+                "Failed to remove file for client %s. Error: %s", client_id, e
+            )
 
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
+        logging.info("Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
@@ -259,7 +288,7 @@ class CalculatorNode:
             self.leader_queue.close()
 
     def close(self):
-        print(f"Closing queues")
+        logging.info("Closing queues")
         if self.leader_queue:
             self.leader_queue.close()
         if self.input_rabbitmq:

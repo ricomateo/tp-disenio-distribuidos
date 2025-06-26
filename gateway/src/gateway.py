@@ -66,7 +66,7 @@ class Gateway:
                         client_id = int(filename[:-4])  # ej. 2.txt -> 2
                         file_path = os.path.join(self.clients_dir, filename)
                         logging.info(
-                            "[Gateway] Enviando mensaje de eliminación para cliente muerto %s",
+                            "[Gateway] Sending DELETE packet for dead client %s",
                             client_id,
                         )
 

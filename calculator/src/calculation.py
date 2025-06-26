@@ -1,15 +1,16 @@
 import ast
 import json
-from typing import Dict, Tuple, List, Set
+import logging
+from typing import Dict, Tuple, List
 
 COUNT = "COUNT_BY"
 AVERAGE = "AVERAGE_BY"
 RATIO = "RATIO_BY"
 SUM = "SUM_BY"
 
+
 class Calculation:
     def __init__(self, operation: str, exchange: str):
-
         self.operation = operation
         self.exchange = exchange
         # Parse operation string
@@ -21,19 +22,27 @@ class Calculation:
             self.op_type = op_type.upper()
             if self.op_type == COUNT:
                 self.key = args
-                self.counts_by_client: Dict[int, Dict[str, int]] = {} # client_id -> {key_value -> count}
+                self.counts_by_client: Dict[
+                    int, Dict[str, int]
+                ] = {}  # client_id -> {key_value -> count}
 
             elif self.op_type == AVERAGE:
                 self.key, self.value_field = args.split(",", 1)
-                self.averages_by_client: Dict[int, Dict[str, Tuple[float, int, str]]] = {} #  client_id -> {key_value -> (total, count)}
+                self.averages_by_client: Dict[
+                    int, Dict[str, Tuple[float, int, str]]
+                ] = {}  #  client_id -> {key_value -> (total, count)}
 
             elif self.op_type == RATIO:
                 self.numerator, self.denominator = args.split(",", 1)
-                self.totals_by_client: Dict[int, Tuple[float, int]] = {}  # client_id -> (total_numerator, count)
+                self.totals_by_client: Dict[
+                    int, Tuple[float, int]
+                ] = {}  # client_id -> (total_numerator, count)
 
             elif self.op_type == SUM:
                 self.key, self.value_field = args.split(",", 1)
-                self.sums_by_client: Dict[int, Dict[str, float]] = {} # client_id -> {key_value -> sum}
+                self.sums_by_client: Dict[
+                    int, Dict[str, float]
+                ] = {}  # client_id -> {key_value -> sum}
 
             else:
                 raise ValueError(f"Unknown operation type: {op_type}")
@@ -49,18 +58,17 @@ class Calculation:
             return value
         try:
             parsed = ast.literal_eval(value)
-            #print(f"Parsed result: {parsed!r}")
             return parsed
         except (ValueError, SyntaxError) as e:
-            print(f"Error parsing string '{value}': {e}")
+            logging.warning("Error parsing string '%s': %s", value, e)
         try:
             parsed = json.loads(value)
-            print(f"Parsed result: {parsed!r}")
+            logging.debug("Parsed result: %s", parsed)
             return parsed
         except json.JSONDecodeError as e:
-            print(f"Error parsing JSON string '{value}': {e}")
+            logging.warning("Error parsing JSON string '%s': %s", value, e)
         return None
-    
+
     def process_count_operation(self, client_id: int, movie: Dict) -> bool:
         title = movie.get("title", "Unknown")
 
@@ -78,21 +86,27 @@ class Calculation:
         for key_item in parsed_keys:
             if isinstance(key_item, dict):
                 # Si es un conjunto, combino todos los valores en una sola key
-                key_value = key_item.get('name', '')
+                key_value = key_item.get("name", "")
                 if key_value:
                     combined_key = key_value
-                    self.counts_by_client[client_id][combined_key] = self.counts_by_client[client_id].get(combined_key, 0) + 1
+                    self.counts_by_client[client_id][combined_key] = (
+                        self.counts_by_client[client_id].get(combined_key, 0) + 1
+                    )
                     # self.counts[combined_key] = self.counts.get(combined_key, 0) + 1
                     processed = True
             elif isinstance(key_item, str):
                 # Si es un solo valor, lo sumo a la cuenta
                 if key_item:
-                    self.counts_by_client[client_id][key_item] = self.counts_by_client[client_id].get(key_item, 0) + 1
+                    self.counts_by_client[client_id][key_item] = (
+                        self.counts_by_client[client_id].get(key_item, 0) + 1
+                    )
                     # self.counts[key_item] = self.counts.get(key_item, 0) + 1
                     processed = True
 
         if not processed:
-            print(f"Skipped movie '{title}' with missing or invalid {self.key}")
+            logging.warning(
+                "Skipped movie '%s' with missing or invalid %s", title, self.key
+            )
 
         return processed
 
@@ -101,10 +115,10 @@ class Calculation:
 
         keys = movie.get(self.key, [])
         value = movie.get(self.value_field)
-        
+
         if client_id not in self.averages_by_client:
             self.averages_by_client[client_id] = {}
-        
+
         # Manejar las keys como una lista o un solo valor
         parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
         if not isinstance(parsed_keys, list):
@@ -117,39 +131,61 @@ class Calculation:
                 for key_item in parsed_keys:
                     if isinstance(key_item, dict):
                         # Si es un diccionario junto los valores no nulos en una key
-                        key_value = key_item.get('name', '')
-                  
+                        key_value = key_item.get("name", "")
+
                         if key_value:
                             combined_key = key_value
-                            current_total, current_count, _ = self.averages_by_client[client_id].get(combined_key, (0.0, 0, ""))
-                            self.averages_by_client[client_id][combined_key] = (current_total + value, current_count + 1, title)
+                            current_total, current_count, _ = self.averages_by_client[
+                                client_id
+                            ].get(combined_key, (0.0, 0, ""))
+                            self.averages_by_client[client_id][combined_key] = (
+                                current_total + value,
+                                current_count + 1,
+                                title,
+                            )
                             processed = True
 
                     elif isinstance(key_item, str) and key_item:
                         # Si es una key agrego el valor al promedio
                         if key_item:
-                            current_total, current_count, _ = self.averages_by_client[client_id].get(key_item, (0.0, 0, ""))
-                            self.averages_by_client[client_id][key_item] = (current_total + value, current_count + 1, title)
+                            current_total, current_count, _ = self.averages_by_client[
+                                client_id
+                            ].get(key_item, (0.0, 0, ""))
+                            self.averages_by_client[client_id][key_item] = (
+                                current_total + value,
+                                current_count + 1,
+                                title,
+                            )
                             processed = True
 
                     elif isinstance(key_item, (int, float)):
                         # Si la key no es un str, la convierto y después promedio el valor
                         key_str = str(key_item)
-                        current_total, current_count, _ = self.averages_by_client[client_id].get(key_str, (0.0, 0, ""))
-                        self.averages_by_client[client_id][key_str] = (current_total + value, current_count + 1, title)
+                        current_total, current_count, _ = self.averages_by_client[
+                            client_id
+                        ].get(key_str, (0.0, 0, ""))
+                        self.averages_by_client[client_id][key_str] = (
+                            current_total + value,
+                            current_count + 1,
+                            title,
+                        )
                         processed = True
 
                 if not processed:
-                    print(f"Skipped movie '{title}' with invalid {self.key}")
+                    logging.warning(
+                        "Skipped movie '%s' with invalid %s", title, self.key
+                    )
                 return processed
             except (ValueError, TypeError):
-                print(f"Skipped movie '{title}' with invalid {self.value_field}")
+                logging.warning(
+                    "Skipped movie '%s' with invalid %s", title, self.value_field
+                )
                 return False
         return False
-    
+
     def process_ratio_operation(self, client_id: int, movie: Dict) -> bool:
         title = movie.get("title", "Unknown")
-    
+
         numerator = movie.get(self.numerator, 0)
         denominator = movie.get(self.denominator, 0)
 
@@ -169,7 +205,12 @@ class Calculation:
 
             return True
         except (ValueError, TypeError):
-            print(f"Skipped movie '{title}' with invalid {self.numerator} or {self.denominator}")
+            logging.warning(
+                "Skipped movie '%s' with invalid %s or %s",
+                title,
+                self.numerator,
+                self.denominator,
+            )
             return False
 
     def process_sum_operation(self, client_id: int, movie: Dict) -> bool:
@@ -186,31 +227,39 @@ class Calculation:
             if value == 0:
                 return False
 
-            parsed_keys = self.parse_json_string(keys) if isinstance(keys, str) else keys
+            parsed_keys = (
+                self.parse_json_string(keys) if isinstance(keys, str) else keys
+            )
             if not isinstance(parsed_keys, list):
-                print(f"Skipped movie '{title}' with invalid {self.key}")
+                logging.warning("Skipped movie '%s' with invalid %s", title, self.key)
                 return False
 
             for key_item in parsed_keys:
                 if isinstance(key_item, dict):
-                    key_value = key_item.get('name', '')
+                    key_value = key_item.get("name", "")
 
                     if key_value:
                         combined_key = key_value
-                        self.sums_by_client[client_id][combined_key] = self.sums_by_client[client_id].get(combined_key, 0) + value
+                        self.sums_by_client[client_id][combined_key] = (
+                            self.sums_by_client[client_id].get(combined_key, 0) + value
+                        )
                 elif isinstance(key_item, str):
                     if key_item:
-                        self.sums_by_client[client_id][key_item] = self.sums_by_client[client_id].get(key_item, 0) + value
+                        self.sums_by_client[client_id][key_item] = (
+                            self.sums_by_client[client_id].get(key_item, 0) + value
+                        )
             return True
         except (ValueError, TypeError):
-            print(f"Skipped movie '{title}' with invalid {self.value_field}")
+            logging.warning(
+                "Skipped movie '%s' with invalid %s", title, self.value_field
+            )
             return False
 
     def process_movie(self, client_id: int, movie: Dict) -> bool:
         """Process a movie based on the operation, return True if processed successfully."""
         try:
             title = movie.get("title", "Unknown")
-            
+
             if self.op_type == COUNT:
                 return self.process_count_operation(client_id, movie)
             elif self.op_type == AVERAGE:
@@ -222,7 +271,7 @@ class Calculation:
             return False
 
         except Exception as e:
-            print(f"Error processing movie '{title}': {e}")
+            logging.warning("Error processing movie '%s': %s", title, e)
             return False
 
     def get_result(self, client_id: int) -> List[Dict]:
@@ -231,12 +280,7 @@ class Calculation:
             if not self.counts_by_client.get(client_id):
                 return []
             results = [
-                {
-                    "operation": "count",
-                    "key": self.key,
-                    "value": key,
-                    "count": count
-                }
+                {"operation": "count", "key": self.key, "value": key, "count": count}
                 for key, count in sorted(self.counts_by_client[client_id].items())
             ]
             return results
@@ -252,9 +296,11 @@ class Calculation:
                     "value_field": self.value_field,
                     "average": round(total / count, 2),
                     "count": count,
-                    "title": title
+                    "title": title,
                 }
-                for key, (total, count, title) in sorted(self.averages_by_client[client_id].items())
+                for key, (total, count, title) in sorted(
+                    self.averages_by_client[client_id].items()
+                )
             ]
             return results
 
@@ -263,13 +309,15 @@ class Calculation:
             if count == 0:
                 return []
             average_ratio = total_ratio / count
-            feeling_str = "POS" if self.exchange == "router_positive_sentiment" else "NEG"
+            feeling_str = (
+                "POS" if self.exchange == "router_positive_sentiment" else "NEG"
+            )
             results = [
                 {
                     "operation": "ratio",
                     "feeling": feeling_str,
                     "ratio": average_ratio,
-                    "count": count
+                    "count": count,
                 }
             ]
             return results
@@ -283,7 +331,7 @@ class Calculation:
                     "key": self.key,
                     "value": key,
                     "value_field": self.value_field,
-                    "total": value
+                    "total": value,
                 }
                 for key, value in sorted(self.sums_by_client[client_id].items())
             ]

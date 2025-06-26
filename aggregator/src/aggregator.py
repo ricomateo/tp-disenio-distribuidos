@@ -3,11 +3,15 @@ from datetime import datetime
 import os
 import signal
 import glob
+import logging
+from common.logger import init_logging
 from common.middleware import Middleware
 from common.packet import DataPacket, is_delete_packet, is_final_packet
 from common.atomic_write import atomic_write
 from common.worker_protocol import WorkerProtocol
 from common.dead_clients_tracker import DeadClientsTracker
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 
 class AggregatorNode:
@@ -49,7 +53,9 @@ class AggregatorNode:
             client_id = packet.get("client_id")
 
             if header and is_delete_packet(header):
+                logging.info("Received DELETE packet for client %s", client_id)
                 self.output_rabbitmq.send_delete(client_id=client_id)
+                logging.info("Sent DELETE packet for client %s", client_id)
                 self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -57,10 +63,17 @@ class AggregatorNode:
 
             if header and is_final_packet(header):
                 if self.dead_clients_tracker.client_is_dead(client_id):
+                    logging.info(
+                        "Received FINAL packet for dead client %s, ignoring it...",
+                        client_id,
+                    )
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
+                logging.info("Received FINAL packet for client %s", client_id)
                 self.send_results(client_id)
+                logging.info("Sent results for client %s", client_id)
                 self.output_rabbitmq.send_final(client_id=client_id)
+                logging.info("Sent FINAL packet for client %s", client_id)
                 self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -74,7 +87,7 @@ class AggregatorNode:
 
             # Skip duplicate messages
             if packet.id in self.processed_messages_by_client[client_id]:
-                print(f"Duplicate packet with ID {packet.id}")
+                logging.debug("Duplicate packet with ID %s", packet.id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             # Process the packet
@@ -84,16 +97,16 @@ class AggregatorNode:
             # Save the state
             self.save_state(client_id)
             ch.basic_ack(delivery_tag=method.delivery_tag)
-            print(f" [x] Message {method.delivery_tag} acknowledged")
+            logging.debug("Message %s acknowledged", method.delivery_tag)
 
         except json.JSONDecodeError as e:
-            print(f" [!] Error decoding JSON: {e}")
+            logging.warning("Error decoding JSON: %s", e)
             ch.basic_nack(
                 delivery_tag=method.delivery_tag, multiple=False, requeue=False
             )
         except Exception as e:
-            print(
-                f" [!] operation is {self.operation}    Error processing message: {e}, raw packet is {packet_json}"
+            logging.warning(
+                "Error processing message: %s, raw packet is %s", e, packet_json
             )
             ch.basic_nack(
                 delivery_tag=method.delivery_tag, multiple=False, requeue=False
@@ -107,7 +120,7 @@ class AggregatorNode:
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
-            print(f" [!] Error in aggregator node: {e}")
+            logging.error("Error in aggregator node: %s", e)
         finally:
             self.close()
 
@@ -151,8 +164,9 @@ class AggregatorNode:
                     + average * count
                 ) / new_count
                 self.average_positive_by_client_id[client_id] = (new_average, new_count)
-                print(
-                    f"[updated positive number - current positive average: {self.average_positive_by_client_id[client_id]}"
+                logging.debug(
+                    "updated positive number - current positive average: %s",
+                    self.average_positive_by_client_id[client_id],
                 )
             else:
                 new_count = self.average_negative_by_client_id[client_id][1] + count
@@ -162,8 +176,9 @@ class AggregatorNode:
                     + average * count
                 ) / new_count
                 self.average_negative_by_client_id[client_id] = (new_average, new_count)
-                print(
-                    f"[updated negative number - current negative average: {self.average_negative_by_client_id[client_id]}"
+                logging.debug(
+                    "updated negative number - current negative average: %s",
+                    self.average_negative_by_client_id[client_id],
                 )
         elif self.operation == "count":
             actor = packet.data["value"]
@@ -198,8 +213,11 @@ class AggregatorNode:
             del self.processed_messages_by_client[client_id]
         try:
             os.remove(f"client.{client_id}.json")
+            logging.info("Deleted client %s data", client_id)
         except Exception as e:
-            print(f"Failed to remove file for client {client_id}. Error: {e}")
+            logging.warning(
+                "Failed to remove file for client %s. Error: %s", client_id, e
+            )
 
     def save_state(self, client_id):
         """
@@ -326,22 +344,29 @@ class AggregatorNode:
         # Get a list of files that match the pattern client.*.json
         state_files: list[str] = glob.glob("client.*.json")
         if len(state_files) != 0:
-            print(f"state_files = {state_files}")
+            logging.info("Found state files: %s", state_files)
         for file in state_files:
-            client_id = int(file.split(".")[1])
-            with open(file, "r", encoding="utf-8") as f:
-                data = json.loads(f.read())
-            self.processed_messages_by_client[client_id] = set(
-                data.get("processed_messages", [])
-            )
-            state = data.get("state")
-            self.set_state(client_id, state)
-            print(
-                f"Recovered state from client {client_id}, state = {state}, len(processed_messages) = {len(self.processed_messages_by_client[client_id])}"
-            )
+            try:
+                client_id = int(file.split(".")[1])
+                with open(file, "r", encoding="utf-8") as f:
+                    data = json.loads(f.read())
+                self.processed_messages_by_client[client_id] = set(
+                    data.get("processed_messages", [])
+                )
+                state = data.get("state")
+                self.set_state(client_id, state)
+                logging.info(
+                    "Recovered state from client %s, len(processed_messages) = %s",
+                    client_id,
+                    len(self.processed_messages_by_client[client_id]),
+                )
+            except Exception as e:
+                logging.warning(
+                    "Failed to recover state for client %s. Error: %s", client_id, e
+                )
 
     def _sigterm_handler(self, signum, _):
-        print(f"Received SIGTERM signal")
+        logging.info("Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
@@ -349,7 +374,7 @@ class AggregatorNode:
             self.input_rabbitmq.cancel_consumer()
 
     def close(self):
-        print(f"Closing queues")
+        logging.info("Closing queues")
         if self.input_rabbitmq:
             self.input_rabbitmq.close()
         if self.output_rabbitmq:

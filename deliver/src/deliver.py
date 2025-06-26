@@ -3,12 +3,16 @@ import os
 from datetime import datetime
 import signal
 import glob
+import logging
+from common.logger import init_logging
 from common.atomic_write import atomic_write
 from common.leader_queue import LeaderQueue
 from common.packet import DataPacket, QueryPacket, is_delete_packet, is_final_packet
 from common.middleware import Middleware
 from common.worker_protocol import WorkerProtocol
 from common.dead_clients_tracker import DeadClientsTracker
+
+init_logging(os.getenv("LOG_LEVEL", "info"))
 
 
 class DeliverNode:
@@ -45,7 +49,9 @@ class DeliverNode:
         self.control = WorkerProtocol(
             self.health_server_ip, self.health_server_port, self.health_server_port
         )
-        self.dead_clients_tracker = DeadClientsTracker(is_join_node=False, node_id=self.query_number)
+        self.dead_clients_tracker = DeadClientsTracker(
+            is_join_node=False, node_id=self.query_number
+        )
 
     def callback(self, ch, method, properties, body):
         try:
@@ -59,9 +65,11 @@ class DeliverNode:
             client_id = packet.get("client_id")
 
             if header and is_delete_packet(header):
+                logging.info("Received DELETE packet for client %s", client_id)
                 self.final_rabbitmq.send_delete_with_node_id(
                     client_id=client_id, node_id=self.query_number
                 )
+                logging.info("Sent DELETE packet for client %s", client_id)
                 self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -69,21 +77,29 @@ class DeliverNode:
 
             if header and is_final_packet(header):
                 if self.dead_clients_tracker.client_is_dead(client_id):
+                    logging.info(
+                        "Received FINAL packet for dead client %s, ignoring it...",
+                        client_id,
+                    )
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
                 final_response = self.generate_final_response(client_id)
                 final_response_str = json.dumps(
                     {"response": final_response}, ensure_ascii=False
                 )
-                print(f"final response = {json.dumps(final_response, indent=4)}")
+                logging.debug(
+                    "Final response = %s", json.dumps(final_response, indent=4)
+                )
                 query_packet = QueryPacket(
                     timestamp=datetime.utcnow().isoformat(), response=final_response_str
                 )
                 self.output_rabbitmq.confirm_delivery()
                 self.output_rabbitmq.publish(query_packet.to_json(), str(client_id))
+                logging.info("Sent final response for client %s", client_id)
                 self.final_rabbitmq.send_final_with_node_id(
                     client_id=int(client_id), node_id=self.query_number, count=1
                 )
+                logging.info("Sent FINAL packet for client %s to leader's queue")
                 self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -91,14 +107,13 @@ class DeliverNode:
 
             packet = DataPacket.from_json(body_decoded)
 
-            print(f"Received packet with id {packet.id}")
             # Initialize set of processed messages
             if client_id not in self.processed_messages_by_client:
                 self.processed_messages_by_client[client_id] = set()
 
             # If the message has been processed, ignore it
             if packet.id in self.processed_messages_by_client[client_id]:
-                print(f"Duplicate packet = {packet}")
+                logging.debug("Duplicate packet: %s", packet.id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
@@ -109,10 +124,10 @@ class DeliverNode:
 
             # Save the state before sending the ACK
             self.save_state(client_id)
-            print(f" [DeliverNode] Movie added with id: {packet.client_id}")
+            logging.debug("Processed packet: %s", packet.client_id)
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
-            print(f" [DeliverNode] Error: {e}")
+            logging.warning("Error: %s", e)
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
 
     def process_packet(self, packet: DataPacket):
@@ -123,7 +138,7 @@ class DeliverNode:
                 self.response_by_client[client_id] = []
             self.response_by_client[client_id].append(data)
         except Exception as e:
-            print(f"Failed to process packet: {e}")
+            logging.error("Failed to process packet: %s", e)
 
     def generate_final_response(self, client_id):
         """
@@ -192,8 +207,10 @@ class DeliverNode:
 
     def _log_startup(self):
         """Log startup information about queues, filters, and columns."""
-        print(
-            f" [~] DeliverNode listening on {self.input_queue}, will send to {self.output_queue}"
+        logging.info(
+            "DeliverNode listening on %s, will send to %s",
+            self.input_queue,
+            self.output_queue,
         )
 
     def save_state(self, client_id):
@@ -217,17 +234,24 @@ class DeliverNode:
         # Get a list of files that match the pattern client.*.json
         state_files: list[str] = glob.glob("client.*.json")
         for file in state_files:
-            client_id = int(file.split(".")[1])
-            with open(file, "r", encoding="utf-8") as f:
-                data: dict = json.loads(f.read())
-            self.processed_messages_by_client[client_id] = set(
-                data.get("processed_messages", [])
-            )
-            self.response_by_client[client_id] = data.get("state", [])
-            # TODO: remove this print
-            print(
-                f"Recovered data for client {client_id}.\nData: {json.dumps(data, indent=4)}"
-            )
+            try:
+                client_id = int(file.split(".")[1])
+                with open(file, "r", encoding="utf-8") as f:
+                    data: dict = json.loads(f.read())
+                self.processed_messages_by_client[client_id] = set(
+                    data.get("processed_messages", [])
+                )
+                self.response_by_client[client_id] = data.get("state", [])
+
+                logging.info(
+                    "Recovered data for client %s. Size of the data: %s",
+                    client_id,
+                    len(data),
+                )
+            except Exception as e:
+                logging.warning(
+                    "Failed to recover state for client %s. Error: %s", client_id, e
+                )
 
     def start_node(self):
         self._log_startup()
@@ -235,7 +259,7 @@ class DeliverNode:
         try:
             self.input_rabbitmq.consume(self.callback)
         except Exception as e:
-            print(f" [!] Error in deliver node: {e}")
+            logging.error("Error in deliver node: %s", e)
         finally:
             if self.leader_queue:
                 self.leader_queue.join()
@@ -250,13 +274,16 @@ class DeliverNode:
         if client_id in self.processed_messages_by_client:
             del self.processed_messages_by_client[client_id]
         try:
-            os.remove(f"client.{client_id}.json")
+            file = f"client.{client_id}.json"
+            os.remove(file)
+            logging.info("Deleted data for client %s", client_id)
         except Exception as e:
-            print(f"Failed to remove file for client {client_id}. Error: {e}")
-        print(f"Deleted data for client {client_id}")
+            logging.warning(
+                "Failed to remove file %s for client %s. Error: %s", file, client_id, e
+            )
 
     def _sigterm_handler(self, signum, _):
-        print("Received SIGTERM signal")
+        logging.info("Received SIGTERM signal")
         self.running = False
         if self.control:
             self.control.stop()
@@ -266,7 +293,7 @@ class DeliverNode:
             self.leader_queue.close()
 
     def close(self):
-        print("Closing queues")
+        logging.info("Closing queues")
         if self.leader_queue:
             self.leader_queue.close()
         if self.input_rabbitmq:
