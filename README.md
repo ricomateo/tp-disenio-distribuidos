@@ -435,6 +435,29 @@ Esta configuración genera un anillo de 18 nodos de control alrededor del sistem
 
 Decidimos utilizar la elección de líder en el gateway porque de esta forma nos cubrimos de una posible caída del nodo que escucha las conexiones de los clientes, ya que, en caso de que se caiga el gateway líder, el cual está en espera de conexiones entrantes de clientes, se va a disparar una elección de líder para que se ocupe de escuchar las nuevas conexiones entrantes.
 
+#### Algoritmo de elección
+
+La elección de líder se realiza siguiendo el algoritmo de anillo. El algoritmo de elección es tolerante a fallas ya que si se caen algunos nodos de todas formas se elige un líder entre los que estén disponibles.
+
+Esto se logra forzando que cada nodo envíe su mensaje a otro nodo vivo. Si el nodo "vecino" (el inmediatamente siguiente) está caído, entonces se comunica con el siguiente, y así sucesivamente. Si hay un único nodo vivo, entonces se termina comunicando consigo mismo y determina que él es el líder.
+
+El nodo líder manda mensajes `PING` a las réplicas para informarles que sigue vivo. Las réplicas esperan estos mensajes periódicamente. Si luego de cierto tiempo no reciben `PING`, entonces asumen que el líder está muerto y se dispara una nueva elección de líder.
+
+#### Sincronización entre `Gateway` y `LeaderElector`
+
+La elección de líder ocurre en un thread diferente al del gateway, el cual ejecuta una instancia de `LeaderElector`.
+Sin embargo, cada gateway necesita saber si él el líder. Es por esto que se utiliza un semáforo compartido entre el `Gateway` y el `LeaderElector`, para poder comunicarlos.
+
+Cada vez que se elige un nuevo líder, el `LeaderElector` incrementa (`semaphore.release()`) el contador del semáforo. Por su parte, el `Gateway` está bloqueado esperando para decrementar (`semaphore.acquire()`) el contador del semáforo. Si `Gateway` se desbloquea del semáforo, entonces esto significa que se eligió un nuevo líder, por lo tanto `Gateway` chequea si él es el nuevo líder, y en ese caso se pone a escuchar por conexiones de clientes.
+
+#### Contador de clientes en el gateway
+
+Algo a tener en cuenta es que el gateway mantiene un contador de clientes, el cual se usa para asignarle IDs a los clientes. Es fundamental comunicar esta información con los gateway réplica, para que no se repitan los IDs de clientes ante una eventual caída del líder.
+Para ello, cada vez que se conecta un nuevo cliente, el gateway líder broadcastea el contador de clientes al resto de gateways, y estos lo persisten en el disco.
+
+Además, cuando una réplica se desconecta, al reconectarse le solicita el contador de clientes al líder. Esto es necesario porque puede darse el caso en el que se conecten nuevos clientes mientras una réplica está desconectada, en cuyo caso la réplica no recibiría las actualizaciones del contador de clientes, y por lo tanto tendría información desactualizada al reconectarse.
+
+
 ### El manejo de clientes que se desconectan
 
 Los clientes que se desconectan del gateway no van a escuchar la respuesta, por lo que cuando el gateway detecta que un cliente se desconectó, entonces envía un mensaje `delete_client`, que se va a propagar entre todos los nodos del sistema, de tal forma que se borre toda la información persistida destinada al cliente desconectado.
