@@ -181,6 +181,10 @@ class JoinNode:
                         self.final_rabbitmq.send_final_with_node_id(
                             client_id=client_id, node_id=self.node_id, count=count_send
                         )
+                        logging.info(
+                            "[Main thread] Sent FINAL packet for client %s to leader's queue",
+                            client_id,
+                        )
                         logging.debug("merge + final del main fin")
                         self.dead_clients_tracker.set_client_as_dead(client_id)
                         self.clean(client_id)
@@ -323,8 +327,9 @@ class JoinNode:
                             client_id=client_id, node_id=self.node_id, count=count_send
                         )
                         self.dead_clients_tracker.set_client_as_dead(client_id)
-                        logging.debug(
-                            "[Join thread] Se mandó el final al cliente %s.", client_id
+                        logging.info(
+                            "[Join thread] Sent FINAL packet for client %s to leader's queue",
+                            client_id,
                         )
                         ch.basic_ack(delivery_tag=method.delivery_tag)
                         self.clean(client_id)
