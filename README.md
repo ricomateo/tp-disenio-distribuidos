@@ -378,3 +378,9 @@ Decidimos utilizar la elección de líder en el gateway porque de esta forma nos
 ### El manejo de clientes que se desconectan
 
 Los clientes que se desconectan del gateway no van a escuchar la respuesta, por lo que cuando el gateway detecta que un cliente se desconectó, entonces envía un mensaje `delete_client`, que se va a propagar entre todos los nodos del sistema, de tal forma que se borre toda la información persistida destinada al cliente desconectado.
+
+### Final packets para manejar pérdidas y registro de procesados
+
+Para llevar un registro correcto de los paquetes que se envían en cada etapa, decidimos para cada nodo enviar un final packet con un count de los paquetes que se enviaron, para así garantizar que no se hayan perdido paquetes en el camino.
+
+Una duda razonable en este sentido surge al pensar que podríamos tener un paquete perdido y otro duplicado al mismo tiempo, lo que haría que la cuenta de igual a la del final, pero ese tipo de situaciones (la de los paquetes duplicados) las evitamos al llevar un registro de los paquetes procesados en cada nodo. De esta forma si el ID de un paquete es igual al de otro ya procesado, directamente se descarta.
