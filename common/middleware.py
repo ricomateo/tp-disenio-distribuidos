@@ -3,7 +3,6 @@ import pika
 import orjson
 import os
 import logging
-import random
 from common.packet import DeletePacketWithNodeId, FinalPacket, FinalPacketWithNodeId, DeletePacket
 from common.logger import init_logging
 
@@ -62,16 +61,7 @@ class Middleware:
                 properties=pika.BasicProperties(delivery_mode=2)
             )
             logging.debug("Sent message to exchange %s with routing key %s", self.exchange, routing_key)
-            
-            # duplicate 50% of the packets 
-            if random.randint(1, 100) < 50:
-                self.channel.basic_publish(
-                    exchange=self.exchange,
-                    routing_key=routing_key,
-                    body=body,
-                    properties=pika.BasicProperties(delivery_mode=2)
-                )
-                logging.debug("Sent message to exchange %s with routing key %s", self.exchange, routing_key)
+
         else:
             self.channel.basic_publish(
                 exchange='',
@@ -80,16 +70,6 @@ class Middleware:
                 properties=pika.BasicProperties(delivery_mode=2)
             )
             logging.debug("Sent message to queue %s", self.queue)
-            
-            # duplicate 50% of the packets 
-            if random.randint(1, 100) < 50:
-                self.channel.basic_publish(
-                    exchange='',
-                    routing_key=self.queue,
-                    body=body,
-                    properties=pika.BasicProperties(delivery_mode=2)
-                )
-                logging.debug("Sent message to queue %s", self.queue)
 
     
     def consume(self, callback):
