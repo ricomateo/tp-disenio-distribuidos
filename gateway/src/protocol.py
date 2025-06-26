@@ -1,5 +1,12 @@
 import socket
-from common.protocol_constants import HEADER_MSG_TYPE, BATCH_MSG_TYPE, EOF_MSG_TYPE, FIN_MSG_TYPE, QUERY_RESULT_MSG_TYPE
+import logging
+from common.protocol_constants import (
+    HEADER_MSG_TYPE,
+    BATCH_MSG_TYPE,
+    EOF_MSG_TYPE,
+    FIN_MSG_TYPE,
+    QUERY_RESULT_MSG_TYPE,
+)
 
 
 class Protocol:
@@ -9,49 +16,47 @@ class Protocol:
 
     def recv_message(self):
         msg_type = int.from_bytes(self._recv_exact(1), "big")
-        print(f"RECEIVED MSG_TYPE = {msg_type}")
         if msg_type == HEADER_MSG_TYPE:
             filename_len = int.from_bytes(self._recv_exact(1), "big")
-            filename = self._recv_exact(filename_len).decode('utf-8')
+            filename = self._recv_exact(filename_len).decode("utf-8")
             header_len = int.from_bytes(self._recv_exact(4), "big")
-            header = self._recv_exact(header_len).decode('utf-8')
+            header = self._recv_exact(header_len).decode("utf-8")
             return {"msg_type": HEADER_MSG_TYPE, "filename": filename, "header": header}
-        
+
         elif msg_type == BATCH_MSG_TYPE:
             filename_len = int.from_bytes(self._recv_exact(1), "big")
-            filename = self._recv_exact(filename_len).decode('utf-8')
+            filename = self._recv_exact(filename_len).decode("utf-8")
             batch_size = int.from_bytes(self._recv_exact(4), "big")
             rows = []
             for _ in range(batch_size):
                 row_len = int.from_bytes(self._recv_exact(4), "big")
-                row = self._recv_exact(row_len).decode('utf-8')
+                row = self._recv_exact(row_len).decode("utf-8")
                 # TODO: check if it is required to split the row
                 rows.append(row)
             return {"msg_type": BATCH_MSG_TYPE, "filename": filename, "rows": rows}
-        
+
         elif msg_type == EOF_MSG_TYPE:
             filename_len = int.from_bytes(self._recv_exact(1), "big")
-            filename = self._recv_exact(filename_len).decode('utf-8')
+            filename = self._recv_exact(filename_len).decode("utf-8")
             return {"msg_type": EOF_MSG_TYPE, "header": "EOF", "filename": filename}
-        
+
         elif msg_type == FIN_MSG_TYPE:
             return {"msg_type": FIN_MSG_TYPE}
 
     def send_result(self, result: str):
         try:
             message_type = QUERY_RESULT_MSG_TYPE.to_bytes(1, "big")
-            result = str(result).encode('utf-8')
+            result = str(result).encode("utf-8")
             result_len = len(result).to_bytes(4, "big")
 
             self.client_socket.sendall(message_type)
             self.client_socket.sendall(result_len)
             self.client_socket.sendall(result)
             return True
-        
+
         except Exception as e:
-            print(f"[ClientConnection] Error al enviar resultado: {e}")
+            logging.error("[ClientConnection] Error al enviar resultado: %s", e)
             return False
-            
 
     def send_finalization(self):
         message_type = FIN_MSG_TYPE.to_bytes(1, "big")
