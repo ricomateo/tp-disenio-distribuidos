@@ -456,8 +456,9 @@ class JoinNode:
                 if not isinstance(stored_movies, list):
                     stored_movies = [stored_movies]
                 logging.debug(
-                    "[Merge 🔍] Procesando router '%s' con {len(stored_movies)} entradas en disco",
+                    "[Merge 🔍] Procesando router '%s' con %s entradas en disco",
                     router_key,
+                    len(stored_movies),
                 )
                 for movie2, id in stored_movies:
                     joined_packet = self.create_joined_packet(
