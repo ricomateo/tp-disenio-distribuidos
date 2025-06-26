@@ -176,11 +176,11 @@ class LeaderQueue:
                 with open(file, "r", encoding="utf-8") as f:
                     state = json.loads(f.read())
                     self.client_counters[client_id] = state
+                    logging.debug(
+                        "Recovered state from client %s, state = %s", client_id, state
+                    )
             except Exception as e:
                 logging.warning("[Leader] Failed to read file %s. Error: %s", file, e)
-            logging.debug(
-                "Recovered state from client %s, state = %s", client_id, state
-            )
 
     def filename_for_client(self, client_id) -> str:
         """
