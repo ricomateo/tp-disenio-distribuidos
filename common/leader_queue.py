@@ -2,25 +2,34 @@ import threading
 import json
 import os
 import glob
-import sys
+import logging
+from common.logger import init_logging
 from common.middleware import Middleware
 from common.packet import is_delete_packet, is_final_packet
 from common.atomic_write import atomic_write
 
+init_logging(os.getenv("LOG_LEVEL", "info"))
+
+
 class LeaderQueue:
-    def __init__(self, final_queue, output_queue, consumer_tag, cluster_size, output_exchange = None):
+    def __init__(
+        self,
+        final_queue,
+        output_queue,
+        consumer_tag,
+        cluster_size,
+        output_exchange=None,
+    ):
         """Initialize CloseQueue with a RabbitMQ connection and queue name."""
         self.final_queue = final_queue
         self.output_queue = output_queue
         self.consumer_tag = consumer_tag
         self.cluster_size = cluster_size
-        self.client_counters = {} # dict[client_id, dict[node_id, count]]
+        self.client_counters = {}  # dict[client_id, dict[node_id, count]]
         self.delete_list = {}
-        
+
         self.final_rabbitmq = Middleware(
-            queue=final_queue,
-            consumer_tag=consumer_tag,
-            publish_to_exchange=False
+            queue=final_queue, consumer_tag=consumer_tag, publish_to_exchange=False
         )
 
         if output_exchange:
@@ -31,9 +40,7 @@ class LeaderQueue:
             )
         else:
             self.output_rabbitmq = Middleware(
-                queue=output_queue,
-                consumer_tag=consumer_tag,
-                publish_to_exchange=False
+                queue=output_queue, consumer_tag=consumer_tag, publish_to_exchange=False
             )
 
         self.running = True
@@ -54,7 +61,15 @@ class LeaderQueue:
             client_id = packet.get("client_id")
             node_id = packet.get("node_id")
             count: int = packet.get("count", 0)
-            print(f"node_id = {node_id}")
+
+            if is_delete_packet(header):
+                logging.info("Received DELETE packet for client %s", client_id)
+                self.delete_list[client_id] = True
+                if len(self.client_counters[client_id].keys()) == self.cluster_size:
+                    self.delete_client(client_id)
+                    self.output_rabbitmq.delete_queue()
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
 
             # For each client_id, keep a dict that contains the ids of the nodes
             # that sent a FINAL packet, and the count for each node
@@ -67,30 +82,34 @@ class LeaderQueue:
                 self.client_counters[client_id][node_id] = count
                 # Save the state
                 self.save_state(client_id)
-            else: # TODO: remove this, only for debugging
-                print(f"Duplicate final from node: {node_id}")
-                
-            if is_delete_packet(header):
-                self.delete_list[client_id] = True
-                if len(self.client_counters[client_id].keys()) == self.cluster_size:
-                    self.delete_client(client_id)
-                    self.output_rabbitmq.delete_queue()
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    return
+            else:
+                logging.debug(
+                    "Duplicate FINAL from node: %s and client: %s", node_id, client_id
+                )
 
             if is_final_packet(header):
-                # If the length of the dict is equal to the cluster size, send the final
                 if client_id in self.delete_list:
+                    logging.info(
+                        "Received FINAL packet from dead client %s, ignoring it...",
+                        client_id,
+                    )
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
-                
+                logging.info("Received FINAL packet for client %s from node %s with")
+                # If the length of the dict is equal to the cluster size, send the final
                 if len(self.client_counters[client_id].keys()) == self.cluster_size:
                     total_count = 0
                     for count in self.client_counters[client_id].values():
                         total_count += count
-                    print(f"Sending final with total_count = {total_count}")
                     self.output_rabbitmq.send_final(
-                        client_id=client_id, routing_key=str(client_id), count=total_count
+                        client_id=client_id,
+                        routing_key=str(client_id),
+                        count=total_count,
+                    )
+                    logging.debug(
+                        "Sent final for client %s with total_count = %s",
+                        client_id,
+                        total_count,
                     )
                     # Send ACK and only then delete the client data
                     ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -98,8 +117,10 @@ class LeaderQueue:
                     return
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
-            print(f" [!] Error in shared callback for {self.final_queue}: {e}")
-            ch.basic_nack(delivery_tag=method.delivery_tag, multiple=False, requeue=False)
+            logging.warning("Error in shared callback for %s: %s", self.final_queue, e)
+            ch.basic_nack(
+                delivery_tag=method.delivery_tag, multiple=False, requeue=False
+            )
 
     def consume(self):
         """Consume messages from the queue in a loop until stopped."""
@@ -108,9 +129,9 @@ class LeaderQueue:
             self.final_rabbitmq.consume(self.callback)
 
         except Exception as e:
-            print(f" [!] Error consuming queue {self.final_queue}: {e}")
+            logging.error("Error consuming queue %s: %s", self.final_queue, e)
         finally:
-            print(f" [!] Stopped consuming queue {self.final_queue}")
+            logging.info("Stopped consuming queue %s", self.final_queue)
             self.output_rabbitmq.close()
             self.final_rabbitmq.close()
 
@@ -131,8 +152,9 @@ class LeaderQueue:
         file = self.filename_for_client(client_id)
         try:
             os.remove(file)
+            logging.info("Removed file %s for client %s", file, client_id)
         except Exception as e:
-            print(f"Failed to remove file {file}. Error: {e}")
+            logging.warning("Failed to remove file %s. Error: %s", file, e)
 
     def load_state(self):
         """
@@ -140,7 +162,7 @@ class LeaderQueue:
         """
         # Get a list of files that match the pattern client.*.json
         state_files: list[str] = glob.glob("final.*.json")
-        print(f"FinalFiles = {state_files}")
+        logging.info("Found final state files: %s", state_files)
         for file in state_files:
             client_id = int(file.split(".")[1])
             try:
@@ -148,9 +170,10 @@ class LeaderQueue:
                     state = json.loads(f.read())
                     self.client_counters[client_id] = state
             except Exception as e:
-                print(f"Failed to read file {file}. Error: {e}")
-            print(f"Recovered state from client {client_id}, state = {state}")
-
+                logging.warning("Failed to read file %s. Error: %s", file, e)
+            logging.debug(
+                "Recovered state from client %s, state = %s", client_id, state
+            )
 
     def filename_for_client(self, client_id) -> str:
         """
@@ -160,6 +183,7 @@ class LeaderQueue:
 
     def close(self):
         """Signal the thread to stop and wait for it to finish."""
+        logging.info("Closing queues")
         self.running = False
         self.final_rabbitmq.cancel_consumer()
         self.join()
