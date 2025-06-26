@@ -164,7 +164,7 @@ class JoinNode:
                 # Ignore dead clients final packets
                 if self.dead_clients_tracker.client_is_dead(client_id):
                     logging.info(
-                        "[Main thread] Received FINAL packet for dead client %s",
+                        "[Main thread] Received FINAL packet for dead client %s, ignoring it...",
                         client_id,
                     )
                     ch.basic_ack(delivery_tag=method.delivery_tag)
