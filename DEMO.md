@@ -128,7 +128,7 @@ docker stats
 5. En otra terminal, esperar un minuto y luego matar todos los containers (a excepción de rabbit, los gateways y los clientes)
 
 ```bash
-sleep
+sleep 60
 python3 catastrofe.py
 ```
 
