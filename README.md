@@ -370,3 +370,7 @@ Esa información se guarda como checkpoint cada vez que cambia el estado del nod
 Podemos ver que este checkpoint del estado se suele hacer justo antes de enviar el ACK para el paquete recibido de alguna de las dos colas, para intentar minimizar el daño de una falla en el nodo que nos haga perder el estado.
 
 La escritura del estado en disco se hace a través de la función `atomic_write`, implementada por nosotros. La idea de la misma es escribir el estado en un archivo temporal, y una vez que termina el proceso de escritura, se renombra el archivo anterior por el temporal. Guardamos el estado de esta forma porque, en caso de haber una falla durante la escritura en el archivo temporal, la versión anterior se preserva sin problemas. Como adicional, la operación de replace se hace de forma atómica, por lo que no tendremos problemas ante caídas durante esa operación (dado que se hace o no se hace, no hay punto medio).
+
+### Sobre la elección de líder en el gateway
+
+Decidimos utilizar la elección de líder en el gateway porque de esta forma nos cubrimos de una posible caída del nodo que escucha las conexiones de los clientes, ya que, en caso de que se caiga el gateway líder, el cual está en espera de conexiones entrantes de clientes, se va a disparar una elección de líder para que se ocupe de escuchar las nuevas conexiones entrantes.
