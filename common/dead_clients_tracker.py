@@ -2,6 +2,7 @@ import os
 import json
 import logging
 import threading
+import shutil
 from common.atomic_write import atomic_write
 
 DEAD_CLIENTS_FILE = "dead_clients.json"
@@ -12,9 +13,11 @@ class DeadClientsTracker:
     """
     Tracks the dead clients and performs cleanup
     of dead client files.
+
+    node_id is only required for the join node
     """
 
-    def __init__(self, is_join_node: bool):
+    def __init__(self, is_join_node: bool, node_id: int):
         """
         Tries to load the dead clients from the DEAD_CLIENTS_FILE,
         and looks for dead client state files to remove (and removes them if there are any)
@@ -25,6 +28,7 @@ class DeadClientsTracker:
         self.max_size = MAX_SIZE
         self.lock = threading.Lock()
         self.is_join_node = is_join_node
+        self.node_id = node_id
         try:
             with open(DEAD_CLIENTS_FILE, "r", encoding="utf-8") as f:
                 self.dead_clients = json.loads(f.read())
@@ -56,7 +60,7 @@ class DeadClientsTracker:
     def _remove_leftover_files(self):
         """
         Removes the left over client state files
-        
+
         There is no need to use the lock here since this is only
         called when the node initializes (not concurrent)
         """
@@ -80,3 +84,10 @@ class DeadClientsTracker:
                 logging.error(
                     "Failed to remove file '%s'. Error: %s", client_state_file, e
                 )
+            if self.is_join_node:
+                try:
+                    client_directory = f"storage_{self.node_id}_{dead_client}"
+                    shutil.rmtree(client_directory)
+                    logging.info("Removed %s directory", client_directory)
+                except Exception as e:
+                    logging.warning("Failed to remove directory %s. Error: %s", client_directory, e)

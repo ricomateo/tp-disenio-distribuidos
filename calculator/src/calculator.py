@@ -45,7 +45,7 @@ class CalculatorNode:
         self.final_rabbitmq = None
         self.threads = []
         self.processed_messages_by_client = {}
-        self.dead_clients_tracker = DeadClientsTracker(is_join_node=False)
+        self.dead_clients_tracker = DeadClientsTracker(is_join_node=False, node_id=self.node_id)
 
         self.leader_queue = None
         if int(self.node_id) == 0 and self.exchange != "router_negative_sentiment":

@@ -45,7 +45,7 @@ class DeliverNode:
         self.control = WorkerProtocol(
             self.health_server_ip, self.health_server_port, self.health_server_port
         )
-        self.dead_clients_tracker = DeadClientsTracker(is_join_node=False)
+        self.dead_clients_tracker = DeadClientsTracker(is_join_node=False, node_id=self.query_number)
 
     def callback(self, ch, method, properties, body):
         try:
