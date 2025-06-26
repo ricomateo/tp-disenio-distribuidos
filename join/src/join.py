@@ -47,7 +47,6 @@ class JoinNode:
         self.packets_sent_by_client = {}
         self.processed_messages_by_client = {}
         self.processed_messages_by_client_queue_2 = {}
-        self.count_test = 0
 
         self.keep_columns = None
         keep_columns = os.getenv("KEEP_COLUMNS", "")
@@ -134,9 +133,9 @@ class JoinNode:
                 print(f" [*] Cola '{self.input_queue_1}' terminó.")
                 with self.lock:
                     if client_id not in self.eof_main_by_client:
-                        self.eof_main_by_client[client_id] = False
+                        self.eof_main_by_client[client_id] = (True, False)
                     buffer_count = len(self.router_buffer_by_client.get(client_id, {}))
-                    if self.eof_main_by_client[client_id] is True:
+                    if self.eof_main_by_client[client_id][1] is True:
                         print("merge + final del main")
                         self.merge(client_id)
                         count_send = len(self.packets_sent_by_client[client_id])
@@ -149,7 +148,7 @@ class JoinNode:
                         return
                     else:
                         print("activo main")
-                        self.eof_main_by_client[client_id] = True
+                        self.eof_main_by_client[client_id] = (True, False)
                         self.save_state(client_id)
                 if count > buffer_count:
                     print(f" [⚠️] Count final ({count}) es MAYOR que los datos acumulados ({buffer_count}) para el cliente {client_id}")
@@ -224,9 +223,9 @@ class JoinNode:
             if is_final_packet(header):
                 print(f" [Join thread *]  Cola '{self.input_queue_2}' terminó.")
                 count = int(packet.get("count"))
-                print(f" [Join thread ✅] Count final ({count}) CONTRA con los datos acumulados ({self.count_test}) para el cliente {client_id}")
+                print(f" [Join thread ✅] Count final ({count}) CONTRA con los datos acumulados ({len(self.processed_messages_by_client_queue_2[client_id])}) para el cliente {client_id}")
                 with self.lock:
-                    if self.eof_main_by_client[client_id] is True:
+                    if self.eof_main_by_client[client_id][0] is True:
                         print("[Join thread] merge + final del join")
                         self.merge(client_id)
                         count_send = len(self.packets_sent_by_client[client_id])
@@ -239,7 +238,7 @@ class JoinNode:
                         return
                     else:
                         print("[Join thread] activo main by client")
-                        self.eof_main_by_client[client_id] = True
+                        self.eof_main_by_client[client_id] = (False, True)
                         self.save_state(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
@@ -260,16 +259,14 @@ class JoinNode:
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
 
-            self.count_test += 1
-
             with self.lock:
                 if client_id not in self.packets_sent_by_client:
                     print(f"[Join thread] Initializing packets_sent[client_id={client_id}]")
                     self.packets_sent_by_client[client_id] = set()
                 if client_id not in self.eof_main_by_client:
-                    self.eof_main_by_client[client_id] = False
+                    self.eof_main_by_client[client_id] = (False, False)
                 router_in_buffer = router in self.router_buffer_by_client.get(client_id, {})
-                is_eof_main = self.eof_main_by_client[client_id]
+                is_eof_main = self.eof_main_by_client[client_id][0]
                 self.processed_messages_by_client_queue_2[client_id].add(packet.id)
 
             if router_in_buffer:
@@ -378,7 +375,7 @@ class JoinNode:
         """
         filename = f"state.client.{client_id}.json"
         data = {
-            "eof_main": self.eof_main_by_client.get(client_id, False),
+            "eof_main": self.eof_main_by_client.get(client_id, (False, False)),
             "router_buffer": self.router_buffer_by_client.get(client_id, {}),
             "processed_messages": list(self.processed_messages_by_client.get(client_id, [])),
             "processed_messages_queue_2": list(self.processed_messages_by_client_queue_2.get(client_id, [])),
@@ -399,7 +396,7 @@ class JoinNode:
                     state = json.load(f)
 
                     # Cargar estado principal
-                    self.eof_main_by_client[client_id] = state.get("eof_main", False)
+                    self.eof_main_by_client[client_id] = state.get("eof_main", (False, False))
                     self.router_buffer_by_client[client_id] = state.get("router_buffer", {})
                     self.processed_messages_by_client[client_id] = set(state.get("processed_messages", []))
                     self.processed_messages_by_client_queue_2[client_id] = set(state.get("processed_messages_queue_2", []))
