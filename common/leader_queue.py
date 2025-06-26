@@ -63,7 +63,7 @@ class LeaderQueue:
             count: int = packet.get("count", 0)
 
             if is_delete_packet(header):
-                logging.info("Received DELETE packet for client %s", client_id)
+                logging.info("[Leader] Received DELETE packet for client %s", client_id)
                 self.delete_list[client_id] = True
                 if len(self.client_counters[client_id].keys()) == self.cluster_size:
                     self.delete_client(client_id)
@@ -122,7 +122,9 @@ class LeaderQueue:
                     return
             ch.basic_ack(delivery_tag=method.delivery_tag)
         except Exception as e:
-            logging.warning("Error in shared callback for %s: %s", self.final_queue, e)
+            logging.warning(
+                "[Leader] Error in shared callback for %s: %s", self.final_queue, e
+            )
             ch.basic_nack(
                 delivery_tag=method.delivery_tag, multiple=False, requeue=False
             )
@@ -134,9 +136,9 @@ class LeaderQueue:
             self.final_rabbitmq.consume(self.callback)
 
         except Exception as e:
-            logging.error("Error consuming queue %s: %s", self.final_queue, e)
+            logging.error("[Leader] Error consuming queue %s: %s", self.final_queue, e)
         finally:
-            logging.info("Stopped consuming queue %s", self.final_queue)
+            logging.info("[Leader] Stopped consuming queue %s", self.final_queue)
             self.output_rabbitmq.close()
             self.final_rabbitmq.close()
 
@@ -157,9 +159,9 @@ class LeaderQueue:
         file = self.filename_for_client(client_id)
         try:
             os.remove(file)
-            logging.info("Removed file %s for client %s", file, client_id)
+            logging.info("[Leader] Removed file %s for client %s", file, client_id)
         except Exception as e:
-            logging.warning("Failed to remove file %s. Error: %s", file, e)
+            logging.warning("[Leader] Failed to remove file %s. Error: %s", file, e)
 
     def load_state(self):
         """
@@ -167,7 +169,7 @@ class LeaderQueue:
         """
         # Get a list of files that match the pattern client.*.json
         state_files: list[str] = glob.glob("final.*.json")
-        logging.info("Found final state files: %s", state_files)
+        logging.info("[Leader] Found final state files: %s", state_files)
         for file in state_files:
             client_id = int(file.split(".")[1])
             try:
@@ -175,7 +177,7 @@ class LeaderQueue:
                     state = json.loads(f.read())
                     self.client_counters[client_id] = state
             except Exception as e:
-                logging.warning("Failed to read file %s. Error: %s", file, e)
+                logging.warning("[Leader] Failed to read file %s. Error: %s", file, e)
             logging.debug(
                 "Recovered state from client %s, state = %s", client_id, state
             )
@@ -188,7 +190,7 @@ class LeaderQueue:
 
     def close(self):
         """Signal the thread to stop and wait for it to finish."""
-        logging.info("Closing queues")
+        logging.info("[Leader] Closing queues")
         self.running = False
         self.final_rabbitmq.cancel_consumer()
         self.join()
