@@ -71,7 +71,7 @@ class AggregatorNode:
                     return
                 logging.info("Received FINAL packet for client %s", client_id)
                 self.send_results(client_id)
-                logging.info("Sent client %s results", client_id)
+                logging.info("Sent results for client %s", client_id)
                 self.output_rabbitmq.send_final(client_id=client_id)
                 logging.info("Sent FINAL packet for client %s", client_id)
                 self.dead_clients_tracker.set_client_as_dead(client_id)
