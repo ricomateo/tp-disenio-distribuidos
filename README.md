@@ -360,6 +360,10 @@ Ejecuta de los siguientes pasos:
 
 # Entrega 3 - Tolerancia a fallas
 
+## Decisiones de diseño
+
+A la hora de diseñar nuestro sistema tuvimos algunos problemas, ante los cuales decidimos tomar ciertas decisiones de diseño, que queremos explicitar en este informe para que no pasen desapercibidas en la entrega.
+
 ### Persistencia de los datos en los nodos join
 
 En la entrega anterior ya estabamos persistiendo en un storage para cada cliente los paquetes que llegaban a la queue del `join_callback` pero no tenían un match con alguno de los paquetes de la queue del `main_callback`. En estos casos dicho paquete se guardaba en un storage hasta que se hayan recibido los EOF para ambas colas, momento en el cual se buscaban matches entre los paquetes en el router_buffer (los que estaban en memoria, de la queue del `main_callback`) y los que se habían guardado en el storage.
