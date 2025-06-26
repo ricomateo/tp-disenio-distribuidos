@@ -371,6 +371,22 @@ Podemos ver que este checkpoint del estado se suele hacer justo antes de enviar 
 
 La escritura del estado en disco se hace a través de la función `atomic_write`, implementada por nosotros. La idea de la misma es escribir el estado en un archivo temporal, y una vez que termina el proceso de escritura, se renombra el archivo anterior por el temporal. Guardamos el estado de esta forma porque, en caso de haber una falla durante la escritura en el archivo temporal, la versión anterior se preserva sin problemas. Como adicional, la operación de replace se hace de forma atómica, por lo que no tendremos problemas ante caídas durante esa operación (dado que se hace o no se hace, no hay punto medio).
 
+### Los nodos control para garantizar alta disponibilidad
+
+La forma de garantizar que los nodos del sistema tengan una alta disponibilidad fue la implementación de nodos de control, que se dediquen a controlar que los nodos de la lógica de negocio estén activos, además de controlarse entre sí en forma de anillo. Esto último significa que el nodo de control 1 se comunica con el 2, el 2 con el 3, y así hasta llegar al último, que se comunica con el primero, completando el anillo.
+
+La idea es que cada nodo de control tiene un hilo que se encarga de escuchar la conexión de health-check del anterior, en la que simplemente acepta la conexión y la cierra, y otro hilo que realiza health-check del nodo siguiente, que se conecta con el nodo mediante TCP y luego cierra dicha conexión.
+
+Además de esos dos hilos, cada nodo de control se encarga de comunicarse con los hilos worker de los nodos de la lógica de negocio (dichos hilos existen para comunicarse con los nodos de control). Contamos con un hilo que hace el health-check a secas, y otro que responde consultas para los nodos sin estado.
+
+Además de controlar que los nodos de la lógica de negocio se mantengan vivos, también los nodos de control manejan requests de los hilos worker de los nodos de negocio.
+
+Existen tres tipos de request:
+
+- insert id: Inserta el id del paquete recibido para el cliente en cuestión, persistiendo dicha información en un archivo específico para ese cliente. Después de insertar el elemento, calcula el count de ids únicos en dicho archivo, y en caso de que la cuenta alcance el número del final count para ese cliente se devuelve true, señalizando que se terminaron de procesar todos los paquetes para ese nodo.
+- delete client: Elimina la información persistida para un cliente en específico, ya sea porque se terminaron los paquetes para ese cliente o porque el cliente se desconectó.
+- receive final count: Recibe la información acerca de cuantos paquetes se deberían procesar para el cliente en cuestión, leída en el final packet. En caso de que los mensajes insertados sean iguales a esta cantidad de leídos necesarios, entonces de le informará al nodo que hizo la request.
+
 ### Sobre la elección de líder en el gateway
 
 Decidimos utilizar la elección de líder en el gateway porque de esta forma nos cubrimos de una posible caída del nodo que escucha las conexiones de los clientes, ya que, en caso de que se caiga el gateway líder, el cual está en espera de conexiones entrantes de clientes, se va a disparar una elección de líder para que se ocupe de escuchar las nuevas conexiones entrantes.
