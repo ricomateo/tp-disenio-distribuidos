@@ -357,3 +357,16 @@ Ejecuta de los siguientes pasos:
 1. Levanta el sistema y lo deja ejecutando en background.
 2. Pone a ejecutar el Jupyter notebook en un container de Docker, utilizando como input los archivos declarados en `config.ini`
 3. Espera a que los clientes terminen, y compara los resultados de cada cliente contra los resultados del notebook.
+
+# Entrega 3 - Tolerancia a fallas
+
+### Persistencia de los datos en los nodos join
+
+En la entrega anterior ya estabamos persistiendo en un storage para cada cliente los paquetes que llegaban a la queue del `join_callback` pero no tenían un match con alguno de los paquetes de la queue del `main_callback`. En estos casos dicho paquete se guardaba en un storage hasta que se hayan recibido los EOF para ambas colas, momento en el cual se buscaban matches entre los paquetes en el router_buffer (los que estaban en memoria, de la queue del `main_callback`) y los que se habían guardado en el storage.
+
+Para esta entrega, con el fin de hacer que el nodo join sea más tolerante a fallos, decidimos persistir en disco los paquetes recibidos de la queue del `main_callback`, además de guardarnos también en memoria la flag eof_main (que indica si se recibión un EOF en la queue del main callback), una lista de los mensajes procesados en la main queue, otra lista para los paquetes procesados de la join queue y otra para los paquetes publicados en la cola del output.
+
+Esa información se guarda como checkpoint cada vez que cambia el estado del nodo, como puede ser que cambie la flag eof_main, que se procese un paquete en alguna de las dos colas de input de paquetes, o que se guarde en el router buffer o en el storage algún paquete.
+Podemos ver que este checkpoint del estado se suele hacer justo antes de enviar el ACK para el paquete recibido de alguna de las dos colas, para intentar minimizar el daño de una falla en el nodo que nos haga perder el estado.
+
+La escritura del estado en disco se hace a través de la función `atomic_write`, implementada por nosotros. La idea de la misma es escribir el estado en un archivo temporal, y una vez que termina el proceso de escritura, se renombra el archivo anterior por el temporal. Guardamos el estado de esta forma porque, en caso de haber una falla durante la escritura en el archivo temporal, la versión anterior se preserva sin problemas. Como adicional, la operación de replace se hace de forma atómica, por lo que no tendremos problemas ante caídas durante esa operación (dado que se hace o no se hace, no hay punto medio).
