@@ -31,10 +31,10 @@ class DeadClientsTracker:
         self.node_id = node_id
         try:
             with open(DEAD_CLIENTS_FILE, "r", encoding="utf-8") as f:
-                self.dead_clients = json.loads(f.read())
+                self.dead_clients = set(json.loads(f.read()))
         except Exception as e:
             logging.warning("Failed to read '%s' file. Error: %s", DEAD_CLIENTS_FILE, e)
-            self.dead_clients = []
+            self.dead_clients = set()
 
         self._remove_leftover_files()
 
@@ -43,11 +43,11 @@ class DeadClientsTracker:
         Sets the given client as dead
         """
         with self.lock:
-            self.dead_clients.append(client_id)
-            # Delete stale data
+            self.dead_clients.add(client_id)
+            # Delete stale data if set is too large
             if len(self.dead_clients) > self.max_size:
-                self.dead_clients = self.dead_clients[MAX_SIZE // 10 :]
-            content = json.dumps(self.dead_clients)
+                self.dead_clients = set(list(self.dead_clients)[self.max_size // 10 :])
+            content = json.dumps(list(self.dead_clients))
             atomic_write(DEAD_CLIENTS_FILE, content)
 
     def client_is_dead(self, client_id):
