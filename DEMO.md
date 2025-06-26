@@ -60,9 +60,10 @@ make clear
 make test_against_notebook
 ```
 
-4. Luego de un minuto, matar al gateway líder con
+4. Esperar un minuto y matar al gateway líder con
 
 ```bash
+sleep 60
 docker kill gateway_3
 ```
 
@@ -72,7 +73,7 @@ docker kill gateway_3
 docker logs gateway_3
 ```
 
-6. En los logs de los distintos nodos se puede apreciar que reciben el paquete `DELETE` y borran los datos del cliente.
+6. Luego de que se procesan los paquetes de datos, en los logs de los distintos nodos se puede apreciar que reciben el paquete `DELETE` y borran los datos del cliente.
 
 ```bash
 docker logs calculator_count_actors
