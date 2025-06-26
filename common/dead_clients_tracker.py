@@ -19,7 +19,8 @@ class DeadClientsTracker:
         Tries to load the dead clients from the DEAD_CLIENTS_FILE,
         and looks for dead client state files to remove (and removes them if there are any)
 
-        This object may be accessed concurrently so we make it thread-safe by adding a lock
+        This object may be accessed concurrently (e.g. in the join node) so we make it 
+        thread-safe by adding a lock
         """
         self.max_size = MAX_SIZE
         self.lock = threading.Lock()
@@ -30,10 +31,8 @@ class DeadClientsTracker:
         except Exception as e:
             logging.warning("Failed to read '%s' file. Error: %s", DEAD_CLIENTS_FILE, e)
             self.dead_clients = []
-        if self.is_join_node:
-            self._remove_join_leftover_files()
-        else:
-            self._remove_leftover_files()
+
+        self._remove_leftover_files()
 
     def set_client_as_dead(self, client_id):
         """
@@ -57,12 +56,16 @@ class DeadClientsTracker:
     def _remove_leftover_files(self):
         """
         Removes the left over client state files
-
-        NOTE: the left over files are searched as 'client.*.json'.
+        
+        There is no need to use the lock here since this is only
+        called when the node initializes (not concurrent)
         """
         # Look for left over files
         for dead_client in self.dead_clients:
-            client_state_file = f"client.{dead_client}.json"
+            if self.is_join_node:
+                client_state_file = f"state.client.{dead_client}.json"
+            else:
+                client_state_file = f"client.{dead_client}.json"
             if not os.path.exists(client_state_file):
                 continue
             logging.debug(
@@ -77,9 +80,3 @@ class DeadClientsTracker:
                 logging.error(
                     "Failed to remove file '%s'. Error: %s", client_state_file, e
                 )
-
-    def _remove_join_leftover_files(self):
-        """
-        """
-        # TODO
-        pass 
