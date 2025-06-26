@@ -234,19 +234,24 @@ class DeliverNode:
         # Get a list of files that match the pattern client.*.json
         state_files: list[str] = glob.glob("client.*.json")
         for file in state_files:
-            client_id = int(file.split(".")[1])
-            with open(file, "r", encoding="utf-8") as f:
-                data: dict = json.loads(f.read())
-            self.processed_messages_by_client[client_id] = set(
-                data.get("processed_messages", [])
-            )
-            self.response_by_client[client_id] = data.get("state", [])
+            try:
+                client_id = int(file.split(".")[1])
+                with open(file, "r", encoding="utf-8") as f:
+                    data: dict = json.loads(f.read())
+                self.processed_messages_by_client[client_id] = set(
+                    data.get("processed_messages", [])
+                )
+                self.response_by_client[client_id] = data.get("state", [])
 
-            logging.info(
-                "Recovered data for client %s. Size of the data: %s",
-                client_id,
-                len(data),
-            )
+                logging.info(
+                    "Recovered data for client %s. Size of the data: %s",
+                    client_id,
+                    len(data),
+                )
+            except Exception as e:
+                logging.warning(
+                    "Failed to recover state for client %s. Error: %s", client_id, e
+                )
 
     def start_node(self):
         self._log_startup()

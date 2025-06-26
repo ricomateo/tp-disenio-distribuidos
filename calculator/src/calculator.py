@@ -241,19 +241,24 @@ class CalculatorNode:
         state_files: list[str] = glob.glob("client.*.json")
         logging.debug("persisted files = %s", state_files)
         for file in state_files:
-            client_id = int(file.split(".")[1])
-            with open(file, "r", encoding="utf-8") as f:
-                state = json.loads(f.read())
-                result = state.get("result")
-                self.calculator.load_result(client_id, result)
-                self.processed_messages_by_client[client_id] = set(
-                    state.get("processed_messages", [])
+            try:
+                client_id = int(file.split(".")[1])
+                with open(file, "r", encoding="utf-8") as f:
+                    state = json.loads(f.read())
+                    result = state.get("result")
+                    self.calculator.load_result(client_id, result)
+                    self.processed_messages_by_client[client_id] = set(
+                        state.get("processed_messages", [])
+                    )
+                logging.debug(
+                    "Recovered state from client %s, len(processed_messages) = %s",
+                    client_id,
+                    len(self.processed_messages_by_client[client_id]),
                 )
-            logging.debug(
-                "Recovered state from client %s, len(processed_messages) = %s",
-                client_id,
-                len(self.processed_messages_by_client[client_id]),
-            )
+            except Exception as e:
+                logging.warning(
+                    "Failed to recover state for client %s. Error: %s", client_id, e
+                )
 
     def delete_client_data(self, client_id: int):
         """

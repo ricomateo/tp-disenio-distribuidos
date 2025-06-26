@@ -346,19 +346,24 @@ class AggregatorNode:
         if len(state_files) != 0:
             logging.info("Found state files: %s", state_files)
         for file in state_files:
-            client_id = int(file.split(".")[1])
-            with open(file, "r", encoding="utf-8") as f:
-                data = json.loads(f.read())
-            self.processed_messages_by_client[client_id] = set(
-                data.get("processed_messages", [])
-            )
-            state = data.get("state")
-            self.set_state(client_id, state)
-            logging.info(
-                "Recovered state from client %s, len(processed_messages) = %s",
-                client_id,
-                len(self.processed_messages_by_client[client_id]),
-            )
+            try:
+                client_id = int(file.split(".")[1])
+                with open(file, "r", encoding="utf-8") as f:
+                    data = json.loads(f.read())
+                self.processed_messages_by_client[client_id] = set(
+                    data.get("processed_messages", [])
+                )
+                state = data.get("state")
+                self.set_state(client_id, state)
+                logging.info(
+                    "Recovered state from client %s, len(processed_messages) = %s",
+                    client_id,
+                    len(self.processed_messages_by_client[client_id]),
+                )
+            except Exception as e:
+                logging.warning(
+                    "Failed to recover state for client %s. Error: %s", client_id, e
+                )
 
     def _sigterm_handler(self, signum, _):
         logging.info("Received SIGTERM signal")
