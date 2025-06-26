@@ -111,7 +111,7 @@ class LeaderQueue:
                         routing_key=str(client_id),
                         count=total_count,
                     )
-                    logging.debug(
+                    logging.info(
                         "Sent final for client %s with total_count = %s",
                         client_id,
                         total_count,
