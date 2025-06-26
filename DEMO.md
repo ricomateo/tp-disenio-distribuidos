@@ -82,7 +82,7 @@ docker restart client
 7. Luego de que se procesan los mensajes del cliente 0 (el que se cayó), en los logs de los distintos nodos se puede apreciar que reciben el paquete `DELETE` y borran los datos del cliente 0.
 
 ```bash
-docker logs calculator_count_actors
+docker logs join_actors
 ```
 
 8. Mientras se realiza el procesamiento de la consulta, se pueden ver los logs de la elección de lider en los nodos gateway con:
