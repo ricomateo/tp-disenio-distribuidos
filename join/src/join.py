@@ -397,10 +397,11 @@ class JoinNode:
                 client_id = int(state_file.split(".")[2])
                 with open(state_file, "r", encoding="utf-8") as f:
                     state = json.load(f)
-
+                    raw_buffer = state.get("router_buffer", {})
+                    router_buffer = {int(k): v for k, v in raw_buffer.items()}
                     # Cargar estado principal
                     self.eof_main_by_client[client_id] = state.get("eof_main", False)
-                    self.router_buffer_by_client[client_id] = state.get("router_buffer", {})
+                    self.router_buffer_by_client[client_id] = router_buffer
                     self.processed_messages_by_client[client_id] = set(state.get("processed_messages", []))
                     self.processed_messages_by_client_queue_2[client_id] = set(state.get("processed_messages_queue_2", []))
                     self.packets_sent_by_client[client_id] = set(state.get("packets_sent", []))
