@@ -1,6 +1,8 @@
 import os
 import json
 import logging
+import threading
+import shutil
 from common.atomic_write import atomic_write
 
 DEAD_CLIENTS_FILE = "dead_clients.json"
@@ -11,14 +13,22 @@ class DeadClientsTracker:
     """
     Tracks the dead clients and performs cleanup
     of dead client files.
+
+    node_id is only required for the join node
     """
 
-    def __init__(self):
+    def __init__(self, is_join_node: bool, node_id: int):
         """
         Tries to load the dead clients from the DEAD_CLIENTS_FILE,
         and looks for dead client state files to remove (and removes them if there are any)
+
+        This object may be accessed concurrently (e.g. in the join node) so we make it 
+        thread-safe by adding a lock
         """
         self.max_size = MAX_SIZE
+        self.lock = threading.Lock()
+        self.is_join_node = is_join_node
+        self.node_id = node_id
         try:
             with open(DEAD_CLIENTS_FILE, "r", encoding="utf-8") as f:
                 self.dead_clients = json.loads(f.read())
@@ -32,28 +42,34 @@ class DeadClientsTracker:
         """
         Sets the given client as dead
         """
-        self.dead_clients.append(client_id)
-        # Delete stale data
-        if len(self.dead_clients) > self.max_size:
-            self.dead_clients = self.dead_clients[MAX_SIZE // 10 :]
-        content = json.dumps(self.dead_clients)
-        atomic_write(DEAD_CLIENTS_FILE, content)
+        with self.lock:
+            self.dead_clients.append(client_id)
+            # Delete stale data
+            if len(self.dead_clients) > self.max_size:
+                self.dead_clients = self.dead_clients[MAX_SIZE // 10 :]
+            content = json.dumps(self.dead_clients)
+            atomic_write(DEAD_CLIENTS_FILE, content)
 
     def client_is_dead(self, client_id):
         """
         Returns whether the given client is dead
         """
-        return client_id in self.dead_clients
+        with self.lock:
+            return client_id in self.dead_clients
 
     def _remove_leftover_files(self):
         """
         Removes the left over client state files
 
-        NOTE: the left over files are searched as 'client.*.json'.
+        There is no need to use the lock here since this is only
+        called when the node initializes (not concurrent)
         """
         # Look for left over files
         for dead_client in self.dead_clients:
-            client_state_file = f"client.{dead_client}.json"
+            if self.is_join_node:
+                client_state_file = f"state.client.{dead_client}.json"
+            else:
+                client_state_file = f"client.{dead_client}.json"
             if not os.path.exists(client_state_file):
                 continue
             logging.debug(
@@ -68,3 +84,10 @@ class DeadClientsTracker:
                 logging.error(
                     "Failed to remove file '%s'. Error: %s", client_state_file, e
                 )
+            if self.is_join_node:
+                try:
+                    client_directory = f"storage_{self.node_id}_{dead_client}"
+                    shutil.rmtree(client_directory)
+                    logging.info("Removed %s directory", client_directory)
+                except Exception as e:
+                    logging.warning("Failed to remove directory %s. Error: %s", client_directory, e)
