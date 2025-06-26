@@ -142,7 +142,9 @@ class CalculatorNode:
                 self.final_rabbitmq.send_final_with_node_id(
                     client_id=client_id, count=count, node_id=node_id
                 )
-                logging.info("Sent FINAL packet for client %s", client_id)
+                logging.info(
+                    "Sent FINAL packet for client %s to leader's queue", client_id
+                )
                 self.dead_clients_tracker.set_client_as_dead(client_id)
                 self.delete_client_data(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
