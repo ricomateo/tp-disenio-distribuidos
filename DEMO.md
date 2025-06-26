@@ -98,3 +98,38 @@ docker logs gateway_1 | grep LEADER_ELECTION
 ```bash
 docker logs gateway | grep LEADER_ELECTION
 ```
+
+## Catástrofe
+
+1. Moverse a la rama `catastrofe` con:
+
+```bash
+git checkout catastrofe
+```
+
+2. Asegurarse de que no hay containers corriendo con:
+
+```bash
+make clear
+```
+
+3. Levantar el sistema (junto con las pruebas automatizadas) con:
+
+```bash
+make test_against_notebook
+```
+
+4. En otra terminal, mostrar el estado de los containers con `docker stats`
+
+```bash
+docker stats
+```
+
+5. En otra terminal, esperar un minuto y luego matar todos los containers (a excepción de rabbit, los gateways y los clientes)
+
+```bash
+sleep
+python3 catastrofe.py
+```
+
+Esperar a que los clientes terminen
