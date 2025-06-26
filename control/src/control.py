@@ -10,9 +10,10 @@ import logging
 import signal
 import docker
 from common.atomic_write import atomic_write
+from common.logger import init_logging
 
-# Configurar logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+init_logging(os.getenv("LOG_LEVEL", "info"))
+
 
 class ControlNode:
     def __init__(self):
