@@ -57,6 +57,9 @@ class LeaderElector:
             time.sleep(1)
             self.participating = True
             self.send_election(self.id)
+        if self.there_was_previous_leader():
+            # Give time the new leader to stabilize
+            time.sleep(1)
         self.listen()
 
     def listen(self):
@@ -232,6 +235,9 @@ class LeaderElector:
         if previous_leader:
             return False
         return self.id == 0 and self.number_of_peers > 1
+
+    def there_was_previous_leader(self):
+        return os.path.exists(LEADER_FILE)
 
 
     def close(self):
