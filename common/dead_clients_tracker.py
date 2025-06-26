@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import threading
 from common.atomic_write import atomic_write
 
 DEAD_CLIENTS_FILE = "dead_clients.json"
@@ -17,8 +18,11 @@ class DeadClientsTracker:
         """
         Tries to load the dead clients from the DEAD_CLIENTS_FILE,
         and looks for dead client state files to remove (and removes them if there are any)
+
+        This object may be accessed concurrently so we make it thread-safe by adding a lock
         """
         self.max_size = MAX_SIZE
+        self.lock = threading.Lock()
         try:
             with open(DEAD_CLIENTS_FILE, "r", encoding="utf-8") as f:
                 self.dead_clients = json.loads(f.read())
@@ -32,18 +36,20 @@ class DeadClientsTracker:
         """
         Sets the given client as dead
         """
-        self.dead_clients.append(client_id)
-        # Delete stale data
-        if len(self.dead_clients) > self.max_size:
-            self.dead_clients = self.dead_clients[MAX_SIZE // 10 :]
-        content = json.dumps(self.dead_clients)
-        atomic_write(DEAD_CLIENTS_FILE, content)
+        with self.lock:
+            self.dead_clients.append(client_id)
+            # Delete stale data
+            if len(self.dead_clients) > self.max_size:
+                self.dead_clients = self.dead_clients[MAX_SIZE // 10 :]
+            content = json.dumps(self.dead_clients)
+            atomic_write(DEAD_CLIENTS_FILE, content)
 
     def client_is_dead(self, client_id):
         """
         Returns whether the given client is dead
         """
-        return client_id in self.dead_clients
+        with self.lock:
+            return client_id in self.dead_clients
 
     def _remove_leftover_files(self):
         """
