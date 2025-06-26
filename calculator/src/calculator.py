@@ -115,7 +115,7 @@ class CalculatorNode:
                 for result in results:
                     id = str(consistent_hash(str(self.node_id) + str(result)))
                     logging.debug(
-                        "Resultados del cálculo (client_id = %s): %s, id = %s",
+                        "Results (client_id = %s): %s, id = %s",
                         client_id,
                         result,
                         id,
@@ -128,7 +128,9 @@ class CalculatorNode:
                     )
                     self.output_rabbitmq.publish(data_packet.to_json())
                     count += 1
-                logging.info("Sent client %s results to the output queue.", client_id)
+                logging.info(
+                    "Sent results for client %s to the output queue.", client_id
+                )
                 # The node ids are duplicate in the ratio feelings calculators
                 # (we have calculator_ratio_feelings_negative_0 and calculator_ratio_feelings_positive_0
                 # both with node_id = 0) so to distinguish them when sending the final message,
