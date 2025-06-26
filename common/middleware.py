@@ -147,10 +147,6 @@ class Middleware:
             self.connection.add_callback_threadsafe(lambda: self.channel.basic_cancel(self.consumer_tag))
             logging.info("Consumidor cancelado exitosamente")
 
-    def confirm_delivery(self):
-        if self.channel:
-            self.channel.confirm_delivery()    
-
     def delete_queue(self):
         if self.channel:
             self.channel.queue_delete(queue=self.queue)

@@ -109,7 +109,6 @@ class CalculatorNode:
                     return
                 logging.info("Received FINAL packet from client %s", client_id)
                 results = self.calculator.get_result(client_id)
-                self.output_rabbitmq.confirm_delivery()
 
                 count = 0
                 for result in results:
