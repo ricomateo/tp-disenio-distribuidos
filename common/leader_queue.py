@@ -61,16 +61,7 @@ class LeaderQueue:
             client_id = packet.get("client_id")
             node_id = packet.get("node_id")
             count: int = packet.get("count", 0)
-
-            if is_delete_packet(header):
-                logging.info("[Leader] Received DELETE packet for client %s", client_id)
-                self.delete_list[client_id] = True
-                if len(self.client_counters[client_id].keys()) == self.cluster_size:
-                    self.delete_client(client_id)
-                    self.output_rabbitmq.delete_queue()
-                    ch.basic_ack(delivery_tag=method.delivery_tag)
-                    return
-
+            
             # For each client_id, keep a dict that contains the ids of the nodes
             # that sent a FINAL packet, and the count for each node
             if client_id not in self.client_counters:
@@ -88,6 +79,17 @@ class LeaderQueue:
                 )
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
+
+            if is_delete_packet(header):
+                logging.info("[Leader] Received DELETE packet for client %s", client_id)
+                self.delete_list[client_id] = True
+                if len(self.client_counters[client_id].keys()) == self.cluster_size:
+                    self.delete_client(client_id)
+                    self.output_rabbitmq.delete_queue(str(client_id))
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
+
+            
 
             if is_final_packet(header):
                 if client_id in self.delete_list:

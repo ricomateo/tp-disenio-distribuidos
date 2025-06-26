@@ -109,7 +109,6 @@ class ClientConnection:
             self.send_delete()
         finally:
             logging.info("[Client %s] Cerrando recursos del cliente", client_id)
-            self.rabbitmq_receiver.delete_queue()
             self.close()
 
     def publish_file_batch(self, batch: dict, msg_filename):
@@ -123,6 +122,7 @@ class ClientConnection:
             try:
                 if self.running is False:
                     self.rabbitmq_receiver.close_graceful(method)
+                    self.rabbitmq_receiver.delete_queue(str(self.client_id))
                     return
 
                 packet_json = body.decode()
@@ -133,6 +133,7 @@ class ClientConnection:
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     ch.stop_consuming()
                     self._remove_client()
+                    self.rabbitmq_receiver.delete_queue(str(self.client_id))
                     return
 
                 response_str = packet.get("response")
@@ -142,6 +143,7 @@ class ClientConnection:
                        ch.basic_ack(delivery_tag=method.delivery_tag)
                        ch.stop_consuming() 
                        self.send_delete()
+                       self.rabbitmq_receiver.delete_queue(str(self.client_id))
                 else:
                     logging.warning(f"[Gateway - Client %s - RESULT] Packet recibido sin campo 'response'. Ignorado.", client_id)
 

@@ -65,15 +65,19 @@ class DeliverNode:
             client_id = packet.get("client_id")
 
             if header and is_delete_packet(header):
-                logging.info("Received DELETE packet for client %s", client_id)
-                self.final_rabbitmq.send_delete_with_node_id(
-                    client_id=client_id, node_id=self.query_number
-                )
-                logging.info("Sent DELETE packet for client %s", client_id)
-                self.dead_clients_tracker.set_client_as_dead(client_id)
-                self.delete_client_data(client_id)
-                ch.basic_ack(delivery_tag=method.delivery_tag)
-                return
+                if not self.dead_clients_tracker.client_is_dead(client_id):
+                    logging.info("Received DELETE packet for client %s", client_id)
+                    self.final_rabbitmq.send_delete_with_node_id(
+                        client_id=client_id, node_id=self.query_number
+                    )
+                    logging.info("Sent DELETE packet for client %s", client_id)
+                    self.dead_clients_tracker.set_client_as_dead(client_id)
+                    self.delete_client_data(client_id)
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
+                else:
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
 
             if header and is_final_packet(header):
                 if self.dead_clients_tracker.client_is_dead(client_id):
