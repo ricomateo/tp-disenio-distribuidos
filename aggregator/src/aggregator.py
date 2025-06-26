@@ -213,11 +213,11 @@ class AggregatorNode:
             del self.processed_messages_by_client[client_id]
         try:
             os.remove(f"client.{client_id}.json")
+            logging.info("Deleted client %s data", client_id)
         except Exception as e:
             logging.warning(
                 "Failed to remove file for client %s. Error: %s", client_id, e
             )
-        logging.info("Deleted client %s data", client_id)
 
     def save_state(self, client_id):
         """

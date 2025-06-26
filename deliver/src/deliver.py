@@ -271,11 +271,11 @@ class DeliverNode:
         try:
             file = f"client.{client_id}.json"
             os.remove(file)
+            logging.info("Deleted data for client %s", client_id)
         except Exception as e:
             logging.warning(
                 "Failed to remove file %s for client %s. Error: %s", file, client_id, e
             )
-        logging.info("Deleted data for client %s", client_id)
 
     def _sigterm_handler(self, signum, _):
         logging.info("Received SIGTERM signal")
