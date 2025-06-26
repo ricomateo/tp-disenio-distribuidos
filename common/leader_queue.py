@@ -95,7 +95,12 @@ class LeaderQueue:
                     )
                     ch.basic_ack(delivery_tag=method.delivery_tag)
                     return
-                logging.info("Received FINAL packet for client %s from node %s with")
+                logging.info(
+                    "Received FINAL packet for client %s from node %s with count %s",
+                    client_id,
+                    node_id,
+                    count,
+                )
                 # If the length of the dict is equal to the cluster size, send the final
                 if len(self.client_counters[client_id].keys()) == self.cluster_size:
                     total_count = 0
