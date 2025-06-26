@@ -280,9 +280,7 @@ class AggregatorNode:
         if self.operation == "total_invested":
             count = 0
             # Mando un paquete por país y después el final packet
-            for country, value in self.invested_per_country_by_client_id[
-                client_id
-            ].items():
+            for country, value in self.invested_per_country_by_client_id.get(client_id, {}).items():
                 packet = DataPacket(
                     client_id=client_id,
                     timestamp=datetime.utcnow().isoformat(),
@@ -295,7 +293,8 @@ class AggregatorNode:
         elif self.operation == "average":
             # En caso de tener al menos una película para ese sentimiento, publico
             # ese paquete en la queue y después mando el final packet
-            if self.average_positive_by_client_id[client_id][1] > 0:
+            avg_pos = self.average_positive_by_client_id.get(client_id, (0, 0))
+            if avg_pos[1] > 0:
                 packet_pos = DataPacket(
                     client_id=client_id,
                     timestamp=datetime.utcnow().isoformat(),
@@ -310,7 +309,8 @@ class AggregatorNode:
                 )
                 self.output_rabbitmq.publish(packet_pos.to_json())
 
-            if self.average_negative_by_client_id[client_id][1] > 0:
+            avg_neg = self.average_negative_by_client_id.get(client_id, (0, 0))
+            if avg_neg[1] > 0:
                 packet_neg = DataPacket(
                     client_id=client_id,
                     timestamp=datetime.utcnow().isoformat(),
@@ -327,7 +327,7 @@ class AggregatorNode:
 
         elif self.operation == "count":
             packet_id = 0
-            for actor, count in self.count_by_actors_by_client_id[client_id].items():
+            for actor, count in self.count_by_actors_by_client_id.get(client_id, {}).items():
                 packet = DataPacket(
                     client_id=client_id,
                     timestamp=datetime.utcnow().isoformat(),
