@@ -1,0 +1,24 @@
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+ [!] operation is count    Error processing message: 0, raw packet is {"client_id":0,"count":0,"header":"FINAL"}
+ [!] operation is count    Error processing message: 1, raw packet is {"client_id":1,"count":0,"header":"FINAL"}
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_count_actors

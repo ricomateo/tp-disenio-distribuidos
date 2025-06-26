@@ -1,0 +1,327 @@
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] Waiting for messages in filter_2000_argentinarouter_2000_argentina
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 289180 through the exchange using routing key: 1
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 361251 through the exchange using routing key: 0
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 361251 through the exchange using routing key: 0
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 408537 through the exchange using routing key: 0
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 257487 through the exchange using routing key: 0
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 257487 through the exchange using routing key: 0
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 257487 through the exchange using routing key: 0
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 99896 through the exchange using routing key: 2
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 382906 through the exchange using routing key: 1
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 360365 through the exchange using routing key: 2
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 179302 through the exchange using routing key: 1
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 416680 through the exchange using routing key: 1
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 416680 through the exchange using routing key: 1
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 127304 through the exchange using routing key: 2
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 268297 through the exchange using routing key: 1
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 359736 through the exchange using routing key: 0
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 359736 through the exchange using routing key: 0
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 360365 through the exchange using routing key: 2
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 425942 through the exchange using routing key: 2
+[DEBUG] Message 19 acknowledged
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] Waiting for messages in filter_2000_argentinarouter_2000_argentina
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 179302 through the exchange using routing key: 1
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 416680 through the exchange using routing key: 1
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 127304 through the exchange using routing key: 2
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 127304 through the exchange using routing key: 2
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 268297 through the exchange using routing key: 1
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 268297 through the exchange using routing key: 1
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 268297 through the exchange using routing key: 1
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 359736 through the exchange using routing key: 0
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 425942 through the exchange using routing key: 2
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 425942 through the exchange using routing key: 2
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 58429 through the exchange using routing key: 1
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 128598 through the exchange using routing key: 0
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 125619 through the exchange using routing key: 0
+[DEBUG] Message 13 acknowledged
+[INFO] Received FINAL packet from the client 0
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":6,"header":"FINAL"}' enviado directamente.
+[INFO] Sent FINAL packet for client 0 through the routing key 0
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":6,"header":"FINAL"}' enviado directamente.
+[INFO] Sent FINAL packet for client 0 through the routing key 1
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":4,"header":"FINAL"}' enviado directamente.
+[INFO] Sent FINAL packet for client 0 through the routing key 2
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 58429 through the exchange using routing key: 1
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 408537 through the exchange using routing key: 0
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 408537 through the exchange using routing key: 0
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 99896 through the exchange using routing key: 2
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 99896 through the exchange using routing key: 2
+[DEBUG] Message 19 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 289180 through the exchange using routing key: 1
+[DEBUG] Message 20 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] Waiting for messages in filter_2000_argentinarouter_2000_argentina
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 99896 through the exchange using routing key: 2
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 289180 through the exchange using routing key: 1
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 289180 through the exchange using routing key: 1
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 361251 through the exchange using routing key: 0
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 361251 through the exchange using routing key: 0
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 361251 through the exchange using routing key: 0
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 257487 through the exchange using routing key: 0
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 257487 through the exchange using routing key: 0
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 257487 through the exchange using routing key: 0
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 382906 through the exchange using routing key: 1
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 382906 through the exchange using routing key: 1
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 382906 through the exchange using routing key: 1
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 360365 through the exchange using routing key: 2
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 360365 through the exchange using routing key: 2
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 360365 through the exchange using routing key: 2
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 179302 through the exchange using routing key: 1
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 179302 through the exchange using routing key: 1
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 179302 through the exchange using routing key: 1
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 416680 through the exchange using routing key: 1
+[DEBUG] Message 19 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 127304 through the exchange using routing key: 2
+[DEBUG] Message 20 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 268297 through the exchange using routing key: 1
+[DEBUG] Message 21 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 359736 through the exchange using routing key: 0
+[DEBUG] Message 22 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 425942 through the exchange using routing key: 2
+[DEBUG] Message 23 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 416680 through the exchange using routing key: 1
+[DEBUG] Message 24 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 127304 through the exchange using routing key: 2
+[DEBUG] Message 25 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 127304 through the exchange using routing key: 2
+[DEBUG] Message 26 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 127304 through the exchange using routing key: 2
+[DEBUG] Message 27 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 268297 through the exchange using routing key: 1
+[DEBUG] Message 28 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 359736 through the exchange using routing key: 0
+[DEBUG] Message 29 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] Sent movie with id: 425942 through the exchange using routing key: 2
+[DEBUG] Message 30 acknowledged
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] Waiting for messages in filter_2000_argentinarouter_2000_argentina
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 58429 through the exchange using routing key: 1
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] Waiting for messages in filter_2000_argentinarouter_2000_argentina
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 128598 through the exchange using routing key: 0
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 128598 through the exchange using routing key: 0
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] Sent movie with id: 125619 through the exchange using routing key: 0
+[DEBUG] Message 3 acknowledged
+[INFO] Received FINAL packet from the client 1
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 0
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":6,"header":"FINAL"}' enviado directamente.
+[INFO] Sent FINAL packet for client 1 through the routing key 0
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":6,"header":"FINAL"}' enviado directamente.
+[INFO] Sent FINAL packet for client 1 through the routing key 1
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 2
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":4,"header":"FINAL"}' enviado directamente.
+[INFO] Sent FINAL packet for client 1 through the routing key 2
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 58429 through the exchange using routing key: 1
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to exchange router_2000_argentina with routing key 1
+[DEBUG] Sent movie with id: 58429 through the exchange using routing key: 1
+[DEBUG] Message 6 acknowledged
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] Waiting for messages in filter_2000_argentinarouter_2000_argentina
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] Waiting for messages in filter_2000_argentinarouter_2000_argentina
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] Waiting for messages in filter_2000_argentinarouter_2000_argentina
+[INFO] [Middleware] Declarando exchange 'filter_2000_argentina' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola 'filter_2000_argentinarouter_2000_argentina' (durable=True)...
+[INFO] [Middleware] Enlazando cola 'filter_2000_argentinarouter_2000_argentina' al exchange 'filter_2000_argentina'...
+[INFO] [Middleware] Declarando exchange 'router_2000_argentina' de tipo 'direct'...
+[INFO] Waiting for messages in filter_2000_argentinarouter_2000_argentina

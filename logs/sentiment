@@ -1,0 +1,3120 @@
+[DEBUG] Starting new HTTPS connection (1): huggingface.co:443
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json HTTP/1.1" 200 0
+[DEBUG] Attempting to acquire lock 281472533798096 on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/b57fe5dfcb8ec3f9bab35ed427c3434e3c7dd1ba.lock
+[DEBUG] Lock 281472533798096 acquired on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/b57fe5dfcb8ec3f9bab35ed427c3434e3c7dd1ba.lock
+[DEBUG] https://huggingface.co:443 "GET /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json HTTP/1.1" 200 629
+[DEBUG] Attempting to release lock 281472533798096 on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/b57fe5dfcb8ec3f9bab35ed427c3434e3c7dd1ba.lock
+[DEBUG] Lock 281472533798096 released on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/b57fe5dfcb8ec3f9bab35ed427c3434e3c7dd1ba.lock
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/model.safetensors HTTP/1.1" 302 0
+[DEBUG] Attempting to acquire lock 281472530992720 on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/7c3919835e442510166d267fe7cbe847e0c51cd26d9ba07b89a57b952b49b8aa.lock
+[DEBUG] Lock 281472530992720 acquired on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/7c3919835e442510166d267fe7cbe847e0c51cd26d9ba07b89a57b952b49b8aa.lock
+[DEBUG] https://huggingface.co:443 "GET /api/models/distilbert/distilbert-base-uncased-finetuned-sst-2-english/xet-read-token/714eb0fa89d2f80546fda750413ed43d93601a13 HTTP/1.1" 200 325
+[DEBUG] Starting new HTTPS connection (1): huggingface.co:443
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json HTTP/1.1" 200 0
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/model.safetensors HTTP/1.1" 302 0
+[DEBUG] Attempting to acquire lock 281472424639840 on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/7c3919835e442510166d267fe7cbe847e0c51cd26d9ba07b89a57b952b49b8aa.lock
+[DEBUG] Lock 281472424639840 acquired on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/7c3919835e442510166d267fe7cbe847e0c51cd26d9ba07b89a57b952b49b8aa.lock
+[DEBUG] https://huggingface.co:443 "GET /api/models/distilbert/distilbert-base-uncased-finetuned-sst-2-english/xet-read-token/714eb0fa89d2f80546fda750413ed43d93601a13 HTTP/1.1" 200 325
+[DEBUG] Attempting to release lock 281472424639840 on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/7c3919835e442510166d267fe7cbe847e0c51cd26d9ba07b89a57b952b49b8aa.lock
+[DEBUG] Lock 281472424639840 released on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/7c3919835e442510166d267fe7cbe847e0c51cd26d9ba07b89a57b952b49b8aa.lock
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+[DEBUG] Attempting to acquire lock 281472424607072 on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/3ed34255a7cb8e6706a8bb21993836e99e7b959f.lock
+[DEBUG] Lock 281472424607072 acquired on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/3ed34255a7cb8e6706a8bb21993836e99e7b959f.lock
+[DEBUG] https://huggingface.co:443 "GET /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/tokenizer_config.json HTTP/1.1" 200 48
+[DEBUG] Attempting to release lock 281472424607072 on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/3ed34255a7cb8e6706a8bb21993836e99e7b959f.lock
+[DEBUG] Lock 281472424607072 released on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/3ed34255a7cb8e6706a8bb21993836e99e7b959f.lock
+[DEBUG] https://huggingface.co:443 "GET /api/models/distilbert-base-uncased-finetuned-sst-2-english/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 307 170
+[DEBUG] https://huggingface.co:443 "GET /api/models/distilbert/distilbert-base-uncased-finetuned-sst-2-english/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/vocab.txt HTTP/1.1" 200 0
+[DEBUG] Attempting to acquire lock 281472437949344 on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/fb140275c155a9c7c5a3b3e0e77a9e839594a938.lock
+[DEBUG] Lock 281472437949344 acquired on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/fb140275c155a9c7c5a3b3e0e77a9e839594a938.lock
+[DEBUG] https://huggingface.co:443 "GET /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/vocab.txt HTTP/1.1" 200 231508
+[DEBUG] Attempting to release lock 281472437949344 on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/fb140275c155a9c7c5a3b3e0e77a9e839594a938.lock
+[DEBUG] Lock 281472437949344 released on /root/.cache/huggingface/hub/.locks/models--distilbert-base-uncased-finetuned-sst-2-english/fb140275c155a9c7c5a3b3e0e77a9e839594a938.lock
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/tokenizer.json HTTP/1.1" 404 0
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/added_tokens.json HTTP/1.1" 404 0
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/chat_template.jinja HTTP/1.1" 404 0
+[INFO] Starting sentiment analyzer
+[INFO] Waiting for messages in filter_budget_revenue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 19 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 20 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 21 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 22 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 23 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 24 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 25 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 26 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 27 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 28 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 29 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 30 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 31 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 32 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 33 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 34 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 35 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 36 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 37 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 38 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 39 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 40 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 41 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 42 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 43 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 44 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 45 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 46 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 47 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 48 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 49 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 50 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 51 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 52 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 53 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 54 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 55 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 56 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 57 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 58 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 59 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 60 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 61 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 62 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 63 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 64 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 65 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 66 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 67 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 68 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 69 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 70 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 71 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 72 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 73 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 74 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 75 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 76 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 77 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 78 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 79 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 80 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 81 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 82 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 83 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 84 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 85 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 86 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 87 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 88 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 89 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 90 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 91 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 92 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 93 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 94 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 95 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 96 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 97 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 98 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 99 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 100 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 101 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 102 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 103 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 104 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 105 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 106 acknowledged
+[DEBUG] Starting new HTTPS connection (1): huggingface.co:443
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json HTTP/1.1" 200 0
+[DEBUG] https://huggingface.co:443 "GET /api/models/distilbert-base-uncased-finetuned-sst-2-english/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 307 170
+[DEBUG] https://huggingface.co:443 "GET /api/models/distilbert/distilbert-base-uncased-finetuned-sst-2-english/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+[INFO] Starting sentiment analyzer
+[INFO] Waiting for messages in filter_budget_revenue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 19 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 20 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 21 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 22 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 23 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 24 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 25 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 26 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 27 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 28 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 29 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 30 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 31 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 32 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 33 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 34 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 35 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 36 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 37 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 38 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 39 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 40 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 41 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 42 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 43 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 44 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 45 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 46 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 47 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 48 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 49 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 50 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 51 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 52 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 53 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 54 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 55 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 56 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 57 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 58 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 59 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 60 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 61 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 62 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 63 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 64 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 65 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 66 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 67 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 68 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 69 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 70 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 71 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 72 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 73 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 74 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 75 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 76 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 77 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 78 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 79 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 80 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 81 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 82 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 83 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 84 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 85 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 86 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 87 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 88 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 89 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 90 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 91 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 92 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 93 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 94 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 95 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 96 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 97 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 98 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 99 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 100 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 101 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 102 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 103 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 104 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 105 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 106 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 107 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 108 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 109 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 110 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 111 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 112 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 113 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 114 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 115 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 116 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 117 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 118 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 119 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 120 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 121 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 122 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 123 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 124 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 125 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 126 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 127 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 128 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 129 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 130 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 131 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 132 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 133 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 134 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 135 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 136 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 137 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 138 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 139 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 140 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 141 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 142 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 143 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 144 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 145 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 146 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 147 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 148 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 149 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 150 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 151 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 152 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 153 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 154 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 155 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 156 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 157 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 158 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 159 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 160 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 161 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 162 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 163 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 164 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 165 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 166 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 167 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 168 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 169 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 170 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 171 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 172 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 173 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 174 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 175 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 176 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 177 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 178 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 179 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 180 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 181 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 182 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 183 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 184 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 185 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 186 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 187 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 188 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 189 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 190 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 191 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 192 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 193 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 194 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 195 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 196 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 197 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 198 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 199 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 200 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 201 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 202 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 203 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 204 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 205 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 206 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 207 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 208 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 209 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 210 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 211 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 212 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 213 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 214 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 215 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 216 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 217 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 218 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 219 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 220 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 221 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 222 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 223 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 224 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 225 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 226 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 227 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 228 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 229 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 230 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 231 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 232 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 233 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 234 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 235 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 236 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 237 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 238 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 239 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 240 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 241 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 242 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 243 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 244 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 245 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 246 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 247 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 248 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 249 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 250 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 251 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 252 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 253 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 254 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 255 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 256 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 257 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 258 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 259 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 260 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 261 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 262 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 263 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 264 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 265 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 266 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 267 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 268 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 269 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 270 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 271 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 272 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 273 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 274 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 275 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 276 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 277 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 278 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 279 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 280 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 281 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 282 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 283 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 284 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 285 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 286 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 287 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 288 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 289 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 290 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 291 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 292 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 293 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 294 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 295 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 296 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 297 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 298 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 299 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 300 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 301 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 302 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 303 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 304 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 305 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 306 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 307 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 308 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 309 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 310 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 311 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 312 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 313 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 314 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 315 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 316 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 317 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 318 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 319 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 320 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 321 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 322 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 323 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 324 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 325 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 326 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 327 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 328 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 329 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 330 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 331 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 332 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 333 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 334 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 335 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 336 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 337 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 338 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 339 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 340 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 341 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 342 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 343 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 344 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 345 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 346 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 347 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 348 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 349 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 350 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 351 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 352 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 353 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 354 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 355 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 356 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 357 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 358 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 359 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 360 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 361 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 362 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 363 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 364 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 365 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 366 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 367 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 368 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 369 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 370 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 371 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 372 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 373 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 374 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 375 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 376 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 377 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 378 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 379 acknowledged
+[INFO] Received FINAL packet from client 0
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":195,"header":"FINAL"}' enviado directamente.
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":129,"header":"FINAL"}' enviado directamente.
+[INFO] Sent the FINAL packet for client 0 to both output queues (positive and negative)
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 381 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 382 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 383 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 384 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 385 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 386 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 387 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 388 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 389 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 390 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 391 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 392 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 393 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 394 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 395 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 396 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 397 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 398 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 399 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 400 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 401 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 402 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 403 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 404 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 405 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 406 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 407 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 408 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 409 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 410 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 411 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 412 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 413 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 414 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 415 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 416 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 417 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 418 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 419 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 420 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 421 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 422 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 423 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 424 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 425 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 426 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 427 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 428 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 429 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 430 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 431 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 432 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 433 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 434 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 435 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 436 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 437 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 438 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 439 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 440 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 441 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 442 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 443 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 444 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 445 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 446 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 447 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 448 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 449 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 450 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 451 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 452 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 453 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 454 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 455 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 456 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 457 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 458 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 459 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 460 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 461 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 462 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 463 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 464 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 465 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 466 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 467 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 468 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 469 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 470 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 471 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 472 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 473 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 474 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 475 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 476 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 477 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 478 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 479 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 480 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 481 acknowledged
+[DEBUG] Starting new HTTPS connection (1): huggingface.co:443
+[DEBUG] https://huggingface.co:443 "HEAD /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json HTTP/1.1" 200 0
+[DEBUG] https://huggingface.co:443 "GET /api/models/distilbert-base-uncased-finetuned-sst-2-english/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 307 170
+[DEBUG] https://huggingface.co:443 "GET /api/models/distilbert/distilbert-base-uncased-finetuned-sst-2-english/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+[INFO] Starting sentiment analyzer
+[INFO] Waiting for messages in filter_budget_revenue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 19 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 20 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 21 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 22 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 23 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 24 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 25 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 26 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 27 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 28 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 29 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 30 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 31 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 32 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 33 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 34 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 35 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 36 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 37 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 38 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 39 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 40 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 41 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 42 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 43 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 44 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 45 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 46 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 47 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 48 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 49 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 50 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 51 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 52 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 53 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 54 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 55 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 56 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 57 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 58 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 59 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 60 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 61 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 62 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 63 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 64 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 65 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 66 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 67 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 68 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 69 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 70 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 71 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 72 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 73 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 74 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 75 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 76 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 77 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 78 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 79 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 80 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 81 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 82 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 83 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 84 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 85 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 86 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 87 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 88 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 89 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 90 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 91 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 92 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 93 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 94 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 95 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 96 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 97 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 98 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 99 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 100 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 101 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 102 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 103 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 104 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 105 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 106 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 107 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 108 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 109 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 110 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 111 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 112 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 113 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 114 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 115 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 116 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 117 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 118 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 119 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 120 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 121 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 122 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 123 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 124 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 125 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 126 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 127 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 128 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 129 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 130 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 131 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 132 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 133 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 134 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 135 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 136 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 137 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 138 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 139 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 140 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 141 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 142 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 143 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 144 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 145 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 146 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 147 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 148 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 149 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 150 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 151 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 152 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 153 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 154 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 155 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 156 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 157 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 158 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 159 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 160 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 161 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 162 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 163 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 164 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 165 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 166 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 167 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 168 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 169 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 170 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 171 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 172 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 173 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 174 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 175 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 176 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 177 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 178 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 179 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 180 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 181 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 182 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 183 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 184 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 185 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 186 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 187 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 188 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 189 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 190 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 191 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 192 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 193 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 194 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 195 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 196 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 197 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 198 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 199 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 200 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 201 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 202 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 203 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 204 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 205 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 206 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 207 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 208 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 209 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 210 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 211 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 212 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 213 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 214 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 215 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 216 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 217 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 218 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 219 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 220 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 221 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 222 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 223 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 224 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 225 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 226 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 227 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 228 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 229 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 230 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 231 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 232 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 233 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 234 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 235 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 236 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 237 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 238 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 239 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 240 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 241 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 242 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 243 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 244 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 245 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 246 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 247 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 248 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 249 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 250 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 251 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 252 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 253 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 254 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 255 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 256 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 257 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 258 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 259 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 260 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 261 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 262 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 263 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 264 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 265 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 266 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 267 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 268 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 269 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 270 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 271 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 272 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 273 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 274 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 275 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 276 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 277 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 278 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 279 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 280 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 281 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 282 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 283 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 284 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 285 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 286 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 287 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 288 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 289 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 290 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 291 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 292 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 293 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 294 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 295 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 296 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 297 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 298 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 299 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 300 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 301 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 302 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 303 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 304 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 305 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 306 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 307 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 308 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 309 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 310 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 311 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 312 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 313 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 314 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 315 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 316 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 317 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 318 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 319 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 320 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 321 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 322 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 323 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 324 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 325 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 326 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 327 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 328 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 329 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 330 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 331 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 332 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 333 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 334 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 335 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 336 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 337 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 338 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 339 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 340 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 341 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 342 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 343 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 344 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 345 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 346 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 347 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 348 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 349 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 350 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 351 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 352 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 353 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 354 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 355 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 356 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 357 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 358 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 359 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 360 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 361 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 362 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 363 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 364 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 365 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 366 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 367 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 368 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 369 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 370 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 371 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 372 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 373 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 374 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 375 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 376 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 377 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 378 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 379 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 380 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 381 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 382 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 383 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 384 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 385 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 386 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 387 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 388 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 389 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 390 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 391 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 392 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 393 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 394 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 395 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 396 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 397 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 398 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 399 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 400 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 401 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 402 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 403 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 404 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 405 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 406 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 407 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 408 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 409 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 410 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 411 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 412 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 413 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 414 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 415 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 416 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 417 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 418 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 419 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 420 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 421 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 422 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 423 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 424 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 425 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 426 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 427 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 428 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 429 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 430 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 431 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 432 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 433 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 434 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 435 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 436 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 437 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 438 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 439 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 440 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 441 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 442 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 443 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 444 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 445 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 446 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 447 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 448 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 449 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 450 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 451 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 452 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 453 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 454 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 455 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 456 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 457 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 458 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 459 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 460 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 461 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 462 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 463 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 464 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 465 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 466 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 467 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 468 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 469 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 470 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 471 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 472 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 473 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 474 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 475 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 476 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 477 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 478 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 479 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 480 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 481 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 482 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 483 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 484 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 485 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 486 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 487 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 488 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 489 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 490 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 491 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 492 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 493 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 494 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 495 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 496 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 497 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 498 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 499 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 500 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 501 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 502 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 503 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 504 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 505 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 506 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 507 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 508 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 509 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 510 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 511 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 512 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 513 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 514 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 515 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 516 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 517 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 518 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 519 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 520 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 521 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 522 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 523 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 524 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 525 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 526 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 527 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 528 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 529 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 530 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 531 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 532 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 533 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 534 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 535 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 536 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 537 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 538 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 539 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 540 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 541 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 542 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 543 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 544 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 545 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 546 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 547 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 548 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 549 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 550 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 551 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 552 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 553 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 554 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 555 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 556 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 557 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 558 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 559 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 560 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 561 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 562 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 563 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 564 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 565 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 566 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 567 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 568 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 569 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 570 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 571 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 572 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 573 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 574 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 575 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 576 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 577 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 578 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 579 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 580 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 581 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 582 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 583 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 584 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 585 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 586 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 587 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 588 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 589 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 590 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 591 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 592 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 593 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 594 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 595 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 596 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 597 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 598 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 599 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 600 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 601 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 602 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 603 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 604 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 605 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 606 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 607 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 608 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 609 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 610 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 611 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 612 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 613 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 614 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 615 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 616 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 617 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 618 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 619 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 620 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 621 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 622 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 623 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 624 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 625 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 626 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 627 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 628 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 629 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 630 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 631 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 632 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 633 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 634 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 635 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 636 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 637 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 638 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 639 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 640 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 641 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 642 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 643 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 644 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 645 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 646 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 647 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 648 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 649 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 650 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 651 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 652 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 653 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 654 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 655 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 656 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 657 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 658 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 659 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 660 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 661 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 662 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 663 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 664 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 665 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 666 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 667 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 668 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 669 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 670 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 671 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 672 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 673 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 674 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 675 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 676 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 677 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 678 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 679 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 680 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 681 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 682 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 683 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 684 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 685 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 686 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 687 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 688 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 689 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 690 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 691 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 692 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 693 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 694 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 695 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 696 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 697 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 698 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 699 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 700 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 701 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 702 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 703 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 704 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 705 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 706 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 707 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 708 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 709 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 710 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 711 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 712 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 713 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 714 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 715 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 716 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 717 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 718 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 719 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 720 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 721 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 722 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 723 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 724 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 725 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 726 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 727 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 728 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 729 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 730 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 731 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 732 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 733 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 734 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 735 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 736 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 737 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 738 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 739 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 740 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 741 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 742 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 743 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 744 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 745 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 746 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 747 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 748 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 749 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 750 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 751 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 752 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 753 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 754 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 755 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 756 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 757 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 758 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 759 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 760 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 761 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 762 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 763 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 764 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 765 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 766 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 767 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 768 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 769 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 770 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 771 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 772 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 773 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 774 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 775 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 776 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 777 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 778 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 779 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 780 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 781 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 782 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 783 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 784 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 785 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 786 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 787 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 788 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 789 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 790 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 791 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 792 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 793 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 794 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 795 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 796 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 797 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 798 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 799 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 800 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 801 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 802 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 803 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 804 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 805 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 806 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 807 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 808 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 809 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 810 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 811 acknowledged
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] Message 812 acknowledged
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] Message 813 acknowledged
+[INFO] Received FINAL packet from client 1
+[DEBUG] Sent message to queue sentiment_positive_queue
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":195,"header":"FINAL"}' enviado directamente.
+[DEBUG] Sent message to queue sentiment_negative_queue
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":129,"header":"FINAL"}' enviado directamente.
+[INFO] Sent the FINAL packet for client 1 to both output queues (positive and negative)

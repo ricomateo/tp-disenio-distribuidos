@@ -1,0 +1,81 @@
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+final response = {
+    "query": 3,
+    "result": []
+}
+[DEBUG] Sent message to exchange deliver with routing key 0
+[DEBUG] Sent message to queue deliverfinal
+[DEBUG] Sent message to queue deliverfinal
+[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":0,"count":1,"header":"FINAL","node_id":3}' enviado directamente.
+Failed to remove file for client 0. Error: [Errno 2] No such file or directory: 'client.0.json'
+Deleted data for client 0
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings
+final response = {
+    "query": 3,
+    "result": []
+}
+[DEBUG] Sent message to exchange deliver with routing key 1
+[DEBUG] Sent message to queue deliverfinal
+[DEBUG] [Middleware] FinalPacketWithNodeId b'{"client_id":1,"count":1,"header":"FINAL","node_id":3}' enviado directamente.
+Failed to remove file for client 1. Error: [Errno 2] No such file or directory: 'client.1.json'
+Deleted data for client 1
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+ [~] DeliverNode listening on calculator_average_ratings, will send to query_queue
+[INFO] Waiting for messages in calculator_average_ratings

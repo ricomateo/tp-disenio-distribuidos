@@ -1,0 +1,807 @@
+2025-06-25 23:45:37,447 [INFO] Loading system state...
+2025-06-25 23:45:42,467 [INFO] Nodo parser_movies conectado (ID/delete connection)
+2025-06-25 23:45:42,468 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:45:42,468 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:45:42,468 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:45:42,469 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:45:42,646 [INFO] Client 0 inserted ID 0. Final signal: False
+2025-06-25 23:45:42,692 [INFO] Client 0 inserted ID 1. Final signal: False
+2025-06-25 23:45:42,914 [INFO] Client 0 inserted ID 2. Final signal: False
+2025-06-25 23:45:42,924 [INFO] Client 0 inserted ID 3. Final signal: False
+2025-06-25 23:45:42,930 [INFO] Received final count for client 0: 4. Current unique IDs: 4. Match: True
+2025-06-25 23:45:42,930 [INFO] Client 0 sent final count 4. Match: True.
+2025-06-25 23:45:42,931 [ERROR] Error saving dead clients state: Object of type set is not JSON serializable
+2025-06-25 23:45:42,933 [INFO] Client 0 requested deletion.
+2025-06-25 23:45:43,330 [INFO] Client 1 inserted ID 0. Final signal: False
+2025-06-25 23:45:43,463 [INFO] Client 1 inserted ID 0. Final signal: False
+2025-06-25 23:45:43,687 [INFO] Client 1 inserted ID 1. Final signal: False
+2025-06-25 23:45:43,695 [INFO] Client 1 inserted ID 1. Final signal: False
+2025-06-25 23:45:43,991 [INFO] Client 1 inserted ID 2. Final signal: False
+2025-06-25 23:45:44,012 [INFO] Client 1 inserted ID 3. Final signal: False
+2025-06-25 23:45:44,019 [INFO] Received final count for client 1: 4. Current unique IDs: 4. Match: True
+2025-06-25 23:45:44,020 [INFO] Client 1 sent final count 4. Match: True.
+2025-06-25 23:45:44,024 [ERROR] Error saving dead clients state: Object of type set is not JSON serializable
+2025-06-25 23:45:44,028 [INFO] Client 1 requested deletion.
+2025-06-25 23:45:44,470 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:45:44,470 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:45:44,470 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:45:46,472 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:45:46,474 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:45:46,475 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:45:48,474 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:45:48,475 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:45:48,476 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:45:50,476 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:45:50,476 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:45:50,477 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:45:52,482 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:45:52,488 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:45:52,489 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:45:54,484 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:45:54,490 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:45:54,491 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:45:56,486 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:45:56,492 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:45:56,493 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:45:58,488 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:45:58,493 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:45:58,494 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:46:00,491 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:00,494 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:00,499 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:46:02,494 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:02,495 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:02,500 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:46:04,494 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:04,496 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:04,501 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:46:06,496 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:06,497 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:06,503 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:46:08,498 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:08,498 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:08,506 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:46:10,499 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:10,507 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:46:10,750 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:46:10,754 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:46:10,939 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:46:12,503 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:12,509 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:46:14,693 [INFO] Loading system state...
+2025-06-25 23:46:14,693 [INFO] Loaded final counts: {}
+2025-06-25 23:46:19,704 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:19,704 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:46:19,705 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:19,990 [WARNING] Fallo conexión inicial con parser_movies: [Errno -2] Name or service not known
+2025-06-25 23:46:19,990 [WARNING] Nodo parser_movies no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:46:19,998 [INFO] Reiniciando el contenedor: parser_movies...
+2025-06-25 23:46:20,128 [INFO] Contenedor parser_movies reiniciado exitosamente.
+2025-06-25 23:46:21,707 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:21,708 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:46:21,712 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:46:21,876 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:46:23,709 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:24,706 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:46:24,992 [INFO] Nodo parser_movies conectado (ID/delete connection)
+2025-06-25 23:46:25,128 [INFO] Terminando hilo connect_to_worker para parser_movies
+2025-06-25 23:46:25,712 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:26,877 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:27,715 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:28,881 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:29,707 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:46:29,717 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:30,882 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:31,718 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:32,884 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:33,721 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:34,708 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:46:34,885 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:35,722 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:46:36,888 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:38,437 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:46:38,442 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:46:38,543 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:46:38,889 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:39,711 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:46:40,890 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:42,892 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:43,119 [INFO] Nodo parser_movies disconnected (ID/delete connection)
+2025-06-25 23:46:43,119 [INFO] Nuevo hilo connect_to_worker iniciado para parser_movies
+2025-06-25 23:46:43,120 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:46:43,120 [WARNING] Nodo parser_movies no respondió al healthcheck: [Errno 111] Connection refused, intentando reiniciar...
+2025-06-25 23:46:43,240 [INFO] Reiniciando el contenedor: parser_movies...
+2025-06-25 23:46:43,356 [INFO] Contenedor parser_movies reiniciado exitosamente.
+2025-06-25 23:46:43,544 [INFO] Terminando hilo connect_to_worker para parser_movies_1
+2025-06-25 23:46:44,893 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:46,894 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:48,125 [INFO] Nodo parser_movies conectado (ID/delete connection)
+2025-06-25 23:46:48,357 [INFO] Terminando hilo connect_to_worker para parser_movies
+2025-06-25 23:46:48,833 [INFO] Nodo parser_movies_1 disconnected (ID/delete connection)
+2025-06-25 23:46:48,834 [INFO] Nuevo hilo connect_to_worker iniciado para parser_movies_1
+2025-06-25 23:46:48,834 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:46:48,834 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno 111] Connection refused, intentando reiniciar...
+2025-06-25 23:46:48,895 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:46:48,953 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:46:49,055 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:46:50,896 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:07,224 [INFO] Loading system state...
+2025-06-25 23:47:07,224 [INFO] Loaded final counts: {}
+2025-06-25 23:47:12,243 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:12,244 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:47:12,247 [WARNING] Nodo parser_movies no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:47:12,248 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:47:12,249 [WARNING] Fallo conexión inicial con parser_movies: [Errno -2] Name or service not known
+2025-06-25 23:47:12,253 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:47:12,253 [INFO] Reiniciando el contenedor: parser_movies...
+2025-06-25 23:47:12,370 [INFO] Contenedor parser_movies reiniciado exitosamente.
+2025-06-25 23:47:12,419 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:47:14,244 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:16,247 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:17,250 [INFO] Nodo parser_movies conectado (ID/delete connection)
+2025-06-25 23:47:17,371 [INFO] Terminando hilo connect_to_worker para parser_movies
+2025-06-25 23:47:17,420 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:18,248 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:19,423 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:47:19,427 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:47:19,532 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:47:20,249 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:22,250 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:24,250 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:24,538 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:47:24,542 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:47:24,670 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:47:26,252 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:28,253 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:29,674 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:30,254 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:31,675 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:32,257 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:33,676 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:34,261 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:35,677 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:36,262 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:37,678 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:38,263 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:39,681 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:40,265 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:41,685 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:42,268 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:43,688 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:44,269 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:45,689 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:46,271 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:47,690 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:48,272 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:49,695 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:50,274 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:51,696 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:47:52,279 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:47:59,382 [INFO] Loading system state...
+2025-06-25 23:47:59,382 [INFO] Loaded final counts: {}
+2025-06-25 23:48:04,438 [INFO] Loading system state...
+2025-06-25 23:48:04,438 [INFO] Loaded final counts: {}
+2025-06-25 23:48:09,450 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:48:09,450 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:09,451 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:09,455 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:48:09,458 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:48:11,451 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:11,452 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:11,459 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:48:13,717 [INFO] Loading system state...
+2025-06-25 23:48:13,717 [INFO] Loaded final counts: {}
+2025-06-25 23:48:18,732 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:48:18,732 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:18,732 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:18,732 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:48:18,733 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:48:20,734 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:20,734 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:20,734 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:48:22,895 [INFO] Loading system state...
+2025-06-25 23:48:22,895 [INFO] Loaded final counts: {}
+2025-06-25 23:48:27,917 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:27,917 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:27,917 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:48:27,920 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:48:27,921 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno -2] Name or service not known
+2025-06-25 23:48:27,926 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:48:28,029 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:48:29,917 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:29,919 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:31,920 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:31,921 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:32,919 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:48:32,924 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:48:33,030 [INFO] Terminando hilo connect_to_worker para parser_movies_1
+2025-06-25 23:48:33,921 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:33,924 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:48:33,928 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:48:34,035 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:48:35,923 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:37,927 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:37,928 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:48:39,037 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:39,930 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:41,038 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:41,930 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:42,931 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:48:43,040 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:43,932 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:45,043 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:45,933 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:47,043 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:47,933 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:48:47,933 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:49,044 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:49,935 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:51,047 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:51,936 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:52,939 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:48:53,049 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:53,939 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:55,051 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:48:55,940 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:48:58,411 [INFO] Loading system state...
+2025-06-25 23:48:58,411 [INFO] Loaded final counts: {}
+2025-06-25 23:49:03,573 [INFO] Loading system state...
+2025-06-25 23:49:03,573 [INFO] Loaded final counts: {}
+2025-06-25 23:49:08,715 [INFO] Loading system state...
+2025-06-25 23:49:08,715 [INFO] Loaded final counts: {}
+2025-06-25 23:49:13,726 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:49:13,726 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:13,728 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:49:13,730 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:49:13,731 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno -2] Name or service not known
+2025-06-25 23:49:13,733 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:49:13,735 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:49:13,919 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:49:13,995 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:49:15,727 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:17,731 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:18,727 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:49:18,732 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:49:18,919 [INFO] Terminando hilo connect_to_worker para parser_movies_1
+2025-06-25 23:49:18,997 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:19,732 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:20,998 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:21,733 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:22,999 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:23,728 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:49:23,734 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:25,004 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:49:25,008 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:49:25,142 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:49:25,735 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:27,737 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:28,729 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:49:29,738 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:30,144 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:31,740 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:32,144 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:32,725 [INFO] Nodo parser_movies_1 disconnected (ID/delete connection)
+2025-06-25 23:49:32,726 [INFO] Nuevo hilo connect_to_worker iniciado para parser_movies_1
+2025-06-25 23:49:32,726 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:49:32,726 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno 111] Connection refused, intentando reiniciar...
+2025-06-25 23:49:32,831 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:49:32,955 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:49:33,730 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:49:33,741 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:34,145 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:35,744 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:36,147 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:37,730 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:49:37,747 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:37,956 [INFO] Terminando hilo connect_to_worker para parser_movies_1
+2025-06-25 23:49:38,149 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:38,732 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:49:39,748 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:40,151 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:41,749 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:42,153 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:43,733 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:49:43,750 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:44,154 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:45,753 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:46,156 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:47,391 [INFO] Nodo parser_movies_1 disconnected (ID/delete connection)
+2025-06-25 23:49:47,392 [INFO] Nuevo hilo connect_to_worker iniciado para parser_movies_1
+2025-06-25 23:49:47,392 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:49:47,393 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno 111] Connection refused, intentando reiniciar...
+2025-06-25 23:49:47,612 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:49:47,753 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:49:47,802 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:49:48,157 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:49:48,737 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:49:51,804 [INFO] Loading system state...
+2025-06-25 23:49:51,804 [INFO] Loaded final counts: {}
+2025-06-25 23:49:56,884 [INFO] Loading system state...
+2025-06-25 23:49:56,884 [INFO] Loaded final counts: {}
+2025-06-25 23:50:01,896 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:01,896 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:01,896 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:50:01,898 [WARNING] Fallo conexión inicial con parser_movies: [Errno -2] Name or service not known
+2025-06-25 23:50:01,898 [WARNING] Nodo parser_movies no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:50:01,904 [INFO] Reiniciando el contenedor: parser_movies...
+2025-06-25 23:50:02,015 [INFO] Contenedor parser_movies reiniciado exitosamente.
+2025-06-25 23:50:03,898 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:03,898 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:05,899 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:05,900 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:06,899 [INFO] Nodo parser_movies conectado (ID/delete connection)
+2025-06-25 23:50:07,976 [INFO] Loading system state...
+2025-06-25 23:50:07,976 [INFO] Loaded final counts: {}
+2025-06-25 23:50:12,987 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:50:12,987 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:12,987 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:13,003 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:50:13,005 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno -2] Name or service not known
+2025-06-25 23:50:13,015 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:50:13,169 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:50:14,988 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:14,988 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:16,991 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:16,991 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:17,988 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:50:18,010 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno -2] Name or service not known
+2025-06-25 23:50:18,170 [INFO] Terminando hilo connect_to_worker para parser_movies_1
+2025-06-25 23:50:18,992 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:18,992 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:20,993 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:20,995 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:22,992 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:50:22,995 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:22,997 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:23,012 [INFO] Nuevo hilo connect_to_worker iniciado para parser_movies_1
+2025-06-25 23:50:23,016 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno -2] Name or service not known
+2025-06-25 23:50:23,016 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:50:23,023 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:50:23,149 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:50:24,998 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:24,998 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:26,999 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:26,999 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:27,993 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:50:28,018 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:50:28,150 [INFO] Terminando hilo connect_to_worker para parser_movies_1
+2025-06-25 23:50:29,000 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:29,000 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:31,001 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:31,003 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:50:31,008 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:50:31,139 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:50:32,994 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:50:33,003 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:34,658 [INFO] Loading system state...
+2025-06-25 23:50:34,659 [INFO] Loaded final counts: {}
+2025-06-25 23:50:39,671 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:50:39,671 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:39,671 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:39,671 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:39,671 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:50:41,672 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:41,673 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:41,674 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:43,673 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:43,675 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:43,675 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:50:44,673 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:50:44,673 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:50:45,674 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:45,676 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:47,675 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:47,677 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:49,677 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:50:49,677 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:49,678 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:49,680 [WARNING] Fallo conexión inicial con parser_movies: [Errno -2] Name or service not known
+2025-06-25 23:50:50,677 [WARNING] Nodo parser_movies no respondió al healthcheck: timed out, intentando reiniciar...
+2025-06-25 23:50:50,681 [INFO] Reiniciando el contenedor: parser_movies...
+2025-06-25 23:50:50,802 [INFO] Contenedor parser_movies reiniciado exitosamente.
+2025-06-25 23:50:51,678 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:51,679 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:53,679 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:53,680 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:54,679 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:50:54,681 [INFO] Nodo parser_movies conectado (ID/delete connection)
+2025-06-25 23:50:55,680 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:50:55,682 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:50:55,804 [INFO] Terminando hilo connect_to_worker para parser_movies
+2025-06-25 23:50:57,774 [INFO] Loading system state...
+2025-06-25 23:50:57,774 [INFO] Loaded final counts: {}
+2025-06-25 23:51:02,785 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:02,786 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:02,786 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:02,786 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:02,787 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:04,788 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:04,788 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:04,790 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:06,789 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:06,790 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:06,791 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:07,792 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:07,793 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:08,792 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:08,792 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:08,793 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:10,797 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:10,797 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:10,798 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:12,793 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:12,794 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:12,798 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:12,799 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:12,799 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:14,799 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:14,801 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:14,802 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:16,802 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:16,802 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:16,803 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:17,794 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:17,796 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:18,803 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:18,803 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:18,804 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:20,804 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:20,804 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:20,805 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:22,796 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:22,798 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:22,806 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:22,806 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:22,807 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:24,807 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:24,808 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:24,808 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:26,808 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:26,809 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:26,809 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:27,799 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:27,800 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:28,809 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:28,810 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:28,810 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:30,810 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:30,811 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:30,814 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:51:30,819 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:51:30,899 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:51:32,800 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:32,801 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:32,811 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:32,814 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:34,815 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:34,818 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:35,907 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:36,820 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:36,820 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:37,810 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:37,810 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:37,911 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:38,825 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:38,827 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:39,913 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:40,827 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:40,828 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:41,914 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:42,811 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:42,812 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:42,828 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:42,830 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:43,916 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:44,830 [INFO] Nodo parser_movies_1 conectado (Healthcheck connection)
+2025-06-25 23:51:44,832 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:45,918 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:46,833 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:51:46,834 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:46,837 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:51:46,925 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:51:47,818 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:47,818 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:51:47,928 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:48,841 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:49,932 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:50,841 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:51,932 [INFO] Terminando hilo connect_to_worker para parser_movies_1
+2025-06-25 23:51:51,934 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:52,825 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:52,844 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:53,936 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:54,846 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:55,181 [INFO] Nodo parser_movies_1 disconnected (ID/delete connection)
+2025-06-25 23:51:55,182 [INFO] Nuevo hilo connect_to_worker iniciado para parser_movies_1
+2025-06-25 23:51:55,183 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno 111] Connection refused, intentando reiniciar...
+2025-06-25 23:51:55,185 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:51:55,294 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:51:55,364 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:51:55,942 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:56,850 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:57,835 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:51:57,946 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:51:58,851 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:51:59,950 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:00,196 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:52:00,369 [INFO] Terminando hilo connect_to_worker para parser_movies_1
+2025-06-25 23:52:00,859 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:01,953 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:02,845 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:52:02,868 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:03,958 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:04,877 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:05,964 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:52:05,966 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:52:06,036 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:52:06,878 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:07,857 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:52:08,884 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:10,893 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:11,053 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:52:11,061 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:52:11,165 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:52:12,867 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:52:12,898 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:14,899 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:16,167 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:16,904 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:17,879 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:52:18,169 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:18,906 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:20,184 [WARNING] Nodo de control control_2 no responde: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:52:20,193 [INFO] Reiniciando el contenedor: control_2...
+2025-06-25 23:52:20,289 [INFO] Contenedor control_2 reiniciado exitosamente.
+2025-06-25 23:52:20,910 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:22,892 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:52:22,916 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:24,922 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:25,292 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:26,930 [INFO] Nodo parser_movies conectado (Healthcheck connection)
+2025-06-25 23:52:27,300 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:27,903 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:52:28,941 [WARNING] Nodo parser_movies no respondió al healthcheck: [Errno -2] Name or service not known, intentando reiniciar...
+2025-06-25 23:52:28,943 [INFO] Reiniciando el contenedor: parser_movies...
+2025-06-25 23:52:29,010 [INFO] Contenedor parser_movies reiniciado exitosamente.
+2025-06-25 23:52:29,305 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:31,312 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:32,915 [INFO] Nodo parser_movies conectado (ID/delete connection)
+2025-06-25 23:52:33,317 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:34,020 [INFO] Terminando hilo connect_to_worker para parser_movies
+2025-06-25 23:52:35,319 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:37,324 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:39,333 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:41,334 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:43,337 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:45,342 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:47,344 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:49,347 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:51,350 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:53,355 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:55,358 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:57,169 [INFO] Nodo parser_movies disconnected (ID/delete connection)
+2025-06-25 23:52:57,169 [INFO] Nuevo hilo connect_to_worker iniciado para parser_movies
+2025-06-25 23:52:57,170 [WARNING] Nodo parser_movies no respondió al healthcheck: [Errno 111] Connection refused, intentando reiniciar...
+2025-06-25 23:52:57,172 [WARNING] Fallo conexión inicial con parser_movies: [Errno 111] Connection refused
+2025-06-25 23:52:57,252 [INFO] Reiniciando el contenedor: parser_movies...
+2025-06-25 23:52:57,334 [INFO] Contenedor parser_movies reiniciado exitosamente.
+2025-06-25 23:52:57,369 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:52:59,370 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:01,372 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:02,182 [INFO] Nodo parser_movies conectado (ID/delete connection)
+2025-06-25 23:53:02,344 [INFO] Terminando hilo connect_to_worker para parser_movies
+2025-06-25 23:53:03,375 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:05,376 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:06,375 [INFO] Nodo parser_movies_1 disconnected (ID/delete connection)
+2025-06-25 23:53:06,375 [INFO] Nuevo hilo connect_to_worker iniciado para parser_movies_1
+2025-06-25 23:53:06,376 [WARNING] Nodo parser_movies_1 no respondió al healthcheck: [Errno 111] Connection refused, intentando reiniciar...
+2025-06-25 23:53:06,377 [WARNING] Fallo conexión inicial con parser_movies_1: [Errno 111] Connection refused
+2025-06-25 23:53:06,472 [INFO] Reiniciando el contenedor: parser_movies_1...
+2025-06-25 23:53:06,545 [INFO] Contenedor parser_movies_1 reiniciado exitosamente.
+2025-06-25 23:53:07,381 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:09,385 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:11,380 [INFO] Nodo parser_movies_1 conectado (ID/delete connection)
+2025-06-25 23:53:11,389 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:11,554 [INFO] Terminando hilo connect_to_worker para parser_movies_1
+2025-06-25 23:53:13,394 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:15,398 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:17,401 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:19,402 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:21,405 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:23,412 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:25,418 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:27,423 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:29,429 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:31,433 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:33,434 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:35,437 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:37,440 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:39,441 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:41,442 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:43,446 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:45,449 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:47,451 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:49,452 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:51,453 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:53,462 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:55,468 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:57,472 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:53:59,474 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:01,479 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:03,489 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:05,492 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:07,496 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:09,498 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:11,503 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:13,506 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:15,512 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:17,521 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:19,531 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:21,535 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:23,540 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:25,544 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:27,548 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:29,555 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:31,561 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:33,562 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:35,567 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:37,569 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:39,573 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:41,577 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:43,586 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:45,595 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:47,599 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:49,604 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:51,606 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:53,610 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:55,615 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:57,620 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:54:59,622 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:01,623 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:03,625 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:05,629 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:07,633 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:09,636 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:11,645 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:13,649 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:15,653 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:17,656 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:19,659 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:21,664 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:23,669 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:25,677 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:27,681 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:29,686 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:31,695 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:33,696 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:35,702 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:37,707 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:39,712 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:41,717 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:43,723 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:45,729 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:47,736 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:49,743 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:51,748 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:53,752 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:55,757 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:57,763 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:55:59,769 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:01,776 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:03,779 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:05,780 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:07,783 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:09,788 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:11,790 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:13,792 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:15,793 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:17,798 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:19,807 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:21,811 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:23,815 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:25,819 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:27,821 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:29,824 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:31,829 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:33,833 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:35,837 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:37,842 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:39,844 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:41,850 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:43,856 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:45,860 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:47,865 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:49,871 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:51,875 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:53,881 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:55,885 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:57,893 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:56:59,898 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:01,902 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:03,906 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:05,909 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:07,912 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:09,917 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:11,919 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:13,925 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:15,928 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:17,932 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:19,936 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:21,941 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:23,946 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:25,955 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:27,962 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:29,968 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:31,972 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:33,976 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:35,980 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:37,982 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:39,983 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:41,988 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:43,994 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:46,003 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:48,010 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:50,015 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:52,020 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:54,027 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:56,030 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:57:58,033 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:00,034 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:02,039 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:04,044 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:06,048 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:08,049 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:10,058 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:12,066 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:14,074 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:16,082 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:18,086 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:20,090 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:22,091 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:24,094 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:26,098 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:28,104 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:30,112 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:32,115 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:34,120 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:36,122 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:38,129 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:40,132 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:42,136 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:44,145 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:46,155 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:48,159 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:50,165 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:52,167 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:54,173 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:56,175 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:58:58,181 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:00,186 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:02,190 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:04,199 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:06,208 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:08,212 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:10,216 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:12,218 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:14,225 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:16,229 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:18,233 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:20,235 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:22,241 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:24,244 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:26,251 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:28,255 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:30,259 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:32,263 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:34,267 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:36,269 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:38,276 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:40,280 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:42,286 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:44,291 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:46,293 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:48,303 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:50,312 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:52,316 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:54,321 [INFO] Nodo control_2 conectado (Healthcheck connection)
+2025-06-25 23:59:56,327 [INFO] Nodo control_2 conectado (Healthcheck connection)

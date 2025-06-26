@@ -1,0 +1,174 @@
+[WARNING] Failed to read 'dead_clients.json' file. Error: [Errno 2] No such file or directory: 'dead_clients.json'
+[INFO] Waiting for messages in calculator_budget_country
+ [x] Message 1 acknowledged
+Duplicate packet with ID 5cad1f4edb4ea3372fbe6373f6de970a31e205b404341f501f4b063afabe489e
+ [x] Message 3 acknowledged
+ [x] Message 4 acknowledged
+ [x] Message 5 acknowledged
+ [x] Message 6 acknowledged
+ [x] Message 7 acknowledged
+Duplicate packet with ID 24efdf84b01c8857892feca378bbb7210e9daf13fe92f4e2547b03b98325b70d
+ [x] Message 9 acknowledged
+ [x] Message 10 acknowledged
+ [x] Message 11 acknowledged
+ [x] Message 12 acknowledged
+ [x] Message 13 acknowledged
+ [x] Message 14 acknowledged
+ [x] Message 15 acknowledged
+ [x] Message 16 acknowledged
+ [x] Message 17 acknowledged
+ [x] Message 18 acknowledged
+ [x] Message 19 acknowledged
+ [x] Message 20 acknowledged
+ [x] Message 21 acknowledged
+ [x] Message 22 acknowledged
+ [x] Message 23 acknowledged
+ [x] Message 24 acknowledged
+ [x] Message 25 acknowledged
+ [x] Message 26 acknowledged
+ [x] Message 27 acknowledged
+ [x] Message 28 acknowledged
+ [x] Message 29 acknowledged
+ [x] Message 30 acknowledged
+ [x] Message 31 acknowledged
+ [x] Message 32 acknowledged
+ [x] Message 33 acknowledged
+ [x] Message 34 acknowledged
+ [x] Message 35 acknowledged
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":0,"header":"FINAL"}' enviado directamente.
+[INFO] Waiting for messages in calculator_budget_country
+ [x] Message 1 acknowledged
+ [x] Message 2 acknowledged
+Duplicate packet with ID 97c9c9a174cb39630c818cb667b5d1a0b8b7229c63a7056f0c8c15cab81b411d
+ [x] Message 4 acknowledged
+ [x] Message 5 acknowledged
+ [x] Message 6 acknowledged
+ [x] Message 7 acknowledged
+ [x] Message 8 acknowledged
+ [x] Message 9 acknowledged
+Duplicate packet with ID 303eab84970e0563b3109ff4ad8d7cf80acdf96a0269fbe32aec38bd1061e6cf
+ [x] Message 11 acknowledged
+Duplicate packet with ID a2e8965b07cea4f8ee5f8666bfb854e9e92a480884a6daefc4cbdb473ac1e7d8
+ [x] Message 13 acknowledged
+ [x] Message 14 acknowledged
+ [x] Message 15 acknowledged
+Duplicate packet with ID e2c808ac60a286ae3f8e66731bce9edabd90279777f885aa41ab351f2aad67e3
+ [x] Message 17 acknowledged
+ [x] Message 18 acknowledged
+ [x] Message 19 acknowledged
+ [x] Message 20 acknowledged
+ [x] Message 21 acknowledged
+ [x] Message 22 acknowledged
+Duplicate packet with ID 0a9a6b828cd38dfb2a31db7b5ea4affc9a656c1bc0ac1239cccc973a6ef5a3db
+ [x] Message 24 acknowledged
+ [x] Message 25 acknowledged
+ [x] Message 26 acknowledged
+ [x] Message 27 acknowledged
+Duplicate packet with ID b1cb0ca4c90ebefcc358188ccbc9de08395dc7a0e5bf16bcf8ca60aee9032cc1
+ [x] Message 29 acknowledged
+ [x] Message 30 acknowledged
+ [x] Message 31 acknowledged
+ [x] Message 32 acknowledged
+Duplicate packet with ID c24cfbf238c23b33b8db9b0cc9f51eca534e03de41d218f11d45de20a0c045e9
+ [x] Message 34 acknowledged
+ [x] Message 35 acknowledged
+ [x] Message 36 acknowledged
+ [x] Message 37 acknowledged
+Duplicate packet with ID d5b047d75541f30f10fd334e19fe0cca187ac71e52974077e5e646527c1f2e16
+ [x] Message 39 acknowledged
+ [x] Message 40 acknowledged
+ [x] Message 41 acknowledged
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] Sent message to queue aggregator_calculator_budget_country
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":0,"header":"FINAL"}' enviado directamente.
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country
+[INFO] Waiting for messages in calculator_budget_country

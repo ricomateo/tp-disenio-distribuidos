@@ -1,0 +1,30 @@
+Sent movies_metadata.csv file
+Sent ratings.csv file
+Sent credits.csv file
+========= QUERY 2 RESULTS =========
+country                  | budget    
+-------------------------------------
+United States of America | 8137769947
+United Kingdom           | 124959461 
+India                    | 109753848 
+Russia                   | 71900614  
+France                   | 69228000  
+
+
+========= QUERY 1 RESULTS =========
+title      | genres             
+--------------------------------
+La Cienaga | ['Comedy', 'Drama']
+
+
+========= QUERY 3 RESULTS =========
+(no rows)
+
+
+========= QUERY 5 RESULTS =========
+feeling  | ratio  
+------------------
+POSITIVE | 16.8747
+NEGATIVE | 5.5442 
+
+

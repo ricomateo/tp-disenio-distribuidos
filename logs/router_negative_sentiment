@@ -1,0 +1,2139 @@
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8844 through the exchange using routing key: 0
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 710 through the exchange using routing key: 0
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 710 through the exchange using routing key: 0
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9087 through the exchange using routing key: 0
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9087 through the exchange using routing key: 0
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1408 through the exchange using routing key: 0
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1408 through the exchange using routing key: 0
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1408 through the exchange using routing key: 0
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 524 through the exchange using routing key: 0
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 524 through the exchange using routing key: 0
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 4584 through the exchange using routing key: 0
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5 through the exchange using routing key: 0
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9273 through the exchange using routing key: 0
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11517 through the exchange using routing key: 0
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8012 through the exchange using routing key: 0
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8012 through the exchange using routing key: 0
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9691 through the exchange using routing key: 0
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9691 through the exchange using routing key: 0
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 902 through the exchange using routing key: 0
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 902 through the exchange using routing key: 0
+[DEBUG] Message 19 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 902 through the exchange using routing key: 0
+[DEBUG] Message 20 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 902 through the exchange using routing key: 0
+[DEBUG] Message 21 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10634 through the exchange using routing key: 0
+[DEBUG] Message 22 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 755 through the exchange using routing key: 0
+[DEBUG] Message 23 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 755 through the exchange using routing key: 0
+[DEBUG] Message 24 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36929 through the exchange using routing key: 0
+[DEBUG] Message 25 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9208 through the exchange using routing key: 0
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9208 through the exchange using routing key: 0
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9208 through the exchange using routing key: 0
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 13685 through the exchange using routing key: 0
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9614 through the exchange using routing key: 0
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9614 through the exchange using routing key: 0
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 688 through the exchange using routing key: 0
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 103 through the exchange using routing key: 0
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 33542 through the exchange using routing key: 0
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11066 through the exchange using routing key: 0
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2074 through the exchange using routing key: 0
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2074 through the exchange using routing key: 0
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11863 through the exchange using routing key: 0
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11000 through the exchange using routing key: 0
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9737 through the exchange using routing key: 0
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11780 through the exchange using routing key: 0
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11780 through the exchange using routing key: 0
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5894 through the exchange using routing key: 0
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5894 through the exchange using routing key: 0
+[DEBUG] Message 19 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1775 through the exchange using routing key: 0
+[DEBUG] Message 20 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8839 through the exchange using routing key: 0
+[DEBUG] Message 21 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10329 through the exchange using routing key: 0
+[DEBUG] Message 22 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8963 through the exchange using routing key: 0
+[DEBUG] Message 23 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8068 through the exchange using routing key: 0
+[DEBUG] Message 24 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8068 through the exchange using routing key: 0
+[DEBUG] Message 25 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8512 through the exchange using routing key: 0
+[DEBUG] Message 26 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10428 through the exchange using routing key: 0
+[DEBUG] Message 27 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340402 through the exchange using routing key: 0
+[DEBUG] Message 28 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340402 through the exchange using routing key: 0
+[DEBUG] Message 29 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2293 through the exchange using routing key: 0
+[DEBUG] Message 30 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 48787 through the exchange using routing key: 0
+[DEBUG] Message 31 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1642 through the exchange using routing key: 0
+[DEBUG] Message 32 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1642 through the exchange using routing key: 0
+[DEBUG] Message 33 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1642 through the exchange using routing key: 0
+[DEBUG] Message 34 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 35 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 36 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 37 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 38 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10533 through the exchange using routing key: 0
+[DEBUG] Message 39 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 79593 through the exchange using routing key: 0
+[DEBUG] Message 40 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 3512 through the exchange using routing key: 0
+[DEBUG] Message 41 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 3512 through the exchange using routing key: 0
+[DEBUG] Message 42 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2292 through the exchange using routing key: 0
+[DEBUG] Message 43 acknowledged
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8984 through the exchange using routing key: 0
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8467 through the exchange using routing key: 0
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8467 through the exchange using routing key: 0
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8467 through the exchange using routing key: 0
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 522 through the exchange using routing key: 0
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 522 through the exchange using routing key: 0
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 27303 through the exchange using routing key: 0
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 27303 through the exchange using routing key: 0
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 87729 through the exchange using routing key: 0
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 28313 through the exchange using routing key: 0
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 241 through the exchange using routing key: 0
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 241 through the exchange using routing key: 0
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 6950 through the exchange using routing key: 0
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 6950 through the exchange using routing key: 0
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 101 through the exchange using routing key: 0
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 101 through the exchange using routing key: 0
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 63020 through the exchange using routing key: 0
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 25296 through the exchange using routing key: 0
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2636 through the exchange using routing key: 0
+[DEBUG] Message 19 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11395 through the exchange using routing key: 0
+[DEBUG] Message 20 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 193 through the exchange using routing key: 0
+[DEBUG] Message 21 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 193 through the exchange using routing key: 0
+[DEBUG] Message 22 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 193 through the exchange using routing key: 0
+[DEBUG] Message 23 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1587 through the exchange using routing key: 0
+[DEBUG] Message 24 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2064 through the exchange using routing key: 0
+[DEBUG] Message 25 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9331 through the exchange using routing key: 0
+[DEBUG] Message 26 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10731 through the exchange using routing key: 0
+[DEBUG] Message 27 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10731 through the exchange using routing key: 0
+[DEBUG] Message 28 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9495 through the exchange using routing key: 0
+[DEBUG] Message 29 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 888 through the exchange using routing key: 0
+[DEBUG] Message 30 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8587 through the exchange using routing key: 0
+[DEBUG] Message 31 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11596 through the exchange using routing key: 0
+[DEBUG] Message 32 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11596 through the exchange using routing key: 0
+[DEBUG] Message 33 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11596 through the exchange using routing key: 0
+[DEBUG] Message 34 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36593 through the exchange using routing key: 0
+[DEBUG] Message 35 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36593 through the exchange using routing key: 0
+[DEBUG] Message 36 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10427 through the exchange using routing key: 0
+[DEBUG] Message 37 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1637 through the exchange using routing key: 0
+[DEBUG] Message 38 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1637 through the exchange using routing key: 0
+[DEBUG] Message 39 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8831 through the exchange using routing key: 0
+[DEBUG] Message 40 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36955 through the exchange using routing key: 0
+[DEBUG] Message 41 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8011 through the exchange using routing key: 0
+[DEBUG] Message 42 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8011 through the exchange using routing key: 0
+[DEBUG] Message 43 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8011 through the exchange using routing key: 0
+[DEBUG] Message 44 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 46094 through the exchange using routing key: 0
+[DEBUG] Message 45 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 46094 through the exchange using routing key: 0
+[DEBUG] Message 46 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 46094 through the exchange using routing key: 0
+[DEBUG] Message 47 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 306 through the exchange using routing key: 0
+[DEBUG] Message 48 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9350 through the exchange using routing key: 0
+[DEBUG] Message 49 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9350 through the exchange using routing key: 0
+[DEBUG] Message 50 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2124 through the exchange using routing key: 0
+[DEBUG] Message 51 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2124 through the exchange using routing key: 0
+[DEBUG] Message 52 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9739 through the exchange using routing key: 0
+[DEBUG] Message 53 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9024 through the exchange using routing key: 0
+[DEBUG] Message 54 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 37233 through the exchange using routing key: 0
+[DEBUG] Message 55 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 37233 through the exchange using routing key: 0
+[DEBUG] Message 56 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 35588 through the exchange using routing key: 0
+[DEBUG] Message 57 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 35588 through the exchange using routing key: 0
+[DEBUG] Message 58 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 35588 through the exchange using routing key: 0
+[DEBUG] Message 59 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2019 through the exchange using routing key: 0
+[DEBUG] Message 60 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 299641 through the exchange using routing key: 0
+[DEBUG] Message 61 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9255 through the exchange using routing key: 0
+[DEBUG] Message 62 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9386 through the exchange using routing key: 0
+[DEBUG] Message 63 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 7984 through the exchange using routing key: 0
+[DEBUG] Message 64 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10909 through the exchange using routing key: 0
+[DEBUG] Message 65 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 507 through the exchange using routing key: 0
+[DEBUG] Message 66 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 507 through the exchange using routing key: 0
+[DEBUG] Message 67 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10440 through the exchange using routing key: 0
+[DEBUG] Message 68 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10440 through the exchange using routing key: 0
+[DEBUG] Message 69 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10440 through the exchange using routing key: 0
+[DEBUG] Message 70 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 788 through the exchange using routing key: 0
+[DEBUG] Message 71 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 788 through the exchange using routing key: 0
+[DEBUG] Message 72 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 384682 through the exchange using routing key: 0
+[DEBUG] Message 73 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 384682 through the exchange using routing key: 0
+[DEBUG] Message 74 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 384682 through the exchange using routing key: 0
+[DEBUG] Message 75 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10872 through the exchange using routing key: 0
+[DEBUG] Message 76 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10872 through the exchange using routing key: 0
+[DEBUG] Message 77 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10872 through the exchange using routing key: 0
+[DEBUG] Message 78 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10872 through the exchange using routing key: 0
+[DEBUG] Message 79 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10872 through the exchange using routing key: 0
+[DEBUG] Message 80 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11858 through the exchange using routing key: 0
+[DEBUG] Message 81 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11858 through the exchange using routing key: 0
+[DEBUG] Message 82 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11858 through the exchange using routing key: 0
+[DEBUG] Message 83 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5550 through the exchange using routing key: 0
+[DEBUG] Message 84 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5550 through the exchange using routing key: 0
+[DEBUG] Message 85 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2088 through the exchange using routing key: 0
+[DEBUG] Message 86 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 44010 through the exchange using routing key: 0
+[DEBUG] Message 87 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 381288 through the exchange using routing key: 0
+[DEBUG] Message 88 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 381288 through the exchange using routing key: 0
+[DEBUG] Message 89 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 867 through the exchange using routing key: 0
+[DEBUG] Message 90 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 78 through the exchange using routing key: 0
+[DEBUG] Message 91 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 78 through the exchange using routing key: 0
+[DEBUG] Message 92 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10442 through the exchange using routing key: 0
+[DEBUG] Message 93 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9607 through the exchange using routing key: 0
+[DEBUG] Message 94 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9607 through the exchange using routing key: 0
+[DEBUG] Message 95 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9607 through the exchange using routing key: 0
+[DEBUG] Message 96 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9607 through the exchange using routing key: 0
+[DEBUG] Message 97 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 17585 through the exchange using routing key: 0
+[DEBUG] Message 98 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9479 through the exchange using routing key: 0
+[DEBUG] Message 99 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9479 through the exchange using routing key: 0
+[DEBUG] Message 100 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11969 through the exchange using routing key: 0
+[DEBUG] Message 101 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 319 through the exchange using routing key: 0
+[DEBUG] Message 102 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 319 through the exchange using routing key: 0
+[DEBUG] Message 103 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 376290 through the exchange using routing key: 0
+[DEBUG] Message 104 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 376290 through the exchange using routing key: 0
+[DEBUG] Message 105 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 251 through the exchange using routing key: 0
+[DEBUG] Message 106 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 251 through the exchange using routing key: 0
+[DEBUG] Message 107 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 251 through the exchange using routing key: 0
+[DEBUG] Message 108 acknowledged
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 280 through the exchange using routing key: 0
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 576 through the exchange using routing key: 0
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274870 through the exchange using routing key: 0
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274870 through the exchange using routing key: 0
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274870 through the exchange using routing key: 0
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 393457 through the exchange using routing key: 0
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 356305 through the exchange using routing key: 0
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 356305 through the exchange using routing key: 0
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 313369 through the exchange using routing key: 0
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 313369 through the exchange using routing key: 0
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 313369 through the exchange using routing key: 0
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 331313 through the exchange using routing key: 0
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 331313 through the exchange using routing key: 0
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 402298 through the exchange using routing key: 0
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 402298 through the exchange using routing key: 0
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 402298 through the exchange using routing key: 0
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 195590 through the exchange using routing key: 0
+[DEBUG] Message 1 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 262841 through the exchange using routing key: 0
+[DEBUG] Message 2 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 262841 through the exchange using routing key: 0
+[DEBUG] Message 3 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 324542 through the exchange using routing key: 0
+[DEBUG] Message 4 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 324542 through the exchange using routing key: 0
+[DEBUG] Message 5 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 324542 through the exchange using routing key: 0
+[DEBUG] Message 6 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340837 through the exchange using routing key: 0
+[DEBUG] Message 7 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 263115 through the exchange using routing key: 0
+[DEBUG] Message 8 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 397837 through the exchange using routing key: 0
+[DEBUG] Message 9 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 397837 through the exchange using routing key: 0
+[DEBUG] Message 10 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274857 through the exchange using routing key: 0
+[DEBUG] Message 11 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274857 through the exchange using routing key: 0
+[DEBUG] Message 12 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 173897 through the exchange using routing key: 0
+[DEBUG] Message 13 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 173897 through the exchange using routing key: 0
+[DEBUG] Message 14 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 428449 through the exchange using routing key: 0
+[DEBUG] Message 15 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 428449 through the exchange using routing key: 0
+[DEBUG] Message 16 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 428449 through the exchange using routing key: 0
+[DEBUG] Message 17 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 428449 through the exchange using routing key: 0
+[DEBUG] Message 18 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 341174 through the exchange using routing key: 0
+[DEBUG] Message 19 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 341174 through the exchange using routing key: 0
+[DEBUG] Message 20 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 263115 through the exchange using routing key: 0
+[DEBUG] Message 21 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 397837 through the exchange using routing key: 0
+[DEBUG] Message 22 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 397837 through the exchange using routing key: 0
+[DEBUG] Message 23 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 397837 through the exchange using routing key: 0
+[DEBUG] Message 24 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 397837 through the exchange using routing key: 0
+[DEBUG] Message 25 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274857 through the exchange using routing key: 0
+[DEBUG] Message 26 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274857 through the exchange using routing key: 0
+[DEBUG] Message 27 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 28 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 29 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 30 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 173897 through the exchange using routing key: 0
+[DEBUG] Message 31 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 428449 through the exchange using routing key: 0
+[DEBUG] Message 32 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 341174 through the exchange using routing key: 0
+[DEBUG] Message 33 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340101 through the exchange using routing key: 0
+[DEBUG] Message 34 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 433356 through the exchange using routing key: 0
+[DEBUG] Message 35 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340676 through the exchange using routing key: 0
+[DEBUG] Message 36 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 126889 through the exchange using routing key: 0
+[DEBUG] Message 37 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 126889 through the exchange using routing key: 0
+[DEBUG] Message 38 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 126889 through the exchange using routing key: 0
+[DEBUG] Message 39 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 126889 through the exchange using routing key: 0
+[DEBUG] Message 40 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 41 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 42 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 43 acknowledged
+[INFO] Received FINAL packet from the client 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":129,"header":"FINAL"}' enviado directamente.
+[INFO] Sent FINAL packet for client 0 through the routing key 0
+[INFO] Received FINAL packet from the client 0
+[WARNING] Missing packets to reach the final count
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8844 through the exchange using routing key: 0
+[DEBUG] Message 46 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 710 through the exchange using routing key: 0
+[DEBUG] Message 47 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 710 through the exchange using routing key: 0
+[DEBUG] Message 48 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9087 through the exchange using routing key: 0
+[DEBUG] Message 49 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9087 through the exchange using routing key: 0
+[DEBUG] Message 50 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1408 through the exchange using routing key: 0
+[DEBUG] Message 51 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1408 through the exchange using routing key: 0
+[DEBUG] Message 52 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 524 through the exchange using routing key: 0
+[DEBUG] Message 53 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 4584 through the exchange using routing key: 0
+[DEBUG] Message 54 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5 through the exchange using routing key: 0
+[DEBUG] Message 55 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5 through the exchange using routing key: 0
+[DEBUG] Message 56 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9273 through the exchange using routing key: 0
+[DEBUG] Message 57 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11517 through the exchange using routing key: 0
+[DEBUG] Message 58 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8012 through the exchange using routing key: 0
+[DEBUG] Message 59 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8012 through the exchange using routing key: 0
+[DEBUG] Message 60 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8012 through the exchange using routing key: 0
+[DEBUG] Message 61 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9691 through the exchange using routing key: 0
+[DEBUG] Message 62 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9691 through the exchange using routing key: 0
+[DEBUG] Message 63 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 902 through the exchange using routing key: 0
+[DEBUG] Message 64 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340101 through the exchange using routing key: 0
+[DEBUG] Message 65 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 433356 through the exchange using routing key: 0
+[DEBUG] Message 66 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 433356 through the exchange using routing key: 0
+[DEBUG] Message 67 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340676 through the exchange using routing key: 0
+[DEBUG] Message 68 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10634 through the exchange using routing key: 0
+[DEBUG] Message 69 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 755 through the exchange using routing key: 0
+[DEBUG] Message 70 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36929 through the exchange using routing key: 0
+[DEBUG] Message 71 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36929 through the exchange using routing key: 0
+[DEBUG] Message 72 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9208 through the exchange using routing key: 0
+[DEBUG] Message 73 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 13685 through the exchange using routing key: 0
+[DEBUG] Message 74 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 13685 through the exchange using routing key: 0
+[DEBUG] Message 75 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9614 through the exchange using routing key: 0
+[DEBUG] Message 76 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 688 through the exchange using routing key: 0
+[DEBUG] Message 77 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 103 through the exchange using routing key: 0
+[DEBUG] Message 78 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 33542 through the exchange using routing key: 0
+[DEBUG] Message 79 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 126889 through the exchange using routing key: 0
+[DEBUG] Message 80 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 126889 through the exchange using routing key: 0
+[DEBUG] Message 81 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11066 through the exchange using routing key: 0
+[DEBUG] Message 82 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11066 through the exchange using routing key: 0
+[DEBUG] Message 83 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2074 through the exchange using routing key: 0
+[DEBUG] Message 84 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2074 through the exchange using routing key: 0
+[DEBUG] Message 85 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11863 through the exchange using routing key: 0
+[DEBUG] Message 86 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11863 through the exchange using routing key: 0
+[DEBUG] Message 87 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11000 through the exchange using routing key: 0
+[DEBUG] Message 88 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11000 through the exchange using routing key: 0
+[DEBUG] Message 89 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9737 through the exchange using routing key: 0
+[DEBUG] Message 90 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9737 through the exchange using routing key: 0
+[DEBUG] Message 91 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11780 through the exchange using routing key: 0
+[DEBUG] Message 92 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5894 through the exchange using routing key: 0
+[DEBUG] Message 93 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1775 through the exchange using routing key: 0
+[DEBUG] Message 94 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8839 through the exchange using routing key: 0
+[DEBUG] Message 95 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8839 through the exchange using routing key: 0
+[DEBUG] Message 96 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10329 through the exchange using routing key: 0
+[DEBUG] Message 97 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8963 through the exchange using routing key: 0
+[DEBUG] Message 98 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8963 through the exchange using routing key: 0
+[DEBUG] Message 99 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8068 through the exchange using routing key: 0
+[DEBUG] Message 100 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8512 through the exchange using routing key: 0
+[DEBUG] Message 101 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10428 through the exchange using routing key: 0
+[DEBUG] Message 102 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2293 through the exchange using routing key: 0
+[DEBUG] Message 103 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 48787 through the exchange using routing key: 0
+[DEBUG] Message 104 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1642 through the exchange using routing key: 0
+[DEBUG] Message 105 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1642 through the exchange using routing key: 0
+[DEBUG] Message 106 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 107 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 108 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 109 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 110 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 111 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10533 through the exchange using routing key: 0
+[DEBUG] Message 112 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 79593 through the exchange using routing key: 0
+[DEBUG] Message 113 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 3512 through the exchange using routing key: 0
+[DEBUG] Message 114 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2292 through the exchange using routing key: 0
+[DEBUG] Message 115 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8984 through the exchange using routing key: 0
+[DEBUG] Message 116 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8467 through the exchange using routing key: 0
+[DEBUG] Message 117 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8467 through the exchange using routing key: 0
+[DEBUG] Message 118 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 522 through the exchange using routing key: 0
+[DEBUG] Message 119 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 522 through the exchange using routing key: 0
+[DEBUG] Message 120 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 27303 through the exchange using routing key: 0
+[DEBUG] Message 121 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 27303 through the exchange using routing key: 0
+[DEBUG] Message 122 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 87729 through the exchange using routing key: 0
+[DEBUG] Message 123 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 87729 through the exchange using routing key: 0
+[DEBUG] Message 124 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 28313 through the exchange using routing key: 0
+[DEBUG] Message 125 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 241 through the exchange using routing key: 0
+[DEBUG] Message 126 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 241 through the exchange using routing key: 0
+[DEBUG] Message 127 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 6950 through the exchange using routing key: 0
+[DEBUG] Message 128 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 101 through the exchange using routing key: 0
+[DEBUG] Message 129 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 101 through the exchange using routing key: 0
+[DEBUG] Message 130 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 63020 through the exchange using routing key: 0
+[DEBUG] Message 131 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 63020 through the exchange using routing key: 0
+[DEBUG] Message 132 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 25296 through the exchange using routing key: 0
+[DEBUG] Message 133 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8844 through the exchange using routing key: 0
+[DEBUG] Message 134 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 710 through the exchange using routing key: 0
+[DEBUG] Message 135 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9087 through the exchange using routing key: 0
+[DEBUG] Message 136 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1408 through the exchange using routing key: 0
+[DEBUG] Message 137 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1408 through the exchange using routing key: 0
+[DEBUG] Message 138 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1408 through the exchange using routing key: 0
+[DEBUG] Message 139 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 524 through the exchange using routing key: 0
+[DEBUG] Message 140 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 524 through the exchange using routing key: 0
+[DEBUG] Message 141 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 4584 through the exchange using routing key: 0
+[DEBUG] Message 142 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5 through the exchange using routing key: 0
+[DEBUG] Message 143 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9273 through the exchange using routing key: 0
+[DEBUG] Message 144 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11517 through the exchange using routing key: 0
+[DEBUG] Message 145 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11517 through the exchange using routing key: 0
+[DEBUG] Message 146 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8012 through the exchange using routing key: 0
+[DEBUG] Message 147 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9691 through the exchange using routing key: 0
+[DEBUG] Message 148 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9691 through the exchange using routing key: 0
+[DEBUG] Message 149 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 902 through the exchange using routing key: 0
+[DEBUG] Message 150 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 902 through the exchange using routing key: 0
+[DEBUG] Message 151 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10634 through the exchange using routing key: 0
+[DEBUG] Message 152 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 755 through the exchange using routing key: 0
+[DEBUG] Message 153 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 755 through the exchange using routing key: 0
+[DEBUG] Message 154 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 755 through the exchange using routing key: 0
+[DEBUG] Message 155 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36929 through the exchange using routing key: 0
+[DEBUG] Message 156 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36929 through the exchange using routing key: 0
+[DEBUG] Message 157 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2636 through the exchange using routing key: 0
+[DEBUG] Message 158 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11395 through the exchange using routing key: 0
+[DEBUG] Message 159 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 193 through the exchange using routing key: 0
+[DEBUG] Message 160 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 193 through the exchange using routing key: 0
+[DEBUG] Message 161 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1587 through the exchange using routing key: 0
+[DEBUG] Message 162 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1587 through the exchange using routing key: 0
+[DEBUG] Message 163 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2064 through the exchange using routing key: 0
+[DEBUG] Message 164 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9208 through the exchange using routing key: 0
+[DEBUG] Message 165 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 13685 through the exchange using routing key: 0
+[DEBUG] Message 166 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 13685 through the exchange using routing key: 0
+[DEBUG] Message 167 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 13685 through the exchange using routing key: 0
+[DEBUG] Message 168 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9614 through the exchange using routing key: 0
+[DEBUG] Message 169 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9614 through the exchange using routing key: 0
+[DEBUG] Message 170 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9614 through the exchange using routing key: 0
+[DEBUG] Message 171 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 688 through the exchange using routing key: 0
+[DEBUG] Message 172 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 688 through the exchange using routing key: 0
+[DEBUG] Message 173 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 688 through the exchange using routing key: 0
+[DEBUG] Message 174 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 103 through the exchange using routing key: 0
+[DEBUG] Message 175 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 103 through the exchange using routing key: 0
+[DEBUG] Message 176 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 33542 through the exchange using routing key: 0
+[DEBUG] Message 177 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 33542 through the exchange using routing key: 0
+[DEBUG] Message 178 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11066 through the exchange using routing key: 0
+[DEBUG] Message 179 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2074 through the exchange using routing key: 0
+[DEBUG] Message 180 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2074 through the exchange using routing key: 0
+[DEBUG] Message 181 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11863 through the exchange using routing key: 0
+[DEBUG] Message 182 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11863 through the exchange using routing key: 0
+[DEBUG] Message 183 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11863 through the exchange using routing key: 0
+[DEBUG] Message 184 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9331 through the exchange using routing key: 0
+[DEBUG] Message 185 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10731 through the exchange using routing key: 0
+[DEBUG] Message 186 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11000 through the exchange using routing key: 0
+[DEBUG] Message 187 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11000 through the exchange using routing key: 0
+[DEBUG] Message 188 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9737 through the exchange using routing key: 0
+[DEBUG] Message 189 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9737 through the exchange using routing key: 0
+[DEBUG] Message 190 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9737 through the exchange using routing key: 0
+[DEBUG] Message 191 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11780 through the exchange using routing key: 0
+[DEBUG] Message 192 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11780 through the exchange using routing key: 0
+[DEBUG] Message 193 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5894 through the exchange using routing key: 0
+[DEBUG] Message 194 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1775 through the exchange using routing key: 0
+[DEBUG] Message 195 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1775 through the exchange using routing key: 0
+[DEBUG] Message 196 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8839 through the exchange using routing key: 0
+[DEBUG] Message 197 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10329 through the exchange using routing key: 0
+[DEBUG] Message 198 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10329 through the exchange using routing key: 0
+[DEBUG] Message 199 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8963 through the exchange using routing key: 0
+[DEBUG] Message 200 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8068 through the exchange using routing key: 0
+[DEBUG] Message 201 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8068 through the exchange using routing key: 0
+[DEBUG] Message 202 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8512 through the exchange using routing key: 0
+[DEBUG] Message 203 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8512 through the exchange using routing key: 0
+[DEBUG] Message 204 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9495 through the exchange using routing key: 0
+[DEBUG] Message 205 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9495 through the exchange using routing key: 0
+[DEBUG] Message 206 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10428 through the exchange using routing key: 0
+[DEBUG] Message 207 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2293 through the exchange using routing key: 0
+[DEBUG] Message 208 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 48787 through the exchange using routing key: 0
+[DEBUG] Message 209 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 48787 through the exchange using routing key: 0
+[DEBUG] Message 210 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 48787 through the exchange using routing key: 0
+[DEBUG] Message 211 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1642 through the exchange using routing key: 0
+[DEBUG] Message 212 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36196 through the exchange using routing key: 0
+[DEBUG] Message 213 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10533 through the exchange using routing key: 0
+[DEBUG] Message 214 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10533 through the exchange using routing key: 0
+[DEBUG] Message 215 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 79593 through the exchange using routing key: 0
+[DEBUG] Message 216 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 3512 through the exchange using routing key: 0
+[DEBUG] Message 217 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 888 through the exchange using routing key: 0
+[DEBUG] Message 218 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2292 through the exchange using routing key: 0
+[DEBUG] Message 219 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2292 through the exchange using routing key: 0
+[DEBUG] Message 220 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8984 through the exchange using routing key: 0
+[DEBUG] Message 221 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8984 through the exchange using routing key: 0
+[DEBUG] Message 222 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8984 through the exchange using routing key: 0
+[DEBUG] Message 223 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8467 through the exchange using routing key: 0
+[DEBUG] Message 224 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 522 through the exchange using routing key: 0
+[DEBUG] Message 225 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 27303 through the exchange using routing key: 0
+[DEBUG] Message 226 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 87729 through the exchange using routing key: 0
+[DEBUG] Message 227 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 87729 through the exchange using routing key: 0
+[DEBUG] Message 228 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 87729 through the exchange using routing key: 0
+[DEBUG] Message 229 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 87729 through the exchange using routing key: 0
+[DEBUG] Message 230 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8587 through the exchange using routing key: 0
+[DEBUG] Message 231 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11596 through the exchange using routing key: 0
+[DEBUG] Message 232 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11596 through the exchange using routing key: 0
+[DEBUG] Message 233 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36593 through the exchange using routing key: 0
+[DEBUG] Message 234 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36593 through the exchange using routing key: 0
+[DEBUG] Message 235 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10427 through the exchange using routing key: 0
+[DEBUG] Message 236 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1637 through the exchange using routing key: 0
+[DEBUG] Message 237 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1637 through the exchange using routing key: 0
+[DEBUG] Message 238 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8831 through the exchange using routing key: 0
+[DEBUG] Message 239 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36955 through the exchange using routing key: 0
+[DEBUG] Message 240 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 28313 through the exchange using routing key: 0
+[DEBUG] Message 241 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 28313 through the exchange using routing key: 0
+[DEBUG] Message 242 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 241 through the exchange using routing key: 0
+[DEBUG] Message 243 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 241 through the exchange using routing key: 0
+[DEBUG] Message 244 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 241 through the exchange using routing key: 0
+[DEBUG] Message 245 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 6950 through the exchange using routing key: 0
+[DEBUG] Message 246 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 101 through the exchange using routing key: 0
+[DEBUG] Message 247 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 63020 through the exchange using routing key: 0
+[DEBUG] Message 248 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 25296 through the exchange using routing key: 0
+[DEBUG] Message 249 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2636 through the exchange using routing key: 0
+[DEBUG] Message 250 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2636 through the exchange using routing key: 0
+[DEBUG] Message 251 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2636 through the exchange using routing key: 0
+[DEBUG] Message 252 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11395 through the exchange using routing key: 0
+[DEBUG] Message 253 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 193 through the exchange using routing key: 0
+[DEBUG] Message 254 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 193 through the exchange using routing key: 0
+[DEBUG] Message 255 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1587 through the exchange using routing key: 0
+[DEBUG] Message 256 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1587 through the exchange using routing key: 0
+[DEBUG] Message 257 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2064 through the exchange using routing key: 0
+[DEBUG] Message 258 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9331 through the exchange using routing key: 0
+[DEBUG] Message 259 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9331 through the exchange using routing key: 0
+[DEBUG] Message 260 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9331 through the exchange using routing key: 0
+[DEBUG] Message 261 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10731 through the exchange using routing key: 0
+[DEBUG] Message 262 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10731 through the exchange using routing key: 0
+[DEBUG] Message 263 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10731 through the exchange using routing key: 0
+[DEBUG] Message 264 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9495 through the exchange using routing key: 0
+[DEBUG] Message 265 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9495 through the exchange using routing key: 0
+[DEBUG] Message 266 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9495 through the exchange using routing key: 0
+[DEBUG] Message 267 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9495 through the exchange using routing key: 0
+[DEBUG] Message 268 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9495 through the exchange using routing key: 0
+[DEBUG] Message 269 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 888 through the exchange using routing key: 0
+[DEBUG] Message 270 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8587 through the exchange using routing key: 0
+[DEBUG] Message 271 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11596 through the exchange using routing key: 0
+[DEBUG] Message 272 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11596 through the exchange using routing key: 0
+[DEBUG] Message 273 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11596 through the exchange using routing key: 0
+[DEBUG] Message 274 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8011 through the exchange using routing key: 0
+[DEBUG] Message 275 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8011 through the exchange using routing key: 0
+[DEBUG] Message 276 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8011 through the exchange using routing key: 0
+[DEBUG] Message 277 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36593 through the exchange using routing key: 0
+[DEBUG] Message 278 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36593 through the exchange using routing key: 0
+[DEBUG] Message 279 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 46094 through the exchange using routing key: 0
+[DEBUG] Message 280 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10427 through the exchange using routing key: 0
+[DEBUG] Message 281 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10427 through the exchange using routing key: 0
+[DEBUG] Message 282 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10427 through the exchange using routing key: 0
+[DEBUG] Message 283 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10427 through the exchange using routing key: 0
+[DEBUG] Message 284 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10427 through the exchange using routing key: 0
+[DEBUG] Message 285 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 306 through the exchange using routing key: 0
+[DEBUG] Message 286 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 306 through the exchange using routing key: 0
+[DEBUG] Message 287 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9350 through the exchange using routing key: 0
+[DEBUG] Message 288 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2124 through the exchange using routing key: 0
+[DEBUG] Message 289 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1637 through the exchange using routing key: 0
+[DEBUG] Message 290 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 1637 through the exchange using routing key: 0
+[DEBUG] Message 291 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8831 through the exchange using routing key: 0
+[DEBUG] Message 292 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8831 through the exchange using routing key: 0
+[DEBUG] Message 293 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 36955 through the exchange using routing key: 0
+[DEBUG] Message 294 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8011 through the exchange using routing key: 0
+[DEBUG] Message 295 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 8011 through the exchange using routing key: 0
+[DEBUG] Message 296 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 46094 through the exchange using routing key: 0
+[DEBUG] Message 297 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 306 through the exchange using routing key: 0
+[DEBUG] Message 298 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 306 through the exchange using routing key: 0
+[DEBUG] Message 299 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9350 through the exchange using routing key: 0
+[DEBUG] Message 300 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9350 through the exchange using routing key: 0
+[DEBUG] Message 301 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2124 through the exchange using routing key: 0
+[DEBUG] Message 302 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2124 through the exchange using routing key: 0
+[DEBUG] Message 303 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9739 through the exchange using routing key: 0
+[DEBUG] Message 304 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9024 through the exchange using routing key: 0
+[DEBUG] Message 305 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 37233 through the exchange using routing key: 0
+[DEBUG] Message 306 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 37233 through the exchange using routing key: 0
+[DEBUG] Message 307 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 35588 through the exchange using routing key: 0
+[DEBUG] Message 308 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 35588 through the exchange using routing key: 0
+[DEBUG] Message 309 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2019 through the exchange using routing key: 0
+[DEBUG] Message 310 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9255 through the exchange using routing key: 0
+[DEBUG] Message 311 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9739 through the exchange using routing key: 0
+[DEBUG] Message 312 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9739 through the exchange using routing key: 0
+[DEBUG] Message 313 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9386 through the exchange using routing key: 0
+[DEBUG] Message 314 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 7984 through the exchange using routing key: 0
+[DEBUG] Message 315 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 7984 through the exchange using routing key: 0
+[DEBUG] Message 316 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10909 through the exchange using routing key: 0
+[DEBUG] Message 317 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 507 through the exchange using routing key: 0
+[DEBUG] Message 318 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10440 through the exchange using routing key: 0
+[DEBUG] Message 319 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 788 through the exchange using routing key: 0
+[DEBUG] Message 320 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 788 through the exchange using routing key: 0
+[DEBUG] Message 321 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 788 through the exchange using routing key: 0
+[DEBUG] Message 322 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10872 through the exchange using routing key: 0
+[DEBUG] Message 323 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10872 through the exchange using routing key: 0
+[DEBUG] Message 324 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11858 through the exchange using routing key: 0
+[DEBUG] Message 325 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5550 through the exchange using routing key: 0
+[DEBUG] Message 326 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2088 through the exchange using routing key: 0
+[DEBUG] Message 327 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9024 through the exchange using routing key: 0
+[DEBUG] Message 328 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 37233 through the exchange using routing key: 0
+[DEBUG] Message 329 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 35588 through the exchange using routing key: 0
+[DEBUG] Message 330 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2019 through the exchange using routing key: 0
+[DEBUG] Message 331 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9255 through the exchange using routing key: 0
+[DEBUG] Message 332 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9255 through the exchange using routing key: 0
+[DEBUG] Message 333 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9255 through the exchange using routing key: 0
+[DEBUG] Message 334 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 867 through the exchange using routing key: 0
+[DEBUG] Message 335 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 867 through the exchange using routing key: 0
+[DEBUG] Message 336 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 867 through the exchange using routing key: 0
+[DEBUG] Message 337 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 78 through the exchange using routing key: 0
+[DEBUG] Message 338 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10442 through the exchange using routing key: 0
+[DEBUG] Message 339 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9607 through the exchange using routing key: 0
+[DEBUG] Message 340 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9607 through the exchange using routing key: 0
+[DEBUG] Message 341 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 17585 through the exchange using routing key: 0
+[DEBUG] Message 342 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9479 through the exchange using routing key: 0
+[DEBUG] Message 343 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11969 through the exchange using routing key: 0
+[DEBUG] Message 344 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9386 through the exchange using routing key: 0
+[DEBUG] Message 345 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 7984 through the exchange using routing key: 0
+[DEBUG] Message 346 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 319 through the exchange using routing key: 0
+[DEBUG] Message 347 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 319 through the exchange using routing key: 0
+[DEBUG] Message 348 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 319 through the exchange using routing key: 0
+[DEBUG] Message 349 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10909 through the exchange using routing key: 0
+[DEBUG] Message 350 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 507 through the exchange using routing key: 0
+[DEBUG] Message 351 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 507 through the exchange using routing key: 0
+[DEBUG] Message 352 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 507 through the exchange using routing key: 0
+[DEBUG] Message 353 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 251 through the exchange using routing key: 0
+[DEBUG] Message 354 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 280 through the exchange using routing key: 0
+[DEBUG] Message 355 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10440 through the exchange using routing key: 0
+[DEBUG] Message 356 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10440 through the exchange using routing key: 0
+[DEBUG] Message 357 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10440 through the exchange using routing key: 0
+[DEBUG] Message 358 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 788 through the exchange using routing key: 0
+[DEBUG] Message 359 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10872 through the exchange using routing key: 0
+[DEBUG] Message 360 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11858 through the exchange using routing key: 0
+[DEBUG] Message 361 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 576 through the exchange using routing key: 0
+[DEBUG] Message 362 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 5550 through the exchange using routing key: 0
+[DEBUG] Message 363 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 2088 through the exchange using routing key: 0
+[DEBUG] Message 364 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 867 through the exchange using routing key: 0
+[DEBUG] Message 365 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 78 through the exchange using routing key: 0
+[DEBUG] Message 366 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 10442 through the exchange using routing key: 0
+[DEBUG] Message 367 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9607 through the exchange using routing key: 0
+[DEBUG] Message 368 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9607 through the exchange using routing key: 0
+[DEBUG] Message 369 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 17585 through the exchange using routing key: 0
+[DEBUG] Message 370 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 9479 through the exchange using routing key: 0
+[DEBUG] Message 371 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 11969 through the exchange using routing key: 0
+[DEBUG] Message 372 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 319 through the exchange using routing key: 0
+[DEBUG] Message 373 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 251 through the exchange using routing key: 0
+[DEBUG] Message 374 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 251 through the exchange using routing key: 0
+[DEBUG] Message 375 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 280 through the exchange using routing key: 0
+[DEBUG] Message 376 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 576 through the exchange using routing key: 0
+[DEBUG] Message 377 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 313369 through the exchange using routing key: 0
+[DEBUG] Message 378 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 331313 through the exchange using routing key: 0
+[DEBUG] Message 379 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 331313 through the exchange using routing key: 0
+[DEBUG] Message 380 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 402298 through the exchange using routing key: 0
+[DEBUG] Message 381 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 402298 through the exchange using routing key: 0
+[DEBUG] Message 382 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 313369 through the exchange using routing key: 0
+[DEBUG] Message 383 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 331313 through the exchange using routing key: 0
+[DEBUG] Message 384 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 331313 through the exchange using routing key: 0
+[DEBUG] Message 385 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340402 through the exchange using routing key: 0
+[DEBUG] Message 386 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 402298 through the exchange using routing key: 0
+[DEBUG] Message 387 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 299641 through the exchange using routing key: 0
+[DEBUG] Message 388 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 299641 through the exchange using routing key: 0
+[DEBUG] Message 389 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340402 through the exchange using routing key: 0
+[DEBUG] Message 390 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340402 through the exchange using routing key: 0
+[DEBUG] Message 391 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 384682 through the exchange using routing key: 0
+[DEBUG] Message 392 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 44010 through the exchange using routing key: 0
+[DEBUG] Message 393 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 381288 through the exchange using routing key: 0
+[DEBUG] Message 394 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 376290 through the exchange using routing key: 0
+[DEBUG] Message 395 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274870 through the exchange using routing key: 0
+[DEBUG] Message 396 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274870 through the exchange using routing key: 0
+[DEBUG] Message 397 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274870 through the exchange using routing key: 0
+[DEBUG] Message 398 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 393457 through the exchange using routing key: 0
+[DEBUG] Message 399 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 393457 through the exchange using routing key: 0
+[DEBUG] Message 400 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 393457 through the exchange using routing key: 0
+[DEBUG] Message 401 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 299641 through the exchange using routing key: 0
+[DEBUG] Message 402 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 299641 through the exchange using routing key: 0
+[DEBUG] Message 403 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 299641 through the exchange using routing key: 0
+[DEBUG] Message 404 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 384682 through the exchange using routing key: 0
+[DEBUG] Message 405 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 384682 through the exchange using routing key: 0
+[DEBUG] Message 406 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 44010 through the exchange using routing key: 0
+[DEBUG] Message 407 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 381288 through the exchange using routing key: 0
+[DEBUG] Message 408 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 381288 through the exchange using routing key: 0
+[DEBUG] Message 409 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 376290 through the exchange using routing key: 0
+[DEBUG] Message 410 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274870 through the exchange using routing key: 0
+[DEBUG] Message 411 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274870 through the exchange using routing key: 0
+[DEBUG] Message 412 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 393457 through the exchange using routing key: 0
+[DEBUG] Message 413 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 356305 through the exchange using routing key: 0
+[DEBUG] Message 414 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 356305 through the exchange using routing key: 0
+[DEBUG] Message 415 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 195590 through the exchange using routing key: 0
+[DEBUG] Message 416 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 195590 through the exchange using routing key: 0
+[DEBUG] Message 417 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 262841 through the exchange using routing key: 0
+[DEBUG] Message 418 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 262841 through the exchange using routing key: 0
+[DEBUG] Message 419 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 324542 through the exchange using routing key: 0
+[DEBUG] Message 420 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340837 through the exchange using routing key: 0
+[DEBUG] Message 421 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340837 through the exchange using routing key: 0
+[DEBUG] Message 422 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340837 through the exchange using routing key: 0
+[DEBUG] Message 423 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 195590 through the exchange using routing key: 0
+[DEBUG] Message 424 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 262841 through the exchange using routing key: 0
+[DEBUG] Message 425 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 262841 through the exchange using routing key: 0
+[DEBUG] Message 426 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 324542 through the exchange using routing key: 0
+[DEBUG] Message 427 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 324542 through the exchange using routing key: 0
+[DEBUG] Message 428 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 324542 through the exchange using routing key: 0
+[DEBUG] Message 429 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 324542 through the exchange using routing key: 0
+[DEBUG] Message 430 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340837 through the exchange using routing key: 0
+[DEBUG] Message 431 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340837 through the exchange using routing key: 0
+[DEBUG] Message 432 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 263115 through the exchange using routing key: 0
+[DEBUG] Message 433 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 397837 through the exchange using routing key: 0
+[DEBUG] Message 434 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 263115 through the exchange using routing key: 0
+[DEBUG] Message 435 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 397837 through the exchange using routing key: 0
+[DEBUG] Message 436 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274857 through the exchange using routing key: 0
+[DEBUG] Message 437 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 274857 through the exchange using routing key: 0
+[DEBUG] Message 438 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 173897 through the exchange using routing key: 0
+[DEBUG] Message 439 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 173897 through the exchange using routing key: 0
+[DEBUG] Message 440 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 173897 through the exchange using routing key: 0
+[DEBUG] Message 441 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 173897 through the exchange using routing key: 0
+[DEBUG] Message 442 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 428449 through the exchange using routing key: 0
+[DEBUG] Message 443 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 341174 through the exchange using routing key: 0
+[DEBUG] Message 444 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 173897 through the exchange using routing key: 0
+[DEBUG] Message 445 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 428449 through the exchange using routing key: 0
+[DEBUG] Message 446 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 428449 through the exchange using routing key: 0
+[DEBUG] Message 447 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 341174 through the exchange using routing key: 0
+[DEBUG] Message 448 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 341174 through the exchange using routing key: 0
+[DEBUG] Message 449 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 450 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 451 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 452 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 453 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 358962 through the exchange using routing key: 0
+[DEBUG] Message 454 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340101 through the exchange using routing key: 0
+[DEBUG] Message 455 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 433356 through the exchange using routing key: 0
+[DEBUG] Message 456 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340676 through the exchange using routing key: 0
+[DEBUG] Message 457 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340676 through the exchange using routing key: 0
+[DEBUG] Message 458 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340101 through the exchange using routing key: 0
+[DEBUG] Message 459 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 433356 through the exchange using routing key: 0
+[DEBUG] Message 460 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340676 through the exchange using routing key: 0
+[DEBUG] Message 461 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 340676 through the exchange using routing key: 0
+[DEBUG] Message 462 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 126889 through the exchange using routing key: 0
+[DEBUG] Message 463 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 126889 through the exchange using routing key: 0
+[DEBUG] Message 464 acknowledged
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent movie with id: 126889 through the exchange using routing key: 0
+[DEBUG] Message 465 acknowledged
+[INFO] Received FINAL packet from the client 1
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] Sent message to exchange router_negative_sentiment with routing key 0
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":129,"header":"FINAL"}' enviado directamente.
+[INFO] Sent FINAL packet for client 1 through the routing key 0
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue
+[INFO] [Middleware] Declarando exchange 'router_negative_sentiment' de tipo 'direct'...
+[INFO] Waiting for messages in sentiment_negative_queue

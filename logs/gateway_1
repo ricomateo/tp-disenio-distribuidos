@@ -1,0 +1,450 @@
+[INFO] [Middleware] Declarando exchange 'gateway' de tipo 'direct'...
+[WARNING] [Gateway] No counter file found at clients_counter.txt, starting with 0
+[INFO] [LEADER_ELECTION] Received ELECTION message with leader ID: 0
+[INFO] [LEADER_ELECTION] Sent ELECTION message with ID 1 to peer gateway
+[INFO] [LEADER_ELECTION] Received ELECTION message with leader ID: 1
+[INFO] [LEADER_ELECTION] Sent LEADER message with ID 1 to peer gateway
+[INFO] [LEADER_ELECTION] New leader elected with ID: 1
+[INFO] Waiting for incoming replica messages
+[INFO] [Gateway] Escuchando en 0.0.0.0:9999
+[INFO] [LEADER_ELECTION] Sent LEADER message with ID 1 to peer gateway
+[DEBUG] Received client_count_request message
+[INFO] [Gateway] Nueva conexión de ('172.18.0.68', 43580)
+[INFO] [Middleware] Declarando exchange 'gateway' de tipo 'direct'...
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[INFO] [Middleware] Declarando cola '0' (durable=True)...
+[INFO] [Middleware] Enlazando cola '0' al exchange 'deliver'...
+RECEIVED MSG_TYPE = 0
+[INFO] [Gateway] Nueva conexión de ('172.18.0.67', 54816)
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+[INFO] [Middleware] Declarando exchange 'gateway' de tipo 'direct'...
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 2
+[DEBUG] [Gateway - Client 0] Archivo CSV recibido correctamente.
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":4,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 0
+RECEIVED MSG_TYPE = 1
+[INFO] [Middleware] Declarando exchange 'deliver' de tipo 'direct'...
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[INFO] [Middleware] Declarando cola '1' (durable=True)...
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[INFO] [Middleware] Enlazando cola '1' al exchange 'deliver'...
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 0
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+RECEIVED MSG_TYPE = 2
+[DEBUG] [Gateway - Client 1] Archivo CSV recibido correctamente.
+[DEBUG] Sent message to exchange gateway with routing key movies_metadata.csv
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":4,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 0
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 2
+[DEBUG] [Gateway - Client 0] Archivo CSV recibido correctamente.
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":33,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 0
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+RECEIVED MSG_TYPE = 2
+[DEBUG] [Gateway - Client 1] Archivo CSV recibido correctamente.
+[DEBUG] Sent message to exchange gateway with routing key ratings.csv
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":33,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 0
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 2
+[DEBUG] [Gateway - Client 0] Archivo CSV recibido correctamente.
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] [Middleware] FinalPacket b'{"client_id":0,"count":46,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 3
+[INFO] [Client 0] Escuchando resultados en deliver...
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 1
+[INFO] Waiting for messages in 0
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+RECEIVED MSG_TYPE = 2
+[DEBUG] [Gateway - Client 1] Archivo CSV recibido correctamente.
+[DEBUG] Sent message to exchange gateway with routing key credits.csv
+[DEBUG] [Middleware] FinalPacket b'{"client_id":1,"count":46,"header":"FINAL"}' enviado directamente.
+RECEIVED MSG_TYPE = 3
+[INFO] [Client 1] Escuchando resultados en deliver...
+[INFO] Waiting for messages in 1
+[DEBUG] [Gateway  - Client 0 - RESULT] Resultado final recibido:
+{"response": {"query": 2, "result": [{"country": "United States of America", "budget": 8137769947}, {"country": "United Kingdom", "budget": 124959461}, {"country": "India", "budget": 109753848}, {"country": "Russia", "budget": 71900614}, {"country": "France", "budget": 69228000}]}}
+[DEBUG] [Gateway  - Client 0 - RESULT] Resultado final recibido:
+{"response": {"query": 1, "result": [{"id": 58429, "genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]", "title": "La Cienaga"}]}}
+[DEBUG] [Gateway  - Client 0 - RESULT] Resultado final recibido:
+{"response": {"query": 1, "result": [{"id": 58429, "genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]", "title": "La Cienaga"}]}}
+[DEBUG] [Gateway  - Client 1 - RESULT] Resultado final recibido:
+{"response": {"query": 2, "result": [{"country": "United States of America", "budget": 8137769947}, {"country": "United Kingdom", "budget": 124959461}, {"country": "India", "budget": 109753848}, {"country": "Russia", "budget": 71900614}, {"country": "France", "budget": 69228000}]}}
+[DEBUG] [Gateway  - Client 1 - RESULT] Resultado final recibido:
+{"response": {"query": 1, "result": [{"genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]", "title": "La Cienaga", "id": 58429}]}}
+[DEBUG] [Gateway  - Client 1 - RESULT] Resultado final recibido:
+{"response": {"query": 1, "result": [{"genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 18, 'name': 'Drama'}]", "title": "La Cienaga", "id": 58429}]}}
+[DEBUG] [Gateway  - Client 0 - RESULT] Resultado final recibido:
+{"response": {"query": 3, "result": []}}
+[DEBUG] [Gateway  - Client 0 - RESULT] Resultado final recibido:
+{"response": {"query": 5, "result": [{"feeling": "POSITIVE", "ratio": 16.8747, "count": 195}, {"feeling": "NEGATIVE", "ratio": 5.5442, "count": 129}]}}
+[DEBUG] [Gateway  - Client 1 - RESULT] Resultado final recibido:
+{"response": {"query": 3, "result": []}}
+[DEBUG] [Gateway  - Client 1 - RESULT] Resultado final recibido:
+{"response": {"query": 5, "result": [{"feeling": "POSITIVE", "ratio": 16.8747, "count": 195}, {"feeling": "NEGATIVE", "ratio": 5.5442, "count": 129}]}}
+[DEBUG] [Gateway  - Client 1 - RESULT] Resultado final recibido:
+{"response": {"query": 5, "result": [{"feeling": "POSITIVE", "ratio": 16.8747, "count": 195}, {"feeling": "NEGATIVE", "ratio": 5.5442, "count": 129}]}}
