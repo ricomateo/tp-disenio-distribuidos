@@ -82,7 +82,7 @@ class LeaderElector:
                 # If no PING messages are received within the given time,
                 # trigger an election (the leader may be dead)
                 logging.info(
-                    "Current leader %s is dead. Starting new election.",
+                    "[LEADER_ELECTION] Current leader %s is dead. Starting new election.",
                     self.current_leader
                 )
                 self.participating = True
