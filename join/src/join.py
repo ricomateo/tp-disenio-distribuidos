@@ -48,7 +48,7 @@ class JoinNode:
         self.packets_sent_by_client = {}
         self.processed_messages_by_client = {}
         self.processed_messages_by_client_queue_2 = {}
-        self.dead_clients_tracker = DeadClientsTracker()
+        self.dead_clients_tracker = DeadClientsTracker(is_join_node=True)
 
         self.keep_columns = None
         keep_columns = os.getenv("KEEP_COLUMNS", "")
