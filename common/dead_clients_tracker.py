@@ -14,7 +14,7 @@ class DeadClientsTracker:
     of dead client files.
     """
 
-    def __init__(self):
+    def __init__(self, is_join_node: bool):
         """
         Tries to load the dead clients from the DEAD_CLIENTS_FILE,
         and looks for dead client state files to remove (and removes them if there are any)
@@ -23,14 +23,17 @@ class DeadClientsTracker:
         """
         self.max_size = MAX_SIZE
         self.lock = threading.Lock()
+        self.is_join_node = is_join_node
         try:
             with open(DEAD_CLIENTS_FILE, "r", encoding="utf-8") as f:
                 self.dead_clients = json.loads(f.read())
         except Exception as e:
             logging.warning("Failed to read '%s' file. Error: %s", DEAD_CLIENTS_FILE, e)
             self.dead_clients = []
-
-        self._remove_leftover_files()
+        if self.is_join_node:
+            self._remove_join_leftover_files()
+        else:
+            self._remove_leftover_files()
 
     def set_client_as_dead(self, client_id):
         """
@@ -74,3 +77,9 @@ class DeadClientsTracker:
                 logging.error(
                     "Failed to remove file '%s'. Error: %s", client_state_file, e
                 )
+
+    def _remove_join_leftover_files(self):
+        """
+        """
+        # TODO
+        pass 
