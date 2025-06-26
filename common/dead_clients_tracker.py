@@ -4,6 +4,7 @@ import logging
 from common.atomic_write import atomic_write
 
 DEAD_CLIENTS_FILE = "dead_clients.json"
+MAX_SIZE = 1000
 
 
 class DeadClientsTracker:
@@ -17,12 +18,13 @@ class DeadClientsTracker:
         Tries to load the dead clients from the DEAD_CLIENTS_FILE,
         and looks for dead client state files to remove (and removes them if there are any)
         """
+        self.max_size = MAX_SIZE
         try:
             with open(DEAD_CLIENTS_FILE, "r", encoding="utf-8") as f:
-                self.dead_clients = set(json.loads(f.read()))
+                self.dead_clients = json.loads(f.read())
         except Exception as e:
             logging.warning("Failed to read '%s' file. Error: %s", DEAD_CLIENTS_FILE, e)
-            self.dead_clients = set()
+            self.dead_clients = []
 
         self._remove_leftover_files()
 
@@ -30,8 +32,11 @@ class DeadClientsTracker:
         """
         Sets the given client as dead
         """
-        self.dead_clients.add(client_id)
-        content = json.dumps(list(self.dead_clients))
+        self.dead_clients.append(client_id)
+        # Delete stale data
+        if len(self.dead_clients) > self.max_size:
+            self.dead_clients = self.dead_clients[MAX_SIZE // 10 :]
+        content = json.dumps(self.dead_clients)
         atomic_write(DEAD_CLIENTS_FILE, content)
 
     def client_is_dead(self, client_id):
