@@ -170,7 +170,7 @@ class ControlNode:
         with self.save_lock:
             try:
                 file = self.dead_clients_file
-                content = json.dumps(self.dead_clients)
+                content = json.dumps(list(self.dead_clients))
                 atomic_write(file, content)
                 logging.debug("Saved dead clients state.")
             except Exception as e:

@@ -45,7 +45,7 @@ AGGREGATOR_CALCULATOR_BUDGET_COUNTRY = 'aggregator_calculator_budget_country'
 AGGREGATOR_CALCULATOR_COUNT_ACTORS = 'aggregator_calculator_count_actors' 
 CONTROL = 'control'
 SLEEP_INTERVAL = '2'
-RESTART_INTERVAL = '5'
+RESTART_INTERVAL = '3'
 WORKER_PORT = '9000'
 HEALTH_PORT = '10000'
 
