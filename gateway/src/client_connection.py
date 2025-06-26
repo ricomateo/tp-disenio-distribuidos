@@ -144,6 +144,7 @@ class ClientConnection:
                        ch.stop_consuming() 
                        self.send_delete()
                        self.rabbitmq_receiver.delete_queue(str(self.client_id))
+                       return
                 else:
                     logging.warning(f"[Gateway - Client %s - RESULT] Packet recibido sin campo 'response'. Ignorado.", client_id)
 
