@@ -16,6 +16,7 @@ from common.leader_queue import LeaderQueue
 from common.packet import DataPacket, is_delete_packet, is_final_packet
 from common.worker_protocol import WorkerProtocol
 from common.atomic_write import atomic_write
+from common.dead_clients_tracker import DeadClientsTracker
 
 class JoinNode:
     """
@@ -47,6 +48,7 @@ class JoinNode:
         self.packets_sent_by_client = {}
         self.processed_messages_by_client = {}
         self.processed_messages_by_client_queue_2 = {}
+        self.dead_clients_tracker = DeadClientsTracker()
 
         self.keep_columns = None
         keep_columns = os.getenv("KEEP_COLUMNS", "")
@@ -124,11 +126,16 @@ class JoinNode:
             if header and is_delete_packet(header):
                 with self.lock:
                     self.output_rabbitmq.send_delete(client_id=client_id)
+                    self.dead_clients_tracker.set_client_as_dead(client_id)
                     self.clean(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             
             if is_final_packet(header):
+                # Ignore dead clients final packets
+                if self.dead_clients_tracker.client_is_dead(client_id):
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
                 count = int(packet['count'])
                 print(f" [*] Cola '{self.input_queue_1}' terminó.")
                 with self.lock:
@@ -143,8 +150,9 @@ class JoinNode:
                             client_id=client_id, node_id=self.node_id, count=count_send
                         )
                         print("merge + final del main fin")
-                        ch.basic_ack(delivery_tag=method.delivery_tag)
+                        self.dead_clients_tracker.set_client_as_dead(client_id)
                         self.clean(client_id)
+                        ch.basic_ack(delivery_tag=method.delivery_tag)
                         return
                     else:
                         print("activo main")
@@ -216,11 +224,15 @@ class JoinNode:
             if header and is_delete_packet(header):
                 with self.lock:
                     self.output_rabbitmq.send_delete(client_id=client_id)
+                    self.dead_clients_tracker.set_client_as_dead(client_id)
                     self.clean(client_id)
                 ch.basic_ack(delivery_tag=method.delivery_tag)
                 return
             
             if is_final_packet(header):
+                if self.dead_clients_tracker.client_is_dead(client_id):
+                    ch.basic_ack(delivery_tag=method.delivery_tag)
+                    return
                 print(f" [Join thread *]  Cola '{self.input_queue_2}' terminó.")
                 count = int(packet.get("count"))
                 print(f" [Join thread ✅] Count final ({count}) CONTRA con los datos acumulados ({len(self.processed_messages_by_client_queue_2[client_id])}) para el cliente {client_id}")
@@ -232,6 +244,7 @@ class JoinNode:
                         self.final_rabbitmq.send_final_with_node_id(
                             client_id=client_id, node_id=self.node_id, count=count_send
                         )
+                        self.dead_clients_tracker.set_client_as_dead(client_id)
                         print(f" [Join thread] Se mandó el final al cliente {client_id}.")
                         ch.basic_ack(delivery_tag=method.delivery_tag)
                         self.clean(client_id)
