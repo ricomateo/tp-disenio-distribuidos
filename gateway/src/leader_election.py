@@ -136,6 +136,7 @@ class LeaderElector:
 
     def handle_election_message(self, message):
         if self.am_i_leader():
+            self.send_leader(self.id)
             return
         leader_id = message.get("id")
         logging.info("[LEADER_ELECTION] Received ELECTION message with leader ID: %s", leader_id)
