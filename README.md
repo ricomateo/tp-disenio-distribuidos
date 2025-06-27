@@ -457,6 +457,65 @@ Para ello, cada vez que se conecta un nuevo cliente, el gateway líder broadcast
 
 Además, cuando una réplica se desconecta, al reconectarse le solicita el contador de clientes al líder. Esto es necesario porque puede darse el caso en el que se conecten nuevos clientes mientras una réplica está desconectada, en cuyo caso la réplica no recibiría las actualizaciones del contador de clientes, y por lo tanto tendría información desactualizada al reconectarse.
 
+El siguiente diagrama ilustra un caso en el que el gateway 2 es inicialmente el líder, éste se cae y el gateway 1 asume como nuevo líder. Luego el gateway 2 se reconecta y le pregunta el `client_count` al líder. Al conectarse un nuevo cliente, el líder broadcastea el `client_count` actualizado.
+
+```mermaid
+sequenceDiagram
+    participant Client
+
+    box Grey Gateway 2:
+    participant Gateway 2
+    participant ReplicaListener
+    participant ClientCountListener2
+    participant LeaderElector 2
+    end
+
+    Note over Gateway 2: El gateway 2 comienza siendo el líder
+    
+
+    box Grey Gateway 1:
+    participant LeaderElector 1
+    participant ClientCountListener
+    participant ReplicaListener1
+    participant Gateway 1
+    end
+
+    Gateway 1->>+Gateway 1: semaphore.acquire() (BLOCKED)
+    Note over  LeaderElector 2: constantemente manda PING<br>para comunicar que sigue vivo.
+    loop Every second
+        LeaderElector 2-->>LeaderElector 1: PING
+    end
+    
+    ClientCountListener-->>ReplicaListener: request_client_count
+    ReplicaListener-->>ClientCountListener: client_count: 0
+    
+
+    Client->>Gateway 2: connects
+    Gateway 2-->>ClientCountListener: client_count: 1
+
+    Note over Client,LeaderElector 2: CRASH ❌
+    
+    LeaderElector 1->>LeaderElector 1: timeout
+    Note over LeaderElector 1: Se desata una elección de líder y <br>Gateway 1 se convierte en el nuevo líder
+    LeaderElector 1->>LeaderElector 1: semaphore.release() (Desbloquea a Gateway 1)
+    Gateway 1->>-Gateway 1: am_i_leader() -> true
+    
+    Gateway 1->>ReplicaListener1: start
+    Note over Gateway 2,LeaderElector 2: Recovers 🔄
+    
+    Gateway 2->>+Gateway 2: semaphore.acquire() (BLOCKED)
+    LeaderElector 1-->>LeaderElector 2: PING
+    Note over LeaderElector 2: al recibir el PING se da<br>cuenta de que el nodo 1 es el lider<br>(el PING contiene el id del lider)
+    LeaderElector 2->>LeaderElector 2: semaphore.release() (Desbloquea a Gateway 2)
+    Gateway 2->>-Gateway 2: am_i_leader() -> false
+    Gateway 2->>ClientCountListener2: start
+    Gateway 2->>+Gateway 2: semaphore.acquire() (BLOCKED)
+    ClientCountListener2-->>ReplicaListener1: request_client_count
+    ReplicaListener1-->>ClientCountListener2: client_count: 0
+    Client->>Gateway 1: connect
+    Note over Gateway 1: cuando se conecta un nuevo cliente,<br>broadcastea el nuevo client count
+    Gateway 1-->>ClientCountListener2: client_count: 1
+```
 
 ### El manejo de clientes que se desconectan
 
