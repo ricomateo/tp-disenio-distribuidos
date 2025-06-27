@@ -364,6 +364,18 @@ Ejecuta de los siguientes pasos:
 
 A la hora de diseñar nuestro sistema tuvimos algunos problemas, ante los cuales decidimos tomar ciertas decisiones de diseño, que queremos explicitar en este informe para que no pasen desapercibidas en la entrega.
 
+### Final packets para manejar pérdidas y registro de procesados
+
+Para llevar un control riguroso del flujo de datos y evitar la pérdida de paquetes, implementamos un mecanismo de mensajes final que incluye un campo count, el cual indica cuántos paquetes fueron enviados por el nodo emisor. Esto permite a los nodos receptores saber exactamente cuántos paquetes deben recibir antes de considerar completo el procesamiento de una solicitud.
+
+Este contador se ajusta dinámicamente en cada etapa del procesamiento. Por ejemplo, un nodo parser puede generar múltiples paquetes a partir de uno solo, por lo que incrementa el count. En cambio, un filter puede descartar algunos paquetes y reducir el total, y un router puede dividir los paquetes en múltiples rutas, cada una con su propio sub-conteo.
+
+La motivación detrás de este diseño fue evitar situaciones en las que un paquete se pierde por la caída de un nodo: si el mensaje final se procesa antes que el paquete retrasado o perdido, ese paquete se vuelve inútil y no es procesado. En cambio, si se conoce de antemano la cantidad esperada, los nodos pueden esperar a que todos lleguen, incluso si hay reintentos involucrados.
+
+Este enfoque, sin embargo, trajo desafíos en los nodos con colas compartidas y diseño stateless. En estos casos, múltiples instancias pueden procesar indistintamente paquetes de la misma cola. Esto genera un problema: si un paquete se reencola por una falla y es procesado por otra instancia, el count podría duplicarse erróneamente. Para resolver esto, introdujimos un nodo de control con estado persistente del que hablaremos mas adelante.
+
+Una duda razonable que podría surgir con este enfoque es la posibilidad de que, ante una falla, se pierda un paquete y simultáneamente se procese otro duplicado. En ese caso, el conteo total de paquetes recibidos coincidiría con el indicado en el final, y el error pasaría inadvertido. Sin embargo, este escenario está contemplado y prevenido: cada nodo lleva un registro de los paquetes que ya ha procesado, basándose en un identificador único incluido en cada uno. Si un paquete recibido tiene el mismo ID que otro previamente procesado, se lo considera duplicado y se descarta automáticamente. Gracias a este mecanismo, aseguramos que el conteo refleje únicamente paquetes válidos y únicos, garantizando así la integridad del procesamiento incluso ante reintentos o fallos parciales.
+
 ### Persistencia de los datos en los nodos join
 
 En la entrega anterior ya estabamos persistiendo en un storage para cada cliente los paquetes que llegaban a la queue del `join_callback` pero no tenían un match con alguno de los paquetes de la queue del `main_callback`. En estos casos dicho paquete se guardaba en un storage hasta que se hayan recibido los EOF para ambas colas, momento en el cual se buscaban matches entre los paquetes en el router_buffer (los que estaban en memoria, de la queue del `main_callback`) y los que se habían guardado en el storage.
@@ -516,13 +528,10 @@ sequenceDiagram
     Note over Gateway 1: cuando se conecta un nuevo cliente,<br>broadcastea el nuevo client count
     Gateway 1-->>ClientCountListener2: client_count: 1
 ```
+### Manejo de clientes desconectados o caídos
 
-### El manejo de clientes que se desconectan
+Cuando un cliente se desconecta del gateway, ya no podrá recibir respuestas. Para evitar mantener información innecesaria en el sistema, el gateway detecta esta desconexión y envía un mensaje `delete_client` que se propaga por todos los nodos del sistema. El objetivo es eliminar toda la información persistida asociada a ese cliente.
 
-Los clientes que se desconectan del gateway no van a escuchar la respuesta, por lo que cuando el gateway detecta que un cliente se desconectó, entonces envía un mensaje `delete_client`, que se va a propagar entre todos los nodos del sistema, de tal forma que se borre toda la información persistida destinada al cliente desconectado.
+Dado que, por ejemplo, en el componente Join existen múltiples colas, el mensaje delete_client puede duplicarse y propagarse por más de un canal. Sin embargo, al llegar a los nodos Deliver, estos mensajes son filtrados: si el cliente ya fue eliminado, se descartan silenciosamente los mensajes duplicados. Cada nodo deliver (en total hay 5, uno por tipo de consulta) reenvía el mensaje delete_client hacia la cola líder correspondiente. Una vez que los cinco mensajes llegan, se considera que todos los tipos de consultas asociados al cliente han sido cerrados y se elimina la cola dedicada a ese cliente. Esto es un caso especial ya que la cola dedicada a ese cliente la suele borrar el gateway al terminar.
 
-### Final packets para manejar pérdidas y registro de procesados
-
-Para llevar un registro correcto de los paquetes que se envían en cada etapa, decidimos para cada nodo enviar un final packet con un count de los paquetes que se enviaron, para así garantizar que no se hayan perdido paquetes en el camino.
-
-Una duda razonable en este sentido surge al pensar que podríamos tener un paquete perdido y otro duplicado al mismo tiempo, lo que haría que la cuenta de igual a la del final, pero ese tipo de situaciones (la de los paquetes duplicados) las evitamos al llevar un registro de los paquetes procesados en cada nodo. De esta forma si el ID de un paquete es igual al de otro ya procesado, directamente se descarta.
+En caso de que el gateway se caiga inesperadamente, al reiniciarse se leen desde disco los IDs de los clientes que estaban conectados previamente. Luego, cualquier instancia de gateway —no solo la líder— envía mensajes delete_client hacia los nodos parser para limpiar cualquier estado residual que haya quedado del cliente caído.
