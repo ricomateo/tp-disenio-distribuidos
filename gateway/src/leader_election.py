@@ -109,7 +109,7 @@ class LeaderElector:
                         leader_id = message.get("id")
                         if leader_id is not None:
                             self.set_current_leader(leader_id)
-                            logging.info("[LEADER_ELECTION] Received leader id %s", self.current_leader)
+                            logging.info("[LEADER_ELECTION] Received PING with leader id %s", self.current_leader)
                             self.send_leader(leader_id)
                     continue
                 else:
