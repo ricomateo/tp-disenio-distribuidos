@@ -357,3 +357,217 @@ Ejecuta de los siguientes pasos:
 1. Levanta el sistema y lo deja ejecutando en background.
 2. Pone a ejecutar el Jupyter notebook en un container de Docker, utilizando como input los archivos declarados en `config.ini`
 3. Espera a que los clientes terminen, y compara los resultados de cada cliente contra los resultados del notebook.
+
+# Entrega 3 - Tolerancia a fallas
+
+## Decisiones de diseño
+
+A la hora de diseñar nuestro sistema tuvimos algunos problemas, ante los cuales decidimos tomar ciertas decisiones de diseño, que queremos explicitar en este informe para que no pasen desapercibidas en la entrega.
+
+### Final packets para manejar pérdidas y registro de procesados
+
+Para llevar un control riguroso del flujo de datos y evitar la pérdida de paquetes, implementamos un mecanismo de mensajes final que incluye un campo count, el cual indica cuántos paquetes fueron enviados por el nodo emisor. Esto permite a los nodos receptores saber exactamente cuántos paquetes deben recibir antes de considerar completo el procesamiento de una solicitud.
+
+Este contador se ajusta dinámicamente en cada etapa del procesamiento. Por ejemplo, un nodo parser puede generar múltiples paquetes a partir de uno solo, por lo que incrementa el count. En cambio, un filter puede descartar algunos paquetes y reducir el total, y un router puede dividir los paquetes en múltiples rutas, cada una con su propio sub-conteo.
+
+La motivación detrás de este diseño fue evitar situaciones en las que un paquete se pierde por la caída de un nodo: si el mensaje final se procesa antes que el paquete retrasado o perdido, ese paquete se vuelve inútil y no es procesado. En cambio, si se conoce de antemano la cantidad esperada, los nodos pueden esperar a que todos lleguen, incluso si hay reintentos involucrados.
+
+Este enfoque, sin embargo, trajo desafíos en los nodos con colas compartidas y diseño stateless. En estos casos, múltiples instancias pueden procesar indistintamente paquetes de la misma cola. Esto genera un problema: si un paquete se reencola por una falla y es procesado por otra instancia, el count podría duplicarse erróneamente. Para resolver esto, introdujimos un nodo de control con estado persistente del que hablaremos mas adelante.
+
+Una duda razonable que podría surgir con este enfoque es la posibilidad de que, ante una falla, se pierda un paquete y simultáneamente se procese otro duplicado. En ese caso, el conteo total de paquetes recibidos coincidiría con el indicado en el final, y el error pasaría inadvertido. Sin embargo, este escenario está contemplado y prevenido: cada nodo lleva un registro de los paquetes que ya ha procesado, basándose en un identificador único incluido en cada uno. Si un paquete recibido tiene el mismo ID que otro previamente procesado, se lo considera duplicado y se descarta automáticamente. Gracias a este mecanismo, aseguramos que el conteo refleje únicamente paquetes válidos y únicos, garantizando así la integridad del procesamiento incluso ante reintentos o fallos parciales.
+
+### Actualización del diagrama de robustez
+
+Ante la separación entre nodos stateful y stateless, tomamos la decisión de adaptar la arquitectura para respetar las responsabilidades y comportamientos de cada tipo:
+
+1. Los nodos stateful, que requieren persistencia, no comparten colas y bajan la información a disco.
+2. Los nodos stateless, en cambio, trabajan sobre colas compartidas y se sincronizan únicamente con el nodo de control, sin almacenar estado local.
+
+En ese contexto, el nodo Calculator de la query 5, que originalmente operaba sobre una cola compartida, debía ajustarse a su rol de stateful, ya que necesita persistir sus resultados en disco.
+
+Por eso, rediseñamos su entrada y colocamos dos routers independientes, uno para películas positivas y otro para negativas. Cada uno direcciona a su propia cola separada y dedicada, antes de llegar al calculator.
+
+De esta forma, logramos desacoplar completamente los nodos stateful de los stateless, garantizando un diseño coherente y mantenible.
+
+![image robustez](img/vista_fisica/diagrama_robustez_nuevo.png)
+
+### Persistencia de los datos en los nodos join
+
+En la entrega anterior ya estabamos persistiendo en un storage para cada cliente los paquetes que llegaban a la queue del `join_callback` pero no tenían un match con alguno de los paquetes de la queue del `main_callback`. En estos casos dicho paquete se guardaba en un storage hasta que se hayan recibido los EOF para ambas colas, momento en el cual se buscaban matches entre los paquetes en el router_buffer (los que estaban en memoria, de la queue del `main_callback`) y los que se habían guardado en el storage.
+
+Para esta entrega, con el fin de hacer que el nodo join sea más tolerante a fallos, decidimos persistir en disco los paquetes recibidos de la queue del `main_callback`, además de guardarnos también en memoria la flag eof_main (que indica si se recibión un EOF en la queue del main callback), una lista de los mensajes procesados en la main queue, otra lista para los paquetes procesados de la join queue y otra para los paquetes publicados en la cola del output.
+
+Esa información se guarda como checkpoint cada vez que cambia el estado del nodo, como puede ser que cambie la flag eof_main, que se procese un paquete en alguna de las dos colas de input de paquetes, o que se guarde en el router buffer o en el storage algún paquete.
+Podemos ver que este checkpoint del estado se suele hacer justo antes de enviar el ACK para el paquete recibido de alguna de las dos colas, para intentar minimizar el daño de una falla en el nodo que nos haga perder el estado.
+
+La escritura del estado en disco se hace a través de la función `atomic_write`, implementada por nosotros. La idea de la misma es escribir el estado en un archivo temporal, y una vez que termina el proceso de escritura, se renombra el archivo anterior por el temporal. Guardamos el estado de esta forma porque, en caso de haber una falla durante la escritura en el archivo temporal, la versión anterior se preserva sin problemas. Como adicional, la operación de replace se hace de forma atómica, por lo que no tendremos problemas ante caídas durante esa operación (dado que se hace o no se hace, no hay punto medio).
+
+### Tolerancia a fallos en el resto de nodos stateful
+
+Para que el resto de nodos stateful (`calculator`, `aggregator`, `deliver`) sean tolerantes a fallas, es necesario persistir su estado, al igual que en el join, para que pueda ser recuperado ante caídas.
+Entre el estado que se guarda se encuentra
+* Los IDs de los paquetes que fueron procesados: Esto es necesario para detectar duplicados y poder ignorarlos, para que el resultado final sea correcto. Por ejemplo, el resultado de un promedio puede dar distinto si tiene un valor repetido.
+* Estado que resulta de procesar mensajes. Por ejemplo, para el caso del `calculator` estos serían los resultados que luego envía al `aggregator`, etc.
+
+Al igual que en el nodo join, esta persistencia se realiza de forma atómica.
+
+Con la persistencia del estado y el trackeo de duplicados podemos asegurarnos que los nodos stateful se comportan según lo esperado, incluso ante caídas. Algo que puede suceder es que manden mensajes repetidos, sin embargo el nodo que consuma esos mensajes va a encargarse de trackear los duplicados, por lo tanto esto **no** es un problema.
+
+> [!NOTE]  
+> En [este documento](./docs/tolerancia_fallas_nodos_stateful.md) se ilustra con diagramas varios casos de falla en los nodos stateful, y cómo los toleran.
+
+Los nodos stateful se coordinan mediante un líder para enviar el paquete FINAL (Ver [Mecanismos de sincronización de finalización - Nodos con queue propia](#nodos-con-queue-propia)).
+Para tolerar fallas en estos casos, el nodo líder persiste los mensajes recibidos, tanto para evitar perder la cuenta de cuáles nodos enviaron el FINAL, como para detectar duplicados. Esto nos garantiza que el FINAL definitivo se va a enviar solamente cuando todos los nodos enviaron su FINAL, ni antes ni después.
+
+### Los nodos control para garantizar alta disponibilidad
+
+La forma de garantizar que los nodos del sistema tengan una alta disponibilidad fue la implementación de nodos de control, que se dediquen a controlar que los nodos de la lógica de negocio estén activos, además de controlarse entre sí en forma de anillo. Esto último significa que el nodo de control 1 se comunica con el 2, el 2 con el 3, y así hasta llegar al último, que se comunica con el primero, completando el anillo.
+
+La idea es que cada nodo de control tiene un hilo que se encarga de escuchar la conexión de health-check del anterior, en la que simplemente acepta la conexión y la cierra, y otro hilo que realiza health-check del nodo siguiente, que se conecta con el nodo mediante TCP y luego cierra dicha conexión.
+
+Cada nodo de control también realiza health-checks periódicos a los hilos worker de los nodos de la lógica de negocio, asegurando que estén activos y funcionando correctamente. Esta supervisión constante permite detectar fallas tempranas y mantener la integridad del sistema.
+
+Además de monitorear la disponibilidad de los nodos de negocio, los nodos de control también gestionan las solicitudes que provienen de los hilos worker.
+
+En cuanto a la arquitectura, los nodos stateless cuentan con un nodo de control dedicado exclusivamente a ellos, encargado de coordinar el envío de los finals y calcular sus conteos necesarios. Por otro lado, los nodos stateful son supervisados por un único nodo de control, dado que la mayoría de sus hilos solo realizan health-checks. La excepción es el gateway, que dispone de un nodo de control separado para facilitar la elección de líder y permitir una recuperación rápida de gateways de respaldo.
+
+Existen tres tipos de request:
+
+- Insert id: Inserta el ID y el send del paquete recibido en disco, almacenando esta información en un archivo específico para el cliente correspondiente. Luego de la inserción, si se detecta que ya se recibió un paquete final, se calcula la cantidad de IDs únicos almacenados en dicho archivo. En caso de que esta cantidad coincida con el conteo final esperado para ese cliente, la función devuelve true junto con el valor del nuevo count final, indicando que se han procesado todos los paquetes correspondientes a ese nodo.
+
+- Delete client: Elimina toda la información persistida asociada a un cliente específico, ya sea porque se completó el procesamiento de sus paquetes o porque el cliente se desconectó. Además, registra al cliente en una lista de clientes muertos para seguimiento.
+
+- Receive final count: Recibe la información acerca de la cantidad total de paquetes que deberían procesarse para un cliente, extraída del paquete final. A continuación, calcula el número de IDs únicos almacenados en el archivo correspondiente. Si este número alcanza el conteo final esperado para el cliente, la función devuelve true junto con el valor del nuevo count final, señalando que el procesamiento de todos los paquetes para ese nodo ha finalizado.
+
+![control](img/vista_desarollo/nodo_control_1.png)
+
+En este ejemplo, un paquete llega después de que se recibió el paquete final. Al recibir el paquete final, el filtro lo guarda en disco y verifica si se cumple el conteo esperado de 6 IDs. Al observar que solo tiene 5 IDs almacenados, determina que el conteo aún no se ha completado y devuelve final=false.
+
+Cuando finalmente llega ese paquete pendiente, el filtro lo procesa y lo envía al nodo de control, que también lo guarda en disco. Ahora, con el paquete final ya activado, el nodo de control verifica que se hayan recibido los 6 IDs esperados. Como la condición se cumple, envía final=true y send=3, indicando que de los 6 paquetes, solo 3 fueron filtrados hacia el siguiente nodo router.
+
+Luego, el filtro envía el paquete final con count=3 y, finalmente, solicita al nodo que elimine toda la información persistida en disco correspondiente al cliente 2.
+
+![control](img/vista_desarollo/nodo_control.png)
+
+En este ejemplo, un paquete llega al nodo router, que lo enruta hacia el nodo calculator (nodo 0). A su vez, el router notifica al nodo de control, enviándole la información con send=0. El nodo de control persiste este dato en disco y devuelve final=false, ya que aún no ha recibido el paquete final.
+
+Cuando finalmente llega el paquete final, el nodo de control revisa si la cantidad de IDs únicos almacenados en disco coincide con el final count esperado. Al cumplirse esta condición, responde con final=true y la información del reparto (send), que indica cuántos paquetes se enviaron a cada ruta. En este caso, fueron 3 a calculator y 3 a calculator_1.
+
+Una vez que el router recibe esta respuesta, envía los paquetes finales correspondientes a cada nodo destino. Finalmente, le indica al nodo de control que elimine del disco toda la información relacionada con ese cliente, completando así el ciclo de procesamiento.
+
+![control](img/vista_desarollo/nodo_control_disco.png)
+
+Por motivos de performance, cada nodo y cliente cuenta con su propio archivo de almacenamiento. Esto permite que múltiples nodos escriban paquetes del mismo cliente en paralelo, sin necesidad de competir por acceso a un único archivo compartido. De esta manera, se maximiza la concurrencia y se evita el bloqueo entre nodos durante la escritura.
+
+Cuando se detecta la llegada de un paquete final —o si este ya fue recibido previamente—, el nodo de control adquiere los locks de todos los archivos asociados a ese cliente antes de proceder a leerlos. Esto garantiza la exclusión mutua durante el conteo de IDs únicos y evita condiciones de carrera.
+
+Cabe destacar que el nodo de control no filtra paquetes duplicados al momento de guardarlos en disco, ya que la prioridad está puesta en la velocidad de escritura. Los duplicados se filtran únicamente al momento de hacer el conteo, aceptando así un mayor uso de disco en favor de un procesamiento más eficiente ante cargas altas o escenarios concurrentes.
+
+En conclusión, los nodos de control no solo se encargan de monitorear y mantener activos los nodos de la lógica de negocio, sino que también cumplen un rol clave en la coordinación del procesamiento final entre los nodos stateless, es decir, aquellos que comparten una misma cola y no persisten información en disco. En estos casos, el nodo de control es responsable de llevar el seguimiento del conteo y asegurar que se cumpla el envío del final únicamente cuando todos los paquetes correspondientes hayan sido procesados correctamente, garantizando así la integridad del flujo de datos.
+
+### Nuevo Diagrama de despliegue
+
+En el diagrama de despliegue se incorporaron los nodos de control. Aquellos conectados entre sí mediante flechas de doble sentido representan los nodos encargados de coordinar la finalización de los nodos stateless, que por su propia naturaleza no pueden determinar cuándo deben finalizar. El resto de los nodos de control se encargan exclusivamente de supervisar el estado de los nodos stateful, monitoreando su disponibilidad y correcto funcionamiento.
+
+![image despliegue](img/vista_fisica/despliegue_fallos.png)
+
+Esta configuración genera un anillo de 18 nodos de control alrededor del sistema, lo que permite implementar mecanismos distribuidos de detección y recuperación ante fallos. De esta forma, el sistema se vuelve tolerante a fallos, ya que siempre hay nodos de control monitoreando el estado del sistema y coordinando su correcto cierre y reinicio en caso de ser necesario.
+
+![image despliegue](img/vista_fisica/despliegue_anillo.png)
+
+### Sobre la elección de líder en el gateway
+
+Decidimos utilizar la elección de líder en el gateway porque de esta forma nos cubrimos de una posible caída del nodo que escucha las conexiones de los clientes, ya que, en caso de que se caiga el gateway líder, el cual está en espera de conexiones entrantes de clientes, se va a disparar una elección de líder para que se ocupe de escuchar las nuevas conexiones entrantes.
+
+#### Algoritmo de elección
+
+La elección de líder se realiza siguiendo el algoritmo de anillo. El algoritmo de elección es tolerante a fallas ya que si se caen algunos nodos de todas formas se elige un líder entre los que estén disponibles.
+
+Esto se logra forzando que cada nodo envíe su mensaje a otro nodo vivo. Si el nodo "vecino" (el inmediatamente siguiente) está caído, entonces se comunica con el siguiente, y así sucesivamente. Si hay un único nodo vivo, entonces se termina comunicando consigo mismo y determina que él es el líder.
+
+El nodo líder manda mensajes `PING` a las réplicas para informarles que sigue vivo. Las réplicas esperan estos mensajes periódicamente. Si luego de cierto tiempo no reciben `PING`, entonces asumen que el líder está muerto y se dispara una nueva elección de líder.
+
+#### Sincronización entre `Gateway` y `LeaderElector`
+
+La elección de líder ocurre en un thread diferente al del gateway, el cual ejecuta una instancia de `LeaderElector`.
+Sin embargo, cada gateway necesita saber si él el líder. Es por esto que se utiliza un semáforo compartido entre el `Gateway` y el `LeaderElector`, para poder comunicarlos.
+
+Cada vez que se elige un nuevo líder, el `LeaderElector` incrementa (`semaphore.release()`) el contador del semáforo. Por su parte, el `Gateway` está bloqueado esperando para decrementar (`semaphore.acquire()`) el contador del semáforo. Si `Gateway` se desbloquea del semáforo, entonces esto significa que se eligió un nuevo líder, por lo tanto `Gateway` chequea si él es el nuevo líder, y en ese caso se pone a escuchar por conexiones de clientes.
+
+#### Contador de clientes en el gateway
+
+Algo a tener en cuenta es que el gateway mantiene un contador de clientes, el cual se usa para asignarle IDs a los clientes. Es fundamental comunicar esta información con los gateway réplica, para que no se repitan los IDs de clientes ante una eventual caída del líder.
+Para ello, cada vez que se conecta un nuevo cliente, el gateway líder broadcastea el contador de clientes al resto de gateways, y estos lo persisten en el disco.
+
+Además, cuando una réplica se desconecta, al reconectarse le solicita el contador de clientes al líder. Esto es necesario porque puede darse el caso en el que se conecten nuevos clientes mientras una réplica está desconectada, en cuyo caso la réplica no recibiría las actualizaciones del contador de clientes, y por lo tanto tendría información desactualizada al reconectarse.
+
+El siguiente diagrama ilustra un caso en el que el gateway 2 es inicialmente el líder, éste se cae y el gateway 1 asume como nuevo líder. Luego el gateway 2 se reconecta y le pregunta el `client_count` al líder. Al conectarse un nuevo cliente, el líder broadcastea el `client_count` actualizado.
+
+```mermaid
+sequenceDiagram
+    participant Client
+
+    box Grey Gateway 2:
+    participant Gateway 2
+    participant ReplicaListener
+    participant ClientCountListener2
+    participant LeaderElector 2
+    end
+
+    Note over Gateway 2: El gateway 2 comienza siendo el líder
+    
+
+    box Grey Gateway 1:
+    participant LeaderElector 1
+    participant ClientCountListener
+    participant ReplicaListener1
+    participant Gateway 1
+    end
+
+    Gateway 1->>+Gateway 1: semaphore.acquire() (BLOCKED)
+    Note over  LeaderElector 2: constantemente manda PING<br>para comunicar que sigue vivo.
+    loop Every second
+        LeaderElector 2-->>LeaderElector 1: PING
+    end
+    
+    ClientCountListener-->>ReplicaListener: request_client_count
+    ReplicaListener-->>ClientCountListener: client_count: 0
+    
+
+    Client->>Gateway 2: connects
+    Gateway 2-->>ClientCountListener: client_count: 1
+
+    Note over Client,LeaderElector 2: CRASH ❌
+    
+    LeaderElector 1->>LeaderElector 1: timeout
+    Note over LeaderElector 1: Se desata una elección de líder y <br>Gateway 1 se convierte en el nuevo líder
+    LeaderElector 1->>LeaderElector 1: semaphore.release() (Desbloquea a Gateway 1)
+    Gateway 1->>-Gateway 1: am_i_leader() -> true
+    
+    Gateway 1->>ReplicaListener1: start
+    Note over Gateway 2,LeaderElector 2: Recovers 🔄
+    
+    Gateway 2->>+Gateway 2: semaphore.acquire() (BLOCKED)
+    LeaderElector 1-->>LeaderElector 2: PING
+    Note over LeaderElector 2: al recibir el PING se da<br>cuenta de que el nodo 1 es el lider<br>(el PING contiene el id del lider)
+    LeaderElector 2->>LeaderElector 2: semaphore.release() (Desbloquea a Gateway 2)
+    Gateway 2->>-Gateway 2: am_i_leader() -> false
+    Gateway 2->>ClientCountListener2: start
+    Gateway 2->>+Gateway 2: semaphore.acquire() (BLOCKED)
+    ClientCountListener2-->>ReplicaListener1: request_client_count
+    ReplicaListener1-->>ClientCountListener2: client_count: 0
+    Client->>Gateway 1: connect
+    Note over Gateway 1: cuando se conecta un nuevo cliente,<br>broadcastea el nuevo client count
+    Gateway 1-->>ClientCountListener2: client_count: 1
+```
+### Manejo de clientes desconectados o caídos
+
+Cuando un cliente se desconecta del gateway, ya no podrá recibir respuestas. Para evitar mantener información innecesaria en el sistema, el gateway detecta esta desconexión y envía un mensaje `delete_client` que se propaga por todos los nodos del sistema. El objetivo es eliminar toda la información persistida asociada a ese cliente.
+
+Dado que, por ejemplo, en el componente Join existen múltiples colas, el mensaje delete_client puede duplicarse y propagarse por más de un canal. Sin embargo, al llegar a los nodos Deliver, estos mensajes son filtrados: si el cliente ya fue eliminado, se descartan silenciosamente los mensajes duplicados. Cada nodo deliver (en total hay 5, uno por tipo de consulta) reenvía el mensaje delete_client hacia la cola líder correspondiente. Una vez que los cinco mensajes llegan, se considera que todos los tipos de consultas asociados al cliente han sido cerrados y se elimina la cola dedicada a ese cliente. Esto es un caso especial ya que la cola dedicada a ese cliente la suele borrar el gateway al terminar.
+
+En caso de que el gateway se caiga inesperadamente, al reiniciarse se leen desde disco los IDs de los clientes que estaban conectados previamente. Luego, cualquier instancia de gateway —no solo la líder— envía mensajes delete_client hacia los nodos parser para limpiar cualquier estado residual que haya quedado del cliente caído.
+
+### Cambios en la elección de líder del gateway
+
+Uno de los problemas que tuvimos a la hora de implementar el algoritmo de elección de líder en anillo para los gateway fue la propagación de mensajes de elección después de haberse seleccionado un líder. Para resolverlo, decidimos que, una vez elegido, en caso de recibir el líder un nuevo mensaje de elección de líder, en lugar de reenviarlo, propague un mensaje indicando que él ya ha sido elegido como líder. Después de hacer este cambio no pudimos reproducir el error que se presentó a la hora de hacer la demostración grupal.
