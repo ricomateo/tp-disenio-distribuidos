@@ -376,6 +376,21 @@ Este enfoque, sin embargo, trajo desafíos en los nodos con colas compartidas y 
 
 Una duda razonable que podría surgir con este enfoque es la posibilidad de que, ante una falla, se pierda un paquete y simultáneamente se procese otro duplicado. En ese caso, el conteo total de paquetes recibidos coincidiría con el indicado en el final, y el error pasaría inadvertido. Sin embargo, este escenario está contemplado y prevenido: cada nodo lleva un registro de los paquetes que ya ha procesado, basándose en un identificador único incluido en cada uno. Si un paquete recibido tiene el mismo ID que otro previamente procesado, se lo considera duplicado y se descarta automáticamente. Gracias a este mecanismo, aseguramos que el conteo refleje únicamente paquetes válidos y únicos, garantizando así la integridad del procesamiento incluso ante reintentos o fallos parciales.
 
+### Actualización del diagrama de robustez
+
+Ante la separación entre nodos stateful y stateless, tomamos la decisión de adaptar la arquitectura para respetar las responsabilidades y comportamientos de cada tipo:
+
+1. Los nodos stateful, que requieren persistencia, no comparten colas y bajan la información a disco.
+2. Los nodos stateless, en cambio, trabajan sobre colas compartidas y se sincronizan únicamente con el nodo de control, sin almacenar estado local.
+
+En ese contexto, el nodo Calculator de la query 5, que originalmente operaba sobre una cola compartida, debía ajustarse a su rol de stateful, ya que necesita persistir sus resultados en disco.
+
+Por eso, rediseñamos su entrada y colocamos dos routers independientes, uno para películas positivas y otro para negativas. Cada uno direcciona a su propia cola separada y dedicada, antes de llegar al calculator.
+
+De esta forma, logramos desacoplar completamente los nodos stateful de los stateless, garantizando un diseño coherente y mantenible.
+
+![image robustez](img/vista_fisica/diagrama_robustez_nuevo.png)
+
 ### Persistencia de los datos en los nodos join
 
 En la entrega anterior ya estabamos persistiendo en un storage para cada cliente los paquetes que llegaban a la queue del `join_callback` pero no tenían un match con alguno de los paquetes de la queue del `main_callback`. En estos casos dicho paquete se guardaba en un storage hasta que se hayan recibido los EOF para ambas colas, momento en el cual se buscaban matches entre los paquetes en el router_buffer (los que estaban en memoria, de la queue del `main_callback`) y los que se habían guardado en el storage.
