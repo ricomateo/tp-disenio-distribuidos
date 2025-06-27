@@ -402,6 +402,23 @@ Podemos ver que este checkpoint del estado se suele hacer justo antes de enviar 
 
 La escritura del estado en disco se hace a través de la función `atomic_write`, implementada por nosotros. La idea de la misma es escribir el estado en un archivo temporal, y una vez que termina el proceso de escritura, se renombra el archivo anterior por el temporal. Guardamos el estado de esta forma porque, en caso de haber una falla durante la escritura en el archivo temporal, la versión anterior se preserva sin problemas. Como adicional, la operación de replace se hace de forma atómica, por lo que no tendremos problemas ante caídas durante esa operación (dado que se hace o no se hace, no hay punto medio).
 
+### Tolerancia a fallos en el resto de nodos stateful
+
+Para que el resto de nodos stateful (`calculator`, `aggregator`, `deliver`) sean tolerantes a fallas, es necesario persistir su estado, al igual que en el join, para que pueda ser recuperado ante caídas.
+Entre el estado que se guarda se encuentra
+* Los IDs de los paquetes que fueron procesados: Esto es necesario para detectar duplicados y poder ignorarlos, para que el resultado final sea correcto. Por ejemplo, el resultado de un promedio puede dar distinto si tiene un valor repetido.
+* Estado que resulta de procesar mensajes. Por ejemplo, para el caso del `calculator` estos serían los resultados que luego envía al `aggregator`, etc.
+
+Al igual que en el nodo join, esta persistencia se realiza de forma atómica.
+
+Con la persistencia del estado y el trackeo de duplicados podemos asegurarnos que los nodos stateful se comportan según lo esperado, incluso ante caídas. Algo que puede suceder es que manden mensajes repetidos, sin embargo el nodo que consuma esos mensajes va a encargarse de trackear los duplicados, por lo tanto esto **no** es un problema.
+
+> [!NOTE]  
+> En [este documento](./docs/tolerancia_fallas_nodos_stateful.md) se ilustra con diagramas varios casos de falla en los nodos stateful, y cómo los toleran.
+
+Los nodos stateful se coordinan mediante un líder para enviar el paquete FINAL (Ver [Mecanismos de sincronización de finalización - Nodos con queue propia](#nodos-con-queue-propia)).
+Para tolerar fallas en estos casos, el nodo líder persiste los mensajes recibidos, tanto para evitar perder la cuenta de cuáles nodos enviaron el FINAL, como para detectar duplicados. Esto nos garantiza que el FINAL definitivo se va a enviar solamente cuando todos los nodos enviaron su FINAL, ni antes ni después.
+
 ### Los nodos control para garantizar alta disponibilidad
 
 La forma de garantizar que los nodos del sistema tengan una alta disponibilidad fue la implementación de nodos de control, que se dediquen a controlar que los nodos de la lógica de negocio estén activos, además de controlarse entre sí en forma de anillo. Esto último significa que el nodo de control 1 se comunica con el 2, el 2 con el 3, y así hasta llegar al último, que se comunica con el primero, completando el anillo.
