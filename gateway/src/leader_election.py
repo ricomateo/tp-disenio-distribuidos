@@ -135,6 +135,8 @@ class LeaderElector:
             break
 
     def handle_election_message(self, message):
+        if self.am_i_leader():
+            return
         leader_id = message.get("id")
         logging.info("[LEADER_ELECTION] Received ELECTION message with leader ID: %s", leader_id)
         if not self.participating:
