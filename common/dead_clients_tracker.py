@@ -17,7 +17,7 @@ class DeadClientsTracker:
     node_id is only required for the join node
     """
 
-    def __init__(self, is_join_node: bool, node_id: int):
+    def __init__(self, is_join_node: bool, node_id: int, state_dir: str):
         """
         Tries to load the dead clients from the DEAD_CLIENTS_FILE,
         and looks for dead client state files to remove (and removes them if there are any)
@@ -29,11 +29,14 @@ class DeadClientsTracker:
         self.lock = threading.Lock()
         self.is_join_node = is_join_node
         self.node_id = node_id
+        self.state_dir = state_dir
+        self.dead_clients_file = os.path.join(self.state_dir, DEAD_CLIENTS_FILE)
+        
         try:
-            with open(DEAD_CLIENTS_FILE, "r", encoding="utf-8") as f:
+            with open(self.dead_clients_file, "r", encoding="utf-8") as f:
                 self.dead_clients = set(json.loads(f.read()))
         except Exception as e:
-            logging.warning("Failed to read '%s' file. Error: %s", DEAD_CLIENTS_FILE, e)
+            logging.warning("Failed to read '%s' file. Error: %s", self.dead_clients_file, e)
             self.dead_clients = set()
 
         self._remove_leftover_files()
@@ -48,7 +51,7 @@ class DeadClientsTracker:
             if len(self.dead_clients) > self.max_size:
                 self.dead_clients = set(list(self.dead_clients)[self.max_size // 10 :])
             content = json.dumps(list(self.dead_clients))
-            atomic_write(DEAD_CLIENTS_FILE, content)
+            atomic_write(self.dead_clients_file, content)
 
     def client_is_dead(self, client_id):
         """
@@ -67,9 +70,9 @@ class DeadClientsTracker:
         # Look for left over files
         for dead_client in self.dead_clients:
             if self.is_join_node:
-                client_state_file = f"state.client.{dead_client}.json"
+                client_state_file = os.path.join(self.state_dir, f"state.client.{dead_client}.json")
             else:
-                client_state_file = f"client.{dead_client}.json"
+                client_state_file = os.path.join(self.state_dir, f"client.{dead_client}.json")
             if not os.path.exists(client_state_file):
                 continue
             logging.debug(
@@ -86,7 +89,7 @@ class DeadClientsTracker:
                 )
             if self.is_join_node:
                 try:
-                    client_directory = f"storage_{self.node_id}_{dead_client}"
+                    client_directory = os.path.join(self.state_dir, f"storage_{self.node_id}_{dead_client}")
                     shutil.rmtree(client_directory)
                     logging.info("Removed %s directory", client_directory)
                 except Exception as e:

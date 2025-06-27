@@ -44,6 +44,7 @@ build:
 	docker-compose $(COMPOSE_NORMAL) build
 
 up: generate-compose data/credits.csv
+	-docker-compose $(COMPOSE_GENERATED) down -v
 	docker-compose $(COMPOSE_GENERATED) up -d --build 
 
 134: validate-replicas

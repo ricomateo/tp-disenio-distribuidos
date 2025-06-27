@@ -121,6 +121,7 @@ class LeaderElector:
         """
         Sends ELECTION message to the first peer it finds alive in the ring order
         """
+        self.protocol.set_timeout(DEFAULT_TIMEOUT)
         peers_id_list = list(range(0, self.number_of_peers))
         peers_sorted_circularly = (
             peers_id_list[self.id + 1 :] + peers_id_list[: self.id + 1]
@@ -138,6 +139,7 @@ class LeaderElector:
         if self.am_i_leader():
             self.send_leader(self.id)
             return
+        self.protocol.set_timeout(DEFAULT_TIMEOUT)
         leader_id = message.get("id")
         logging.info("[LEADER_ELECTION] Received ELECTION message with leader ID: %s", leader_id)
         if not self.participating:
