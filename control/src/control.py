@@ -251,7 +251,7 @@ class ControlNode:
                     response_message = response_prefix + b"\n"
             
             conn.sendall(response_message)
-            logging.info(f"Client {client_id} inserted ID {id_recibido}. Final signal: {client_finished}")
+            logging.debug(f"Client {client_id} inserted ID {id_recibido}. Final signal: {client_finished}")
 
         except ValueError as ve:
             logging.error(f"Error parsing message for insert ID: {ve}. Message: '{mensaje}'")
