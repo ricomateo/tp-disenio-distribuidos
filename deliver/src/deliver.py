@@ -31,6 +31,10 @@ class DeliverNode:
         self.output_rabbitmq = Middleware(queue=None, exchange=self.output_exchange)
         self.final_queue = os.getenv("RABBITMQ_FINAL_QUEUE", "final_deliver")
         self.query_number = int(os.getenv("QUERY_NUMBER", "1"))
+        
+        self.state_dir = f"../data/deliver_{self.query_number}"
+        os.makedirs(self.state_dir, exist_ok=True)
+
         self.final_rabbitmq = Middleware(
             queue=self.final_queue, consumer_tag=self.consumer_tag
         )
@@ -44,13 +48,14 @@ class DeliverNode:
                 self.consumer_tag,
                 self.cluster_size,
                 output_exchange=self.output_exchange,
+                state_dir=self.state_dir
             )
         self.response_by_client = {}
         self.control = WorkerProtocol(
             self.health_server_ip, self.health_server_port, self.health_server_port
         )
         self.dead_clients_tracker = DeadClientsTracker(
-            is_join_node=False, node_id=self.query_number
+            is_join_node=False, node_id=self.query_number, state_dir=self.state_dir
         )
 
     def callback(self, ch, method, properties, body):
@@ -223,7 +228,7 @@ class DeliverNode:
         """
         state = self.response_by_client.get(client_id, [])
         processed_messages = list(self.processed_messages_by_client.get(client_id, []))
-        filename = f"client.{client_id}.json"
+        filename = os.path.join(self.state_dir, f"client.{client_id}.json")
         data = json.dumps(
             {"state": state, "processed_messages": processed_messages},
             ensure_ascii=False,
@@ -236,7 +241,7 @@ class DeliverNode:
         Loads the state (partial result and processed messages) from disk, if available.
         """
         # Get a list of files that match the pattern client.*.json
-        state_files: list[str] = glob.glob("client.*.json")
+        state_files: list[str] = glob.glob(os.path.join(self.state_dir, "client.*.json"))
         for file in state_files:
             try:
                 client_id = int(file.split(".")[1])
@@ -278,12 +283,12 @@ class DeliverNode:
         if client_id in self.processed_messages_by_client:
             del self.processed_messages_by_client[client_id]
         try:
-            file = f"client.{client_id}.json"
-            os.remove(file)
+            file_path = os.path.join(self.state_dir, f"client.{client_id}.json")
+            os.remove(file_path)
             logging.info("Deleted data for client %s", client_id)
         except Exception as e:
             logging.warning(
-                "Failed to remove file %s for client %s. Error: %s", file, client_id, e
+                "Failed to remove file %s for client %s. Error: %s", file_path, client_id, e
             )
 
     def _sigterm_handler(self, signum, _):

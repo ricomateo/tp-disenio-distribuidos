@@ -18,6 +18,7 @@ class AggregatorNode:
     def __init__(self):
         signal.signal(signal.SIGTERM, self._sigterm_handler)
         self.running = True
+        
         self.input_queue = os.getenv("RABBITMQ_QUEUE", "sentiment_averages_queue")
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "deliver_queue")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
@@ -27,10 +28,15 @@ class AggregatorNode:
             queue=self.input_queue, consumer_tag=self.consumer_tag
         )
         self.output_rabbitmq = Middleware(queue=self.output_queue)
-        self.dead_clients_tracker = DeadClientsTracker(is_join_node=False, node_id=0)
+       
 
         self.operation = os.getenv("operation", "total_invested")
-
+        
+        self.state_dir = f"../data/{self.output_queue}"
+        os.makedirs(self.state_dir, exist_ok=True)
+        
+        self.dead_clients_tracker = DeadClientsTracker(is_join_node=False, node_id=0, state_dir=self.state_dir)
+        
         self.average_positive_by_client_id: dict[int, tuple[float, int]] = {}  # (0, 0)
         self.average_negative_by_client_id: dict[int, tuple[float, int]] = {}  # (0, 0)
         self.invested_per_country_by_client_id: dict[int, dict[str, int]] = {}
@@ -211,8 +217,10 @@ class AggregatorNode:
 
         if client_id in self.processed_messages_by_client:
             del self.processed_messages_by_client[client_id]
+            
         try:
-            os.remove(f"client.{client_id}.json")
+            file_path = os.path.join(self.state_dir, f"client.{client_id}.json")
+            os.remove(file_path)
             logging.info("Deleted client %s data", client_id)
         except Exception as e:
             logging.warning(
@@ -225,7 +233,7 @@ class AggregatorNode:
         """
         state = self.get_state(client_id)
         processed_messages = list(self.processed_messages_by_client.get(client_id, []))
-        filename = f"client.{client_id}.json"
+        filename = os.path.join(self.state_dir, f"client.{client_id}.json")
         data = json.dumps(
             {"state": state, "processed_messages": processed_messages},
             ensure_ascii=False,
@@ -338,16 +346,12 @@ class AggregatorNode:
                 packet_id += 1
 
     def load_state(self):
-        """
-        Loads the state (partial result and processed messages) from disk, if available.
-        """
-        # Get a list of files that match the pattern client.*.json
-        state_files: list[str] = glob.glob("client.*.json")
+        state_files = glob.glob(os.path.join(self.state_dir, "client.*.json"))
         if len(state_files) != 0:
             logging.info("Found state files: %s", state_files)
         for file in state_files:
             try:
-                client_id = int(file.split(".")[1])
+                client_id = int(os.path.basename(file).split(".")[1])
                 with open(file, "r", encoding="utf-8") as f:
                     data = json.loads(f.read())
                 self.processed_messages_by_client[client_id] = set(
