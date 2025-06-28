@@ -69,6 +69,10 @@ class DeliverNode:
             header = packet.get("header")
             client_id = packet.get("client_id")
 
+            if self.dead_clients_tracker.client_is_dead(client_id):
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+
             if header and is_delete_packet(header):
                 if not self.dead_clients_tracker.client_is_dead(client_id):
                     logging.info("Received DELETE packet for client %s", client_id)

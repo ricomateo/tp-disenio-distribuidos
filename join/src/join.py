@@ -151,6 +151,10 @@ class JoinNode:
             header = packet.get("header")
             client_id = packet.get("client_id")
 
+            if self.dead_clients_tracker.client_is_dead(client_id):
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
+
             if header and is_delete_packet(header):
                 logging.info(
                     "[Main thread] Received DELETE packet for client %s from queue %s",
@@ -291,6 +295,10 @@ class JoinNode:
             packet = json.loads(packet_json)
             header = packet.get("header")
             client_id = packet.get("client_id")
+
+            if self.dead_clients_tracker.client_is_dead(client_id):
+                ch.basic_ack(delivery_tag=method.delivery_tag)
+                return
 
             if header and is_delete_packet(header):
                 logging.info(
