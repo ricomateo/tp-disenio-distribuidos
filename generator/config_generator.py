@@ -54,13 +54,10 @@ class ConfigGenerator:
         self.services = {}
         self.config_params = config_params
         self.compose = {
-            'networks': {
-                'app-network': {'driver': 'bridge'}
-            },
-            'volumes': {
-                'shared_data': {}
-            }
+        'networks': {
+            'app-network': {'driver': 'bridge'}
         }
+    }
 
     def generate(self) -> dict:
         self._generate_rabbitmq()
@@ -299,9 +296,6 @@ class ConfigGenerator:
             if volumes:
                 config['volumes'] = config.get('volumes', []) + volumes.copy()
 
-            config['volumes'] = config.get('volumes', [])
-            if 'shared_data:/data' not in config['volumes']:
-                config['volumes'].append('shared_data:/data')
             # Add service to compose
             self.compose.setdefault('services', {})[service_name_instance] = config
 

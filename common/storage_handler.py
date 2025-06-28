@@ -2,7 +2,6 @@ import os
 import json
 import uuid
 import logging
-import shutil
 from common.atomic_write import atomic_write
 
 class StorageHandler:
@@ -158,15 +157,6 @@ class StorageHandler:
                         os.remove(file_path)
                     except Exception as e:
                         logging.error(f"Error al eliminar archivo residual {file_path}: {e}")
-                        
-            if os.path.exists(self.data_dir):
-                try:
-                    shutil.rmtree(self.data_dir)
-                    logging.info(f"Directorio {self.data_dir} eliminado completamente")
-                except Exception as e:
-                    logging.error(f"Error al eliminar directorio {self.data_dir}: {e}")
-            else:
-                logging.debug(f"Directorio {self.data_dir} no existía")
 
             logging.info("Todos los datos en el disco y el índice han sido eliminados.")
         except Exception as e:

@@ -45,12 +45,8 @@ class CalculatorNode:
         self.final_rabbitmq = None
         self.threads = []
         self.processed_messages_by_client = {}
-        
-        self.state_dir = f"../data/{self.output_queue}_{self.node_id}"
-        os.makedirs(self.state_dir, exist_ok=True)
-
         self.dead_clients_tracker = DeadClientsTracker(
-            is_join_node=False, node_id=self.node_id, state_dir=self.state_dir
+            is_join_node=False, node_id=self.node_id
         )
 
         self.leader_queue = None
@@ -60,7 +56,6 @@ class CalculatorNode:
                 self.output_queue,
                 self.consumer_tag,
                 self.cluster_size,
-                state_dir=self.state_dir
             )
 
         if self.final_queue:
@@ -228,7 +223,7 @@ class CalculatorNode:
         """
         Saves the state by writing (atomically) it to the hard drive.
         """
-        filename = os.path.join(self.state_dir, f"client.{client_id}.json")
+        filename = f"client.{client_id}.json"
         data = json.dumps(
             {
                 "result": self.calculator.get_raw_result(client_id),
@@ -246,7 +241,7 @@ class CalculatorNode:
         Loads the state (partial result and processed messages) from disk, if available.
         """
         # Get a list of files that match the pattern client.*.json
-        state_files: list[str] = glob.glob(os.path.join(self.state_dir, "client.*.json"))
+        state_files: list[str] = glob.glob("client.*.json")
         logging.debug("persisted files = %s", state_files)
         for file in state_files:
             try:
@@ -275,9 +270,8 @@ class CalculatorNode:
         self.calculator.delete_client_data(client_id)
         if client_id in self.processed_messages_by_client:
             del self.processed_messages_by_client[client_id]
-        file = os.path.join(self.state_dir, f"client.{client_id}.json")
         try:
-            os.remove(file)
+            os.remove(f"client.{client_id}.json")
             logging.info("Deleted client %s data", client_id)
         except Exception as e:
             logging.warning(

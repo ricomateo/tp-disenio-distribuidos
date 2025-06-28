@@ -19,7 +19,6 @@ class LeaderQueue:
         consumer_tag,
         cluster_size,
         output_exchange=None,
-        state_dir=""
     ):
         """Initialize CloseQueue with a RabbitMQ connection and queue name."""
         self.final_queue = final_queue
@@ -29,8 +28,6 @@ class LeaderQueue:
         self.client_counters = {}  # dict[client_id, dict[node_id, count]]
         self.delete_list = {}
 
-        self.state_dir = state_dir
-        
         self.final_rabbitmq = Middleware(
             queue=final_queue, consumer_tag=consumer_tag, publish_to_exchange=False
         )
@@ -175,8 +172,7 @@ class LeaderQueue:
         Loads any previous state from the 'final.client_id.json' files.
         """
         # Get a list of files that match the pattern client.*.json
-        state_files: list[str] = glob.glob(os.path.join(self.state_dir, "final.*.json"))
-         
+        state_files: list[str] = glob.glob("final.*.json")
         logging.info("[Leader] Found final state files: %s", state_files)
         for file in state_files:
             client_id = int(file.split(".")[1])
@@ -194,7 +190,7 @@ class LeaderQueue:
         """
         Returns the name of the file that keeps the state for the given client
         """
-        return os.path.join(self.state_dir, f"final.{client_id}.json")
+        return f"final.{client_id}.json"
 
     def close(self):
         """Signal the thread to stop and wait for it to finish."""

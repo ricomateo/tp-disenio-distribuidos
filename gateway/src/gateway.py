@@ -30,15 +30,14 @@ class Gateway:
         self.server.bind((self.host, self.port))
         self.processes = []
         # Contador para asignar IDs a los clientes
-        self.node_id = int(os.getenv("NODE_ID"))
-        self.clients_dir = f"../data/gateway_{self.node_id}"
-        self.counter_file = os.path.join(self.clients_dir, "clients_counter.txt")
+        self.clients_dir = "clients"
+        self.counter_file = "clients_counter.txt"
         self.output_queue = os.getenv("RABBITMQ_OUTPUT_QUEUE", "csv_queue")
         self.exchange = os.getenv("RABBITMQ_EXCHANGE", "")
         self.input_queue = os.getenv("RABBITMQ_INPUT_QUEUE", "query_queue")
         self.consumer_tag = os.getenv("RABBITMQ_CONSUMER_TAG", "default_consumer")
         self.output_exchange = os.getenv("RABBITMQ_OUTPUT_EXCHANGE")
-       
+        self.node_id = int(os.getenv("NODE_ID"))
         self.cluster_size = int(os.getenv("CLUSTER_SIZE"))
 
         self.gateway_connection = GatewayConnection()

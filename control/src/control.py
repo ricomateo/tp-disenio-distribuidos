@@ -43,19 +43,16 @@ class ControlNode:
         self.restart_in_progress = {}
         self.worker_threads = {}
         
-        
+        self.state_dir = f"control_state_{self.node_name}"
+        os.makedirs(self.state_dir, exist_ok=True)
+        self.final_counts_file = os.path.join(self.state_dir, "final_counts.json")
+        self.dead_clients_file = os.path.join(self.state_dir, "dead_clients.json")
         
         self.threads = []
         self.should_stop = threading.Event()
         self.save_lock = threading.Lock()
         self.lock_for_creating_locks = threading.Lock()
-        if not self.only_healthcheck:
-            self.state_dir = f"../data/control_state_{self.node_name}"
-            os.makedirs(self.state_dir, exist_ok=True)
-            self.final_counts_file = os.path.join(self.state_dir, "final_counts.json")
-            self.dead_clients_file = os.path.join(self.state_dir, "dead_clients.json")
-            self.load_state()
-            
+        self.load_state()
         self.docker_client = docker.from_env()
         # Registrar manejador de SIGTERM
         signal.signal(signal.SIGTERM, self._sigterm_handler)

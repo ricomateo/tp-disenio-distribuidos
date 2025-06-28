@@ -60,14 +60,8 @@ class JoinNode:
         self.packets_sent_by_client = {}
         self.processed_messages_by_client = {}
         self.processed_messages_by_client_queue_2 = {}
-        
-
-        self.state_dir = f"../data/{self.output_queue}_{self.node_id}"
-        os.makedirs(self.state_dir, exist_ok=True)
-
-
         self.dead_clients_tracker = DeadClientsTracker(
-            is_join_node=True, node_id=self.node_id, state_dir=self.state_dir
+            is_join_node=True, node_id=self.node_id
         )
 
         self.keep_columns = None
@@ -112,7 +106,6 @@ class JoinNode:
                 self.output_queue,
                 self.consumer_tag,
                 self.cluster_size,
-                state_dir=self.state_dir
             )
 
         self.control = WorkerProtocol(
@@ -124,7 +117,7 @@ class JoinNode:
     def _get_storage_for_client(self, client_id):
         """Obtiene o crea un StorageHandler para un cliente."""
         if client_id not in self.storages_by_client:
-            storage_dir = os.path.join(self.state_dir, f"./storage_{self.node_id}_{client_id}")
+            storage_dir = f"./storage_{self.node_id}_{client_id}"
             self.storages_by_client[client_id] = StorageHandler(data_dir=storage_dir)
             logging.debug(
                 "[🆕] Creado StorageHandler para cliente '%s' en '%s' con tamanio %s",
@@ -524,7 +517,7 @@ class JoinNode:
         Guarda el estado del cliente en un archivo .json de forma atómica.
         El archivo va a tener el nombre state.client.<client_id>.json
         """
-        filename = os.path.join(self.state_dir, f"state.client.{client_id}.json")
+        filename = f"state.client.{client_id}.json"
         data = {
             "eof_main": self.eof_main_by_client.get(client_id, (False, False)),
             "router_buffer": self.router_buffer_by_client.get(client_id, {}),
@@ -543,7 +536,7 @@ class JoinNode:
         Carga todos los estados persistidos del disco en el nodo de los archivos
         state de cada cliente.
         """
-        state_files = glob.glob(os.path.join(self.state_dir, "state.client.*.json"))
+        state_files = glob.glob("state.client.*.json")
         for state_file in state_files:
             try:
                 client_id = int(state_file.split(".")[2])
@@ -574,7 +567,7 @@ class JoinNode:
         """
         Borra el estado persistido del cliente recibido por parámetro.
         """
-        filename = os.path.join(self.state_dir, f"state.client.{client_id}.json")
+        filename = f"state.client.{client_id}.json"
         try:
             os.remove(filename)
             logging.info("Deleted data for client %s", client_id)
@@ -604,7 +597,7 @@ class JoinNode:
         """
         # Limpiar disco del cliente
         if client_id in self.storages_by_client:
-            self.storages_by_client[client_id].clean_all()
+            self.storages_by_client[client_id].clean()
             del self.storages_by_client[client_id]
 
         # Limpiar router_buffer del cliente
