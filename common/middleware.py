@@ -3,6 +3,7 @@ import pika
 import orjson
 import os
 import logging
+import random
 from common.packet import DeletePacketWithNodeId, FinalPacket, FinalPacketWithNodeId, DeletePacket
 from common.logger import init_logging
 
@@ -61,6 +62,15 @@ class Middleware:
                 properties=pika.BasicProperties(delivery_mode=2)
             )
             logging.debug("Sent message to exchange %s with routing key %s", self.exchange, routing_key)
+            if random.randint(1, 100) < 10:
+                logging.info("Sending duplicate packet")
+                self.channel.basic_publish(
+                    exchange=self.exchange,
+                    routing_key=routing_key,
+                    body=body,
+                    properties=pika.BasicProperties(delivery_mode=2)
+                )
+
 
         else:
             self.channel.basic_publish(
@@ -70,6 +80,14 @@ class Middleware:
                 properties=pika.BasicProperties(delivery_mode=2)
             )
             logging.debug("Sent message to queue %s", self.queue)
+            if random.randint(1, 100) < 10:
+                logging.info("Sending duplicate packet")
+                self.channel.basic_publish(
+                    exchange='',
+                    routing_key=self.queue,
+                    body=body,
+                    properties=pika.BasicProperties(delivery_mode=2)
+                )
 
     
     def consume(self, callback):
